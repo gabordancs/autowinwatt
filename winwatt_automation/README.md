@@ -25,8 +25,12 @@ Python toolkit to automate the WinWatt desktop application without cloning or mo
 
 ## Quick start
 
+> **Monorepo note:** the Python project lives in `winwatt_automation/`.
+> If your shell is one level above it, first run `cd winwatt_automation`.
+
 ```bash
 pip install -r requirements.txt
+pip install -e .
 python -m winwatt_automation.cli.main parse-xml --xml-path data/raw/Hungarian.xml
 python -m winwatt_automation.cli.main list-forms
 python -m winwatt_automation.cli.main list-actions

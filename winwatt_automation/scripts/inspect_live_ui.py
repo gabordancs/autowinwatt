@@ -1,6 +1,16 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
+
+SRC_DIR = Path(__file__).resolve().parents[1] / "src"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if SRC_DIR.exists():
+    sys.path.insert(0, str(SRC_DIR))
+    package_dir = str(SRC_DIR / "winwatt_automation")
+    package = sys.modules.get("winwatt_automation")
+    if package is not None and hasattr(package, "__path__") and package_dir not in package.__path__:
+        package.__path__.append(package_dir)
 
 from winwatt_automation.live_ui.app_connector import WinWattNotRunningError
 from winwatt_automation.live_ui.window_tree import save_window_tree_snapshot
@@ -19,7 +29,7 @@ def _print_tree(node: dict, depth: int = 0) -> None:
 
 
 def main() -> int:
-    output_path = Path("data/snapshots/ui_tree.json")
+    output_path = PROJECT_ROOT / "data/snapshots/ui_tree.json"
     try:
         snapshot = save_window_tree_snapshot(output_path)
     except WinWattNotRunningError as error:
