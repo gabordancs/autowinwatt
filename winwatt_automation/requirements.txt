@@ -1,0 +1,8 @@
+pywinauto
+lxml
+pydantic>=2.0
+loguru
+tenacity
+pytest
+typer>=0.12
+networkx
