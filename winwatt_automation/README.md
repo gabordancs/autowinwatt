@@ -17,7 +17,7 @@ Python toolkit to automate the WinWatt desktop application without cloning or mo
 
 ## Összefoglaló (magyar)
 
-- Elkészült a kért projektstruktúra (`src/`, `data/`, `tests/`, `scripts/`) az első mérföldkőhöz szükséges alapokkal.
+- Elkészült a kért projektstruktúra (`src/`, `data/`, `tests/`, valamint a package-en belüli `src/winwatt_automation/scripts/`) az első mérföldkőhöz szükséges alapokkal.
 - Megvalósult a `Hungarian.xml` feldolgozása Pydantic modellekkel (`UIProperty`, `UIItem`, `UIForm`, `UIModel`).
 - Bekerült a szemantikus besorolás és normalizálás (`semantic_role`, `normalized_name`, `normalized_caption`, `stable_key`).
 - Elkészült a parancs-regiszter, amely név, űrlap, felirat és elemtípus szerint kereshető.
