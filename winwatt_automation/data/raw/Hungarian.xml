@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+  <Forms>
+    <Form Name="MainForm" Type="TMainForm">
+      <Properties>
+        <Property Name="Caption" Value="WinWatt" />
+      </Properties>
+      <Items>
+        <Item Name="OpenProjekt" Type="TButton">
+          <Properties>
+            <Property Name="Caption" Value="Open Project" />
+            <Property Name="Hint" Value="Open existing project" />
+          </Properties>
+        </Item>
+        <Item Name="ProjectNameEdit" Type="TEdit">
+          <Properties>
+            <Property Name="Text" Value="" />
+          </Properties>
+        </Item>
+      </Items>
+    </Form>
+    <Form Name="AbsorptionTableForm" Type="TForm">
+      <Items>
+        <Item Name="OKButton" Type="TButton">
+          <Properties>
+            <Property Name="Caption" Value="OK" />
+          </Properties>
+        </Item>
+      </Items>
+    </Form>
+  </Forms>
+  <Actions>
+    <Action Name="CreateReportAction" Type="TAction">
+      <Properties>
+        <Property Name="Caption" Value="Create Report" />
+      </Properties>
+    </Action>
+  </Actions>
+  <MenuItems>
+    <MenuItem Name="SaveProjekt" Type="TMenuItem">
+      <Properties>
+        <Property Name="Caption" Value="Save Project" />
+      </Properties>
+    </MenuItem>
+  </MenuItems>
+</Root>
