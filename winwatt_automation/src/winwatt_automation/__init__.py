@@ -1,0 +1,1 @@
+"""WinWatt automation package."""
