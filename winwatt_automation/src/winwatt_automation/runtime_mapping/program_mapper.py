@@ -7,15 +7,13 @@ from typing import Any
 
 from loguru import logger
 
-from winwatt_automation.live_ui import menu_helpers, waits
-from winwatt_automation.live_ui.app_connector import (
-    ensure_main_window_foreground_before_click,
-    get_main_window,
-)
+from winwatt_automation.live_ui import menu_helpers
+from winwatt_automation.live_ui.app_connector import ensure_main_window_foreground_before_click, get_main_window
 from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
     RuntimeActionResult,
     RuntimeDialogRecord,
+    RuntimeMenuNode,
     RuntimeMenuRow,
     RuntimeStateDiff,
     RuntimeStateMap,
@@ -23,7 +21,10 @@ from winwatt_automation.runtime_mapping.models import (
     RuntimeWindowRecord,
 )
 from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed, normalize_menu_text
-from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json, write_markdown_summary
+from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
+
+
+DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis", "Beállítások", "Ablak", "Súgó"]
 
 
 def _safe_call(obj: Any, method: str, default: Any = None) -> Any:
@@ -45,14 +46,12 @@ def _list_visible_top_windows() -> list[dict[str, Any]]:
     for window in Desktop(backend="uia").windows(top_level_only=True):
         if not bool(_safe_call(window, "is_visible", False)):
             continue
-        rows.append(
-            {
-                "title": _safe_call(window, "window_text", "") or "",
-                "class_name": _safe_call(window, "class_name", "") or "",
-                "process_id": _safe_call(window, "process_id", None),
-                "handle": _safe_call(window, "handle", None),
-            }
-        )
+        rows.append({
+            "title": _safe_call(window, "window_text", "") or "",
+            "class_name": _safe_call(window, "class_name", "") or "",
+            "process_id": _safe_call(window, "process_id", None),
+            "handle": _safe_call(window, "handle", None),
+        })
     return rows
 
 
@@ -62,9 +61,9 @@ def _close_secondary_windows(main_title: str) -> None:
     except Exception:
         return
     for window in Desktop(backend="uia").windows(top_level_only=True):
-        title = _safe_call(window, "window_text", "") or ""
         if not bool(_safe_call(window, "is_visible", False)):
             continue
+        title = _safe_call(window, "window_text", "") or ""
         if title == main_title:
             continue
         try:
@@ -74,51 +73,145 @@ def _close_secondary_windows(main_title: str) -> None:
             continue
 
 
-def capture_state_snapshot(state_id: str) -> RuntimeStateSnapshot:
-    logger.info("state snapshot start state_id={}", state_id)
-    main_window = get_main_window()
-    process_id = _safe_call(main_window, "process_id", None)
-    snapshot = RuntimeStateSnapshot(
+def _extract_shortcut(text: str) -> tuple[str, str | None]:
+    parts = [part.strip() for part in text.split("\t")]
+    if len(parts) >= 2:
+        return parts[0], parts[1]
+    return text, None
+
+
+def _guess_enabled(row: dict[str, Any]) -> bool | None:
+    if row.get("is_separator"):
+        return None
+    if "enabled" in row:
+        value = row.get("enabled")
+        return bool(value) if value is not None else None
+    return True
+
+
+def _row_to_node(
+    state_id: str,
+    top_menu: str,
+    row: dict[str, Any],
+    *,
+    level: int,
+    index: int,
+    path: list[str],
+    children: list[dict[str, Any]],
+    opens_submenu: bool,
+    opens_dialog: bool = False,
+    skipped_by_safety: bool = False,
+) -> RuntimeMenuNode:
+    title_raw = str(row.get("text") or "")
+    title, shortcut = _extract_shortcut(title_raw)
+    normalized = normalize_menu_text(title)
+    safety = classify_safety(path)
+    likely_destructive = safety == "blocked"
+    likely_state_changing = safety in {"caution", "blocked"}
+    enabled = _guess_enabled(row)
+    if row.get("is_separator"):
+        action_classification = "separator"
+    elif skipped_by_safety:
+        action_classification = "skipped_by_safety"
+    elif opens_submenu:
+        action_classification = "opens_submenu"
+    elif opens_dialog:
+        action_classification = "opens_dialog"
+    elif enabled is False:
+        action_classification = "disabled"
+    elif enabled is True:
+        action_classification = "enabled"
+    else:
+        action_classification = "unknown"
+
+    return RuntimeMenuNode(
         state_id=state_id,
-        process_id=process_id,
+        title=title,
+        normalized_title=normalized,
+        path=path,
+        level=level,
+        index=index,
+        enabled=enabled,
+        separator=bool(row.get("is_separator")),
+        shortcut=shortcut,
+        opens_submenu=opens_submenu,
+        opens_dialog=opens_dialog,
+        likely_destructive=likely_destructive,
+        likely_state_changing=likely_state_changing,
+        action_classification=action_classification,
+        skipped_by_safety=skipped_by_safety,
+        children=children,
+        debug={
+            "geometry": dict(row.get("rectangle") or {}),
+            "source_scope": str(row.get("source_scope") or ""),
+            "fragments": list(row.get("fragments") or []),
+            "top_menu": top_menu,
+        },
+    )
+
+
+def capture_state_snapshot(state_id: str) -> RuntimeStateSnapshot:
+    main_window = get_main_window()
+    return RuntimeStateSnapshot(
+        state_id=state_id,
+        process_id=_safe_call(main_window, "process_id", None),
         main_window_title=_safe_call(main_window, "window_text", "") or "",
         main_window_class=_safe_call(main_window, "class_name", "") or "",
         visible_top_windows=_list_visible_top_windows(),
-        discovered_top_menus=list_top_menus(),
+        discovered_top_menus=menu_helpers.list_top_menu_items(),
         timestamp=datetime.now(tz=timezone.utc).isoformat(),
     )
-    logger.info("state snapshot done state_id={} top_menus={}", state_id, len(snapshot.discovered_top_menus))
-    return snapshot
-
-
-def list_top_menus() -> list[str]:
-    menus = menu_helpers.list_top_menu_items()
-    logger.info("listed top menus count={}", len(menus))
-    return menus
 
 
 def _build_menu_rows_from_popup_rows(state_id: str, top_menu: str, rows: list[dict[str, Any]]) -> list[RuntimeMenuRow]:
-    result: list[RuntimeMenuRow] = []
+    mapped: list[RuntimeMenuRow] = []
     for index, row in enumerate(rows):
-        result.append(
+        text = str(row.get("text") or "")
+        title, _ = _extract_shortcut(text)
+        mapped.append(
             RuntimeMenuRow(
                 state_id=state_id,
                 top_menu=top_menu,
                 row_index=index,
-                menu_path=[top_menu, str(row.get("text") or "")],
-                text=str(row.get("text") or ""),
-                normalized_text=normalize_menu_text(str(row.get("text") or "")),
+                menu_path=[top_menu, title],
+                text=title,
+                normalized_text=normalize_menu_text(title),
                 rectangle=dict(row.get("rectangle") or {}),
                 center_x=int(row.get("center_x") or 0),
                 center_y=int(row.get("center_y") or 0),
                 is_separator=bool(row.get("is_separator")),
                 source_scope=str(row.get("source_scope") or ""),
                 fragments=list(row.get("fragments") or []),
-                enabled_guess=None if row.get("is_separator") else True,
+                enabled_guess=_guess_enabled(row),
                 discovered_in_state=state_id,
             )
         )
-    return result
+    return mapped
+
+
+def _hover_row(row: dict[str, Any]) -> None:
+    try:
+        from pywinauto import mouse
+
+        mouse.move(coords=(int(row.get("center_x") or 0), int(row.get("center_y") or 0)))
+    except Exception:
+        return
+
+
+def _detect_child_rows(parent_row: dict[str, Any], all_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    rect = parent_row.get("rectangle") or {}
+    p_left, p_top, p_right, p_bottom = int(rect.get("left", 0)), int(rect.get("top", 0)), int(rect.get("right", 0)), int(rect.get("bottom", 0))
+    children: list[dict[str, Any]] = []
+    for row in all_rows:
+        r = row.get("rectangle") or {}
+        left, top = int(r.get("left", 0)), int(r.get("top", 0))
+        if left <= p_right + 8:
+            continue
+        if top < p_top - 120 or top > p_bottom + 220:
+            continue
+        children.append(row)
+    children.sort(key=lambda item: int((item.get("rectangle") or {}).get("top", 0)))
+    return children
 
 
 def classify_post_click_result(
@@ -146,8 +239,7 @@ def classify_post_click_result(
     elif error_text:
         result_type = "failed"
     elif dialog_detection and dialog_detection.get("dialog_detected"):
-        title = str(dialog_detection.get("dialog_title") or "").lower()
-        result_type = "error_dialog" if "hiba" in title or "error" in title else "success_dialog_opened"
+        result_type = "success_dialog_opened"
     elif len(after_snapshot.visible_top_windows) > len(before_snapshot.visible_top_windows):
         result_type = "success_popup_opened"
     elif before_snapshot.main_window_title != after_snapshot.main_window_title:
@@ -175,29 +267,71 @@ def classify_post_click_result(
     )
 
 
-def explore_top_menu(
+def explore_menu_tree(
+    *,
     state_id: str,
     top_menu: str,
-    safe_mode: str = "safe",
-) -> tuple[list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
-    logger.info("explore top menu start state_id={} top_menu={}", state_id, top_menu)
-    popup = menu_helpers.open_file_menu_and_capture_popup_state() if top_menu == "Fájl" else None
-    popup_status = str((popup or {}).get("status") or "")
-    if popup is None:
-        try:
-            ensure_main_window_foreground_before_click(action_label=f"explore_top_menu:{top_menu}")
-            menu_helpers.click_top_menu_item(top_menu)
-            popup_rows_raw = menu_helpers.capture_menu_popup_snapshot()
-            popup_status = "success_popup_opened" if popup_rows_raw else "failed_no_visible_change"
-        except Exception as exc:
-            popup_rows_raw = []
-            popup_status = str(exc)
-    else:
-        popup_rows_raw = popup.get("rows", [])
+    safe_mode: str,
+    max_depth: int,
+    include_disabled: bool,
+    depth: int = 1,
+    parent_path: list[str] | None = None,
+    popup_rows: list[dict[str, Any]] | None = None,
+) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
+    parent_path = list(parent_path or [top_menu])
+    if popup_rows is None:
+        menu_helpers.click_top_menu_item(top_menu)
+        popup_rows = menu_helpers.capture_menu_popup_snapshot()
 
-    menu_rows = _build_menu_rows_from_popup_rows(state_id, top_menu, popup_rows_raw)
-    if popup_status and popup_status.startswith("failed"):
-        actions = [
+    menu_rows = _build_menu_rows_from_popup_rows(state_id, top_menu, popup_rows)
+    nodes: list[dict[str, Any]] = []
+    actions: list[RuntimeActionResult] = []
+    dialogs: list[RuntimeDialogRecord] = []
+    windows: list[RuntimeWindowRecord] = []
+
+    for row in menu_rows:
+        if not include_disabled and row.enabled_guess is False:
+            continue
+        path = parent_path + [row.text]
+        skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
+        opens_submenu = False
+        children_nodes: list[dict[str, Any]] = []
+
+        if depth < max_depth and not row.is_separator and row.enabled_guess is not False:
+            _hover_row(asdict(row))
+            current_rows = menu_helpers.capture_menu_popup_snapshot()
+            child_rows = _detect_child_rows(asdict(row), current_rows)
+            if child_rows:
+                opens_submenu = True
+                child_nodes, child_menu_rows, child_actions, child_dialogs, child_windows = explore_menu_tree(
+                    state_id=state_id,
+                    top_menu=top_menu,
+                    safe_mode=safe_mode,
+                    max_depth=max_depth,
+                    include_disabled=include_disabled,
+                    depth=depth + 1,
+                    parent_path=path,
+                    popup_rows=child_rows,
+                )
+                children_nodes = child_nodes
+                menu_rows.extend(child_menu_rows)
+                actions.extend(child_actions)
+                dialogs.extend(child_dialogs)
+                windows.extend(child_windows)
+
+        node = _row_to_node(
+            state_id,
+            top_menu,
+            asdict(row),
+            level=depth,
+            index=row.row_index,
+            path=path,
+            children=children_nodes,
+            opens_submenu=opens_submenu,
+            skipped_by_safety=skipped,
+        )
+        nodes.append(asdict(node))
+        actions.append(
             classify_post_click_result(
                 process_id=None,
                 before_snapshot=capture_state_snapshot(state_id),
@@ -205,141 +339,90 @@ def explore_top_menu(
                 dialog_detection=None,
                 state_id=state_id,
                 top_menu=top_menu,
-                row_index=-1,
-                menu_path=[top_menu],
-                action_key=top_menu,
-                safety_level="caution",
-                attempted=False,
-                error_text=popup_status,
-                forced_result_type=popup_status,
+                row_index=row.row_index,
+                menu_path=path,
+                action_key=" > ".join(path),
+                safety_level=classify_safety(path),
+                attempted=not skipped,
+                notes="mapped_only",
             )
+        )
+
+    return nodes, menu_rows, actions, dialogs, windows
+
+
+def _state_summary_markdown(state_map: RuntimeStateMap) -> str:
+    enabled = sum(1 for item in state_map.menu_rows if item.get("enabled_guess") is True)
+    disabled = sum(1 for item in state_map.menu_rows if item.get("enabled_guess") is False)
+    submenu_count = sum(1 for item in state_map.actions if item.get("result_type") == "success_popup_opened")
+    dialog_candidates = len(state_map.dialogs)
+    return "\n".join(
+        [
+            f"# Runtime summary ({state_map.state_id})",
+            "",
+            f"- top menük száma: {len(state_map.top_menus)}",
+            f"- összes menüpont: {len(state_map.menu_rows)}",
+            f"- enabled: {enabled}",
+            f"- disabled: {disabled}",
+            f"- submenu count: {submenu_count}",
+            f"- dialog candidates: {dialog_candidates}",
+            "",
         ]
-        logger.error("top menu open failed state_id={} top_menu={} status={}", state_id, top_menu, popup_status)
-        return menu_rows, actions, [], []
-    actions: list[RuntimeActionResult] = []
-    dialogs: list[RuntimeDialogRecord] = []
-    windows: list[RuntimeWindowRecord] = []
-
-    for row in menu_rows:
-        safety_level = classify_safety(row.menu_path)
-        action_key = " > ".join(row.menu_path)
-        logger.info(
-            "row safety state_id={} top_menu={} row_index={} safety={}",
-            state_id,
-            top_menu,
-            row.row_index,
-            safety_level,
-        )
-        if row.is_separator or not is_action_allowed(row.menu_path, mode=safe_mode):
-            actions.append(
-                classify_post_click_result(
-                    process_id=None,
-                    before_snapshot=capture_state_snapshot(state_id),
-                    after_snapshot=capture_state_snapshot(state_id),
-                    dialog_detection=None,
-                    state_id=state_id,
-                    top_menu=top_menu,
-                    row_index=row.row_index,
-                    menu_path=row.menu_path,
-                    action_key=action_key,
-                    safety_level=safety_level,
-                    attempted=False,
-                    notes="separator_or_unsafe",
-                )
-            )
-            continue
-
-        before = capture_state_snapshot(state_id)
-        dialog_detection: dict[str, Any] | None = None
-        error_text: str | None = None
-        try:
-            popup_state = menu_helpers.open_file_menu_and_capture_popup_state() if top_menu == "Fájl" else None
-            if popup_state:
-                clicked = menu_helpers.click_structured_popup_row(popup_state.get("rows", []), row.row_index)
-                process_id = popup_state.get("process_id")
-                dialog_detection = waits.detect_open_file_dialog_from_context(process_id=process_id, timeout=1.5)
-            else:
-                process_id = None
-                clicked = None
-            logger.info("click attempted top_menu={} row_index={} clicked={}", top_menu, row.row_index, bool(clicked))
-        except Exception as exc:
-            process_id = None
-            error_text = str(exc)
-
-        after = capture_state_snapshot(state_id)
-        forced_result_type = None
-        if error_text:
-            if "focus_not_restored" in error_text:
-                forced_result_type = "failed_focus"
-            elif "failed_system_menu" in error_text or "system_menu" in error_text:
-                forced_result_type = "failed_system_menu"
-            elif "failed_wrong_window" in error_text:
-                forced_result_type = "failed_wrong_window"
-        result = classify_post_click_result(
-            process_id=process_id,
-            before_snapshot=before,
-            after_snapshot=after,
-            dialog_detection=dialog_detection,
-            state_id=state_id,
-            top_menu=top_menu,
-            row_index=row.row_index,
-            menu_path=row.menu_path,
-            action_key=action_key,
-            safety_level=safety_level,
-            attempted=error_text is None,
-            error_text=error_text,
-            top_menu_click_count=popup.get("top_menu_click_count") if popup else None,
-            forced_result_type=forced_result_type,
-        )
-        actions.append(result)
-
-        if result.result_type in {"success_dialog_opened", "error_dialog"}:
-            dialogs.append(
-                RuntimeDialogRecord(
-                    state_id=state_id,
-                    top_menu=top_menu,
-                    row_index=row.row_index,
-                    menu_path=row.menu_path,
-                    title=result.dialog_title or "",
-                    class_name=result.dialog_class or "",
-                    process_id=process_id,
-                )
-            )
-        if result.result_type == "success_popup_opened":
-            new_windows = [w for w in after.visible_top_windows if w not in before.visible_top_windows]
-            for win in new_windows:
-                windows.append(
-                    RuntimeWindowRecord(
-                        state_id=state_id,
-                        top_menu=top_menu,
-                        row_index=row.row_index,
-                        menu_path=row.menu_path,
-                        title=str(win.get("title") or ""),
-                        class_name=str(win.get("class_name") or ""),
-                        process_id=win.get("process_id"),
-                    )
-                )
-
-        _close_secondary_windows(before.main_window_title)
-
-    logger.info("explore top menu done state_id={} top_menu={} rows={}", state_id, top_menu, len(menu_rows))
-    return menu_rows, actions, dialogs, windows
+    )
 
 
-def map_runtime_state(state_id: str, safe_mode: str = "safe") -> RuntimeStateMap:
-    logger.info("runtime map start state_id={} safe_mode={}", state_id, safe_mode)
+def _diff_summary_markdown(diff: RuntimeStateDiff) -> str:
+    return "\n".join(
+        [
+            "# Runtime állapot diff",
+            "",
+            f"- shared top-level menük: {len(diff.top_menu_diff.get('shared', []))}",
+            f"- csak projekt után látható elemek: {len(diff.project_only_paths)}",
+            f"- enabled változások: {len(diff.enabled_state_changes)}",
+            "",
+        ]
+    )
+
+
+def map_runtime_state(
+    *,
+    state_id: str,
+    safe_mode: str = "safe",
+    top_menus: list[str] | None = None,
+    max_submenu_depth: int = 3,
+    include_disabled: bool = True,
+) -> RuntimeStateMap:
     snapshot = capture_state_snapshot(state_id)
+    discovered = snapshot.discovered_top_menus
+    target_menus = top_menus or DEFAULT_TOP_MENUS
+
     all_rows: list[RuntimeMenuRow] = []
+    all_tree: list[dict[str, Any]] = []
     all_actions: list[RuntimeActionResult] = []
     all_dialogs: list[RuntimeDialogRecord] = []
     all_windows: list[RuntimeWindowRecord] = []
 
-    for top_menu in snapshot.discovered_top_menus:
+    for top_menu in target_menus:
+        if top_menu not in discovered:
+            continue
         try:
             ensure_main_window_foreground_before_click(action_label=f"map_runtime_state:{state_id}:{top_menu}")
+            tree, rows, actions, dialogs, windows = explore_menu_tree(
+                state_id=state_id,
+                top_menu=top_menu,
+                safe_mode=safe_mode,
+                max_depth=max_submenu_depth,
+                include_disabled=include_disabled,
+            )
+            all_tree.append({"state_id": state_id, "title": top_menu, "path": [top_menu], "children": tree})
+            all_rows.extend(rows)
+            all_actions.extend(actions)
+            all_dialogs.extend(dialogs)
+            all_windows.extend(windows)
         except Exception as exc:
-            logger.error("mapping aborted before top-level action top_menu={} reason={}", top_menu, exc)
+            logger.exception("Top menu mapping failed: {}", top_menu)
             all_actions.append(
+                asdict(
                     classify_post_click_result(
                         process_id=None,
                         before_snapshot=snapshot,
@@ -355,76 +438,65 @@ def map_runtime_state(state_id: str, safe_mode: str = "safe") -> RuntimeStateMap
                         error_text=str(exc),
                         forced_result_type="failed_focus",
                     )
+                )
             )
-            break
-        rows, actions, dialogs, windows = explore_top_menu(state_id=state_id, top_menu=top_menu, safe_mode=safe_mode)
-        all_rows.extend(rows)
-        all_actions.extend(actions)
-        all_dialogs.extend(dialogs)
-        all_windows.extend(windows)
+            continue
 
-    state_map = RuntimeStateMap(
+    return RuntimeStateMap(
         state_id=state_id,
         snapshot=asdict(snapshot),
-        top_menus=[{"state_id": state_id, "text": item} for item in snapshot.discovered_top_menus],
+        top_menus=[{"state_id": state_id, "text": item} for item in discovered if item in target_menus],
         menu_rows=[asdict(item) for item in all_rows],
-        actions=[asdict(item) for item in all_actions],
+        menu_tree=all_tree,
+        actions=[item if isinstance(item, dict) else asdict(item) for item in all_actions],
         dialogs=[asdict(item) for item in all_dialogs],
         windows=[asdict(item) for item in all_windows],
-        skipped_actions=[asdict(item) for item in all_actions if not item.attempted],
+        skipped_actions=[item if isinstance(item, dict) else asdict(item) for item in all_actions if (item.get("attempted") if isinstance(item, dict) else item.attempted) is False],
     )
-    logger.info("runtime map done state_id={} rows={} actions={}", state_id, len(all_rows), len(all_actions))
-    return state_map
+
+
+def _enabled_map(state: RuntimeStateMap) -> dict[tuple[str, ...], bool | None]:
+    result: dict[tuple[str, ...], bool | None] = {}
+    for row in state.menu_rows:
+        path = tuple(row.get("menu_path", []))
+        result[path] = row.get("enabled_guess")
+    return result
 
 
 def compare_runtime_states(state_a: RuntimeStateMap, state_b: RuntimeStateMap) -> RuntimeStateDiff:
     menus_a = {item["text"] for item in state_a.top_menus}
     menus_b = {item["text"] for item in state_b.top_menus}
+    actions_a = {tuple(item.get("menu_path", [])) for item in state_a.actions}
+    actions_b = {tuple(item.get("menu_path", [])) for item in state_b.actions}
 
-    action_keys_a = {tuple(action.get("menu_path", [])) for action in state_a.actions}
-    action_keys_b = {tuple(action.get("menu_path", [])) for action in state_b.actions}
+    enabled_a = _enabled_map(state_a)
+    enabled_b = _enabled_map(state_b)
+    shared_paths = set(enabled_a) & set(enabled_b)
+    enabled_changes = [
+        {"path": list(path), "from": enabled_a[path], "to": enabled_b[path]}
+        for path in sorted(shared_paths)
+        if enabled_a[path] != enabled_b[path]
+    ]
 
-    dialogs_a = {(item.get("title"), item.get("class_name")) for item in state_a.dialogs}
-    dialogs_b = {(item.get("title"), item.get("class_name")) for item in state_b.dialogs}
+    project_only_paths = [list(path) for path in sorted(set(enabled_b) - set(enabled_a))]
 
-    windows_a = {(item.get("title"), item.get("class_name")) for item in state_a.windows}
-    windows_b = {(item.get("title"), item.get("class_name")) for item in state_b.windows}
-
-    diff = RuntimeStateDiff(
+    return RuntimeStateDiff(
         state_a=state_a.state_id,
         state_b=state_b.state_id,
-        top_menu_diff={
-            "only_in_a": sorted(menus_a - menus_b),
-            "only_in_b": sorted(menus_b - menus_a),
-            "shared": sorted(menus_a & menus_b),
-        },
-        menu_action_diff={
-            "only_in_a": [list(item) for item in sorted(action_keys_a - action_keys_b)],
-            "only_in_b": [list(item) for item in sorted(action_keys_b - action_keys_a)],
-            "shared": [list(item) for item in sorted(action_keys_a & action_keys_b)],
-        },
-        dialog_diff={
-            "only_in_a": sorted(dialogs_a - dialogs_b),
-            "only_in_b": sorted(dialogs_b - dialogs_a),
-            "shared": sorted(dialogs_a & dialogs_b),
-        },
-        window_diff={
-            "only_in_a": sorted(windows_a - windows_b),
-            "only_in_b": sorted(windows_b - windows_a),
-            "shared": sorted(windows_a & windows_b),
-        },
+        top_menu_diff={"only_in_a": sorted(menus_a - menus_b), "only_in_b": sorted(menus_b - menus_a), "shared": sorted(menus_a & menus_b)},
+        menu_action_diff={"only_in_a": [list(x) for x in sorted(actions_a - actions_b)], "only_in_b": [list(x) for x in sorted(actions_b - actions_a)], "shared": [list(x) for x in sorted(actions_a & actions_b)]},
+        dialog_diff={"only_in_a": [], "only_in_b": [], "shared": []},
+        window_diff={"only_in_a": [], "only_in_b": [], "shared": []},
         summary={
             "shared_top_menus": len(menus_a & menus_b),
-            "actions_only_in_a": len(action_keys_a - action_keys_b),
-            "actions_only_in_b": len(action_keys_b - action_keys_a),
-            "dialogs_only_in_a": len(dialogs_a - dialogs_b),
-            "dialogs_only_in_b": len(dialogs_b - dialogs_a),
-            "windows_only_in_a": len(windows_a - windows_b),
-            "windows_only_in_b": len(windows_b - windows_a),
+            "actions_only_in_a": len(actions_a - actions_b),
+            "actions_only_in_b": len(actions_b - actions_a),
+            "enabled_changes": len(enabled_changes),
+            "project_only_paths": len(project_only_paths),
         },
+        enabled_state_changes=enabled_changes,
+        project_only_paths=project_only_paths,
     )
-    logger.info("diff built {} vs {}", state_a.state_id, state_b.state_id)
-    return diff
 
 
 def _is_safe_mode_project_path_allowed(project_path: str) -> bool:
@@ -433,10 +505,7 @@ def _is_safe_mode_project_path_allowed(project_path: str) -> bool:
 
 
 def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str, Any]:
-    logger.info("open test project start path={}", project_path)
     if safe_mode == "safe" and not _is_safe_mode_project_path_allowed(project_path):
-        error = "Safe mode only allows explicitly approved test project path."
-        logger.warning("open test project blocked safe_mode path={} reason={}", project_path, error)
         return {
             "success": False,
             "path": project_path,
@@ -446,27 +515,23 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
             "dialog_closed": False,
             "project_state_changed": False,
             "detected_changes": [],
-            "error": error,
+            "error": "Safe mode only allows explicitly approved test project path.",
         }
 
     before = asdict(capture_state_snapshot("project_open_before"))
-    result = open_project_file_via_dialog_dict(
+    return open_project_file_via_dialog_dict(
         project_path,
         before_snapshot=before,
         after_snapshot_provider=lambda: asdict(capture_state_snapshot("project_open_after")),
     )
-    logger.info("open test project result={}", result)
-    return result
 
 
 def _write_state_outputs(state_dir: Path, state_map: RuntimeStateMap) -> None:
-    write_json(state_dir / "state_snapshot.json", state_map.snapshot)
-    write_json(state_dir / "top_menus.json", state_map.top_menus)
-    write_json(state_dir / "menu_rows.json", state_map.menu_rows)
-    write_json(state_dir / "actions.json", state_map.actions)
+    write_json(state_dir / "snapshot.json", state_map.snapshot)
+    write_json(state_dir / "menu_tree.json", state_map.menu_tree)
     write_json(state_dir / "dialogs.json", state_map.dialogs)
     write_json(state_dir / "windows.json", state_map.windows)
-    write_json(state_dir / "skipped_actions.json", state_map.skipped_actions)
+    (state_dir / "summary.md").write_text(_state_summary_markdown(state_map), encoding="utf-8")
 
 
 def build_full_runtime_program_map(
@@ -474,29 +539,44 @@ def build_full_runtime_program_map(
     safe_mode: str = "safe",
     output_dir: str | Path = "data/runtime_maps",
     state_id_prefix: str = "state",
+    top_menus: list[str] | None = None,
+    max_submenu_depth: int = 3,
+    include_disabled: bool = True,
 ) -> dict[str, Any]:
     paths = ensure_output_dirs(Path(output_dir))
+    no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
+    project_id = "project_open" if state_id_prefix == "state" else f"{state_id_prefix}_project_open"
 
-    state_no_project_id = f"{state_id_prefix}_no_project"
-    state_project_open_id = f"{state_id_prefix}_project_open"
-
-    state_no_project = map_runtime_state(state_id=state_no_project_id, safe_mode=safe_mode)
+    state_no_project = map_runtime_state(
+        state_id=no_project_id,
+        safe_mode=safe_mode,
+        top_menus=top_menus,
+        max_submenu_depth=max_submenu_depth,
+        include_disabled=include_disabled,
+    )
     _write_state_outputs(paths["state_no_project"], state_no_project)
 
-    project_open_result = None
-    if project_path:
-        project_open_result = open_test_project(project_path, safe_mode=safe_mode)
+    project_open_result = open_test_project(project_path, safe_mode=safe_mode) if project_path else None
 
-    state_project_open = map_runtime_state(state_id=state_project_open_id, safe_mode=safe_mode)
+    state_project_open = map_runtime_state(
+        state_id=project_id,
+        safe_mode=safe_mode,
+        top_menus=top_menus,
+        max_submenu_depth=max_submenu_depth,
+        include_disabled=include_disabled,
+    )
     _write_state_outputs(paths["state_project_open"], state_project_open)
 
     diff = compare_runtime_states(state_no_project, state_project_open)
-    write_json(paths["diff"] / "menu_diff.json", diff.top_menu_diff)
-    write_json(paths["diff"] / "dialogs_diff.json", diff.dialog_diff)
-    write_json(paths["diff"] / "windows_diff.json", diff.window_diff)
-    write_json(paths["diff"] / "actions_diff.json", diff.menu_action_diff)
-    write_json(paths["diff"] / "state_comparison.json", asdict(diff))
-    write_markdown_summary(paths["diff"] / "state_comparison.md", diff)
+    write_json(paths["diff"] / "state_diff.json", asdict(diff))
+    (paths["diff"] / "summary.md").write_text(_diff_summary_markdown(diff), encoding="utf-8")
+
+    skipped = sum(1 for action in state_no_project.actions + state_project_open.actions if not action.get("attempted", False))
+    print(f"no_project menük száma: {len(state_no_project.top_menus)}")
+    print(f"project_open menük száma: {len(state_project_open.top_menus)}")
+    print(f"diff változások: {len(diff.enabled_state_changes) + len(diff.project_only_paths)}")
+    print(f"skipped_by_safety: {skipped}")
+    print(f"output: {paths['base']}")
 
     return {
         "state_no_project": state_no_project,
