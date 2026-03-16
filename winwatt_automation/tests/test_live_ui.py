@@ -136,13 +136,46 @@ def test_list_candidate_windows_collects_expected_fields(monkeypatch):
     assert candidate["title"] == "WinWatt - Project"
     assert candidate["window_text"] == "WinWatt - Project"
     assert candidate["class_name"] == "TMainForm"
-    assert candidate["control_type"] == "Window"
+    assert candidate["control_type"] is None
     assert candidate["process_id"] == 123
     assert candidate["handle"] == 101
     assert candidate["is_visible"] is True
     assert candidate["is_enabled"] is True
     assert candidate["rectangle"]["width"] == 1200
     assert candidate["size"]["height"] == 900
+
+
+def test_list_candidate_windows_win32_skips_control_type_access_error(monkeypatch):
+    class RaisingElementInfo:
+        def __init__(self, class_name: str):
+            self.class_name = class_name
+
+        @property
+        def control_type(self):
+            raise RuntimeError("AccessDenied")
+
+    class FakeWindowWithDeniedControlType(FakeWindow):
+        def __init__(self):
+            super().__init__(title="WinWatt - Project", class_name="TMainForm", handle=101)
+            self.element_info = RaisingElementInfo("TMainForm")
+
+    class FakeDesktop:
+        def __init__(self, backend: str):
+            self.backend = backend
+
+        def windows(self, top_level_only=True):
+            return [FakeWindowWithDeniedControlType()]
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "pywinauto",
+        types.SimpleNamespace(Desktop=FakeDesktop),
+    )
+
+    candidates = app_connector.list_candidate_windows(backend="win32")
+
+    assert len(candidates) == 1
+    assert candidates[0]["control_type"] is None
 
 
 def test_select_main_window_prefers_visible_enabled_and_largest_area():
