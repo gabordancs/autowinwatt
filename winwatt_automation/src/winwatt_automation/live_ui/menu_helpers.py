@@ -439,14 +439,55 @@ def _structured_popup_rows_from_snapshots(
 
     popup_candidates.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
 
-    filtered = popup_candidates
+    source_preference = {"main_window": 0, "global_process_scan": 1}
+    deduped_by_visual_identity: dict[tuple[tuple[int, int, int, int], str, str], dict[str, Any]] = {}
+    for candidate in popup_candidates:
+        rect = candidate["rectangle"]
+        identity_key = (
+            (rect["left"], rect["top"], rect["right"], rect["bottom"]),
+            _normalize(str(candidate.get("text", ""))),
+            _normalize(str(candidate.get("control_type", ""))),
+        )
+
+        existing = deduped_by_visual_identity.get(identity_key)
+        if existing is None:
+            deduped_by_visual_identity[identity_key] = candidate
+            logger.info(
+                "Popup row dedupe: rect={} text={!r} control_type={} chosen preferred source={}",
+                candidate.get("rectangle"),
+                candidate.get("text", ""),
+                candidate.get("control_type", ""),
+                candidate.get("source_scope", ""),
+            )
+            continue
+
+        existing_rank = source_preference.get(str(existing.get("source_scope", "")), 999)
+        candidate_rank = source_preference.get(str(candidate.get("source_scope", "")), 999)
+        if candidate_rank < existing_rank:
+            deduped_by_visual_identity[identity_key] = candidate
+
+        preferred = deduped_by_visual_identity[identity_key]
+        logger.info(
+            "Popup row dedupe: rect={} text={!r} control_type={} chosen preferred source={} dropped source={}",
+            preferred.get("rectangle"),
+            preferred.get("text", ""),
+            preferred.get("control_type", ""),
+            preferred.get("source_scope", ""),
+            candidate.get("source_scope", "") if preferred is existing else existing.get("source_scope", ""),
+        )
+
+    filtered = sorted(
+        deduped_by_visual_identity.values(),
+        key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]),
+    )
     for idx, entry in enumerate(filtered):
         entry["index"] = idx
 
     logger.info(
-        "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count={}",
+        "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count={} deduped row count={}",
         len(before_rows),
         len(after_rows),
+        len(popup_candidates),
         len(filtered),
     )
     return filtered
@@ -459,6 +500,13 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
     item = find_top_menu_item("Fájl")
 
     before_rows = capture_menu_popup_snapshot()
+    process_id = None
+    process_id_getter = getattr(main_window, "process_id", None)
+    if callable(process_id_getter):
+        try:
+            process_id = int(process_id_getter())
+        except Exception:
+            process_id = None
     top_menu_click_count = 0
     try:
         item.click_input()
@@ -489,6 +537,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         "rows": structured_rows,
         "popup_open": popup_open,
         "top_menu_click_count": top_menu_click_count,
+        "process_id": process_id,
     }
 
 
