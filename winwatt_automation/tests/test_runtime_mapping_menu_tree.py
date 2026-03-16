@@ -4,8 +4,9 @@ from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeSt
 from winwatt_automation.runtime_mapping.program_mapper import (
     _build_menu_rows_from_popup_rows,
     compare_runtime_states,
-    map_runtime_state,
     explore_menu_tree,
+    is_top_menu_like_popup_row,
+    map_runtime_state,
 )
 
 
@@ -13,6 +14,7 @@ def test_hierarchical_menu_tree_building(monkeypatch):
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"))
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda name: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
 
     snapshots = iter([
         [
@@ -53,6 +55,7 @@ def test_skipped_by_safety_classification():
 def test_best_effort_top_menu_processing(monkeypatch):
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Súgó"], timestamp="t"))
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
 
     def _click(menu):
         if menu == "Fájl":
@@ -64,3 +67,99 @@ def test_best_effort_top_menu_processing(monkeypatch):
     state = map_runtime_state(state_id="no_project", top_menus=["Fájl", "Súgó"], max_submenu_depth=1)
     assert any(action.get("result_type") == "failed_focus" for action in state.actions)
     assert any(root.get("title") == "Súgó" for root in state.menu_tree)
+
+
+def test_popup_top_level_name_is_filtered_from_children():
+    rows = _build_menu_rows_from_popup_rows(
+        "no_project",
+        "Fájl",
+        [
+            {"text": "Beállítások", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+            {"text": "Megnyitás", "center_x": 1, "center_y": 2, "rectangle": {"left": 0, "top": 22, "right": 100, "bottom": 32}, "is_separator": False, "source_scope": "main"},
+        ],
+        canonical_top_menu_names={"beállítások", "fájl"},
+    )
+    assert [row.text for row in rows] == ["Megnyitás"]
+    assert is_top_menu_like_popup_row({"text": "Ablak"}, {"ablak"})
+
+
+def test_visited_paths_skips_duplicate_submenu_traversal(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+
+    snapshots = iter(
+        [
+            [
+                {"text": "Megnyitás", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+                {"text": "Megnyitás", "center_x": 1, "center_y": 2, "rectangle": {"left": 0, "top": 22, "right": 100, "bottom": 32}, "is_separator": False, "source_scope": "main"},
+            ],
+            [],
+            [],
+        ]
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    nodes, rows, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        visited_paths={("fájl",)},
+    )
+    assert len(nodes) == 1
+    assert len([row for row in rows if row.text == "Megnyitás"]) == 2
+
+
+def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
+    snapshot = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Súgó"], timestamp="t")
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: snapshot)
+
+    restore_calls: list[str] = []
+
+    def _restore(*, state_id: str, stage: str) -> bool:
+        restore_calls.append(stage)
+        return not stage.startswith("before:Súgó")
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", _restore)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree",
+        lambda **kwargs: ([], [], [], [], []),
+    )
+
+    state = map_runtime_state(state_id="s", top_menus=["Fájl", "Súgó"])
+    assert state.snapshot["mapping_partial"] is True
+    assert state.snapshot["mapping_stop_reason"] == "lost_main_window_before:Súgó"
+    assert restore_calls == ["before:Fájl", "after:Fájl", "before:Súgó"]
+
+
+def test_mapper_does_not_treat_canonical_top_menu_as_child(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Súgó"], timestamp="t"),
+    )
+
+    snapshots = iter(
+        [
+            [
+                {"text": "Súgó", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+                {"text": "Megnyitás", "center_x": 1, "center_y": 2, "rectangle": {"left": 0, "top": 22, "right": 100, "bottom": 32}, "is_separator": False, "source_scope": "main"},
+            ],
+        ]
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+
+    nodes, _, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=1,
+        include_disabled=True,
+        canonical_top_menu_names={"fájl", "súgó"},
+        visited_paths={("fájl",)},
+    )
+    assert [node["title"] for node in nodes] == ["Megnyitás"]
