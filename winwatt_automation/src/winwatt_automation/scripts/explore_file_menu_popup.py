@@ -20,6 +20,20 @@ def main() -> None:
     prepare_main_window_for_menu_interaction()
     popup_state = open_file_menu_and_capture_popup_state()
     entries = popup_state["rows"]
+    after_rows = popup_state.get("after_snapshot", [])
+    new_rows = [row for row in after_rows if row.get("appeared_after_popup_open")]
+
+    print(f"total new rows: {len(new_rows)}")
+    print(f"total structured rows: {len(entries)}")
+    if len(entries) == 0 and len(new_rows) > 0:
+        print("first 20 raw new rows:")
+        for row in new_rows[:20]:
+            rect = row.get("rectangle", {})
+            print(
+                f"- rect=({rect.get('left')},{rect.get('top')})-({rect.get('right')},{rect.get('bottom')}) "
+                f"text={row.get('text', '')!r} scope={row.get('source_scope', '')}"
+            )
+
     print("Popup submenu entries:")
     for entry in entries:
         rect = entry["rectangle"]
