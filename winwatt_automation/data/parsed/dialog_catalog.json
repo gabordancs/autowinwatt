@@ -1,0 +1,14 @@
+[
+  {
+    "form_name": "AbsorptionTableForm",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OKButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  }
+]

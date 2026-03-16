@@ -1,0 +1,46 @@
+[
+  {
+    "form_name": "MainForm",
+    "item_name": "OpenProjekt",
+    "item_type": "TButton",
+    "caption": "Open Project",
+    "hint": "Open existing project",
+    "normalized_command_name": "open_projekt",
+    "stable_key": "MainForm.OpenProjekt",
+    "source_kind": "button",
+    "workflow_relevance_score": 90
+  },
+  {
+    "form_name": "AbsorptionTableForm",
+    "item_name": "OKButton",
+    "item_type": "TButton",
+    "caption": "OK",
+    "hint": null,
+    "normalized_command_name": "okbutton",
+    "stable_key": "AbsorptionTableForm.OKButton",
+    "source_kind": "button",
+    "workflow_relevance_score": 55
+  },
+  {
+    "form_name": "__Actions__",
+    "item_name": "CreateReportAction",
+    "item_type": "TAction",
+    "caption": "Create Report",
+    "hint": null,
+    "normalized_command_name": "create_report_action",
+    "stable_key": "__Actions__.CreateReportAction",
+    "source_kind": "action",
+    "workflow_relevance_score": 70
+  },
+  {
+    "form_name": "__MenuItems__",
+    "item_name": "SaveProjekt",
+    "item_type": "TMenuItem",
+    "caption": "Save Project",
+    "hint": null,
+    "normalized_command_name": "save_projekt",
+    "stable_key": "__MenuItems__.SaveProjekt",
+    "source_kind": "menu_item",
+    "workflow_relevance_score": 90
+  }
+]
