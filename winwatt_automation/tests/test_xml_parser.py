@@ -7,8 +7,9 @@ def test_parse_hungarian_xml_extracts_forms_and_items():
     xml_path = Path("data/raw/Hungarian.xml")
     model = parse_hungarian_xml(xml_path)
 
-    assert len(model.forms) >= 2
+    assert len(model.forms) > 0
     assert any(form.name == "MainForm" for form in model.forms)
+    assert any(form.name == "AboutForm" for form in model.forms)
 
     main_form = next(form for form in model.forms if form.name == "MainForm")
     assert any(item.name == "OpenProjekt" for item in main_form.items)
