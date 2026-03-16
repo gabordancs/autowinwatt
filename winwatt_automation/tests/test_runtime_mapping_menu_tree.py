@@ -38,7 +38,7 @@ def test_disabled_to_enabled_diff_detected():
     state_b = RuntimeStateMap("project_open", {}, [{"text": "Fájl"}], [{"menu_path": ["Fájl", "Mentés"], "enabled_guess": True}], [], [], [], [])
 
     diff = compare_runtime_states(state_a, state_b)
-    assert diff.enabled_state_changes == [{"path": ["Fájl", "Mentés"], "from": False, "to": True}]
+    assert diff.enabled_state_changes == [{"path": ["fájl", "mentés"], "from": False, "to": True}]
 
 
 def test_skipped_by_safety_classification():

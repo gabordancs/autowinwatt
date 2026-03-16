@@ -3,13 +3,14 @@ from __future__ import annotations
 import argparse
 from dataclasses import asdict
 
+from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
 from winwatt_automation.runtime_mapping.program_mapper import build_full_runtime_program_map
 
 
 def _parse_top_menus(raw: str | None) -> list[str] | None:
     if not raw:
         return None
-    return [item.strip() for item in raw.split(",") if item.strip()]
+    return [normalize_menu_title(item) for item in raw.split(",") if item.strip()]
 
 
 def _parse_bool(raw: str) -> bool:
@@ -22,7 +23,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--safe-mode", default="safe", choices=["safe", "caution", "blocked"])
     parser.add_argument("--output-dir", default="data/runtime_maps")
     parser.add_argument("--state-id-prefix", default="state")
-    parser.add_argument("--top-menus", default="Fájl,Jegyzékek,Adatbázis,Beállítások,Ablak,Súgó")
+    parser.add_argument("--top-menus", default="Fájl,Jegyzékek,Adatbázisok,Beállítások,Ablak,Súgó")
     parser.add_argument("--max-submenu-depth", type=int, default=3)
     parser.add_argument("--include-disabled", default="true")
     return parser
