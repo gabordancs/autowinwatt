@@ -28,6 +28,7 @@ from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, w
 
 
 DEFAULT_TOP_MENUS = ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
+DEFAULT_TEST_PROJECT_PATH = str(Path(__file__).resolve().parents[2] / "tests" / "testwwp.wwp")
 
 
 
@@ -284,6 +285,15 @@ def _hover_row(row: dict[str, Any]) -> None:
         mouse.move(coords=(int(row.get("center_x") or 0), int(row.get("center_y") or 0)))
     except Exception:
         return
+
+
+def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str, Any]]) -> None:
+    try:
+        menu_helpers.click_structured_popup_row(popup_rows, row.row_index)
+        return
+    except Exception as exc:
+        logger.debug("structured row click failed; fallback to hover path={} error={}", row.menu_path, exc)
+    _hover_row(asdict(row))
 
 
 def _detect_child_rows(parent_row: dict[str, Any], all_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -820,7 +830,7 @@ def explore_menu_tree(
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
         if depth < max_depth and not row.is_separator and row.enabled_guess is not False:
-            _hover_row(asdict(row))
+            _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
             child_rows = _detect_child_rows(asdict(row), current_rows)
             if canonical_top_menu_names:
@@ -1157,12 +1167,21 @@ def build_full_runtime_program_map(
     no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
     project_id = "project_open" if state_id_prefix == "state" else f"{state_id_prefix}_project_open"
 
-    state_no_project = map_runtime_state(
+    state_no_project = RuntimeStateMap(
         state_id=no_project_id,
-        safe_mode=safe_mode,
-        top_menus=top_menus,
-        max_submenu_depth=max_submenu_depth,
-        include_disabled=include_disabled,
+        snapshot={
+            "state_id": no_project_id,
+            "mapping_partial": True,
+            "mapping_stop_reason": "disabled_by_configuration",
+            "note": "no_project mapping disabled; only project_open mapping is collected.",
+        },
+        top_menus=[],
+        menu_rows=[],
+        menu_tree=[],
+        actions=[],
+        dialogs=[],
+        windows=[],
+        skipped_actions=[],
     )
     if event_recorder:
         event_recorder(
@@ -1176,7 +1195,8 @@ def build_full_runtime_program_map(
         )
     _write_state_outputs(paths["state_no_project"], state_no_project)
 
-    project_open_result = open_test_project(project_path, safe_mode=safe_mode) if project_path else None
+    effective_project_path = project_path or DEFAULT_TEST_PROJECT_PATH
+    project_open_result = open_test_project(effective_project_path, safe_mode=safe_mode)
     recovery = (project_open_result or {}).get("recovery") if project_open_result else None
     if event_recorder and project_open_result:
         event_recorder(
@@ -1197,7 +1217,7 @@ def build_full_runtime_program_map(
             },
         )
 
-    if project_path and recovery and not recovery.get("success"):
+    if recovery and not recovery.get("success"):
         state_project_open = RuntimeStateMap(
             state_id=project_id,
             snapshot={
