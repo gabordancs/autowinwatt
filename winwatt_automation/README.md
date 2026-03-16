@@ -35,3 +35,14 @@ python -m winwatt_automation.cli.main parse-xml --xml-path data/raw/Hungarian.xm
 python -m winwatt_automation.cli.main list-forms
 python -m winwatt_automation.cli.main list-actions
 ```
+
+
+## Dialog Explorer quick example
+
+```python
+from winwatt_automation.dialog_explorer import explore_dialog
+
+# dialog: pywinauto UIA dialog wrapper
+report = explore_dialog(dialog, max_depth=3, safe_mode=True)
+print(report["dialog_title"], len(report["controls"]))
+```
