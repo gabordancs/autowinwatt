@@ -117,26 +117,7 @@ python -m winwatt_automation.scripts.dev_cycle_controller cycle map_full_program
 python -m winwatt_automation.scripts.dev_cycle_controller add .
 python -m winwatt_automation.scripts.dev_cycle_controller commit -m "controller update"
 python -m winwatt_automation.scripts.dev_cycle_controller push
-python -m winwatt_automation.scripts.dev_cycle_controller_gui
 ```
-
-
-### Minimál GUI
-
-Ha inkább kattintva futtatnád a tipikus `map_full_program` kört, elérhető egy egyszerű Tkinter GUI:
-
-```bash
-PYTHONPATH=src python -m winwatt_automation.scripts.dev_cycle_controller_gui
-```
-
-A GUI-ban állítható:
-- Python executable
-- safe mode
-- timeout
-- goal/request a chat briefhez
-- extra argumentumok a `map_full_program` híváshoz
-
-Gombok: `Status`, `Git pull`, `Prepare chat`, `Start/Stop WinWatt`, `Run map_full_program`, `Cycle map_full_program`.
 
 ### Chat brief formátum
 

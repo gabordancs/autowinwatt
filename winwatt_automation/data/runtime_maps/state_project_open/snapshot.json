@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TDeviceDatabaseForm",
-    "handle": 8063336,
-    "process_id": 6444,
+    "handle": 6493078,
+    "process_id": 27808,
     "title": "Adatbázis adatok karbantartása"
   },
   "main_window_class": "TMainForm",
@@ -19,10 +19,10 @@
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_before:Fájl",
-  "process_id": 6444,
+  "mapping_stop_reason": "unrecoverable:Beállítások",
+  "process_id": 27808,
   "state_id": "project_open",
-  "timestamp": "2026-03-16T19:17:47.370514+00:00",
+  "timestamp": "2026-03-16T21:17:19.023440+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -33,13 +33,13 @@
     {
       "class_name": "TDeviceDatabaseForm",
       "handle": null,
-      "process_id": 6444,
+      "process_id": 27808,
       "title": "Adatbázis adatok karbantartása"
     },
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 6444,
+      "process_id": 27808,
       "title": "WinWatt gólya"
     },
     {
@@ -49,10 +49,10 @@
       "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "CabinetWClass",
       "handle": null,
-      "process_id": 4588,
-      "title": "Winwatt - hekkelések - WinWatt automatizálás - Google Chrome"
+      "process_id": 14856,
+      "title": "GitHub – Fájlkezelő"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -63,14 +63,8 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 32848,
-      "title": "isaszegexpor0309.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 32848,
-      "title": "Hungarian.xml és 1 további lap – 1. profil – Microsoft​ Edge"
+      "process_id": 4588,
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "Notepad",
