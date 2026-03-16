@@ -1,0 +1,29 @@
+from __future__ import annotations
+
+from winwatt_automation.scripts import map_full_program
+
+
+def test_parse_top_menus_none_uses_runtime_discovery_default():
+    assert map_full_program._parse_top_menus(None) is None
+
+
+def test_close_winwatt_after_mapping_prefers_window_close(monkeypatch):
+    closed = {"value": False}
+
+    class _Window:
+        def close(self):
+            closed["value"] = True
+
+    monkeypatch.setattr(map_full_program, "get_cached_main_window", lambda: _Window())
+
+    result = map_full_program._close_winwatt_after_mapping()
+
+    assert closed["value"] is True
+    assert result["closed"] is True
+    assert result["method"] == "window.close"
+
+from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TOP_MENUS
+
+
+def test_default_top_menu_targets_include_all_discovered_menus_from_logs():
+    assert DEFAULT_TOP_MENUS == ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
