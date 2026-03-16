@@ -22,6 +22,12 @@ def open_file_menu() -> None:
         raise LookupError(f"Top menu '{FILE_MENU_TITLE}' was not found. Available menus: {available}") from exc
 
 
+def click_file_submenu_item_by_index(index: int) -> dict:
+    """Open ``Fájl`` and click a popup submenu entry by geometry index."""
+
+    return menu_helpers.click_open_menu_item_by_index(index)
+
+
 def invoke_open_project_dialog() -> str:
     """Invoke the project-open entry from the currently open ``Fájl`` menu."""
 

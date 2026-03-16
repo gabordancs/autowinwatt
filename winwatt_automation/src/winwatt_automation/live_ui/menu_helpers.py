@@ -9,6 +9,8 @@ from typing import Any
 from loguru import logger
 from pywinauto import mouse
 
+_LAST_MENU_SNAPSHOT_BEFORE_OPEN: set[tuple[str, str, str, str]] | None = None
+
 from winwatt_automation.live_ui.app_connector import (
     get_main_window,
     is_main_window_foreground,
@@ -106,6 +108,45 @@ def _rectangle_repr(wrapper: Any) -> str | None:
     return f"({left},{top})-({right},{bottom})"
 
 
+def _rectangle_data(wrapper: Any) -> dict[str, int] | None:
+    rectangle = getattr(wrapper, "rectangle", None)
+    if not callable(rectangle):
+        return None
+    try:
+        rect = rectangle()
+    except Exception:
+        return None
+
+    left = getattr(rect, "left", None)
+    top = getattr(rect, "top", None)
+    right = getattr(rect, "right", None)
+    bottom = getattr(rect, "bottom", None)
+    if None in (left, top, right, bottom):
+        return None
+
+    left_i = int(left)
+    top_i = int(top)
+    right_i = int(right)
+    bottom_i = int(bottom)
+    width = max(0, right_i - left_i)
+    height = max(0, bottom_i - top_i)
+    return {
+        "left": left_i,
+        "top": top_i,
+        "right": right_i,
+        "bottom": bottom_i,
+        "width": width,
+        "height": height,
+        "center_x": int((left_i + right_i) / 2),
+        "center_y": int((top_i + bottom_i) / 2),
+    }
+
+
+def _class_name(wrapper: Any) -> str:
+    info = getattr(wrapper, "element_info", wrapper)
+    return (getattr(info, "class_name", None) or "").strip()
+
+
 def list_top_menu_items() -> list[str]:
     """Return top-level menu item captions from the main menu bar."""
 
@@ -152,6 +193,87 @@ def list_open_menu_items() -> list[str]:
 
     logger.info("Open/visible menu entries: {}", names)
     return names
+
+
+def list_open_menu_items_structured() -> list[dict[str, Any]]:
+    """Return popup submenu items sorted by geometry, even if their caption text is empty."""
+
+    top_level_rects = {
+        (rect["left"], rect["top"], rect["right"], rect["bottom"])
+        for item in _top_level_menu_items_raw()
+        for rect in [_rectangle_data(item)]
+        if rect is not None
+    }
+
+    raw_candidates: list[dict[str, Any]] = []
+    seen_rectangles: set[tuple[int, int, int, int, str, str]] = set()
+
+    for item in _menu_items():
+        if not _is_visible(item):
+            continue
+
+        rect = _rectangle_data(item)
+        if rect is None:
+            continue
+        if rect["width"] <= 0 or rect["height"] <= 0:
+            continue
+
+        parent_type = _control_type(_parent_wrapper(item))
+        control_type = _control_type(item)
+        if parent_type not in {"menu", "menuitem"} and control_type != "menuitem":
+            continue
+
+        rect_key = (rect["left"], rect["top"], rect["right"], rect["bottom"])
+        if rect_key in top_level_rects:
+            continue
+
+        dedupe_key = (*rect_key, _normalize(_name(item)), _class_name(item).lower())
+        if dedupe_key in seen_rectangles:
+            continue
+        seen_rectangles.add(dedupe_key)
+
+        raw_candidates.append(
+            {
+                "wrapper": item,
+                "text": _name(item),
+                "control_type": getattr(item.element_info, "control_type", None),
+                "class_name": _class_name(item),
+                "rectangle": rect_key,
+                "width": rect["width"],
+                "height": rect["height"],
+                "center": (rect["center_x"], rect["center_y"]),
+                "is_separator": rect["height"] <= 2 and rect["width"] >= 40,
+            }
+        )
+
+    if _LAST_MENU_SNAPSHOT_BEFORE_OPEN is not None:
+        baseline_rects = {entry[3] for entry in _LAST_MENU_SNAPSHOT_BEFORE_OPEN if len(entry) >= 4}
+        raw_candidates = [item for item in raw_candidates if _rectangle_repr(item.get("wrapper")) not in baseline_rects]
+
+    if not raw_candidates:
+        return []
+
+    popup_left = min(item["rectangle"][0] for item in raw_candidates)
+    popup_right = max(item["rectangle"][2] for item in raw_candidates)
+    popup_top = min(item["rectangle"][1] for item in raw_candidates)
+    popup_bottom = max(item["rectangle"][3] for item in raw_candidates)
+
+    filtered = [
+        item
+        for item in raw_candidates
+        if item["rectangle"][0] >= popup_left
+        and item["rectangle"][2] <= popup_right
+        and item["rectangle"][1] >= popup_top
+        and item["rectangle"][3] <= popup_bottom
+    ]
+
+    filtered.sort(key=lambda item: (item["rectangle"][1], item["rectangle"][0]))
+    for index, item in enumerate(filtered):
+        item["order_index"] = index
+        item.pop("wrapper", None)
+
+    logger.info("Structured popup submenu entries: {}", filtered)
+    return filtered
 
 
 def find_top_menu_item(title: str) -> Any:
@@ -261,7 +383,9 @@ def click_top_menu_item(title: str) -> None:
     logger.info("click_top_menu_item('{}'): foreground_before_click={}", title, foreground)
 
     item = find_top_menu_item(title)
+    global _LAST_MENU_SNAPSHOT_BEFORE_OPEN
     before_snapshot = _menu_snapshot()
+    _LAST_MENU_SNAPSHOT_BEFORE_OPEN = before_snapshot
 
     try:
         item.click_input()
@@ -283,3 +407,22 @@ def click_top_menu_item(title: str) -> None:
         return
 
     raise RuntimeError(f"Top menu item '{title}' click attempts did not open a menu popup")
+
+
+def click_open_menu_item_by_index(index: int) -> dict[str, Any]:
+    """Open ``Fájl`` and click one visible popup entry by geometry order index."""
+
+    if index < 0:
+        raise ValueError("index must be >= 0")
+
+    click_top_menu_item("Fájl")
+    entries = list_open_menu_items_structured()
+    clickable_entries = [entry for entry in entries if not entry.get("is_separator", False)]
+    if index >= len(clickable_entries):
+        raise IndexError(f"Requested popup index {index}, but only {len(clickable_entries)} clickable entries exist")
+
+    selected = clickable_entries[index]
+    center = selected["center"]
+    mouse.click(button="left", coords=(int(center[0]), int(center[1])))
+    logger.info("Clicked popup submenu entry by index={} at center={} entry={}", index, center, selected)
+    return selected
