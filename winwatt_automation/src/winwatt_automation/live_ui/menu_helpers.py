@@ -304,17 +304,38 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
     return unique_rows
 
 
-def _looks_like_popup_entry(entry: dict[str, Any], top_level_rects: set[tuple[int, int, int, int]]) -> bool:
-    rect = entry["rectangle"]
-    rect_key = (rect["left"], rect["top"], rect["right"], rect["bottom"])
-    if rect_key in top_level_rects:
-        return False
-    if entry["width"] < 20 or entry["height"] <= 0:
-        return False
-    control_type = _normalize(str(entry.get("control_type", "")))
-    if "menuitem" not in control_type and control_type != "":
-        return False
-    return True
+def _reject_popup_candidate_reason(
+    entry: dict[str, Any],
+    top_level_rects: set[tuple[int, int, int, int]],
+    top_level_texts: set[str],
+    *,
+    permissive: bool = False,
+) -> str | None:
+    rect = entry.get("rectangle") or {}
+    left = int(rect.get("left", 0))
+    top = int(rect.get("top", 0))
+    right = int(rect.get("right", 0))
+    bottom = int(rect.get("bottom", 0))
+    width = int(entry.get("width") or (right - left))
+    height = int(entry.get("height") or (bottom - top))
+
+    if right <= left or bottom <= top:
+        return "non-positive rectangle dimensions"
+    if width <= 0 or height <= 0:
+        return "zero-sized row"
+    if width < 2:
+        return "width below minimum threshold"
+    if height < 1:
+        return "height below minimum threshold"
+
+    rect_key = (left, top, right, bottom)
+    normalized_text = _normalize(str(entry.get("text", "")))
+    if rect_key in top_level_rects and normalized_text in top_level_texts and normalized_text:
+        return "identical to top menu bar item"
+
+    if not permissive:
+        return None
+    return None
 
 
 def _structured_popup_rows_from_snapshots(
@@ -334,6 +355,8 @@ def _structured_popup_rows_from_snapshots(
         if rect is not None
     }
 
+    top_level_texts = {_normalize(_name(item)) for item in _top_level_menu_items_raw() if _normalize(_name(item))}
+
     popup_candidates: list[dict[str, Any]] = []
     for row in after_rows:
         rect = row["rectangle"]
@@ -347,9 +370,64 @@ def _structured_popup_rows_from_snapshots(
         row["appeared_after_popup_open"] = row_key in new_keys
         if not row["appeared_after_popup_open"]:
             continue
-        if not _looks_like_popup_entry(row, top_level_rects):
+        rejection_reason = _reject_popup_candidate_reason(row, top_level_rects, top_level_texts)
+        if rejection_reason is not None:
+            logger.info(
+                "Rejected popup row: rect={} text={!r} scope={} control_type={} reason={}",
+                row.get("rectangle"),
+                row.get("text", ""),
+                row.get("source_scope", ""),
+                row.get("control_type", ""),
+                rejection_reason,
+            )
             continue
         popup_candidates.append(row)
+
+    if not popup_candidates and new_keys:
+        logger.info("Strict popup filtering returned 0 rows; entering permissive fallback mode")
+        seen_fallback: set[tuple[tuple[int, int, int, int], str, str]] = set()
+        for row in after_rows:
+            rect = row["rectangle"]
+            row_key = (
+                row["normalized_text"],
+                _normalize(str(row.get("control_type", ""))),
+                _normalize(str(row.get("class_name", ""))),
+                f"({rect['left']},{rect['top']})-({rect['right']},{rect['bottom']})",
+                row["source_scope"],
+            )
+            if row_key not in new_keys:
+                continue
+
+            rejection_reason = _reject_popup_candidate_reason(row, top_level_rects, top_level_texts, permissive=True)
+            if rejection_reason is not None:
+                logger.info(
+                    "Rejected popup row: rect={} text={!r} scope={} control_type={} reason={}",
+                    row.get("rectangle"),
+                    row.get("text", ""),
+                    row.get("source_scope", ""),
+                    row.get("control_type", ""),
+                    rejection_reason,
+                )
+                continue
+
+            rect = row["rectangle"]
+            dedupe_key = (
+                (rect["left"], rect["top"], rect["right"], rect["bottom"]),
+                str(row.get("text", "")),
+                str(row.get("source_scope", "")),
+            )
+            if dedupe_key in seen_fallback:
+                logger.info(
+                    "Rejected popup row: rect={} text={!r} scope={} control_type={} reason={}",
+                    row.get("rectangle"),
+                    row.get("text", ""),
+                    row.get("source_scope", ""),
+                    row.get("control_type", ""),
+                    "exact duplicate in permissive fallback",
+                )
+                continue
+            seen_fallback.add(dedupe_key)
+            popup_candidates.append(row)
 
     if not popup_candidates:
         logger.info(
@@ -361,19 +439,7 @@ def _structured_popup_rows_from_snapshots(
 
     popup_candidates.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
 
-    lefts = [entry["rectangle"]["left"] for entry in popup_candidates]
-    rights = [entry["rectangle"]["right"] for entry in popup_candidates]
-    min_left, max_left = min(lefts), max(lefts)
-    min_right, max_right = min(rights), max(rights)
-    horizontal_tolerance = 30
-
-    filtered = [
-        entry
-        for entry in popup_candidates
-        if (min_left - horizontal_tolerance) <= entry["rectangle"]["left"] <= (max_left + horizontal_tolerance)
-        and (min_right - horizontal_tolerance) <= entry["rectangle"]["right"] <= (max_right + horizontal_tolerance)
-    ]
-    filtered.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
+    filtered = popup_candidates
     for idx, entry in enumerate(filtered):
         entry["index"] = idx
 
