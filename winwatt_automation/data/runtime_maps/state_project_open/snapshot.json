@@ -8,13 +8,21 @@
     "Ablak",
     "Súgó"
   ],
+  "foreground_window": {
+    "class_name": "TDeviceDatabaseForm",
+    "handle": 8063336,
+    "process_id": 6444,
+    "title": "Adatbázis adatok karbantartása"
+  },
   "main_window_class": "TMainForm",
+  "main_window_enabled": false,
   "main_window_title": "WinWatt gólya",
+  "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "lost_main_window_before:Fájl",
-  "process_id": 6112,
+  "process_id": 6444,
   "state_id": "project_open",
-  "timestamp": "2026-03-16T18:29:20.711579+00:00",
+  "timestamp": "2026-03-16T19:17:47.370514+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -23,16 +31,16 @@
       "title": "Tálca"
     },
     {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 6112,
-      "title": "WinWatt gólya"
-    },
-    {
       "class_name": "TDeviceDatabaseForm",
       "handle": null,
-      "process_id": 6112,
+      "process_id": 6444,
       "title": "Adatbázis adatok karbantartása"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 6444,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -43,14 +51,14 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 1152,
-      "title": "GitHub Desktop"
+      "process_id": 4588,
+      "title": "Winwatt - hekkelések - WinWatt automatizálás - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 4588,
-      "title": "Cache WinWatt main window connection across mapper operations by gabordancs · Pull Request #27 · gabordancs/autowinwatt - Google Chrome"
+      "process_id": 1152,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",

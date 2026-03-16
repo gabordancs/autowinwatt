@@ -1,6 +1,6 @@
 # Runtime summary (project_open)
 
-- top menük száma: 6
+- top menük száma: 5
 - összes menüpont: 0
 - enabled: 0
 - disabled: 0

@@ -6,7 +6,19 @@
   },
   "enabled_state_changes": [],
   "menu_action_diff": {
-    "only_in_a": [],
+    "only_in_a": [
+      [
+        "beállítások"
+      ],
+      [
+        "fájl",
+        ""
+      ],
+      [
+        "jegyzékek",
+        ""
+      ]
+    ],
     "only_in_b": [],
     "shared": []
   },
@@ -14,18 +26,17 @@
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 0,
+    "actions_only_in_a": 3,
     "actions_only_in_b": 0,
     "enabled_changes": 0,
     "project_only_paths": 0,
-    "shared_top_menus": 6
+    "shared_top_menus": 5
   },
   "top_menu_diff": {
     "only_in_a": [],
     "only_in_b": [],
     "shared": [
       "ablak",
-      "adatbázis",
       "beállítások",
       "fájl",
       "jegyzékek",
