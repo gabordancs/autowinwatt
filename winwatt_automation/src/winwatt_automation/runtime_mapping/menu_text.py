@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import re
 
+from loguru import logger
+
 
 _WHITESPACE_RE = re.compile(r"\s+")
 
@@ -22,9 +24,13 @@ def clean_menu_title(title: str) -> str:
 
 
 def normalize_menu_title(title: str) -> str:
-    return clean_menu_title(title).lower()
+    raw = str(title or "")
+    normalized = clean_menu_title(raw).casefold()
+    stripped = raw.strip()
+    if stripped.endswith("...") or stripped.endswith("…"):
+        logger.debug('normalize_menu_title ellipsis_handled raw="{}" normalized="{}"', raw, normalized)
+    return normalized
 
 
 def menu_titles_equal(a: str, b: str) -> bool:
     return normalize_menu_title(a) == normalize_menu_title(b)
-
