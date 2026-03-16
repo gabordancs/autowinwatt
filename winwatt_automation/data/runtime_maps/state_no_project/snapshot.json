@@ -9,20 +9,20 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "Chrome_WidgetWin_1",
-    "handle": 199156,
-    "process_id": 28872,
-    "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
+    "class_name": "TMainForm",
+    "handle": 2885932,
+    "process_id": 18788,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": true,
-  "mapping_stop_reason": "unrecoverable:Beállítások",
-  "process_id": 6444,
+  "mapping_stop_reason": "unrecoverable:Fájl",
+  "process_id": 18788,
   "state_id": "no_project",
-  "timestamp": "2026-03-16T19:10:45.963897+00:00",
+  "timestamp": "2026-03-16T19:39:27.645729+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -31,22 +31,22 @@
       "title": "Tálca"
     },
     {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 18788,
+      "title": "WinWatt gólya"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 28872,
       "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 6444,
-      "title": "WinWatt gólya"
-    },
-    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Winwatt - hekkelések - WinWatt automatizálás - Google Chrome"
+      "title": "(1) Vera Guban | Messenger - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -55,16 +55,10 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "TaskManagerWindow",
       "handle": null,
-      "process_id": 32848,
-      "title": "isaszegexpor0309.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 32848,
-      "title": "Hungarian.xml és 1 további lap – 1. profil – Microsoft​ Edge"
+      "process_id": 14900,
+      "title": "Feladatkezelő"
     },
     {
       "class_name": "Notepad",
