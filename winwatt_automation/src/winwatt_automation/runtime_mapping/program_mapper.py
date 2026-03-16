@@ -9,6 +9,7 @@ from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers, waits
 from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
     RuntimeActionResult,
     RuntimeDialogRecord,
@@ -362,15 +363,36 @@ def compare_runtime_states(state_a: RuntimeStateMap, state_b: RuntimeStateMap) -
     return diff
 
 
-def open_test_project(project_path: str) -> dict[str, Any]:
+def _is_safe_mode_project_path_allowed(project_path: str) -> bool:
+    normalized = str(project_path or "").replace("/", "\\").strip().lower()
+    return normalized.endswith("\\winwatt_automation\\tests\\testwwp.wwp")
+
+
+def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str, Any]:
     logger.info("open test project start path={}", project_path)
-    # Hook for stable file-picker automation in a future iteration.
-    return {
-        "ok": False,
-        "implemented": False,
-        "project_path": project_path,
-        "error": "Automated project file selection is not yet stable in runtime mapper.",
-    }
+    if safe_mode == "safe" and not _is_safe_mode_project_path_allowed(project_path):
+        error = "Safe mode only allows explicitly approved test project path."
+        logger.warning("open test project blocked safe_mode path={} reason={}", project_path, error)
+        return {
+            "success": False,
+            "path": project_path,
+            "dialog_found": False,
+            "path_entered": False,
+            "confirm_clicked": False,
+            "dialog_closed": False,
+            "project_state_changed": False,
+            "detected_changes": [],
+            "error": error,
+        }
+
+    before = asdict(capture_state_snapshot("project_open_before"))
+    result = open_project_file_via_dialog_dict(
+        project_path,
+        before_snapshot=before,
+        after_snapshot_provider=lambda: asdict(capture_state_snapshot("project_open_after")),
+    )
+    logger.info("open test project result={}", result)
+    return result
 
 
 def _write_state_outputs(state_dir: Path, state_map: RuntimeStateMap) -> None:
@@ -399,7 +421,7 @@ def build_full_runtime_program_map(
 
     project_open_result = None
     if project_path:
-        project_open_result = open_test_project(project_path)
+        project_open_result = open_test_project(project_path, safe_mode=safe_mode)
 
     state_project_open = map_runtime_state(state_id=state_project_open_id, safe_mode=safe_mode)
     _write_state_outputs(paths["state_project_open"], state_project_open)
