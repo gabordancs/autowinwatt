@@ -30,7 +30,7 @@ def test_classify_post_click_result_dialog_opened():
         safety_level="safe",
         attempted=True,
     )
-    assert result.result_type == "dialog_opened"
+    assert result.result_type == "success_dialog_opened"
 
 
 def test_classify_post_click_result_no_visible_change():
@@ -47,7 +47,7 @@ def test_classify_post_click_result_no_visible_change():
         safety_level="safe",
         attempted=True,
     )
-    assert result.result_type == "no_visible_change"
+    assert result.result_type == "failed_no_visible_change"
 
 
 def test_classify_post_click_result_skipped_and_failed():
@@ -110,3 +110,22 @@ def test_build_menu_rows_from_popup_rows_preserves_order_and_indices():
     assert [row.row_index for row in rows] == [0, 1]
     assert rows[0].menu_path == ["Fájl", "Megnyitás"]
     assert rows[1].is_separator is True
+
+
+
+def test_classify_post_click_result_forced_failure_types():
+    result = classify_post_click_result(
+        process_id=None,
+        before_snapshot=_snapshot(),
+        after_snapshot=_snapshot(),
+        dialog_detection=None,
+        state_id="state_no_project",
+        top_menu="Fájl",
+        row_index=0,
+        menu_path=["Fájl"],
+        action_key="Fájl",
+        safety_level="safe",
+        attempted=False,
+        forced_result_type="failed_system_menu",
+    )
+    assert result.result_type == "failed_system_menu"

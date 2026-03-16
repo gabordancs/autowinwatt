@@ -6,7 +6,7 @@ import time
 
 from winwatt_automation.live_ui.app_connector import (
     connect_to_winwatt,
-    is_main_window_foreground,
+    describe_foreground_window,
     prepare_main_window_for_menu_interaction,
 )
 from winwatt_automation.live_ui.menu_helpers import (
@@ -22,7 +22,7 @@ def main() -> None:
     connect_to_winwatt()
 
     prepare_main_window_for_menu_interaction()
-    print(f"WinWatt is foreground before listing menus: {is_main_window_foreground()}")
+    print(f"Foreground before listing menus: {describe_foreground_window()}")
 
     top_items = list_top_menu_items()
     print("Top-level menu items:")
@@ -33,9 +33,13 @@ def main() -> None:
     click_top_menu_item("Fájl")
     time.sleep(0.3)
     after_snapshot = _menu_snapshot()
+    popup_opened = did_any_new_menu_popup_appear(before_snapshot, after_snapshot)
+    fg_after = describe_foreground_window()
 
-    print(f"WinWatt is foreground after click: {is_main_window_foreground()}")
-    print(f"New menu popup appeared: {did_any_new_menu_popup_appear(before_snapshot, after_snapshot)}")
+    print(f"focus ok / restored: {fg_after}")
+    print("clicked target: Fájl")
+    print(f"popup opened yes/no: {popup_opened}")
+    print(f"system menu opened yes/no: {fg_after.get('class_name') == '#32768'}")
 
     open_items = list_open_menu_items()
     print("\nVisible submenu items after opening 'Fájl':")
