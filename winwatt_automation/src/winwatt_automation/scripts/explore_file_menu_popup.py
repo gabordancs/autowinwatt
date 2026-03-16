@@ -20,11 +20,13 @@ def main() -> None:
     prepare_main_window_for_menu_interaction()
     popup_state = open_file_menu_and_capture_popup_state()
     entries = popup_state["rows"]
+    deduped_fragment_count = int(popup_state.get("deduped_fragment_count", len(entries)))
     after_rows = popup_state.get("after_snapshot", [])
     new_rows = [row for row in after_rows if row.get("appeared_after_popup_open")]
 
     print(f"total new rows: {len(new_rows)}")
-    print(f"total structured rows: {len(entries)}")
+    print(f"raw deduped fragment count: {deduped_fragment_count}")
+    print(f"final logical row count: {len(entries)}")
     if len(entries) == 0 and len(new_rows) > 0:
         print("first 20 raw new rows:")
         for row in new_rows[:20]:
@@ -34,13 +36,14 @@ def main() -> None:
                 f"text={row.get('text', '')!r} scope={row.get('source_scope', '')}"
             )
 
-    print("Popup submenu entries:")
+    print("Logical popup rows:")
     for entry in entries:
         rect = entry["rectangle"]
+        fragment_count = len(entry.get("fragments", []))
         print(
             f"[{entry['index']}] text='{entry['text']}' "
             f"rect=({rect['left']},{rect['top']})-({rect['right']},{rect['bottom']}) "
-            f"separator={entry['is_separator']} source={entry['source_scope']}"
+            f"separator={entry['is_separator']} source={entry['source_scope']} fragments={fragment_count}"
         )
 
     separators = [entry for entry in entries if entry.get("is_separator")]
