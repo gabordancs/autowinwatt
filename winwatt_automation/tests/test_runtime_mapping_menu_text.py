@@ -29,3 +29,7 @@ def test_normalize_menu_title_variants_share_same_value():
     ]
     normalized = {normalize_menu_title(item) for item in variants}
     assert normalized == {"adatbázisok"}
+
+
+def test_normalize_menu_title_adatbazis_ascii_and_unicode_ellipsis_match():
+    assert normalize_menu_title("Adatbázis...") == normalize_menu_title("Adatbázis…")
