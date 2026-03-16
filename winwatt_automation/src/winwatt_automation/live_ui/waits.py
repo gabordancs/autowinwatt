@@ -6,7 +6,7 @@ import time
 from typing import Any
 
 from loguru import logger
-from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.app_connector import get_cached_main_window
 
 
 
@@ -246,7 +246,7 @@ def wait_for_dialog_from_context(process_id: int | None, timeout: float = 5.0) -
 def wait_for_dialog(timeout: float = 5.0) -> Any:
     """Wait for a visible dialog window owned by the WinWatt main process."""
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     pid = main_window.process_id()
     deadline = time.monotonic() + timeout
 

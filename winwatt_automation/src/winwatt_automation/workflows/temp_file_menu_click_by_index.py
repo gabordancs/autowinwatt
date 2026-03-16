@@ -8,13 +8,13 @@ from typing import Any
 from loguru import logger
 
 from winwatt_automation.commands.menu_commands import click_file_submenu_item_by_index
-from winwatt_automation.live_ui.app_connector import connect_to_winwatt, get_main_window
+from winwatt_automation.live_ui.app_connector import connect_to_winwatt, get_cached_main_window
 
 
 def _top_windows_for_main_process() -> set[int]:
     from pywinauto import Desktop
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     process_id = main_window.process_id()
     desktop = Desktop(backend="uia")
     handles: set[int] = set()

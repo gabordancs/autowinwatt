@@ -8,7 +8,7 @@ from typing import Any
 from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers
-from winwatt_automation.live_ui.app_connector import ensure_main_window_foreground_before_click, get_main_window
+from winwatt_automation.live_ui.app_connector import ensure_main_window_foreground_before_click, get_cached_main_window
 from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
     RuntimeActionResult,
@@ -212,7 +212,7 @@ def restore_clean_menu_baseline(*, state_id: str, stage: str) -> bool:
 
 
 def capture_state_snapshot(state_id: str) -> RuntimeStateSnapshot:
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     return RuntimeStateSnapshot(
         state_id=state_id,
         process_id=_safe_call(main_window, "process_id", None),

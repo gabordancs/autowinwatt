@@ -8,7 +8,7 @@ from typing import Any
 
 from loguru import logger
 
-from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.app_connector import get_cached_main_window
 
 
 def _safe_control_type(element_info: Any) -> str | None:
@@ -53,7 +53,7 @@ def dump_window_tree(window: Any, max_depth: int = 5) -> dict[str, Any]:
 def save_window_tree_snapshot(output_path: str | Path) -> dict[str, Any]:
     """Capture and save the main window tree snapshot to ``output_path``."""
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     snapshot = dump_window_tree(main_window)
 
     output_file = Path(output_path)
