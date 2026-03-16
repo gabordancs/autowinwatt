@@ -46,3 +46,29 @@ from winwatt_automation.dialog_explorer import explore_dialog
 report = explore_dialog(dialog, max_depth=3, safe_mode=True)
 print(report["dialog_title"], len(report["controls"]))
 ```
+
+## Runtime futásnaplók (run logs)
+
+A futásnapló rendszer a repo-n belül ide ír:
+
+- `data/run_logs/index.json` – időrendi futásindex (sorszám, run_id, rövid summary, log/meta útvonal)
+- `data/run_logs/latest.txt` – legfrissebb futás gyors szöveges pointere
+- `data/run_logs/latest.json` – legfrissebb futás teljes strukturált meta rekordja
+- `data/run_logs/runs/*.log` – teljes/kiemelt terminálkimenet
+- `data/run_logs/runs/*.json` – strukturált futás meta + summary
+
+### Mit nézzen Codex először?
+
+1. `data/run_logs/latest.txt`
+2. `data/run_logs/latest.json`
+3. szükség esetén a hivatkozott `runs/<run_id>.log` fájl
+
+### Konkrét futás visszakeresése
+
+- Az `index.json` `runs` tömbjében keresd a `sequence_number` vagy `run_id` mezőt.
+- A rekordból a `log_path` és `json_path` megadja a kapcsolódó fájlokat.
+
+### Retention stratégia
+
+Első körben csak a struktúra és a konzisztens index/latest frissítés készült el.
+A futáslogok automatikus törlése még nincs bekötve; a helye dokumentálva van `TODO` jelöléssel az indexben és a helper modulban.
