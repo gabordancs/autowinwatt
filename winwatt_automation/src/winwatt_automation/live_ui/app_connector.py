@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ctypes
+import time
 from typing import TYPE_CHECKING
 from typing import Any
 
@@ -515,3 +516,104 @@ def is_main_window_foreground() -> bool:
         foreground_class,
     )
     return is_foreground
+
+
+def describe_foreground_window() -> dict[str, Any]:
+    """Return diagnostic metadata about the current foreground window."""
+
+    try:
+        foreground_handle = int(ctypes.windll.user32.GetForegroundWindow())
+    except Exception as exc:
+        logger.warning("describe_foreground_window: GetForegroundWindow() failed: {}", exc)
+        return {"handle": None, "title": "", "class_name": "", "process_id": None}
+
+    try:
+        from pywinauto import Desktop
+
+        foreground_wrapper = Desktop(backend="win32").window(handle=foreground_handle)
+        return {
+            "handle": foreground_handle,
+            "title": _safe_call(foreground_wrapper, "window_text", "") or "",
+            "class_name": _safe_call(foreground_wrapper, "class_name", "") or "",
+            "process_id": _safe_call(foreground_wrapper, "process_id", None),
+        }
+    except Exception as exc:
+        logger.warning("describe_foreground_window: failed to inspect foreground details: {}", exc)
+        return {"handle": foreground_handle, "title": "", "class_name": "", "process_id": None}
+
+
+def is_winwatt_foreground_context(main_window: Any, *, allow_dialog: bool = True) -> bool:
+    """Validate whether foreground belongs to WinWatt main window or its own dialogs."""
+
+    main_handle = _wrapper_handle(main_window)
+    main_pid = _safe_call(main_window, "process_id", None)
+    fg = describe_foreground_window()
+    if fg.get("handle") == main_handle:
+        return True
+    if allow_dialog and main_pid is not None and fg.get("process_id") == main_pid:
+        return True
+    return False
+
+
+def ensure_main_window_foreground_before_click(
+    *,
+    action_label: str,
+    timeout: float = 2.0,
+    poll_interval: float = 0.1,
+    allow_dialog: bool = False,
+) -> Any:
+    """Ensure main window is valid and foreground before click operations."""
+
+    main_window = get_main_window()
+    exists = bool(_safe_call(main_window, "exists", False))
+    visible = bool(_safe_call(main_window, "is_visible", False))
+    enabled = bool(_safe_call(main_window, "is_enabled", False))
+    rect_payload = _rect_payload(_safe_call(main_window, "rectangle", None))
+    logger.info(
+        "focus_guard precheck action={} main_handle={} exists={} visible={} enabled={} rect={}",
+        action_label,
+        _wrapper_handle(main_window),
+        exists,
+        visible,
+        enabled,
+        rect_payload,
+    )
+    if not exists:
+        raise RuntimeError(f"focus_not_restored: main window no longer exists before action={action_label}")
+    if not visible or not enabled:
+        raise RuntimeError(
+            f"focus_not_restored: main window not ready before action={action_label} visible={visible} enabled={enabled}"
+        )
+
+    deadline = time.time() + max(timeout, poll_interval)
+    while time.time() < deadline:
+        if is_winwatt_foreground_context(main_window, allow_dialog=allow_dialog):
+            logger.info("focus_guard result action={} status=focus_ok", action_label)
+            return main_window
+
+        set_focus = getattr(main_window, "set_focus", None)
+        if callable(set_focus):
+            try:
+                set_focus()
+            except Exception as exc:
+                logger.warning("focus_guard set_focus failed action={} error={}", action_label, exc)
+        set_keyboard_focus = getattr(main_window, "set_keyboard_focus", None)
+        if callable(set_keyboard_focus):
+            try:
+                set_keyboard_focus()
+            except Exception:
+                pass
+        restore = getattr(main_window, "restore", None)
+        if callable(restore):
+            try:
+                restore()
+            except Exception:
+                pass
+        time.sleep(poll_interval)
+
+    fg = describe_foreground_window()
+    logger.error("focus_guard result action={} status=focus_failed foreground={}", action_label, fg)
+    raise RuntimeError(
+        "focus_not_restored: could not bring WinWatt to foreground "
+        f"for action={action_label} foreground_title={fg.get('title')} foreground_class={fg.get('class_name')}"
+    )

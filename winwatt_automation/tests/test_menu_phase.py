@@ -62,7 +62,7 @@ class FakeDialog:
 
 def test_menu_helpers_list_and_click(monkeypatch):
     menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="Menu"))
-    file_item = FakeMenuItem("Fájl", parent=menu_parent)
+    file_item = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(80, 50, 180, 80))
     edit_item = FakeMenuItem("Szerkesztés", parent=menu_parent)
     submenu = FakeMenuItem("Projekt megnyitása", parent=menu_parent)
 
@@ -72,7 +72,8 @@ def test_menu_helpers_list_and_click(monkeypatch):
     assert "Projekt megnyitása" in menu_helpers.list_open_menu_items()
 
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
-    monkeypatch.setattr(menu_helpers, "is_main_window_foreground", lambda: True)
+    monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: types.SimpleNamespace(rectangle=lambda: types.SimpleNamespace(left=0, top=0, right=500, bottom=300)))
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
     monkeypatch.setattr(menu_helpers, "did_any_new_menu_popup_appear", lambda before, after: True)
     menu_helpers.click_top_menu_item("Fájl")
     assert file_item.clicked is True
@@ -100,7 +101,8 @@ def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
 
     monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([file_item]))
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
-    monkeypatch.setattr(menu_helpers, "is_main_window_foreground", lambda: True)
+    monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: types.SimpleNamespace(rectangle=lambda: types.SimpleNamespace(left=0, top=0, right=500, bottom=300)))
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
     popup_checks = iter([False, True])
     monkeypatch.setattr(menu_helpers, "did_any_new_menu_popup_appear", lambda before, after: next(popup_checks))
 
@@ -244,6 +246,7 @@ def test_group_popup_fragments_into_logical_rows_merges_overlapping_rows():
 def test_click_structured_popup_row_clicks_center(monkeypatch):
     clicks = []
     monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicks.append(("left", coords)))
+    monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: None)
 
     selected = menu_helpers.click_structured_popup_row(
         [{"index": 0, "center_x": 30, "center_y": 30, "is_separator": False, "rectangle": {"left": 20}}],
@@ -279,6 +282,7 @@ def test_click_open_menu_item_by_index_uses_existing_popup_rows_once(monkeypatch
 
     clicked = []
     monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicked.append(coords))
+    monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: None)
 
     selected = menu_helpers.click_open_menu_item_by_index(0)
 
@@ -429,3 +433,41 @@ def test_detect_open_file_dialog_from_context_without_process_id(monkeypatch):
     assert result["dialog_detected"] is True
     assert result["dialog_title"] == "Open"
     assert result["dialog_class"] == "#32770"
+
+
+def test_forbidden_zone_blocks_click(monkeypatch):
+    class MainWindow:
+        def rectangle(self):
+            return types.SimpleNamespace(left=0, top=0, right=400, bottom=300)
+
+    with pytest.raises(RuntimeError, match="click_blocked_forbidden_zone"):
+        menu_helpers._validate_not_in_forbidden_top_left_zone(MainWindow(), (5, 5))
+
+
+def test_wrong_foreground_blocks_post_validation(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "VS Code", "class_name": "Chrome_WidgetWin_1", "process_id": 999})
+    monkeypatch.setattr(menu_helpers, "_is_system_menu_foreground", lambda: False)
+    monkeypatch.setattr(menu_helpers, "is_winwatt_foreground_context", lambda *args, **kwargs: False)
+
+    with pytest.raises(RuntimeError, match="failed_wrong_window"):
+        menu_helpers._validate_post_menu_open_foreground(types.SimpleNamespace(), title="Fájl")
+
+
+def test_system_menu_detected_and_failed(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "System", "class_name": "#32768", "process_id": 1})
+    monkeypatch.setattr(menu_helpers, "_is_system_menu_foreground", lambda: True)
+
+    with pytest.raises(RuntimeError, match="failed_system_menu"):
+        menu_helpers._validate_post_menu_open_foreground(types.SimpleNamespace(), title="Fájl")
+
+
+def test_click_top_menu_item_focus_guard_failure(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
+
+    def _fail(**kwargs):
+        raise RuntimeError("focus_not_restored")
+
+    monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", _fail)
+
+    with pytest.raises(RuntimeError, match="focus_not_restored"):
+        menu_helpers.click_top_menu_item("Fájl")
