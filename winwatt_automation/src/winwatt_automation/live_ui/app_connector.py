@@ -29,6 +29,15 @@ class WinWattMultipleWindowsError(WinWattNotRunningError):
         self.candidates = candidates
 
 
+class WinWattSession:
+    """Cached WinWatt attachment state for the current mapper run."""
+
+    app: Any | None = None
+    main_window: Any | None = None
+    process_id: int | None = None
+    handle: int | None = None
+
+
 def _safe_call(obj: Any, method_name: str, default: Any = None) -> Any:
     method = getattr(obj, method_name, None)
     if not callable(method):
@@ -249,6 +258,7 @@ def connect_to_winwatt() -> Any:
 
     try:
         app, _ = _connect_with_win32_handle()
+        WinWattSession.app = app
         return app
     except Exception as win32_error:
         logger.error("Unable to connect to WinWatt: {}", win32_error)
@@ -256,8 +266,8 @@ def connect_to_winwatt() -> Any:
 
 
 
-def get_main_window() -> Any:
-    """Return the main WinWatt window wrapper."""
+def _resolve_uia_main_window() -> Any:
+    """Resolve a fresh UIA main window wrapper and update cached session metadata."""
 
     from pywinauto import Application
 
@@ -278,6 +288,10 @@ def get_main_window() -> Any:
         exists = getattr(main_window, "exists", None)
         if callable(exists) and not exists(timeout=1):
             raise WinWattNotRunningError("UIA main window lookup did not resolve an existing window")
+        WinWattSession.app = app_uia
+        WinWattSession.main_window = main_window
+        WinWattSession.process_id = process_id
+        WinWattSession.handle = _wrapper_handle(main_window)
         return main_window
     except Exception:
         logger.exception(
@@ -316,9 +330,57 @@ def get_main_window() -> Any:
         best_candidate.get("title"),
     )
     if best_handle is not None:
-        return app_uia.window(handle=best_handle)
+        main_window = app_uia.window(handle=best_handle)
+    else:
+        main_window = app_uia.window(title=best_candidate.get("title"), class_name=best_candidate.get("class_name"))
 
-    return app_uia.window(title=best_candidate.get("title"), class_name=best_candidate.get("class_name"))
+    WinWattSession.app = app_uia
+    WinWattSession.main_window = main_window
+    WinWattSession.process_id = process_id
+    WinWattSession.handle = _wrapper_handle(main_window)
+    return main_window
+
+
+def _cached_window_is_healthy(main_window: Any) -> bool:
+    exists = getattr(main_window, "exists", None)
+    if callable(exists):
+        try:
+            if not bool(exists(timeout=0.2)):
+                return False
+        except Exception:
+            return False
+
+    cached_process_id = WinWattSession.process_id
+    process_id = _safe_call(main_window, "process_id", None)
+    if cached_process_id is not None and process_id is not None and int(process_id) != int(cached_process_id):
+        return False
+
+    cached_handle = WinWattSession.handle
+    handle = _wrapper_handle(main_window)
+    if cached_handle is not None and handle is not None and int(handle) != int(cached_handle):
+        return False
+
+    if not is_winwatt_foreground_context(main_window, allow_dialog=True):
+        return False
+
+    return True
+
+
+def get_cached_main_window() -> Any:
+    """Return cached WinWatt main window wrapper, reconnecting only when unhealthy."""
+
+    cached_main_window = WinWattSession.main_window
+    if cached_main_window is not None and _cached_window_is_healthy(cached_main_window):
+        logger.debug("reusing cached WinWatt connection")
+        return cached_main_window
+
+    return _resolve_uia_main_window()
+
+
+def get_main_window() -> Any:
+    """Backward-compatible wrapper around cached main window access."""
+
+    return get_cached_main_window()
 
 
 def _wrapper_handle(wrapper: Any) -> int | None:
@@ -335,7 +397,7 @@ def _wrapper_handle(wrapper: Any) -> int | None:
 def focus_main_window() -> Any:
     """Bring WinWatt main window to the foreground and focus it."""
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     logger.info("focus_main_window: resolved WinWatt main window handle={}", _wrapper_handle(main_window))
 
     set_focus = getattr(main_window, "set_focus", None)
@@ -416,7 +478,7 @@ def prepare_main_window_for_menu_interaction() -> Any:
     """Normalize WinWatt window geometry/focus before menu clicks."""
 
     logger.info("Preparing WinWatt window for menu interaction")
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
 
     minimized = False
     is_minimized = getattr(main_window, "is_minimized", None)
@@ -478,7 +540,7 @@ def prepare_main_window_for_menu_interaction() -> Any:
 def is_main_window_foreground() -> bool:
     """Return whether WinWatt main window is currently the OS foreground window."""
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     main_handle = _wrapper_handle(main_window)
     if main_handle is None:
         logger.warning("is_main_window_foreground: main window has no handle")
@@ -564,7 +626,7 @@ def ensure_main_window_foreground_before_click(
 ) -> Any:
     """Ensure main window is valid and foreground before click operations."""
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     exists = bool(_safe_call(main_window, "exists", False))
     visible = bool(_safe_call(main_window, "is_visible", False))
     enabled = bool(_safe_call(main_window, "is_enabled", False))

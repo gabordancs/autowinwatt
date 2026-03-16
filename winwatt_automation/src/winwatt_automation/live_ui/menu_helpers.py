@@ -9,7 +9,7 @@ from loguru import logger
 from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
-    get_main_window,
+    get_cached_main_window,
     is_winwatt_foreground_context,
     prepare_main_window_for_menu_interaction,
 )
@@ -143,7 +143,7 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
 
 
 def _menu_items() -> list[Any]:
-    root = get_main_window()
+    root = get_cached_main_window()
     descendants = getattr(root, "descendants", None)
     if not callable(descendants):
         return []
@@ -254,7 +254,7 @@ def _menu_like_controls_from_global_process_scan() -> list[dict[str, Any]]:
     except Exception:
         return []
 
-    main_window = get_main_window()
+    main_window = get_cached_main_window()
     process_id = main_window.process_id()
     desktop = Desktop(backend="uia")
 
