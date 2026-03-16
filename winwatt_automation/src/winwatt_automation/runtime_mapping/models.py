@@ -34,6 +34,27 @@ class RuntimeMenuRow:
 
 
 @dataclass(slots=True)
+class RuntimeMenuNode:
+    state_id: str
+    title: str
+    normalized_title: str
+    path: list[str]
+    level: int
+    index: int
+    enabled: bool | None
+    separator: bool
+    shortcut: str | None
+    opens_submenu: bool
+    opens_dialog: bool
+    likely_destructive: bool
+    likely_state_changing: bool
+    action_classification: str
+    skipped_by_safety: bool
+    children: list[dict[str, Any]] = field(default_factory=list)
+    debug: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
 class RuntimeActionResult:
     state_id: str
     top_menu: str
@@ -81,6 +102,7 @@ class RuntimeStateMap:
     snapshot: dict[str, Any]
     top_menus: list[dict[str, Any]]
     menu_rows: list[dict[str, Any]]
+    menu_tree: list[dict[str, Any]]
     actions: list[dict[str, Any]]
     dialogs: list[dict[str, Any]]
     windows: list[dict[str, Any]]
@@ -96,3 +118,5 @@ class RuntimeStateDiff:
     dialog_diff: dict[str, Any]
     window_diff: dict[str, Any]
     summary: dict[str, Any]
+    enabled_state_changes: list[dict[str, Any]] = field(default_factory=list)
+    project_only_paths: list[list[str]] = field(default_factory=list)

@@ -10,6 +10,7 @@ def _state_map(state_id: str, top_menus: list[str], action_paths: list[list[str]
         snapshot={"state_id": state_id},
         top_menus=[{"text": item} for item in top_menus],
         menu_rows=[],
+        menu_tree=[],
         actions=[{"menu_path": path} for path in action_paths],
         dialogs=[],
         windows=[],
