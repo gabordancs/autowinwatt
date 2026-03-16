@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
+import time
 from typing import Any
 
 from loguru import logger
@@ -191,8 +192,18 @@ def restore_clean_menu_baseline(*, state_id: str, stage: str) -> bool:
     try:
         ensure_main_window_foreground_before_click(action_label=f"baseline_restore:{state_id}:{stage}")
     except Exception as exc:
-        logger.error("baseline_restore failed state={} stage={} error={}", state_id, stage, exc)
-        return False
+        main_window = get_cached_main_window()
+        if bool(_safe_call(main_window, "is_visible", False)) and not bool(_safe_call(main_window, "is_enabled", True)):
+            logger.warning("baseline_restore modal_pending state={} stage={} error={}", state_id, stage, exc)
+            recovery = recover_after_project_open()
+            if recovery.get("success"):
+                logger.info("baseline_restore modal_pending_recovered state={} stage={}", state_id, stage)
+            else:
+                logger.error("baseline_restore failed state={} stage={} error={}", state_id, stage, exc)
+                return False
+        else:
+            logger.error("baseline_restore failed state={} stage={} error={}", state_id, stage, exc)
+            return False
 
     for _ in range(2):
         try:
@@ -454,6 +465,140 @@ def verify_main_window_recovery(main_window: Any) -> bool:
     else:
         logger.error("recovery_failed visible={} enabled={}", visible, enabled)
     return ok
+
+
+def _main_window_recovery_state(main_window: Any) -> dict[str, Any]:
+    rect = _safe_call(main_window, "rectangle", None)
+    rectangle = {}
+    if rect is not None:
+        rectangle = {
+            "left": int(getattr(rect, "left", 0)),
+            "top": int(getattr(rect, "top", 0)),
+            "right": int(getattr(rect, "right", 0)),
+            "bottom": int(getattr(rect, "bottom", 0)),
+        }
+    return {
+        "exists": main_window is not None,
+        "title": _safe_call(main_window, "window_text", "") or "",
+        "class_name": _safe_call(main_window, "class_name", "") or "",
+        "process_id": _safe_call(main_window, "process_id", None),
+        "handle": _safe_call(main_window, "handle", None),
+        "visible": bool(_safe_call(main_window, "is_visible", False)),
+        "enabled": bool(_safe_call(main_window, "is_enabled", False)),
+        "rect": rectangle,
+    }
+
+
+def _send_recovery_key(key_sequence: str) -> bool:
+    try:
+        from pywinauto import keyboard
+
+        keyboard.send_keys(key_sequence)
+        return True
+    except Exception:
+        return False
+
+
+def _click_recovery_button(label: str, *, main_window_handle: Any | None = None) -> bool:
+    try:
+        from pywinauto import Desktop
+    except Exception:
+        return False
+
+    for window in Desktop(backend="uia").windows(top_level_only=True):
+        if not bool(_safe_call(window, "is_visible", False)):
+            continue
+        if main_window_handle is not None and _safe_call(window, "handle", None) == main_window_handle:
+            continue
+        for method_name in ("child_window", "window"):
+            try:
+                button = getattr(window, method_name)(title_re=fr".*{label}.*", control_type="Button")
+                button.click_input()
+                return True
+            except Exception:
+                continue
+    return False
+
+
+def _collect_project_open_recovery_diagnostics(main_window: Any) -> dict[str, Any]:
+    main_state = _main_window_recovery_state(main_window)
+    dialog_candidates = [
+        window
+        for window in _list_visible_top_windows()
+        if window.get("handle") != main_state.get("handle")
+    ]
+    return {
+        "foreground_window": _foreground_window_info(),
+        "dialog_candidates": dialog_candidates,
+        "main_window": {
+            "enabled": main_state.get("enabled"),
+            "visible": main_state.get("visible"),
+            "rect": main_state.get("rect"),
+            "title": main_state.get("title"),
+            "class_name": main_state.get("class_name"),
+            "process_id": main_state.get("process_id"),
+            "handle": main_state.get("handle"),
+            "exists": main_state.get("exists"),
+        },
+    }
+
+
+def _is_main_window_interactive(main_window: Any) -> bool:
+    state = _main_window_recovery_state(main_window)
+    return bool(state["exists"] and state["visible"] and state["enabled"])
+
+
+def _attempt_project_open_modal_close(*, main_window_handle: Any | None = None) -> list[dict[str, Any]]:
+    attempts: list[dict[str, Any]] = []
+    for key_sequence, name in (("{ESC}", "Esc"), ("{ENTER}", "Enter"), ("%{F4}", "Alt+F4")):
+        attempt = {"method": "key", "name": name, "key_sequence": key_sequence}
+        logger.info("project_open_recovery_close_attempt method={} name={}", attempt["method"], attempt["name"])
+        attempt["sent"] = _send_recovery_key(key_sequence)
+        attempts.append(attempt)
+        if _is_main_window_interactive(get_cached_main_window()):
+            logger.info("project_open_recovery_close_success method={} name={}", attempt["method"], attempt["name"])
+            return attempts
+
+    for label in ["OK", "Rendben", "Bezár", "Mégse", "Cancel", "Close", "No", "Nem"]:
+        attempt = {"method": "button", "name": label}
+        logger.info("project_open_recovery_close_attempt method={} name={}", attempt["method"], attempt["name"])
+        attempt["clicked"] = _click_recovery_button(label, main_window_handle=main_window_handle)
+        attempts.append(attempt)
+        if _is_main_window_interactive(get_cached_main_window()):
+            logger.info("project_open_recovery_close_success method={} name={}", attempt["method"], attempt["name"])
+            return attempts
+    return attempts
+
+
+def recover_after_project_open(*, timeout_s: float = 15.0, poll_interval_s: float = 0.25) -> dict[str, Any]:
+    logger.info("project_open_recovery_start timeout_s={} poll_interval_s={}", timeout_s, poll_interval_s)
+    deadline = time.monotonic() + timeout_s
+    diagnostics: dict[str, Any] = {}
+    close_attempts: list[dict[str, Any]] = []
+    modal_logged = False
+
+    while time.monotonic() <= deadline:
+        main_window = get_cached_main_window()
+        main_state = _main_window_recovery_state(main_window)
+        if main_state["exists"] and main_state["visible"] and main_state["enabled"]:
+            logger.info("project_open_recovery_success")
+            diagnostics = _collect_project_open_recovery_diagnostics(main_window)
+            return {"success": True, "diagnostics": diagnostics, "close_attempts": close_attempts}
+
+        if main_state["visible"] and not main_state["enabled"]:
+            diagnostics = _collect_project_open_recovery_diagnostics(main_window)
+            if not modal_logged:
+                logger.warning("project_open_recovery_modal_detected diagnostics={}", diagnostics)
+                modal_logged = True
+            close_attempts.extend(_attempt_project_open_modal_close(main_window_handle=main_state.get("handle")))
+
+        time.sleep(poll_interval_s)
+
+    diagnostics = _collect_project_open_recovery_diagnostics(get_cached_main_window())
+    logger.error("project_open_recovery_failed diagnostics={}", diagnostics)
+    return {"success": False, "diagnostics": diagnostics, "close_attempts": close_attempts}
+
+
 def classify_post_click_result(
     process_id: int | None,
     before_snapshot: RuntimeStateSnapshot,
@@ -890,11 +1035,13 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         }
 
     before = asdict(capture_state_snapshot("project_open_before"))
-    return open_project_file_via_dialog_dict(
+    result = open_project_file_via_dialog_dict(
         project_path,
         before_snapshot=before,
         after_snapshot_provider=lambda: asdict(capture_state_snapshot("project_open_after")),
     )
+    result["recovery"] = recover_after_project_open()
+    return result
 
 
 def _write_state_outputs(state_dir: Path, state_map: RuntimeStateMap) -> None:
@@ -928,14 +1075,36 @@ def build_full_runtime_program_map(
     _write_state_outputs(paths["state_no_project"], state_no_project)
 
     project_open_result = open_test_project(project_path, safe_mode=safe_mode) if project_path else None
+    recovery = (project_open_result or {}).get("recovery") if project_open_result else None
 
-    state_project_open = map_runtime_state(
-        state_id=project_id,
-        safe_mode=safe_mode,
-        top_menus=top_menus,
-        max_submenu_depth=max_submenu_depth,
-        include_disabled=include_disabled,
-    )
+    if project_path and recovery and not recovery.get("success"):
+        state_project_open = RuntimeStateMap(
+            state_id=project_id,
+            snapshot={
+                "state_id": project_id,
+                "mapping_partial": True,
+                "mapping_stop_reason": "project_open_recovery_failed",
+                "project_open_recovery": recovery,
+                "recovery_diagnostics": recovery.get("diagnostics", {}),
+            },
+            top_menus=[],
+            menu_rows=[],
+            menu_tree=[],
+            actions=[],
+            dialogs=[],
+            windows=[],
+            skipped_actions=[],
+        )
+    else:
+        state_project_open = map_runtime_state(
+            state_id=project_id,
+            safe_mode=safe_mode,
+            top_menus=top_menus,
+            max_submenu_depth=max_submenu_depth,
+            include_disabled=include_disabled,
+        )
+        if recovery:
+            state_project_open.snapshot["project_open_recovery"] = recovery
     _write_state_outputs(paths["state_project_open"], state_project_open)
 
     diff = compare_runtime_states(state_no_project, state_project_open)
