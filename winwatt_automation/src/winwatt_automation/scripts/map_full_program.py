@@ -7,6 +7,7 @@ import sys
 
 from loguru import logger
 
+from winwatt_automation.live_ui.app_connector import get_cached_main_window
 from winwatt_automation.runtime_logging import append_terminal_line, finalize_run, record_event, start_run
 from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
 from winwatt_automation.runtime_mapping.program_mapper import build_full_runtime_program_map
@@ -22,13 +23,39 @@ def _parse_bool(raw: str) -> bool:
     return str(raw).strip().lower() in {"1", "true", "yes", "y"}
 
 
+def _close_winwatt_after_mapping() -> dict[str, str | bool | None]:
+    try:
+        main_window = get_cached_main_window()
+    except Exception as exc:
+        return {"closed": False, "method": None, "error": f"main_window_unavailable:{exc}"}
+
+    close = getattr(main_window, "close", None)
+    if callable(close):
+        try:
+            close()
+            return {"closed": True, "method": "window.close", "error": None}
+        except Exception as exc:
+            logger.warning("WinWatt close() failed: {}", exc)
+
+    try:
+        from pywinauto import keyboard
+
+        set_focus = getattr(main_window, "set_focus", None)
+        if callable(set_focus):
+            set_focus()
+        keyboard.send_keys("%{F4}")
+        return {"closed": True, "method": "alt+f4", "error": None}
+    except Exception as exc:
+        return {"closed": False, "method": None, "error": f"keyboard_close_failed:{exc}"}
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Map full WinWatt runtime structure")
     parser.add_argument("--project-path", default=None)
     parser.add_argument("--safe-mode", default="safe", choices=["safe", "caution", "blocked"])
     parser.add_argument("--output-dir", default="data/runtime_maps")
     parser.add_argument("--state-id-prefix", default="state")
-    parser.add_argument("--top-menus", default="Fájl,Jegyzékek,Adatbázisok,Beállítások,Ablak,Súgó")
+    parser.add_argument("--top-menus", default=None)
     parser.add_argument("--max-submenu-depth", type=int, default=3)
     parser.add_argument("--include-disabled", default="true")
     return parser
@@ -114,6 +141,8 @@ def main() -> int:
         )
         raise
     finally:
+        close_result = _close_winwatt_after_mapping()
+        record_event(run_ctx, "winwatt_close", close_result)
         logger.remove(sink_id)
 
 
