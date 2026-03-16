@@ -9,6 +9,7 @@ from typing import Any
 from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers
+from winwatt_automation.dialog_explorer.dialog_explorer import explore_dialog
 from winwatt_automation.live_ui.app_connector import ensure_main_window_foreground_before_click, get_cached_main_window
 from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
@@ -374,6 +375,29 @@ def _window_snapshot(window: Any) -> dict[str, Any]:
     }
 
 
+def _resolve_window_wrapper(candidate: dict[str, Any]) -> Any | None:
+    handle = candidate.get("handle")
+    if handle is None:
+        return None
+    try:
+        from pywinauto import Desktop
+
+        return Desktop(backend="uia").window(handle=handle)
+    except Exception:
+        return None
+
+
+def _explore_dialog_candidate(candidate: dict[str, Any], *, safe_mode: str) -> dict[str, Any]:
+    dialog = _resolve_window_wrapper(candidate)
+    if dialog is None:
+        return {"controls": [], "interactions": [], "states": [], "exploration_depth": 0}
+    try:
+        return explore_dialog(dialog, safe_mode=safe_mode == "safe")
+    except Exception as exc:
+        logger.warning("dialog_explorer_failed title={} error={}", candidate.get("title"), exc)
+        return {"controls": [], "interactions": [], "states": [], "exploration_depth": 0}
+
+
 def detect_dialog_or_window_transition(
     before_snapshot: RuntimeStateSnapshot,
     after_snapshot: RuntimeStateSnapshot,
@@ -674,6 +698,7 @@ def explore_menu_tree(
         if top_transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
             candidate = top_transition.get("window_snapshot") or {}
             if top_transition.get("result_type") == "dialog_opened" or top_transition.get("result_type") == "main_window_disabled_modal_likely":
+                exploration = _explore_dialog_candidate(candidate, safe_mode=safe_mode)
                 dialogs.append(RuntimeDialogRecord(
                     state_id=state_id,
                     top_menu=top_menu,
@@ -686,6 +711,10 @@ def explore_menu_tree(
                     enabled=candidate.get("enabled"),
                     visible=candidate.get("visible"),
                     controls=list(candidate.get("controls") or []),
+                    explored_controls=list(exploration.get("controls") or []),
+                    interactions_attempted=list(exploration.get("interactions") or []),
+                    resulting_states=list(exploration.get("states") or []),
+                    exploration_depth=int(exploration.get("exploration_depth") or 0),
                 ))
             else:
                 windows.append(RuntimeWindowRecord(
@@ -767,6 +796,7 @@ def explore_menu_tree(
             elif transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
                 candidate = transition.get("window_snapshot") or {}
                 if transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely"}:
+                    exploration = _explore_dialog_candidate(candidate, safe_mode=safe_mode)
                     dialogs.append(RuntimeDialogRecord(
                         state_id=state_id,
                         top_menu=top_menu,
@@ -779,6 +809,10 @@ def explore_menu_tree(
                         enabled=candidate.get("enabled"),
                         visible=candidate.get("visible"),
                         controls=list(candidate.get("controls") or []),
+                        explored_controls=list(exploration.get("controls") or []),
+                        interactions_attempted=list(exploration.get("interactions") or []),
+                        resulting_states=list(exploration.get("states") or []),
+                        exploration_depth=int(exploration.get("exploration_depth") or 0),
                     ))
                 else:
                     windows.append(RuntimeWindowRecord(

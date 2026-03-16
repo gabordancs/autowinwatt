@@ -107,6 +107,10 @@ class RuntimeDialogRecord:
     enabled: bool | None = None
     visible: bool | None = None
     controls: list[dict[str, Any]] = field(default_factory=list)
+    explored_controls: list[dict[str, Any]] = field(default_factory=list)
+    interactions_attempted: list[dict[str, Any]] = field(default_factory=list)
+    resulting_states: list[str] = field(default_factory=list)
+    exploration_depth: int = 0
 
 
 @dataclass(slots=True)
