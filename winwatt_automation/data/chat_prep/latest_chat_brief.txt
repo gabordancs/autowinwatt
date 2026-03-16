@@ -1,0 +1,28 @@
+Cél:
+- Stabilizálni a következő tesztkört
+
+Jelenlegi állapot:
+- branch: main
+- git status röviden: On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+- latest run id: 0001_safe_2026-03-16_21-14-19
+- latest success: True
+- latest summary röviden: run_id=0001_safe_2026-03-16_21-14-19 success=True command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --safe-mode safe summary={'shared_top_menus': 5, 'actions_only_in_a': 0, 'actions_only_in_b': 0, 'enabled_changes': 0, 'project_only_paths': 0}
+
+Legfrissebb futás summary:
+- no_project_top_menus: 5
+- project_open_top_menus: 5
+- diff_summary: {'shared_top_menus': 5, 'actions_only_in_a': 0, 'actions_only_in_b': 0, 'enabled_changes': 0, 'project_only_paths': 0}
+- skipped_by_safety: 6
+- last_error: None
+- modal_detected: False
+- recovery_attempted: False
+- recovery_success: False
+
+Konkrét kérés:
+- Adj következő minimális fejlesztői lépést
+- elemezd a legfrissebb állapotot
+- mondd meg a következő legkisebb lépést
+- írj Codex promptot a következő körre
