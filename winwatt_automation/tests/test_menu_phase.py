@@ -185,6 +185,62 @@ def test_structured_popup_rows_from_snapshots_sorts_filters_and_marks_separator(
     assert structured[2]["is_separator"] is True
 
 
+
+
+def test_group_popup_fragments_into_logical_rows_merges_overlapping_rows():
+    fragments = [
+        {
+            "text": "Projekt létrehozása",
+            "normalized_text": "projekt létrehozása",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 12, "top": 56, "right": 280, "bottom": 84},
+            "width": 268,
+            "height": 28,
+            "center_x": 146,
+            "center_y": 70,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": True,
+        },
+        {
+            "text": "",
+            "normalized_text": "",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 10, "top": 67, "right": 300, "bottom": 89},
+            "width": 290,
+            "height": 22,
+            "center_x": 155,
+            "center_y": 78,
+            "is_separator": False,
+            "source_scope": "global_process_scan",
+            "appeared_after_popup_open": True,
+        },
+        {
+            "text": "Projekt megnyitása",
+            "normalized_text": "projekt megnyitása",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 11, "top": 92, "right": 280, "bottom": 114},
+            "width": 269,
+            "height": 22,
+            "center_x": 145,
+            "center_y": 103,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": True,
+        },
+    ]
+
+    logical_rows = menu_helpers._group_popup_fragments_into_logical_rows(fragments)
+
+    assert len(logical_rows) == 2
+    assert logical_rows[0]["rectangle"] == {"left": 10, "top": 56, "right": 300, "bottom": 89}
+    assert logical_rows[0]["text"] == "Projekt létrehozása"
+    assert len(logical_rows[0]["fragments"]) == 2
+    assert logical_rows[1]["text"] == "Projekt megnyitása"
+
 def test_click_structured_popup_row_clicks_center(monkeypatch):
     clicks = []
     monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicks.append(("left", coords)))
