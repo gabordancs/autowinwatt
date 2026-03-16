@@ -5,9 +5,9 @@ from __future__ import annotations
 import argparse
 import time
 
-from winwatt_automation.commands.menu_commands import invoke_open_project_dialog_by_index, open_file_menu
 from winwatt_automation.live_ui.app_connector import connect_to_winwatt, prepare_main_window_for_menu_interaction
-from winwatt_automation.live_ui.menu_helpers import list_open_menu_items_structured
+from winwatt_automation.live_ui.menu_helpers import click_structured_popup_row, open_file_menu_and_capture_popup_state
+from winwatt_automation.live_ui.waits import detect_open_file_dialog, wait_for_dialog
 
 
 def main() -> None:
@@ -18,9 +18,8 @@ def main() -> None:
 
     connect_to_winwatt()
     prepare_main_window_for_menu_interaction()
-    open_file_menu()
-
-    entries = list_open_menu_items_structured()
+    popup_state = open_file_menu_and_capture_popup_state()
+    entries = popup_state["rows"]
     print("Popup submenu entries:")
     for entry in entries:
         rect = entry["rectangle"]
@@ -40,9 +39,24 @@ def main() -> None:
         time.sleep(max(0.0, args.hold_seconds))
         return
 
-    result = invoke_open_project_dialog_by_index(args.click_index)
+    clicked = click_structured_popup_row(entries, args.click_index)
+    dialog_detected = detect_open_file_dialog(timeout=5.0)
+    dialog_title = None
+    if dialog_detected:
+        try:
+            dialog_title = wait_for_dialog(timeout=1.0).window_text()
+        except Exception:
+            dialog_title = None
+
     print("\nClick result:")
-    print(result)
+    print({
+        "clicked_index": args.click_index,
+        "clicked_rectangle": clicked.get("rectangle"),
+        "clicked_entry": clicked,
+        "dialog_detected": dialog_detected,
+        "dialog_title": dialog_title,
+        "top_menu_click_count": popup_state.get("top_menu_click_count"),
+    })
 
 
 if __name__ == "__main__":

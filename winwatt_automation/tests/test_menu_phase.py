@@ -111,10 +111,8 @@ def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
     assert relative_clicks == [file_item]
 
 
-def test_list_open_menu_items_structured_sorts_filters_and_marks_separator(monkeypatch):
+def test_structured_popup_rows_from_snapshots_sorts_filters_and_marks_separator(monkeypatch):
     menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
-    popup_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="Menu"))
-
     top_level = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(5, 5, 60, 30))
 
     before = [
@@ -178,32 +176,23 @@ def test_list_open_menu_items_structured_sorts_filters_and_marks_separator(monke
         },
     ]
 
-    monkeypatch.setattr(menu_helpers, "capture_menu_popup_snapshot", lambda: after)
     monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([top_level]))
-    menu_helpers._LAST_MENU_SNAPSHOT_BEFORE_OPEN = menu_helpers._snapshot_keys(before)
 
-    structured = menu_helpers.list_open_menu_items_structured()
+    structured = menu_helpers._structured_popup_rows_from_snapshots(before, after)
 
     assert [item["index"] for item in structured] == [0, 1, 2]
     assert structured[0]["rectangle"]["top"] == 67
     assert structured[2]["is_separator"] is True
 
 
-def test_click_open_menu_item_by_index_clicks_center(monkeypatch):
-    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: None)
-    monkeypatch.setattr(menu_helpers, "click_top_menu_item", lambda _: None)
-    monkeypatch.setattr(
-        menu_helpers,
-        "list_open_menu_items_structured",
-        lambda: [
-            {"index": 0, "center_x": 30, "center_y": 30, "is_separator": False, "rectangle": {"left": 20}},
-        ],
-    )
-
+def test_click_structured_popup_row_clicks_center(monkeypatch):
     clicks = []
     monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicks.append(("left", coords)))
 
-    selected = menu_helpers.click_open_menu_item_by_index(0)
+    selected = menu_helpers.click_structured_popup_row(
+        [{"index": 0, "center_x": 30, "center_y": 30, "is_separator": False, "rectangle": {"left": 20}}],
+        0,
+    )
 
     assert selected["center_x"] == 30
     assert clicks == [("left", (30, 30))]
@@ -211,15 +200,35 @@ def test_click_open_menu_item_by_index_clicks_center(monkeypatch):
 
 def test_click_open_menu_item_by_index_rejects_separator(monkeypatch):
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: None)
-    monkeypatch.setattr(menu_helpers, "click_top_menu_item", lambda _: None)
     monkeypatch.setattr(
         menu_helpers,
-        "list_open_menu_items_structured",
-        lambda: [{"index": 0, "center_x": 10, "center_y": 10, "is_separator": True}],
+        "open_file_menu_and_capture_popup_state",
+        lambda: {"rows": [{"index": 0, "center_x": 10, "center_y": 10, "is_separator": True}]},
     )
 
     with pytest.raises(ValueError, match="separator"):
         menu_helpers.click_open_menu_item_by_index(0)
+
+
+def test_click_open_menu_item_by_index_uses_existing_popup_rows_once(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: None)
+
+    call_count = {"open": 0}
+
+    def fake_open_state():
+        call_count["open"] += 1
+        return {"rows": [{"index": 0, "center_x": 50, "center_y": 60, "is_separator": False, "rectangle": {"left": 20}}]}
+
+    monkeypatch.setattr(menu_helpers, "open_file_menu_and_capture_popup_state", fake_open_state)
+
+    clicked = []
+    monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicked.append(coords))
+
+    selected = menu_helpers.click_open_menu_item_by_index(0)
+
+    assert call_count["open"] == 1
+    assert clicked == [(50, 60)]
+    assert selected["center_x"] == 50
 
 
 def test_open_file_menu_raises_with_available_items(monkeypatch):

@@ -317,18 +317,15 @@ def _looks_like_popup_entry(entry: dict[str, Any], top_level_rects: set[tuple[in
     return True
 
 
-def list_open_menu_items_structured() -> list[dict[str, Any]]:
-    """Return popup submenu entries in deterministic visual order using snapshot diff."""
+def _structured_popup_rows_from_snapshots(
+    before_rows: list[dict[str, Any]],
+    after_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Extract structured popup rows by diffing two menu snapshots."""
 
-    before_snapshot_rows = []
-    baseline = _LAST_MENU_SNAPSHOT_BEFORE_OPEN
-    if baseline is not None:
-        for text, control_type, class_name, rect_key, source_scope in baseline:
-            before_snapshot_rows.append((text, control_type, class_name, rect_key, source_scope))
-
-    after_rows = capture_menu_popup_snapshot()
+    before_keys = _snapshot_keys(before_rows)
     after_keys = _snapshot_keys(after_rows)
-    before_keys = set(before_snapshot_rows)
+    new_keys = after_keys - before_keys
 
     top_level_rects = {
         (rect["left"], rect["top"], rect["right"], rect["bottom"])
@@ -340,15 +337,14 @@ def list_open_menu_items_structured() -> list[dict[str, Any]]:
     popup_candidates: list[dict[str, Any]] = []
     for row in after_rows:
         rect = row["rectangle"]
-        rect_key = f"({rect['left']},{rect['top']})-({rect['right']},{rect['bottom']})"
         row_key = (
             row["normalized_text"],
             _normalize(str(row.get("control_type", ""))),
             _normalize(str(row.get("class_name", ""))),
-            rect_key,
+            f"({rect['left']},{rect['top']})-({rect['right']},{rect['bottom']})",
             row["source_scope"],
         )
-        row["appeared_after_popup_open"] = row_key in (after_keys - before_keys)
+        row["appeared_after_popup_open"] = row_key in new_keys
         if not row["appeared_after_popup_open"]:
             continue
         if not _looks_like_popup_entry(row, top_level_rects):
@@ -356,12 +352,15 @@ def list_open_menu_items_structured() -> list[dict[str, Any]]:
         popup_candidates.append(row)
 
     if not popup_candidates:
-        logger.info("No new popup candidates discovered from menu snapshots")
+        logger.info(
+            "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count=0",
+            len(before_rows),
+            len(after_rows),
+        )
         return []
 
     popup_candidates.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
 
-    # Keep entries in a mostly-vertical block (same popup group).
     lefts = [entry["rectangle"]["left"] for entry in popup_candidates]
     rights = [entry["rectangle"]["right"] for entry in popup_candidates]
     min_left, max_left = min(lefts), max(lefts)
@@ -374,20 +373,90 @@ def list_open_menu_items_structured() -> list[dict[str, Any]]:
         if (min_left - horizontal_tolerance) <= entry["rectangle"]["left"] <= (max_left + horizontal_tolerance)
         and (min_right - horizontal_tolerance) <= entry["rectangle"]["right"] <= (max_right + horizontal_tolerance)
     ]
-
     filtered.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
     for idx, entry in enumerate(filtered):
         entry["index"] = idx
 
     logger.info(
-        "Structured popup entries before={} after={} new={} filtered={} entries={}",
-        len(before_keys),
-        len(after_keys),
-        len(after_keys - before_keys),
+        "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count={}",
+        len(before_rows),
+        len(after_rows),
         len(filtered),
-        filtered,
     )
     return filtered
+
+
+def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
+    """Open ``Fájl`` once and return popup snapshots plus structured rows."""
+
+    main_window = prepare_main_window_for_menu_interaction()
+    item = find_top_menu_item("Fájl")
+
+    before_rows = capture_menu_popup_snapshot()
+    top_menu_click_count = 0
+    try:
+        item.click_input()
+        top_menu_click_count += 1
+    except Exception as exc:
+        logger.warning("Top menu item 'Fájl' click_input() failed: {}", exc)
+        _click_by_relative_rect_center(item, main_window)
+        top_menu_click_count += 1
+
+    time.sleep(0.2)
+    after_rows = capture_menu_popup_snapshot()
+    popup_open = did_any_new_menu_popup_appear(_snapshot_keys(before_rows), _snapshot_keys(after_rows))
+    structured_rows = _structured_popup_rows_from_snapshots(before_rows, after_rows)
+
+    logger.info(
+        "Menu open transitions: before snapshot row count={} after snapshot row count={} structured row count={} top menu clicked more than once={}",
+        len(before_rows),
+        len(after_rows),
+        len(structured_rows),
+        top_menu_click_count > 1,
+    )
+
+    global _LAST_MENU_SNAPSHOT_BEFORE_OPEN
+    _LAST_MENU_SNAPSHOT_BEFORE_OPEN = _snapshot_keys(before_rows)
+    return {
+        "before_snapshot": before_rows,
+        "after_snapshot": after_rows,
+        "rows": structured_rows,
+        "popup_open": popup_open,
+        "top_menu_click_count": top_menu_click_count,
+    }
+
+
+def click_structured_popup_row(rows: list[dict[str, Any]], index: int) -> dict[str, Any]:
+    """Click one already-discovered popup row without reopening the top menu."""
+
+    if index < 0:
+        raise ValueError("index must be >= 0")
+    if not rows:
+        raise ValueError("popup rows are empty; cannot click submenu row")
+    if index >= len(rows):
+        raise IndexError(f"Requested popup index {index}, but only {len(rows)} entries exist")
+
+    selected = rows[index]
+    if selected.get("is_separator"):
+        raise ValueError(f"Requested popup index {index} is a separator and cannot be clicked")
+
+    x = int(selected["center_x"])
+    y = int(selected["center_y"])
+    _mouse_click((x, y))
+    logger.info(
+        "Popup row click: selected row index={} selected row rectangle={} top menu clicked more than once={}",
+        index,
+        selected.get("rectangle"),
+        False,
+    )
+    return selected
+
+
+def list_open_menu_items_structured() -> list[dict[str, Any]]:
+    """Return popup submenu entries in deterministic visual order using snapshot diff."""
+
+    state = open_file_menu_and_capture_popup_state()
+    return state["rows"]
 
 
 def find_top_menu_item(title: str) -> Any:
@@ -468,17 +537,11 @@ def click_open_menu_item_by_index(index: int) -> dict[str, Any]:
         raise ValueError("index must be >= 0")
 
     prepare_main_window_for_menu_interaction()
-    click_top_menu_item("Fájl")
-    entries = list_open_menu_items_structured()
-    if index >= len(entries):
-        raise IndexError(f"Requested popup index {index}, but only {len(entries)} entries exist")
+    popup_state = open_file_menu_and_capture_popup_state()
+    popup_rows = popup_state["rows"]
+    if popup_rows:
+        return click_structured_popup_row(popup_rows, index)
 
-    selected = entries[index]
-    if selected.get("is_separator"):
-        raise ValueError(f"Requested popup index {index} is a separator and cannot be clicked")
-
-    x = int(selected["center_x"])
-    y = int(selected["center_y"])
-    _mouse_click((x, y))
-    logger.info("Clicked popup submenu index={} coords=({}, {}) entry={}", index, x, y, selected)
-    return selected
+    logger.info("Popup rows empty after open; retrying open/capture for index={}", index)
+    retry_rows = open_file_menu_and_capture_popup_state()["rows"]
+    return click_structured_popup_row(retry_rows, index)
