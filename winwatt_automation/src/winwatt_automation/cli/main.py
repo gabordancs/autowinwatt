@@ -7,6 +7,7 @@ import typer
 from winwatt_automation.commands.registry import CommandRegistry
 from winwatt_automation.config import PARSED_DATA_DIR, RAW_DATA_DIR
 from winwatt_automation.parser.exporters import export_ui_model
+from winwatt_automation.parser.program_map import build_program_map
 from winwatt_automation.parser.semantic_classifier import classify_model
 from winwatt_automation.parser.xml_parser import parse_hungarian_xml
 
@@ -51,6 +52,21 @@ def list_actions(
     registry.build_from_ui_model(model)
     for command in registry.commands:
         typer.echo(f"{command.command_name} [{command.source_form}.{command.source_item_name}]")
+
+
+@app.command("build-program-map")
+def build_program_map_cmd(
+    xml_path: Path = typer.Option(RAW_DATA_DIR / "Hungarian.xml", exists=True, help="Path to Hungarian.xml"),
+    output_dir: Path = typer.Option(PARSED_DATA_DIR, help="Output directory for generated catalogs"),
+) -> None:
+    result = build_program_map(xml_path=xml_path, output_dir=output_dir)
+    counts = result["counts"]
+    typer.echo(f"Program map generated under: {output_dir}")
+    typer.echo(f"forms: {counts['forms']}")
+    typer.echo(f"controls: {counts['controls']}")
+    typer.echo(f"actions: {counts['actions']}")
+    typer.echo(f"dialogs: {counts['dialogs']}")
+    typer.echo(f"workflow_seeds: {counts['workflow_seeds']}")
 
 
 if __name__ == "__main__":

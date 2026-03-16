@@ -1,0 +1,62 @@
+[
+  {
+    "form_name": "MainForm",
+    "form_type": "TMainForm",
+    "form_caption": "WinWatt",
+    "stable_key": "main_form",
+    "item_count": 2,
+    "action_count": 1,
+    "button_count": 1,
+    "menu_count": 0,
+    "tab_count": 0,
+    "list_count": 0,
+    "input_count": 1,
+    "is_dialog_candidate": false,
+    "is_main_window_candidate": true
+  },
+  {
+    "form_name": "AbsorptionTableForm",
+    "form_type": "TForm",
+    "form_caption": null,
+    "stable_key": "absorption_table_form",
+    "item_count": 1,
+    "action_count": 1,
+    "button_count": 1,
+    "menu_count": 0,
+    "tab_count": 0,
+    "list_count": 0,
+    "input_count": 0,
+    "is_dialog_candidate": true,
+    "is_main_window_candidate": false
+  },
+  {
+    "form_name": "__Actions__",
+    "form_type": "Virtual",
+    "form_caption": "Actions",
+    "stable_key": "actions",
+    "item_count": 1,
+    "action_count": 1,
+    "button_count": 0,
+    "menu_count": 0,
+    "tab_count": 0,
+    "list_count": 0,
+    "input_count": 0,
+    "is_dialog_candidate": false,
+    "is_main_window_candidate": false
+  },
+  {
+    "form_name": "__MenuItems__",
+    "form_type": "Virtual",
+    "form_caption": "MenuItems",
+    "stable_key": "menu_items",
+    "item_count": 1,
+    "action_count": 1,
+    "button_count": 0,
+    "menu_count": 1,
+    "tab_count": 0,
+    "list_count": 0,
+    "input_count": 0,
+    "is_dialog_candidate": false,
+    "is_main_window_candidate": false
+  }
+]
