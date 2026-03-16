@@ -1,1 +1,560 @@
-{}
+{
+  "AdaptFloorHeatingRoundsForm": {
+    "form_name": "AdaptFloorHeatingRoundsForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "AdaptFloorHeatingRoundsForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "AdaptRadiatorsForm": {
+    "form_name": "AdaptRadiatorsForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "AdaptRadiatorsForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "KobraForm": {
+    "form_name": "KobraForm",
+    "menu_bar": [
+      {
+        "name": "AddHorisontalLine",
+        "caption": "Vízszintes rácsvonal beszúrása",
+        "item_type": "TMenuItem",
+        "stable_key": "KobraForm.AddHorisontalLine",
+        "children": []
+      },
+      {
+        "name": "AddVerticalLine",
+        "caption": "Függőleges rácsvonal beszúrása",
+        "item_type": "TMenuItem",
+        "stable_key": "KobraForm.AddVerticalLine",
+        "children": []
+      }
+    ]
+  },
+  "AiringEnergyForm": {
+    "form_name": "AiringEnergyForm",
+    "menu_bar": [
+      {
+        "name": "BigFanSize",
+        "caption": "Nagy ventilátorok (V > 10000 m3/h) 70 %",
+        "item_type": "TMenuItem",
+        "stable_key": "AiringEnergyForm.BigFanSize",
+        "children": []
+      },
+      {
+        "name": "MediumFanSize",
+        "caption": "Közepes ventilátorok (1000 < V < 10000 m3/h) 55 %",
+        "item_type": "TMenuItem",
+        "stable_key": "AiringEnergyForm.MediumFanSize",
+        "children": []
+      },
+      {
+        "name": "LittleFanSize",
+        "caption": "Kis ventilátorok (V < 1000 m3/h) 40 %",
+        "item_type": "TMenuItem",
+        "stable_key": "AiringEnergyForm.LittleFanSize",
+        "children": []
+      }
+    ]
+  },
+  "BuildingModifyForm": {
+    "form_name": "BuildingModifyForm",
+    "menu_bar": [
+      {
+        "name": "jznaprofilltrehozsa1",
+        "caption": "Új használati feltételek szerinti zóna létrehozása...",
+        "item_type": "TMenuItem",
+        "stable_key": "BuildingModifyForm.jznaprofilltrehozsa1",
+        "children": []
+      },
+      {
+        "name": "Znaprofilmdostsa1",
+        "caption": "Használati feltételek szerinti zóna módosítása...",
+        "item_type": "TMenuItem",
+        "stable_key": "BuildingModifyForm.Znaprofilmdostsa1",
+        "children": []
+      },
+      {
+        "name": "Znaprofiltrlse1",
+        "caption": "Használati feltételek szerinti zóna törlése",
+        "item_type": "TMenuItem",
+        "stable_key": "BuildingModifyForm.Znaprofiltrlse1",
+        "children": []
+      },
+      {
+        "name": "MenuItem1",
+        "caption": "Új hőegyensúly szerinti zóna létrehozása...",
+        "item_type": "TMenuItem",
+        "stable_key": "BuildingModifyForm.MenuItem1",
+        "children": []
+      },
+      {
+        "name": "MenuItem2",
+        "caption": "Hőegyensúly szerinti zóna módosítása...",
+        "item_type": "TMenuItem",
+        "stable_key": "BuildingModifyForm.MenuItem2",
+        "children": []
+      },
+      {
+        "name": "MenuItem5",
+        "caption": "Hőegyensúly szerinti zóna törlése",
+        "item_type": "TMenuItem",
+        "stable_key": "BuildingModifyForm.MenuItem5",
+        "children": []
+      }
+    ]
+  },
+  "ChangeBoundarisForm": {
+    "form_name": "ChangeBoundarisForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeBoundarisForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChangeBuildingReferenceForm": {
+    "form_name": "ChangeBuildingReferenceForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeBuildingReferenceForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChangeCeilingForm": {
+    "form_name": "ChangeCeilingForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeCeilingForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChangeFiltrationForm": {
+    "form_name": "ChangeFiltrationForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeFiltrationForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChangeHydraulicsForm": {
+    "form_name": "ChangeHydraulicsForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeHydraulicsForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChangeRadiatorForm": {
+    "form_name": "ChangeRadiatorForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeRadiatorForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChangeTempForm": {
+    "form_name": "ChangeTempForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ChangeTempForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ChildWinForm": {
+    "form_name": "ChildWinForm",
+    "menu_bar": [
+      {
+        "name": "EditGroup",
+        "caption": "&Szerkesztés",
+        "item_type": "TMenuItem",
+        "stable_key": "ChildWinForm.EditGroup",
+        "children": []
+      },
+      {
+        "name": "GroupGroup",
+        "caption": "&Csoport",
+        "item_type": "TMenuItem",
+        "stable_key": "ChildWinForm.GroupGroup",
+        "children": []
+      },
+      {
+        "name": "ItemGroup",
+        "caption": "&Elem",
+        "item_type": "TMenuItem",
+        "stable_key": "ChildWinForm.ItemGroup",
+        "children": []
+      }
+    ]
+  },
+  "CoolingEnergyForm": {
+    "form_name": "CoolingEnergyForm",
+    "menu_bar": [
+      {
+        "name": "BigFanSize",
+        "caption": "Nagy ventilátorok (V > 10000 m3/h) 70 %",
+        "item_type": "TMenuItem",
+        "stable_key": "CoolingEnergyForm.BigFanSize",
+        "children": []
+      },
+      {
+        "name": "MediumFanSize",
+        "caption": "Közepes ventilátorok (1000 < V < 10000 m3/h) 55 %",
+        "item_type": "TMenuItem",
+        "stable_key": "CoolingEnergyForm.MediumFanSize",
+        "children": []
+      },
+      {
+        "name": "LittleFanSize",
+        "caption": "Kis ventilátorok (V < 1000 m3/h) 40 %",
+        "item_type": "TMenuItem",
+        "stable_key": "CoolingEnergyForm.LittleFanSize",
+        "children": []
+      }
+    ]
+  },
+  "EPBDOptimiserForm": {
+    "form_name": "EPBDOptimiserForm",
+    "menu_bar": [
+      {
+        "name": "EditPaste",
+        "caption": "Beillesztés",
+        "item_type": "TMenuItem",
+        "stable_key": "EPBDOptimiserForm.EditPaste",
+        "children": []
+      },
+      {
+        "name": "Import",
+        "caption": "Import...",
+        "item_type": "TMenuItem",
+        "stable_key": "EPBDOptimiserForm.Import",
+        "children": []
+      },
+      {
+        "name": "DeletePrevVariation",
+        "caption": "Kijelölt előttiek törlése",
+        "item_type": "TMenuItem",
+        "stable_key": "EPBDOptimiserForm.DeletePrevVariation",
+        "children": []
+      },
+      {
+        "name": "DeleteVariation",
+        "caption": "Kijelölt törlése",
+        "item_type": "TMenuItem",
+        "stable_key": "EPBDOptimiserForm.DeleteVariation",
+        "children": []
+      },
+      {
+        "name": "DeletePostVariation",
+        "caption": "Kijelölt utániak törlése",
+        "item_type": "TMenuItem",
+        "stable_key": "EPBDOptimiserForm.DeletePostVariation",
+        "children": []
+      }
+    ]
+  },
+  "ETDocumentForm": {
+    "form_name": "ETDocumentForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ETDocumentForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "ExportForm": {
+    "form_name": "ExportForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "ExportForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "GeneraleChangeForm": {
+    "form_name": "GeneraleChangeForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "GeneraleChangeForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "MainForm": {
+    "form_name": "MainForm",
+    "menu_bar": [
+      {
+        "name": "FileGroup",
+        "caption": "Fájl",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.FileGroup",
+        "children": []
+      },
+      {
+        "name": "FileOpenItem",
+        "caption": null,
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.FileOpenItem",
+        "children": []
+      },
+      {
+        "name": "UsedMaterialsItem",
+        "caption": "Felhasznált anyagok",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.UsedMaterialsItem",
+        "children": []
+      },
+      {
+        "name": "Felhasznltelemekexport1",
+        "caption": "Export a vágólapra...",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.Felhasznltelemekexport1",
+        "children": []
+      },
+      {
+        "name": "Lists",
+        "caption": "&Jegyzékek",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.Lists",
+        "children": []
+      },
+      {
+        "name": "ToolsMenuGroup",
+        "caption": "Eszközök",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.ToolsMenuGroup",
+        "children": []
+      },
+      {
+        "name": "NetworkToolsMenuGroup",
+        "caption": "Esz&közök",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.NetworkToolsMenuGroup",
+        "children": []
+      },
+      {
+        "name": "OptionsGroup",
+        "caption": "&Beállítások",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.OptionsGroup",
+        "children": []
+      },
+      {
+        "name": "WindowsGroup",
+        "caption": "&Ablak",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.WindowsGroup",
+        "children": []
+      },
+      {
+        "name": "HelpGroup",
+        "caption": "&Súgó",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.HelpGroup",
+        "children": []
+      },
+      {
+        "name": "TestMenuItem",
+        "caption": "Tesztek",
+        "item_type": "TMenuItem",
+        "stable_key": "MainForm.TestMenuItem",
+        "children": []
+      }
+    ]
+  },
+  "NetworkRoundTableViewForm": {
+    "form_name": "NetworkRoundTableViewForm",
+    "menu_bar": [
+      {
+        "name": "EditGroup",
+        "caption": "&Szerkesztés",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkRoundTableViewForm.EditGroup",
+        "children": []
+      },
+      {
+        "name": "Export",
+        "caption": "&Export a vágólapra",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkRoundTableViewForm.Export",
+        "children": []
+      }
+    ]
+  },
+  "NetworkTableViewForm": {
+    "form_name": "NetworkTableViewForm",
+    "menu_bar": [
+      {
+        "name": "Edit",
+        "caption": "&Szerkesztés",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkTableViewForm.Edit",
+        "children": []
+      },
+      {
+        "name": "Export",
+        "caption": "Export a vágólapra",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkTableViewForm.Export",
+        "children": []
+      }
+    ]
+  },
+  "NetworkTreeViewForm": {
+    "form_name": "NetworkTreeViewForm",
+    "menu_bar": [
+      {
+        "name": "ModifyPointAction",
+        "caption": "Csomóponti elem módosítása",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkTreeViewForm.ModifyPointAction",
+        "children": []
+      },
+      {
+        "name": "Szerkeszts1",
+        "caption": "&Szerkesztés",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkTreeViewForm.Szerkeszts1",
+        "children": []
+      },
+      {
+        "name": "Export1",
+        "caption": "&Export fájlba...",
+        "item_type": "TMenuItem",
+        "stable_key": "NetworkTreeViewForm.Export1",
+        "children": []
+      }
+    ]
+  },
+  "PrintingForm": {
+    "form_name": "PrintingForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "PrintingForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "RotateRoomsForm": {
+    "form_name": "RotateRoomsForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "RotateRoomsForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "SelectOnlyZonesFrame": {
+    "form_name": "SelectOnlyZonesFrame",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "SelectOnlyZonesFrame.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "SelectStoredRulesForm": {
+    "form_name": "SelectStoredRulesForm",
+    "menu_bar": [
+      {
+        "name": "DeleteRule",
+        "caption": "Szabály törlése",
+        "item_type": "TMenuItem",
+        "stable_key": "SelectStoredRulesForm.DeleteRule",
+        "children": []
+      }
+    ]
+  },
+  "SelectZonesFrame": {
+    "form_name": "SelectZonesFrame",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "SelectZonesFrame.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "UsedMaterialsExportForm": {
+    "form_name": "UsedMaterialsExportForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "UsedMaterialsExportForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  },
+  "UsedMaterialsPrintingForm": {
+    "form_name": "UsedMaterialsPrintingForm",
+    "menu_bar": [
+      {
+        "name": "ReverseSelectionItem",
+        "caption": "Kijelölések átfordítása",
+        "item_type": "TMenuItem",
+        "stable_key": "UsedMaterialsPrintingForm.ReverseSelectionItem",
+        "children": []
+      }
+    ]
+  }
+}

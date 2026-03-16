@@ -1,1 +1,3004 @@
-[]
+[
+  {
+    "form_name": "AboutForm",
+    "form_caption": "Névjegy",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OKButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AbsorptionTableForm",
+    "form_caption": "Külső burkolat jellemzői",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AdaptFloorHeatingRoundsForm",
+    "form_caption": "Felületfűtés-hűtés körök hidraulikai összehangolása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "HelpButton",
+      "ExitButton",
+      "ModifyButton"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton",
+      "RadioButton1",
+      "RadioButton2",
+      "Heating",
+      "Cooling"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AdaptRadiatorsForm",
+    "form_caption": "Radiátorok illesztése",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "NextButton",
+      "HelpButton",
+      "BackButton",
+      "ExitButton",
+      "ModifyButton"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton",
+      "Designeddt",
+      "Optimaldt",
+      "AllModify",
+      "SelectedModify"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "Agros2dFrame",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "ModifyButton",
+      "MoveUpButton",
+      "MoveDownButton",
+      "DeleteButton",
+      "LoadButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [
+      "LayersTabSheet",
+      "EndLayersTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "KobraForm",
+    "form_caption": "Rácsos model adatainak megadása",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "SelectButton",
+      "LoadButton",
+      "AgrosModelSaveButton",
+      "SaveButton",
+      "ReadKobraButton",
+      "OkButton",
+      "CancelButton",
+      "HelpButton",
+      "NewVerticalLineButton",
+      "NewHorisontalLineButton",
+      "ModifyAreaButton",
+      "DeleteAreaButton",
+      "RebuildButton",
+      "ModifyBorderConditionButton",
+      "DeleteBorderConditionButton",
+      "SaveGroupButton"
+    ],
+    "inputs": [
+      "CreateMode",
+      "CreateAreaCheckBox",
+      "DeleteUnusedLines",
+      "BorderConditionType",
+      "CreateBorderConditionCheckBox",
+      "ModifyAUEdgesCheckBox"
+    ],
+    "file_dialogs": [
+      "SaveDialog1",
+      "OpenDialog1",
+      "SaveDialog2"
+    ],
+    "tabs": [
+      "TabSheet1",
+      "SizesTabSheet",
+      "MaterialTabSheet",
+      "BorderTabSheet",
+      "UValuesTabSheet",
+      "KobraGroupTabSheet"
+    ],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "Agros2dForm",
+    "form_caption": "Agros2d modell",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "OkButton",
+      "CancelButton",
+      "HelpButton",
+      "AgrosModelSaveButton"
+    ],
+    "inputs": [
+      "GeometryType",
+      "IsolationPos"
+    ],
+    "file_dialogs": [
+      "SaveDialog1"
+    ],
+    "tabs": [
+      "TabSheet4"
+    ],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "AiringEnergyForm",
+    "form_caption": "A légtechnikai rendszer adatainak megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "HelpButton",
+      "CancelButton",
+      "OKButton"
+    ],
+    "inputs": [
+      "HasRecupering",
+      "HasAirHeating",
+      "AirChangeFactGived",
+      "AirVolumeGived",
+      "PreheatingType",
+      "SoilType",
+      "AirVolumeGived2023",
+      "AirChangeFactGived2023",
+      "HasAirHeating2023",
+      "HasRecupering2023",
+      "ElectricAntifreezeHeating",
+      "HasAirCooling2023",
+      "AirHeatingOnly",
+      "AirCoolingOnly",
+      "CkFromTable",
+      "CkFromUser",
+      "Notqkv",
+      "Cogenerative",
+      "CoolerCkFromTable",
+      "CoolerCkFromUser",
+      "CoolerNotqkv",
+      "Circle",
+      "Square",
+      "Heated",
+      "CalcCoolingPowerLoss",
+      "CalcHeatingPowerLoss",
+      "fszFromTable",
+      "fszFromUser",
+      "VentWorkingTimeDim",
+      "VentilWorkingAllYear",
+      "VentilWorkingOnlyWinter",
+      "CalcMode",
+      "UsingFlag"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "OriginalTabSheet",
+      "TabSheet2022",
+      "BoylerSheet",
+      "CoolerSheet",
+      "Distribution",
+      "SystemSheet",
+      "EnergyTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AirMaterialModifyForm",
+    "form_caption": "Légréteg adatok karbantartása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "Cancel",
+      "OK"
+    ],
+    "inputs": [
+      "Ventilled"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "AirPowerForm",
+    "form_caption": "Filtrációs hőterhelések",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "DeleteButton",
+      "OK"
+    ],
+    "inputs": [
+      "AirChangeRadioButton",
+      "PortionRadioButton",
+      "VolumeRadioButton",
+      "PowerRadioButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AlterSystemsForm",
+    "form_caption": "Alternatív rendszerek alkalmazhatóságának vizsgálata",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OkButton",
+      "HelpButton",
+      "CancelButton",
+      "PrintButton",
+      "PriceLoadButton",
+      "PriceSaveButton",
+      "RecalPricesButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "TabSheet2",
+      "TabSheet3"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AlterSystemsDocForm",
+    "form_caption": "Energetikai minőségtanúsítvány készítése",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "ExportButton",
+      "ExportToFileButton",
+      "ExportToPDFFileButton"
+    ],
+    "inputs": [
+      "ProjektDataCheckBox",
+      "PageNumberCheckBox",
+      "DateCheckBox",
+      "ProjektNameCheckBox",
+      "WithPrices"
+    ],
+    "file_dialogs": [
+      "SaveDialog1",
+      "SaveDialog2",
+      "SaveDialog3"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ArchLineReadForm",
+    "form_caption": "ARCHLine.XP projekt betöltése",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "EndButton"
+    ],
+    "inputs": [
+      "LevelGroupOnly",
+      "FlatGroupOnly",
+      "LevelAndFlatGroup",
+      "NoLevelAndFlatGroup",
+      "NewBuilding",
+      "BuildingFromProjekt",
+      "BuildingFromArchLine",
+      "NewBuildingName",
+      "FromRoomNumber",
+      "FromFunctionAndID",
+      "FromID",
+      "Heated",
+      "Cooled",
+      "MustSave",
+      "SortingType",
+      "GlassModeNu",
+      "GlassModeg"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "AreaForm",
+    "form_caption": "Felület megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ZoneTypes"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "BoundaryModifyForm",
+    "form_caption": "Határoló szerkezet adatainak módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "kuTableButton",
+      "ShadowTableButton",
+      "TestButton",
+      "OK"
+    ],
+    "inputs": [
+      "GlassModeNu",
+      "GlassModeg",
+      "InfiltrationEnabled"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "WallSheet",
+      "WindowSheet",
+      "FloorTabSheet",
+      "InfiltrationTabSheet",
+      "FloorTabSheet2",
+      "WindowCalcTabSheet",
+      "CoveringTabSheet"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "BuildingModifyForm",
+    "form_caption": null,
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "ModifyHeatedZoneButton",
+      "ModifyCooledZoneButton",
+      "RecalAllETZoneButton",
+      "OK",
+      "OptimiserButton",
+      "TestButton",
+      "AddPDFButton",
+      "DeletePDFButton",
+      "MoveUpPDFButton",
+      "MoveDownPDFButton"
+    ],
+    "inputs": [
+      "SimpleISRG",
+      "ComplexISRG",
+      "fg1",
+      "Gw",
+      "PermissionCalc",
+      "ETCalc",
+      "MainBuildingCategory",
+      "PartWithOwnCategory",
+      "FromSubBuildings",
+      "HCalcMode",
+      "MERMode",
+      "AAConditionsIsMet",
+      "HeatingStokerIn",
+      "HeatingTubesIn",
+      "WaterHeatingTubesIn",
+      "WaterHeatingStoreIn",
+      "AiringStokerIn",
+      "NeedCooling",
+      "NeedAiring",
+      "WaterHeatingTubesIn2023",
+      "HeatingTubesIn2023",
+      "HeatingStokerIn2023",
+      "MoreAs10Rad",
+      "RefBuildingWall",
+      "RefBuildingCeil",
+      "RefnFilt",
+      "GoodLevel",
+      "ExcellentLevel",
+      "PDFUseFullPath"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "General",
+      "Heating",
+      "Cooling",
+      "Energy",
+      "Zones",
+      "Reference",
+      "Reference2023",
+      "RoomsTabSheet",
+      "BoundariesTabSheet",
+      "SystemsTabSheet",
+      "ConsumptionsTabSheet",
+      "Systems2023TabSheet",
+      "BoundariesRenovationTabSheet",
+      "PhotoTabSheet",
+      "PDFTabSheet"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "BuTableForm",
+    "form_caption": "Hőmérsékleti korrekciós tényezők",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "CadHydraulicReadForm",
+    "form_caption": "CAD hidraulika projekt betöltése",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "SaveRulesButton",
+      "LoadRulesButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [
+      "OpenDialog1",
+      "SaveDialog1"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "CalcBivalenceForm",
+    "form_caption": "Bivalencia számítás",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "StopPrimaryHeaterTemp",
+      "PrintCheckBox"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "CFPRegistrationForm",
+    "form_caption": "Regisztrációs kérelem az adott számítógépre",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "SendButton",
+      "CloseButton"
+    ],
+    "inputs": [
+      "UseCode",
+      "Reason"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeBoundarisForm",
+    "form_caption": "Szerkezetek cseréje",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK",
+      "SearchListButton",
+      "ReplaceListButton",
+      "kuTableButton",
+      "ShadowTableButton",
+      "SetReplaceTypeButton"
+    ],
+    "inputs": [
+      "GlassModeNu",
+      "GlassModeg",
+      "NotHeated",
+      "Heated",
+      "NotCooled",
+      "Cooled",
+      "ChangeTempMode",
+      "TempMode",
+      "CalculatedWindowSet",
+      "OnlySearchCheckBox",
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "WallSheet",
+      "WindowSheet",
+      "FloorSheet",
+      "FloorSheet2",
+      "TempTabSheet",
+      "SizeTabSheet",
+      "WindowCalcTabSheet",
+      "CoveringsTabSheet",
+      "FarCoveringsTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeBoundaryListForm",
+    "form_caption": "Keresésnek megfelelő határoló szerkezetek",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeBuildingReferenceForm",
+    "form_caption": "Helyiségek átsorolása más épületbe, légtechnikai rendszerbe",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeCeilingForm",
+    "form_caption": "Födémek törlése, létrehozása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "SearchListButton",
+      "DeleteButton",
+      "ReplaceListButton",
+      "CreateButton",
+      "MSZButton"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeFiltrationForm",
+    "form_caption": "Téli filtráció számítás cseréje",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AirChangeRadioButton",
+      "PortionRadioButton",
+      "VolumeRadioButton",
+      "PowerRadioButton",
+      "InfiltrationRadioButton",
+      "PlusInfiltrationOn",
+      "PlusInfiltrationOff",
+      "DontChangeButton",
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeHeaderForm",
+    "form_caption": "Lista fejléc átméretezés",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "MoveUpButton",
+      "MoveDownButton",
+      "OK"
+    ],
+    "inputs": [
+      "ShowZero",
+      "UserDefined"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeHydraulicsForm",
+    "form_caption": "Típusmódosítások, méretek",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "SaveButton",
+      "LoadButton",
+      "CreateSetButton"
+    ],
+    "inputs": [
+      "TypeChangeButton",
+      "FixingSizesButton",
+      "MakeAutoButton",
+      "ChangeByMakroButton",
+      "FixValvePosition",
+      "FreeValvePosition",
+      "AllButton",
+      "OnlySelectedButton"
+    ],
+    "file_dialogs": [
+      "OpenDialog1",
+      "SaveDialog1"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ChangeRadiatorForm",
+    "form_caption": "Kétcsöves radiátorok módosítása",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "DeleteButton",
+      "SaveButton",
+      "LoadButton",
+      "AddButton",
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton",
+      "CalculateNewSize",
+      "FixTemperatureDiff",
+      "SamePower",
+      "MinimalPowerDiff"
+    ],
+    "file_dialogs": [
+      "OpenDialog",
+      "SaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ChangeRadiatorListForm",
+    "form_caption": "Cserélendő radiátorok",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChangeTempForm",
+    "form_caption": "Hőmérsékletek cseréje",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ToHeated",
+      "ToNotHeated",
+      "ToCooled",
+      "ToNotCooled",
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ChildWinForm",
+    "form_caption": null,
+    "dialog_type_guess": "file_dialog",
+    "buttons": [],
+    "inputs": [],
+    "file_dialogs": [
+      "SaveDialog",
+      "OpenDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "CollectorForm",
+    "form_caption": "Kollektor számítás",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OkButton",
+      "CancelButton",
+      "HelpButton",
+      "CalculateButton",
+      "ModifyGPSPosButton",
+      "PasteProfileButton",
+      "SaveProfileButton"
+    ],
+    "inputs": [
+      "Database",
+      "Technology",
+      "Azimut",
+      "NamedDatabase",
+      "DayRadioButton1",
+      "DayRadioButton2",
+      "DayRadioButton3",
+      "DayRadioButton4",
+      "DayRadioButton5",
+      "DayRadioButton6",
+      "DayRadioButton7"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "SystemSheet",
+      "CollectorSheet",
+      "BufferSheet",
+      "ConsumptionTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ComplexMessageForm",
+    "form_caption": "ComplexMessageForm",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "YesButton",
+      "NoButton",
+      "OkButton"
+    ],
+    "inputs": [
+      "TurnOff"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ConnectionLengthForm",
+    "form_caption": "Radiátor bekötési hossz megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ConsumerModifyForm",
+    "form_caption": "Ismert teljesítményű fogyasztó",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ByHeating",
+      "ByCooling",
+      "DefinedVolume",
+      "DefinedPower"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "RadiatorsPage",
+      "HydraulicsPage"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "CoolingEnergyForm",
+    "form_caption": "A gépi hűtés adatainak megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OKButton",
+      "HelpButton",
+      "CancelButton"
+    ],
+    "inputs": [
+      "CkFromUser",
+      "CkFromTable",
+      "Circle",
+      "Square",
+      "Heated",
+      "fszFromTable",
+      "fszFromUser",
+      "cHFromTable",
+      "cHFromUser",
+      "eszabFromTable",
+      "eszabFromUser",
+      "UsingFlag",
+      "CalcMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet2",
+      "BaseSheet",
+      "BoylerSheet",
+      "DistributionSheet",
+      "SystemSheet",
+      "SystemSheet2023",
+      "EnergyTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "DeviceDatabaseForm",
+    "form_caption": "Adatbázis adatok karbantartása",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "DownLoadButton"
+    ],
+    "inputs": [
+      "Extinct"
+    ],
+    "file_dialogs": [
+      "OpenDialog",
+      "SaveDialog",
+      "CalcOpenDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "DeviceDBSetViewForm",
+    "form_caption": "Halmaz kijelölés",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [
+      "OpenDialog",
+      "SaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "dUTableForm",
+    "form_caption": "Hőhidak hatását kifejező korrekciós tényező kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "RateMode1",
+      "RateMode2",
+      "RateMode3"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "dUtbTableForm",
+    "form_caption": "Hőhíd korrekciós érték",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "NumOfFloors",
+      "NumOfWalls",
+      "SmallVolume",
+      "BigVolume"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "EPBDOptimiserForm",
+    "form_caption": "Optimum keresés",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "BackButton",
+      "NextButton",
+      "CancelButton",
+      "StoredRulesButton",
+      "DiagramButton",
+      "TableButton",
+      "PriceSaveButton",
+      "PriceLoadButton",
+      "AllExportButton",
+      "ExportButton",
+      "SaveButton"
+    ],
+    "inputs": [
+      "OnlyPreExistingItems",
+      "VariationsSort"
+    ],
+    "file_dialogs": [
+      "SaveDialog2"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "EQAdminForm",
+    "form_caption": "EQ Adminisztrációs adatok",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "FillOrderButton",
+      "FillConstructionButton",
+      "FillAuditorButton",
+      "OKButton",
+      "CancelButton",
+      "HelpButton",
+      "DateButton"
+    ],
+    "inputs": [
+      "HasGPSPos"
+    ],
+    "file_dialogs": [
+      "OpenDialog",
+      "SaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ETDocumentForm",
+    "form_caption": "Energetikai minőségtanúsítvány készítése",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "AllForBuildingButton",
+      "PartialForBuildingButton",
+      "DateButton",
+      "BuildingFillButton",
+      "CustomerFillButton",
+      "PlanerFillButton",
+      "AddPDFButton",
+      "DeletePDFButton",
+      "MoveUpPDFButton",
+      "MoveDownPDFButton",
+      "PictureLoadButton",
+      "DeletePhotoAlbumItemButton",
+      "MoveDownPhotoAlbumItemButton",
+      "MoveUpPhotoAlbumItemButton",
+      "NewPictureLoadButton",
+      "AddPhotoAlbumItemButton",
+      "ModifyPhotoAlbumItemButton",
+      "ExportButton",
+      "ExportToFileButton",
+      "ExportToPDFFileButton",
+      "VATIExportButton"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton",
+      "UseFullPath",
+      "PhotoAlbumMode",
+      "DeclarationCheckBox",
+      "ProjektDataCheckBox",
+      "PageNumberCheckBox",
+      "DateCheckBox",
+      "ProjektNameCheckBox",
+      "ThermalBridgeMode",
+      "SolarEnergyMode",
+      "HeatingHoursMode",
+      "FirstPagedtSummerLimit",
+      "FirstPagedtSummerComment",
+      "FirstPageSuggestion",
+      "FirstPageOtherComment",
+      "Diagram",
+      "Report",
+      "ThermalBridges",
+      "UAssessment",
+      "PanelLayers",
+      "ThermalBridgePict",
+      "Consumptions",
+      "HeatMass",
+      "Renewable",
+      "RatingEP",
+      "ConsumptionsDiagrams",
+      "PredefinedTables"
+    ],
+    "file_dialogs": [
+      "SaveDialog1",
+      "SaveDialog2",
+      "SaveDialog3"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ETZoneForm",
+    "form_caption": "Tanúsítási egység adatai",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "FillConstructionButton",
+      "FillAuditorButton",
+      "DateButton",
+      "ZoneMatrixExportButton",
+      "ZoneMatrixOptionsButton",
+      "OkButton",
+      "CancelButton",
+      "CalcButton",
+      "HelpButton",
+      "AlterSystemsButton"
+    ],
+    "inputs": [
+      "TotalBuilding",
+      "GoodLevel",
+      "ExcellentLevel",
+      "MixedLimits",
+      "CO2RadioButton",
+      "nRenRadioButton",
+      "PieButton",
+      "BarButton"
+    ],
+    "file_dialogs": [
+      "SaveDialog3"
+    ],
+    "tabs": [
+      "TabSheet1",
+      "AdminTabSheet",
+      "TabSheet2",
+      "TabSheet3",
+      "IndicatorsTabSheet",
+      "TabSheet5",
+      "WarningTabSheet",
+      "TabSheet6",
+      "TabSheet11",
+      "TabSheet4",
+      "TabSheet7",
+      "TabSheet8",
+      "TabSheet9",
+      "TabSheet10"
+    ],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ExcelSheetListForm",
+    "form_caption": "Excel táblák",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "Button1"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ExpansionTankModifyForm",
+    "form_caption": "Tágulási tartály méretezése",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "CalculateExpansionCoeffitient",
+      "BuildType"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "ExportForm",
+    "form_caption": "Export - ",
+    "dialog_type_guess": "output_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton",
+      "EnabledGraphics",
+      "EnabledDetailed"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "print_or_export"
+  },
+  {
+    "form_name": "FHRegisterForm",
+    "form_caption": "Panelek darabszámának megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "FieldAreaModifyForm",
+    "form_caption": "Beépített felület megadása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OKButton",
+      "HelpButton"
+    ],
+    "inputs": [
+      "RoundUp"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "FieldPanelModifyForm",
+    "form_caption": "Beépített felület megadása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OKButton",
+      "HelpButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "FloorBoundaryModifyForm",
+    "form_caption": "Határoló szerkezet aktualizálása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "FloorHeatingModifyForm",
+    "form_caption": "Padlófűtés mező módosítás",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ZoneTypes",
+      "Heating",
+      "Cooling",
+      "HeatingCorrection",
+      "HasTempLimit"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "FloorHeatingRoundModifyForm",
+    "form_caption": "Padlófűtés kör",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "TemperaturePressurelossDiagramButton"
+    ],
+    "inputs": [
+      "ByHeating",
+      "ByCooling",
+      "DefinedTemperature",
+      "DefinedVolume",
+      "DefinedRegisterVolume",
+      "BifilarMode",
+      "SerialMode",
+      "ViewOnlyNotUsed",
+      "LengthPlusMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "FieldsPage",
+      "HydraulicsPage"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "gbXMLReadForm",
+    "form_caption": "gbXML projekt betöltése",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "CreatePanelButton"
+    ],
+    "inputs": [
+      "LevelGroupOnly",
+      "NoGroup",
+      "BuildingGroupOnly",
+      "BuildingAndLevelGroup",
+      "NewBuilding",
+      "BuildingFromProjekt",
+      "BuildingFromgbXML",
+      "NewBuildingName",
+      "FromFunctionAndID",
+      "FromID",
+      "FromFunctionAndDescription",
+      "FromDescription",
+      "Heated",
+      "Cooled",
+      "MustSave",
+      "SortingType",
+      "GlassModeNu",
+      "GlassModeg"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "GeneraleChangeForm",
+    "form_caption": "Általános adatcsere",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "GlassTableForm",
+    "form_caption": "Üvegezett felületek jellemzői",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ReflectionMode1",
+      "ReflectionMode0",
+      "ReflectionMode2",
+      "ReflectionMode3"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "TabSheet2"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "GotoPageForm",
+    "form_caption": "Lapszám megadás",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "GPSListSelectForm",
+    "form_caption": "GPS meghatározás eredményei",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "ShowOnMapButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "HeatChangerModifyForm",
+    "form_caption": "Hőcserélő, keverőszelep",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ByHeating",
+      "ByCooling",
+      "CalculateExpansionCoeffitient",
+      "BuildType"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "MainPage",
+      "HydraulicsPage",
+      "TankPage"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "HeatingEnergyForm",
+    "form_caption": "A fűtési rendszer adatainak megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "CalcBivalenceButton",
+      "HelpButton",
+      "CancelButton",
+      "OKButton"
+    ],
+    "inputs": [
+      "CkFromTable",
+      "CkFromUser",
+      "Cogenerative",
+      "qfvFromUser",
+      "qfvFromTable",
+      "EfszFromUser",
+      "EfszFromTable",
+      "Efsz2FromUser",
+      "Efsz2FromTable",
+      "qfhFromUser",
+      "qfhFromTable",
+      "qftFromUser",
+      "qftFromTable",
+      "SystemType",
+      "CalcMode",
+      "UsingFlag"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "BoylerSheet",
+      "Distribution",
+      "SystemSheet",
+      "EnergySheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "InitThicknesForm",
+    "form_caption": "Réteg hozzádása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "KESZExportForm",
+    "form_caption": "KESZ Export",
+    "dialog_type_guess": "output_dialog",
+    "buttons": [
+      "ExportlButton",
+      "HelpButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "print_or_export"
+  },
+  {
+    "form_name": "LayerLambdaModifierForm",
+    "form_caption": "Hővezetési tényező korrekció",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "CancelButton",
+      "OkButton"
+    ],
+    "inputs": [
+      "CalcTempCorrection",
+      "GiveTempCorrection",
+      "UseTempCorrection",
+      "UseAgeCorrection",
+      "UseHumidityCorrection",
+      "GiveHumidityCorrection",
+      "CalcHumidityCorrection",
+      "HumidityType"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "LightingEnergyForm",
+    "form_caption": "Világítási rendszer adatok",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "HelpButton",
+      "CancelButton",
+      "OKButton"
+    ],
+    "inputs": [
+      "WveszCheckBox",
+      "WstandbyCheckBox",
+      "MVFromZone",
+      "UsingFlag",
+      "CalcMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "OriginalTabSheet",
+      "TabSheet2022",
+      "EnergyTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "LightingPowerForm",
+    "form_caption": "Világítás hőleadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "DeleteButton",
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "MainForm",
+    "form_caption": null,
+    "dialog_type_guess": "file_dialog",
+    "buttons": [],
+    "inputs": [],
+    "file_dialogs": [
+      "OpenDialog",
+      "SaveDialog",
+      "SaveDialog1",
+      "OpenDialog1",
+      "OpenDialog2",
+      "XMLSaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "MakroForm",
+    "form_caption": "Makró funkciók",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "AddButton",
+      "OK",
+      "DeleteButton",
+      "ExportButton",
+      "ImportButton",
+      "ExportToFileButton",
+      "ImportFromFileButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [
+      "SaveDialog",
+      "OpenDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ManPowerForm",
+    "form_caption": "Emberi hőleadás",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "DeleteButton",
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "MaterialLambdaCorrectionModifyForm",
+    "form_caption": "Hővezetési tényezőt módosító érték paraméterének megadása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "Cancel"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "MaterialModifyForm",
+    "form_caption": "Anyag adatok karbantartása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "Cancel"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "MaterialTypeForm",
+    "form_caption": "Adatmegadási mód kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ModifyInternalPowerForm",
+    "form_caption": null,
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "n50OtherTableForm",
+    "form_caption": "Védettségi és magasság korrekció",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "Place",
+      "Room",
+      "Height"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NetworkModifyForm",
+    "form_caption": "Hálózat számítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ByHeating",
+      "ByCooling"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "NetworkOptimiseForm",
+    "form_caption": "Hálózat optimalizálás",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "NextButton",
+      "HelpButton"
+    ],
+    "inputs": [
+      "EnabledReduced"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NetworkTreeViewForm",
+    "form_caption": "Hálózati gráf",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "JumpButton",
+      "FormatButton"
+    ],
+    "inputs": [
+      "ColorOptimised",
+      "ColorReduced"
+    ],
+    "file_dialogs": [
+      "SaveDialog1"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "NewAnsiStringForm",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NewDisabledPointForm",
+    "form_caption": "Kizárt pont felvétele",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NewGroupForm",
+    "form_caption": "Új csoport létrehozása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NewNetworkGrafForm",
+    "form_caption": "Új hálózat gráf ablak létrehozása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ForwardButton",
+      "BackwardButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NewNetworkTableForm",
+    "form_caption": "Új táblázat ablak létrehozása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NewsForm",
+    "form_caption": "Aktuális hírek",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "Button1"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "NewSectionItemForm",
+    "form_caption": "Új hálózat elem létrehozása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "NonePath",
+      "WithPath"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "nSummerTableForm",
+    "form_caption": "Légcsereszámok a nyári túlmelegedés kockázatának megítéléséhez",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "OneTubeRadiatorForm",
+    "form_caption": "Egycsöves kör radiátora",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "OneTubeRadiatorConnectionForm",
+    "form_caption": "Radiátor bekötési adatai",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "MakroButton",
+      "OK"
+    ],
+    "inputs": [
+      "ValveFromDatabase",
+      "UniqueValve",
+      "CalculateWithT"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "WithValveTabSheet",
+      "WithBypassTabSheet",
+      "ThroughFlowTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "OneTubeRoundModifyForm",
+    "form_caption": "Egycsöves kör",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "DefinedTemperature",
+      "DefinedVolume",
+      "Reverse"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "RadiatorsPage",
+      "HydraulicsPage"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "OrthographColsForm",
+    "form_caption": "Adatok összerendelése",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OKButton",
+      "CancelButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "OtherPowerForm",
+    "form_caption": "Egyéb hőterhelések",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "DeleteButton",
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "PanelDiagramForm",
+    "form_caption": "Páradiffúziós diagram",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "PanelModifyForm",
+    "form_caption": null,
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "Cancel",
+      "dUButton",
+      "DTimaxButton",
+      "FromBuildingButton",
+      "MaterialsButton",
+      "DiagramButton"
+    ],
+    "inputs": [
+      "WithDiagramCalc",
+      "SimpleDiagramCalc",
+      "WithCalcReport",
+      "NormalOrder",
+      "ReverseOrder",
+      "ExtendedGradient",
+      "ExtendedInside",
+      "ExtendedOutside"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "TabSheet2"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "PanelModifyForm2",
+    "form_caption": null,
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "kuTableButton",
+      "ShadowTableButton",
+      "ToUpButton",
+      "ToDownButton",
+      "DeleteButton",
+      "Agros2DModelButton",
+      "PasteImageButton",
+      "DeleteImageButton",
+      "ToListButton"
+    ],
+    "inputs": [
+      "ExtendedGradient",
+      "ExtendedWindow",
+      "GlassModeNu",
+      "GlassModeg",
+      "ExtendedInside"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "WallTabSheet",
+      "WindowTabSheet",
+      "FloorTabSheet",
+      "FloorTabSheet2",
+      "InsideTabSheet",
+      "SizesTabSheet",
+      "WindowCalcTabSheet",
+      "ThermalBridgeTabSheet"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "PanelTypeForm",
+    "form_caption": "Adatmegadási mód kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "Laminated",
+      "Knowed"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "PhotosFrame",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "DeletePhotoAlbumItemButton",
+      "MoveDownPhotoAlbumItemButton",
+      "MoveUpPhotoAlbumItemButton",
+      "NewPictureLoadButton",
+      "AddPhotoAlbumItemButton",
+      "ModifyPhotoAlbumItemButton"
+    ],
+    "inputs": [
+      "UseFullPath",
+      "PhotoAlbumMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "PointModifyForm",
+    "form_caption": "Csomópont módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "AddButton",
+      "OK"
+    ],
+    "inputs": [
+      "Listing"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "PressureDifferenceModifyForm",
+    "form_caption": "Nyomáskülönbség szabályozó módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ByHeating",
+      "ByCooling"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "PressureLimiterModifyForm",
+    "form_caption": "Túláramszelep módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "CalculationMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "PrintingForm",
+    "form_caption": "Nyomtatás",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "ExportButton",
+      "ExportToFileButton",
+      "ExportToPDFFileButton"
+    ],
+    "inputs": [
+      "ProjektDataCheckBox",
+      "PageNumberCheckBox",
+      "ProjektNameCheckBox",
+      "DateCheckBox",
+      "AllButton",
+      "SelectedButton",
+      "GroupNameCheckBox"
+    ],
+    "file_dialogs": [
+      "SaveDialog1",
+      "SaveDialog2"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "PrintPreviewForm",
+    "form_caption": "Nyomtatási kép",
+    "dialog_type_guess": "output_dialog",
+    "buttons": [],
+    "inputs": [
+      "ZoomComboBox"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "print_or_export"
+  },
+  {
+    "form_name": "ProgramOptionsForm",
+    "form_caption": "Program beállítások",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "OK",
+      "MakroLoadButton",
+      "ProjektOptionsButton",
+      "LoadFirmaLogoButton",
+      "DeletePositionsButton",
+      "DeleteHeadersButton",
+      "LoadSignoButton",
+      "ChooseEstimateProgramButton",
+      "PDFMergeProgramButton",
+      "UserInfoLoadButton",
+      "RegistrationButton"
+    ],
+    "inputs": [
+      "ViewProjektData",
+      "AllwaysViewSimpleTabs",
+      "InitDate",
+      "ForceNewPage",
+      "ColorPrinting",
+      "ProgramSign",
+      "NoFirmaHeaderButton",
+      "FirstPageFirmaHeaderButton",
+      "AllPageFirmaHeaderButton",
+      "FirmaHeaderFontSize",
+      "NoLogoButton",
+      "LogoOnLeftButton",
+      "LogoOnRightButton",
+      "FirmaLogoResolution",
+      "ProjektWithoutPath",
+      "Scaling",
+      "SignoResolution",
+      "OnLastPage",
+      "OnFirstPage",
+      "UniqueDeclaration",
+      "StandardDeclaration",
+      "EstimateProgramStartQuestion",
+      "NeedProxy",
+      "NeedAuthentication"
+    ],
+    "file_dialogs": [
+      "OpenDialog1",
+      "OpenDialog2",
+      "OpenDialog3",
+      "OptionsOpenDialog",
+      "SaveDialog1"
+    ],
+    "tabs": [
+      "ProjektData",
+      "TabSheet2",
+      "TabSheet3",
+      "TabSheet4",
+      "PrintPage",
+      "Fonts",
+      "Panel",
+      "DeclarationTabSheet",
+      "TabSheet1",
+      "LanguageSet",
+      "ProxyTabSheet",
+      "Passwords"
+    ],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ProjektDataForm",
+    "form_caption": "Projekt adatok",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK",
+      "DateButton",
+      "ShowOnMapButton",
+      "SearchByAddressButton",
+      "FromBuildingButton",
+      "ExportButton",
+      "ImportButton"
+    ],
+    "inputs": [
+      "GPSByDegree",
+      "GPSByNumber",
+      "PrintComment"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "TabSheet2",
+      "GPS",
+      "TabSheet5",
+      "TabSheet6",
+      "TabSheet3",
+      "TabSheet4"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ProjektOptionsForm",
+    "form_caption": "Projekt beállítások",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "OK",
+      "EnergySourcesSaveButton",
+      "EnergySourcesLoadButton",
+      "A0Button",
+      "WindSpeedButton",
+      "FillSummerMeteorologyTableButton",
+      "SummerMeteorologySaveButton",
+      "LoadSunCalcButton",
+      "LoadButton",
+      "SaveButton"
+    ],
+    "inputs": [
+      "UsingMode",
+      "Pollution",
+      "UniqueEnergeticMet",
+      "SunInSus",
+      "CoolingInSus",
+      "UserDefinedDistrictCooling",
+      "UserDefinedDistrictHeating",
+      "HeatingCalculate",
+      "SunShineFlag",
+      "AcCalculate",
+      "ByEN12831",
+      "n50CheckBox",
+      "PlusInfiltration",
+      "CoolingCalculate",
+      "SummerMeteorologyUserDefined",
+      "Nearest",
+      "Biggest",
+      "RadiatorNearest",
+      "RadiatorBiggest",
+      "FHLengthPlusMode",
+      "OTNearest",
+      "OTBiggest",
+      "DinPressureFromDN"
+    ],
+    "file_dialogs": [
+      "OpenDialog1",
+      "SaveDialog1",
+      "OpenDialog2"
+    ],
+    "tabs": [
+      "PageControl",
+      "Panels",
+      "Buildings",
+      "Energetic",
+      "EnergySources",
+      "TabSheet2",
+      "TabSheet3",
+      "TabSheet4",
+      "Heating",
+      "Cooling",
+      "Radiator",
+      "Radiator2",
+      "FloorHeating",
+      "OneTubeRound",
+      "Consumer",
+      "HeatChanger",
+      "Section",
+      "Point"
+    ],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "PVGISForm",
+    "form_caption": "PVGIS számítás",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OkButton",
+      "CancelButton",
+      "HelpButton",
+      "CalculateButton",
+      "ModifyGPSPosButton"
+    ],
+    "inputs": [
+      "Database",
+      "SystemType",
+      "NamedDatabase",
+      "BuildingMode",
+      "PVTechnology",
+      "Mechanism",
+      "OptimalSlop",
+      "GivedSlop",
+      "Azimut",
+      "OptimalAzimut",
+      "GivedAzimut",
+      "Azimut2"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "TabSheet2",
+      "TabSheet3",
+      "TabSheet4"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "RadiatorModifyForm",
+    "form_caption": "Radiátor adatok",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "VolumeDimension",
+      "MassVolumeDimension"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "RadiatorsPage",
+      "HydraulicsPage"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "RegistrationForm",
+    "form_caption": "Regisztrációs adatok elküldése emailban",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "SendButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "RenoDocForm",
+    "form_caption": "Épülettechnikai rendszer felújítási javaslatának leírása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "CancelButton",
+      "HelpButton",
+      "OkButton",
+      "ModifyButton",
+      "AddNewButton"
+    ],
+    "inputs": [
+      "GoodLevel",
+      "ExcellentLevel"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "RenoDocListFrame",
+    "form_caption": null,
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "RenoPassportButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [
+      "RenoDocSaveDialog",
+      "RenoDocOpenDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "RenoPassportForm",
+    "form_caption": "Felújítási útlevél",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "CancelButton",
+      "HelpButton",
+      "OkButton",
+      "ExportButton",
+      "ImportButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [
+      "RenoPassportOpenDialog",
+      "RenoPassportSaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "ResistModifyForm",
+    "form_caption": "Alaki ellenállás adatok módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "List",
+      "DinPressureFromDN"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "RoomMakroModifyForm",
+    "form_caption": "Helyiség makró adatok megadása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OKButton",
+      "CancelButton",
+      "HelpButton"
+    ],
+    "inputs": [
+      "HeatingTemp",
+      "CoolingTemp",
+      "Filtration"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "RoomModifyForm",
+    "form_caption": null,
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "MakroButton",
+      "TestButton",
+      "A0Button",
+      "OtherButton",
+      "TransportButton",
+      "LightingButton",
+      "ManButton",
+      "AirButton",
+      "AddPanelsButton",
+      "AddRadiatorButton",
+      "SetButton"
+    ],
+    "inputs": [
+      "Height",
+      "Height2",
+      "CalcHeatingCheckBox",
+      "CalcCoolingCheckBox",
+      "SunShineFlag",
+      "n50",
+      "AirTempMode",
+      "PlusInfiltration",
+      "Cm",
+      "AcCheckBox",
+      "ForwardTemperature",
+      "BackwardTemperature",
+      "CorrectionFactor",
+      "NumOfRadiators",
+      "PowerRequest",
+      "PowerRequestPlus",
+      "DataSheet",
+      "FHZoneType",
+      "FHHeatingCorrection",
+      "FHHeating",
+      "FHCooling",
+      "FHHasTempLimit"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "MainPage",
+      "HeatingPage",
+      "CoolingPage",
+      "RadiatorsPage",
+      "FloorHeatingsPage",
+      "BoundarisPage",
+      "RadiatorChoosePage",
+      "FloorHeatingsChoosePage"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "RotateRoomsForm",
+    "form_caption": "Helyiségek forgatása, tükrözése",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "RotateButton",
+      "ReflectButton",
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SectionModifyForm",
+    "form_caption": "Szakasz adatok módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "ByHeating",
+      "ByCooling"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "SelectBoundarisForm",
+    "form_caption": "Határoló szerkezetek kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "GlassModeNu",
+      "GlassModeg"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "WallSheet",
+      "WindowSheet",
+      "CoveringTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectLayersForm",
+    "form_caption": "Rétegek kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "NormalOrder",
+      "ReverseOrder"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectOneBoundaryForm",
+    "form_caption": "Szerkezetek kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectOnlyZonesFrame",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "RemaindedAreaButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectPointRulesForm",
+    "form_caption": "Csomóponti elemek kiválasztásának szabályai",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "SetButton",
+      "OKButton",
+      "HelpButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectRadiatorTypeForm",
+    "form_caption": "Radiátor típus kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK",
+      "SetButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectResistsForm",
+    "form_caption": "Alaki ellenállások kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "SetButton",
+      "OKButton",
+      "CancelButton",
+      "HelpButton",
+      "SearchButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectSizesForm",
+    "form_caption": "Méretek kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OKButton",
+      "AllButton",
+      "NothingButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectStoredRulesForm",
+    "form_caption": "Korábbi korszerűsítési javaslatok ismételt alkalmazása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "Button1",
+      "AllButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectZipForm",
+    "form_caption": "Betöltendő fájlok kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OkButton",
+      "CancelButton",
+      "HelpButton",
+      "SelectByDaysButton"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SelectZonesFrame",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "RestSurfaceButton"
+    ],
+    "inputs": [
+      "ZoneOnlyPart",
+      "RoomOnlyPart"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SolarEnergyForm",
+    "form_caption": "Az épület energetikai rendszereiből származó nyereségáram, vagy egyéb veszteség",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "CancelButton",
+      "HelpButton",
+      "OKButton",
+      "PVGISCalcButton"
+    ],
+    "inputs": [
+      "CalcMode",
+      "UsingFlag",
+      "ToSumSystemType",
+      "EnergySumCheckBox",
+      "ByPVGIS"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "SimpleTabSheet",
+      "CalculatedTabSheet",
+      "PVTabSheet",
+      "WindTabSheet",
+      "ProfitTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "SystemsExportImportForm",
+    "form_caption": "Energetikai rendszerek",
+    "dialog_type_guess": "output_dialog",
+    "buttons": [
+      "Button1"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "print_or_export"
+  },
+  {
+    "form_name": "SystemsFrame",
+    "form_caption": null,
+    "dialog_type_guess": "file_dialog",
+    "buttons": [],
+    "inputs": [],
+    "file_dialogs": [
+      "SystemsOpenDialog",
+      "SystemsSaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "TemperaturePressurelossDiagramForm",
+    "form_caption": "Kör ellenállás a visszatérő hőmérséklet függvényében",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "HelpButton",
+      "RecalcButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "TextExportSelectFileForm",
+    "form_caption": "Egyedi riport vezérlőfájl kiválasztása",
+    "dialog_type_guess": "output_dialog",
+    "buttons": [
+      "Button1"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "print_or_export"
+  },
+  {
+    "form_name": "ThermalBridgeModifierForm",
+    "form_caption": "Rétegtervi érték korrekciók",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "Button1",
+      "SearchListButton",
+      "ModifyButton",
+      "AddButton",
+      "MoveUpButton",
+      "MoveDownButton",
+      "DeleteButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ThermicZoneForm",
+    "form_caption": "Hőegyensúly szerinti zóna adatok",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "CancelButton",
+      "HelpButton",
+      "OkButton"
+    ],
+    "inputs": [
+      "HeatMassType",
+      "RegulatedHeating",
+      "RegulatedCooling"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "DataTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "TransportPowerForm",
+    "form_caption": "Anyag illetve áru betárolásából származó hőenergia",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "DeleteButton",
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "TreeForComboForm",
+    "form_caption": "Típusválaszték",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "SearchButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "TubeCoolingForm",
+    "form_caption": "Csőlehűlési adatok",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "AddButton",
+      "ModifyButton",
+      "MoveUpButton",
+      "MoveDownButton",
+      "DeleteButton",
+      "MakroButton",
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "TubeCoolingSectionForm",
+    "form_caption": "Lehűlő csőszakasz adatok",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "Vertical",
+      "Horizontal",
+      "Useful"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "UniqueResistModifyForm",
+    "form_caption": "Alaki ellenállás adatok módosítása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "CalcButton",
+      "WriteButton"
+    ],
+    "inputs": [
+      "List",
+      "DinPressureFromDN",
+      "VolumeDim",
+      "HasCoolingValue"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "UsedMaterialsExportForm",
+    "form_caption": "Felhasznált anyagok",
+    "dialog_type_guess": "output_dialog",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "print_or_export"
+  },
+  {
+    "form_name": "UsedMaterialsPrintingForm",
+    "form_caption": "Nyomtatás",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "PDFExportButton",
+      "ExportButton",
+      "ExportToFileButton"
+    ],
+    "inputs": [
+      "Title",
+      "ProjektDataCheckBox",
+      "PageNumberCheckBox",
+      "ProjektNameCheckBox",
+      "DateCheckBox",
+      "AllButton",
+      "SelectedButton"
+    ],
+    "file_dialogs": [
+      "SaveDialog2",
+      "SaveDialog1"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "v2TableForm",
+    "form_caption": "Szellőztetett lámpatestek szellőztetési tényezője",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OK"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "VariationPriceForm",
+    "form_caption": "A módosítás költségbecslése",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "Button1"
+    ],
+    "inputs": [
+      "ModifyAirChangeFactors",
+      "RegulatedCooling",
+      "RegulatedHeating"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "VariableThicknessForm",
+    "form_caption": "Változó vastagságú réteg",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OkButton",
+      "CancelButton"
+    ],
+    "inputs": [
+      "VariableCheckBox",
+      "Type"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "VATIAdminForm",
+    "form_caption": "Adminisztrációs adatok",
+    "dialog_type_guess": "file_dialog",
+    "buttons": [
+      "FillOrderButton",
+      "FillConstructionButton",
+      "FillAuditorButton",
+      "OKButton",
+      "CancelButton",
+      "DateButton"
+    ],
+    "inputs": [
+      "OrderCountryCode",
+      "NoAddressCheckBox",
+      "HasGPSPos",
+      "ModifiedPart0",
+      "ModifiedPart1",
+      "ModifiedPart2"
+    ],
+    "file_dialogs": [
+      "OpenDialog",
+      "SaveDialog"
+    ],
+    "tabs": [],
+    "likely_purpose": "file_selection"
+  },
+  {
+    "form_name": "WallBoundaryModifyForm",
+    "form_caption": "Határoló szerkezet aktualizálása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "LoadButton",
+      "ClearButton"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "WallFloorPsziForm",
+    "form_caption": "Fal-padló csatlakozás hőhíd vonalmenti érték megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "Button1"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "WaterHeatingEnergyForm",
+    "form_caption": "A melegvízellátó rendszer adatainak megadása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "DeleteHMVConsumptionButton",
+      "AddHMVConsumptionItemButton",
+      "ModifyHMVConsumptionItemButton",
+      "CollectorCalcButton",
+      "HelpButton",
+      "CancelButton",
+      "OKButton"
+    ],
+    "inputs": [
+      "ConsumptionItemUnit",
+      "CkFromTable",
+      "CkFromUser",
+      "Notqkv",
+      "Cogenerative",
+      "qfvFromUser",
+      "qfvFromTable",
+      "EcFromUser",
+      "EcFromTable",
+      "qftFromUser",
+      "qftFromTable",
+      "UsingFlag",
+      "CalcMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "ConsumptionSheet",
+      "BoylerSheet",
+      "SystemSheet",
+      "CollectorTabSheet",
+      "EnergyTabSheet"
+    ],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "WindowCalcFrame",
+    "form_caption": null,
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "UpButton",
+      "DownButton",
+      "DeleteButton",
+      "AddGlassAreaButton",
+      "AddDeviderButton",
+      "AddFrameAreaButton"
+    ],
+    "inputs": [
+      "CalcMode",
+      "DifferentFrames",
+      "ThicknessMode",
+      "ResistMode"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "WindowMaterialModifyForm",
+    "form_caption": "Anyag adatok karbantartása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OK",
+      "Cancel"
+    ],
+    "inputs": [],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "WindSpeedTableForm",
+    "form_caption": "Szélsebesség és szint korrekciós érték kiválasztása",
+    "dialog_type_guess": "confirmation_or_data_entry",
+    "buttons": [
+      "OKButton"
+    ],
+    "inputs": [
+      "HighBuilding",
+      "HighList"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "confirm_or_enter_values"
+  },
+  {
+    "form_name": "ZoneTypeModifyForm",
+    "form_caption": "Használati feltételek szerinti zóna adatok megadása",
+    "dialog_type_guess": "modify_dialog",
+    "buttons": [
+      "OkButton",
+      "CancelButton",
+      "HelpButton"
+    ],
+    "inputs": [
+      "FiltMode",
+      "UserDefined",
+      "Monthly",
+      "SummerCorrection"
+    ],
+    "file_dialogs": [],
+    "tabs": [
+      "TabSheet1",
+      "TabSheet2"
+    ],
+    "likely_purpose": "modify_data"
+  },
+  {
+    "form_name": "ZoneMatrixOptionsForm",
+    "form_caption": "Zóna mátrix beállítások",
+    "dialog_type_guess": "options_dialog",
+    "buttons": [
+      "OkButton",
+      "CancelButton"
+    ],
+    "inputs": [
+      "WithPath"
+    ],
+    "file_dialogs": [],
+    "tabs": [],
+    "likely_purpose": "program_options"
+  }
+]

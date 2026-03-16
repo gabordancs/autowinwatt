@@ -1,1 +1,652 @@
-[]
+[
+  {
+    "workflow_name": "print",
+    "entry_form": "AlterSystemsForm",
+    "trigger_item_name": "PrintButton",
+    "trigger_caption": "Nyomtatás",
+    "trigger_stable_key": "AlterSystemsForm.PrintButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "AlterSystemsDocForm",
+    "trigger_item_name": "Print",
+    "trigger_caption": "Dokumentum nyomtatása",
+    "trigger_stable_key": "AlterSystemsDocForm.Print",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "AlterSystemsDocForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "AlterSystemsDocForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "AlterSystemsDocForm",
+    "trigger_item_name": "ExportToFileButton",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "AlterSystemsDocForm.ExportToFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "AlterSystemsDocForm",
+    "trigger_item_name": "ExportToPDFFileButton",
+    "trigger_caption": "PDF fájlba...",
+    "trigger_stable_key": "AlterSystemsDocForm.ExportToPDFFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "save_project",
+    "entry_form": "ArchLineReadForm",
+    "trigger_item_name": "MustSave",
+    "trigger_caption": "A projektbe mentendő",
+    "trigger_stable_key": "ArchLineReadForm.MustSave",
+    "expected_next_form_guess": "unknown",
+    "purpose": "persist_current_project",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "CalcBivalenceForm",
+    "trigger_item_name": "PrintCheckBox",
+    "trigger_caption": "Dokumentációban szerepeljen",
+    "trigger_stable_key": "CalcBivalenceForm.PrintCheckBox",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ChangeHydraulicsForm",
+    "trigger_item_name": "CreateSetButton",
+    "trigger_caption": "Választék fájl készítése adatbázis exporthoz...",
+    "trigger_stable_key": "ChangeHydraulicsForm.CreateSetButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ChildWinForm",
+    "trigger_item_name": "Export",
+    "trigger_caption": "&Export a vágólapra...",
+    "trigger_stable_key": "ChildWinForm.Export",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ChildWinForm",
+    "trigger_item_name": "ExportToFile",
+    "trigger_caption": "E&xport fájlba...",
+    "trigger_stable_key": "ChildWinForm.ExportToFile",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ChildWinForm",
+    "trigger_item_name": "GroupExport",
+    "trigger_caption": "Export a vágólapra...",
+    "trigger_stable_key": "ChildWinForm.GroupExport",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ChildWinForm",
+    "trigger_item_name": "GroupExportToFile",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "ChildWinForm.GroupExportToFile",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "ConvertKomplexForm",
+    "trigger_item_name": "OptionCheckListBox",
+    "trigger_caption": null,
+    "trigger_stable_key": "ConvertKomplexForm.OptionCheckListBox",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "DeviceDatabaseForm",
+    "trigger_item_name": "Export",
+    "trigger_caption": "&Export...",
+    "trigger_stable_key": "DeviceDatabaseForm.Export",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "DeviceDatabaseForm",
+    "trigger_item_name": "CalcExport",
+    "trigger_caption": "Azonosítók...",
+    "trigger_stable_key": "DeviceDatabaseForm.CalcExport",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "EPBDOptimiserForm",
+    "trigger_item_name": "AllExportButton",
+    "trigger_caption": "Csoportos export...",
+    "trigger_stable_key": "EPBDOptimiserForm.AllExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "EPBDOptimiserForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export",
+    "trigger_stable_key": "EPBDOptimiserForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "save_project",
+    "entry_form": "EPBDOptimiserForm",
+    "trigger_item_name": "SaveButton",
+    "trigger_caption": "Mentés új projektként...",
+    "trigger_stable_key": "EPBDOptimiserForm.SaveButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "persist_current_project",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "ETDocumentForm",
+    "trigger_item_name": "Print",
+    "trigger_caption": "Dokumentum nyomtatása",
+    "trigger_stable_key": "ETDocumentForm.Print",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ETDocumentForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "ETDocumentForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ETDocumentForm",
+    "trigger_item_name": "ExportToFileButton",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "ETDocumentForm.ExportToFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ETDocumentForm",
+    "trigger_item_name": "ExportToPDFFileButton",
+    "trigger_caption": "PDF fájlba...",
+    "trigger_stable_key": "ETDocumentForm.ExportToPDFFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ETDocumentForm",
+    "trigger_item_name": "VATIExportButton",
+    "trigger_caption": "e-tanúsítás xml export...",
+    "trigger_stable_key": "ETDocumentForm.VATIExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ETZoneForm",
+    "trigger_item_name": "ZoneMatrixExportButton",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "ETZoneForm.ZoneMatrixExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "ETZoneForm",
+    "trigger_item_name": "ZoneMatrixOptionsButton",
+    "trigger_caption": "Beállítások",
+    "trigger_stable_key": "ETZoneForm.ZoneMatrixOptionsButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "save_project",
+    "entry_form": "gbXMLReadForm",
+    "trigger_item_name": "MustSave",
+    "trigger_caption": "A projektbe mentendő",
+    "trigger_stable_key": "gbXMLReadForm.MustSave",
+    "expected_next_form_guess": "unknown",
+    "purpose": "persist_current_project",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "KESZExportForm",
+    "trigger_item_name": "ExportlButton",
+    "trigger_caption": "Excel fájl kitöltése",
+    "trigger_stable_key": "KESZExportForm.ExportlButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "open_project",
+    "entry_form": "MainForm",
+    "trigger_item_name": "FileOpenItem",
+    "trigger_caption": null,
+    "trigger_stable_key": "MainForm.FileOpenItem",
+    "expected_next_form_guess": "unknown",
+    "purpose": "open_existing_project",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MainForm",
+    "trigger_item_name": "Felhasznltelemekexport1",
+    "trigger_caption": "Export a vágólapra...",
+    "trigger_stable_key": "MainForm.Felhasznltelemekexport1",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "MainForm",
+    "trigger_item_name": "OptionsGroup",
+    "trigger_caption": "&Beállítások",
+    "trigger_stable_key": "MainForm.OptionsGroup",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "open_project",
+    "entry_form": "MainForm",
+    "trigger_item_name": "OpenProjekt",
+    "trigger_caption": "&Projekt megnyitás...",
+    "trigger_stable_key": "MainForm.OpenProjekt",
+    "expected_next_form_guess": "unknown",
+    "purpose": "open_existing_project",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "save_project",
+    "entry_form": "MainForm",
+    "trigger_item_name": "SaveProjekt",
+    "trigger_caption": "Projekt &mentés",
+    "trigger_stable_key": "MainForm.SaveProjekt",
+    "expected_next_form_guess": "unknown",
+    "purpose": "persist_current_project",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "save_project_as",
+    "entry_form": "MainForm",
+    "trigger_item_name": "SaveAsProjekt",
+    "trigger_caption": "&Mentés másként...",
+    "trigger_stable_key": "MainForm.SaveAsProjekt",
+    "expected_next_form_guess": "unknown",
+    "purpose": "save_project_under_new_name",
+    "confidence": 0.95
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "MainForm",
+    "trigger_item_name": "Printing",
+    "trigger_caption": "&Nyomtatás...",
+    "trigger_stable_key": "MainForm.Printing",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "MainForm",
+    "trigger_item_name": "ProgramOptions",
+    "trigger_caption": "&Program beállítások...",
+    "trigger_stable_key": "MainForm.ProgramOptions",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "MainForm",
+    "trigger_item_name": "ProjektOptions",
+    "trigger_caption": "P&rojekt beállítások...",
+    "trigger_stable_key": "MainForm.ProjektOptions",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "MainForm",
+    "trigger_item_name": "UsedMaterialsPrintAction",
+    "trigger_caption": "Nyomtatás...",
+    "trigger_stable_key": "MainForm.UsedMaterialsPrintAction",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MainForm",
+    "trigger_item_name": "UsedMaterialsExportAction",
+    "trigger_caption": "Export...",
+    "trigger_stable_key": "MainForm.UsedMaterialsExportAction",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MainForm",
+    "trigger_item_name": "UsedMaterialsExportToFileAction",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "MainForm.UsedMaterialsExportToFileAction",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MainForm",
+    "trigger_item_name": "NetworkResultExport",
+    "trigger_caption": "&Export",
+    "trigger_stable_key": "MainForm.NetworkResultExport",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MainForm",
+    "trigger_item_name": "ExportForArchLineAction",
+    "trigger_caption": "Export ARCHLine.XP számára...",
+    "trigger_stable_key": "MainForm.ExportForArchLineAction",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MainForm",
+    "trigger_item_name": "XMLExportAction",
+    "trigger_caption": "XML Export...",
+    "trigger_stable_key": "MainForm.XMLExportAction",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MakroForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export a vágólapra...",
+    "trigger_stable_key": "MakroForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "MakroForm",
+    "trigger_item_name": "ExportToFileButton",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "MakroForm.ExportToFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "NetworkRoundTableViewForm",
+    "trigger_item_name": "Export",
+    "trigger_caption": "&Export a vágólapra",
+    "trigger_stable_key": "NetworkRoundTableViewForm.Export",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "NetworkTableViewForm",
+    "trigger_item_name": "Export",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "NetworkTableViewForm.Export",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "NetworkTreeViewForm",
+    "trigger_item_name": "Export1",
+    "trigger_caption": "&Export fájlba...",
+    "trigger_stable_key": "NetworkTreeViewForm.Export1",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "PrintingForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "PrintingForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "PrintingForm",
+    "trigger_item_name": "ExportToFileButton",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "PrintingForm.ExportToFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "PrintingForm",
+    "trigger_item_name": "ExportToPDFFileButton",
+    "trigger_caption": "PDF export...",
+    "trigger_stable_key": "PrintingForm.ExportToPDFFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "PrintPreviewForm",
+    "trigger_item_name": "Print",
+    "trigger_caption": "Nyomtatás",
+    "trigger_stable_key": "PrintPreviewForm.Print",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "ProgramOptionsForm",
+    "trigger_item_name": "ProjektOptionsButton",
+    "trigger_caption": "Kiválaszt",
+    "trigger_stable_key": "ProgramOptionsForm.ProjektOptionsButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "ProgramOptionsForm",
+    "trigger_item_name": "PrintPage",
+    "trigger_caption": "Nyomtatási lap",
+    "trigger_stable_key": "ProgramOptionsForm.PrintPage",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "ProgramOptionsForm",
+    "trigger_item_name": "ColorPrinting",
+    "trigger_caption": "Színes nyomtatás engedélyezve",
+    "trigger_stable_key": "ProgramOptionsForm.ColorPrinting",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ProgramOptionsForm",
+    "trigger_item_name": "Label54",
+    "trigger_caption": "A programhoz tartozó nyelvi kiegészítésekkel mind a program használat nyelve, mind a nyomtatás nyelve megváltoztatható. A Word éz Excel felé történő exportálásnál is a nyomtatás nyelvét alkalmazza a program.",
+    "trigger_stable_key": "ProgramOptionsForm.Label54",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "program_options",
+    "entry_form": "ProgramOptionsForm",
+    "trigger_item_name": "OptionsOpenDialog",
+    "trigger_caption": null,
+    "trigger_stable_key": "ProgramOptionsForm.OptionsOpenDialog",
+    "expected_next_form_guess": "unknown",
+    "purpose": "adjust_application_options",
+    "confidence": 0.75
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "ProjektDataForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "ProjektDataForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "print",
+    "entry_form": "ProjektDataForm",
+    "trigger_item_name": "PrintComment",
+    "trigger_caption": "Nyomtatandó",
+    "trigger_stable_key": "ProjektDataForm.PrintComment",
+    "expected_next_form_guess": "unknown",
+    "purpose": "print_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "RenoDocListFrame",
+    "trigger_item_name": "ExportRenoDocs",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "RenoDocListFrame.ExportRenoDocs",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "RenoPassportForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "RenoPassportForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "SolarEnergyForm",
+    "trigger_item_name": "Label9",
+    "trigger_caption": "Az e-tanúsítás XML exportnál melyik rendszerekhez adja hozzá a fajlagos értéket:",
+    "trigger_stable_key": "SolarEnergyForm.Label9",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "SystemsFrame",
+    "trigger_item_name": "ExportSystems",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "SystemsFrame.ExportSystems",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "UsedMaterialsPrintingForm",
+    "trigger_item_name": "PDFExportButton",
+    "trigger_caption": "PDF export...",
+    "trigger_stable_key": "UsedMaterialsPrintingForm.PDFExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "UsedMaterialsPrintingForm",
+    "trigger_item_name": "ExportButton",
+    "trigger_caption": "Export a vágólapra",
+    "trigger_stable_key": "UsedMaterialsPrintingForm.ExportButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  },
+  {
+    "workflow_name": "export",
+    "entry_form": "UsedMaterialsPrintingForm",
+    "trigger_item_name": "ExportToFileButton",
+    "trigger_caption": "Export fájlba...",
+    "trigger_stable_key": "UsedMaterialsPrintingForm.ExportToFileButton",
+    "expected_next_form_guess": "unknown",
+    "purpose": "export_output",
+    "confidence": 0.8
+  }
+]
