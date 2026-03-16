@@ -268,7 +268,52 @@ def get_main_window() -> Any:
     logger.info("Connected to WinWatt backend=uia process_id={}", process_id)
 
     logger.info(
-        "Resolving main WinWatt window by process_id={} backend=uia class_name=TMainForm title_re=.*WinWatt.*",
-        process_id,
+        "Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*",
     )
-    return app_uia.window(class_name="TMainForm", title_re=".*WinWatt.*", process=process_id)
+
+    try:
+        main_window = app_uia.window(class_name="TMainForm", title_re=".*WinWatt.*")
+        exists = getattr(main_window, "exists", None)
+        if callable(exists) and not exists(timeout=1):
+            raise WinWattNotRunningError("UIA main window lookup did not resolve an existing window")
+        return main_window
+    except Exception:
+        logger.exception(
+            "Primary UIA lookup failed for process_id={}, enumerating top-level windows for fallback",
+            process_id,
+        )
+
+    top_level_windows = app_uia.windows(top_level_only=True)
+    candidates = [_candidate_from_window(window, backend="uia") for window in top_level_windows]
+    for candidate in candidates:
+        logger.info("Fallback UIA candidate: {}", candidate)
+
+    def _uia_fallback_score(candidate: dict[str, Any]) -> tuple[int, int, int, int]:
+        title = str(candidate.get("title") or "").lower()
+        class_name = str(candidate.get("class_name") or "")
+        rect = candidate.get("rectangle") or {}
+        area = int(rect.get("width", 0)) * int(rect.get("height", 0))
+        return (
+            int("winwatt" in title),
+            int(class_name == "TMainForm"),
+            int(bool(candidate.get("is_visible"))),
+            area,
+        )
+
+    ranked_candidates = sorted(candidates, key=_uia_fallback_score, reverse=True)
+    if not ranked_candidates:
+        raise WinWattNotRunningError("No UIA top-level windows available after process attach")
+
+    best_candidate = ranked_candidates[0]
+    best_handle = best_candidate.get("handle")
+    logger.info(
+        "Fallback selected UIA candidate process_id={} handle={} class_name={} title={}",
+        process_id,
+        best_handle,
+        best_candidate.get("class_name"),
+        best_candidate.get("title"),
+    )
+    if best_handle is not None:
+        return app_uia.window(handle=best_handle)
+
+    return app_uia.window(title=best_candidate.get("title"), class_name=best_candidate.get("class_name"))
