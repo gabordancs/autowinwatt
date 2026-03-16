@@ -476,21 +476,115 @@ def _structured_popup_rows_from_snapshots(
             candidate.get("source_scope", "") if preferred is existing else existing.get("source_scope", ""),
         )
 
-    filtered = sorted(
+    deduped_fragments = sorted(
         deduped_by_visual_identity.values(),
         key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]),
     )
+
+    filtered = _group_popup_fragments_into_logical_rows(deduped_fragments)
     for idx, entry in enumerate(filtered):
         entry["index"] = idx
 
     logger.info(
-        "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count={} deduped row count={}",
+        "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count={} deduped fragment count={} logical row count={}",
         len(before_rows),
         len(after_rows),
         len(popup_candidates),
+        len(deduped_fragments),
         len(filtered),
     )
     return filtered
+
+
+def _overlap_ratio_by_min_height(first: dict[str, Any], second: dict[str, Any]) -> float:
+    first_top = int(first["rectangle"]["top"])
+    first_bottom = int(first["rectangle"]["bottom"])
+    second_top = int(second["rectangle"]["top"])
+    second_bottom = int(second["rectangle"]["bottom"])
+
+    overlap_height = max(0, min(first_bottom, second_bottom) - max(first_top, second_top))
+    min_height = max(1, min(first_bottom - first_top, second_bottom - second_top))
+    return overlap_height / min_height
+
+
+def _belongs_to_same_logical_row(first: dict[str, Any], second: dict[str, Any]) -> bool:
+    overlap_ratio = _overlap_ratio_by_min_height(first, second)
+    if overlap_ratio >= 0.5:
+        return True
+
+    center_distance = abs(int(first["center_y"]) - int(second["center_y"]))
+    first_height = max(1, int(first["height"]))
+    second_height = max(1, int(second["height"]))
+    center_threshold = max(6, int(min(first_height, second_height) * 0.5))
+    return center_distance <= center_threshold
+
+
+def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not fragments:
+        return []
+
+    ordered = sorted(fragments, key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
+    clusters: list[list[dict[str, Any]]] = []
+
+    for fragment in ordered:
+        matched_cluster: list[dict[str, Any]] | None = None
+        for cluster in clusters:
+            if any(_belongs_to_same_logical_row(fragment, member) for member in cluster):
+                matched_cluster = cluster
+                break
+
+        if matched_cluster is None:
+            clusters.append([fragment])
+            continue
+
+        matched_cluster.append(fragment)
+
+    logical_rows: list[dict[str, Any]] = []
+    for cluster in clusters:
+        left = min(int(item["rectangle"]["left"]) for item in cluster)
+        top = min(int(item["rectangle"]["top"]) for item in cluster)
+        right = max(int(item["rectangle"]["right"]) for item in cluster)
+        bottom = max(int(item["rectangle"]["bottom"]) for item in cluster)
+        width = max(0, right - left)
+        height = max(0, bottom - top)
+
+        texts = [str(item.get("text", "")) for item in cluster]
+        representative_text = next((text for text in texts if text.strip()), "")
+        representative = cluster[0]
+
+        logical_rows.append(
+            {
+                "text": representative_text,
+                "normalized_text": _normalize(representative_text),
+                "control_type": representative.get("control_type") or "MenuRow",
+                "class_name": representative.get("class_name", ""),
+                "rectangle": {
+                    "left": left,
+                    "top": top,
+                    "right": right,
+                    "bottom": bottom,
+                },
+                "width": width,
+                "height": height,
+                "center_x": int((left + right) / 2),
+                "center_y": int((top + bottom) / 2),
+                "is_separator": all(bool(item.get("is_separator")) for item in cluster),
+                "source_scope": representative.get("source_scope", ""),
+                "appeared_after_popup_open": any(bool(item.get("appeared_after_popup_open")) for item in cluster),
+                "fragments": [
+                    {
+                        "rectangle": dict(item.get("rectangle") or {}),
+                        "text": item.get("text", ""),
+                        "control_type": item.get("control_type", ""),
+                        "source_scope": item.get("source_scope", ""),
+                    }
+                    for item in cluster
+                ],
+            }
+        )
+
+    logical_rows.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
+    return logical_rows
 
 
 def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
@@ -520,6 +614,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
     after_rows = capture_menu_popup_snapshot()
     popup_open = did_any_new_menu_popup_appear(_snapshot_keys(before_rows), _snapshot_keys(after_rows))
     structured_rows = _structured_popup_rows_from_snapshots(before_rows, after_rows)
+    deduped_fragment_count = sum(len(row.get("fragments", [])) or 1 for row in structured_rows)
 
     logger.info(
         "Menu open transitions: before snapshot row count={} after snapshot row count={} structured row count={} top menu clicked more than once={}",
@@ -538,6 +633,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         "popup_open": popup_open,
         "top_menu_click_count": top_menu_click_count,
         "process_id": process_id,
+        "deduped_fragment_count": deduped_fragment_count,
     }
 
 
