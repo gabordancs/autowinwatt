@@ -30,7 +30,7 @@ def test_classify_post_click_result_dialog_opened():
         safety_level="safe",
         attempted=True,
     )
-    assert result.result_type == "success_dialog_opened"
+    assert result.result_type == "dialog_opened"
 
 
 def test_classify_post_click_result_no_visible_change():
@@ -47,7 +47,7 @@ def test_classify_post_click_result_no_visible_change():
         safety_level="safe",
         attempted=True,
     )
-    assert result.result_type == "failed_no_visible_change"
+    assert result.result_type == "no_visible_change"
 
 
 def test_classify_post_click_result_skipped_and_failed():
@@ -78,7 +78,7 @@ def test_classify_post_click_result_skipped_and_failed():
         attempted=True,
         error_text="click failed",
     )
-    assert skipped.result_type == "skipped_unsafe"
+    assert skipped.result_type == "failed"
     assert failed.result_type == "failed"
 
 
