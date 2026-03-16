@@ -85,7 +85,7 @@ def test_restore_clean_menu_baseline_modal_pending_uses_recovery(monkeypatch):
 
 def test_close_attempt_order_is_stable(monkeypatch):
     monkeypatch.setattr(program_mapper, "get_cached_main_window", lambda: _FakeMainWindow(visible=True, enabled=False))
-    monkeypatch.setattr(program_mapper, "_send_recovery_key", lambda _k: False)
+    monkeypatch.setattr(program_mapper, "_send_recovery_key", lambda _k, **_kwargs: False)
     monkeypatch.setattr(program_mapper, "_click_recovery_button", lambda *_args, **_kwargs: False)
 
     attempts = program_mapper._attempt_project_open_modal_close(main_window_handle=1)
