@@ -1,0 +1,14 @@
+{
+  "__MenuItems__": {
+    "form_name": "__MenuItems__",
+    "menu_bar": [
+      {
+        "name": "SaveProjekt",
+        "caption": "Save Project",
+        "item_type": "TMenuItem",
+        "stable_key": "__MenuItems__.SaveProjekt",
+        "children": []
+      }
+    ]
+  }
+}
