@@ -1,0 +1,279 @@
+{
+  "name": "WinWatt gólya",
+  "control_type": "Window",
+  "class_name": "TMainForm",
+  "automation_id": "",
+  "children": [
+    {
+      "name": "",
+      "control_type": "ToolBar",
+      "class_name": "TToolBar",
+      "automation_id": "923178",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "CheckBox",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "",
+      "control_type": "StatusBar",
+      "class_name": "TStatusBar",
+      "automation_id": "1970802",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Text",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Munkaterület",
+      "control_type": "Pane",
+      "class_name": "MDIClient",
+      "automation_id": "",
+      "children": []
+    },
+    {
+      "name": "",
+      "control_type": "TitleBar",
+      "class_name": "",
+      "automation_id": "",
+      "children": [
+        {
+          "name": "Rendszer",
+          "control_type": "MenuBar",
+          "class_name": "",
+          "automation_id": "MenuBar",
+          "children": [
+            {
+              "name": "Rendszer",
+              "control_type": "MenuItem",
+              "class_name": "",
+              "automation_id": "",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Kis méret",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Teljes méret",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Bezárás",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Alkalmazás",
+      "control_type": "MenuBar",
+      "class_name": "",
+      "automation_id": "MenuBar",
+      "children": [
+        {
+          "name": "Fájl",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Jegyzékek",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Adatbázis...",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Beállítások",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Ablak",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Súgó",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    }
+  ]
+}
