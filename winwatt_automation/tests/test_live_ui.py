@@ -282,12 +282,19 @@ def test_get_main_window_uses_uia_by_process_after_win32_selection(monkeypatch):
                 )
             ]
 
+    class FakeMainWindow(dict):
+        def exists(self, timeout=0):
+            return True
+
     class FakeConnectedApp:
         def __init__(self, backend):
             self.backend = types.SimpleNamespace(name=backend)
 
         def window(self, **kwargs):
-            return {"backend": self.backend.name, **kwargs}
+            return FakeMainWindow({"backend": self.backend.name, **kwargs})
+
+        def windows(self, top_level_only=True):
+            return []
 
     class FakeApplicationFactory:
         def __init__(self):
@@ -314,9 +321,94 @@ def test_get_main_window_uses_uia_by_process_after_win32_selection(monkeypatch):
 
     main_window = app_connector.get_main_window()
 
-    assert main_window == {"backend": "uia", "class_name": "TMainForm", "title_re": ".*WinWatt.*", "process": 999}
+    assert main_window == {"backend": "uia", "class_name": "TMainForm", "title_re": ".*WinWatt.*"}
     assert ("connect", "win32", {"handle": 444}) in fake_factory.calls
     assert ("connect", "uia", {"process": 999}) in fake_factory.calls
+
+
+def test_get_main_window_falls_back_to_best_uia_top_level_window(monkeypatch):
+    class FakeDesktop:
+        def __init__(self, backend: str):
+            self.backend = backend
+
+        def windows(self, top_level_only=True):
+            return [
+                FakeWindow(
+                    title="WinWatt - Project",
+                    class_name="TMainForm",
+                    process_id=999,
+                    handle=444,
+                    rect=FakeRect(0, 0, 1200, 900),
+                )
+            ]
+
+    class MissingMainWindow(dict):
+        def exists(self, timeout=0):
+            return False
+
+    class FakeConnectedApp:
+        def __init__(self, backend):
+            self.backend = types.SimpleNamespace(name=backend)
+
+        def window(self, **kwargs):
+            if kwargs == {"class_name": "TMainForm", "title_re": ".*WinWatt.*"}:
+                return MissingMainWindow({"backend": self.backend.name, **kwargs})
+            return {"backend": self.backend.name, **kwargs}
+
+        def windows(self, top_level_only=True):
+            return [
+                FakeWindow(
+                    title="WinWatt - Dialog",
+                    class_name="TDialog",
+                    process_id=999,
+                    handle=111,
+                    visible=True,
+                    rect=FakeRect(0, 0, 300, 200),
+                ),
+                FakeWindow(
+                    title="WinWatt - Main",
+                    class_name="TMainForm",
+                    process_id=999,
+                    handle=777,
+                    visible=True,
+                    rect=FakeRect(0, 0, 1600, 900),
+                ),
+                FakeWindow(
+                    title="Other App",
+                    class_name="TMainForm",
+                    process_id=999,
+                    handle=999,
+                    visible=True,
+                    rect=FakeRect(0, 0, 2000, 1200),
+                ),
+            ]
+
+    class FakeApplicationFactory:
+        def __init__(self):
+            self.calls = []
+
+        def __call__(self, backend):
+            self.calls.append(("init", backend))
+            factory = self
+
+            class Instance:
+                def connect(self, **kwargs):
+                    factory.calls.append(("connect", backend, kwargs))
+                    return FakeConnectedApp(backend)
+
+            return Instance()
+
+    fake_factory = FakeApplicationFactory()
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "pywinauto",
+        types.SimpleNamespace(Application=fake_factory, Desktop=FakeDesktop),
+    )
+
+    main_window = app_connector.get_main_window()
+
+    assert main_window == {"backend": "uia", "handle": 777}
 
 
 def test_connect_with_win32_handle_falls_back_to_process_when_handle_missing(monkeypatch):
