@@ -10,9 +10,9 @@
   ],
   "main_window_class": "TMainForm",
   "main_window_title": "WinWatt gólya",
-  "process_id": 29404,
+  "process_id": 38236,
   "state_id": "no_project",
-  "timestamp": "2026-03-16T16:43:30.984533+00:00",
+  "timestamp": "2026-03-16T17:09:12.105638+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -29,7 +29,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 29404,
+      "process_id": 38236,
       "title": "WinWatt gólya"
     },
     {
