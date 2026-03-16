@@ -37,6 +37,13 @@ def _safe_call(obj: Any, method_name: str, default: Any = None) -> Any:
         return default
 
 
+def _safe_getattr(obj: Any, attr_name: str, default: Any = None) -> Any:
+    try:
+        return getattr(obj, attr_name, default)
+    except Exception:
+        return default
+
+
 def _rect_payload(rectangle: Any) -> dict[str, int] | None:
     if rectangle is None:
         return None
@@ -60,11 +67,14 @@ def _rect_payload(rectangle: Any) -> dict[str, int] | None:
     }
 
 
-def _candidate_from_window(window: "BaseWrapper") -> dict[str, Any]:
-    element_info = getattr(window, "element_info", window)
+def _candidate_from_window(window: "BaseWrapper", backend: str = "win32") -> dict[str, Any]:
+    element_info = _safe_getattr(window, "element_info", window)
     title = _safe_call(window, "window_text", "") or ""
-    class_name = _safe_call(window, "class_name", None) or getattr(element_info, "class_name", None)
-    control_type = getattr(element_info, "control_type", None)
+    class_name = _safe_call(window, "class_name", None) or _safe_getattr(element_info, "class_name", None)
+    if backend == "uia":
+        control_type = _safe_getattr(element_info, "control_type", None)
+    else:
+        control_type = None
     process_id = _safe_call(window, "process_id", None)
     handle = _safe_call(window, "handle", None)
     rectangle = _safe_call(window, "rectangle", None)
@@ -99,7 +109,11 @@ def list_candidate_windows(backend: str = "win32") -> list[dict[str, Any]]:
     desktop = Desktop(backend=backend)
     candidates: list[dict[str, Any]] = []
     for window in desktop.windows(top_level_only=True):
-        candidate = _candidate_from_window(window)
+        try:
+            candidate = _candidate_from_window(window, backend=backend)
+        except Exception:
+            logger.exception("Skipping window during candidate discovery for backend={}", backend)
+            continue
         text = (candidate.get("title") or "").lower()
         class_name = str(candidate.get("class_name") or "").lower()
         if "winwatt" in text and class_name == "tmainform":
