@@ -261,13 +261,115 @@ def test_wait_for_any_window_title_contains(monkeypatch):
 
 
 def test_invoke_open_project_dialog_by_index_plumbs_dialog_result(monkeypatch):
-    clicked = {"index": 2, "rectangle": {"left": 1}}
-    monkeypatch.setattr(menu_commands, "click_file_submenu_item_by_index", lambda i: clicked)
-    monkeypatch.setattr(waits, "detect_open_file_dialog", lambda timeout=5.0: True)
-    monkeypatch.setattr(waits, "wait_for_dialog", lambda timeout=1.0: FakeDialog("Open"))
+    popup_rows = [{"index": 2, "center_x": 25, "center_y": 40, "is_separator": False, "rectangle": {"left": 1}}]
+    monkeypatch.setattr(
+        menu_helpers,
+        "open_file_menu_and_capture_popup_state",
+        lambda: {"rows": popup_rows, "process_id": 1234},
+    )
+    monkeypatch.setattr(menu_helpers, "click_structured_popup_row", lambda rows, idx: rows[idx])
+    monkeypatch.setattr(
+        waits,
+        "detect_open_file_dialog_from_context",
+        lambda process_id, timeout=5.0: {
+            "dialog_detected": True,
+            "dialog_title": "Open",
+            "dialog_class": "#32770",
+            "candidate_count": 1,
+        },
+    )
 
-    result = menu_commands.invoke_open_project_dialog_by_index(2)
+    result = menu_commands.invoke_open_project_dialog_by_index(0)
 
-    assert result["clicked_index"] == 2
+    assert result["clicked_index"] == 0
     assert result["dialog_detected"] is True
     assert result["dialog_title"] == "Open"
+    assert result["process_id"] == 1234
+    assert result["dialog_candidate_count"] == 1
+
+
+def test_structured_popup_rows_dedupes_by_visual_identity_prefers_main_window(monkeypatch):
+    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+    top_level = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(5, 5, 60, 30))
+
+    before = []
+    after = [
+        {
+            "text": "Projekt megnyitása",
+            "normalized_text": "projekt megnyitása",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 3, "top": 45, "right": 703, "bottom": 67},
+            "width": 700,
+            "height": 22,
+            "center_x": 353,
+            "center_y": 56,
+            "is_separator": False,
+            "source_scope": "global_process_scan",
+            "appeared_after_popup_open": False,
+        },
+        {
+            "text": "Projekt megnyitása",
+            "normalized_text": "projekt megnyitása",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 3, "top": 45, "right": 703, "bottom": 67},
+            "width": 700,
+            "height": 22,
+            "center_x": 353,
+            "center_y": 56,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": False,
+        },
+    ]
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([top_level]))
+
+    structured = menu_helpers._structured_popup_rows_from_snapshots(before, after)
+
+    assert len(structured) == 1
+    assert structured[0]["index"] == 0
+    assert structured[0]["source_scope"] == "main_window"
+
+
+def test_detect_open_file_dialog_from_context_without_process_id(monkeypatch):
+    class FakeWindow:
+        def __init__(self, handle, title, class_name):
+            self._handle = handle
+            self._title = title
+            self._class_name = class_name
+
+        def is_visible(self):
+            return True
+
+        def window_text(self):
+            return self._title
+
+        def class_name(self):
+            return self._class_name
+
+        def process_id(self):
+            return 999
+
+        def handle(self):
+            return self._handle
+
+    class FakeDesktop:
+        def __init__(self, backend):
+            self.backend = backend
+            self._calls = 0
+
+        def windows(self, top_level_only=True):
+            self._calls += 1
+            if self._calls == 1:
+                return [FakeWindow(1, "WinWatt", "TMainForm")]
+            return [FakeWindow(1, "WinWatt", "TMainForm"), FakeWindow(2, "Open", "#32770")]
+
+    monkeypatch.setitem(__import__("sys").modules, "pywinauto", types.SimpleNamespace(Desktop=FakeDesktop))
+
+    result = waits.detect_open_file_dialog_from_context(process_id=None, timeout=0.3)
+
+    assert result["dialog_detected"] is True
+    assert result["dialog_title"] == "Open"
+    assert result["dialog_class"] == "#32770"
