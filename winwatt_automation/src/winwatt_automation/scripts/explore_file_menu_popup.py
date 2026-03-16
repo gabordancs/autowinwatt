@@ -7,7 +7,7 @@ import time
 
 from winwatt_automation.live_ui.app_connector import connect_to_winwatt, prepare_main_window_for_menu_interaction
 from winwatt_automation.live_ui.menu_helpers import click_structured_popup_row, open_file_menu_and_capture_popup_state
-from winwatt_automation.live_ui.waits import detect_open_file_dialog, wait_for_dialog
+from winwatt_automation.live_ui.waits import detect_open_file_dialog_from_context, wait_for_dialog_from_context
 
 
 def main() -> None:
@@ -54,11 +54,12 @@ def main() -> None:
         return
 
     clicked = click_structured_popup_row(entries, args.click_index)
-    dialog_detected = detect_open_file_dialog(timeout=5.0)
-    dialog_title = None
-    if dialog_detected:
+    process_id = popup_state.get("process_id")
+    dialog_result = detect_open_file_dialog_from_context(process_id=process_id, timeout=5.0)
+    dialog_title = dialog_result.get("dialog_title")
+    if dialog_result.get("dialog_detected") and dialog_title is None:
         try:
-            dialog_title = wait_for_dialog(timeout=1.0).window_text()
+            dialog_title = wait_for_dialog_from_context(process_id=process_id, timeout=1.0).window_text()
         except Exception:
             dialog_title = None
 
@@ -67,8 +68,11 @@ def main() -> None:
         "clicked_index": args.click_index,
         "clicked_rectangle": clicked.get("rectangle"),
         "clicked_entry": clicked,
-        "dialog_detected": dialog_detected,
+        "dialog_detected": bool(dialog_result.get("dialog_detected")),
         "dialog_title": dialog_title,
+        "dialog_class": dialog_result.get("dialog_class"),
+        "dialog_candidate_count": dialog_result.get("candidate_count"),
+        "process_id": process_id,
         "top_menu_click_count": popup_state.get("top_menu_click_count"),
     })
 

@@ -28,13 +28,17 @@ def click_file_submenu_item_by_index(index: int) -> dict[str, Any]:
 def invoke_open_project_dialog_by_index(index: int) -> dict[str, Any]:
     """Click a file-menu popup row by index and report whether dialog appeared."""
 
-    clicked = click_file_submenu_item_by_index(index)
+    popup_state = menu_helpers.open_file_menu_and_capture_popup_state()
+    popup_rows = popup_state.get("rows", [])
+    clicked = menu_helpers.click_structured_popup_row(popup_rows, index)
 
-    dialog_detected = waits.detect_open_file_dialog(timeout=5.0)
-    dialog_title = None
-    if dialog_detected:
+    process_id = popup_state.get("process_id")
+    dialog_result = waits.detect_open_file_dialog_from_context(process_id=process_id, timeout=5.0)
+
+    dialog_title = dialog_result.get("dialog_title")
+    if dialog_result.get("dialog_detected") and dialog_title is None:
         try:
-            dialog = waits.wait_for_dialog(timeout=1.0)
+            dialog = waits.wait_for_dialog_from_context(process_id=process_id, timeout=1.0)
             dialog_title = dialog.window_text()
         except Exception:
             dialog_title = None
@@ -43,6 +47,9 @@ def invoke_open_project_dialog_by_index(index: int) -> dict[str, Any]:
         "clicked_index": index,
         "clicked_rectangle": clicked.get("rectangle"),
         "clicked_entry": clicked,
-        "dialog_detected": dialog_detected,
+        "dialog_detected": bool(dialog_result.get("dialog_detected")),
         "dialog_title": dialog_title,
+        "dialog_class": dialog_result.get("dialog_class"),
+        "dialog_candidate_count": dialog_result.get("candidate_count"),
+        "process_id": process_id,
     }
