@@ -221,6 +221,9 @@ def capture_state_snapshot(state_id: str) -> RuntimeStateSnapshot:
         visible_top_windows=_list_visible_top_windows(),
         discovered_top_menus=menu_helpers.list_top_menu_items(),
         timestamp=datetime.now(tz=timezone.utc).isoformat(),
+        main_window_enabled=bool(_safe_call(main_window, "is_enabled", False)),
+        main_window_visible=bool(_safe_call(main_window, "is_visible", False)),
+        foreground_window=_foreground_window_info(),
     )
 
 
@@ -287,6 +290,170 @@ def _detect_child_rows(parent_row: dict[str, Any], all_rows: list[dict[str, Any]
     return children
 
 
+
+
+def _foreground_window_info() -> dict[str, Any]:
+    try:
+        import ctypes
+
+        user32 = ctypes.windll.user32
+        hwnd = user32.GetForegroundWindow()
+        if not hwnd:
+            return {}
+        pid = ctypes.c_ulong(0)
+        user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+        title_buf = ctypes.create_unicode_buffer(512)
+        class_buf = ctypes.create_unicode_buffer(256)
+        user32.GetWindowTextW(hwnd, title_buf, 511)
+        user32.GetClassNameW(hwnd, class_buf, 255)
+        return {"handle": int(hwnd), "title": title_buf.value or "", "class_name": class_buf.value or "", "process_id": int(pid.value)}
+    except Exception:
+        return {}
+
+
+def _window_identity(row: dict[str, Any]) -> tuple[Any, ...]:
+    return (
+        row.get("handle"),
+        row.get("title") or "",
+        row.get("class_name") or "",
+        row.get("process_id"),
+    )
+
+
+def _list_process_visible_windows(process_id: int | None) -> list[dict[str, Any]]:
+    if process_id is None:
+        return []
+    return [w for w in _list_visible_top_windows() if w.get("process_id") == process_id]
+
+
+def _describe_controls(window: Any, limit: int = 20) -> list[dict[str, Any]]:
+    controls: list[dict[str, Any]] = []
+    try:
+        descendants = _safe_call(window, "descendants", []) or []
+    except Exception:
+        return controls
+    for child in descendants[:limit]:
+        controls.append({
+            "control_type": getattr(getattr(child, "element_info", None), "control_type", None),
+            "name": _safe_call(child, "window_text", "") or "",
+            "automation_id": getattr(getattr(child, "element_info", None), "automation_id", None),
+        })
+    return controls
+
+
+def _window_snapshot(window: Any) -> dict[str, Any]:
+    rect = _safe_call(window, "rectangle", None)
+    rectangle = {}
+    if rect is not None:
+        rectangle = {
+            "left": int(getattr(rect, "left", 0)),
+            "top": int(getattr(rect, "top", 0)),
+            "right": int(getattr(rect, "right", 0)),
+            "bottom": int(getattr(rect, "bottom", 0)),
+        }
+    return {
+        "title": _safe_call(window, "window_text", "") or "",
+        "class_name": _safe_call(window, "class_name", "") or "",
+        "process_id": _safe_call(window, "process_id", None),
+        "handle": _safe_call(window, "handle", None),
+        "rectangle": rectangle,
+        "enabled": bool(_safe_call(window, "is_enabled", False)),
+        "visible": bool(_safe_call(window, "is_visible", False)),
+        "controls": _describe_controls(window),
+    }
+
+
+def detect_dialog_or_window_transition(
+    before_snapshot: RuntimeStateSnapshot,
+    after_snapshot: RuntimeStateSnapshot,
+    *,
+    child_rows: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    child_rows = child_rows or []
+    before_ids = {_window_identity(w) for w in before_snapshot.visible_top_windows}
+    new_windows = [w for w in after_snapshot.visible_top_windows if _window_identity(w) not in before_ids]
+    main_disabled = before_snapshot.main_window_enabled is not False and after_snapshot.main_window_enabled is False
+
+    if child_rows:
+        return {"result_type": "submenu_opened", "new_windows": new_windows}
+
+    if new_windows:
+        candidate = new_windows[0]
+        title = str(candidate.get("title") or "")
+        class_name = str(candidate.get("class_name") or "")
+        result_type = "dialog_opened" if class_name == "#32770" or "dialog" in class_name.lower() else "window_opened"
+        logger.info("dialog_detected result_type={} title={} class_name={}", result_type, title, class_name)
+        return {"result_type": result_type, "dialog_detected": result_type == "dialog_opened", "window_snapshot": candidate}
+
+    if main_disabled:
+        logger.warning("modal_likely_main_disabled title={}", after_snapshot.main_window_title)
+        return {"result_type": "main_window_disabled_modal_likely", "dialog_detected": True}
+
+    if after_snapshot.foreground_window != before_snapshot.foreground_window:
+        return {"result_type": "popup_changed", "dialog_detected": False}
+
+    return {"result_type": "no_visible_change", "dialog_detected": False}
+
+
+def close_transient_dialog_or_window(window: Any | None, *, action_label: str = "") -> dict[str, Any]:
+    logger.info("dialog_close_attempt action_label={}", action_label)
+    if window is None:
+        try:
+            from pywinauto import keyboard
+            keyboard.send_keys('{ESC}')
+            logger.info('dialog_close_success method=esc_global')
+            return {'closed': True, 'method': 'esc_global'}
+        except Exception:
+            return {"closed": False, "method": None, "error": "missing_window"}
+    try:
+        from pywinauto import keyboard
+    except Exception:
+        keyboard = None
+
+    if keyboard is not None:
+        for key, method in [('{ESC}', 'esc'), ('%{F4}', 'alt_f4')]:
+            try:
+                window.set_focus()
+                keyboard.send_keys(key)
+                if not bool(_safe_call(window, 'is_visible', False)):
+                    logger.info('dialog_close_success method={}', method)
+                    return {'closed': True, 'method': method}
+            except Exception:
+                continue
+
+    labels = ["Mégse", "Cancel", "Bezár", "Bezárás", "Close", "OK"]
+    for label in labels:
+        for meth in ("child_window", "window"):
+            try:
+                btn = getattr(window, meth)(title_re=f".*{label}.*", control_type="Button")
+                btn.click_input()
+                if not bool(_safe_call(window, 'is_visible', False)):
+                    logger.info('dialog_close_success method=button:{}', label)
+                    return {'closed': True, 'method': f'button:{label}'}
+            except Exception:
+                continue
+
+    try:
+        window.close()
+        if not bool(_safe_call(window, 'is_visible', False)):
+            logger.info('dialog_close_success method=close')
+            return {'closed': True, 'method': 'close'}
+    except Exception:
+        pass
+
+    logger.error("dialog_close_failed action_label={}", action_label)
+    return {"closed": False, "method": None, "error": "close_failed"}
+
+
+def verify_main_window_recovery(main_window: Any) -> bool:
+    visible = bool(_safe_call(main_window, "is_visible", False))
+    enabled = bool(_safe_call(main_window, "is_enabled", False))
+    ok = visible and enabled
+    if ok:
+        logger.info("recovery_success")
+    else:
+        logger.error("recovery_failed visible={} enabled={}", visible, enabled)
+    return ok
 def classify_post_click_result(
     process_id: int | None,
     before_snapshot: RuntimeStateSnapshot,
@@ -305,20 +472,15 @@ def classify_post_click_result(
     top_menu_click_count: int | None = None,
     forced_result_type: str | None = None,
 ) -> RuntimeActionResult:
+    details = dict(dialog_detection or {})
     if forced_result_type:
         result_type = forced_result_type
     elif not attempted:
-        result_type = "skipped_unsafe"
+        result_type = "failed"
     elif error_text:
         result_type = "failed"
-    elif dialog_detection and dialog_detection.get("dialog_detected"):
-        result_type = "success_dialog_opened"
-    elif len(after_snapshot.visible_top_windows) > len(before_snapshot.visible_top_windows):
-        result_type = "success_popup_opened"
-    elif before_snapshot.main_window_title != after_snapshot.main_window_title:
-        result_type = "state_changed"
     else:
-        result_type = "failed_no_visible_change"
+        result_type = str(details.get("result_type") or ("dialog_opened" if details.get("dialog_detected") else "no_visible_change"))
 
     return RuntimeActionResult(
         state_id=state_id,
@@ -329,14 +491,15 @@ def classify_post_click_result(
         safety_level=safety_level,
         attempted=attempted,
         result_type=result_type,
-        dialog_title=(dialog_detection or {}).get("dialog_title"),
-        dialog_class=(dialog_detection or {}).get("dialog_class"),
-        window_title=None,
-        window_class=None,
+        dialog_title=details.get("dialog_title") or ((details.get("window_snapshot") or {}).get("title")),
+        dialog_class=details.get("dialog_class") or ((details.get("window_snapshot") or {}).get("class_name")),
+        window_title=(details.get("window_snapshot") or {}).get("title"),
+        window_class=(details.get("window_snapshot") or {}).get("class_name"),
         error_text=error_text,
         notes=notes,
         process_id=process_id,
         top_menu_click_count=top_menu_click_count,
+        event_details=details,
     )
 
 
@@ -354,9 +517,48 @@ def explore_menu_tree(
     visited_paths: set[tuple[str, ...]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
     parent_path = list(parent_path or [clean_menu_title(top_menu)])
+    dialogs: list[RuntimeDialogRecord] = []
+    windows: list[RuntimeWindowRecord] = []
+
     if popup_rows is None:
+        before_click = capture_state_snapshot(state_id)
         menu_helpers.click_top_menu_item(top_menu)
         popup_rows = menu_helpers.capture_menu_popup_snapshot()
+        after_click = capture_state_snapshot(state_id)
+        top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
+        if top_transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+            candidate = top_transition.get("window_snapshot") or {}
+            if top_transition.get("result_type") == "dialog_opened" or top_transition.get("result_type") == "main_window_disabled_modal_likely":
+                dialogs.append(RuntimeDialogRecord(
+                    state_id=state_id,
+                    top_menu=top_menu,
+                    row_index=-1,
+                    menu_path=[clean_menu_title(top_menu)],
+                    title=str(candidate.get("title") or ""),
+                    class_name=str(candidate.get("class_name") or ""),
+                    process_id=candidate.get("process_id"),
+                    rectangle=dict(candidate.get("rectangle") or {}),
+                    enabled=candidate.get("enabled"),
+                    visible=candidate.get("visible"),
+                    controls=list(candidate.get("controls") or []),
+                ))
+            else:
+                windows.append(RuntimeWindowRecord(
+                    state_id=state_id,
+                    top_menu=top_menu,
+                    row_index=-1,
+                    menu_path=[clean_menu_title(top_menu)],
+                    title=str(candidate.get("title") or ""),
+                    class_name=str(candidate.get("class_name") or ""),
+                    process_id=candidate.get("process_id"),
+                    rectangle=dict(candidate.get("rectangle") or {}),
+                    enabled=candidate.get("enabled"),
+                    visible=candidate.get("visible"),
+                    controls=list(candidate.get("controls") or []),
+                ))
+            close_result = close_transient_dialog_or_window(None, action_label=f"top_menu:{top_menu}")
+            if not close_result.get("closed"):
+                logger.error("dialog_close_failed top_menu={}", top_menu)
 
     if visited_paths is None:
         visited_paths = set()
@@ -369,8 +571,6 @@ def explore_menu_tree(
     )
     nodes: list[dict[str, Any]] = []
     actions: list[RuntimeActionResult] = []
-    dialogs: list[RuntimeDialogRecord] = []
-    windows: list[RuntimeWindowRecord] = []
 
     for row in menu_rows:
         if not include_disabled and row.enabled_guess is False:
@@ -385,6 +585,8 @@ def explore_menu_tree(
         skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
         opens_submenu = False
         children_nodes: list[dict[str, Any]] = []
+        before_action = capture_state_snapshot(state_id)
+        transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
         if depth < max_depth and not row.is_separator and row.enabled_guess is not False:
             _hover_row(asdict(row))
@@ -396,6 +598,8 @@ def explore_menu_tree(
                     for child_row in child_rows
                     if not is_top_menu_like_popup_row(child_row, canonical_top_menu_names)
                 ]
+            after_action = capture_state_snapshot(state_id)
+            transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
             if child_rows:
                 opens_submenu = True
                 child_nodes, child_menu_rows, child_actions, child_dialogs, child_windows = explore_menu_tree(
@@ -415,6 +619,36 @@ def explore_menu_tree(
                 actions.extend(child_actions)
                 dialogs.extend(child_dialogs)
                 windows.extend(child_windows)
+            elif transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+                candidate = transition.get("window_snapshot") or {}
+                if transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely"}:
+                    dialogs.append(RuntimeDialogRecord(
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        row_index=row.row_index,
+                        menu_path=path,
+                        title=str(candidate.get("title") or ""),
+                        class_name=str(candidate.get("class_name") or ""),
+                        process_id=candidate.get("process_id"),
+                        rectangle=dict(candidate.get("rectangle") or {}),
+                        enabled=candidate.get("enabled"),
+                        visible=candidate.get("visible"),
+                        controls=list(candidate.get("controls") or []),
+                    ))
+                else:
+                    windows.append(RuntimeWindowRecord(
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        row_index=row.row_index,
+                        menu_path=path,
+                        title=str(candidate.get("title") or ""),
+                        class_name=str(candidate.get("class_name") or ""),
+                        process_id=candidate.get("process_id"),
+                        rectangle=dict(candidate.get("rectangle") or {}),
+                        enabled=candidate.get("enabled"),
+                        visible=candidate.get("visible"),
+                        controls=list(candidate.get("controls") or []),
+                    ))
 
         node = _row_to_node(
             state_id,
@@ -425,15 +659,16 @@ def explore_menu_tree(
             path=path,
             children=children_nodes,
             opens_submenu=opens_submenu,
+            opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened"},
             skipped_by_safety=skipped,
         )
         nodes.append(asdict(node))
         actions.append(
             classify_post_click_result(
                 process_id=None,
-                before_snapshot=capture_state_snapshot(state_id),
+                before_snapshot=before_action,
                 after_snapshot=capture_state_snapshot(state_id),
-                dialog_detection=None,
+                dialog_detection=transition,
                 state_id=state_id,
                 top_menu=top_menu,
                 row_index=row.row_index,

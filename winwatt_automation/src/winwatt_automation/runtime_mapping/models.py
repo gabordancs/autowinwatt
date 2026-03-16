@@ -13,6 +13,9 @@ class RuntimeStateSnapshot:
     visible_top_windows: list[dict[str, Any]]
     discovered_top_menus: list[str]
     timestamp: str
+    main_window_enabled: bool | None = None
+    main_window_visible: bool | None = None
+    foreground_window: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)
@@ -73,6 +76,7 @@ class RuntimeActionResult:
     notes: str | None
     process_id: int | None
     top_menu_click_count: int | None
+    event_details: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)
@@ -84,6 +88,10 @@ class RuntimeWindowRecord:
     title: str
     class_name: str
     process_id: int | None
+    rectangle: dict[str, Any] = field(default_factory=dict)
+    enabled: bool | None = None
+    visible: bool | None = None
+    controls: list[dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass(slots=True)
@@ -95,6 +103,10 @@ class RuntimeDialogRecord:
     title: str
     class_name: str
     process_id: int | None
+    rectangle: dict[str, Any] = field(default_factory=dict)
+    enabled: bool | None = None
+    visible: bool | None = None
+    controls: list[dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass(slots=True)
