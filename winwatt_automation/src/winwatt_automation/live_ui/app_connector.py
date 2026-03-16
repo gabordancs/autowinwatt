@@ -145,14 +145,11 @@ def select_main_window(candidates: list[dict[str, Any]], backend: str = "unknown
     if not candidates:
         raise WinWattNotRunningError("No WinWatt-like windows were found")
 
-    candidates_with_handle = [candidate for candidate in candidates if candidate.get("handle") is not None]
-    if not candidates_with_handle:
-        raise WinWattNotRunningError(f"No WinWatt-like windows with valid handle were found on backend={backend}")
+    candidates_with_process = [candidate for candidate in candidates if candidate.get("process_id") is not None]
+    if not candidates_with_process:
+        raise WinWattNotRunningError(f"No WinWatt-like windows with process_id were found on backend={backend}")
 
-    visible_candidates = [candidate for candidate in candidates_with_handle if candidate.get("is_visible")]
-    ranked_pool = visible_candidates or candidates_with_handle
-    if not visible_candidates:
-        logger.warning("No visible candidate windows found; falling back to all candidates")
+    ranked_pool = candidates_with_process
 
     scored = [(candidate, _selection_score(candidate)) for candidate in ranked_pool]
     scored.sort(key=lambda item: item[1], reverse=True)
@@ -169,12 +166,20 @@ def select_main_window(candidates: list[dict[str, Any]], backend: str = "unknown
         logger.info("Candidate ranking score={} data={}", score, candidate)
 
     reasons = [
+        f"has_process_id={winner.get('process_id') is not None}",
+        f"has_handle={winner.get('handle') is not None}",
         f"visible={bool(winner.get('is_visible'))}",
         f"enabled={bool(winner.get('is_enabled'))}",
         f"title_has_winwatt={'winwatt' in str(winner.get('title') or '').lower()}",
         f"area={((winner.get('rectangle') or {}).get('width', 0)) * ((winner.get('rectangle') or {}).get('height', 0))}",
     ]
-    logger.info("Selected main window handle={} score={} reasons={}", winner.get("handle"), winner_score, reasons)
+    logger.info(
+        "Selected main window process_id={} handle={} score={} reasons={}",
+        winner.get("process_id"),
+        winner.get("handle"),
+        winner_score,
+        reasons,
+    )
 
     return winner
 
@@ -191,9 +196,45 @@ def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
     from pywinauto import Application
 
     selected = _resolve_main_window_candidate(backend="win32")
+    process_id = selected.get("process_id")
+    if process_id is None:
+        raise WinWattNotRunningError("Selected WinWatt window has no process_id")
+
     handle = selected.get("handle")
-    app = Application(backend="win32").connect(handle=handle)
-    logger.info("Connected to WinWatt backend=win32 handle={}", handle)
+    connector = Application(backend="win32")
+    if handle is not None:
+        app = connector.connect(handle=handle)
+        logger.info(
+            "Connected to WinWatt backend=win32 attach_mode=handle candidate={}",
+            {
+                "process_id": process_id,
+                "handle": handle,
+                "class_name": selected.get("class_name"),
+                "title": selected.get("title"),
+            },
+        )
+        return app, selected
+
+    app = connector.connect(process=process_id)
+    logger.info(
+        "Connected to WinWatt backend=win32 attach_mode=process candidate={}",
+        {
+            "process_id": process_id,
+            "handle": handle,
+            "class_name": selected.get("class_name"),
+            "title": selected.get("title"),
+        },
+    )
+
+    selected_window = app.window(class_name="TMainForm", title_re=".*WinWatt.*")
+    resolved_handle = _safe_call(selected_window, "handle", None)
+    if resolved_handle is not None:
+        selected["handle"] = int(resolved_handle)
+    logger.info(
+        "Resolved win32 main window after process attach process_id={} resolved_handle={}",
+        process_id,
+        selected.get("handle"),
+    )
     return app, selected
 
 
@@ -201,7 +242,7 @@ def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
 def connect_to_winwatt() -> Any:
     """Attach to a running WinWatt application.
 
-    Always resolves the main window using ``win32`` and attaches by handle.
+    Resolves the main window using ``win32`` and prefers process-based attachment.
     """
 
     try:
@@ -226,7 +267,8 @@ def get_main_window() -> Any:
     app_uia = Application(backend="uia").connect(process=process_id)
     logger.info("Connected to WinWatt backend=uia process_id={}", process_id)
 
-    candidates = list_candidate_windows(backend="win32")
-    selected = select_main_window(candidates, backend="win32")
-    logger.info("Resolving main WinWatt window by process_id={} backend=uia", process_id)
-    return app_uia.window(handle=selected["handle"])
+    logger.info(
+        "Resolving main WinWatt window by process_id={} backend=uia class_name=TMainForm title_re=.*WinWatt.*",
+        process_id,
+    )
+    return app_uia.window(class_name="TMainForm", title_re=".*WinWatt.*", process=process_id)
