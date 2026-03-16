@@ -13,24 +13,22 @@ class UIParseError(Exception):
     """Raised when Hungarian.xml cannot be parsed into a valid UI model."""
 
 
+def _read_attr(node: etree._Element, *names: str) -> str | None:
+    for name in names:
+        value = node.attrib.get(name)
+        if value is not None:
+            return value
+    return None
+
+
 def _extract_properties(node: etree._Element) -> dict[str, str]:
     props: dict[str, str] = {}
-    for prop in node.xpath("./Properties/Property"):
-        prop_name = prop.attrib.get("Name")
-        prop_value = prop.attrib.get("Value")
-        if prop_name and prop_name in IMPORTANT_PROPERTIES and prop_value is not None:
+    for prop in node.xpath("./property | ./Property | ./Properties/Property"):
+        prop_name = _read_attr(prop, "id", "Id", "name", "Name")
+        prop_value = _read_attr(prop, "value", "Value")
+        if prop_name and prop_value is not None and prop_name in IMPORTANT_PROPERTIES:
             props[prop_name] = prop_value
     return props
-
-
-def _extract_items(container: etree._Element) -> list[UIItem]:
-    items: list[UIItem] = []
-    for item in container.xpath("./Items/Item"):
-        name = item.attrib.get("Name") or "UnnamedItem"
-        item_type = item.attrib.get("Type") or "UnknownType"
-        properties = _extract_properties(item)
-        items.append(UIItem(name=name, item_type=item_type, properties=properties))
-    return items
 
 
 def parse_hungarian_xml(xml_path: str | Path) -> UIModel:
@@ -43,13 +41,24 @@ def parse_hungarian_xml(xml_path: str | Path) -> UIModel:
     except etree.XMLSyntaxError as exc:
         raise UIParseError(f"Invalid XML format in {path}") from exc
 
-    forms: list[UIForm] = []
+    form_nodes = root.xpath("./form")
+    print("root tag:", root.tag)
+    print("form count:", len(form_nodes))
+    print("first forms:", [f.get("name") for f in form_nodes[:3]])
 
-    for form in root.xpath(".//Forms/Form"):
-        form_name = form.attrib.get("Name") or "UnnamedForm"
-        form_type = form.attrib.get("Type") or "UnknownFormType"
+    forms: list[UIForm] = []
+    for form in form_nodes:
+        form_name = _read_attr(form, "name", "Name") or "UnnamedForm"
+        form_type = _read_attr(form, "type", "Type") or "UnknownFormType"
         form_properties = _extract_properties(form)
-        items = _extract_items(form)
+
+        items: list[UIItem] = []
+        for item in form.xpath("./formitem"):
+            item_name = _read_attr(item, "name", "Name") or "UnnamedItem"
+            item_type = _read_attr(item, "type", "Type") or "UnknownType"
+            item_properties = _extract_properties(item)
+            items.append(UIItem(name=item_name, item_type=item_type, properties=item_properties))
+
         forms.append(
             UIForm(
                 name=form_name,
@@ -58,22 +67,5 @@ def parse_hungarian_xml(xml_path: str | Path) -> UIModel:
                 items=items,
             )
         )
-
-    action_items = []
-    for action in root.xpath(".//Actions/Action"):
-        name = action.attrib.get("Name") or "UnnamedAction"
-        item_type = action.attrib.get("Type") or "TAction"
-        action_items.append(UIItem(name=name, item_type=item_type, properties=_extract_properties(action)))
-
-    menu_items = []
-    for menu in root.xpath(".//MenuItems/MenuItem"):
-        name = menu.attrib.get("Name") or "UnnamedMenuItem"
-        item_type = menu.attrib.get("Type") or "TMenuItem"
-        menu_items.append(UIItem(name=name, item_type=item_type, properties=_extract_properties(menu)))
-
-    if action_items:
-        forms.append(UIForm(name="__Actions__", form_type="Virtual", caption="Actions", items=action_items))
-    if menu_items:
-        forms.append(UIForm(name="__MenuItems__", form_type="Virtual", caption="MenuItems", items=menu_items))
 
     return UIModel(forms=forms)
