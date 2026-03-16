@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TDeviceDatabaseForm",
-    "handle": 8063336,
-    "process_id": 6444,
+    "handle": 3805456,
+    "process_id": 37200,
     "title": "Adatbázis adatok karbantartása"
   },
   "main_window_class": "TMainForm",
@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "lost_main_window_before:Fájl",
-  "process_id": 6444,
+  "process_id": 37200,
   "state_id": "project_open",
-  "timestamp": "2026-03-16T19:17:47.370514+00:00",
+  "timestamp": "2026-03-16T20:27:49.600027+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -33,13 +33,13 @@
     {
       "class_name": "TDeviceDatabaseForm",
       "handle": null,
-      "process_id": 6444,
+      "process_id": 37200,
       "title": "Adatbázis adatok karbantartása"
     },
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 6444,
+      "process_id": 37200,
       "title": "WinWatt gólya"
     },
     {
@@ -59,18 +59,6 @@
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 32848,
-      "title": "isaszegexpor0309.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 32848,
-      "title": "Hungarian.xml és 1 további lap – 1. profil – Microsoft​ Edge"
     },
     {
       "class_name": "Notepad",
