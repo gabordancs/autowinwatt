@@ -187,6 +187,7 @@ def test_select_main_window_prefers_visible_enabled_and_largest_area():
             "is_enabled": True,
             "rectangle": {"width": 300, "height": 180},
             "handle": 1,
+            "process_id": 1,
         },
         {
             "title": "WinWatt - Main",
@@ -195,6 +196,7 @@ def test_select_main_window_prefers_visible_enabled_and_largest_area():
             "is_enabled": True,
             "rectangle": {"width": 1600, "height": 900},
             "handle": 2,
+            "process_id": 2,
         },
         {
             "title": "WinWatt - Disabled",
@@ -203,6 +205,7 @@ def test_select_main_window_prefers_visible_enabled_and_largest_area():
             "is_enabled": False,
             "rectangle": {"width": 1800, "height": 900},
             "handle": 3,
+            "process_id": 3,
         },
     ]
 
@@ -211,28 +214,30 @@ def test_select_main_window_prefers_visible_enabled_and_largest_area():
     assert selected["handle"] == 2
 
 
-def test_select_main_window_ignores_candidates_without_handle():
+def test_select_main_window_allows_candidates_without_handle():
     candidates = [
         {
             "title": "WinWatt",
             "class_name": "MainFrame",
-            "is_visible": True,
+            "is_visible": False,
             "is_enabled": True,
             "rectangle": {"width": 1200, "height": 900},
             "handle": None,
+            "process_id": 555,
         },
         {
             "title": "WinWatt",
             "class_name": "MainFrame",
-            "is_visible": True,
+            "is_visible": False,
             "is_enabled": True,
             "rectangle": {"width": 1000, "height": 800},
             "handle": 12,
+            "process_id": 556,
         },
     ]
 
     selected = app_connector.select_main_window(candidates, backend="win32")
-    assert selected["handle"] == 12
+    assert selected["process_id"] == 555
 
 
 def test_select_main_window_raises_on_tie():
@@ -244,6 +249,7 @@ def test_select_main_window_raises_on_tie():
             "is_enabled": True,
             "rectangle": {"width": 1200, "height": 900},
             "handle": 11,
+            "process_id": 11,
         },
         {
             "title": "WinWatt",
@@ -252,6 +258,7 @@ def test_select_main_window_raises_on_tie():
             "is_enabled": True,
             "rectangle": {"width": 1200, "height": 900},
             "handle": 12,
+            "process_id": 12,
         },
     ]
 
@@ -279,8 +286,8 @@ def test_get_main_window_uses_uia_by_process_after_win32_selection(monkeypatch):
         def __init__(self, backend):
             self.backend = types.SimpleNamespace(name=backend)
 
-        def window(self, handle=None):
-            return {"backend": self.backend.name, "handle": handle}
+        def window(self, **kwargs):
+            return {"backend": self.backend.name, **kwargs}
 
     class FakeApplicationFactory:
         def __init__(self):
@@ -307,9 +314,57 @@ def test_get_main_window_uses_uia_by_process_after_win32_selection(monkeypatch):
 
     main_window = app_connector.get_main_window()
 
-    assert main_window == {"backend": "uia", "handle": 444}
+    assert main_window == {"backend": "uia", "class_name": "TMainForm", "title_re": ".*WinWatt.*", "process": 999}
     assert ("connect", "win32", {"handle": 444}) in fake_factory.calls
     assert ("connect", "uia", {"process": 999}) in fake_factory.calls
+
+
+def test_connect_with_win32_handle_falls_back_to_process_when_handle_missing(monkeypatch):
+    class FakeDesktop:
+        def __init__(self, backend: str):
+            self.backend = backend
+
+        def windows(self, top_level_only=True):
+            return [
+                FakeWindow(
+                    title="WinWatt - Project",
+                    class_name="TMainForm",
+                    process_id=321,
+                    handle=None,
+                    rect=FakeRect(0, 0, 1200, 900),
+                )
+            ]
+
+    class FakeConnectedApp:
+        def window(self, **kwargs):
+            return FakeWindow(title="WinWatt - Project", class_name="TMainForm", process_id=321, handle=777)
+
+    class FakeApplicationFactory:
+        def __init__(self):
+            self.calls = []
+
+        def __call__(self, backend):
+            factory = self
+
+            class Instance:
+                def connect(self, **kwargs):
+                    factory.calls.append((backend, kwargs))
+                    return FakeConnectedApp()
+
+            return Instance()
+
+    fake_factory = FakeApplicationFactory()
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "pywinauto",
+        types.SimpleNamespace(Application=fake_factory, Desktop=FakeDesktop),
+    )
+
+    _app, selected = app_connector._connect_with_win32_handle()
+
+    assert ("win32", {"process": 321}) in fake_factory.calls
+    assert selected["handle"] == 777
 
 
 def test_dump_window_tree_includes_required_fields():
