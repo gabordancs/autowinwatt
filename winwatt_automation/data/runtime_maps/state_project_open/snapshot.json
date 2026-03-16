@@ -14,7 +14,7 @@
   "mapping_stop_reason": "lost_main_window_before:Fájl",
   "process_id": 6112,
   "state_id": "project_open",
-  "timestamp": "2026-03-16T18:06:52.147896+00:00",
+  "timestamp": "2026-03-16T18:29:20.711579+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -50,7 +50,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Winwatt - hekkelések - WinWatt automatizálás - Google Chrome"
+      "title": "Cache WinWatt main window connection across mapper operations by gabordancs · Pull Request #27 · gabordancs/autowinwatt - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
