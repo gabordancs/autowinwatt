@@ -91,7 +91,7 @@ def _candidate_from_window(window: "BaseWrapper") -> dict[str, Any]:
     return candidate
 
 
-def list_candidate_windows(backend: str = "uia") -> list[dict[str, Any]]:
+def list_candidate_windows(backend: str = "win32") -> list[dict[str, Any]]:
     """Enumerate top-level windows that can be considered WinWatt candidates."""
 
     from pywinauto import Desktop
@@ -102,8 +102,7 @@ def list_candidate_windows(backend: str = "uia") -> list[dict[str, Any]]:
         candidate = _candidate_from_window(window)
         text = (candidate.get("title") or "").lower()
         class_name = str(candidate.get("class_name") or "").lower()
-        control_type = str(candidate.get("control_type") or "").lower()
-        if "winwatt" in text or "winwatt" in class_name or "winwatt" in control_type:
+        if "winwatt" in text and class_name == "tmainform":
             candidates.append(candidate)
 
     logger.debug("Discovered {} WinWatt-like windows on backend={}", len(candidates), backend)
@@ -132,8 +131,12 @@ def select_main_window(candidates: list[dict[str, Any]], backend: str = "unknown
     if not candidates:
         raise WinWattNotRunningError("No WinWatt-like windows were found")
 
-    visible_candidates = [candidate for candidate in candidates if candidate.get("is_visible")]
-    ranked_pool = visible_candidates or candidates
+    candidates_with_handle = [candidate for candidate in candidates if candidate.get("handle") is not None]
+    if not candidates_with_handle:
+        raise WinWattNotRunningError(f"No WinWatt-like windows with valid handle were found on backend={backend}")
+
+    visible_candidates = [candidate for candidate in candidates_with_handle if candidate.get("is_visible")]
+    ranked_pool = visible_candidates or candidates_with_handle
     if not visible_candidates:
         logger.warning("No visible candidate windows found; falling back to all candidates")
 
@@ -162,39 +165,34 @@ def select_main_window(candidates: list[dict[str, Any]], backend: str = "unknown
     return winner
 
 
-def _connect_with_backend(backend: str) -> Any:
-    from pywinauto import Application
-
+def _resolve_main_window_candidate(backend: str = "win32") -> dict[str, Any]:
     candidates = list_candidate_windows(backend=backend)
     if not candidates:
         raise WinWattNotRunningError(f"No WinWatt-like windows found on backend={backend}")
 
-    selected = select_main_window(candidates, backend=backend)
-    handle = selected.get("handle")
-    if handle is None:
-        raise WinWattNotRunningError(f"Selected candidate has no handle on backend={backend}")
+    return select_main_window(candidates, backend=backend)
 
-    app = Application(backend=backend).connect(handle=handle)
-    logger.info("Connected to WinWatt backend={} handle={}", backend, handle)
-    return app
+
+def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
+    from pywinauto import Application
+
+    selected = _resolve_main_window_candidate(backend="win32")
+    handle = selected.get("handle")
+    app = Application(backend="win32").connect(handle=handle)
+    logger.info("Connected to WinWatt backend=win32 handle={}", handle)
+    return app, selected
 
 
 
 def connect_to_winwatt() -> Any:
     """Attach to a running WinWatt application.
 
-    Tries ``uia`` backend first as requested, then falls back to ``win32``.
+    Always resolves the main window using ``win32`` and attaches by handle.
     """
 
-    logger.info("Attempting to connect to WinWatt using UIA backend")
     try:
-        return _connect_with_backend("uia")
-    except Exception as uia_error:
-        logger.warning("UIA connection failed: {}", uia_error)
-
-    logger.info("Attempting to connect to WinWatt using win32 backend")
-    try:
-        return _connect_with_backend("win32")
+        app, _ = _connect_with_win32_handle()
+        return app
     except Exception as win32_error:
         logger.error("Unable to connect to WinWatt: {}", win32_error)
         raise WinWattNotRunningError("WinWatt is not running or no eligible main window was found") from win32_error
@@ -204,9 +202,17 @@ def connect_to_winwatt() -> Any:
 def get_main_window() -> Any:
     """Return the main WinWatt window wrapper."""
 
-    app = connect_to_winwatt()
-    backend = app.backend.name
-    candidates = list_candidate_windows(backend=backend)
-    selected = select_main_window(candidates, backend=backend)
-    logger.info("Resolving main WinWatt window by handle={} backend={}", selected.get("handle"), backend)
-    return app.window(handle=selected["handle"])
+    from pywinauto import Application
+
+    _, selected = _connect_with_win32_handle()
+    process_id = selected.get("process_id")
+    if process_id is None:
+        raise WinWattNotRunningError("Selected WinWatt window has no process_id")
+
+    app_uia = Application(backend="uia").connect(process=process_id)
+    logger.info("Connected to WinWatt backend=uia process_id={}", process_id)
+
+    candidates = list_candidate_windows(backend="win32")
+    selected = select_main_window(candidates, backend="win32")
+    logger.info("Resolving main WinWatt window by process_id={} backend=uia", process_id)
+    return app_uia.window(handle=selected["handle"])
