@@ -20,6 +20,8 @@ class FakeMenuItem:
         self._visible = visible
         self._parent = parent
         self.clicked = False
+        self.invoked = False
+        self.selected = False
 
     def is_visible(self):
         return self._visible
@@ -29,6 +31,12 @@ class FakeMenuItem:
 
     def click_input(self):
         self.clicked = True
+
+    def invoke(self):
+        self.invoked = True
+
+    def select(self):
+        self.selected = True
 
 
 class FakeContainer:
@@ -52,6 +60,43 @@ def test_menu_helpers_list_and_click(monkeypatch):
 
     menu_helpers.click_top_menu_item("Fájl")
     assert file_item.clicked is True
+
+
+def test_find_top_menu_item_returns_invisible_when_only_match(monkeypatch):
+    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+    file_item = FakeMenuItem("Fájl", visible=False, parent=menu_parent)
+    edit_item = FakeMenuItem("Szerkesztés", visible=True, parent=menu_parent)
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([file_item, edit_item]))
+
+    resolved = menu_helpers.find_top_menu_item("Fájl")
+    assert resolved is file_item
+
+
+def test_find_top_menu_item_prefers_visible_duplicate(monkeypatch):
+    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+    file_hidden = FakeMenuItem("Fájl", visible=False, parent=menu_parent)
+    file_visible = FakeMenuItem("Fájl", visible=True, parent=menu_parent)
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([file_hidden, file_visible]))
+
+    resolved = menu_helpers.find_top_menu_item("Fájl")
+    assert resolved is file_visible
+
+
+def test_click_top_menu_item_fallback_to_invoke(monkeypatch):
+    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+
+    class InvokeOnlyMenuItem(FakeMenuItem):
+        def click_input(self):
+            raise RuntimeError("not clickable")
+
+    file_item = InvokeOnlyMenuItem("Fájl", visible=False, parent=menu_parent)
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([file_item]))
+
+    menu_helpers.click_top_menu_item("Fájl")
+    assert file_item.invoked is True
 
 
 def test_open_file_menu_raises_with_available_items(monkeypatch):
