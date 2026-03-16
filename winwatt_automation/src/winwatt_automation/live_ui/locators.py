@@ -6,7 +6,7 @@ from typing import Any
 
 from loguru import logger
 
-from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.app_connector import get_cached_main_window
 
 
 class LocatorError(LookupError):
@@ -54,7 +54,7 @@ def _parse_query(query: str) -> tuple[str, str | None]:
 def find_form(form_name: str) -> Any:
     """Find a form window by automation-id/name/title with fallback ordering."""
 
-    root = get_main_window()
+    root = get_cached_main_window()
     query = _normalize(form_name)
 
     candidates = [root] + _all_descendants(root)
