@@ -36,6 +36,7 @@ class RuntimeMenuRow:
 @dataclass(slots=True)
 class RuntimeMenuNode:
     state_id: str
+    title_raw: str
     title: str
     normalized_title: str
     path: list[str]
