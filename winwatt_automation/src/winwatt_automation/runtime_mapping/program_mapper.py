@@ -27,7 +27,7 @@ from winwatt_automation.runtime_mapping.safety import classify_safety, is_action
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
 
 
-DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázisok", "Beállítások", "Ablak", "Súgó"]
+DEFAULT_TOP_MENUS = ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
 
 
 
