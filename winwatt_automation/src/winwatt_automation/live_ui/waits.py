@@ -5,6 +5,8 @@ from __future__ import annotations
 import time
 from typing import Any
 
+from loguru import logger
+
 from winwatt_automation.live_ui.app_connector import get_main_window
 
 
@@ -80,3 +82,50 @@ def wait_for_dialog(timeout: float = 5.0) -> Any:
         time.sleep(0.1)
 
     raise TimeoutError(f"No WinWatt dialog appeared within {timeout:.1f}s")
+
+
+def detect_open_file_dialog(timeout: float = 5.0) -> bool:
+    """Conservatively detect whether a file-open dialog appeared for WinWatt."""
+
+    dialog_keywords = ("open", "megnyit", "file name", "fájlnév")
+    class_keywords = ("#32770", "dialog")
+
+    main_window = get_main_window()
+    pid = main_window.process_id()
+    deadline = time.monotonic() + timeout
+
+    from pywinauto import Desktop
+
+    desktop = Desktop(backend="uia")
+
+    while time.monotonic() < deadline:
+        for window in desktop.windows(top_level_only=True):
+            try:
+                if window.process_id() != pid:
+                    continue
+                if _window_handle(window) == _window_handle(main_window):
+                    continue
+                if not window.is_visible():
+                    continue
+
+                title = _window_text(window)
+                class_name = (window.class_name() or "").lower()
+                title_lower = title.lower()
+                has_title_match = any(keyword in title_lower for keyword in dialog_keywords)
+                has_class_match = any(keyword in class_name for keyword in class_keywords)
+
+                if has_title_match or has_class_match:
+                    logger.info(
+                        "Detected potential open-file dialog title='{}' class='{}' pid={}",
+                        title,
+                        class_name,
+                        pid,
+                    )
+                    return True
+            except Exception:
+                continue
+
+        time.sleep(0.1)
+
+    logger.info("No open-file dialog detected within {:.1f}s", timeout)
+    return False
