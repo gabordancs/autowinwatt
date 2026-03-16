@@ -11,16 +11,28 @@
   "main_window_class": "TMainForm",
   "main_window_title": "WinWatt gólya",
   "mapping_partial": true,
-  "mapping_stop_reason": "unrecoverable:Adatbázis...",
+  "mapping_stop_reason": "lost_main_window_before:Fájl",
   "process_id": 6112,
-  "state_id": "no_project",
-  "timestamp": "2026-03-16T18:03:10.746341+00:00",
+  "state_id": "project_open",
+  "timestamp": "2026-03-16T18:06:52.147896+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
       "process_id": 14856,
       "title": "Tálca"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 6112,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "TDeviceDatabaseForm",
+      "handle": null,
+      "process_id": 6112,
+      "title": "Adatbázis adatok karbantartása"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -33,12 +45,6 @@
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
-    },
-    {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 6112,
-      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
