@@ -39,6 +39,7 @@ src/winwatt_automation/parser/normalizer.py
 src/winwatt_automation/parser/semantic_classifier.py
 src/winwatt_automation/parser/xml_parser.py
 src/winwatt_automation/scripts/__init__.py
+src/winwatt_automation/scripts/explore_file_menu.py
 src/winwatt_automation/scripts/export_ui_model.py
 src/winwatt_automation/scripts/inspect_live_ui.py
 src/winwatt_automation/scripts/parse_hungarian_xml.py
