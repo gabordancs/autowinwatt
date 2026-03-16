@@ -1,0 +1,78 @@
+{
+  "discovered_top_menus": [
+    "Rendszer",
+    "Fájl",
+    "Jegyzékek",
+    "Adatbázis...",
+    "Beállítások",
+    "Ablak",
+    "Súgó"
+  ],
+  "main_window_class": "TMainForm",
+  "main_window_title": "WinWatt gólya",
+  "process_id": 29404,
+  "state_id": "no_project",
+  "timestamp": "2026-03-16T16:43:30.984533+00:00",
+  "visible_top_windows": [
+    {
+      "class_name": "Shell_TrayWnd",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Tálca"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 28872,
+      "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 29404,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 4588,
+      "title": "Winwatt - hekkelések - WinWatt automatizálás - Google Chrome"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 1152,
+      "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 32848,
+      "title": "isaszegexpor0309.xml – 1. profil – Microsoft​ Edge"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 32848,
+      "title": "Hungarian.xml és 1 további lap – 1. profil – Microsoft​ Edge"
+    },
+    {
+      "class_name": "Notepad",
+      "handle": null,
+      "process_id": 21160,
+      "title": "*xml version=1.0 encoding=utf-8 – Jegyzettömb"
+    },
+    {
+      "class_name": "Notepad",
+      "handle": null,
+      "process_id": 21160,
+      "title": "*antal áron – Jegyzettömb"
+    },
+    {
+      "class_name": "Progman",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Program Manager"
+    }
+  ]
+}
