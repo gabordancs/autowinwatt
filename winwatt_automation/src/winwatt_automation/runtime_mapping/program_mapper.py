@@ -513,14 +513,58 @@ def _main_window_recovery_state(main_window: Any) -> dict[str, Any]:
     }
 
 
-def _send_recovery_key(key_sequence: str) -> bool:
+def _list_recovery_target_windows(*, main_window_handle: Any | None = None, main_process_id: int | None = None) -> list[Any]:
+    try:
+        from pywinauto import Desktop
+    except Exception:
+        return []
+
+    targets: list[tuple[int, Any]] = []
+    for window in Desktop(backend="uia").windows(top_level_only=True):
+        if not bool(_safe_call(window, "is_visible", False)):
+            continue
+        handle = _safe_call(window, "handle", None)
+        if main_window_handle is not None and handle == main_window_handle:
+            continue
+        score = 0
+        if main_process_id is not None and _safe_call(window, "process_id", None) == main_process_id:
+            score += 10
+        title = (_safe_call(window, "window_text", "") or "").strip()
+        if title:
+            score += 1
+        targets.append((score, window))
+
+    targets.sort(key=lambda item: item[0], reverse=True)
+    return [window for _, window in targets]
+
+
+def _send_recovery_key(
+    key_sequence: str,
+    *,
+    main_window_handle: Any | None = None,
+    main_process_id: int | None = None,
+) -> bool:
     try:
         from pywinauto import keyboard
-
-        keyboard.send_keys(key_sequence)
-        return True
     except Exception:
         return False
+
+    targets = _list_recovery_target_windows(main_window_handle=main_window_handle, main_process_id=main_process_id)
+    if not targets:
+        try:
+            keyboard.send_keys(key_sequence)
+            return True
+        except Exception:
+            return False
+
+    for target in targets:
+        try:
+            target.set_focus()
+            keyboard.send_keys(key_sequence)
+            return True
+        except Exception:
+            continue
+    return False
 
 
 def _click_recovery_button(label: str, *, main_window_handle: Any | None = None) -> bool:
@@ -572,12 +616,20 @@ def _is_main_window_interactive(main_window: Any) -> bool:
     return bool(state["exists"] and state["visible"] and state["enabled"])
 
 
-def _attempt_project_open_modal_close(*, main_window_handle: Any | None = None) -> list[dict[str, Any]]:
+def _attempt_project_open_modal_close(
+    *,
+    main_window_handle: Any | None = None,
+    main_process_id: int | None = None,
+) -> list[dict[str, Any]]:
     attempts: list[dict[str, Any]] = []
     for key_sequence, name in (("{ESC}", "Esc"), ("{ENTER}", "Enter"), ("%{F4}", "Alt+F4")):
         attempt = {"method": "key", "name": name, "key_sequence": key_sequence}
         logger.info("project_open_recovery_close_attempt method={} name={}", attempt["method"], attempt["name"])
-        attempt["sent"] = _send_recovery_key(key_sequence)
+        attempt["sent"] = _send_recovery_key(
+            key_sequence,
+            main_window_handle=main_window_handle,
+            main_process_id=main_process_id,
+        )
         attempts.append(attempt)
         if _is_main_window_interactive(get_cached_main_window()):
             logger.info("project_open_recovery_close_success method={} name={}", attempt["method"], attempt["name"])
@@ -614,7 +666,12 @@ def recover_after_project_open(*, timeout_s: float = 15.0, poll_interval_s: floa
             if not modal_logged:
                 logger.warning("project_open_recovery_modal_detected diagnostics={}", diagnostics)
                 modal_logged = True
-            close_attempts.extend(_attempt_project_open_modal_close(main_window_handle=main_state.get("handle")))
+            close_attempts.extend(
+                _attempt_project_open_modal_close(
+                    main_window_handle=main_state.get("handle"),
+                    main_process_id=main_state.get("process_id"),
+                )
+            )
 
         time.sleep(poll_interval_s)
 
