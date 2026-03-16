@@ -9,20 +9,20 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TkTopLevel",
-    "handle": 8325444,
-    "process_id": 31448,
-    "title": "WinWatt Dev Cycle Controller"
+    "class_name": "Chrome_WidgetWin_1",
+    "handle": 788988,
+    "process_id": 33532,
+    "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
   },
   "main_window_class": "TMainForm",
-  "main_window_enabled": false,
+  "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_before:Fájl",
-  "process_id": 27808,
+  "mapping_stop_reason": "unrecoverable:Beállítások",
+  "process_id": 35696,
   "state_id": "no_project",
-  "timestamp": "2026-03-16T21:49:39.226965+00:00",
+  "timestamp": "2026-03-16T21:58:50.544779+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -31,40 +31,28 @@
       "title": "Tálca"
     },
     {
-      "class_name": "TkTopLevel",
-      "handle": null,
-      "process_id": 31448,
-      "title": "WinWatt Dev Cycle Controller"
-    },
-    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 28872,
+      "process_id": 33532,
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 35696,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Create Python-based dev cycle controller - Google Chrome"
+      "title": "Fix popup closing for better scanning - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
-    },
-    {
-      "class_name": "TDeviceDatabaseForm",
-      "handle": null,
-      "process_id": 27808,
-      "title": "Adatbázis adatok karbantartása"
-    },
-    {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 27808,
-      "title": "WinWatt gólya"
     },
     {
       "class_name": "CabinetWClass",

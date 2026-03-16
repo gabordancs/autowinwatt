@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TDeviceDatabaseForm",
-    "handle": 6493078,
-    "process_id": 27808,
+    "handle": 13240644,
+    "process_id": 35696,
     "title": "Adatbázis adatok karbantartása"
   },
   "main_window_class": "TMainForm",
@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "unrecoverable:Beállítások",
-  "process_id": 27808,
+  "process_id": 35696,
   "state_id": "project_open",
-  "timestamp": "2026-03-16T21:17:19.023440+00:00",
+  "timestamp": "2026-03-16T22:02:15.064288+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -33,26 +33,26 @@
     {
       "class_name": "TDeviceDatabaseForm",
       "handle": null,
-      "process_id": 27808,
+      "process_id": 35696,
       "title": "Adatbázis adatok karbantartása"
     },
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 27808,
+      "process_id": 35696,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 28872,
-      "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
+      "process_id": 33532,
+      "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "CabinetWClass",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 14856,
-      "title": "GitHub – Fájlkezelő"
+      "process_id": 4588,
+      "title": "Fix popup closing for better scanning - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -61,10 +61,10 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "CabinetWClass",
       "handle": null,
-      "process_id": 4588,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+      "process_id": 14856,
+      "title": "GitHub – Fájlkezelő"
     },
     {
       "class_name": "Notepad",
