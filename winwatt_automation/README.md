@@ -72,3 +72,67 @@ A futásnapló rendszer a repo-n belül ide ír:
 
 Első körben csak a struktúra és a konzisztens index/latest frissítés készült el.
 A futáslogok automatikus törlése még nincs bekötve; a helye dokumentálva van `TODO` jelöléssel az indexben és a helper modulban.
+
+## Dev Cycle Controller (helyi fejlesztői vezérlő)
+
+Első iterációban egy CLI-alapú vezérlő érhető el, amely a fejlesztési/test ciklus fő lépéseit fogja össze a repón belül.
+
+### Cél
+
+- `git pull` / `git status` / opcionális `git add`-`commit`-`push`
+- run log (`data/run_logs/latest.json`, `latest.txt`, `index.json`) gyors kiolvasása
+- ChatGPT-be bemásolható brief készítése (`data/chat_prep/latest_chat_brief.txt`)
+- WinWatt folyamat indítás/ellenőrzés/lezárás (óvatos alapértelmezések)
+- script futtatás egységesen timeout kezeléssel
+
+### Fő modulok
+
+- `src/winwatt_automation/controller/config.py` – környezeti változók + fallback konfiguráció
+- `src/winwatt_automation/controller/git_ops.py` – git parancs wrapper
+- `src/winwatt_automation/controller/runlog_reader.py` – latest run log betöltés
+- `src/winwatt_automation/controller/chat_brief_builder.py` – másolható státusz/prompt blokk
+- `src/winwatt_automation/controller/winwatt_process.py` – WinWatt process kezelés
+- `src/winwatt_automation/controller/script_runner.py` – script futtatás timeouttal
+- `src/winwatt_automation/controller/dev_cycle_controller.py` – orchestration réteg
+- `src/winwatt_automation/scripts/dev_cycle_controller.py` – CLI entrypoint
+
+### Konfiguráció (env)
+
+- `WWA_CONTROLLER_PYTHON` – Python executable (default: aktuális interpreter)
+- `WWA_WINWATT_EXE_PATH` – WinWatt `.exe` útvonal
+- `WWA_CONTROLLER_TIMEOUT_SECONDS` – default timeout (default: `300`)
+- `WWA_CONTROLLER_SAFE_MODE` – `safe|caution|blocked` (default: `safe`)
+- `WWA_CHAT_BRIEF_OUTPUT` – chat brief output path (default: `data/chat_prep/latest_chat_brief.txt`)
+
+### Használat
+
+```bash
+python -m winwatt_automation.scripts.dev_cycle_controller status
+python -m winwatt_automation.scripts.dev_cycle_controller pull
+python -m winwatt_automation.scripts.dev_cycle_controller prepare-chat --goal "Mai cél" --request "Mi legyen a következő lépés?"
+python -m winwatt_automation.scripts.dev_cycle_controller start-winwatt
+python -m winwatt_automation.scripts.dev_cycle_controller stop-winwatt
+python -m winwatt_automation.scripts.dev_cycle_controller run map_full_program --safe-mode safe --timeout 300
+python -m winwatt_automation.scripts.dev_cycle_controller cycle map_full_program --safe-mode safe --timeout 300
+python -m winwatt_automation.scripts.dev_cycle_controller add .
+python -m winwatt_automation.scripts.dev_cycle_controller commit -m "controller update"
+python -m winwatt_automation.scripts.dev_cycle_controller push
+```
+
+### Chat brief formátum
+
+A generált fájl fő blokkjai:
+
+- `Cél`
+- `Jelenlegi állapot` (branch, git status, latest run adatok)
+- `Legfrissebb futás summary`
+- `Konkrét kérés`
+
+Ha nincs `latest.json/latest.txt`, fallback szöveget generál.
+
+### Korlátok (v1)
+
+- Nincs ChatGPT/Codex API integráció (szándékosan).
+- A WinWatt "normál bezárás" folyamat-szinten kezelt; UI-s graceful close nem teljes.
+- A script runner timeout esetén `terminate` jelet küld, nem végez veszélyes cleanup-ot automatikusan.
+- A `cycle` parancs első körben egyszerű, bővíthető workflow.
