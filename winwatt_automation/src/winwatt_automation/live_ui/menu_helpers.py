@@ -7,15 +7,53 @@ from typing import Any
 
 from loguru import logger
 from winwatt_automation.live_ui.app_connector import (
+    describe_foreground_window,
+    ensure_main_window_foreground_before_click,
     get_main_window,
-    is_main_window_foreground,
+    is_winwatt_foreground_context,
     prepare_main_window_for_menu_interaction,
 )
+
+SYSTEM_MENU_CLASS_NAMES = {"#32768"}
+TOP_MENU_NAMES = ("Fájl", "Jegyzékek", "Adatbázis", "Beállítások", "Ablak", "Súgó")
+TITLEBAR_ICON_GUARD_WIDTH = 64
+TITLEBAR_ICON_GUARD_HEIGHT = 40
 
 def _mouse_click(coords: tuple[int, int]) -> None:
     from pywinauto import mouse
 
     mouse.click(button="left", coords=coords)
+
+
+def _is_system_menu_foreground() -> bool:
+    fg = describe_foreground_window()
+    class_name = _normalize(str(fg.get("class_name", "")))
+    return class_name in {_normalize(name) for name in SYSTEM_MENU_CLASS_NAMES}
+
+
+def _validate_not_in_forbidden_top_left_zone(main_window: Any, point: tuple[int, int]) -> None:
+    rect = main_window.rectangle()
+    left = int(rect.left)
+    top = int(rect.top)
+    if point[0] <= left + TITLEBAR_ICON_GUARD_WIDTH and point[1] <= top + TITLEBAR_ICON_GUARD_HEIGHT:
+        logger.error("blocked_click_forbidden_zone point={} main_left={} main_top={}", point, left, top)
+        raise RuntimeError("click_blocked_forbidden_zone")
+
+
+def _validate_post_menu_open_foreground(main_window: Any, *, title: str) -> None:
+    fg = describe_foreground_window()
+    logger.info("post_click_foreground_validation title={} foreground={}", title, fg)
+    if _is_system_menu_foreground():
+        try:
+            from pywinauto import keyboard
+
+            keyboard.send_keys("{ESC}")
+        except Exception:
+            pass
+        logger.error("system_menu_opened_instead_of_top_menu top_menu={} foreground={}", title, fg)
+        raise RuntimeError("failed_system_menu")
+    if not is_winwatt_foreground_context(main_window, allow_dialog=True):
+        raise RuntimeError("failed_wrong_window")
 
 
 _LAST_MENU_SNAPSHOT_BEFORE_OPEN: set[tuple[str, str, str, str, str]] | None = None
@@ -591,6 +629,26 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
     """Open ``Fájl`` once and return popup snapshots plus structured rows."""
 
     main_window = prepare_main_window_for_menu_interaction()
+    focus_status = "focus_ok"
+    try:
+        main_window = ensure_main_window_foreground_before_click(action_label="open_file_menu")
+    except Exception as exc:
+        focus_status = "focus_failed"
+        return {
+            "before_snapshot": [],
+            "after_snapshot": [],
+            "rows": [],
+            "popup_open": False,
+            "top_menu_click_count": 0,
+            "process_id": None,
+            "deduped_fragment_count": 0,
+            "status": "failed_focus",
+            "error": str(exc),
+            "focus_status": focus_status,
+            "clicked_target": "Fájl",
+            "system_menu_opened": False,
+        }
+
     item = find_top_menu_item("Fájl")
 
     before_rows = capture_menu_popup_snapshot()
@@ -602,15 +660,43 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         except Exception:
             process_id = None
     top_menu_click_count = 0
+    click_mode = "object"
     try:
+        item_rect = item.rectangle()
+        _validate_not_in_forbidden_top_left_zone(
+            main_window,
+            (int((int(item_rect.left) + int(item_rect.right)) / 2), int((int(item_rect.top) + int(item_rect.bottom)) / 2)),
+        )
         item.click_input()
         top_menu_click_count += 1
     except Exception as exc:
         logger.warning("Top menu item 'Fájl' click_input() failed: {}", exc)
+        logger.warning("using_coordinate_fallback_for_top_menu top_menu=Fájl")
+        click_mode = "coordinate_fallback"
+        main_window = ensure_main_window_foreground_before_click(action_label="open_file_menu_fallback")
         _click_by_relative_rect_center(item, main_window)
         top_menu_click_count += 1
 
     time.sleep(0.2)
+    try:
+        _validate_post_menu_open_foreground(main_window, title="Fájl")
+    except Exception as exc:
+        return {
+            "before_snapshot": before_rows,
+            "after_snapshot": [],
+            "rows": [],
+            "popup_open": False,
+            "top_menu_click_count": top_menu_click_count,
+            "process_id": process_id,
+            "deduped_fragment_count": 0,
+            "status": str(exc),
+            "error": str(exc),
+            "focus_status": focus_status,
+            "clicked_target": "Fájl",
+            "system_menu_opened": "system_menu" in str(exc),
+            "click_mode": click_mode,
+        }
+
     after_rows = capture_menu_popup_snapshot()
     popup_open = did_any_new_menu_popup_appear(_snapshot_keys(before_rows), _snapshot_keys(after_rows))
     structured_rows = _structured_popup_rows_from_snapshots(before_rows, after_rows)
@@ -634,6 +720,11 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         "top_menu_click_count": top_menu_click_count,
         "process_id": process_id,
         "deduped_fragment_count": deduped_fragment_count,
+        "status": "success_popup_opened" if popup_open and structured_rows else "failed_no_visible_change",
+        "focus_status": focus_status,
+        "clicked_target": "Fájl",
+        "system_menu_opened": False,
+        "click_mode": click_mode,
     }
 
 
@@ -651,6 +742,7 @@ def click_structured_popup_row(rows: list[dict[str, Any]], index: int) -> dict[s
     if selected.get("is_separator"):
         raise ValueError(f"Requested popup index {index} is a separator and cannot be clicked")
 
+    ensure_main_window_foreground_before_click(action_label=f"click_structured_popup_row[{index}]", allow_dialog=True)
     x = int(selected["center_x"])
     y = int(selected["center_y"])
     _mouse_click((x, y))
@@ -702,9 +794,24 @@ def _click_by_relative_rect_center(item: Any, main_window: Any) -> None:
     x = int((int(rect.left) + int(rect.right)) / 2)
     y = int((int(rect.top) + int(rect.bottom)) / 2)
 
-    window_rect = main_window.rectangle()
-    rel_x = int(x - int(window_rect.left))
-    rel_y = int(y - int(window_rect.top))
+    ensure_main_window_foreground_before_click(action_label="relative_menu_click")
+    menu_bar = getattr(main_window, "child_window", None)
+    if callable(menu_bar):
+        try:
+            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
+            menu_bar_rect = menu_bar_ctrl.rectangle()
+            rel_x = int(x - int(menu_bar_rect.left))
+            rel_y = int(y - int(menu_bar_rect.top))
+        except Exception:
+            window_rect = main_window.rectangle()
+            rel_x = int(x - int(window_rect.left))
+            rel_y = int(y - int(window_rect.top))
+    else:
+        window_rect = main_window.rectangle()
+        rel_x = int(x - int(window_rect.left))
+        rel_y = int(y - int(window_rect.top))
+
+    _validate_not_in_forbidden_top_left_zone(main_window, (x, y))
 
     if callable(getattr(main_window, "click_input", None)):
         main_window.click_input(coords=(rel_x, rel_y))
@@ -717,7 +824,8 @@ def _click_by_relative_rect_center(item: Any, main_window: Any) -> None:
 
 def click_top_menu_item(title: str) -> None:
     main_window = prepare_main_window_for_menu_interaction()
-    logger.info("click_top_menu_item('{}'): foreground_before_click={}", title, is_main_window_foreground())
+    main_window = ensure_main_window_foreground_before_click(action_label=f"click_top_menu_item:{title}")
+    logger.info("click_top_menu_item('{}'): foreground_before_click={}", title, describe_foreground_window())
 
     item = find_top_menu_item(title)
     global _LAST_MENU_SNAPSHOT_BEFORE_OPEN
@@ -725,11 +833,17 @@ def click_top_menu_item(title: str) -> None:
     _LAST_MENU_SNAPSHOT_BEFORE_OPEN = before_snapshot
 
     try:
+        item_rect = item.rectangle()
+        _validate_not_in_forbidden_top_left_zone(
+            main_window,
+            (int((int(item_rect.left) + int(item_rect.right)) / 2), int((int(item_rect.top) + int(item_rect.bottom)) / 2)),
+        )
         item.click_input()
     except Exception as exc:
         logger.warning("Top menu item '{}' click_input() failed: {}", title, exc)
 
     time.sleep(0.2)
+    _validate_post_menu_open_foreground(main_window, title=title)
     after_snapshot = _menu_snapshot()
     if did_any_new_menu_popup_appear(before_snapshot, after_snapshot):
         return

@@ -8,7 +8,10 @@ from typing import Any
 from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers, waits
-from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.app_connector import (
+    ensure_main_window_foreground_before_click,
+    get_main_window,
+)
 from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
     RuntimeActionResult,
@@ -134,20 +137,23 @@ def classify_post_click_result(
     error_text: str | None = None,
     notes: str | None = None,
     top_menu_click_count: int | None = None,
+    forced_result_type: str | None = None,
 ) -> RuntimeActionResult:
-    if not attempted:
+    if forced_result_type:
+        result_type = forced_result_type
+    elif not attempted:
         result_type = "skipped_unsafe"
     elif error_text:
         result_type = "failed"
     elif dialog_detection and dialog_detection.get("dialog_detected"):
         title = str(dialog_detection.get("dialog_title") or "").lower()
-        result_type = "error_dialog" if "hiba" in title or "error" in title else "dialog_opened"
+        result_type = "error_dialog" if "hiba" in title or "error" in title else "success_dialog_opened"
     elif len(after_snapshot.visible_top_windows) > len(before_snapshot.visible_top_windows):
-        result_type = "window_opened"
+        result_type = "success_popup_opened"
     elif before_snapshot.main_window_title != after_snapshot.main_window_title:
         result_type = "state_changed"
     else:
-        result_type = "no_visible_change"
+        result_type = "failed_no_visible_change"
 
     return RuntimeActionResult(
         state_id=state_id,
@@ -176,13 +182,40 @@ def explore_top_menu(
 ) -> tuple[list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
     logger.info("explore top menu start state_id={} top_menu={}", state_id, top_menu)
     popup = menu_helpers.open_file_menu_and_capture_popup_state() if top_menu == "Fájl" else None
+    popup_status = str((popup or {}).get("status") or "")
     if popup is None:
-        menu_helpers.click_top_menu_item(top_menu)
-        popup_rows_raw = menu_helpers.capture_menu_popup_snapshot()
+        try:
+            ensure_main_window_foreground_before_click(action_label=f"explore_top_menu:{top_menu}")
+            menu_helpers.click_top_menu_item(top_menu)
+            popup_rows_raw = menu_helpers.capture_menu_popup_snapshot()
+            popup_status = "success_popup_opened" if popup_rows_raw else "failed_no_visible_change"
+        except Exception as exc:
+            popup_rows_raw = []
+            popup_status = str(exc)
     else:
         popup_rows_raw = popup.get("rows", [])
 
     menu_rows = _build_menu_rows_from_popup_rows(state_id, top_menu, popup_rows_raw)
+    if popup_status and popup_status.startswith("failed"):
+        actions = [
+            classify_post_click_result(
+                process_id=None,
+                before_snapshot=capture_state_snapshot(state_id),
+                after_snapshot=capture_state_snapshot(state_id),
+                dialog_detection=None,
+                state_id=state_id,
+                top_menu=top_menu,
+                row_index=-1,
+                menu_path=[top_menu],
+                action_key=top_menu,
+                safety_level="caution",
+                attempted=False,
+                error_text=popup_status,
+                forced_result_type=popup_status,
+            )
+        ]
+        logger.error("top menu open failed state_id={} top_menu={} status={}", state_id, top_menu, popup_status)
+        return menu_rows, actions, [], []
     actions: list[RuntimeActionResult] = []
     dialogs: list[RuntimeDialogRecord] = []
     windows: list[RuntimeWindowRecord] = []
@@ -234,6 +267,14 @@ def explore_top_menu(
             error_text = str(exc)
 
         after = capture_state_snapshot(state_id)
+        forced_result_type = None
+        if error_text:
+            if "focus_not_restored" in error_text:
+                forced_result_type = "failed_focus"
+            elif "failed_system_menu" in error_text or "system_menu" in error_text:
+                forced_result_type = "failed_system_menu"
+            elif "failed_wrong_window" in error_text:
+                forced_result_type = "failed_wrong_window"
         result = classify_post_click_result(
             process_id=process_id,
             before_snapshot=before,
@@ -248,10 +289,11 @@ def explore_top_menu(
             attempted=error_text is None,
             error_text=error_text,
             top_menu_click_count=popup.get("top_menu_click_count") if popup else None,
+            forced_result_type=forced_result_type,
         )
         actions.append(result)
 
-        if result.result_type in {"dialog_opened", "error_dialog"}:
+        if result.result_type in {"success_dialog_opened", "error_dialog"}:
             dialogs.append(
                 RuntimeDialogRecord(
                     state_id=state_id,
@@ -263,7 +305,7 @@ def explore_top_menu(
                     process_id=process_id,
                 )
             )
-        if result.result_type == "window_opened":
+        if result.result_type == "success_popup_opened":
             new_windows = [w for w in after.visible_top_windows if w not in before.visible_top_windows]
             for win in new_windows:
                 windows.append(
@@ -293,6 +335,28 @@ def map_runtime_state(state_id: str, safe_mode: str = "safe") -> RuntimeStateMap
     all_windows: list[RuntimeWindowRecord] = []
 
     for top_menu in snapshot.discovered_top_menus:
+        try:
+            ensure_main_window_foreground_before_click(action_label=f"map_runtime_state:{state_id}:{top_menu}")
+        except Exception as exc:
+            logger.error("mapping aborted before top-level action top_menu={} reason={}", top_menu, exc)
+            all_actions.append(
+                    classify_post_click_result(
+                        process_id=None,
+                        before_snapshot=snapshot,
+                        after_snapshot=snapshot,
+                        dialog_detection=None,
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        row_index=-1,
+                        menu_path=[top_menu],
+                        action_key=top_menu,
+                        safety_level="caution",
+                        attempted=False,
+                        error_text=str(exc),
+                        forced_result_type="failed_focus",
+                    )
+            )
+            break
         rows, actions, dialogs, windows = explore_top_menu(state_id=state_id, top_menu=top_menu, safe_mode=safe_mode)
         all_rows.extend(rows)
         all_actions.extend(actions)
