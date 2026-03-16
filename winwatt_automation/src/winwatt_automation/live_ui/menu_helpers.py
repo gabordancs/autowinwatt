@@ -41,15 +41,71 @@ def _menu_items() -> list[Any]:
     return items
 
 
+def _parent_wrapper(wrapper: Any) -> Any | None:
+    parent = getattr(wrapper, "parent", None)
+    return parent() if callable(parent) else None
+
+
+def _control_type(wrapper: Any) -> str:
+    info = getattr(wrapper, "element_info", wrapper)
+    return _normalize(getattr(info, "control_type", None))
+
+
+def _has_menuitem_ancestor(wrapper: Any) -> bool:
+    seen: set[int] = set()
+    current = _parent_wrapper(wrapper)
+    while current is not None:
+        marker = id(current)
+        if marker in seen:
+            break
+        seen.add(marker)
+
+        if _control_type(current) == "menuitem":
+            return True
+        current = _parent_wrapper(current)
+    return False
+
+
+def _top_level_menu_items_raw() -> list[Any]:
+    """Return top-level menu items under the main menu bar without visibility filtering."""
+
+    items: list[Any] = []
+    for item in _menu_items():
+        parent_type = _control_type(_parent_wrapper(item))
+        if parent_type not in {"menu", "menubar"}:
+            continue
+        if _has_menuitem_ancestor(item):
+            continue
+        items.append(item)
+
+    logger.info("Discovered {} top-level MenuItem controls (raw)", len(items))
+    return items
+
+
+def _rectangle_repr(wrapper: Any) -> str | None:
+    rectangle = getattr(wrapper, "rectangle", None)
+    if not callable(rectangle):
+        return None
+    try:
+        rect = rectangle()
+    except Exception:
+        return None
+    left = getattr(rect, "left", None)
+    top = getattr(rect, "top", None)
+    right = getattr(rect, "right", None)
+    bottom = getattr(rect, "bottom", None)
+    if None in {left, top, right, bottom}:
+        return str(rect)
+    return f"({left},{top})-({right},{bottom})"
+
+
 def list_top_menu_items() -> list[str]:
-    """Return visible top-level menu item captions from the main menu bar."""
+    """Return top-level menu item captions from the main menu bar."""
 
     names: list[str] = []
     seen: set[str] = set()
 
-    for item in _menu_items():
-        if not _is_visible(item):
-            continue
+    for item in _top_level_menu_items_raw():
         text = _name(item)
         if not text:
             continue
@@ -59,7 +115,7 @@ def list_top_menu_items() -> list[str]:
         seen.add(key)
         names.append(text)
 
-    logger.info("Top-level visible menu items: {}", names)
+    logger.info("Top-level menu items (raw): {}", names)
     return names
 
 
@@ -76,9 +132,8 @@ def list_open_menu_items() -> list[str]:
         if not text:
             continue
 
-        parent = getattr(item, "parent", None)
-        parent_wrapper = parent() if callable(parent) else None
-        parent_type = _normalize(getattr(getattr(parent_wrapper, "element_info", parent_wrapper), "control_type", None))
+        parent_wrapper = _parent_wrapper(item)
+        parent_type = _control_type(parent_wrapper)
         if parent_type not in {"menu", "menuitem"}:
             continue
 
@@ -93,15 +148,23 @@ def list_open_menu_items() -> list[str]:
 
 
 def find_top_menu_item(title: str) -> Any:
-    """Find a visible top-level menu item by caption."""
+    """Find a top-level menu item by caption, preferring visible matches."""
 
     wanted = _normalize(title)
-    for item in _menu_items():
-        if not _is_visible(item):
-            continue
-        if _normalize(_name(item)) == wanted:
-            logger.info("Resolved top menu item '{}'", title)
-            return item
+    matches = [item for item in _top_level_menu_items_raw() if _normalize(_name(item)) == wanted]
+    if matches:
+        item = next((match for match in matches if _is_visible(match)), matches[0])
+        visible = _is_visible(item)
+        rect = _rectangle_repr(item)
+        logger.info(
+            "Resolved top menu item '{}' -> title='{}' visible={} rectangle={} selected_despite_invisible={}",
+            title,
+            _name(item),
+            visible,
+            rect,
+            not visible,
+        )
+        return item
 
     raise LookupError(f"Top menu item '{title}' was not found")
 
@@ -110,22 +173,16 @@ def click_top_menu_item(title: str) -> None:
     """Click a top-level menu item by caption."""
 
     item = find_top_menu_item(title)
-    click_input = getattr(item, "click_input", None)
-    if callable(click_input):
-        click_input()
-        logger.info("Clicked top menu item '{}' via click_input", title)
-        return
-
-    click = getattr(item, "click", None)
-    if callable(click):
-        click()
-        logger.info("Clicked top menu item '{}' via click", title)
-        return
-
-    invoke = getattr(item, "invoke", None)
-    if callable(invoke):
-        invoke()
-        logger.info("Clicked top menu item '{}' via invoke", title)
+    for strategy in ("click_input", "invoke", "select"):
+        method = getattr(item, strategy, None)
+        if not callable(method):
+            continue
+        try:
+            method()
+        except Exception as exc:
+            logger.warning("Top menu item '{}' {}() failed: {}", title, strategy, exc)
+            continue
+        logger.info("Clicked top menu item '{}' via {}", title, strategy)
         return
 
     raise RuntimeError(f"Top menu item '{title}' was found but no click action is supported")
