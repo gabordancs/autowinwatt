@@ -19,15 +19,15 @@ def _state_map(state_id: str, top_menus: list[str], action_paths: list[list[str]
 
 
 def test_compare_runtime_states_detects_menu_and_action_differences():
-    state_a = _state_map("a", ["Fájl", "Nézet"], [["Fájl", "Megnyitás"], ["Nézet", "Nagyítás"]])
-    state_b = _state_map("b", ["Fájl", "Projekt"], [["Fájl", "Megnyitás"], ["Projekt", "Export"]])
+    state_a = _state_map("a", ["Fájl", "Nézet"], [["Fájl", "Megnyitás"], ["nézet", "nagyítás"]])
+    state_b = _state_map("b", ["Fájl", "Projekt"], [["Fájl", "Megnyitás"], ["projekt", "export"]])
 
     diff = compare_runtime_states(state_a, state_b)
 
-    assert diff.top_menu_diff["only_in_a"] == ["Nézet"]
-    assert diff.top_menu_diff["only_in_b"] == ["Projekt"]
-    assert ["Nézet", "Nagyítás"] in diff.menu_action_diff["only_in_a"]
-    assert ["Projekt", "Export"] in diff.menu_action_diff["only_in_b"]
+    assert diff.top_menu_diff["only_in_a"] == ["nézet"]
+    assert diff.top_menu_diff["only_in_b"] == ["projekt"]
+    assert ["nézet", "nagyítás"] in diff.menu_action_diff["only_in_a"]
+    assert ["projekt", "export"] in diff.menu_action_diff["only_in_b"]
     assert diff.summary["shared_top_menus"] == 1
     assert diff.summary["actions_only_in_a"] == 1
     assert diff.summary["actions_only_in_b"] == 1

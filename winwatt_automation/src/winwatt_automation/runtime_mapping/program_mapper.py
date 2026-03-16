@@ -20,11 +20,12 @@ from winwatt_automation.runtime_mapping.models import (
     RuntimeStateSnapshot,
     RuntimeWindowRecord,
 )
-from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed, normalize_menu_text
+from winwatt_automation.runtime_mapping.menu_text import clean_menu_title, normalize_menu_title
+from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
 
 
-DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis", "Beállítások", "Ablak", "Súgó"]
+DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázisok", "Beállítások", "Ablak", "Súgó"]
 
 
 def _safe_call(obj: Any, method: str, default: Any = None) -> Any:
@@ -104,8 +105,11 @@ def _row_to_node(
 ) -> RuntimeMenuNode:
     title_raw = str(row.get("text") or "")
     title, shortcut = _extract_shortcut(title_raw)
-    normalized = normalize_menu_text(title)
-    safety = classify_safety(path)
+    title_clean = clean_menu_title(title)
+    normalized = normalize_menu_title(title)
+    logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', title, normalized)
+    normalized_path = [clean_menu_title(part) for part in path]
+    safety = classify_safety(normalized_path)
     likely_destructive = safety == "blocked"
     likely_state_changing = safety in {"caution", "blocked"}
     enabled = _guess_enabled(row)
@@ -126,9 +130,10 @@ def _row_to_node(
 
     return RuntimeMenuNode(
         state_id=state_id,
-        title=title,
+        title_raw=title,
+        title=title_clean,
         normalized_title=normalized,
-        path=path,
+        path=normalized_path,
         level=level,
         index=index,
         enabled=enabled,
@@ -168,14 +173,17 @@ def _build_menu_rows_from_popup_rows(state_id: str, top_menu: str, rows: list[di
     for index, row in enumerate(rows):
         text = str(row.get("text") or "")
         title, _ = _extract_shortcut(text)
+        title_clean = clean_menu_title(title)
+        normalized_title = normalize_menu_title(title)
+        logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', title, normalized_title)
         mapped.append(
             RuntimeMenuRow(
                 state_id=state_id,
                 top_menu=top_menu,
                 row_index=index,
-                menu_path=[top_menu, title],
-                text=title,
-                normalized_text=normalize_menu_text(title),
+                menu_path=[clean_menu_title(top_menu), title_clean],
+                text=title_clean,
+                normalized_text=normalized_title,
                 rectangle=dict(row.get("rectangle") or {}),
                 center_x=int(row.get("center_x") or 0),
                 center_y=int(row.get("center_y") or 0),
@@ -278,7 +286,7 @@ def explore_menu_tree(
     parent_path: list[str] | None = None,
     popup_rows: list[dict[str, Any]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
-    parent_path = list(parent_path or [top_menu])
+    parent_path = list(parent_path or [clean_menu_title(top_menu)])
     if popup_rows is None:
         menu_helpers.click_top_menu_item(top_menu)
         popup_rows = menu_helpers.capture_menu_popup_snapshot()
@@ -342,7 +350,7 @@ def explore_menu_tree(
                 row_index=row.row_index,
                 menu_path=path,
                 action_key=" > ".join(path),
-                safety_level=classify_safety(path),
+                safety_level=classify_safety([clean_menu_title(part) for part in path]),
                 attempted=not skipped,
                 notes="mapped_only",
             )
@@ -395,6 +403,8 @@ def map_runtime_state(
     snapshot = capture_state_snapshot(state_id)
     discovered = snapshot.discovered_top_menus
     target_menus = top_menus or DEFAULT_TOP_MENUS
+    target_menu_map = {normalize_menu_title(item): item for item in target_menus}
+    discovered_menu_map = {normalize_menu_title(item): item for item in discovered}
 
     all_rows: list[RuntimeMenuRow] = []
     all_tree: list[dict[str, Any]] = []
@@ -402,25 +412,29 @@ def map_runtime_state(
     all_dialogs: list[RuntimeDialogRecord] = []
     all_windows: list[RuntimeWindowRecord] = []
 
-    for top_menu in target_menus:
-        if top_menu not in discovered:
+    for top_menu_normalized, top_menu in target_menu_map.items():
+        discovered_top_menu = discovered_menu_map.get(top_menu_normalized)
+        if not discovered_top_menu:
             continue
         try:
-            ensure_main_window_foreground_before_click(action_label=f"map_runtime_state:{state_id}:{top_menu}")
+            ensure_main_window_foreground_before_click(action_label=f"map_runtime_state:{state_id}:{discovered_top_menu}")
             tree, rows, actions, dialogs, windows = explore_menu_tree(
                 state_id=state_id,
-                top_menu=top_menu,
+                top_menu=discovered_top_menu,
                 safe_mode=safe_mode,
                 max_depth=max_submenu_depth,
                 include_disabled=include_disabled,
             )
-            all_tree.append({"state_id": state_id, "title": top_menu, "path": [top_menu], "children": tree})
+            clean_top_menu = clean_menu_title(discovered_top_menu)
+            normalized_top_menu = normalize_menu_title(discovered_top_menu)
+            logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', discovered_top_menu, normalized_top_menu)
+            all_tree.append({"state_id": state_id, "title_raw": discovered_top_menu, "title_normalized": normalized_top_menu, "title": clean_top_menu, "path": [clean_top_menu], "children": tree})
             all_rows.extend(rows)
             all_actions.extend(actions)
             all_dialogs.extend(dialogs)
             all_windows.extend(windows)
         except Exception as exc:
-            logger.exception("Top menu mapping failed: {}", top_menu)
+            logger.exception("Top menu mapping failed: {}", discovered_top_menu)
             all_actions.append(
                 asdict(
                     classify_post_click_result(
@@ -429,10 +443,10 @@ def map_runtime_state(
                         after_snapshot=snapshot,
                         dialog_detection=None,
                         state_id=state_id,
-                        top_menu=top_menu,
+                        top_menu=clean_menu_title(discovered_top_menu),
                         row_index=-1,
-                        menu_path=[top_menu],
-                        action_key=top_menu,
+                        menu_path=[clean_menu_title(discovered_top_menu)],
+                        action_key=clean_menu_title(discovered_top_menu),
                         safety_level="caution",
                         attempted=False,
                         error_text=str(exc),
@@ -445,7 +459,7 @@ def map_runtime_state(
     return RuntimeStateMap(
         state_id=state_id,
         snapshot=asdict(snapshot),
-        top_menus=[{"state_id": state_id, "text": item} for item in discovered if item in target_menus],
+        top_menus=[{"state_id": state_id, "text": clean_menu_title(item), "text_raw": item, "text_normalized": normalize_menu_title(item)} for item in discovered if normalize_menu_title(item) in set(target_menu_map)],
         menu_rows=[asdict(item) for item in all_rows],
         menu_tree=all_tree,
         actions=[item if isinstance(item, dict) else asdict(item) for item in all_actions],
@@ -455,19 +469,23 @@ def map_runtime_state(
     )
 
 
+def _normalized_path(path: list[str] | tuple[str, ...]) -> tuple[str, ...]:
+    return tuple(normalize_menu_title(part) for part in path)
+
+
 def _enabled_map(state: RuntimeStateMap) -> dict[tuple[str, ...], bool | None]:
     result: dict[tuple[str, ...], bool | None] = {}
     for row in state.menu_rows:
-        path = tuple(row.get("menu_path", []))
+        path = _normalized_path(tuple(row.get("menu_path", [])))
         result[path] = row.get("enabled_guess")
     return result
 
 
 def compare_runtime_states(state_a: RuntimeStateMap, state_b: RuntimeStateMap) -> RuntimeStateDiff:
-    menus_a = {item["text"] for item in state_a.top_menus}
-    menus_b = {item["text"] for item in state_b.top_menus}
-    actions_a = {tuple(item.get("menu_path", [])) for item in state_a.actions}
-    actions_b = {tuple(item.get("menu_path", [])) for item in state_b.actions}
+    menus_a = {normalize_menu_title(item["text"]) for item in state_a.top_menus}
+    menus_b = {normalize_menu_title(item["text"]) for item in state_b.top_menus}
+    actions_a = {_normalized_path(tuple(item.get("menu_path", []))) for item in state_a.actions}
+    actions_b = {_normalized_path(tuple(item.get("menu_path", []))) for item in state_b.actions}
 
     enabled_a = _enabled_map(state_a)
     enabled_b = _enabled_map(state_b)
