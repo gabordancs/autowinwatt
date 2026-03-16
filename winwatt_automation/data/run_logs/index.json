@@ -1,4 +1,25 @@
 {
   "retention": "TODO: implement retention policy (max files/age) in future iteration.",
-  "runs": []
+  "runs": [
+    {
+      "sequence_number": 1,
+      "run_id": "0001_safe_2026-03-16_21-14-19",
+      "started_at": "2026-03-16T21:14:19.905740+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 5,
+        "project_open top_menus": 5,
+        "diff summary": {
+          "shared_top_menus": 5,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0001_safe_2026-03-16_21-14-19.log",
+      "json_path": "data\\run_logs\\runs\\0001_safe_2026-03-16_21-14-19.json"
+    }
+  ]
 }

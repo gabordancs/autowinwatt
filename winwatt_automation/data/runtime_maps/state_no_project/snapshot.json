@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "unrecoverable:Beállítások",
-  "process_id": 37200,
+  "process_id": 27808,
   "state_id": "no_project",
-  "timestamp": "2026-03-16T20:19:38.544142+00:00",
+  "timestamp": "2026-03-16T21:14:24.122918+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -37,22 +37,28 @@
       "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 4588,
-      "title": "Winwatt - hekkelések - WinWatt automatizálás - Google Chrome"
-    },
-    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 37200,
+      "process_id": 27808,
       "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14856,
+      "title": "GitHub – Fájlkezelő"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 4588,
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "Notepad",
