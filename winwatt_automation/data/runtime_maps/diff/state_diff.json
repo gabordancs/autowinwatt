@@ -10,7 +10,12 @@
     "only_in_b": [],
     "shared": [
       [
-        "beállítások"
+        "ablak",
+        ""
+      ],
+      [
+        "beállítások",
+        ""
       ],
       [
         "fájl",
@@ -18,6 +23,13 @@
       ],
       [
         "jegyzékek",
+        ""
+      ],
+      [
+        "rendszer"
+      ],
+      [
+        "súgó",
         ""
       ]
     ]
@@ -30,7 +42,7 @@
     "actions_only_in_b": 0,
     "enabled_changes": 0,
     "project_only_paths": 0,
-    "shared_top_menus": 5
+    "shared_top_menus": 6
   },
   "top_menu_diff": {
     "only_in_a": [],
@@ -40,6 +52,7 @@
       "beállítások",
       "fájl",
       "jegyzékek",
+      "rendszer",
       "súgó"
     ]
   },

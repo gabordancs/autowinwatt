@@ -3,27 +3,39 @@
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Adatbázis...",
+    "Eszközök",
     "Beállítások",
     "Ablak",
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TDeviceDatabaseForm",
-    "handle": 13240644,
+    "class_name": "TMainForm",
+    "handle": 395540,
     "process_id": 35696,
-    "title": "Adatbázis adatok karbantartása"
+    "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
   },
   "main_window_class": "TMainForm",
-  "main_window_enabled": false,
-  "main_window_title": "WinWatt gólya",
+  "main_window_enabled": true,
+  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "main_window_visible": true,
-  "mapping_partial": true,
-  "mapping_stop_reason": "unrecoverable:Beállítások",
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
   "process_id": 35696,
   "state_id": "project_open",
-  "timestamp": "2026-03-16T22:02:15.064288+00:00",
+  "timestamp": "2026-03-16T22:37:23.435946+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "THintWindow",
+      "handle": null,
+      "process_id": 35696,
+      "title": "Túláramszelepek"
+    },
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 35696,
+      "title": ""
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -31,16 +43,10 @@
       "title": "Tálca"
     },
     {
-      "class_name": "TDeviceDatabaseForm",
-      "handle": null,
-      "process_id": 35696,
-      "title": "Adatbázis adatok karbantartása"
-    },
-    {
       "class_name": "TMainForm",
       "handle": null,
       "process_id": 35696,
-      "title": "WinWatt gólya"
+      "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -51,14 +57,14 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 4588,
-      "title": "Fix popup closing for better scanning - Google Chrome"
+      "process_id": 1152,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 1152,
-      "title": "GitHub Desktop"
+      "process_id": 4588,
+      "title": "Fix mapping for complete program traversal - Google Chrome"
     },
     {
       "class_name": "CabinetWClass",

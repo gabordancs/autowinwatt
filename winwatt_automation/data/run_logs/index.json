@@ -40,6 +40,46 @@
       },
       "log_path": "data\\run_logs\\runs\\0002_safe_2026-03-16_21-58-45.log",
       "json_path": "data\\run_logs\\runs\\0002_safe_2026-03-16_21-58-45.json"
+    },
+    {
+      "sequence_number": 3,
+      "run_id": "0003_safe_2026-03-16_22-17-49",
+      "started_at": "2026-03-16T22:17:49.479340+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 7,
+        "project_open top_menus": 7,
+        "diff summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0003_safe_2026-03-16_22-17-49.log",
+      "json_path": "data\\run_logs\\runs\\0003_safe_2026-03-16_22-17-49.json"
+    },
+    {
+      "sequence_number": 4,
+      "run_id": "0004_safe_2026-03-16_22-30-31",
+      "started_at": "2026-03-16T22:30:31.674930+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 6,
+        "diff summary": {
+          "shared_top_menus": 6,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0004_safe_2026-03-16_22-30-31.log",
+      "json_path": "data\\run_logs\\runs\\0004_safe_2026-03-16_22-30-31.json"
     }
   ]
 }

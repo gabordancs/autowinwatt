@@ -3,7 +3,7 @@
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Adatbázis...",
+    "Eszközök",
     "Beállítások",
     "Ablak",
     "Súgó"
@@ -16,13 +16,13 @@
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
-  "main_window_title": "WinWatt gólya",
+  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "main_window_visible": true,
-  "mapping_partial": true,
-  "mapping_stop_reason": "unrecoverable:Beállítások",
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
   "process_id": 35696,
   "state_id": "no_project",
-  "timestamp": "2026-03-16T21:58:50.544779+00:00",
+  "timestamp": "2026-03-16T22:30:35.847113+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -40,19 +40,19 @@
       "class_name": "TMainForm",
       "handle": null,
       "process_id": 35696,
-      "title": "WinWatt gólya"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 4588,
-      "title": "Fix popup closing for better scanning - Google Chrome"
+      "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 4588,
+      "title": "Fix mapping for complete program traversal - Google Chrome"
     },
     {
       "class_name": "CabinetWClass",

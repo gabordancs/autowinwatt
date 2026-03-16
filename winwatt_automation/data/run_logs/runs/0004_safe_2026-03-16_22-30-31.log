@@ -1,0 +1,542 @@
+run_id=0004_safe_2026-03-16_22-30-31
+started_at=2026-03-16T22:30:31.674930+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --safe-mode safe
+
+2026-03-16 23:30:31.984 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:177 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'window_text': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 35696, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-16 23:30:31.986 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:187 - Selected main window process_id=35696 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-16 23:30:32.009 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:230 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 35696, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp'}
+2026-03-16 23:30:32.013 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:244 - Resolved win32 main window after process attach process_id=35696 resolved_handle=None
+2026-03-16 23:30:32.014 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:280 - Connected to WinWatt backend=uia process_id=35696
+2026-03-16 23:30:32.015 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:282 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-16 23:30:34.138 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:177 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'window_text': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 35696, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-16 23:30:34.138 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:187 - Selected main window process_id=35696 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-16 23:30:34.139 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:230 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 35696, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp'}
+2026-03-16 23:30:34.140 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:244 - Resolved win32 main window after process attach process_id=35696 resolved_handle=None
+2026-03-16 23:30:34.141 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:280 - Connected to WinWatt backend=uia process_id=35696
+2026-03-16 23:30:34.141 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:282 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-16 23:30:35.399 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:30:35.846 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:30:36.045 | INFO     | winwatt_automation.runtime_mapping.program_mapper:get_canonical_top_menu_names:177 - Canonical top-level menus [7]: ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:30:36.847 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:177 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'window_text': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 35696, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-16 23:30:36.847 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:187 - Selected main window process_id=35696 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-16 23:30:36.848 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:230 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 35696, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp'}
+2026-03-16 23:30:36.850 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:244 - Resolved win32 main window after process attach process_id=35696 resolved_handle=None
+2026-03-16 23:30:36.850 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:280 - Connected to WinWatt backend=uia process_id=35696
+2026-03-16 23:30:36.850 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:282 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-16 23:30:38.028 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:before:Rendszer main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:30:39.289 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:before:Rendszer status=focus_ok
+2026-03-16 23:30:40.615 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:30:41.927 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=12
+2026-03-16 23:30:44.377 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:30:44.829 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:30:45.116 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:30:46.162 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: normal
+2026-03-16 23:30:46.415 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:30:46.718 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:30:48.808 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Rendszer main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:30:49.261 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Rendszer status=focus_ok
+2026-03-16 23:30:49.263 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Rendszer'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:30:50.849 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:30:53.218 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:30:55.056 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:30:55.276 | ERROR    | winwatt_automation.live_ui.menu_helpers:_validate_not_in_forbidden_top_left_zone:39 - blocked_click_forbidden_zone point=(11, 11) main_left=-10 main_top=-10
+2026-03-16 23:30:55.277 | WARNING  | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:843 - Top menu item 'Rendszer' click_input() failed: click_blocked_forbidden_zone
+2026-03-16 23:30:55.481 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Rendszer foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:30:57.552 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:30:59.841 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:30:59.842 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=14 new=0
+2026-03-16 23:31:02.219 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=relative_menu_click main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:31:02.597 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=relative_menu_click status=focus_ok
+2026-03-16 23:31:03.502 | ERROR    | winwatt_automation.live_ui.menu_helpers:_validate_not_in_forbidden_top_left_zone:39 - blocked_click_forbidden_zone point=(11, 11) main_left=-10 main_top=-10
+2026-03-16 23:31:03.502 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:map_runtime_state:1008 - Top menu mapping failed: Rendszer
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 150, in <module>
+    raise SystemExit(main())
+                     └ <function main at 0x0000019CCD3C17A0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 79, in main
+    result = build_full_runtime_program_map(
+             └ <function build_full_runtime_program_map at 0x0000019CCD3C1220>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1160, in build_full_runtime_program_map
+    state_no_project = map_runtime_state(
+                       └ <function map_runtime_state at 0x0000019CCD3C0880>
+
+> File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 990, in map_runtime_state
+    tree, rows, actions, dialogs, windows = explore_menu_tree(
+                                            └ <function explore_menu_tree at 0x0000019CCD3C0460>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 751, in explore_menu_tree
+    menu_helpers.click_top_menu_item(top_menu)
+    │            │                   └ 'Rendszer'
+    │            └ <function click_top_menu_item at 0x0000019CCD36E4B0>
+    └ <module 'winwatt_automation.live_ui.menu_helpers' from 'C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation...
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 851, in click_top_menu_item
+    _click_by_relative_rect_center(item, main_window)
+    │                              │     └ <pywinauto.application.WindowSpecification object at 0x0000019CCE7C4490>
+    │                              └ <uia_controls.MenuItemWrapper - 'Rendszer', MenuItem, 7714651073799318317>
+    └ <function _click_by_relative_rect_center at 0x0000019CCD36E350>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 814, in _click_by_relative_rect_center
+    _validate_not_in_forbidden_top_left_zone(main_window, (x, y))
+    │                                        │             │  └ 11
+    │                                        │             └ 11
+    │                                        └ <pywinauto.application.WindowSpecification object at 0x0000019CCE7C4490>
+    └ <function _validate_not_in_forbidden_top_left_zone at 0x0000019CCD337950>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 40, in _validate_not_in_forbidden_top_left_zone
+    raise RuntimeError("click_blocked_forbidden_zone")
+
+RuntimeError: click_blocked_forbidden_zone
+2026-03-16 23:31:05.467 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:after:Rendszer main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:31:05.940 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:after:Rendszer status=focus_ok
+2026-03-16 23:31:08.170 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:31:10.091 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:31:12.294 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:before:Fájl main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:31:12.703 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:before:Fájl status=focus_ok
+2026-03-16 23:31:14.616 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:31:16.843 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:31:20.982 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:31:21.590 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:31:21.962 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:31:23.397 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:31:23.642 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:31:23.945 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:31:26.184 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Fájl main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:31:26.671 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Fájl status=focus_ok
+2026-03-16 23:31:26.672 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Fájl'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:31:28.388 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:31:30.940 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:31:33.091 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:31:33.585 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Fájl foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:31:36.632 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:31:39.792 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=62
+2026-03-16 23:31:39.792 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=62 new=48
+2026-03-16 23:31:42.314 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:31:44.845 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=62
+2026-03-16 23:31:49.597 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:31:51.273 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:31:56.186 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:31:57.819 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:32:00.830 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:32:03.569 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=62
+2026-03-16 23:32:08.248 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:32:09.879 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:32:14.795 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:32:16.521 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:32:19.051 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:after:Fájl main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:32:19.631 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:after:Fájl status=focus_ok
+2026-03-16 23:32:21.843 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:32:24.215 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:32:26.715 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:before:Jegyzékek main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:32:27.222 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:before:Jegyzékek status=focus_ok
+2026-03-16 23:32:29.300 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:32:31.550 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:32:35.222 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:32:35.691 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:32:36.049 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:32:37.919 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:32:38.407 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:32:38.709 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:32:40.837 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Jegyzékek main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:32:41.422 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Jegyzékek status=focus_ok
+2026-03-16 23:32:41.424 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Jegyzékek'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:32:43.493 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:32:45.843 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:32:47.792 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:32:48.271 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Jegyzékek foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:32:51.335 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:32:54.614 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=70
+2026-03-16 23:32:54.615 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=70 new=56
+2026-03-16 23:32:57.931 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:33:00.875 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=70
+2026-03-16 23:33:05.756 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:33:07.549 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:33:12.592 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:33:14.514 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:33:17.826 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:33:20.846 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=70
+2026-03-16 23:33:25.416 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:33:27.372 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:33:32.327 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:33:34.281 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:33:37.062 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:after:Jegyzékek main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:33:37.845 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:after:Jegyzékek status=focus_ok
+2026-03-16 23:33:40.103 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:33:42.519 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:33:45.430 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:before:Beállítások main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:33:46.065 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:before:Beállítások status=focus_ok
+2026-03-16 23:33:48.298 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:33:50.442 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:33:54.134 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:33:54.639 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:33:54.985 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:33:56.383 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:33:56.716 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:33:57.020 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:33:59.320 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Beállítások main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:33:59.827 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Beállítások status=focus_ok
+2026-03-16 23:33:59.829 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Beállítások'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:34:02.144 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:34:04.748 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:34:06.889 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:34:07.420 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Beállítások foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:34:10.703 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:13.458 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=74
+2026-03-16 23:34:13.459 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=74 new=60
+2026-03-16 23:34:16.250 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:19.152 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=74
+2026-03-16 23:34:23.664 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:25.604 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:34:30.337 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:32.528 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:34:35.643 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:38.809 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=74
+2026-03-16 23:34:43.446 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:45.248 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:34:50.310 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:34:52.255 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:34:54.943 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:after:Beállítások main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:34:55.548 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:after:Beállítások status=focus_ok
+2026-03-16 23:34:57.747 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:34:59.972 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:35:02.275 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:before:Ablak main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:35:02.828 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:before:Ablak status=focus_ok
+2026-03-16 23:35:04.880 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:35:07.232 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:35:10.963 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:35:11.418 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:35:11.759 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:35:13.403 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:35:13.735 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:35:14.038 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:35:16.173 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Ablak main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:35:16.565 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Ablak status=focus_ok
+2026-03-16 23:35:16.567 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Ablak'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:35:18.630 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:35:21.100 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:35:23.234 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:35:23.748 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Ablak foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:35:26.759 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:35:29.466 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=22
+2026-03-16 23:35:29.466 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=22 new=8
+2026-03-16 23:35:31.918 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:35:34.542 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=22
+2026-03-16 23:35:39.368 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:35:40.012 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:35:44.859 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:35:45.579 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:35:48.400 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:35:50.808 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=22
+2026-03-16 23:35:55.122 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:35:55.786 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:36:00.231 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:36:00.923 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:36:03.485 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:after:Ablak main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:36:04.058 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:after:Ablak status=focus_ok
+2026-03-16 23:36:06.399 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:36:08.507 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:36:10.794 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:before:Súgó main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:36:11.351 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:before:Súgó status=focus_ok
+2026-03-16 23:36:13.365 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:36:15.487 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:36:19.553 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:36:19.987 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:36:20.375 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:36:21.972 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:36:22.259 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:36:22.562 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:36:25.071 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Súgó main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:36:25.630 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Súgó status=focus_ok
+2026-03-16 23:36:25.635 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Súgó'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:36:27.653 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:36:29.976 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:36:31.809 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:36:32.300 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Súgó foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:36:35.174 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:36:37.986 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=34
+2026-03-16 23:36:37.987 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=34 new=20
+2026-03-16 23:36:40.598 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:36:43.208 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=34
+2026-03-16 23:36:47.373 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:36:48.334 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:36:53.247 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:36:54.317 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:36:57.115 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:36:59.541 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=34
+2026-03-16 23:37:04.119 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:37:05.180 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:37:10.075 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:37:11.054 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:37:13.776 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:no_project:after:Súgó main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:37:14.264 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:no_project:after:Súgó status=focus_ok
+2026-03-16 23:37:16.465 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:18.691 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+[event] state_mapped: {"actions": 6, "dialogs": 0, "state_id": "no_project", "top_menus": 6}
+2026-03-16 23:37:22.833 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:23.435 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:37:23.809 | INFO     | winwatt_automation.runtime_mapping.program_mapper:get_canonical_top_menu_names:177 - Canonical top-level menus [7]: ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:37:25.883 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:before:Rendszer main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:37:26.484 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:before:Rendszer status=focus_ok
+2026-03-16 23:37:29.187 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:31.934 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:37:37.561 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:38.415 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:37:38.916 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:37:40.646 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:37:41.031 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:37:41.333 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:37:43.517 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Rendszer main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:37:44.056 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Rendszer status=focus_ok
+2026-03-16 23:37:44.060 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Rendszer'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:37:46.184 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:48.712 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:50.877 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:37:51.063 | ERROR    | winwatt_automation.live_ui.menu_helpers:_validate_not_in_forbidden_top_left_zone:39 - blocked_click_forbidden_zone point=(11, 11) main_left=-10 main_top=-10
+2026-03-16 23:37:51.064 | WARNING  | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:843 - Top menu item 'Rendszer' click_input() failed: click_blocked_forbidden_zone
+2026-03-16 23:37:51.267 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Rendszer foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:37:53.591 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:37:55.495 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:37:55.496 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=14 new=0
+2026-03-16 23:37:57.834 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=relative_menu_click main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:37:58.350 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=relative_menu_click status=focus_ok
+2026-03-16 23:37:59.317 | ERROR    | winwatt_automation.live_ui.menu_helpers:_validate_not_in_forbidden_top_left_zone:39 - blocked_click_forbidden_zone point=(11, 11) main_left=-10 main_top=-10
+2026-03-16 23:37:59.318 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:map_runtime_state:1008 - Top menu mapping failed: Rendszer
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 150, in <module>
+    raise SystemExit(main())
+                     └ <function main at 0x0000019CCD3C17A0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 79, in main
+    result = build_full_runtime_program_map(
+             └ <function build_full_runtime_program_map at 0x0000019CCD3C1220>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1219, in build_full_runtime_program_map
+    state_project_open = map_runtime_state(
+                         └ <function map_runtime_state at 0x0000019CCD3C0880>
+
+> File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 990, in map_runtime_state
+    tree, rows, actions, dialogs, windows = explore_menu_tree(
+                                            └ <function explore_menu_tree at 0x0000019CCD3C0460>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 751, in explore_menu_tree
+    menu_helpers.click_top_menu_item(top_menu)
+    │            │                   └ 'Rendszer'
+    │            └ <function click_top_menu_item at 0x0000019CCD36E4B0>
+    └ <module 'winwatt_automation.live_ui.menu_helpers' from 'C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation...
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 851, in click_top_menu_item
+    _click_by_relative_rect_center(item, main_window)
+    │                              │     └ <pywinauto.application.WindowSpecification object at 0x0000019CCE7C4490>
+    │                              └ <uia_controls.MenuItemWrapper - 'Rendszer', MenuItem, 7714651073799318317>
+    └ <function _click_by_relative_rect_center at 0x0000019CCD36E350>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 814, in _click_by_relative_rect_center
+    _validate_not_in_forbidden_top_left_zone(main_window, (x, y))
+    │                                        │             │  └ 11
+    │                                        │             └ 11
+    │                                        └ <pywinauto.application.WindowSpecification object at 0x0000019CCE7C4490>
+    └ <function _validate_not_in_forbidden_top_left_zone at 0x0000019CCD337950>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 40, in _validate_not_in_forbidden_top_left_zone
+    raise RuntimeError("click_blocked_forbidden_zone")
+
+RuntimeError: click_blocked_forbidden_zone
+2026-03-16 23:38:01.470 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:after:Rendszer main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:38:01.967 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:after:Rendszer status=focus_ok
+2026-03-16 23:38:03.938 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:38:05.921 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:38:08.303 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:before:Fájl main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:38:08.779 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:before:Fájl status=focus_ok
+2026-03-16 23:38:10.661 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:38:12.994 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:38:17.123 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:38:17.623 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:38:17.970 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:38:19.637 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:38:19.992 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:38:20.294 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:38:22.369 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Fájl main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:38:22.885 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Fájl status=focus_ok
+2026-03-16 23:38:22.888 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Fájl'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:38:24.766 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:38:27.296 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:38:29.315 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:38:29.823 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Fájl foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:38:32.926 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:38:35.764 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=62
+2026-03-16 23:38:35.765 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=62 new=48
+2026-03-16 23:38:38.781 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:38:41.444 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=62
+2026-03-16 23:38:46.099 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:38:47.797 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:38:52.766 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:38:54.572 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:38:57.554 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:39:00.289 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=62
+2026-03-16 23:39:05.254 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:39:07.047 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:39:12.161 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 31 MenuItem controls
+2026-03-16 23:39:13.910 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:39:16.759 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:after:Fájl main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:39:17.238 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:after:Fájl status=focus_ok
+2026-03-16 23:39:19.575 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:39:22.016 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:39:24.497 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:before:Jegyzékek main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:39:25.116 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:before:Jegyzékek status=focus_ok
+2026-03-16 23:39:27.302 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:39:29.426 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:39:33.403 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:39:33.905 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:39:34.225 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:39:35.750 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:39:36.041 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:39:36.344 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:39:38.954 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Jegyzékek main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:39:39.408 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Jegyzékek status=focus_ok
+2026-03-16 23:39:39.408 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Jegyzékek'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:39:41.565 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:39:44.171 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:39:45.861 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:39:46.378 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Jegyzékek foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:39:49.528 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:39:52.239 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=70
+2026-03-16 23:39:52.240 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=70 new=56
+2026-03-16 23:39:54.790 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:39:57.783 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=70
+2026-03-16 23:40:02.672 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:40:04.440 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:40:09.312 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:40:11.269 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:40:14.420 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:40:17.568 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=70
+2026-03-16 23:40:24.575 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:40:26.437 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:40:31.548 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 35 MenuItem controls
+2026-03-16 23:40:33.468 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:40:36.696 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:after:Jegyzékek main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:40:37.338 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:after:Jegyzékek status=focus_ok
+2026-03-16 23:40:39.770 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:40:42.072 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:40:44.478 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:before:Beállítások main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:40:44.997 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:before:Beállítások status=focus_ok
+2026-03-16 23:40:47.173 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:40:49.255 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:40:53.196 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:40:53.658 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:40:53.992 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:40:55.948 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:40:56.359 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:40:56.662 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:40:59.270 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Beállítások main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:40:59.798 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Beállítások status=focus_ok
+2026-03-16 23:40:59.801 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Beállítások'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:41:02.018 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:41:04.407 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:41:06.301 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:41:06.828 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Beállítások foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:41:10.064 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:12.939 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=74
+2026-03-16 23:41:12.940 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=74 new=60
+2026-03-16 23:41:15.286 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:18.091 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=74
+2026-03-16 23:41:22.446 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:24.291 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:41:29.485 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:31.533 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:41:34.414 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:37.553 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=74
+2026-03-16 23:41:42.542 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:44.475 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:41:49.462 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 37 MenuItem controls
+2026-03-16 23:41:51.398 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:41:54.168 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:after:Beállítások main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:41:54.639 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:after:Beállítások status=focus_ok
+2026-03-16 23:41:56.957 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:41:59.086 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:42:01.517 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:before:Ablak main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:42:01.901 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:before:Ablak status=focus_ok
+2026-03-16 23:42:03.867 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:42:06.178 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:42:10.307 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:42:10.834 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:42:11.188 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:42:12.772 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:42:13.135 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:42:13.440 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:42:15.756 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Ablak main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:42:16.228 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Ablak status=focus_ok
+2026-03-16 23:42:16.230 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Ablak'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:42:18.190 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:42:20.636 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:42:22.486 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:42:22.996 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Ablak foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:42:25.973 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:28.626 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=22
+2026-03-16 23:42:28.627 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=22 new=8
+2026-03-16 23:42:30.844 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:33.392 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=22
+2026-03-16 23:42:37.693 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:38.631 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:42:43.129 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:43.812 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:42:46.449 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:48.901 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=22
+2026-03-16 23:42:52.851 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:53.655 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:42:57.711 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 11 MenuItem controls
+2026-03-16 23:42:58.320 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:43:00.957 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:after:Ablak main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:43:01.486 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:after:Ablak status=focus_ok
+2026-03-16 23:43:03.754 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:43:05.987 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:43:08.446 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:before:Súgó main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:43:09.001 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:before:Súgó status=focus_ok
+2026-03-16 23:43:11.059 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:43:13.246 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:43:17.274 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:43:17.724 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:43:17.961 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:480 - Preparing WinWatt window for menu interaction
+2026-03-16 23:43:19.408 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Window state before: maximized
+2026-03-16 23:43:19.640 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:521 - Window maximized
+2026-03-16 23:43:19.943 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:534 - Focus confirmed
+2026-03-16 23:43:22.067 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=click_top_menu_item:Súgó main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:43:22.592 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=click_top_menu_item:Súgó status=focus_ok
+2026-03-16 23:43:22.594 | INFO     | winwatt_automation.live_ui.menu_helpers:click_top_menu_item:828 - click_top_menu_item('Súgó'): foreground_before_click={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:43:24.508 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:43:26.994 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:43:29.131 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+2026-03-16 23:43:29.643 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:45 - post_click_foreground_validation title=Súgó foreground={'handle': 395540, 'title': 'WinWatt gólya - C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp', 'class_name': 'TMainForm', 'process_id': 35696}
+2026-03-16 23:43:32.278 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:43:34.665 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=34
+2026-03-16 23:43:34.666 | INFO     | winwatt_automation.live_ui.menu_helpers:did_any_new_menu_popup_appear:783 - Menu popup snapshot diff: before=14 after=34 new=20
+2026-03-16 23:43:36.924 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:43:39.941 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=34
+2026-03-16 23:43:44.353 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:43:45.392 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:43:50.627 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:43:51.693 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:43:54.362 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:43:57.014 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=34
+2026-03-16 23:44:01.805 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:44:02.687 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:44:07.574 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 17 MenuItem controls
+2026-03-16 23:44:08.696 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:182 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Eszközök', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-16 23:44:11.481 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:634 - focus_guard precheck action=baseline_restore:project_open:after:Súgó main_handle=395540 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-16 23:44:11.978 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:653 - focus_guard result action=baseline_restore:project_open:after:Súgó status=focus_ok
+2026-03-16 23:44:14.353 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:152 - Discovered 7 MenuItem controls
+2026-03-16 23:44:16.659 | INFO     | winwatt_automation.live_ui.menu_helpers:capture_menu_popup_snapshot:341 - Captured menu snapshot rows=14
+[event] state_mapped: {"actions": 6, "dialogs": 0, "state_id": "project_open", "top_menus": 6}
+[event] runtime_diff: {"enabled_changes": 0, "project_only_paths": 0, "summary": {"actions_only_in_a": 0, "actions_only_in_b": 0, "enabled_changes": 0, "project_only_paths": 0, "shared_top_menus": 6}}
+[event] runtime_mapping_summary: {"diff_summary": {"actions_only_in_a": 0, "actions_only_in_b": 0, "enabled_changes": 0, "project_only_paths": 0, "shared_top_menus": 6}, "no_project_top_menus": 6, "project_open_top_menus": 6}
+
+finished_at=2026-03-16T22:44:16.682754+00:00 success=True exit_code=0

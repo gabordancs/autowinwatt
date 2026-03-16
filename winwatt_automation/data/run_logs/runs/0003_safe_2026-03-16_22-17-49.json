@@ -1,8 +1,8 @@
 {
-  "run_id": "0004_safe_2026-03-16_22-30-31",
-  "sequence_number": 4,
-  "started_at": "2026-03-16T22:30:31.674930+00:00",
-  "finished_at": "2026-03-16T22:44:16.682754+00:00",
+  "run_id": "0003_safe_2026-03-16_22-17-49",
+  "sequence_number": 3,
+  "started_at": "2026-03-16T22:17:49.479340+00:00",
+  "finished_at": "2026-03-16T22:25:59.826352+00:00",
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
   "safe_mode": "safe",
@@ -10,16 +10,16 @@
   "exit_code": 0,
   "success": true,
   "summary": {
-    "no_project_top_menus": 6,
-    "project_open_top_menus": 6,
+    "no_project_top_menus": 7,
+    "project_open_top_menus": 7,
     "diff_summary": {
-      "shared_top_menus": 6,
+      "shared_top_menus": 7,
       "actions_only_in_a": 0,
       "actions_only_in_b": 0,
       "enabled_changes": 0,
       "project_only_paths": 0
     },
-    "skipped_by_safety": 10,
+    "skipped_by_safety": 8,
     "last_error": null,
     "modal_detected": false,
     "recovery_attempted": false,
@@ -27,31 +27,31 @@
   },
   "important_events": [
     {
-      "timestamp": "2026-03-16T22:37:18.695363+00:00",
+      "timestamp": "2026-03-16T22:21:48.581564+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "no_project",
-        "top_menus": 6,
-        "actions": 6,
+        "top_menus": 7,
+        "actions": 4,
         "dialogs": 0
       }
     },
     {
-      "timestamp": "2026-03-16T22:44:16.663939+00:00",
+      "timestamp": "2026-03-16T22:25:59.796910+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "project_open",
-        "top_menus": 6,
-        "actions": 6,
+        "top_menus": 7,
+        "actions": 4,
         "dialogs": 0
       }
     },
     {
-      "timestamp": "2026-03-16T22:44:16.676275+00:00",
+      "timestamp": "2026-03-16T22:25:59.816913+00:00",
       "event_type": "runtime_diff",
       "payload": {
         "summary": {
-          "shared_top_menus": 6,
+          "shared_top_menus": 7,
           "actions_only_in_a": 0,
           "actions_only_in_b": 0,
           "enabled_changes": 0,
@@ -62,13 +62,13 @@
       }
     },
     {
-      "timestamp": "2026-03-16T22:44:16.682634+00:00",
+      "timestamp": "2026-03-16T22:25:59.826101+00:00",
       "event_type": "runtime_mapping_summary",
       "payload": {
-        "no_project_top_menus": 6,
-        "project_open_top_menus": 6,
+        "no_project_top_menus": 7,
+        "project_open_top_menus": 7,
         "diff_summary": {
-          "shared_top_menus": 6,
+          "shared_top_menus": 7,
           "actions_only_in_a": 0,
           "actions_only_in_b": 0,
           "enabled_changes": 0,
@@ -78,8 +78,8 @@
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0004_safe_2026-03-16_22-30-31.log",
-    "json_path": "data\\run_logs\\runs\\0004_safe_2026-03-16_22-30-31.json"
+    "log_path": "data\\run_logs\\runs\\0003_safe_2026-03-16_22-17-49.log",
+    "json_path": "data\\run_logs\\runs\\0003_safe_2026-03-16_22-17-49.json"
   },
   "tags": [
     "map_full_program",

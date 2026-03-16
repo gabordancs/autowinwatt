@@ -9,7 +9,7 @@
           "geometry": {
             "bottom": 84,
             "left": 4,
-            "right": 879,
+            "right": 290,
             "top": 56
           },
           "source_scope": "main_window",
@@ -86,5 +86,137 @@
     "title": "Jegyzékek",
     "title_normalized": "jegyzékek",
     "title_raw": "Jegyzékek"
+  },
+  {
+    "children": [
+      {
+        "action_classification": "enabled",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 126,
+            "right": 419,
+            "top": 56
+          },
+          "source_scope": "main_window",
+          "top_menu": "Beállítások"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": false,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Beállítások",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": false,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      }
+    ],
+    "path": [
+      "Beállítások"
+    ],
+    "state_id": "project_open",
+    "title": "Beállítások",
+    "title_normalized": "beállítások",
+    "title_raw": "Beállítások"
+  },
+  {
+    "children": [
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 203,
+            "right": 411,
+            "top": 56
+          },
+          "source_scope": "main_window",
+          "top_menu": "Ablak"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Ablak",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      }
+    ],
+    "path": [
+      "Ablak"
+    ],
+    "state_id": "project_open",
+    "title": "Ablak",
+    "title_normalized": "ablak",
+    "title_raw": "Ablak"
+  },
+  {
+    "children": [
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 290,
+            "right": 561,
+            "top": 56
+          },
+          "source_scope": "main_window",
+          "top_menu": "Súgó"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Súgó",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      }
+    ],
+    "path": [
+      "Súgó"
+    ],
+    "state_id": "project_open",
+    "title": "Súgó",
+    "title_normalized": "súgó",
+    "title_raw": "Súgó"
   }
 ]
