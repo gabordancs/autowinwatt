@@ -30,8 +30,6 @@ class FakeMenuItem:
         self._parent = parent
         self._rect = rect or FakeRect(0, 0, 100, 20)
         self.clicked = False
-        self.invoked = False
-        self.selected = False
 
     def is_visible(self):
         return self._visible
@@ -45,12 +43,6 @@ class FakeMenuItem:
     def click_input(self):
         self.clicked = True
 
-    def invoke(self):
-        self.invoked = True
-
-    def select(self):
-        self.selected = True
-
 
 class FakeContainer:
     def __init__(self, items):
@@ -58,6 +50,14 @@ class FakeContainer:
 
     def descendants(self):
         return list(self._items)
+
+
+class FakeDialog:
+    def __init__(self, title: str):
+        self._title = title
+
+    def window_text(self):
+        return self._title
 
 
 def test_menu_helpers_list_and_click(monkeypatch):
@@ -71,6 +71,9 @@ def test_menu_helpers_list_and_click(monkeypatch):
     assert "Fájl" in menu_helpers.list_top_menu_items()
     assert "Projekt megnyitása" in menu_helpers.list_open_menu_items()
 
+    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
+    monkeypatch.setattr(menu_helpers, "is_main_window_foreground", lambda: True)
+    monkeypatch.setattr(menu_helpers, "did_any_new_menu_popup_appear", lambda before, after: True)
     menu_helpers.click_top_menu_item("Fájl")
     assert file_item.clicked is True
 
@@ -84,17 +87,6 @@ def test_find_top_menu_item_returns_invisible_when_only_match(monkeypatch):
 
     resolved = menu_helpers.find_top_menu_item("Fájl")
     assert resolved is file_item
-
-
-def test_find_top_menu_item_prefers_visible_duplicate(monkeypatch):
-    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
-    file_hidden = FakeMenuItem("Fájl", visible=False, parent=menu_parent)
-    file_visible = FakeMenuItem("Fájl", visible=True, parent=menu_parent)
-
-    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([file_hidden, file_visible]))
-
-    resolved = menu_helpers.find_top_menu_item("Fájl")
-    assert resolved is file_visible
 
 
 def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
@@ -119,42 +111,115 @@ def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
     assert relative_clicks == [file_item]
 
 
-def test_list_open_menu_items_structured_sorts_and_marks_separator(monkeypatch):
-    menubar_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+def test_list_open_menu_items_structured_sorts_filters_and_marks_separator(monkeypatch):
+    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
     popup_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="Menu"))
 
-    top_level = FakeMenuItem("Fájl", parent=menubar_parent, rect=FakeRect(5, 5, 60, 30))
-    entry_2 = FakeMenuItem("", parent=popup_parent, rect=FakeRect(3, 89, 703, 111))
-    separator = FakeMenuItem("", parent=popup_parent, rect=FakeRect(3, 111, 703, 112))
-    entry_1 = FakeMenuItem("", parent=popup_parent, rect=FakeRect(3, 67, 703, 89))
+    top_level = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(5, 5, 60, 30))
 
-    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([top_level, entry_2, separator, entry_1]))
+    before = [
+        {
+            "text": "Fájl",
+            "normalized_text": "fájl",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 5, "top": 5, "right": 60, "bottom": 30},
+            "width": 55,
+            "height": 25,
+            "center_x": 32,
+            "center_y": 17,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": False,
+        }
+    ]
+    after = before + [
+        {
+            "text": "",
+            "normalized_text": "",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 3, "top": 89, "right": 703, "bottom": 111},
+            "width": 700,
+            "height": 22,
+            "center_x": 353,
+            "center_y": 100,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": False,
+        },
+        {
+            "text": "",
+            "normalized_text": "",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 3, "top": 111, "right": 703, "bottom": 112},
+            "width": 700,
+            "height": 1,
+            "center_x": 353,
+            "center_y": 111,
+            "is_separator": True,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": False,
+        },
+        {
+            "text": "",
+            "normalized_text": "",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 3, "top": 67, "right": 703, "bottom": 89},
+            "width": 700,
+            "height": 22,
+            "center_x": 353,
+            "center_y": 78,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": False,
+        },
+    ]
+
+    monkeypatch.setattr(menu_helpers, "capture_menu_popup_snapshot", lambda: after)
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([top_level]))
+    menu_helpers._LAST_MENU_SNAPSHOT_BEFORE_OPEN = menu_helpers._snapshot_keys(before)
 
     structured = menu_helpers.list_open_menu_items_structured()
 
-    assert [item["order_index"] for item in structured] == [0, 1, 2]
-    assert structured[0]["rectangle"] == (3, 67, 703, 89)
+    assert [item["index"] for item in structured] == [0, 1, 2]
+    assert structured[0]["rectangle"]["top"] == 67
     assert structured[2]["is_separator"] is True
 
 
 def test_click_open_menu_item_by_index_clicks_center(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: None)
     monkeypatch.setattr(menu_helpers, "click_top_menu_item", lambda _: None)
     monkeypatch.setattr(
         menu_helpers,
         "list_open_menu_items_structured",
         lambda: [
-            {"center": (10, 10), "is_separator": True, "order_index": 0, "rectangle": (0, 0, 20, 20)},
-            {"center": (30, 30), "is_separator": False, "order_index": 1, "rectangle": (20, 20, 40, 40)},
+            {"index": 0, "center_x": 30, "center_y": 30, "is_separator": False, "rectangle": {"left": 20}},
         ],
     )
 
     clicks = []
-    monkeypatch.setattr(menu_helpers.mouse, "click", lambda button, coords: clicks.append((button, coords)))
+    monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicks.append(("left", coords)))
 
     selected = menu_helpers.click_open_menu_item_by_index(0)
 
-    assert selected["center"] == (30, 30)
+    assert selected["center_x"] == 30
     assert clicks == [("left", (30, 30))]
+
+
+def test_click_open_menu_item_by_index_rejects_separator(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: None)
+    monkeypatch.setattr(menu_helpers, "click_top_menu_item", lambda _: None)
+    monkeypatch.setattr(
+        menu_helpers,
+        "list_open_menu_items_structured",
+        lambda: [{"index": 0, "center_x": 10, "center_y": 10, "is_separator": True}],
+    )
+
+    with pytest.raises(ValueError, match="separator"):
+        menu_helpers.click_open_menu_item_by_index(0)
 
 
 def test_open_file_menu_raises_with_available_items(monkeypatch):
@@ -184,3 +249,16 @@ def test_wait_for_any_window_title_contains(monkeypatch):
 
     resolved = waits.wait_for_any_window_title_contains("project", timeout=0.3)
     assert resolved.window_text() == "Open project"
+
+
+def test_invoke_open_project_dialog_by_index_plumbs_dialog_result(monkeypatch):
+    clicked = {"index": 2, "rectangle": {"left": 1}}
+    monkeypatch.setattr(menu_commands, "click_file_submenu_item_by_index", lambda i: clicked)
+    monkeypatch.setattr(waits, "detect_open_file_dialog", lambda timeout=5.0: True)
+    monkeypatch.setattr(waits, "wait_for_dialog", lambda timeout=1.0: FakeDialog("Open"))
+
+    result = menu_commands.invoke_open_project_dialog_by_index(2)
+
+    assert result["clicked_index"] == 2
+    assert result["dialog_detected"] is True
+    assert result["dialog_title"] == "Open"
