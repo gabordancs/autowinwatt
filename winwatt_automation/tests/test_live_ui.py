@@ -31,7 +31,7 @@ class FakeWindow:
         class_name: str,
         control_type: str = "Window",
         process_id: int = 123,
-        handle: int = 10,
+        handle: int | None = 10,
         visible: bool = True,
         enabled: bool = True,
         rect: FakeRect | None = None,
@@ -115,11 +115,12 @@ def test_list_candidate_windows_collects_expected_fields(monkeypatch):
             return [
                 FakeWindow(
                     title="WinWatt - Project",
-                    class_name="MainFrame",
+                    class_name="TMainForm",
                     handle=101,
                     rect=FakeRect(0, 0, 1200, 900),
                 ),
-                FakeWindow(title="Other app", class_name="Other", handle=102),
+                FakeWindow(title="WinWatt - Dialog", class_name="TDialog", handle=200),
+                FakeWindow(title="Other app", class_name="TMainForm", handle=102),
             ]
 
     monkeypatch.setitem(
@@ -128,13 +129,13 @@ def test_list_candidate_windows_collects_expected_fields(monkeypatch):
         types.SimpleNamespace(Desktop=FakeDesktop),
     )
 
-    candidates = app_connector.list_candidate_windows(backend="uia")
+    candidates = app_connector.list_candidate_windows(backend="win32")
 
     assert len(candidates) == 1
     candidate = candidates[0]
     assert candidate["title"] == "WinWatt - Project"
     assert candidate["window_text"] == "WinWatt - Project"
-    assert candidate["class_name"] == "MainFrame"
+    assert candidate["class_name"] == "TMainForm"
     assert candidate["control_type"] == "Window"
     assert candidate["process_id"] == 123
     assert candidate["handle"] == 101
@@ -177,6 +178,30 @@ def test_select_main_window_prefers_visible_enabled_and_largest_area():
     assert selected["handle"] == 2
 
 
+def test_select_main_window_ignores_candidates_without_handle():
+    candidates = [
+        {
+            "title": "WinWatt",
+            "class_name": "MainFrame",
+            "is_visible": True,
+            "is_enabled": True,
+            "rectangle": {"width": 1200, "height": 900},
+            "handle": None,
+        },
+        {
+            "title": "WinWatt",
+            "class_name": "MainFrame",
+            "is_visible": True,
+            "is_enabled": True,
+            "rectangle": {"width": 1000, "height": 800},
+            "handle": 12,
+        },
+    ]
+
+    selected = app_connector.select_main_window(candidates, backend="win32")
+    assert selected["handle"] == 12
+
+
 def test_select_main_window_raises_on_tie():
     candidates = [
         {
@@ -198,7 +223,60 @@ def test_select_main_window_raises_on_tie():
     ]
 
     with pytest.raises(app_connector.WinWattMultipleWindowsError):
-        app_connector.select_main_window(candidates, backend="uia")
+        app_connector.select_main_window(candidates, backend="win32")
+
+
+def test_get_main_window_uses_uia_by_process_after_win32_selection(monkeypatch):
+    class FakeDesktop:
+        def __init__(self, backend: str):
+            self.backend = backend
+
+        def windows(self, top_level_only=True):
+            return [
+                FakeWindow(
+                    title="WinWatt - Project",
+                    class_name="TMainForm",
+                    process_id=999,
+                    handle=444,
+                    rect=FakeRect(0, 0, 1200, 900),
+                )
+            ]
+
+    class FakeConnectedApp:
+        def __init__(self, backend):
+            self.backend = types.SimpleNamespace(name=backend)
+
+        def window(self, handle=None):
+            return {"backend": self.backend.name, "handle": handle}
+
+    class FakeApplicationFactory:
+        def __init__(self):
+            self.calls = []
+
+        def __call__(self, backend):
+            self.calls.append(("init", backend))
+            factory = self
+
+            class Instance:
+                def connect(self, **kwargs):
+                    factory.calls.append(("connect", backend, kwargs))
+                    return FakeConnectedApp(backend)
+
+            return Instance()
+
+    fake_factory = FakeApplicationFactory()
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "pywinauto",
+        types.SimpleNamespace(Application=fake_factory, Desktop=FakeDesktop),
+    )
+
+    main_window = app_connector.get_main_window()
+
+    assert main_window == {"backend": "uia", "handle": 444}
+    assert ("connect", "win32", {"handle": 444}) in fake_factory.calls
+    assert ("connect", "uia", {"process": 999}) in fake_factory.calls
 
 
 def test_dump_window_tree_includes_required_fields():
