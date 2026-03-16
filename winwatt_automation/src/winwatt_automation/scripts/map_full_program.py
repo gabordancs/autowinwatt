@@ -15,6 +15,21 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+
+
+
+def _print_focus_summary(actions: list[dict]) -> None:
+    focus_failed = sum(1 for action in actions if action.get("result_type") == "failed_focus")
+    wrong_window = sum(1 for action in actions if action.get("result_type") == "failed_wrong_window")
+    system_menu = sum(1 for action in actions if action.get("result_type") == "failed_system_menu")
+    popup_success = sum(1 for action in actions if action.get("result_type") == "success_popup_opened")
+    dialog_success = sum(1 for action in actions if action.get("result_type") == "success_dialog_opened")
+    print(f"- focus failed: {focus_failed}")
+    print(f"- wrong foreground blocked: {wrong_window}")
+    print(f"- system menu opened: {system_menu}")
+    print(f"- popup opened: {popup_success}")
+    print(f"- dialog opened: {dialog_success}")
+
 def main() -> int:
     args = build_parser().parse_args()
     result = build_full_runtime_program_map(
@@ -35,12 +50,14 @@ def main() -> int:
     print(f"- no_project dialogs found: {len(no_project.dialogs)}")
     print(f"- no_project windows found: {len(no_project.windows)}")
     print(f"- no_project skipped actions: {len(no_project.skipped_actions)}")
+    _print_focus_summary(no_project.actions)
     print(f"- project_open top_menus: {len(project_open.top_menus)}")
     print(f"- project_open menu_rows: {len(project_open.menu_rows)}")
     print(f"- project_open actions attempted: {sum(1 for action in project_open.actions if action.get('attempted'))}")
     print(f"- project_open dialogs found: {len(project_open.dialogs)}")
     print(f"- project_open windows found: {len(project_open.windows)}")
     print(f"- project_open skipped actions: {len(project_open.skipped_actions)}")
+    _print_focus_summary(project_open.actions)
     print(f"- diff summary: {diff.get('summary', {})}")
     return 0
 
