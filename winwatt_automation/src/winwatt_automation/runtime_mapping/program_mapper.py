@@ -4,7 +4,7 @@ from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 import time
-from typing import Any
+from typing import Any, Callable
 
 from loguru import logger
 
@@ -1094,6 +1094,7 @@ def build_full_runtime_program_map(
     top_menus: list[str] | None = None,
     max_submenu_depth: int = 3,
     include_disabled: bool = True,
+    event_recorder: Callable[[str, dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     paths = ensure_output_dirs(Path(output_dir))
     no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
@@ -1106,10 +1107,38 @@ def build_full_runtime_program_map(
         max_submenu_depth=max_submenu_depth,
         include_disabled=include_disabled,
     )
+    if event_recorder:
+        event_recorder(
+            "state_mapped",
+            {
+                "state_id": state_no_project.state_id,
+                "top_menus": len(state_no_project.top_menus),
+                "actions": len(state_no_project.actions),
+                "dialogs": len(state_no_project.dialogs),
+            },
+        )
     _write_state_outputs(paths["state_no_project"], state_no_project)
 
     project_open_result = open_test_project(project_path, safe_mode=safe_mode) if project_path else None
     recovery = (project_open_result or {}).get("recovery") if project_open_result else None
+    if event_recorder and project_open_result:
+        event_recorder(
+            "project_open_result",
+            {
+                "success": bool(project_open_result.get("success")),
+                "error": project_open_result.get("error"),
+                "dialog_found": bool(project_open_result.get("dialog_found")),
+            },
+        )
+    if event_recorder and recovery:
+        event_recorder(
+            "project_open_recovery",
+            {
+                "success": bool(recovery.get("success")),
+                "reason": recovery.get("reason"),
+                "modal_detected": bool(recovery.get("modal_pending")),
+            },
+        )
 
     if project_path and recovery and not recovery.get("success"):
         state_project_open = RuntimeStateMap(
@@ -1139,9 +1168,28 @@ def build_full_runtime_program_map(
         )
         if recovery:
             state_project_open.snapshot["project_open_recovery"] = recovery
+    if event_recorder:
+        event_recorder(
+            "state_mapped",
+            {
+                "state_id": state_project_open.state_id,
+                "top_menus": len(state_project_open.top_menus),
+                "actions": len(state_project_open.actions),
+                "dialogs": len(state_project_open.dialogs),
+            },
+        )
     _write_state_outputs(paths["state_project_open"], state_project_open)
 
     diff = compare_runtime_states(state_no_project, state_project_open)
+    if event_recorder:
+        event_recorder(
+            "runtime_diff",
+            {
+                "summary": dict(diff.summary),
+                "enabled_changes": len(diff.enabled_state_changes),
+                "project_only_paths": len(diff.project_only_paths),
+            },
+        )
     write_json(paths["diff"] / "state_diff.json", asdict(diff))
     (paths["diff"] / "summary.md").write_text(_diff_summary_markdown(diff), encoding="utf-8")
 
