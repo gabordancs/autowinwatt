@@ -10,7 +10,7 @@ from loguru import logger
 from winwatt_automation.live_ui.app_connector import get_cached_main_window
 from winwatt_automation.runtime_logging import append_terminal_line, finalize_run, record_event, start_run
 from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
-from winwatt_automation.runtime_mapping.program_mapper import build_full_runtime_program_map
+from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TEST_PROJECT_PATH, build_full_runtime_program_map
 
 
 def _parse_top_menus(raw: str | None) -> list[str] | None:
@@ -51,7 +51,7 @@ def _close_winwatt_after_mapping() -> dict[str, str | bool | None]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Map full WinWatt runtime structure")
-    parser.add_argument("--project-path", default=None)
+    parser.add_argument("--project-path", default=DEFAULT_TEST_PROJECT_PATH)
     parser.add_argument("--safe-mode", default="safe", choices=["safe", "caution", "blocked"])
     parser.add_argument("--output-dir", default="data/runtime_maps")
     parser.add_argument("--state-id-prefix", default="state")
@@ -69,7 +69,7 @@ def main() -> int:
         context={
             "cwd": str(Path.cwd()),
             "safe_mode": args.safe_mode,
-            "project_path": args.project_path,
+            "project_path": args.project_path or DEFAULT_TEST_PROJECT_PATH,
             "tags": ["map_full_program", "runtime_mapping"],
         },
     )
