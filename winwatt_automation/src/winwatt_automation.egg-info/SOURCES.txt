@@ -35,6 +35,11 @@ src/winwatt_automation/parser/exporters.py
 src/winwatt_automation/parser/normalizer.py
 src/winwatt_automation/parser/semantic_classifier.py
 src/winwatt_automation/parser/xml_parser.py
+src/winwatt_automation/scripts/__init__.py
+src/winwatt_automation/scripts/export_ui_model.py
+src/winwatt_automation/scripts/inspect_live_ui.py
+src/winwatt_automation/scripts/parse_hungarian_xml.py
+src/winwatt_automation/scripts/run_demo_workflow.py
 src/winwatt_automation/workflows/__init__.py
 src/winwatt_automation/workflows/base_workflow.py
 src/winwatt_automation/workflows/demo_modify_field.py
