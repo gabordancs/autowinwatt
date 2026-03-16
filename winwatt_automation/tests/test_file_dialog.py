@@ -98,7 +98,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
 
     monkeypatch.setattr(program_mapper, "capture_state_snapshot", lambda _state_id: type("S", (), {"__dict__": {}})())
     monkeypatch.setattr(program_mapper, "asdict", lambda _obj: {"discovered_top_menus": ["Fájl"]})
-    monkeypatch.setattr(program_mapper, "open_project_file_via_dialog_dict", lambda *args, **kwargs: expected)
+    monkeypatch.setattr(program_mapper, "open_project_file_via_dialog_dict", lambda *args, **kwargs: expected.copy())
+    monkeypatch.setattr(program_mapper, "recover_after_project_open", lambda **kwargs: {"success": True, "diagnostics": {}, "close_attempts": []})
 
     result = program_mapper.open_test_project(expected["path"], safe_mode="safe")
 
@@ -112,8 +113,10 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "project_state_changed",
         "detected_changes",
         "error",
+        "recovery",
     }
     assert result["success"] is True
+    assert result["recovery"]["success"] is True
 
 
 def test_open_test_project_safe_mode_blocks_non_test_path():
