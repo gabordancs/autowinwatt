@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ctypes
 from typing import TYPE_CHECKING
 from typing import Any
 
@@ -317,3 +318,200 @@ def get_main_window() -> Any:
         return app_uia.window(handle=best_handle)
 
     return app_uia.window(title=best_candidate.get("title"), class_name=best_candidate.get("class_name"))
+
+
+def _wrapper_handle(wrapper: Any) -> int | None:
+    handle = _safe_call(wrapper, "handle", None)
+    if handle is not None:
+        return int(handle)
+    element_info = _safe_getattr(wrapper, "element_info", None)
+    if element_info is None:
+        return None
+    info_handle = _safe_getattr(element_info, "handle", None)
+    return int(info_handle) if info_handle is not None else None
+
+
+def focus_main_window() -> Any:
+    """Bring WinWatt main window to the foreground and focus it."""
+
+    main_window = get_main_window()
+    logger.info("focus_main_window: resolved WinWatt main window handle={}", _wrapper_handle(main_window))
+
+    set_focus = getattr(main_window, "set_focus", None)
+    if callable(set_focus):
+        try:
+            set_focus()
+            logger.info("focus_main_window: set_focus() succeeded")
+        except Exception as exc:
+            logger.warning("focus_main_window: set_focus() failed: {}", exc)
+    else:
+        logger.info("focus_main_window: set_focus() unavailable")
+
+    set_keyboard_focus = getattr(main_window, "set_keyboard_focus", None)
+    if callable(set_keyboard_focus):
+        try:
+            set_keyboard_focus()
+            logger.info("focus_main_window: set_keyboard_focus() succeeded")
+        except Exception as exc:
+            logger.warning("focus_main_window: set_keyboard_focus() failed: {}", exc)
+    else:
+        logger.info("focus_main_window: set_keyboard_focus() unavailable")
+
+    is_minimized = getattr(main_window, "is_minimized", None)
+    minimized = False
+    if callable(is_minimized):
+        try:
+            minimized = bool(is_minimized())
+        except Exception as exc:
+            logger.warning("focus_main_window: is_minimized() failed: {}", exc)
+    logger.info("focus_main_window: minimized={}", minimized)
+
+    if minimized:
+        restore = getattr(main_window, "restore", None)
+        if callable(restore):
+            try:
+                restore()
+                logger.info("focus_main_window: restore() succeeded")
+            except Exception as exc:
+                logger.warning("focus_main_window: restore() failed: {}", exc)
+        else:
+            logger.info("focus_main_window: restore() unavailable")
+
+    is_maximized = getattr(main_window, "is_maximized", None)
+    maximized = False
+    if callable(is_maximized):
+        try:
+            maximized = bool(is_maximized())
+        except Exception as exc:
+            logger.warning("focus_main_window: is_maximized() failed: {}", exc)
+    logger.info("focus_main_window: maximized={}", maximized)
+
+    if not minimized and not maximized:
+        maximize = getattr(main_window, "maximize", None)
+        if callable(maximize):
+            try:
+                maximize()
+                logger.info("focus_main_window: maximize() succeeded")
+            except Exception as exc:
+                logger.warning("focus_main_window: maximize() failed: {}", exc)
+        else:
+            logger.info("focus_main_window: maximize() unavailable")
+    else:
+        logger.info("focus_main_window: maximize() skipped")
+
+    if callable(set_focus):
+        try:
+            set_focus()
+            logger.info("focus_main_window: final set_focus() succeeded")
+        except Exception as exc:
+            logger.warning("focus_main_window: final set_focus() failed: {}", exc)
+
+    return main_window
+
+
+
+
+def prepare_main_window_for_menu_interaction() -> Any:
+    """Normalize WinWatt window geometry/focus before menu clicks."""
+
+    logger.info("Preparing WinWatt window for menu interaction")
+    main_window = get_main_window()
+
+    minimized = False
+    is_minimized = getattr(main_window, "is_minimized", None)
+    if callable(is_minimized):
+        try:
+            minimized = bool(is_minimized())
+        except Exception as exc:
+            logger.warning("prepare_main_window_for_menu_interaction: is_minimized() failed: {}", exc)
+
+    maximized = False
+    is_maximized = getattr(main_window, "is_maximized", None)
+    if callable(is_maximized):
+        try:
+            maximized = bool(is_maximized())
+        except Exception as exc:
+            logger.warning("prepare_main_window_for_menu_interaction: is_maximized() failed: {}", exc)
+
+    state = "minimized" if minimized else ("maximized" if maximized else "normal")
+    logger.info("Window state before: {}", state)
+
+    if minimized:
+        restore = getattr(main_window, "restore", None)
+        if callable(restore):
+            try:
+                restore()
+            except Exception as exc:
+                logger.warning("prepare_main_window_for_menu_interaction: restore() failed: {}", exc)
+
+    set_focus = getattr(main_window, "set_focus", None)
+    if callable(set_focus):
+        try:
+            set_focus()
+        except Exception as exc:
+            logger.warning("prepare_main_window_for_menu_interaction: initial set_focus() failed: {}", exc)
+
+    maximize = getattr(main_window, "maximize", None)
+    if callable(maximize):
+        try:
+            maximize()
+            logger.info("Window maximized")
+        except Exception as exc:
+            logger.warning("prepare_main_window_for_menu_interaction: maximize() failed: {}", exc)
+    else:
+        logger.warning("prepare_main_window_for_menu_interaction: maximize() unavailable")
+
+    import time
+
+    time.sleep(0.3)
+
+    if callable(set_focus):
+        try:
+            set_focus()
+            logger.info("Focus confirmed")
+        except Exception as exc:
+            logger.warning("prepare_main_window_for_menu_interaction: final set_focus() failed: {}", exc)
+
+    return main_window
+
+def is_main_window_foreground() -> bool:
+    """Return whether WinWatt main window is currently the OS foreground window."""
+
+    main_window = get_main_window()
+    main_handle = _wrapper_handle(main_window)
+    if main_handle is None:
+        logger.warning("is_main_window_foreground: main window has no handle")
+        return False
+
+    try:
+        foreground_handle = int(ctypes.windll.user32.GetForegroundWindow())
+    except Exception as exc:
+        logger.warning("is_main_window_foreground: GetForegroundWindow() failed: {}", exc)
+        return False
+
+    main_title = _safe_call(main_window, "window_text", "") or ""
+    main_class = _safe_call(main_window, "class_name", "") or ""
+
+    foreground_title = ""
+    foreground_class = ""
+    try:
+        from pywinauto import Desktop
+
+        foreground_wrapper = Desktop(backend="win32").window(handle=foreground_handle)
+        foreground_title = _safe_call(foreground_wrapper, "window_text", "") or ""
+        foreground_class = _safe_call(foreground_wrapper, "class_name", "") or ""
+    except Exception as exc:
+        logger.warning("is_main_window_foreground: failed to inspect foreground window details: {}", exc)
+
+    is_foreground = foreground_handle == main_handle
+    logger.info(
+        "is_main_window_foreground: main_handle={} foreground_handle={} is_foreground={} main_title='{}' foreground_title='{}' main_class='{}' foreground_class='{}'",
+        main_handle,
+        foreground_handle,
+        is_foreground,
+        main_title,
+        foreground_title,
+        main_class,
+        foreground_class,
+    )
+    return is_foreground
