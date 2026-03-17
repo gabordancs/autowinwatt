@@ -38,6 +38,13 @@ class WinWattSession:
     handle: int | None = None
 
 
+class MainWindowSession:
+    window: Any | None = None
+    process_id: int | None = None
+    last_validation_monotonic: float = 0.0
+    validation_interval_s: float = 4.0
+
+
 def _safe_call(obj: Any, method_name: str, default: Any = None) -> Any:
     method = getattr(obj, method_name, None)
     if not callable(method):
@@ -370,11 +377,23 @@ def get_cached_main_window() -> Any:
     """Return cached WinWatt main window wrapper, reconnecting only when unhealthy."""
 
     cached_main_window = WinWattSession.main_window
-    if cached_main_window is not None and _cached_window_is_healthy(cached_main_window):
-        logger.debug("reusing cached WinWatt connection")
-        return cached_main_window
+    if cached_main_window is not None:
+        now = time.monotonic()
+        MainWindowSession.window = cached_main_window
+        MainWindowSession.process_id = WinWattSession.process_id
+        if now - MainWindowSession.last_validation_monotonic < MainWindowSession.validation_interval_s:
+            logger.debug("reusing cached WinWatt connection (validation deferred)")
+            return cached_main_window
+        if _cached_window_is_healthy(cached_main_window):
+            MainWindowSession.last_validation_monotonic = now
+            logger.debug("reusing cached WinWatt connection")
+            return cached_main_window
 
-    return _resolve_uia_main_window()
+    resolved = _resolve_uia_main_window()
+    MainWindowSession.window = resolved
+    MainWindowSession.process_id = WinWattSession.process_id
+    MainWindowSession.last_validation_monotonic = time.monotonic()
+    return resolved
 
 
 def get_main_window() -> Any:
