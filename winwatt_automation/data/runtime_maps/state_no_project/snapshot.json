@@ -19,10 +19,10 @@
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_before:Rendszer",
-  "process_id": 1232,
+  "mapping_stop_reason": "unrecoverable:Beállítások",
+  "process_id": 28392,
   "state_id": "no_project",
-  "timestamp": "2026-03-17T06:20:10.995055+00:00",
+  "timestamp": "2026-03-17T06:57:31.142617+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -39,20 +39,20 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 1232,
+      "process_id": 28392,
       "title": "WinWatt gólya"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 4588,
-      "title": "Codex-generated pull request by gabordancs · Pull Request #37 · gabordancs/autowinwatt - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 4588,
+      "title": "Add click recording feature - Google Chrome"
     },
     {
       "class_name": "CabinetWClass",

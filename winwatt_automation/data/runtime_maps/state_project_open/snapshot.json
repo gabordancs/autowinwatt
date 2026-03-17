@@ -1,28 +1,32 @@
 {
   "discovered_top_menus": [
+    "Dokumentumablak",
     "Rendszer",
     "Fájl",
+    "Szerkesztés",
     "Jegyzékek",
+    "Csoport",
+    "Elem",
     "Adatbázis...",
     "Beállítások",
     "Ablak",
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TMainForm",
-    "handle": 2363288,
-    "process_id": 1232,
-    "title": "WinWatt gólya"
+    "class_name": "TDeviceDatabaseForm",
+    "handle": 14356280,
+    "process_id": 28392,
+    "title": "Adatbázis adatok karbantartása"
   },
   "main_window_class": "TMainForm",
-  "main_window_enabled": true,
+  "main_window_enabled": false,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "unrecoverable:Beállítások",
-  "process_id": 1232,
+  "process_id": 28392,
   "state_id": "project_open",
-  "timestamp": "2026-03-17T06:20:28.220937+00:00",
+  "timestamp": "2026-03-17T07:16:55.596510+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -31,9 +35,15 @@
       "title": "Tálca"
     },
     {
+      "class_name": "TDeviceDatabaseForm",
+      "handle": null,
+      "process_id": 28392,
+      "title": "Adatbázis adatok karbantartása"
+    },
+    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 1232,
+      "process_id": 28392,
       "title": "WinWatt gólya"
     },
     {
@@ -45,14 +55,14 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 4588,
-      "title": "Codex-generated pull request by gabordancs · Pull Request #37 · gabordancs/autowinwatt - Google Chrome"
+      "process_id": 1152,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 1152,
-      "title": "GitHub Desktop"
+      "process_id": 4588,
+      "title": "Add click recording feature - Google Chrome"
     },
     {
       "class_name": "CabinetWClass",

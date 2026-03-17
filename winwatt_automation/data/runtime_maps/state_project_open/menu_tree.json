@@ -2,44 +2,8 @@
   {
     "children": [
       {
-        "action_classification": "skipped_by_safety",
-        "children": [
-          {
-            "action_classification": "skipped_by_safety",
-            "children": [],
-            "debug": {
-              "fragments": [],
-              "geometry": {
-                "bottom": 222,
-                "left": 1029,
-                "right": 1069,
-                "top": 181
-              },
-              "reused_from_previous_state": false,
-              "source_scope": "global_process_scan",
-              "top_menu": "Fájl"
-            },
-            "enabled": true,
-            "index": 0,
-            "level": 2,
-            "likely_destructive": false,
-            "likely_state_changing": true,
-            "normalized_title": "‎tests",
-            "opens_dialog": false,
-            "opens_submenu": false,
-            "path": [
-              "Fájl",
-              "",
-              "‎tests"
-            ],
-            "separator": false,
-            "shortcut": null,
-            "skipped_by_safety": true,
-            "state_id": "project_open",
-            "title": "‎tests",
-            "title_raw": "‎tests"
-          }
-        ],
+        "action_classification": "reused_from_previous_state",
+        "children": [],
         "debug": {
           "fragments": [],
           "geometry": {
@@ -48,7 +12,7 @@
             "right": 879,
             "top": 56
           },
-          "reused_from_previous_state": false,
+          "reused_from_previous_state": true,
           "source_scope": "main_window",
           "top_menu": "Fájl"
         },
@@ -59,7 +23,7 @@
         "likely_state_changing": true,
         "normalized_title": "",
         "opens_dialog": false,
-        "opens_submenu": true,
+        "opens_submenu": false,
         "path": [
           "Fájl",
           ""
@@ -70,40 +34,6 @@
         "state_id": "project_open",
         "title": "",
         "title_raw": ""
-      },
-      {
-        "action_classification": "skipped_by_safety",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 222,
-            "left": 1029,
-            "right": 1069,
-            "top": 181
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 0,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "‎tests",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "‎tests"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": true,
-        "state_id": "project_open",
-        "title": "‎tests",
-        "title_raw": "‎tests"
       }
     ],
     "path": [
@@ -117,17 +47,17 @@
   {
     "children": [
       {
-        "action_classification": "skipped_by_safety",
+        "action_classification": "reused_from_previous_state",
         "children": [],
         "debug": {
           "fragments": [],
           "geometry": {
             "bottom": 84,
-            "left": 44,
-            "right": 318,
+            "left": 134,
+            "right": 408,
             "top": 56
           },
-          "reused_from_previous_state": false,
+          "reused_from_previous_state": true,
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
@@ -162,7 +92,7 @@
   {
     "children": [
       {
-        "action_classification": "skipped_by_safety",
+        "action_classification": "reused_from_previous_state",
         "children": [],
         "debug": {
           "fragments": [],
@@ -172,7 +102,7 @@
             "right": 482,
             "top": 56
           },
-          "reused_from_previous_state": false,
+          "reused_from_previous_state": true,
           "source_scope": "main_window",
           "top_menu": "Adatbázis..."
         },
@@ -182,7 +112,7 @@
         "likely_destructive": false,
         "likely_state_changing": true,
         "normalized_title": "",
-        "opens_dialog": true,
+        "opens_dialog": false,
         "opens_submenu": false,
         "path": [
           "Adatbázis",
@@ -194,284 +124,6 @@
         "state_id": "project_open",
         "title": "",
         "title_raw": ""
-      },
-      {
-        "action_classification": "skipped_by_safety",
-        "children": [
-          {
-            "action_classification": "skipped_by_safety",
-            "children": [],
-            "debug": {
-              "fragments": [],
-              "geometry": {
-                "bottom": 42,
-                "left": 170,
-                "right": 226,
-                "top": 23
-              },
-              "reused_from_previous_state": false,
-              "source_scope": "main_window",
-              "top_menu": "Adatbázis..."
-            },
-            "enabled": true,
-            "index": 0,
-            "level": 2,
-            "likely_destructive": false,
-            "likely_state_changing": true,
-            "normalized_title": "csoport",
-            "opens_dialog": false,
-            "opens_submenu": false,
-            "path": [
-              "Adatbázis",
-              "Dokumentumablak",
-              "Csoport"
-            ],
-            "separator": false,
-            "shortcut": null,
-            "skipped_by_safety": true,
-            "state_id": "project_open",
-            "title": "Csoport",
-            "title_raw": "Csoport"
-          },
-          {
-            "action_classification": "skipped_by_safety",
-            "children": [],
-            "debug": {
-              "fragments": [],
-              "geometry": {
-                "bottom": 42,
-                "left": 226,
-                "right": 266,
-                "top": 23
-              },
-              "reused_from_previous_state": false,
-              "source_scope": "main_window",
-              "top_menu": "Adatbázis..."
-            },
-            "enabled": true,
-            "index": 1,
-            "level": 2,
-            "likely_destructive": false,
-            "likely_state_changing": true,
-            "normalized_title": "elem",
-            "opens_dialog": false,
-            "opens_submenu": false,
-            "path": [
-              "Adatbázis",
-              "Dokumentumablak",
-              "Elem"
-            ],
-            "separator": false,
-            "shortcut": null,
-            "skipped_by_safety": true,
-            "state_id": "project_open",
-            "title": "Elem",
-            "title_raw": "Elem"
-          }
-        ],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 132,
-            "left": 36,
-            "right": 58,
-            "top": 110
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 6,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "dokumentumablak",
-        "opens_dialog": false,
-        "opens_submenu": true,
-        "path": [
-          "Adatbázis",
-          "Dokumentumablak"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": true,
-        "state_id": "project_open",
-        "title": "Dokumentumablak",
-        "title_raw": "Dokumentumablak"
-      },
-      {
-        "action_classification": "skipped_by_safety",
-        "children": [
-          {
-            "action_classification": "skipped_by_safety",
-            "children": [],
-            "debug": {
-              "fragments": [],
-              "geometry": {
-                "bottom": 42,
-                "left": 170,
-                "right": 226,
-                "top": 23
-              },
-              "reused_from_previous_state": false,
-              "source_scope": "main_window",
-              "top_menu": "Adatbázis..."
-            },
-            "enabled": true,
-            "index": 0,
-            "level": 2,
-            "likely_destructive": false,
-            "likely_state_changing": true,
-            "normalized_title": "csoport",
-            "opens_dialog": false,
-            "opens_submenu": false,
-            "path": [
-              "Adatbázis",
-              "Szerkesztés",
-              "Csoport"
-            ],
-            "separator": false,
-            "shortcut": null,
-            "skipped_by_safety": true,
-            "state_id": "project_open",
-            "title": "Csoport",
-            "title_raw": "Csoport"
-          },
-          {
-            "action_classification": "skipped_by_safety",
-            "children": [],
-            "debug": {
-              "fragments": [],
-              "geometry": {
-                "bottom": 42,
-                "left": 226,
-                "right": 266,
-                "top": 23
-              },
-              "reused_from_previous_state": false,
-              "source_scope": "main_window",
-              "top_menu": "Adatbázis..."
-            },
-            "enabled": true,
-            "index": 1,
-            "level": 2,
-            "likely_destructive": false,
-            "likely_state_changing": true,
-            "normalized_title": "elem",
-            "opens_dialog": false,
-            "opens_submenu": false,
-            "path": [
-              "Adatbázis",
-              "Szerkesztés",
-              "Elem"
-            ],
-            "separator": false,
-            "shortcut": null,
-            "skipped_by_safety": true,
-            "state_id": "project_open",
-            "title": "Elem",
-            "title_raw": "Elem"
-          }
-        ],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 42,
-            "left": 32,
-            "right": 104,
-            "top": 23
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 9,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "szerkesztés",
-        "opens_dialog": false,
-        "opens_submenu": true,
-        "path": [
-          "Adatbázis",
-          "Szerkesztés"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": true,
-        "state_id": "project_open",
-        "title": "Szerkesztés",
-        "title_raw": "Szerkesztés"
-      },
-      {
-        "action_classification": "skipped_by_safety",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 42,
-            "left": 170,
-            "right": 226,
-            "top": 23
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 11,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "csoport",
-        "opens_dialog": true,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "Csoport"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": true,
-        "state_id": "project_open",
-        "title": "Csoport",
-        "title_raw": "Csoport"
-      },
-      {
-        "action_classification": "skipped_by_safety",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 42,
-            "left": 226,
-            "right": 266,
-            "top": 23
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 12,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "elem",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "Elem"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": true,
-        "state_id": "project_open",
-        "title": "Elem",
-        "title_raw": "Elem"
       }
     ],
     "path": [
