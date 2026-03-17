@@ -6,6 +6,7 @@ import time
 from typing import Any
 
 from loguru import logger
+from winwatt_automation.runtime_mapping.timing import DEFAULT_UI_DELAY, POPUP_OPEN_DELAY
 from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
@@ -149,7 +150,7 @@ def _menu_items() -> list[Any]:
         return []
 
     items = [item for item in descendants() if _control_type(item) == "menuitem"]
-    logger.info("Discovered {} MenuItem controls", len(items))
+    logger.debug("Discovered {} MenuItem controls", len(items))
     return items
 
 
@@ -677,7 +678,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         _click_by_relative_rect_center(item, main_window)
         top_menu_click_count += 1
 
-    time.sleep(0.2)
+    time.sleep(DEFAULT_UI_DELAY)
     try:
         _validate_post_menu_open_foreground(main_window, title="Fájl")
     except Exception as exc:
@@ -842,14 +843,14 @@ def click_top_menu_item(title: str) -> None:
     except Exception as exc:
         logger.warning("Top menu item '{}' click_input() failed: {}", title, exc)
 
-    time.sleep(0.2)
+    time.sleep(POPUP_OPEN_DELAY)
     _validate_post_menu_open_foreground(main_window, title=title)
     after_snapshot = _menu_snapshot()
     if did_any_new_menu_popup_appear(before_snapshot, after_snapshot):
         return
 
     _click_by_relative_rect_center(item, main_window)
-    time.sleep(0.2)
+    time.sleep(POPUP_OPEN_DELAY)
     fallback_snapshot = _menu_snapshot()
     if did_any_new_menu_popup_appear(before_snapshot, fallback_snapshot):
         return
