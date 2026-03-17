@@ -138,7 +138,7 @@ def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeyp
     assert result["state_project_open"].snapshot["project_open_recovery"]["success"] is True
 
 
-def test_build_full_runtime_program_map_skips_known_no_project_paths(monkeypatch, tmp_path):
+def test_build_full_runtime_program_map_rechecks_paths_in_project_state(monkeypatch, tmp_path):
     no_project = RuntimeStateMap(
         "no_project",
         {"state_id": "no_project"},
@@ -172,4 +172,51 @@ def test_build_full_runtime_program_map_skips_known_no_project_paths(monkeypatch
     program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
 
     assert seen_known_paths[0] is None
-    assert seen_known_paths[1] == {("fájl", "megnyitás")}
+    assert seen_known_paths[1] is None
+
+
+def test_build_full_runtime_program_map_writes_knowledge_verification(monkeypatch, tmp_path):
+    no_project = RuntimeStateMap(
+        "no_project",
+        {"state_id": "no_project"},
+        [{"text": "Fájl"}],
+        [{"menu_path": ["Fájl", "Megnyitás"], "enabled_guess": True}],
+        [],
+        [{"menu_path": ["Fájl", "Megnyitás"], "title": "Open", "class_name": "#32770"}],
+        [],
+        [],
+    )
+    project_open = RuntimeStateMap(
+        "project_open",
+        {"state_id": "project_open"},
+        [{"text": "Fájl"}],
+        [{"menu_path": ["Fájl", "Megnyitás"], "enabled_guess": True}, {"menu_path": ["Fájl", "Mentés"], "enabled_guess": True}],
+        [],
+        [],
+        [{"menu_path": ["Fájl", "Mentés"], "title": "Save", "class_name": "TSaveDlg"}],
+        [],
+    )
+
+    monkeypatch.setattr(program_mapper, "ensure_output_dirs", lambda _path: {
+        "base": tmp_path,
+        "state_no_project": tmp_path / "state_no_project",
+        "state_project_open": tmp_path / "state_project_open",
+        "diff": tmp_path / "diff",
+    })
+    for sub in ("state_no_project", "state_project_open", "diff"):
+        (tmp_path / sub).mkdir(parents=True, exist_ok=True)
+
+    call_idx = {"i": 0}
+
+    def _map_runtime_state(**kwargs):
+        call_idx["i"] += 1
+        return no_project if call_idx["i"] == 1 else project_open
+
+    monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
+    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": True, "diagnostics": {}, "close_attempts": []}})
+
+    result = program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
+
+    assert result["knowledge_verification"]["baseline_loaded"] is False
+    assert (tmp_path / "knowledge.json").exists()
+    assert (tmp_path / "knowledge_summary.md").exists()
