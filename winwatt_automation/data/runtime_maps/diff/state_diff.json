@@ -6,76 +6,15 @@
   },
   "enabled_state_changes": [],
   "menu_action_diff": {
-    "only_in_a": [
-      [
-        "adatbázis",
-        "csoport"
-      ],
-      [
-        "adatbázis",
-        "dokumentumablak"
-      ],
-      [
-        "adatbázis",
-        "dokumentumablak",
-        "csoport"
-      ],
-      [
-        "adatbázis",
-        "dokumentumablak",
-        "elem"
-      ],
-      [
-        "adatbázis",
-        "elem"
-      ],
-      [
-        "adatbázis",
-        "szerkesztés"
-      ],
-      [
-        "adatbázis",
-        "szerkesztés",
-        "csoport"
-      ],
-      [
-        "adatbázis",
-        "szerkesztés",
-        "elem"
-      ],
-      [
-        "fájl",
-        "",
-        "‎tests"
-      ]
-    ],
+    "only_in_a": [],
     "only_in_b": [],
-    "shared": [
-      [
-        "adatbázis",
-        ""
-      ],
-      [
-        "beállítások"
-      ],
-      [
-        "fájl",
-        ""
-      ],
-      [
-        "jegyzékek",
-        ""
-      ],
-      [
-        "rendszer"
-      ]
-    ]
+    "shared": []
   },
   "project_only_paths": [],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 9,
+    "actions_only_in_a": 0,
     "actions_only_in_b": 0,
     "enabled_changes": 0,
     "project_only_paths": 0,

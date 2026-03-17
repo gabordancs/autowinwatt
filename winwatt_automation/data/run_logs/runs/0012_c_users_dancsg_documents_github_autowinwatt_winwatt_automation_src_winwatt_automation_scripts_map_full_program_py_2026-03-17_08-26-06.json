@@ -1,0 +1,97 @@
+{
+  "run_id": "0012_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-26-06",
+  "sequence_number": 12,
+  "started_at": "2026-03-17T08:26:06.097324+00:00",
+  "finished_at": "2026-03-17T08:27:15.045937+00:00",
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "safe",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 0,
+  "success": true,
+  "summary": {
+    "no_project_top_menus": 7,
+    "project_open_top_menus": 7,
+    "diff_summary": {
+      "shared_top_menus": 7,
+      "actions_only_in_a": 0,
+      "actions_only_in_b": 0,
+      "enabled_changes": 0,
+      "project_only_paths": 0
+    },
+    "skipped_by_safety": 0,
+    "last_error": null,
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-17T08:26:29.158601+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "no_project",
+        "top_menus": 7,
+        "actions": 0,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-17T08:26:29.166720+00:00",
+      "event_type": "project_open_result",
+      "payload": {
+        "success": false,
+        "error": "Safe mode only allows explicitly approved test project path.",
+        "dialog_found": false
+      }
+    },
+    {
+      "timestamp": "2026-03-17T08:27:15.038077+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "project_open",
+        "top_menus": 7,
+        "actions": 0,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-17T08:27:15.043017+00:00",
+      "event_type": "runtime_diff",
+      "payload": {
+        "summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        },
+        "enabled_changes": 0,
+        "project_only_paths": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-17T08:27:15.045789+00:00",
+      "event_type": "runtime_mapping_summary",
+      "payload": {
+        "no_project_top_menus": 7,
+        "project_open_top_menus": 7,
+        "diff_summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0012_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-26-06.log",
+    "json_path": "data\\run_logs\\runs\\0012_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-26-06.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

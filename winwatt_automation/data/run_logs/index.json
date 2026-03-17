@@ -190,6 +190,36 @@
       "short_summary": "runtime_mapping_failed",
       "log_path": "data\\run_logs\\runs\\0011_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_07-55-08.log",
       "json_path": "data\\run_logs\\runs\\0011_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_07-55-08.json"
+    },
+    {
+      "sequence_number": 12,
+      "run_id": "0012_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-26-06",
+      "started_at": "2026-03-17T08:26:06.097324+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 7,
+        "project_open top_menus": 7,
+        "diff summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0012_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-26-06.log",
+      "json_path": "data\\run_logs\\runs\\0012_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-26-06.json"
+    },
+    {
+      "sequence_number": 13,
+      "run_id": "0013_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-27-40",
+      "started_at": "2026-03-17T08:27:40.863598+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0013_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-27-40.log",
+      "json_path": "data\\run_logs\\runs\\0013_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_08-27-40.json"
     }
   ]
 }

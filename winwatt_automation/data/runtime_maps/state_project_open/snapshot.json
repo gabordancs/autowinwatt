@@ -1,32 +1,28 @@
 {
   "discovered_top_menus": [
-    "Dokumentumablak",
     "Rendszer",
     "Fájl",
-    "Szerkesztés",
     "Jegyzékek",
-    "Csoport",
-    "Elem",
     "Adatbázis...",
     "Beállítások",
     "Ablak",
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TDeviceDatabaseForm",
-    "handle": 14356280,
-    "process_id": 28392,
-    "title": "Adatbázis adatok karbantartása"
+    "class_name": "TMainForm",
+    "handle": 6095096,
+    "process_id": 23264,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
-  "main_window_enabled": false,
+  "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": true,
-  "mapping_stop_reason": "unrecoverable:Beállítások",
-  "process_id": 28392,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "process_id": 23264,
   "state_id": "project_open",
-  "timestamp": "2026-03-17T07:16:55.596510+00:00",
+  "timestamp": "2026-03-17T08:26:34.421389+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -35,15 +31,9 @@
       "title": "Tálca"
     },
     {
-      "class_name": "TDeviceDatabaseForm",
-      "handle": null,
-      "process_id": 28392,
-      "title": "Adatbázis adatok karbantartása"
-    },
-    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 28392,
+      "process_id": 23264,
       "title": "WinWatt gólya"
     },
     {
@@ -62,7 +52,13 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Add click recording feature - Google Chrome"
+      "title": "Codex-generated pull request by gabordancs · Pull Request #42 · gabordancs/autowinwatt - Google Chrome"
+    },
+    {
+      "class_name": "rctrl_renwnd32",
+      "handle": null,
+      "process_id": 29804,
+      "title": "Beérkezett üzenetek – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
       "class_name": "CabinetWClass",

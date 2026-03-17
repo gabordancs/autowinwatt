@@ -9,20 +9,20 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "Chrome_WidgetWin_1",
-    "handle": 788988,
-    "process_id": 33532,
-    "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+    "class_name": "TMainForm",
+    "handle": 2361778,
+    "process_id": 6476,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_after:Rendszer",
-  "process_id": 28392,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "process_id": 6476,
   "state_id": "no_project",
-  "timestamp": "2026-03-17T07:43:43.499538+00:00",
+  "timestamp": "2026-03-17T08:27:47.770192+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -31,28 +31,34 @@
       "title": "Tálca"
     },
     {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 6476,
+      "title": "WinWatt gólya"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 33532,
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 28392,
-      "title": "WinWatt gólya"
+      "process_id": 1152,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Identify UI elements for automation - Google Chrome"
+      "title": "Codex-generated pull request by gabordancs · Pull Request #42 · gabordancs/autowinwatt - Google Chrome"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "rctrl_renwnd32",
       "handle": null,
-      "process_id": 1152,
-      "title": "GitHub Desktop"
+      "process_id": 29804,
+      "title": "Beérkezett üzenetek – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
       "class_name": "CabinetWClass",
