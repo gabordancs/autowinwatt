@@ -92,6 +92,7 @@ def test_popup_top_level_name_is_filtered_from_children():
 
 def test_visited_paths_skips_duplicate_submenu_traversal(monkeypatch):
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
 
     snapshots = iter(
         [
@@ -234,6 +235,13 @@ def test_mapper_does_not_treat_canonical_top_menu_as_child(monkeypatch):
 
 def test_child_rows_are_not_reprocessed_as_top_level_rows(monkeypatch):
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows",
+        lambda **kwargs: [
+            {"text": "Export", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+        ],
+    )
     monkeypatch.setattr(
         "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
         lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
@@ -287,3 +295,44 @@ def test_top_menu_cache_reused_until_main_window_handle_changes(monkeypatch):
     window._handle = 200
     third = get_canonical_top_menu_names(["Rendszer"])
     assert [item["raw"] for item in third["items"]] == ["Rendszer"]
+
+
+def test_explore_menu_tree_reopens_parent_popup_for_each_row(monkeypatch):
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    row_a = {"text": "A", "center_x": 10, "center_y": 10, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"}
+    row_b = {"text": "B", "center_x": 10, "center_y": 25, "rectangle": {"left": 0, "top": 22, "right": 100, "bottom": 32}, "is_separator": False, "source_scope": "main"}
+
+    reopen_calls: list[list[str]] = []
+    activate_calls: list[str] = []
+
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows",
+        lambda **kwargs: reopen_calls.append(list(kwargs["parent_path"])) or [row_a, row_b],
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration",
+        lambda row, popup_rows: activate_calls.append(row.text),
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot",
+        lambda: [row_a, row_b],
+    )
+
+    nodes, _, actions, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="blocked",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=[row_a, row_b],
+        visited_paths={("fájl",)},
+    )
+
+    assert [node["title"] for node in nodes] == ["A", "B"]
+    assert activate_calls == ["A", "B"]
+    assert reopen_calls == [["Fájl"], ["Fájl"]]
+    assert sum(1 for action in actions if action.attempted) == 2
