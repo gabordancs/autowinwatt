@@ -10,7 +10,11 @@ from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers
 from winwatt_automation.dialog_explorer.dialog_explorer import explore_dialog
-from winwatt_automation.live_ui.app_connector import ensure_main_window_foreground_before_click, get_cached_main_window
+from winwatt_automation.live_ui.app_connector import (
+    ensure_main_window_foreground_before_click,
+    get_cached_main_window,
+    is_winwatt_foreground_context,
+)
 from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
     RuntimeActionResult,
@@ -25,10 +29,16 @@ from winwatt_automation.runtime_mapping.models import (
 from winwatt_automation.runtime_mapping.menu_text import clean_menu_title, normalize_menu_title
 from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
+from winwatt_automation.runtime_mapping.timing import BASELINE_DELAY
+from winwatt_automation.runtime_mapping.config import is_fast_mode
+from winwatt_automation.live_ui.ui_cache import PopupState
 
 
 DEFAULT_TOP_MENUS = ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
 DEFAULT_TEST_PROJECT_PATH = str(Path(__file__).resolve().parents[2] / "tests" / "testwwp.wwp")
+
+_TOP_MENU_CACHE: dict[str, Any] | None = None
+_TOP_MENU_CACHE_MAIN_WINDOW_HANDLE: int | None = None
 
 
 
@@ -167,7 +177,23 @@ def _row_to_node(
     )
 
 
+def reset_top_menu_cache() -> None:
+    global _TOP_MENU_CACHE, _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE
+    _TOP_MENU_CACHE = None
+    _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE = None
+
+
 def get_canonical_top_menu_names(discovered_top_menus: list[str]) -> dict[str, Any]:
+    global _TOP_MENU_CACHE, _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE
+
+    try:
+        main_window = get_cached_main_window()
+    except Exception:
+        main_window = None
+    current_handle = _safe_call(main_window, "handle", None)
+    if current_handle is not None and _TOP_MENU_CACHE is not None and _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE == current_handle:
+        return _TOP_MENU_CACHE
+
     items: list[dict[str, str]] = []
     normalized_to_raw: dict[str, str] = {}
 
@@ -179,18 +205,47 @@ def get_canonical_top_menu_names(discovered_top_menus: list[str]) -> dict[str, A
         normalized_to_raw[normalized] = raw_name
         items.append({"raw": raw_name, "clean": clean_name, "normalized": normalized})
 
-    logger.info("Canonical top-level menus [{}]: {}", len(items), [item["raw"] for item in items])
-    return {
+    canonical = {
         "items": items,
         "normalized_to_raw": normalized_to_raw,
         "normalized_names": set(normalized_to_raw),
     }
+    if current_handle is not None:
+        _TOP_MENU_CACHE = canonical
+        _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE = current_handle
+    logger.info("Canonical top-level menus [{}]: {}", len(items), [item["raw"] for item in items])
+    return canonical
 
 
 def is_top_menu_like_popup_row(row: dict[str, Any], canonical_top_menu_names: set[str]) -> bool:
     text = str(row.get("text") or "")
     normalized = normalize_menu_title(text)
     return bool(normalized and normalized in canonical_top_menu_names)
+
+
+def should_restore_clean_menu_baseline(*, state_id: str, stage: str, popup_rows: list[dict[str, Any]] | None = None) -> bool:
+    try:
+        main_window = get_cached_main_window()
+    except Exception:
+        return False
+    if not bool(_safe_call(main_window, "is_visible", False)):
+        logger.warning("baseline_restore_needed state={} stage={} reason=main_window_hidden", state_id, stage)
+        return True
+    if not bool(_safe_call(main_window, "is_enabled", True)):
+        logger.warning("baseline_restore_needed state={} stage={} reason=main_window_disabled", state_id, stage)
+        return True
+    if not is_winwatt_foreground_context(main_window, allow_dialog=True):
+        logger.warning("baseline_restore_needed state={} stage={} reason=focus_lost", state_id, stage)
+        return True
+    if popup_rows is not None:
+        try:
+            current_rows = menu_helpers.capture_menu_popup_snapshot()
+        except Exception:
+            current_rows = []
+        if bool(current_rows) != bool(popup_rows):
+            logger.warning("baseline_restore_needed state={} stage={} reason=popup_snapshot_mismatch", state_id, stage)
+            return True
+    return False
 
 
 def restore_clean_menu_baseline(*, state_id: str, stage: str) -> bool:
@@ -216,6 +271,7 @@ def restore_clean_menu_baseline(*, state_id: str, stage: str) -> bool:
             from pywinauto import keyboard
 
             keyboard.send_keys("{ESC}")
+            time.sleep(BASELINE_DELAY)
         except Exception:
             pass
 
@@ -755,18 +811,29 @@ def explore_menu_tree(
     popup_rows: list[dict[str, Any]] | None = None,
     canonical_top_menu_names: set[str] | None = None,
     visited_paths: set[tuple[str, ...]] | None = None,
+    visited_path_hashes: set[int] | None = None,
     known_paths_to_skip: set[tuple[str, ...]] | None = None,
+    popup_state: PopupState | None = None,
 ) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
     parent_path = list(parent_path or [clean_menu_title(top_menu)])
     dialogs: list[RuntimeDialogRecord] = []
     windows: list[RuntimeWindowRecord] = []
+    top_transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
     if popup_rows is None:
-        before_click = capture_state_snapshot(state_id)
-        menu_helpers.click_top_menu_item(top_menu)
-        popup_rows = menu_helpers.capture_menu_popup_snapshot()
-        after_click = capture_state_snapshot(state_id)
-        top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
+        normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
+        if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
+            popup_rows = list(popup_state.popup_rows)
+        else:
+            popup_rows = menu_helpers.capture_menu_popup_snapshot()
+        if popup_rows:
+            logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(popup_rows))
+        else:
+            before_click = capture_state_snapshot(state_id)
+            menu_helpers.click_top_menu_item(top_menu)
+            popup_rows = menu_helpers.capture_menu_popup_snapshot()
+            after_click = capture_state_snapshot(state_id)
+            top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
         if top_transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
             candidate = top_transition.get("window_snapshot") or {}
             if top_transition.get("result_type") == "dialog_opened" or top_transition.get("result_type") == "main_window_disabled_modal_likely":
@@ -805,9 +872,14 @@ def explore_menu_tree(
             close_result = close_transient_dialog_or_window(None, action_label=f"top_menu:{top_menu}")
             if not close_result.get("closed"):
                 logger.error("dialog_close_failed top_menu={}", top_menu)
+        if popup_state is not None:
+            popup_state.current_menu_path = normalized_parent
+            popup_state.popup_rows = list(popup_rows)
 
     if visited_paths is None:
         visited_paths = set()
+    if visited_path_hashes is None:
+        visited_path_hashes = set()
     known_paths_to_skip = set(known_paths_to_skip or set())
 
     current_level_rows = _build_menu_rows_from_popup_rows(
@@ -829,16 +901,26 @@ def explore_menu_tree(
         if not row.normalized_text:
             visit_key = (*normalized_path, f"#idx:{row.row_index}")
 
-        if visit_key in visited_paths:
+        path_key = hash(visit_key)
+        if path_key in visited_path_hashes:
             logger.debug("visited path skip state={} path={}", state_id, normalized_path)
             continue
+        visited_path_hashes.add(path_key)
         visited_paths.add(visit_key)
 
         skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
         reused_from_previous_state = normalized_path in known_paths_to_skip
         opens_submenu = False
         children_nodes: list[dict[str, Any]] = []
-        before_action = capture_state_snapshot(state_id)
+        before_action = capture_state_snapshot(state_id) if not is_fast_mode() else RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=None,
+            main_window_title="",
+            main_window_class="",
+            visible_top_windows=[],
+            discovered_top_menus=[],
+            timestamp=datetime.now(tz=timezone.utc).isoformat(),
+        )
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
         if depth < max_depth and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
@@ -851,10 +933,14 @@ def explore_menu_tree(
                     for child_row in child_rows
                     if not is_top_menu_like_popup_row(child_row, canonical_top_menu_names)
                 ]
-            after_action = capture_state_snapshot(state_id)
-            transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
+            after_action = capture_state_snapshot(state_id) if not is_fast_mode() else before_action
+            if child_rows or not is_fast_mode():
+                transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
             if child_rows:
                 opens_submenu = True
+                if popup_state is not None:
+                    popup_state.current_menu_path = tuple(normalize_menu_title(part) for part in path)
+                    popup_state.popup_rows = list(child_rows)
                 child_nodes, child_menu_rows, child_actions, child_dialogs, child_windows = explore_menu_tree(
                     state_id=state_id,
                     top_menu=top_menu,
@@ -866,7 +952,9 @@ def explore_menu_tree(
                     popup_rows=child_rows,
                     canonical_top_menu_names=canonical_top_menu_names,
                     visited_paths=visited_paths,
+                    visited_path_hashes=visited_path_hashes,
                     known_paths_to_skip=known_paths_to_skip,
+                    popup_state=popup_state,
                 )
                 children_nodes = child_nodes
                 collected_rows.extend(child_menu_rows)
@@ -999,18 +1087,14 @@ def map_runtime_state(
 
     partial_mapping = False
     stop_reason: str | None = None
+    popup_state = PopupState()
 
     for top_menu_normalized, _ in target_menu_map.items():
         discovered_top_menu = canonical_top_menus["normalized_to_raw"].get(top_menu_normalized)
         if not discovered_top_menu:
             continue
 
-        if not restore_clean_menu_baseline(state_id=state_id, stage=f"before:{discovered_top_menu}"):
-            partial_mapping = True
-            stop_reason = f"lost_main_window_before:{discovered_top_menu}"
-            logger.error("unrecoverable main window loss before top menu state={} top_menu={}", state_id, discovered_top_menu)
-            break
-
+        rows: list[RuntimeMenuRow] = []
         try:
             tree, rows, actions, dialogs, windows = explore_menu_tree(
                 state_id=state_id,
@@ -1020,7 +1104,9 @@ def map_runtime_state(
                 include_disabled=include_disabled,
                 canonical_top_menu_names=canonical_top_menus["normalized_names"],
                 visited_paths={(normalize_menu_title(discovered_top_menu),)},
+                visited_path_hashes={hash((normalize_menu_title(discovered_top_menu),))},
                 known_paths_to_skip=known_paths_to_skip,
+                popup_state=popup_state,
             )
             clean_top_menu = clean_menu_title(discovered_top_menu)
             normalized_top_menu = normalize_menu_title(discovered_top_menu)
@@ -1065,11 +1151,12 @@ def map_runtime_state(
                     logger.error("unrecoverable main window loss during top menu state={} top_menu={}", state_id, discovered_top_menu)
                     break
 
-        if not restore_clean_menu_baseline(state_id=state_id, stage=f"after:{discovered_top_menu}"):
-            partial_mapping = True
-            stop_reason = f"lost_main_window_after:{discovered_top_menu}"
-            logger.error("unrecoverable main window loss after top menu state={} top_menu={}", state_id, discovered_top_menu)
-            break
+        if should_restore_clean_menu_baseline(state_id=state_id, stage=f"after:{discovered_top_menu}"):
+            if not restore_clean_menu_baseline(state_id=state_id, stage=f"after:{discovered_top_menu}"):
+                partial_mapping = True
+                stop_reason = f"lost_main_window_after:{discovered_top_menu}"
+                logger.error("unrecoverable main window loss after top menu state={} top_menu={}", state_id, discovered_top_menu)
+                break
 
     snapshot_payload = asdict(snapshot)
     snapshot_payload["mapping_partial"] = partial_mapping

@@ -6,6 +6,8 @@ import time
 from typing import Any
 
 from loguru import logger
+from winwatt_automation.runtime_mapping.timing import DEFAULT_UI_DELAY, POPUP_OPEN_DELAY
+from winwatt_automation.live_ui.ui_cache import UIObjectCache
 from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
@@ -57,6 +59,7 @@ def _validate_post_menu_open_foreground(main_window: Any, *, title: str) -> None
 
 
 _LAST_MENU_SNAPSHOT_BEFORE_OPEN: set[tuple[str, str, str, str, str]] | None = None
+_UI_CACHE = UIObjectCache()
 
 
 def _normalize(text: str | None) -> str:
@@ -142,20 +145,25 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
     return False
 
 
-def _menu_items() -> list[Any]:
+def _menu_items(*, force_refresh: bool = False) -> list[Any]:
     root = get_cached_main_window()
+    handle = getattr(getattr(root, "element_info", root), "handle", None)
     descendants = getattr(root, "descendants", None)
     if not callable(descendants):
         return []
 
-    items = [item for item in descendants() if _control_type(item) == "menuitem"]
-    logger.info("Discovered {} MenuItem controls", len(items))
+    def _query() -> list[Any]:
+        return [item for item in descendants() if _control_type(item) == "menuitem"]
+
+    ttl_s = 0.0 if force_refresh else 0.5
+    items = _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
+    logger.debug("Discovered {} MenuItem controls", len(items))
     return items
 
 
-def _top_level_menu_items_raw() -> list[Any]:
+def _top_level_menu_items_raw(*, force_refresh: bool = False) -> list[Any]:
     items: list[Any] = []
-    for item in _menu_items():
+    for item in _menu_items(force_refresh=force_refresh):
         parent_type = _control_type(_parent_wrapper(item))
         if parent_type not in {"menu", "menubar"}:
             continue
@@ -169,7 +177,7 @@ def list_top_menu_items() -> list[str]:
     names: list[str] = []
     seen: set[str] = set()
 
-    for item in _top_level_menu_items_raw():
+    for item in _top_level_menu_items_raw(force_refresh=True):
         text = _name(item)
         if not text:
             continue
@@ -338,7 +346,7 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
         row["appeared_after_popup_open"] = False
         unique_rows.append(row)
 
-    logger.info("Captured menu snapshot rows={}", len(unique_rows))
+    logger.debug("Captured menu snapshot rows={}", len(unique_rows))
     return unique_rows
 
 
@@ -677,7 +685,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         _click_by_relative_rect_center(item, main_window)
         top_menu_click_count += 1
 
-    time.sleep(0.2)
+    time.sleep(max(0.05, DEFAULT_UI_DELAY / 2))
     try:
         _validate_post_menu_open_foreground(main_window, title="Fájl")
     except Exception as exc:
@@ -842,14 +850,14 @@ def click_top_menu_item(title: str) -> None:
     except Exception as exc:
         logger.warning("Top menu item '{}' click_input() failed: {}", title, exc)
 
-    time.sleep(0.2)
+    time.sleep(max(0.05, POPUP_OPEN_DELAY / 2))
     _validate_post_menu_open_foreground(main_window, title=title)
     after_snapshot = _menu_snapshot()
     if did_any_new_menu_popup_appear(before_snapshot, after_snapshot):
         return
 
     _click_by_relative_rect_center(item, main_window)
-    time.sleep(0.2)
+    time.sleep(max(0.05, POPUP_OPEN_DELAY / 2))
     fallback_snapshot = _menu_snapshot()
     if did_any_new_menu_popup_appear(before_snapshot, fallback_snapshot):
         return

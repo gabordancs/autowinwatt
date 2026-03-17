@@ -5,8 +5,10 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     _build_menu_rows_from_popup_rows,
     compare_runtime_states,
     explore_menu_tree,
+    get_canonical_top_menu_names,
     is_top_menu_like_popup_row,
     map_runtime_state,
+    reset_top_menu_cache,
 )
 
 
@@ -62,7 +64,12 @@ def test_best_effort_top_menu_processing(monkeypatch):
             raise RuntimeError("boom")
 
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", _click)
-    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [{"text": "Névjegy", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"}])
+    snapshots = iter([
+        [],
+        [{"text": "Névjegy", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"}],
+        [{"text": "Névjegy", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"}],
+    ])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
 
     state = map_runtime_state(state_id="no_project", top_menus=["Fájl", "Súgó"], max_submenu_depth=1)
     assert any(action.get("result_type") == "failed_focus" for action in state.actions)
@@ -146,9 +153,11 @@ def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
 
     restore_calls: list[str] = []
 
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.should_restore_clean_menu_baseline", lambda **kwargs: True)
+
     def _restore(*, state_id: str, stage: str) -> bool:
         restore_calls.append(stage)
-        return not stage.startswith("before:Súgó")
+        return stage != "after:Súgó"
 
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", _restore)
     monkeypatch.setattr(
@@ -158,8 +167,8 @@ def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
 
     state = map_runtime_state(state_id="s", top_menus=["Fájl", "Súgó"])
     assert state.snapshot["mapping_partial"] is True
-    assert state.snapshot["mapping_stop_reason"] == "lost_main_window_before:Súgó"
-    assert restore_calls == ["before:Fájl", "after:Fájl", "before:Súgó"]
+    assert state.snapshot["mapping_stop_reason"] == "lost_main_window_after:Súgó"
+    assert restore_calls == ["after:Fájl", "after:Súgó"]
 
 
 def test_known_paths_are_marked_as_reused_without_reexploration(monkeypatch):
@@ -255,3 +264,26 @@ def test_child_rows_are_not_reprocessed_as_top_level_rows(monkeypatch):
     assert nodes[0]["title"] == "Export"
     assert [child["title"] for child in nodes[0]["children"]] == ["CSV"]
     assert sum(1 for action in actions if action.menu_path == ["Fájl", "CSV"]) == 0
+
+
+def test_top_menu_cache_reused_until_main_window_handle_changes(monkeypatch):
+    class _MainWindow:
+        def __init__(self, handle: int):
+            self._handle = handle
+
+        def handle(self) -> int:
+            return self._handle
+
+    window = _MainWindow(handle=100)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.get_cached_main_window", lambda: window)
+    reset_top_menu_cache()
+
+    first = get_canonical_top_menu_names(["Fájl", "Súgó"])
+    second = get_canonical_top_menu_names(["Rendszer"])
+
+    assert [item["raw"] for item in first["items"]] == ["Fájl", "Súgó"]
+    assert second == first
+
+    window._handle = 200
+    third = get_canonical_top_menu_names(["Rendszer"])
+    assert [item["raw"] for item in third["items"]] == ["Rendszer"]
