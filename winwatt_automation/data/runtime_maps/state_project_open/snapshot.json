@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 6095096,
-    "process_id": 23264,
+    "handle": 2885916,
+    "process_id": 30108,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 23264,
+  "process_id": 30108,
   "state_id": "project_open",
-  "timestamp": "2026-03-17T08:26:34.421389+00:00",
+  "timestamp": "2026-03-17T10:29:14.521042+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -33,7 +33,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 23264,
+      "process_id": 30108,
       "title": "WinWatt gólya"
     },
     {
@@ -52,7 +52,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Codex-generated pull request by gabordancs · Pull Request #42 · gabordancs/autowinwatt - Google Chrome"
+      "title": "WebWatt - Google Chrome"
     },
     {
       "class_name": "rctrl_renwnd32",

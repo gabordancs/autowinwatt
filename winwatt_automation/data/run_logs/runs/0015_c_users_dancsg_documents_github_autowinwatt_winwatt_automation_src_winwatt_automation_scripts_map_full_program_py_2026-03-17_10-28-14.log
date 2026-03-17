@@ -1,0 +1,10 @@
+run_id=0015_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-28-14
+started_at=2026-03-17T10:28:14.208753+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py
+
+2026-03-17 11:28:14.496 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:184 - Candidate ranking score=(0, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 6476, 'handle': None, 'is_visible': False, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-17 11:28:14.498 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:194 - Selected main window process_id=6476 handle=None score=(0, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=False', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-17 11:28:14.499 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:237 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 6476, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+[event] run_failed: {"error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'win32', 'process': 6476}"}
+
+finished_at=2026-03-17T10:28:19.505210+00:00 success=False exit_code=1

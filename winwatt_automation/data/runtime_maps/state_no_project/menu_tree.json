@@ -28,5 +28,45 @@
     "title": "Jegyzékek",
     "title_normalized": "jegyzékek",
     "title_raw": "Jegyzékek"
+  },
+  {
+    "children": [],
+    "path": [
+      "Adatbázis"
+    ],
+    "state_id": "no_project",
+    "title": "Adatbázis",
+    "title_normalized": "adatbázis",
+    "title_raw": "Adatbázis..."
+  },
+  {
+    "children": [],
+    "path": [
+      "Beállítások"
+    ],
+    "state_id": "no_project",
+    "title": "Beállítások",
+    "title_normalized": "beállítások",
+    "title_raw": "Beállítások"
+  },
+  {
+    "children": [],
+    "path": [
+      "Ablak"
+    ],
+    "state_id": "no_project",
+    "title": "Ablak",
+    "title_normalized": "ablak",
+    "title_raw": "Ablak"
+  },
+  {
+    "children": [],
+    "path": [
+      "Súgó"
+    ],
+    "state_id": "no_project",
+    "title": "Súgó",
+    "title_normalized": "súgó",
+    "title_raw": "Súgó"
   }
 ]
