@@ -372,6 +372,61 @@ def _detect_child_rows(parent_row: dict[str, Any], all_rows: list[dict[str, Any]
     return children
 
 
+def _find_popup_row_by_title(rows: list[dict[str, Any]], title: str) -> dict[str, Any] | None:
+    wanted = normalize_menu_title(title)
+    for row in rows:
+        if bool(row.get("is_separator")):
+            continue
+        if normalize_menu_title(str(row.get("text") or "")) == wanted:
+            return row
+    return None
+
+
+def _reopen_parent_popup_rows(
+    *,
+    state_id: str,
+    top_menu: str,
+    parent_path: list[str],
+    canonical_top_menu_names: set[str] | None,
+    popup_state: PopupState | None,
+) -> list[dict[str, Any]]:
+    normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
+    if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
+        return list(popup_state.popup_rows)
+
+    if not restore_clean_menu_baseline(state_id=state_id, stage=f"reopen_parent:{' > '.join(parent_path)}"):
+        return []
+
+    menu_helpers.click_top_menu_item(top_menu)
+    current_rows = menu_helpers.capture_menu_popup_snapshot()
+
+    for part in parent_path[1:]:
+        row = _find_popup_row_by_title(current_rows, part)
+        if row is None:
+            logger.debug("reopen_parent_missing_part state={} top_menu={} part={}", state_id, top_menu, part)
+            break
+
+        _hover_row(row)
+        time.sleep(BASELINE_DELAY)
+        snapshot_rows = menu_helpers.capture_menu_popup_snapshot()
+        child_rows = _detect_child_rows(row, snapshot_rows)
+        if canonical_top_menu_names:
+            child_rows = [
+                child_row
+                for child_row in child_rows
+                if not is_top_menu_like_popup_row(child_row, canonical_top_menu_names)
+            ]
+        if not child_rows:
+            logger.debug("reopen_parent_missing_children state={} path={}", state_id, parent_path)
+            break
+        current_rows = child_rows
+
+    if popup_state is not None:
+        popup_state.current_menu_path = normalized_parent
+        popup_state.popup_rows = list(current_rows)
+    return current_rows
+
+
 
 
 def _foreground_window_info() -> dict[str, Any]:
@@ -924,6 +979,41 @@ def explore_menu_tree(
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
         if depth < max_depth and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
+            active_popup_rows = _reopen_parent_popup_rows(
+                state_id=state_id,
+                top_menu=top_menu,
+                parent_path=parent_path,
+                canonical_top_menu_names=canonical_top_menu_names,
+                popup_state=popup_state,
+            )
+            if active_popup_rows:
+                popup_rows = active_popup_rows
+                matching_row = next(
+                    (
+                        popup_row
+                        for popup_row in active_popup_rows
+                        if normalize_menu_title(str(popup_row.get("text") or "")) == row.normalized_text
+                    ),
+                    None,
+                )
+                if matching_row is not None:
+                    row_idx = int(active_popup_rows.index(matching_row))
+                    row = RuntimeMenuRow(
+                        state_id=row.state_id,
+                        top_menu=row.top_menu,
+                        row_index=row_idx,
+                        menu_path=row.menu_path,
+                        text=row.text,
+                        normalized_text=row.normalized_text,
+                        rectangle=dict(matching_row.get("rectangle") or row.rectangle),
+                        center_x=int(matching_row.get("center_x") or row.center_x),
+                        center_y=int(matching_row.get("center_y") or row.center_y),
+                        is_separator=row.is_separator,
+                        source_scope=str(matching_row.get("source_scope") or row.source_scope),
+                        fragments=list(matching_row.get("fragments") or row.fragments),
+                        enabled_guess=_guess_enabled(matching_row),
+                        discovered_in_state=row.discovered_in_state,
+                    )
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
             child_rows = _detect_child_rows(asdict(row), current_rows)
