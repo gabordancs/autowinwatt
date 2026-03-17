@@ -136,6 +136,38 @@ def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
     assert restore_calls == ["before:Fájl", "after:Fájl", "before:Súgó"]
 
 
+def test_known_paths_are_marked_as_reused_without_reexploration(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    snapshots = iter(
+        [
+            [
+                {"text": "Megnyitás", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+            ],
+        ]
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+
+    nodes, _, actions, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        visited_paths={("fájl",)},
+        known_paths_to_skip={("fájl", "megnyitás")},
+    )
+
+    assert nodes[0]["action_classification"] == "reused_from_previous_state"
+    assert nodes[0]["debug"]["reused_from_previous_state"] is True
+    assert actions[0].attempted is False
+    assert actions[0].notes == "reused_from_previous_state"
+
+
 def test_mapper_does_not_treat_canonical_top_menu_as_child(monkeypatch):
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
     monkeypatch.setattr(

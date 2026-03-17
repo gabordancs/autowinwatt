@@ -53,7 +53,7 @@ def test_recover_after_project_open_success_after_disabled(monkeypatch):
 
 
 def test_build_full_runtime_program_map_stops_on_recovery_failure(monkeypatch, tmp_path):
-    base = RuntimeStateMap("no_project", {"state_id": "no_project"}, [{"text": "Fájl"}], [], [], [], [], [])
+    no_project = RuntimeStateMap("no_project", {"state_id": "no_project"}, [{"text": "Fájl"}], [], [], [], [], [])
 
     monkeypatch.setattr(program_mapper, "ensure_output_dirs", lambda _path: {
         "base": tmp_path,
@@ -64,7 +64,12 @@ def test_build_full_runtime_program_map_stops_on_recovery_failure(monkeypatch, t
     for sub in ("state_no_project", "state_project_open", "diff"):
         (tmp_path / sub).mkdir(parents=True, exist_ok=True)
 
-    monkeypatch.setattr(program_mapper, "map_runtime_state", lambda **kwargs: base)
+    def _map_runtime_state(**kwargs):
+        if kwargs["state_id"] == "no_project":
+            return no_project
+        raise AssertionError("project_open mapping should not run when recovery fails")
+
+    monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
     monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": False, "diagnostics": {"x": 1}, "close_attempts": []}})
 
     result = program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
@@ -131,3 +136,40 @@ def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeyp
 
     assert calls == ["no_project", "project_open"]
     assert result["state_project_open"].snapshot["project_open_recovery"]["success"] is True
+
+
+def test_build_full_runtime_program_map_skips_known_no_project_paths(monkeypatch, tmp_path):
+    no_project = RuntimeStateMap(
+        "no_project",
+        {"state_id": "no_project"},
+        [{"text": "Fájl"}],
+        [{"menu_path": ["Fájl", "Megnyitás"], "enabled_guess": True}],
+        [],
+        [],
+        [],
+        [],
+    )
+    project_open = RuntimeStateMap("project_open", {"state_id": "project_open"}, [{"text": "Fájl"}], [], [], [], [], [])
+
+    monkeypatch.setattr(program_mapper, "ensure_output_dirs", lambda _path: {
+        "base": tmp_path,
+        "state_no_project": tmp_path / "state_no_project",
+        "state_project_open": tmp_path / "state_project_open",
+        "diff": tmp_path / "diff",
+    })
+    for sub in ("state_no_project", "state_project_open", "diff"):
+        (tmp_path / sub).mkdir(parents=True, exist_ok=True)
+
+    seen_known_paths: list[set[tuple[str, ...]] | None] = []
+
+    def _map_runtime_state(**kwargs):
+        seen_known_paths.append(kwargs.get("known_paths_to_skip"))
+        return no_project if kwargs["state_id"] == "no_project" else project_open
+
+    monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
+    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": True, "diagnostics": {}, "close_attempts": []}})
+
+    program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
+
+    assert seen_known_paths[0] is None
+    assert seen_known_paths[1] == {("fájl", "megnyitás")}
