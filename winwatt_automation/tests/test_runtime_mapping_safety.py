@@ -21,3 +21,9 @@ def test_is_action_allowed_by_mode():
     assert is_action_allowed(caution_path, mode="caution") is True
     assert is_action_allowed(blocked_path, mode="caution") is False
     assert is_action_allowed(blocked_path, mode="blocked") is True
+
+
+def test_is_action_allowed_hybrid_aliases_caution():
+    caution_path = ["Projekt", "Export"]
+
+    assert is_action_allowed(caution_path, mode="hybrid") is True

@@ -25,7 +25,7 @@ class ControllerConfig:
             timeout_seconds = 300
 
         safe_mode = os.getenv("WWA_CONTROLLER_SAFE_MODE", "safe").strip().lower() or "safe"
-        if safe_mode not in {"safe", "caution", "blocked"}:
+        if safe_mode not in {"safe", "hybrid", "caution", "blocked"}:
             safe_mode = "safe"
 
         chat_path_raw = os.getenv("WWA_CHAT_BRIEF_OUTPUT", "data/chat_prep/latest_chat_brief.txt")

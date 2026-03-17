@@ -52,7 +52,7 @@ def classify_safety(menu_path: list[str]) -> str:
 
 
 def is_action_allowed(menu_path: list[str], mode: str = "safe") -> bool:
-    levels = {"safe": 0, "caution": 1, "blocked": 2}
+    levels = {"safe": 0, "hybrid": 1, "caution": 1, "blocked": 2}
     target = classify_safety(menu_path)
     current_level = levels.get(mode, 0)
     return levels.get(target, 2) <= current_level
