@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "class_name": "THintWindow",
+    "controls": [],
+    "enabled": null,
+    "menu_path": [
+      "Jegyzékek",
+      ""
+    ],
+    "process_id": 1232,
+    "rectangle": {},
+    "row_index": 0,
+    "state_id": "project_open",
+    "title": "Szerkezetek",
+    "top_menu": "Jegyzékek",
+    "visible": null
+  },
+  {
+    "class_name": "SysShadow",
+    "controls": [],
+    "enabled": null,
+    "menu_path": [
+      "Jegyzékek",
+      "Adatbázis",
+      "Adatbázis"
+    ],
+    "process_id": 1232,
+    "rectangle": {},
+    "row_index": 1,
+    "state_id": "project_open",
+    "title": "",
+    "top_menu": "Jegyzékek",
+    "visible": null
+  },
+  {
+    "class_name": "THintWindow",
+    "controls": [],
+    "enabled": null,
+    "menu_path": [
+      "Jegyzékek",
+      "Elem"
+    ],
+    "process_id": 1232,
+    "rectangle": {},
+    "row_index": 0,
+    "state_id": "project_open",
+    "title": "Szerkezetek",
+    "top_menu": "Jegyzékek",
+    "visible": null
+  }
+]

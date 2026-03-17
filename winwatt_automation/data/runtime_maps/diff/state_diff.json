@@ -7,54 +7,93 @@
   "enabled_state_changes": [],
   "menu_action_diff": {
     "only_in_a": [],
-    "only_in_b": [],
-    "shared": [
+    "only_in_b": [
       [
-        "ablak",
-        ""
-      ],
-      [
-        "beállítások",
-        ""
+        "beállítások"
       ],
       [
         "fájl",
         ""
       ],
       [
+        "fájl",
+        "",
+        "‎tests"
+      ],
+      [
+        "fájl",
+        "‎tests"
+      ],
+      [
         "jegyzékek",
         ""
       ],
       [
-        "rendszer"
+        "jegyzékek",
+        "adatbázis"
       ],
       [
-        "súgó",
-        ""
+        "jegyzékek",
+        "adatbázis",
+        "adatbázis"
+      ],
+      [
+        "jegyzékek",
+        "adatbázis",
+        "elem"
+      ],
+      [
+        "jegyzékek",
+        "elem"
+      ],
+      [
+        "rendszer"
       ]
-    ]
+    ],
+    "shared": []
   },
-  "project_only_paths": [],
+  "project_only_paths": [
+    [
+      "fájl",
+      ""
+    ],
+    [
+      "fájl",
+      "‎tests"
+    ],
+    [
+      "jegyzékek",
+      ""
+    ],
+    [
+      "jegyzékek",
+      "adatbázis"
+    ],
+    [
+      "jegyzékek",
+      "elem"
+    ]
+  ],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
     "actions_only_in_a": 0,
-    "actions_only_in_b": 0,
+    "actions_only_in_b": 10,
     "enabled_changes": 0,
-    "project_only_paths": 0,
-    "shared_top_menus": 6
+    "project_only_paths": 5,
+    "shared_top_menus": 0
   },
   "top_menu_diff": {
     "only_in_a": [],
-    "only_in_b": [],
-    "shared": [
+    "only_in_b": [
       "ablak",
       "beállítások",
       "fájl",
       "jegyzékek",
       "rendszer",
       "súgó"
-    ]
+    ],
+    "shared": []
   },
   "window_diff": {
     "only_in_a": [],
