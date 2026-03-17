@@ -1363,6 +1363,108 @@ def _collect_known_menu_paths(state_map: RuntimeStateMap) -> set[tuple[str, ...]
     return paths
 
 
+def _collect_state_knowledge(state_map: RuntimeStateMap) -> dict[str, list[list[str]]]:
+    menu_paths = [
+        list(item)
+        for item in sorted({_normalized_path(tuple(row.get("menu_path", []))) for row in state_map.menu_rows if row.get("menu_path")})
+    ]
+    dialog_signatures = sorted(
+        {
+            (
+                normalize_menu_title(" > ".join(dialog.get("menu_path", []))),
+                normalize_menu_title(dialog.get("title", "")),
+                normalize_menu_title(dialog.get("class_name", "")),
+            )
+            for dialog in state_map.dialogs
+        }
+    )
+    window_signatures = sorted(
+        {
+            (
+                normalize_menu_title(" > ".join(window.get("menu_path", []))),
+                normalize_menu_title(window.get("title", "")),
+                normalize_menu_title(window.get("class_name", "")),
+            )
+            for window in state_map.windows
+        }
+    )
+    return {
+        "menu_paths": menu_paths,
+        "dialog_signatures": [list(item) for item in dialog_signatures],
+        "window_signatures": [list(item) for item in window_signatures],
+    }
+
+
+def _compute_knowledge_verification(current: dict[str, Any], baseline: dict[str, Any] | None) -> dict[str, Any]:
+    baseline = baseline or {}
+
+    def _to_set(values: list[Any] | None) -> set[tuple[Any, ...]]:
+        return {tuple(item) if isinstance(item, list) else tuple([item]) for item in (values or [])}
+
+    current_menus = _to_set(current.get("menu_paths"))
+    baseline_menus = _to_set(baseline.get("menu_paths"))
+    current_dialogs = _to_set(current.get("dialog_signatures"))
+    baseline_dialogs = _to_set(baseline.get("dialog_signatures"))
+    current_windows = _to_set(current.get("window_signatures"))
+    baseline_windows = _to_set(baseline.get("window_signatures"))
+
+    missing_menu_paths = [list(item) for item in sorted(baseline_menus - current_menus)]
+    new_menu_paths = [list(item) for item in sorted(current_menus - baseline_menus)]
+    missing_dialogs = [list(item) for item in sorted(baseline_dialogs - current_dialogs)]
+    new_dialogs = [list(item) for item in sorted(current_dialogs - baseline_dialogs)]
+    missing_windows = [list(item) for item in sorted(baseline_windows - current_windows)]
+    new_windows = [list(item) for item in sorted(current_windows - baseline_windows)]
+
+    baseline_total = len(baseline_menus)
+    covered = baseline_total - len(missing_menu_paths)
+    coverage_pct = 100.0 if baseline_total == 0 else round((covered / baseline_total) * 100, 2)
+
+    return {
+        "baseline_loaded": bool(baseline),
+        "missing_menu_paths": missing_menu_paths,
+        "new_menu_paths": new_menu_paths,
+        "missing_dialogs": missing_dialogs,
+        "new_dialogs": new_dialogs,
+        "missing_windows": missing_windows,
+        "new_windows": new_windows,
+        "known_menu_paths": baseline_total,
+        "current_menu_paths": len(current_menus),
+        "covered_known_menu_paths": covered,
+        "coverage_pct": coverage_pct,
+    }
+
+
+def _load_previous_knowledge(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    try:
+        import json
+
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return payload.get("current") if isinstance(payload, dict) else None
+    except Exception as exc:
+        logger.warning("knowledge_load_failed path={} error={}", path, exc)
+        return None
+
+
+def _knowledge_markdown(verification: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Runtime tudás verifikáció",
+            "",
+            f"- baseline loaded: {verification.get('baseline_loaded')}",
+            f"- known menu paths: {verification.get('known_menu_paths')}",
+            f"- covered known paths: {verification.get('covered_known_menu_paths')}",
+            f"- missing menu paths: {len(verification.get('missing_menu_paths', []))}",
+            f"- new menu paths: {len(verification.get('new_menu_paths', []))}",
+            f"- missing dialogs: {len(verification.get('missing_dialogs', []))}",
+            f"- missing windows: {len(verification.get('missing_windows', []))}",
+            f"- coverage: {verification.get('coverage_pct')}%",
+            "",
+        ]
+    )
+
+
 def build_full_runtime_program_map(
     project_path: str | None = None,
     safe_mode: str = "safe",
@@ -1374,6 +1476,8 @@ def build_full_runtime_program_map(
     event_recorder: Callable[[str, dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
     paths = ensure_output_dirs(Path(output_dir))
+    knowledge_path = paths["base"] / "knowledge.json"
+    previous_knowledge = _load_previous_knowledge(knowledge_path)
     no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
     project_id = "project_open" if state_id_prefix == "state" else f"{state_id_prefix}_project_open"
 
@@ -1395,7 +1499,6 @@ def build_full_runtime_program_map(
             },
         )
     _write_state_outputs(paths["state_no_project"], state_no_project)
-    known_paths = _collect_known_menu_paths(state_no_project)
 
     effective_project_path = project_path or DEFAULT_TEST_PROJECT_PATH
     project_open_result = open_test_project(effective_project_path, safe_mode=safe_mode)
@@ -1444,7 +1547,6 @@ def build_full_runtime_program_map(
             top_menus=top_menus,
             max_submenu_depth=max_submenu_depth,
             include_disabled=include_disabled,
-            known_paths_to_skip=known_paths,
         )
         if recovery:
             state_project_open.snapshot["project_open_recovery"] = recovery
@@ -1473,11 +1575,39 @@ def build_full_runtime_program_map(
     write_json(paths["diff"] / "state_diff.json", asdict(diff))
     (paths["diff"] / "summary.md").write_text(_diff_summary_markdown(diff), encoding="utf-8")
 
+    current_knowledge = {
+        "state_no_project": _collect_state_knowledge(state_no_project),
+        "state_project_open": _collect_state_knowledge(state_project_open),
+    }
+    merged_current_knowledge = {
+        "menu_paths": sorted({tuple(item) for item in current_knowledge["state_no_project"]["menu_paths"] + current_knowledge["state_project_open"]["menu_paths"]}),
+        "dialog_signatures": sorted({tuple(item) for item in current_knowledge["state_no_project"]["dialog_signatures"] + current_knowledge["state_project_open"]["dialog_signatures"]}),
+        "window_signatures": sorted({tuple(item) for item in current_knowledge["state_no_project"]["window_signatures"] + current_knowledge["state_project_open"]["window_signatures"]}),
+    }
+    merged_current_knowledge = {key: [list(item) for item in values] for key, values in merged_current_knowledge.items()}
+    knowledge_verification = _compute_knowledge_verification(merged_current_knowledge, previous_knowledge)
+    knowledge_payload = {
+        "updated_at": datetime.now(tz=timezone.utc).isoformat(),
+        "current": merged_current_knowledge,
+        "states": current_knowledge,
+        "verification": knowledge_verification,
+    }
+    write_json(knowledge_path, knowledge_payload)
+    (paths["base"] / "knowledge_summary.md").write_text(_knowledge_markdown(knowledge_verification), encoding="utf-8")
+    if event_recorder:
+        event_recorder("knowledge_verification", dict(knowledge_verification))
+
     skipped = sum(1 for action in state_no_project.actions + state_project_open.actions if not action.get("attempted", False))
     print(f"no_project menük száma: {len(state_no_project.top_menus)}")
     print(f"project_open menük száma: {len(state_project_open.top_menus)}")
     print(f"diff változások: {len(diff.enabled_state_changes) + len(diff.project_only_paths)}")
     print(f"skipped_by_safety: {skipped}")
+    print(
+        "knowledge verification: "
+        f"missing={len(knowledge_verification['missing_menu_paths'])}, "
+        f"new={len(knowledge_verification['new_menu_paths'])}, "
+        f"coverage={knowledge_verification['coverage_pct']}%"
+    )
     print(f"output: {paths['base']}")
 
     return {
@@ -1485,5 +1615,6 @@ def build_full_runtime_program_map(
         "state_project_open": state_project_open,
         "diff": diff,
         "project_open_result": project_open_result,
+        "knowledge_verification": knowledge_verification,
         "output_dir": str(paths["base"]),
     }
