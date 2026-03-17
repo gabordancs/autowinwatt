@@ -114,6 +114,32 @@ def test_visited_paths_skips_duplicate_submenu_traversal(monkeypatch):
     assert len([row for row in rows if row.text == "Megnyitás"]) == 2
 
 
+
+
+def test_mapping_continues_when_focus_loss_is_recovered(monkeypatch):
+    snapshot = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Súgó"], timestamp="t")
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: snapshot)
+
+    restore_calls: list[str] = []
+
+    def _restore(*, state_id: str, stage: str) -> bool:
+        restore_calls.append(stage)
+        return True
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", _restore)
+
+    def _explore_menu_tree(**kwargs):
+        if kwargs["top_menu"] == "Fájl":
+            raise RuntimeError("focus_not_restored: temporary")
+        return ([], [], [], [], [])
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree", _explore_menu_tree)
+
+    state = map_runtime_state(state_id="s", top_menus=["Fájl", "Súgó"])
+    assert state.snapshot["mapping_partial"] is False
+    assert state.snapshot["mapping_stop_reason"] is None
+    assert any(root.get("title") == "Súgó" for root in state.menu_tree)
+    assert "recover_after_exception:Fájl" in restore_calls
 def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
     snapshot = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Súgó"], timestamp="t")
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: snapshot)

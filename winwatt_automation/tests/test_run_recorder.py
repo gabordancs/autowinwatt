@@ -87,3 +87,12 @@ def test_failed_run_is_logged(tmp_path: Path, monkeypatch):
     assert payload["success"] is False
     assert payload["exit_code"] == 1
     assert payload["summary"]["last_error"] == "boom"
+
+
+def test_record_event_after_finalize_is_ignored(tmp_path: Path, monkeypatch):
+    repo_root = _prepare_repo(tmp_path, monkeypatch)
+
+    run = start_run("python -m winwatt_automation.scripts.map_full_program", {"cwd": str(repo_root), "safe_mode": "safe"})
+    finalize_run(run, success=True, exit_code=0, summary={"short_summary": "done"})
+
+    record_event(run, "winwatt_close", {"closed": True})

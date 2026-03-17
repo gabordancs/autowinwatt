@@ -825,10 +825,14 @@ def explore_menu_tree(
             continue
         path = parent_path + [row.text]
         normalized_path = tuple(normalize_menu_title(part) for part in path)
-        if normalized_path in visited_paths:
+        visit_key = normalized_path
+        if not row.normalized_text:
+            visit_key = (*normalized_path, f"#idx:{row.row_index}")
+
+        if visit_key in visited_paths:
             logger.debug("visited path skip state={} path={}", state_id, normalized_path)
             continue
-        visited_paths.add(normalized_path)
+        visited_paths.add(visit_key)
 
         skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
         reused_from_previous_state = normalized_path in known_paths_to_skip
@@ -1048,10 +1052,18 @@ def map_runtime_state(
                 )
             )
             if "WinWatt" in type(exc).__name__ or "focus_not_restored" in str(exc):
-                partial_mapping = True
-                stop_reason = f"unrecoverable:{discovered_top_menu}"
-                logger.error("unrecoverable main window loss during top menu state={} top_menu={}", state_id, discovered_top_menu)
-                break
+                recovered = restore_clean_menu_baseline(state_id=state_id, stage=f"recover_after_exception:{discovered_top_menu}")
+                if recovered:
+                    logger.warning(
+                        "recovered from focus loss, continuing mapping state={} top_menu={}",
+                        state_id,
+                        discovered_top_menu,
+                    )
+                else:
+                    partial_mapping = True
+                    stop_reason = f"unrecoverable:{discovered_top_menu}"
+                    logger.error("unrecoverable main window loss during top menu state={} top_menu={}", state_id, discovered_top_menu)
+                    break
 
         if not restore_clean_menu_baseline(state_id=state_id, stage=f"after:{discovered_top_menu}"):
             partial_mapping = True
