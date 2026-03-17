@@ -126,6 +126,8 @@ def start_run(command: str, context: dict[str, Any]) -> RunContext:
 
 
 def append_terminal_line(run_ctx: RunContext, line: str) -> None:
+    if getattr(run_ctx.log_handle, "closed", False):
+        return
     run_ctx.log_handle.write(f"{line.rstrip()}\n")
     run_ctx.log_handle.flush()
 
