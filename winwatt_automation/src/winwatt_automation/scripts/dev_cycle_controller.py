@@ -24,7 +24,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     run = sub.add_parser("run", help="Run a repo script with timeout")
     run.add_argument("script")
-    run.add_argument("--safe-mode", default=None, choices=["safe", "caution", "blocked"])
+    run.add_argument("--safe-mode", default=None, choices=["safe", "hybrid", "caution", "blocked"])
     run.add_argument("--timeout", type=int, default=None)
     run.add_argument("script_args", nargs=argparse.REMAINDER)
 
@@ -32,7 +32,7 @@ def build_parser() -> argparse.ArgumentParser:
     cycle.add_argument("script")
     cycle.add_argument("--goal", default="Stabilizálni a következő tesztkört")
     cycle.add_argument("--request", default="Adj következő minimális fejlesztői lépést")
-    cycle.add_argument("--safe-mode", default=None, choices=["safe", "caution", "blocked"])
+    cycle.add_argument("--safe-mode", default=None, choices=["safe", "hybrid", "caution", "blocked"])
     cycle.add_argument("--timeout", type=int, default=None)
     cycle.add_argument("--stop-winwatt-on-timeout", action="store_true")
 
