@@ -30,6 +30,8 @@ from winwatt_automation.runtime_mapping.menu_text import clean_menu_title, norma
 from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
 from winwatt_automation.runtime_mapping.timing import BASELINE_DELAY
+from winwatt_automation.runtime_mapping.config import is_fast_mode
+from winwatt_automation.live_ui.ui_cache import PopupState
 
 
 DEFAULT_TOP_MENUS = ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
@@ -809,7 +811,9 @@ def explore_menu_tree(
     popup_rows: list[dict[str, Any]] | None = None,
     canonical_top_menu_names: set[str] | None = None,
     visited_paths: set[tuple[str, ...]] | None = None,
+    visited_path_hashes: set[int] | None = None,
     known_paths_to_skip: set[tuple[str, ...]] | None = None,
+    popup_state: PopupState | None = None,
 ) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
     parent_path = list(parent_path or [clean_menu_title(top_menu)])
     dialogs: list[RuntimeDialogRecord] = []
@@ -817,7 +821,11 @@ def explore_menu_tree(
     top_transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
     if popup_rows is None:
-        popup_rows = menu_helpers.capture_menu_popup_snapshot()
+        normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
+        if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
+            popup_rows = list(popup_state.popup_rows)
+        else:
+            popup_rows = menu_helpers.capture_menu_popup_snapshot()
         if popup_rows:
             logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(popup_rows))
         else:
@@ -864,9 +872,14 @@ def explore_menu_tree(
             close_result = close_transient_dialog_or_window(None, action_label=f"top_menu:{top_menu}")
             if not close_result.get("closed"):
                 logger.error("dialog_close_failed top_menu={}", top_menu)
+        if popup_state is not None:
+            popup_state.current_menu_path = normalized_parent
+            popup_state.popup_rows = list(popup_rows)
 
     if visited_paths is None:
         visited_paths = set()
+    if visited_path_hashes is None:
+        visited_path_hashes = set()
     known_paths_to_skip = set(known_paths_to_skip or set())
 
     current_level_rows = _build_menu_rows_from_popup_rows(
@@ -888,16 +901,26 @@ def explore_menu_tree(
         if not row.normalized_text:
             visit_key = (*normalized_path, f"#idx:{row.row_index}")
 
-        if visit_key in visited_paths:
+        path_key = hash(visit_key)
+        if path_key in visited_path_hashes:
             logger.debug("visited path skip state={} path={}", state_id, normalized_path)
             continue
+        visited_path_hashes.add(path_key)
         visited_paths.add(visit_key)
 
         skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
         reused_from_previous_state = normalized_path in known_paths_to_skip
         opens_submenu = False
         children_nodes: list[dict[str, Any]] = []
-        before_action = capture_state_snapshot(state_id)
+        before_action = capture_state_snapshot(state_id) if not is_fast_mode() else RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=None,
+            main_window_title="",
+            main_window_class="",
+            visible_top_windows=[],
+            discovered_top_menus=[],
+            timestamp=datetime.now(tz=timezone.utc).isoformat(),
+        )
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
         if depth < max_depth and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
@@ -910,10 +933,14 @@ def explore_menu_tree(
                     for child_row in child_rows
                     if not is_top_menu_like_popup_row(child_row, canonical_top_menu_names)
                 ]
-            after_action = capture_state_snapshot(state_id)
-            transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
+            after_action = capture_state_snapshot(state_id) if not is_fast_mode() else before_action
+            if child_rows or not is_fast_mode():
+                transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
             if child_rows:
                 opens_submenu = True
+                if popup_state is not None:
+                    popup_state.current_menu_path = tuple(normalize_menu_title(part) for part in path)
+                    popup_state.popup_rows = list(child_rows)
                 child_nodes, child_menu_rows, child_actions, child_dialogs, child_windows = explore_menu_tree(
                     state_id=state_id,
                     top_menu=top_menu,
@@ -925,7 +952,9 @@ def explore_menu_tree(
                     popup_rows=child_rows,
                     canonical_top_menu_names=canonical_top_menu_names,
                     visited_paths=visited_paths,
+                    visited_path_hashes=visited_path_hashes,
                     known_paths_to_skip=known_paths_to_skip,
+                    popup_state=popup_state,
                 )
                 children_nodes = child_nodes
                 collected_rows.extend(child_menu_rows)
@@ -1058,6 +1087,7 @@ def map_runtime_state(
 
     partial_mapping = False
     stop_reason: str | None = None
+    popup_state = PopupState()
 
     for top_menu_normalized, _ in target_menu_map.items():
         discovered_top_menu = canonical_top_menus["normalized_to_raw"].get(top_menu_normalized)
@@ -1074,7 +1104,9 @@ def map_runtime_state(
                 include_disabled=include_disabled,
                 canonical_top_menu_names=canonical_top_menus["normalized_names"],
                 visited_paths={(normalize_menu_title(discovered_top_menu),)},
+                visited_path_hashes={hash((normalize_menu_title(discovered_top_menu),))},
                 known_paths_to_skip=known_paths_to_skip,
+                popup_state=popup_state,
             )
             clean_top_menu = clean_menu_title(discovered_top_menu)
             normalized_top_menu = normalize_menu_title(discovered_top_menu)
