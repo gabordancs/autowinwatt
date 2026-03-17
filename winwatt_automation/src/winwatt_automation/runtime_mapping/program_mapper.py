@@ -110,6 +110,7 @@ def _row_to_node(
     opens_submenu: bool,
     opens_dialog: bool = False,
     skipped_by_safety: bool = False,
+    reused_from_previous_state: bool = False,
 ) -> RuntimeMenuNode:
     title_raw = str(row.get("text") or "")
     title, shortcut = _extract_shortcut(title_raw)
@@ -123,6 +124,8 @@ def _row_to_node(
     enabled = _guess_enabled(row)
     if row.get("is_separator"):
         action_classification = "separator"
+    elif reused_from_previous_state:
+        action_classification = "reused_from_previous_state"
     elif skipped_by_safety:
         action_classification = "skipped_by_safety"
     elif opens_submenu:
@@ -159,6 +162,7 @@ def _row_to_node(
             "source_scope": str(row.get("source_scope") or ""),
             "fragments": list(row.get("fragments") or []),
             "top_menu": top_menu,
+            "reused_from_previous_state": reused_from_previous_state,
         },
     )
 
@@ -751,6 +755,7 @@ def explore_menu_tree(
     popup_rows: list[dict[str, Any]] | None = None,
     canonical_top_menu_names: set[str] | None = None,
     visited_paths: set[tuple[str, ...]] | None = None,
+    known_paths_to_skip: set[tuple[str, ...]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
     parent_path = list(parent_path or [clean_menu_title(top_menu)])
     dialogs: list[RuntimeDialogRecord] = []
@@ -803,6 +808,7 @@ def explore_menu_tree(
 
     if visited_paths is None:
         visited_paths = set()
+    known_paths_to_skip = set(known_paths_to_skip or set())
 
     menu_rows = _build_menu_rows_from_popup_rows(
         state_id,
@@ -824,12 +830,13 @@ def explore_menu_tree(
         visited_paths.add(normalized_path)
 
         skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
+        reused_from_previous_state = normalized_path in known_paths_to_skip
         opens_submenu = False
         children_nodes: list[dict[str, Any]] = []
         before_action = capture_state_snapshot(state_id)
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
-        if depth < max_depth and not row.is_separator and row.enabled_guess is not False:
+        if depth < max_depth and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
             child_rows = _detect_child_rows(asdict(row), current_rows)
@@ -854,6 +861,7 @@ def explore_menu_tree(
                     popup_rows=child_rows,
                     canonical_top_menu_names=canonical_top_menu_names,
                     visited_paths=visited_paths,
+                    known_paths_to_skip=known_paths_to_skip,
                 )
                 children_nodes = child_nodes
                 menu_rows.extend(child_menu_rows)
@@ -907,6 +915,7 @@ def explore_menu_tree(
             opens_submenu=opens_submenu,
             opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened"},
             skipped_by_safety=skipped,
+            reused_from_previous_state=reused_from_previous_state,
         )
         nodes.append(asdict(node))
         actions.append(
@@ -921,8 +930,8 @@ def explore_menu_tree(
                 menu_path=path,
                 action_key=" > ".join(path),
                 safety_level=classify_safety([clean_menu_title(part) for part in path]),
-                attempted=not skipped,
-                notes="mapped_only",
+                attempted=not skipped and not reused_from_previous_state,
+                notes="reused_from_previous_state" if reused_from_previous_state else "mapped_only",
             )
         )
 
@@ -969,6 +978,7 @@ def map_runtime_state(
     top_menus: list[str] | None = None,
     max_submenu_depth: int = 3,
     include_disabled: bool = True,
+    known_paths_to_skip: set[tuple[str, ...]] | None = None,
 ) -> RuntimeStateMap:
     snapshot = capture_state_snapshot(state_id)
     discovered = snapshot.discovered_top_menus
@@ -1005,6 +1015,7 @@ def map_runtime_state(
                 include_disabled=include_disabled,
                 canonical_top_menu_names=canonical_top_menus["normalized_names"],
                 visited_paths={(normalize_menu_title(discovered_top_menu),)},
+                known_paths_to_skip=known_paths_to_skip,
             )
             clean_top_menu = clean_menu_title(discovered_top_menu)
             normalized_top_menu = normalize_menu_title(discovered_top_menu)
@@ -1153,6 +1164,15 @@ def _write_state_outputs(state_dir: Path, state_map: RuntimeStateMap) -> None:
     (state_dir / "summary.md").write_text(_state_summary_markdown(state_map), encoding="utf-8")
 
 
+def _collect_known_menu_paths(state_map: RuntimeStateMap) -> set[tuple[str, ...]]:
+    paths: set[tuple[str, ...]] = set()
+    for row in state_map.menu_rows:
+        normalized = _normalized_path(tuple(row.get("menu_path", [])))
+        if normalized:
+            paths.add(normalized)
+    return paths
+
+
 def build_full_runtime_program_map(
     project_path: str | None = None,
     safe_mode: str = "safe",
@@ -1167,21 +1187,12 @@ def build_full_runtime_program_map(
     no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
     project_id = "project_open" if state_id_prefix == "state" else f"{state_id_prefix}_project_open"
 
-    state_no_project = RuntimeStateMap(
+    state_no_project = map_runtime_state(
         state_id=no_project_id,
-        snapshot={
-            "state_id": no_project_id,
-            "mapping_partial": True,
-            "mapping_stop_reason": "disabled_by_configuration",
-            "note": "no_project mapping disabled; only project_open mapping is collected.",
-        },
-        top_menus=[],
-        menu_rows=[],
-        menu_tree=[],
-        actions=[],
-        dialogs=[],
-        windows=[],
-        skipped_actions=[],
+        safe_mode=safe_mode,
+        top_menus=top_menus,
+        max_submenu_depth=max_submenu_depth,
+        include_disabled=include_disabled,
     )
     if event_recorder:
         event_recorder(
@@ -1194,6 +1205,7 @@ def build_full_runtime_program_map(
             },
         )
     _write_state_outputs(paths["state_no_project"], state_no_project)
+    known_paths = _collect_known_menu_paths(state_no_project)
 
     effective_project_path = project_path or DEFAULT_TEST_PROJECT_PATH
     project_open_result = open_test_project(effective_project_path, safe_mode=safe_mode)
@@ -1242,6 +1254,7 @@ def build_full_runtime_program_map(
             top_menus=top_menus,
             max_submenu_depth=max_submenu_depth,
             include_disabled=include_disabled,
+            known_paths_to_skip=known_paths,
         )
         if recovery:
             state_project_open.snapshot["project_open_recovery"] = recovery
