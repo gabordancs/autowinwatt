@@ -810,16 +810,17 @@ def explore_menu_tree(
         visited_paths = set()
     known_paths_to_skip = set(known_paths_to_skip or set())
 
-    menu_rows = _build_menu_rows_from_popup_rows(
+    current_level_rows = _build_menu_rows_from_popup_rows(
         state_id,
         top_menu,
         popup_rows,
         canonical_top_menu_names=canonical_top_menu_names,
     )
+    collected_rows: list[RuntimeMenuRow] = list(current_level_rows)
     nodes: list[dict[str, Any]] = []
     actions: list[RuntimeActionResult] = []
 
-    for row in menu_rows:
+    for row in current_level_rows:
         if not include_disabled and row.enabled_guess is False:
             continue
         path = parent_path + [row.text]
@@ -864,7 +865,7 @@ def explore_menu_tree(
                     known_paths_to_skip=known_paths_to_skip,
                 )
                 children_nodes = child_nodes
-                menu_rows.extend(child_menu_rows)
+                collected_rows.extend(child_menu_rows)
                 actions.extend(child_actions)
                 dialogs.extend(child_dialogs)
                 windows.extend(child_windows)
@@ -935,7 +936,7 @@ def explore_menu_tree(
             )
         )
 
-    return nodes, menu_rows, actions, dialogs, windows
+    return nodes, collected_rows, actions, dialogs, windows
 
 
 def _state_summary_markdown(state_map: RuntimeStateMap) -> str:

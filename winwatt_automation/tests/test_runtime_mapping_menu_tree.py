@@ -195,3 +195,37 @@ def test_mapper_does_not_treat_canonical_top_menu_as_child(monkeypatch):
         visited_paths={("fájl",)},
     )
     assert [node["title"] for node in nodes] == ["Megnyitás"]
+
+
+def test_child_rows_are_not_reprocessed_as_top_level_rows(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    snapshots = iter(
+        [
+            [
+                {"text": "Export", "center_x": 1, "center_y": 1, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+            ],
+            [
+                {"text": "CSV", "center_x": 150, "center_y": 11, "rectangle": {"left": 140, "top": 10, "right": 220, "bottom": 20}, "is_separator": False, "source_scope": "main"},
+            ],
+        ]
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+
+    nodes, _, actions, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        visited_paths={("fájl",)},
+    )
+
+    assert len(nodes) == 1
+    assert nodes[0]["title"] == "Export"
+    assert [child["title"] for child in nodes[0]["children"]] == ["CSV"]
+    assert sum(1 for action in actions if action.menu_path == ["Fájl", "CSV"]) == 0
