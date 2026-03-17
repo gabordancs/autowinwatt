@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
 from winwatt_automation.live_ui.app_connector import (
     WinWattMultipleWindowsError,
     WinWattNotRunningError,
+    get_main_window,
     list_candidate_windows,
 )
 from winwatt_automation.live_ui.window_tree import save_window_tree_snapshot
@@ -25,7 +27,42 @@ def _print_tree(node: dict, depth: int = 0) -> None:
         _print_tree(child, depth + 1)
 
 
+def _collect_control_names(node: dict, output: list[str]) -> None:
+    name = str(node.get("name") or "").strip()
+    if name:
+        output.append(name)
+    for child in node.get("children", []):
+        _collect_control_names(child, output)
+
+
+def _save_control_names(snapshot: dict, output_path: Path) -> Path:
+    names: list[str] = []
+    _collect_control_names(snapshot, names)
+    unique_names = sorted(set(names), key=str.casefold)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("\n".join(unique_names) + ("\n" if unique_names else ""), encoding="utf-8")
+    return output_path
+
+
+def _save_main_window_screenshot(output_path: Path) -> Path:
+    main_window = get_main_window()
+    image = main_window.capture_as_image()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    image.save(output_path)
+    return output_path
+
+
+def _build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Inspect live WinWatt UI tree and optional artifacts")
+    parser.add_argument("--controls-output", default=str(PROJECT_ROOT / "data/snapshots/control_names.txt"))
+    parser.add_argument("--screenshot-output", default=str(PROJECT_ROOT / "data/snapshots/main_window.png"))
+    parser.add_argument("--no-controls-export", action="store_true", help="Skip exporting unique control names")
+    parser.add_argument("--screenshot", action="store_true", help="Capture a screenshot of the main WinWatt window")
+    return parser
+
+
 def main() -> int:
+    args = _build_parser().parse_args()
     output_path = PROJECT_ROOT / "data/snapshots/ui_tree.json"
     candidates_path = PROJECT_ROOT / "data/snapshots/window_candidates.json"
     try:
@@ -50,6 +87,19 @@ def main() -> int:
 
     _print_tree(snapshot)
     print(f"\nSaved UI tree snapshot to {output_path}")
+
+    if not args.no_controls_export:
+        controls_output = _save_control_names(snapshot, Path(args.controls_output))
+        print(f"Saved unique control names to {controls_output}")
+
+    if args.screenshot:
+        try:
+            screenshot_output = _save_main_window_screenshot(Path(args.screenshot_output))
+            print(f"Saved main window screenshot to {screenshot_output}")
+        except Exception as error:  # runtime-only dependency / Win desktop state
+            print(f"Could not capture screenshot: {error}")
+            return 1
+
     return 0
 
 
