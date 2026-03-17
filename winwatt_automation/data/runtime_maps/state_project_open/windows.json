@@ -1,51 +1,34 @@
 [
   {
-    "class_name": "THintWindow",
+    "class_name": "TNewGroupForm",
     "controls": [],
     "enabled": null,
     "menu_path": [
-      "Jegyzékek",
+      "Adatbázis",
       ""
     ],
     "process_id": 1232,
     "rectangle": {},
     "row_index": 0,
     "state_id": "project_open",
-    "title": "Szerkezetek",
-    "top_menu": "Jegyzékek",
+    "title": "Új elem létrehozása",
+    "top_menu": "Adatbázis...",
     "visible": null
   },
   {
-    "class_name": "SysShadow",
+    "class_name": "TDeviceDatabaseForm",
     "controls": [],
     "enabled": null,
     "menu_path": [
-      "Jegyzékek",
       "Adatbázis",
-      "Adatbázis"
+      "Csoport"
     ],
     "process_id": 1232,
     "rectangle": {},
-    "row_index": 1,
+    "row_index": 11,
     "state_id": "project_open",
-    "title": "",
-    "top_menu": "Jegyzékek",
-    "visible": null
-  },
-  {
-    "class_name": "THintWindow",
-    "controls": [],
-    "enabled": null,
-    "menu_path": [
-      "Jegyzékek",
-      "Elem"
-    ],
-    "process_id": 1232,
-    "rectangle": {},
-    "row_index": 0,
-    "state_id": "project_open",
-    "title": "Szerkezetek",
-    "top_menu": "Jegyzékek",
+    "title": "Adatbázis adatok karbantartása",
+    "top_menu": "Adatbázis...",
     "visible": null
   }
 ]

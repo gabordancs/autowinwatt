@@ -1,6 +1,82 @@
 {
+  "discovered_top_menus": [
+    "Rendszer",
+    "Fájl",
+    "Jegyzékek",
+    "Adatbázis...",
+    "Beállítások",
+    "Ablak",
+    "Súgó"
+  ],
+  "foreground_window": {
+    "class_name": "Chrome_WidgetWin_1",
+    "handle": 788988,
+    "process_id": 33532,
+    "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+  },
+  "main_window_class": "TMainForm",
+  "main_window_enabled": true,
+  "main_window_title": "WinWatt gólya",
+  "main_window_visible": true,
   "mapping_partial": true,
-  "mapping_stop_reason": "disabled_by_configuration",
-  "note": "no_project mapping disabled; only project_open mapping is collected.",
-  "state_id": "no_project"
+  "mapping_stop_reason": "lost_main_window_before:Rendszer",
+  "process_id": 1232,
+  "state_id": "no_project",
+  "timestamp": "2026-03-17T06:20:10.995055+00:00",
+  "visible_top_windows": [
+    {
+      "class_name": "Shell_TrayWnd",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Tálca"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 33532,
+      "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 1232,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 4588,
+      "title": "Codex-generated pull request by gabordancs · Pull Request #37 · gabordancs/autowinwatt - Google Chrome"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 1152,
+      "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14856,
+      "title": "GitHub – Fájlkezelő"
+    },
+    {
+      "class_name": "Notepad",
+      "handle": null,
+      "process_id": 21160,
+      "title": "*xml version=1.0 encoding=utf-8 – Jegyzettömb"
+    },
+    {
+      "class_name": "Notepad",
+      "handle": null,
+      "process_id": 21160,
+      "title": "*antal áron – Jegyzettömb"
+    },
+    {
+      "class_name": "Progman",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Program Manager"
+    }
+  ]
 }

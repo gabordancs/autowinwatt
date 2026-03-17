@@ -1,6 +1,6 @@
 # Runtime summary (no_project)
 
-- top menük száma: 0
+- top menük száma: 7
 - összes menüpont: 0
 - enabled: 0
 - disabled: 0

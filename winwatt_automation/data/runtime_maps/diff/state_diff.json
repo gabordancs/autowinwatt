@@ -9,6 +9,46 @@
     "only_in_a": [],
     "only_in_b": [
       [
+        "adatbázis",
+        ""
+      ],
+      [
+        "adatbázis",
+        "csoport"
+      ],
+      [
+        "adatbázis",
+        "dokumentumablak"
+      ],
+      [
+        "adatbázis",
+        "dokumentumablak",
+        "csoport"
+      ],
+      [
+        "adatbázis",
+        "dokumentumablak",
+        "elem"
+      ],
+      [
+        "adatbázis",
+        "elem"
+      ],
+      [
+        "adatbázis",
+        "szerkesztés"
+      ],
+      [
+        "adatbázis",
+        "szerkesztés",
+        "csoport"
+      ],
+      [
+        "adatbázis",
+        "szerkesztés",
+        "elem"
+      ],
+      [
         "beállítások"
       ],
       [
@@ -29,30 +69,32 @@
         ""
       ],
       [
-        "jegyzékek",
-        "adatbázis"
-      ],
-      [
-        "jegyzékek",
-        "adatbázis",
-        "adatbázis"
-      ],
-      [
-        "jegyzékek",
-        "adatbázis",
-        "elem"
-      ],
-      [
-        "jegyzékek",
-        "elem"
-      ],
-      [
         "rendszer"
       ]
     ],
     "shared": []
   },
   "project_only_paths": [
+    [
+      "adatbázis",
+      ""
+    ],
+    [
+      "adatbázis",
+      "csoport"
+    ],
+    [
+      "adatbázis",
+      "dokumentumablak"
+    ],
+    [
+      "adatbázis",
+      "elem"
+    ],
+    [
+      "adatbázis",
+      "szerkesztés"
+    ],
     [
       "fájl",
       ""
@@ -64,36 +106,29 @@
     [
       "jegyzékek",
       ""
-    ],
-    [
-      "jegyzékek",
-      "adatbázis"
-    ],
-    [
-      "jegyzékek",
-      "elem"
     ]
   ],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
     "actions_only_in_a": 0,
-    "actions_only_in_b": 10,
+    "actions_only_in_b": 15,
     "enabled_changes": 0,
-    "project_only_paths": 5,
-    "shared_top_menus": 0
+    "project_only_paths": 8,
+    "shared_top_menus": 7
   },
   "top_menu_diff": {
     "only_in_a": [],
-    "only_in_b": [
+    "only_in_b": [],
+    "shared": [
       "ablak",
+      "adatbázis",
       "beállítások",
       "fájl",
       "jegyzékek",
       "rendszer",
       "súgó"
-    ],
-    "shared": []
+    ]
   },
   "window_diff": {
     "only_in_a": [],

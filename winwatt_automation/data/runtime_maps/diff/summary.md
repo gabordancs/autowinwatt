@@ -1,5 +1,5 @@
 # Runtime állapot diff
 
-- shared top-level menük: 0
-- csak projekt után látható elemek: 5
+- shared top-level menük: 7
+- csak projekt után látható elemek: 8
 - enabled változások: 0
