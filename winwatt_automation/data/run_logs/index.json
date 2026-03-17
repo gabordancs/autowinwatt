@@ -260,6 +260,26 @@
       },
       "log_path": "data\\run_logs\\runs\\0016_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-28-46.log",
       "json_path": "data\\run_logs\\runs\\0016_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-28-46.json"
+    },
+    {
+      "sequence_number": 17,
+      "run_id": "0017_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-34-56",
+      "started_at": "2026-03-17T10:34:56.112328+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 7,
+        "project_open top_menus": 7,
+        "diff summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0017_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-34-56.log",
+      "json_path": "data\\run_logs\\runs\\0017_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-34-56.json"
     }
   ]
 }

@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 30108,
+  "process_id": 27140,
   "state_id": "no_project",
-  "timestamp": "2026-03-17T10:28:49.934095+00:00",
+  "timestamp": "2026-03-17T10:34:58.736091+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -37,22 +37,22 @@
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 30108,
-      "title": "WinWatt gólya"
-    },
-    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 1152,
       "title": "GitHub Desktop"
     },
     {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 27140,
+      "title": "WinWatt gólya"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "WebWatt - Google Chrome"
+      "title": "Codex - Google Chrome"
     },
     {
       "class_name": "rctrl_renwnd32",

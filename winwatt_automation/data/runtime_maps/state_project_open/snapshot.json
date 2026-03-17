@@ -10,20 +10,26 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 2885916,
-    "process_id": 30108,
+    "handle": 1576324,
+    "process_id": 27140,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": false,
-  "mapping_stop_reason": null,
-  "process_id": 30108,
+  "mapping_partial": true,
+  "mapping_stop_reason": "lost_main_window_after:Súgó",
+  "process_id": 27140,
   "state_id": "project_open",
-  "timestamp": "2026-03-17T10:29:14.521042+00:00",
+  "timestamp": "2026-03-17T10:35:25.617657+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "Windows.UI.Core.CoreWindow",
+      "handle": null,
+      "process_id": 35732,
+      "title": "Új értesítés"
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -33,7 +39,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 30108,
+      "process_id": 27140,
       "title": "WinWatt gólya"
     },
     {
@@ -52,7 +58,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "WebWatt - Google Chrome"
+      "title": "Codex - Google Chrome"
     },
     {
       "class_name": "rctrl_renwnd32",
