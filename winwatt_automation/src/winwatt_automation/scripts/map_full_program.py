@@ -52,7 +52,7 @@ def _close_winwatt_after_mapping() -> dict[str, str | bool | None]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Map full WinWatt runtime structure")
     parser.add_argument("--project-path", default=DEFAULT_TEST_PROJECT_PATH)
-    parser.add_argument("--safe-mode", default="safe", choices=["safe", "caution", "blocked"])
+    parser.add_argument("--safe-mode", default="safe", choices=["safe", "hybrid", "caution", "blocked"])
     parser.add_argument("--output-dir", default="data/runtime_maps")
     parser.add_argument("--state-id-prefix", default="state")
     parser.add_argument("--top-menus", default=None)
