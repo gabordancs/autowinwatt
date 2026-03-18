@@ -555,40 +555,7 @@ def test_menu_items_reentrancy_guard_falls_back_to_direct_query(monkeypatch):
     assert result == items
     assert state["reentered"] is True
 
-def test_system_menu_fallback_uses_isolated_popup_region_capture(monkeypatch):
-    class MenuItem:
-        def __init__(self, name, left, top, right, bottom):
-            self._name = name
-            self._rect = types.SimpleNamespace(left=left, top=top, right=right, bottom=bottom)
-            self.element_info = types.SimpleNamespace(
-                control_type="MenuItem",
-                class_name="",
-                handle=None,
-                process_id=1,
-                name=name,
-            )
-
-        def rectangle(self):
-            return self._rect
-
-        def is_visible(self):
-            return True
-
-        def window_text(self):
-            return self._name
-
-    items = [
-        MenuItem("Rendszer", 5, 5, 80, 30),
-        MenuItem("Előző méret", 4, 55, 220, 80),
-        MenuItem("Bezárás", 4, 82, 220, 107),
-    ]
-
-    class MainWindow:
-        element_info = types.SimpleNamespace(handle=555)
-
-        def descendants(self):
-            return list(items)
-
+def test_capture_system_menu_popup_falls_back_to_popup_region_rows(monkeypatch):
     monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [])
     monkeypatch.setattr(menu_helpers, "get_cached_main_window_snapshot", lambda: MainWindow())
     monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: (_ for _ in ()).throw(AssertionError("fallback should not force validated cache resolve")))

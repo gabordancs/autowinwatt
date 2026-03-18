@@ -478,17 +478,6 @@ def get_cached_main_window() -> Any:
             return cached_main_window
         age_s = now - MainWindowSession.last_validation_monotonic
         is_healthy, reason_code = _cached_window_health_status(cached_main_window)
-        if reason_code == "foreground_context_failed":
-            _best_effort_focus_window(cached_main_window)
-            refocused_healthy, refocused_reason_code = _cached_window_health_status(cached_main_window)
-            if refocused_healthy:
-                MainWindowSession.foreground_failure_count = 0
-                MainWindowSession.last_foreground_failure_monotonic = 0.0
-                MainWindowSession.last_validation_monotonic = now
-                logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_refocused_ok payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), age_s)
-                return cached_main_window
-            reason_code = refocused_reason_code
-            is_healthy = refocused_healthy
         _register_cached_window_health_result(reason_code=reason_code, now=now)
         if is_healthy:
             MainWindowSession.last_validation_monotonic = now
