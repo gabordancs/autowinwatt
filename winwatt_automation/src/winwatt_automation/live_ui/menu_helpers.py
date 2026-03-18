@@ -292,6 +292,52 @@ def _system_menu_row_from_wrapper(item: Any, *, source_scope: str) -> dict[str, 
     return row
 
 
+def _system_menu_fallback_rows_from_popup_region() -> list[dict[str, Any]]:
+    topbar_band = _main_window_topbar_band()
+    snapshot_rows = capture_menu_popup_snapshot()
+    popup_candidates: list[dict[str, Any]] = []
+    excluded_topbar: list[dict[str, Any]] = []
+
+    for row in snapshot_rows:
+        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        row["topbar_candidate"] = topbar_candidate
+        row["popup_candidate"] = popup_candidate
+        if popup_candidate and not topbar_candidate:
+            popup_candidates.append(row)
+            _log_popup_fragment("DBG_WINWATT_SYSTEM_MENU_FALLBACK_POPUP_CANDIDATE", row)
+            continue
+        if topbar_candidate:
+            excluded_topbar.append(row)
+            _log_popup_fragment("DBG_WINWATT_SYSTEM_MENU_FALLBACK_EXCLUDED_TOPBAR", row)
+
+    popup_candidates.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
+    logical_rows = _group_popup_fragments_into_logical_rows(popup_candidates)
+    for index, row in enumerate(logical_rows):
+        row["index"] = index
+        row["topbar_candidate"] = False
+        row["popup_candidate"] = True
+        row["source_scope"] = "system_menu_fallback"
+        logger.info(
+            "DBG_WINWATT_SYSTEM_MENU_FALLBACK_FINAL_ROW row_index={} text={!r} rectangle={} fragments={} source_scope_summary={}",
+            index,
+            row.get("text"),
+            row.get("rectangle"),
+            [fragment.get("text", "") for fragment in row.get("fragments", [])],
+            row.get("source_scope_summary", []),
+        )
+
+    logger.info(
+        "DBG_WINWATT_SYSTEM_MENU_FALLBACK_SUMMARY snapshot_rows={} popup_region_candidates={} excluded_topbar_candidates={} logical_rows={} topbar_band={} foreground={}",
+        len(snapshot_rows),
+        len(popup_candidates),
+        len(excluded_topbar),
+        len(logical_rows),
+        _rect_tuple(topbar_band),
+        describe_foreground_window(),
+    )
+    return logical_rows
+
+
 def open_system_menu(main_window: Any) -> None:
     ensure_main_window_foreground_before_click(action_label="open_system_menu")
     logger.info("DBG_WINWATT_SYSTEM_MENU_OPEN_START method=alt_space foreground_before={}", describe_foreground_window())
@@ -310,6 +356,9 @@ def open_system_menu(main_window: Any) -> None:
 
 def capture_system_menu_popup() -> list[dict[str, Any]]:
     windows = _system_menu_windows()
+    if not windows:
+        return _system_menu_fallback_rows_from_popup_region()
+
     rows: list[dict[str, Any]] = []
     seen: set[tuple[int, int, int, int, str, str]] = set()
 

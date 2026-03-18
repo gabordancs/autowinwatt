@@ -74,6 +74,7 @@ def test_menu_helpers_list_and_click(monkeypatch):
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
     monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: types.SimpleNamespace(rectangle=lambda: types.SimpleNamespace(left=0, top=0, right=500, bottom=300)))
     monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
+    monkeypatch.setattr(menu_helpers, "is_winwatt_foreground_context", lambda *args, **kwargs: True)
     monkeypatch.setattr(menu_helpers, "did_any_new_menu_popup_appear", lambda before, after: True)
     menu_helpers.click_top_menu_item("Fájl")
     assert file_item.clicked is True
@@ -103,6 +104,7 @@ def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
     monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: types.SimpleNamespace(rectangle=lambda: types.SimpleNamespace(left=0, top=0, right=500, bottom=300)))
     monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
+    monkeypatch.setattr(menu_helpers, "is_winwatt_foreground_context", lambda *args, **kwargs: True)
     snapshots = iter([set(), {("popup", "", "", "", "")}])
     monkeypatch.setattr(menu_helpers, "wait_for_new_menu_popup", lambda before_snapshot, **kwargs: next(snapshots))
 
@@ -131,6 +133,7 @@ def test_click_top_menu_item_adjusts_point_outside_forbidden_zone(monkeypatch):
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: main_window)
     monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: main_window)
     monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
+    monkeypatch.setattr(menu_helpers, "is_winwatt_foreground_context", lambda *args, **kwargs: True)
     monkeypatch.setattr(menu_helpers, "wait_for_new_menu_popup", lambda before_snapshot, **kwargs: {("popup", "", "", "", "")})
     monkeypatch.setattr(menu_helpers, "_menu_snapshot", lambda: set())
 
@@ -488,6 +491,86 @@ def test_system_menu_detected_and_failed(monkeypatch):
 
     with pytest.raises(RuntimeError, match="failed_system_menu"):
         menu_helpers._validate_post_menu_open_foreground(types.SimpleNamespace(), title="Fájl")
+
+
+def test_capture_system_menu_popup_falls_back_to_popup_region_rows(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [])
+    monkeypatch.setattr(
+        menu_helpers,
+        "_main_window_topbar_band",
+        lambda: {"left": 0, "top": 0, "right": 500, "bottom": 40, "width": 500, "height": 40, "center_x": 250, "center_y": 20},
+    )
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
+    monkeypatch.setattr(
+        menu_helpers,
+        "capture_menu_popup_snapshot",
+        lambda: [
+            {
+                "text": "Rendszer",
+                "normalized_text": "rendszer",
+                "control_type": "MenuItem",
+                "class_name": "",
+                "rectangle": {"left": 5, "top": 5, "right": 80, "bottom": 30},
+                "width": 75,
+                "height": 25,
+                "center_x": 42,
+                "center_y": 17,
+                "is_separator": False,
+                "source_scope": "main_window",
+                "topbar_candidate": True,
+                "popup_candidate": False,
+            },
+            {
+                "text": "Előző méret",
+                "normalized_text": "előző méret",
+                "control_type": "MenuItem",
+                "class_name": "",
+                "rectangle": {"left": 4, "top": 55, "right": 220, "bottom": 80},
+                "width": 216,
+                "height": 25,
+                "center_x": 112,
+                "center_y": 67,
+                "is_separator": False,
+                "source_scope": "main_window",
+                "topbar_candidate": False,
+                "popup_candidate": True,
+            },
+            {
+                "text": "Bezárás",
+                "normalized_text": "bezárás",
+                "control_type": "MenuItem",
+                "class_name": "",
+                "rectangle": {"left": 4, "top": 82, "right": 220, "bottom": 107},
+                "width": 216,
+                "height": 25,
+                "center_x": 112,
+                "center_y": 94,
+                "is_separator": False,
+                "source_scope": "main_window",
+                "topbar_candidate": False,
+                "popup_candidate": True,
+            },
+        ],
+    )
+
+    rows = menu_helpers.capture_system_menu_popup()
+
+    assert [row["text"] for row in rows] == ["Előző méret", "Bezárás"]
+    assert all(row["source_scope"] == "system_menu_fallback" for row in rows)
+    assert all(row["popup_candidate"] is True for row in rows)
+
+
+def test_capture_system_menu_popup_prefers_real_system_menu_windows(monkeypatch):
+    monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [object()])
+    fallback_calls: list[str] = []
+    monkeypatch.setattr(menu_helpers, "_system_menu_fragment_candidates", lambda window: [])
+    monkeypatch.setattr(menu_helpers, "_system_menu_fallback_rows_from_popup_region", lambda: fallback_calls.append("fallback") or [])
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "System", "class_name": "#32768", "process_id": 1})
+
+    rows = menu_helpers.capture_system_menu_popup()
+
+    assert rows == []
+    assert fallback_calls == []
 
 
 def test_click_top_menu_item_focus_guard_failure(monkeypatch):
