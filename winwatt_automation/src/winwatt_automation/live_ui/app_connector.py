@@ -44,6 +44,11 @@ class MainWindowSession:
     process_id: int | None = None
     last_validation_monotonic: float = 0.0
     validation_interval_s: float = 4.0
+    foreground_failure_count: int = 0
+    last_foreground_failure_monotonic: float = 0.0
+    last_resolve_attempt_monotonic: float = 0.0
+    foreground_resolve_throttle_window_s: float = 12.0
+    foreground_resolve_attempt_limit: int = 2
 
 
 def _safe_call(obj: Any, method_name: str, default: Any = None) -> Any:
@@ -404,35 +409,56 @@ def _resolve_uia_main_window() -> Any:
     return main_window
 
 
-def _cached_window_is_healthy(main_window: Any) -> bool:
+def _cached_window_health_status(main_window: Any) -> tuple[bool, str]:
     exists = getattr(main_window, "exists", None)
     if callable(exists):
         try:
             if not bool(exists(timeout=0.2)):
                 logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=exists_failed payload={}", _window_identity_payload(main_window))
-                return False
+                return False, "exists_failed"
         except Exception as exc:
             logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=exists_failed payload={} exception_class={} exception_message={}", _window_identity_payload(main_window), exc.__class__.__name__, exc)
-            return False
+            return False, "exists_failed"
 
     cached_process_id = WinWattSession.process_id
     process_id = _safe_call(main_window, "process_id", None)
     if cached_process_id is not None and process_id is not None and int(process_id) != int(cached_process_id):
         logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=pid_mismatch cached_process_id={} actual_process_id={} payload={}", cached_process_id, process_id, _window_identity_payload(main_window))
-        return False
+        return False, "pid_mismatch"
 
     cached_handle = WinWattSession.handle
     handle = _wrapper_handle(main_window)
     if cached_handle is not None and handle is not None and int(handle) != int(cached_handle):
         logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=handle_mismatch cached_handle={} actual_handle={} payload={}", cached_handle, handle, _window_identity_payload(main_window))
-        return False
+        return False, "handle_mismatch"
 
     if not is_winwatt_foreground_context(main_window, allow_dialog=True):
         logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=foreground_context_failed payload={} foreground={}", _window_identity_payload(main_window), describe_foreground_window())
-        return False
+        return False, "foreground_context_failed"
 
     logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={}", _window_identity_payload(main_window))
-    return True
+    return True, "healthy"
+
+
+def _register_cached_window_health_result(*, reason_code: str, now: float) -> None:
+    if reason_code == "foreground_context_failed":
+        if now - MainWindowSession.last_foreground_failure_monotonic > MainWindowSession.foreground_resolve_throttle_window_s:
+            MainWindowSession.foreground_failure_count = 0
+        MainWindowSession.foreground_failure_count += 1
+        MainWindowSession.last_foreground_failure_monotonic = now
+        return
+
+    MainWindowSession.foreground_failure_count = 0
+    MainWindowSession.last_foreground_failure_monotonic = 0.0
+
+
+def _foreground_resolve_is_throttled(now: float) -> bool:
+    if MainWindowSession.foreground_failure_count < MainWindowSession.foreground_resolve_attempt_limit:
+        return False
+    last_attempt = MainWindowSession.last_resolve_attempt_monotonic
+    if last_attempt <= 0:
+        return False
+    return now - last_attempt < MainWindowSession.foreground_resolve_throttle_window_s
 
 
 def get_cached_main_window() -> Any:
@@ -447,11 +473,27 @@ def get_cached_main_window() -> Any:
             logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_reused_without_validation payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), now - MainWindowSession.last_validation_monotonic)
             return cached_main_window
         age_s = now - MainWindowSession.last_validation_monotonic
-        if _cached_window_is_healthy(cached_main_window):
+        is_healthy, reason_code = _cached_window_health_status(cached_main_window)
+        _register_cached_window_health_result(reason_code=reason_code, now=now)
+        if is_healthy:
             MainWindowSession.last_validation_monotonic = now
             logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), age_s)
             return cached_main_window
-        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_invalid_resolving_fresh payload={}", _window_identity_payload(cached_main_window))
+        if reason_code == "foreground_context_failed" and _foreground_resolve_is_throttled(now):
+            elapsed_since_last_resolve_s = now - MainWindowSession.last_resolve_attempt_monotonic
+            logger.info(
+                "DBG_WINWATT_CACHE_RESOLVE_THROTTLED reason_code={} failure_count={} throttle_window_s={} elapsed_since_last_resolve_s={} payload={} foreground={}",
+                reason_code,
+                MainWindowSession.foreground_failure_count,
+                MainWindowSession.foreground_resolve_throttle_window_s,
+                elapsed_since_last_resolve_s,
+                _window_identity_payload(cached_main_window),
+                describe_foreground_window(),
+            )
+            MainWindowSession.last_validation_monotonic = now
+            return cached_main_window
+        MainWindowSession.last_resolve_attempt_monotonic = now
+        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_invalid_resolving_fresh payload={} health_reason={}", _window_identity_payload(cached_main_window), reason_code)
     else:
         logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh")
 
@@ -459,6 +501,8 @@ def get_cached_main_window() -> Any:
     MainWindowSession.window = resolved
     MainWindowSession.process_id = WinWattSession.process_id
     MainWindowSession.last_validation_monotonic = time.monotonic()
+    MainWindowSession.foreground_failure_count = 0
+    MainWindowSession.last_foreground_failure_monotonic = 0.0
     return resolved
 
 
