@@ -27,3 +27,10 @@ def test_is_action_allowed_hybrid_aliases_caution():
     caution_path = ["Projekt", "Export"]
 
     assert is_action_allowed(caution_path, mode="hybrid") is True
+
+
+def test_is_action_allowed_off_disables_safety_skips():
+    blocked_path = ["Projekt", "Reset"]
+
+    assert is_action_allowed(blocked_path, mode="off") is True
+    assert is_action_allowed(blocked_path, mode="unsafe") is True

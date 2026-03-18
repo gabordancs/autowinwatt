@@ -76,8 +76,16 @@ def test_config_env_fallbacks(monkeypatch, tmp_path: Path):
     config = ControllerConfig.from_env(repo_root=tmp_path)
 
     assert config.default_timeout_seconds == 300
-    assert config.default_safe_mode == "safe"
+    assert config.default_safe_mode == "off"
     assert str(config.chat_brief_output_path).endswith("data/chat_prep/latest_chat_brief.txt")
+
+
+def test_config_accepts_off_safe_mode(monkeypatch, tmp_path: Path):
+    monkeypatch.setenv("WWA_CONTROLLER_SAFE_MODE", "off")
+
+    config = ControllerConfig.from_env(repo_root=tmp_path)
+
+    assert config.default_safe_mode == "off"
 
 
 def test_config_accepts_hybrid_safe_mode(monkeypatch, tmp_path: Path):

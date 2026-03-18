@@ -859,7 +859,7 @@ def explore_menu_tree(
     state_id: str,
     top_menu: str,
     safe_mode: str,
-    max_depth: int,
+    max_depth: int | None,
     include_disabled: bool,
     depth: int = 1,
     parent_path: list[str] | None = None,
@@ -978,7 +978,7 @@ def explore_menu_tree(
         )
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
-        if depth < max_depth and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
+        if (max_depth is None or max_depth < 0 or depth < max_depth) and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
             active_popup_rows = _reopen_parent_popup_rows(
                 state_id=state_id,
                 top_menu=top_menu,
@@ -1157,9 +1157,9 @@ def _diff_summary_markdown(diff: RuntimeStateDiff) -> str:
 def map_runtime_state(
     *,
     state_id: str,
-    safe_mode: str = "safe",
+    safe_mode: str = "off",
     top_menus: list[str] | None = None,
-    max_submenu_depth: int = 3,
+    max_submenu_depth: int | None = None,
     include_disabled: bool = True,
     known_paths_to_skip: set[tuple[str, ...]] | None = None,
 ) -> RuntimeStateMap:
@@ -1467,11 +1467,11 @@ def _knowledge_markdown(verification: dict[str, Any]) -> str:
 
 def build_full_runtime_program_map(
     project_path: str | None = None,
-    safe_mode: str = "safe",
+    safe_mode: str = "off",
     output_dir: str | Path = "data/runtime_maps",
     state_id_prefix: str = "state",
     top_menus: list[str] | None = None,
-    max_submenu_depth: int = 3,
+    max_submenu_depth: int | None = None,
     include_disabled: bool = True,
     event_recorder: Callable[[str, dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
