@@ -360,6 +360,16 @@
       },
       "log_path": "data\\run_logs\\runs\\0023_progress_overlay_2026-03-18_19-27-45.log",
       "json_path": "data\\run_logs\\runs\\0023_progress_overlay_2026-03-18_19-27-45.json"
+    },
+    {
+      "sequence_number": 24,
+      "run_id": "0024_progress_overlay_2026-03-18_19-49-27",
+      "started_at": "2026-03-18T19:49:27.560525+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0024_progress_overlay_2026-03-18_19-49-27.log",
+      "json_path": "data\\run_logs\\runs\\0024_progress_overlay_2026-03-18_19-49-27.json"
     }
   ]
 }

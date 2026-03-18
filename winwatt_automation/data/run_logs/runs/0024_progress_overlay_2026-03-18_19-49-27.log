@@ -1,0 +1,221 @@
+run_id=0024_progress_overlay_2026-03-18_19-49-27
+started_at=2026-03-18T19:49:27.560525+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay
+
+2026-03-18 20:49:29.131 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 14532, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-18 20:49:29.135 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=14532 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-18 20:49:29.187 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:238 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 14532, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 20:49:29.201 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:252 - Resolved win32 main window after process attach process_id=14532 resolved_handle=None
+2026-03-18 20:49:29.202 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:288 - Connected to WinWatt backend=uia process_id=14532
+2026-03-18 20:49:29.203 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:290 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 20:49:45.350 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 14532, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-18 20:49:45.350 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=14532 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-18 20:49:45.353 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:238 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 14532, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 20:49:45.361 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:252 - Resolved win32 main window after process attach process_id=14532 resolved_handle=None
+2026-03-18 20:49:45.363 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:288 - Connected to WinWatt backend=uia process_id=14532
+2026-03-18 20:49:45.364 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:290 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 20:49:55.366 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:251 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 20:50:04.914 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 14532, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-18 20:50:04.915 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=14532 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-18 20:50:04.917 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:238 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 14532, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 20:50:04.924 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:252 - Resolved win32 main window after process attach process_id=14532 resolved_handle=None
+2026-03-18 20:50:04.925 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:288 - Connected to WinWatt backend=uia process_id=14532
+2026-03-18 20:50:04.926 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:290 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 20:50:09.262 | INFO     | winwatt_automation.runtime_mapping.program_mapper:get_canonical_top_menu_names:216 - Canonical top-level menus [7]: ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 20:50:20.697 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 14532, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-18 20:50:20.698 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=14532 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-18 20:50:20.700 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:238 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 14532, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 20:50:20.711 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:252 - Resolved win32 main window after process attach process_id=14532 resolved_handle=None
+2026-03-18 20:50:20.712 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:288 - Connected to WinWatt backend=uia process_id=14532
+2026-03-18 20:50:20.713 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:290 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 20:50:32.647 | WARNING  | winwatt_automation.runtime_mapping.program_mapper:should_restore_clean_menu_baseline:238 - baseline_restore_needed state=no_project stage=after:Rendszer reason=focus_lost
+2026-03-18 20:50:40.162 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 14532, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-18 20:50:40.163 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=14532 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-18 20:50:40.164 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:238 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 14532, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 20:50:40.174 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:252 - Resolved win32 main window after process attach process_id=14532 resolved_handle=None
+2026-03-18 20:50:40.176 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:288 - Connected to WinWatt backend=uia process_id=14532
+2026-03-18 20:50:40.176 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:290 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 20:50:49.561 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:674 - focus_guard precheck action=baseline_restore:no_project:after:Rendszer main_handle=2885464 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-18 20:50:55.067 | ERROR    | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:717 - focus_guard result action=baseline_restore:no_project:after:Rendszer status=focus_failed foreground={'handle': 2885464, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'process_id': 14532}
+2026-03-18 20:51:03.625 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:restore_clean_menu_baseline:266 - baseline_restore failed state=no_project stage=after:Rendszer error=focus_not_restored: could not bring WinWatt to foreground for action=baseline_restore:no_project:after:Rendszer foreground_title=WinWatt gólya foreground_class=TMainForm
+2026-03-18 20:51:03.626 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:map_runtime_state:1270 - unrecoverable main window loss after top menu state=no_project top_menu=Rendszer
+[event] state_mapped: {"actions": 0, "dialogs": 0, "state_id": "no_project", "top_menus": 7}
+2026-03-18 20:51:26.983 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:251 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 20:51:28.965 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:500 - Preparing WinWatt window for menu interaction
+2026-03-18 20:51:38.447 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:520 - Window state before: normal
+2026-03-18 20:51:40.619 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:541 - Window maximized
+2026-03-18 20:51:40.712 | INFO     | winwatt_automation.live_ui.app_connector:prepare_main_window_for_menu_interaction:550 - Focus confirmed
+2026-03-18 20:51:57.959 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:674 - focus_guard precheck action=open_file_menu main_handle=2885464 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-18 20:52:01.442 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:693 - focus_guard result action=open_file_menu status=focus_ok
+2026-03-18 20:52:42.840 | WARNING  | winwatt_automation.live_ui.menu_helpers:_coerce_point_outside_forbidden_top_left_zone:63 - adjusted_click_outside_forbidden_zone original_point=(16, 32) adjusted_point=(62, 38) main_left=-10 main_top=-10
+2026-03-18 20:52:50.535 | INFO     | winwatt_automation.live_ui.menu_helpers:_click_main_window_at_point:93 - Adjusted top menu click used title=Fájl rel_x=72 rel_y=48
+2026-03-18 20:52:50.600 | INFO     | winwatt_automation.live_ui.menu_helpers:_validate_post_menu_open_foreground:102 - post_click_foreground_validation title=Fájl foreground={'handle': 2885464, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'process_id': 14532}
+2026-03-18 20:54:42.187 | INFO     | winwatt_automation.live_ui.menu_helpers:open_file_menu_and_capture_popup_state:780 - Menu open transitions: before snapshot row count=14 after snapshot row count=70 structured row count=14 top menu clicked more than once=False
+2026-03-18 20:54:42.189 | INFO     | winwatt_automation.runtime_mapping.program_mapper:recover_after_project_open:779 - project_open_recovery_start timeout_s=15.0 poll_interval_s=0.25
+2026-03-18 20:54:58.614 | INFO     | winwatt_automation.runtime_mapping.program_mapper:recover_after_project_open:790 - project_open_recovery_success
+[event] project_open_result: {"dialog_found": false, "error": "Could not locate 'Projekt megnyitás' row in Fájl popup.", "success": false}
+[event] project_open_recovery: {"modal_detected": false, "reason": "main_window_ready", "success": true}
+2026-03-18 20:55:41.265 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:251 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 20:55:54.270 | INFO     | winwatt_automation.runtime_mapping.program_mapper:get_canonical_top_menu_names:216 - Canonical top-level menus [7]: ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 20:56:38.352 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 2250400) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 14532, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}, 'size': {'width': 1940, 'height': 1160}}
+2026-03-18 20:56:38.354 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=14532 handle=None score=(1, 1, 1, 1, 2250400) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=2250400']
+2026-03-18 20:56:38.360 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:238 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 14532, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 20:56:38.389 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:252 - Resolved win32 main window after process attach process_id=14532 resolved_handle=None
+2026-03-18 20:56:38.391 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:288 - Connected to WinWatt backend=uia process_id=14532
+2026-03-18 20:56:38.394 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:290 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 20:56:49.912 | INFO     | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:674 - focus_guard precheck action=click_structured_popup_row[0] main_handle=2885464 exists=True visible=True enabled=True rect={'left': -10, 'top': -10, 'right': 1930, 'bottom': 1150, 'width': 1940, 'height': 1160}
+2026-03-18 20:56:59.647 | ERROR    | winwatt_automation.live_ui.app_connector:ensure_main_window_foreground_before_click:717 - focus_guard result action=click_structured_popup_row[0] status=focus_failed foreground={'handle': 2885464, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'process_id': 14532}
+2026-03-18 20:57:44.703 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:map_runtime_state:1232 - Top menu mapping failed: Rendszer
+Traceback (most recent call last):
+
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 250, in __resolve_control
+    ctrl = wait_until_passes(
+           └ <function wait_until_passes at 0x0000020A81196AE0>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\timings.py", line 458, in wait_until_passes
+    raise err
+          └ TimeoutError()
+
+pywinauto.timings.TimeoutError
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 178, in <module>
+    raise SystemExit(main())
+                     └ <function main at 0x0000020A80284670>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 96, in main
+    result = build_full_runtime_program_map(
+             └ <function build_full_runtime_program_map at 0x0000020A802840F0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1566, in build_full_runtime_program_map
+    state_project_open = map_runtime_state(
+                         └ <function map_runtime_state at 0x0000020A80282FB0>
+
+> File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1211, in map_runtime_state
+    tree, rows, actions, dialogs, windows = explore_menu_tree(
+          │                                 └ <function explore_menu_tree at 0x0000020A80282B90>
+          └ []
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1130, in explore_menu_tree
+    after_snapshot=capture_state_snapshot(state_id),
+                   │                      └ 'project_open'
+                   └ <function capture_state_snapshot at 0x0000020A802807D0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 289, in capture_state_snapshot
+    main_window = get_cached_main_window()
+                  └ <function get_cached_main_window at 0x0000020A80208250>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 388, in get_cached_main_window
+    if _cached_window_is_healthy(cached_main_window):
+       │                         └ <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>
+       └ <function _cached_window_is_healthy at 0x0000020A802080F0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 362, in _cached_window_is_healthy
+    process_id = _safe_call(main_window, "process_id", None)
+                 │          └ <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>
+                 └ <function _safe_call at 0x0000020A801BF060>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 50, in _safe_call
+    method = getattr(obj, method_name, None)
+                     │    └ 'process_id'
+                     └ <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>
+
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 396, in __getattribute__
+    ctrls = self.__resolve_control(self.criteria)
+            │                      │    └ [{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'app': <pywinauto.application.Application object at...
+            │                      └ <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>
+            └ <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 261, in __resolve_control
+    raise e.original_exception
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\timings.py", line 436, in wait_until_passes
+    func_val = func(*args, **kwargs)
+               │     │       └ {}
+               │     └ ([{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'app': <pywinauto.application.Application object a...
+               └ <bound method WindowSpecification.__get_ctrl of <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 203, in __get_ctrl
+    dialog = self.backend.generic_wrapper_class(findwindows.find_element(**criteria[0]))
+             │    │       │                     │           │              └ [{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'proc...
+             │    │       │                     │           └ <function find_element at 0x0000020A80C46140>
+             │    │       │                     └ <module 'pywinauto.findwindows' from 'C:\\Users\\dancsg\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\pyw...
+             │    │       └ <class 'pywinauto.controls.uiawrapper.UIAWrapper'>
+             │    └ <pywinauto.backend.BackEnd object at 0x0000020A81294050>
+             └ <pywinauto.application.WindowSpecification object at 0x0000020A8230DB50>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\findwindows.py", line 87, in find_element
+    raise ElementNotFoundError(kwargs)
+          │                    └ {'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'proce...
+          └ <class 'pywinauto.findwindows.ElementNotFoundError'>
+
+pywinauto.findwindows.ElementNotFoundError: {'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'process': 14532}
+2026-03-18 20:57:47.794 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:map_runtime_state:1232 - Top menu mapping failed: Fájl
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 178, in <module>
+    raise SystemExit(main())
+                     └ <function main at 0x0000020A80284670>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 96, in main
+    result = build_full_runtime_program_map(
+             └ <function build_full_runtime_program_map at 0x0000020A802840F0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1566, in build_full_runtime_program_map
+    state_project_open = map_runtime_state(
+                         └ <function map_runtime_state at 0x0000020A80282FB0>
+
+> File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1211, in map_runtime_state
+    tree, rows, actions, dialogs, windows = explore_menu_tree(
+          │                                 └ <function explore_menu_tree at 0x0000020A80282B90>
+          └ []
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 905, in explore_menu_tree
+    popup_rows = menu_helpers.capture_menu_popup_snapshot()
+                 │            └ <function capture_menu_popup_snapshot at 0x0000020A802D71C0>
+                 └ <module 'winwatt_automation.live_ui.menu_helpers' from 'C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation...
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 389, in capture_menu_popup_snapshot
+    merged = _menu_like_controls_from_main_window() + _menu_like_controls_from_global_process_scan()
+             │                                        └ <function _menu_like_controls_from_global_process_scan at 0x0000020A802D6F00>
+             └ <function _menu_like_controls_from_main_window at 0x0000020A802D6DA0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 289, in _menu_like_controls_from_main_window
+    for item in _menu_items():
+                └ <function _menu_items at 0x0000020A802D6560>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 204, in _menu_items
+    root = get_main_window()
+           └ <function get_main_window at 0x0000020A802D66C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 222, in get_main_window
+    return get_cached_main_window()
+           └ <function get_cached_main_window at 0x0000020A80208250>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 393, in get_cached_main_window
+    resolved = _resolve_uia_main_window()
+               └ <function _resolve_uia_main_window at 0x0000020A801BFED0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 282, in _resolve_uia_main_window
+    _, selected = _connect_with_win32_handle()
+                  └ <function _connect_with_win32_handle at 0x0000020A801BFC10>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 217, in _connect_with_win32_handle
+    selected = _resolve_main_window_candidate(backend="win32")
+               └ <function _resolve_main_window_candidate at 0x0000020A801BFAB0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 209, in _resolve_main_window_candidate
+    raise WinWattNotRunningError(f"No WinWatt-like windows found on backend={backend}")
+          │                                                                  └ 'win32'
+          └ <class 'winwatt_automation.live_ui.app_connector.WinWattNotRunningError'>
+
+winwatt_automation.live_ui.app_connector.WinWattNotRunningError: No WinWatt-like windows found on backend=win32
+[event] run_failed: {"error": "No WinWatt-like windows found on backend=win32"}
+
+finished_at=2026-03-18T19:57:51.841011+00:00 success=False exit_code=1

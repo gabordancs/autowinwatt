@@ -1,26 +1,20 @@
 {
-  "run_id": "0023_progress_overlay_2026-03-18_19-27-45",
-  "state": "finished",
-  "message": "Mapping finished successfully.",
+  "run_id": "0024_progress_overlay_2026-03-18_19-49-27",
+  "state": "failed",
+  "message": "Mapping failed.",
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay",
   "details": {
-    "exit_code": 0,
+    "exit_code": 1,
     "summary": {
-      "no_project_top_menus": 7,
-      "project_open_top_menus": 7,
-      "diff_summary": {
-        "shared_top_menus": 7,
-        "actions_only_in_a": 0,
-        "actions_only_in_b": 1,
-        "enabled_changes": 0,
-        "project_only_paths": 0
-      },
-      "skipped_by_safety": 1,
-      "last_error": null,
+      "no_project_top_menus": null,
+      "project_open_top_menus": null,
+      "diff_summary": {},
+      "skipped_by_safety": null,
+      "last_error": "No WinWatt-like windows found on backend=win32",
       "modal_detected": false,
-      "recovery_attempted": true,
-      "recovery_success": true
+      "recovery_attempted": false,
+      "recovery_success": false
     }
   },
-  "updated_at": "2026-03-18T19:44:31.888028+00:00"
+  "updated_at": "2026-03-18T19:57:51.876002+00:00"
 }

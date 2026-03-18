@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TkTopLevel",
-    "handle": 5312104,
-    "process_id": 29668,
+    "handle": 4263782,
+    "process_id": 34036,
     "title": "WinWatt mapper status"
   },
   "main_window_class": "TMainForm",
@@ -20,16 +20,10 @@
   "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "lost_main_window_after:Rendszer",
-  "process_id": 1348,
+  "process_id": 14532,
   "state_id": "no_project",
-  "timestamp": "2026-03-18T19:27:59.911513+00:00",
+  "timestamp": "2026-03-18T19:49:55.367517+00:00",
   "visible_top_windows": [
-    {
-      "class_name": "Windows.UI.Core.CoreWindow",
-      "handle": null,
-      "process_id": 35732,
-      "title": "Új értesítés"
-    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -39,7 +33,7 @@
     {
       "class_name": "TkTopLevel",
       "handle": null,
-      "process_id": 29668,
+      "process_id": 34036,
       "title": "WinWatt mapper status"
     },
     {
@@ -51,7 +45,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 1348,
+      "process_id": 14532,
       "title": "WinWatt gólya"
     },
     {
@@ -64,7 +58,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Codex - Google Chrome"
+      "title": "Review ujfutas commit for optimizations - Google Chrome"
     },
     {
       "class_name": "Window",
