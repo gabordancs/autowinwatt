@@ -493,64 +493,209 @@ def test_system_menu_detected_and_failed(monkeypatch):
         menu_helpers._validate_post_menu_open_foreground(types.SimpleNamespace(), title="Fájl")
 
 
-def test_capture_system_menu_popup_falls_back_to_popup_region_rows(monkeypatch):
+
+
+def test_main_window_topbar_band_uses_low_level_query_without_menu_items(monkeypatch):
+    class MenuItem:
+        def __init__(self, left, top, right, bottom, *, parent=None):
+            self._rect = types.SimpleNamespace(left=left, top=top, right=right, bottom=bottom)
+            self._parent = parent
+            self.element_info = types.SimpleNamespace(control_type="MenuItem", handle=100, process_id=1, class_name="")
+
+        def rectangle(self):
+            return self._rect
+
+        def parent(self):
+            return self._parent
+
+    menubar = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+    items = [MenuItem(10, 5, 80, 30, parent=menubar), MenuItem(90, 6, 150, 31, parent=menubar)]
+
+    class MainWindow:
+        element_info = types.SimpleNamespace(handle=555)
+
+        def descendants(self):
+            return list(items)
+
+    monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: MainWindow())
+    monkeypatch.setattr(menu_helpers, "_menu_items", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("_menu_items should not be called")))
+
+    band = menu_helpers._main_window_topbar_band(force_refresh=True)
+
+    assert band == {"left": 10, "top": 5, "right": 150, "bottom": 31, "width": 140, "height": 26, "center_x": 80, "center_y": 18}
+
+
+def test_menu_items_reentrancy_guard_falls_back_to_direct_query(monkeypatch):
+    class MenuItem:
+        def __init__(self):
+            self.element_info = types.SimpleNamespace(control_type="MenuItem", handle=100, process_id=1, class_name="")
+
+    items = [MenuItem(), MenuItem()]
+
+    class MainWindow:
+        element_info = types.SimpleNamespace(handle=777)
+
+        def descendants(self):
+            return list(items)
+
+    state = {"reentered": False}
+
+    def recursive_topbar(*, force_refresh=False):
+        if not state["reentered"]:
+            state["reentered"] = True
+            nested = menu_helpers._menu_items(force_refresh=force_refresh)
+            assert nested == items
+        return None
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: MainWindow())
+    monkeypatch.setattr(menu_helpers, "_main_window_topbar_band", recursive_topbar)
+
+    result = menu_helpers._menu_items(force_refresh=True)
+
+    assert result == items
+    assert state["reentered"] is True
+
+def test_system_menu_fallback_uses_isolated_popup_region_capture(monkeypatch):
+    class MenuItem:
+        def __init__(self, name, left, top, right, bottom):
+            self._name = name
+            self._rect = types.SimpleNamespace(left=left, top=top, right=right, bottom=bottom)
+            self.element_info = types.SimpleNamespace(
+                control_type="MenuItem",
+                class_name="",
+                handle=None,
+                process_id=1,
+                name=name,
+            )
+
+        def rectangle(self):
+            return self._rect
+
+        def is_visible(self):
+            return True
+
+        def window_text(self):
+            return self._name
+
+    items = [
+        MenuItem("Rendszer", 5, 5, 80, 30),
+        MenuItem("Előző méret", 4, 55, 220, 80),
+        MenuItem("Bezárás", 4, 82, 220, 107),
+    ]
+
+    class MainWindow:
+        element_info = types.SimpleNamespace(handle=555)
+
+        def descendants(self):
+            return list(items)
+
     monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [])
-    monkeypatch.setattr(
-        menu_helpers,
-        "_main_window_topbar_band",
-        lambda: {"left": 0, "top": 0, "right": 500, "bottom": 40, "width": 500, "height": 40, "center_x": 250, "center_y": 20},
-    )
+    monkeypatch.setattr(menu_helpers, "get_cached_main_window_snapshot", lambda: MainWindow())
+    monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: (_ for _ in ()).throw(AssertionError("fallback should not force validated cache resolve")))
     monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
     monkeypatch.setattr(
         menu_helpers,
         "capture_menu_popup_snapshot",
-        lambda: [
+        lambda: (_ for _ in ()).throw(AssertionError("normal snapshot pipeline must not be used for system menu fallback")),
+    )
+
+    rows = menu_helpers.capture_system_menu_popup()
+
+    assert [row["text"] for row in rows] == ["Előző méret", "Bezárás"]
+    assert all(row["source_scope"] == "system_menu_fallback" for row in rows)
+    assert all(row["popup_candidate"] is True for row in rows)
+
+
+
+
+def test_system_menu_fallback_retries_snapshot_when_off_foreground(monkeypatch):
+    class MainWindow:
+        element_info = types.SimpleNamespace(handle=777)
+
+    query_calls = {"count": 0}
+
+    def fake_query(root, *, force_refresh=False):
+        query_calls["count"] += 1
+        if query_calls["count"] == 1:
+            return []
+        return [
             {
-                "text": "Rendszer",
-                "normalized_text": "rendszer",
-                "control_type": "MenuItem",
-                "class_name": "",
-                "rectangle": {"left": 5, "top": 5, "right": 80, "bottom": 30},
-                "width": 75,
-                "height": 25,
-                "center_x": 42,
-                "center_y": 17,
-                "is_separator": False,
-                "source_scope": "main_window",
-                "topbar_candidate": True,
-                "popup_candidate": False,
-            },
-            {
-                "text": "Előző méret",
-                "normalized_text": "előző méret",
-                "control_type": "MenuItem",
-                "class_name": "",
-                "rectangle": {"left": 4, "top": 55, "right": 220, "bottom": 80},
-                "width": 216,
-                "height": 25,
-                "center_x": 112,
-                "center_y": 67,
-                "is_separator": False,
-                "source_scope": "main_window",
-                "topbar_candidate": False,
-                "popup_candidate": True,
-            },
-            {
-                "text": "Bezárás",
-                "normalized_text": "bezárás",
-                "control_type": "MenuItem",
-                "class_name": "",
-                "rectangle": {"left": 4, "top": 82, "right": 220, "bottom": 107},
-                "width": 216,
-                "height": 25,
-                "center_x": 112,
-                "center_y": 94,
-                "is_separator": False,
-                "source_scope": "main_window",
-                "topbar_candidate": False,
-                "popup_candidate": True,
-            },
-        ],
+                "dummy": True,
+            }
+        ]
+
+    candidate_row = {
+        "text": "Bezárás",
+        "normalized_text": "bezárás",
+        "control_type": "MenuItem",
+        "class_name": "",
+        "rectangle": {"left": 4, "top": 82, "right": 220, "bottom": 107},
+        "width": 216,
+        "height": 25,
+        "center_x": 112,
+        "center_y": 94,
+        "is_separator": False,
+        "source_scope": "system_menu_fallback_main_window",
+        "topbar_candidate": False,
+        "popup_candidate": True,
+    }
+
+    monkeypatch.setattr(menu_helpers, "get_cached_main_window_snapshot", lambda: MainWindow())
+    monkeypatch.setattr(menu_helpers, "is_winwatt_foreground_context", lambda *args, **kwargs: False)
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "VS Code", "class_name": "Chrome_WidgetWin_1", "process_id": 9})
+    monkeypatch.setattr(menu_helpers.time, "sleep", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(menu_helpers, "_query_menu_items_from_root", fake_query)
+    monkeypatch.setattr(menu_helpers, "_menu_row_from_wrapper", lambda item, **kwargs: candidate_row)
+    monkeypatch.setattr(menu_helpers, "_compute_topbar_band_from_items", lambda items: None)
+    monkeypatch.setattr(menu_helpers, "_compute_topbar_band_from_rows", lambda rows: {"left": 0, "top": 0, "right": 50, "bottom": 30, "width": 50, "height": 30, "center_x": 25, "center_y": 15})
+
+    popup_candidates, excluded_topbar, topbar_band = menu_helpers._capture_popup_region_rows_for_system_menu()
+
+    assert query_calls["count"] == 2
+    assert popup_candidates == [candidate_row]
+    assert excluded_topbar == []
+    assert topbar_band["bottom"] == 30
+
+def test_capture_system_menu_popup_falls_back_to_popup_region_rows_without_system_menu_window(monkeypatch):
+    popup_candidates = [
+        {
+            "text": "Előző méret",
+            "normalized_text": "előző méret",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 4, "top": 55, "right": 220, "bottom": 80},
+            "width": 216,
+            "height": 25,
+            "center_x": 112,
+            "center_y": 67,
+            "is_separator": False,
+            "source_scope": "system_menu_fallback_main_window",
+            "topbar_candidate": False,
+            "popup_candidate": True,
+        },
+        {
+            "text": "Bezárás",
+            "normalized_text": "bezárás",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 4, "top": 82, "right": 220, "bottom": 107},
+            "width": 216,
+            "height": 25,
+            "center_x": 112,
+            "center_y": 94,
+            "is_separator": False,
+            "source_scope": "system_menu_fallback_main_window",
+            "topbar_candidate": False,
+            "popup_candidate": True,
+        },
+    ]
+
+    monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [])
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
+    monkeypatch.setattr(
+        menu_helpers,
+        "_capture_popup_region_rows_for_system_menu",
+        lambda: (popup_candidates, [], {"left": 0, "top": 0, "right": 500, "bottom": 40, "width": 500, "height": 40, "center_x": 250, "center_y": 20}),
     )
 
     rows = menu_helpers.capture_system_menu_popup()

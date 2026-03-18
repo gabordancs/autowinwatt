@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from contextlib import contextmanager
 from typing import Any
 
 from loguru import logger
@@ -17,8 +18,10 @@ from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
     get_cached_main_window,
+    get_cached_main_window_snapshot,
     is_winwatt_foreground_context,
     prepare_main_window_for_menu_interaction,
+    _materialize_window_wrapper,
 )
 
 SYSTEM_MENU_CLASS_NAMES = {"#32768"}
@@ -34,6 +37,9 @@ SYSTEM_MENU_DEFAULT_ITEMS = {
     "maximize",
     "close",
 }
+TOPBAR_BAND_CACHE_TTL_S = 0.5
+_MENU_ITEMS_REENTRANCY_DEPTH = 0
+_TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
 
 
 def _rect_tuple(rect: dict[str, int] | None) -> tuple[int, int, int, int]:
@@ -50,28 +56,53 @@ def _center_tuple(row: dict[str, Any]) -> tuple[int, int]:
     return int(row.get("center_x") or 0), int(row.get("center_y") or 0)
 
 
-def _main_window_topbar_band() -> dict[str, int] | None:
+def _query_menu_items_from_root(root: Any, *, force_refresh: bool = False) -> list[Any]:
+    root = _materialize_window_wrapper(root)
+    handle = getattr(getattr(root, "element_info", root), "handle", None)
+    descendants = getattr(root, "descendants", None)
+    if not callable(descendants):
+        return []
+
+    def _query() -> list[Any]:
+        return [item for item in descendants() if _control_type(item) == "menuitem"]
+
+    ttl_s = 0.0 if force_refresh or handle is None else 0.5
+    return _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
+
+
+@contextmanager
+def _menu_items_reentrancy_guard(*, force_refresh: bool) -> Any:
+    global _MENU_ITEMS_REENTRANCY_DEPTH
+    if _MENU_ITEMS_REENTRANCY_DEPTH > 0:
+        logger.warning(
+            "DBG_WINWATT_MENU_REENTRANCY_GUARD depth={} force_refresh={} action=direct_query_fallback",
+            _MENU_ITEMS_REENTRANCY_DEPTH,
+            force_refresh,
+        )
+        yield False
+        return
+
+    _MENU_ITEMS_REENTRANCY_DEPTH += 1
     try:
-        main_window = get_cached_main_window()
-    except Exception:
-        return None
+        yield True
+    finally:
+        _MENU_ITEMS_REENTRANCY_DEPTH = max(0, _MENU_ITEMS_REENTRANCY_DEPTH - 1)
 
-    menu_bar = getattr(main_window, "child_window", None)
-    if callable(menu_bar):
-        try:
-            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
-            rect = _rectangle_data(menu_bar_ctrl)
-            if rect is not None:
-                return rect
-        except Exception:
-            pass
 
-    top_level_rects = [
-        rect
-        for item in _top_level_menu_items_raw(force_refresh=True)
-        for rect in [_rectangle_data(item)]
-        if rect is not None
-    ]
+def _top_level_menu_items_from_items(items: list[Any]) -> list[Any]:
+    top_level_items: list[Any] = []
+    for item in items:
+        parent_type = _control_type(_parent_wrapper(item))
+        if parent_type not in {"menu", "menubar"}:
+            continue
+        if _has_menuitem_ancestor(item):
+            continue
+        top_level_items.append(item)
+    return top_level_items
+
+
+def _compute_topbar_band_from_items(items: list[Any]) -> dict[str, int] | None:
+    top_level_rects = [rect for item in _top_level_menu_items_from_items(items) for rect in [_rectangle_data(item)] if rect is not None]
     if not top_level_rects:
         return None
 
@@ -89,6 +120,38 @@ def _main_window_topbar_band() -> dict[str, int] | None:
         "center_x": int((left + right) / 2),
         "center_y": int((top + bottom) / 2),
     }
+
+
+def _main_window_topbar_band(*, force_refresh: bool = False) -> dict[str, int] | None:
+    try:
+        main_window = _materialize_window_wrapper(get_cached_main_window())
+    except Exception:
+        return None
+
+    handle = getattr(getattr(main_window, "element_info", main_window), "handle", None)
+    now = time.monotonic()
+    if (
+        not force_refresh
+        and _TOPBAR_BAND_CACHE.get("handle") == handle
+        and now - float(_TOPBAR_BAND_CACHE.get("captured_at") or 0.0) < TOPBAR_BAND_CACHE_TTL_S
+    ):
+        return _TOPBAR_BAND_CACHE.get("band")
+
+    band: dict[str, int] | None = None
+    menu_bar = getattr(main_window, "child_window", None)
+    if callable(menu_bar):
+        try:
+            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
+            band = _rectangle_data(menu_bar_ctrl)
+        except Exception:
+            band = None
+
+    if band is None:
+        low_level_items = _query_menu_items_from_root(main_window, force_refresh=force_refresh)
+        band = _compute_topbar_band_from_items(low_level_items)
+
+    _TOPBAR_BAND_CACHE.update({"handle": handle, "captured_at": now, "band": band})
+    return band
 
 
 def _row_in_vertical_band(row: dict[str, Any], band: dict[str, int] | None) -> bool:
@@ -292,23 +355,88 @@ def _system_menu_row_from_wrapper(item: Any, *, source_scope: str) -> dict[str, 
     return row
 
 
-def _system_menu_fallback_rows_from_popup_region() -> list[dict[str, Any]]:
-    topbar_band = _main_window_topbar_band()
-    snapshot_rows = capture_menu_popup_snapshot()
+
+
+def _compute_topbar_band_from_rows(rows: list[dict[str, Any]]) -> dict[str, int] | None:
+    if not rows:
+        return None
+    min_top = min(int((row.get("rectangle") or {}).get("top", 0)) for row in rows)
+    top_cluster = [
+        row
+        for row in rows
+        if int((row.get("rectangle") or {}).get("top", 0)) <= min_top + TITLEBAR_ICON_GUARD_HEIGHT
+    ]
+    if not top_cluster:
+        return None
+
+    left = min(int((row.get("rectangle") or {}).get("left", 0)) for row in top_cluster)
+    top = min(int((row.get("rectangle") or {}).get("top", 0)) for row in top_cluster)
+    right = max(int((row.get("rectangle") or {}).get("right", 0)) for row in top_cluster)
+    bottom = max(int((row.get("rectangle") or {}).get("bottom", 0)) for row in top_cluster)
+    return {
+        "left": left,
+        "top": top,
+        "right": right,
+        "bottom": bottom,
+        "width": max(0, right - left),
+        "height": max(0, bottom - top),
+        "center_x": int((left + right) / 2),
+        "center_y": int((top + bottom) / 2),
+    }
+
+
+def _capture_popup_region_rows_for_system_menu() -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int] | None]:
+    logger.info("DBG_WINWATT_SYSTEM_MENU_FALLBACK_PATH method=isolated_popup_region_capture")
+    try:
+        main_window = _materialize_window_wrapper(get_cached_main_window_snapshot())
+        items = _query_menu_items_from_root(main_window, force_refresh=True)
+        if not items and not is_winwatt_foreground_context(main_window, allow_dialog=True):
+            logger.info(
+                "DBG_WINWATT_SYSTEM_MENU_FALLBACK_RETRY reason_code=empty_snapshot_off_foreground foreground={}",
+                describe_foreground_window(),
+            )
+            time.sleep(max(0.05, DEFAULT_UI_DELAY / 2))
+            items = _query_menu_items_from_root(main_window, force_refresh=True)
+    except Exception as exc:
+        logger.warning(
+            "DBG_WINWATT_SYSTEM_MENU_FALLBACK_CAPTURE_FAILED stage=query exception_class={} exception_message={}",
+            exc.__class__.__name__,
+            exc,
+        )
+        return [], [], None
+
+    preliminary_rows = [
+        row
+        for item in items
+        for row in [_menu_row_from_wrapper(item, source_scope="system_menu_fallback_main_window", topbar_band=None)]
+        if row is not None
+    ]
+    topbar_band = _compute_topbar_band_from_items(items) or _compute_topbar_band_from_rows(preliminary_rows)
     popup_candidates: list[dict[str, Any]] = []
     excluded_topbar: list[dict[str, Any]] = []
-
-    for row in snapshot_rows:
-        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
-        row["topbar_candidate"] = topbar_candidate
-        row["popup_candidate"] = popup_candidate
-        if popup_candidate and not topbar_candidate:
+    logger.info(
+        "DBG_WINWATT_SYSTEM_MENU_FALLBACK_SNAPSHOT menu_items={} preliminary_rows={} topbar_band={} foreground={}",
+        len(items),
+        len(preliminary_rows),
+        _rect_tuple(topbar_band),
+        describe_foreground_window(),
+    )
+    for item in items:
+        row = _menu_row_from_wrapper(item, source_scope="system_menu_fallback_main_window", topbar_band=topbar_band)
+        if row is None:
+            continue
+        if row["popup_candidate"] and not row["topbar_candidate"]:
             popup_candidates.append(row)
             _log_popup_fragment("DBG_WINWATT_SYSTEM_MENU_FALLBACK_POPUP_CANDIDATE", row)
             continue
-        if topbar_candidate:
+        if row["topbar_candidate"]:
             excluded_topbar.append(row)
             _log_popup_fragment("DBG_WINWATT_SYSTEM_MENU_FALLBACK_EXCLUDED_TOPBAR", row)
+    return popup_candidates, excluded_topbar, topbar_band
+
+
+def _system_menu_fallback_rows_from_popup_region() -> list[dict[str, Any]]:
+    popup_candidates, excluded_topbar, topbar_band = _capture_popup_region_rows_for_system_menu()
 
     popup_candidates.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
     logical_rows = _group_popup_fragments_into_logical_rows(popup_candidates)
@@ -328,7 +456,7 @@ def _system_menu_fallback_rows_from_popup_region() -> list[dict[str, Any]]:
 
     logger.info(
         "DBG_WINWATT_SYSTEM_MENU_FALLBACK_SUMMARY snapshot_rows={} popup_region_candidates={} excluded_topbar_candidates={} logical_rows={} topbar_band={} foreground={}",
-        len(snapshot_rows),
+        len(popup_candidates) + len(excluded_topbar),
         len(popup_candidates),
         len(excluded_topbar),
         len(logical_rows),
@@ -602,17 +730,12 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
 
 def _menu_items(*, force_refresh: bool = False) -> list[Any]:
     root = get_main_window()
-    topbar_band = _main_window_topbar_band()
+    with _menu_items_reentrancy_guard(force_refresh=force_refresh) as can_inspect_topbar:
+        if not can_inspect_topbar:
+            return _query_menu_items_from_root(root, force_refresh=force_refresh)
+        topbar_band = _main_window_topbar_band(force_refresh=force_refresh)
+        items = _query_menu_items_from_root(root, force_refresh=force_refresh)
     handle = getattr(getattr(root, "element_info", root), "handle", None)
-    descendants = getattr(root, "descendants", None)
-    if not callable(descendants):
-        return []
-
-    def _query() -> list[Any]:
-        return [item for item in descendants() if _control_type(item) == "menuitem"]
-
-    ttl_s = 0.0 if force_refresh or handle is None else 0.5
-    items = _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
     topbar_visible = 0
     popup_visible = 0
     visible_count = 0
@@ -650,15 +773,7 @@ def get_main_window() -> Any:
 
 
 def _top_level_menu_items_raw(*, force_refresh: bool = False) -> list[Any]:
-    items: list[Any] = []
-    for item in _menu_items(force_refresh=force_refresh):
-        parent_type = _control_type(_parent_wrapper(item))
-        if parent_type not in {"menu", "menubar"}:
-            continue
-        if _has_menuitem_ancestor(item):
-            continue
-        items.append(item)
-    return items
+    return _top_level_menu_items_from_items(_menu_items(force_refresh=force_refresh))
 
 
 def list_top_menu_items() -> list[str]:
@@ -711,42 +826,50 @@ def _is_separator_by_geometry(rect: dict[str, int]) -> bool:
     return height <= 3 or width <= 6 or (height <= 5 and width >= 40)
 
 
+
+
+def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[str, int] | None) -> dict[str, Any] | None:
+    if not _is_visible(item):
+        return None
+
+    rect = _rectangle_data(item)
+    if rect is None:
+        return None
+
+    info = getattr(item, "element_info", item)
+    row = {
+        "text": _name(item),
+        "normalized_text": _normalize(_name(item)),
+        "control_type": getattr(getattr(item, "element_info", item), "control_type", None),
+        "class_name": _class_name(item),
+        "rectangle": {
+            "left": rect["left"],
+            "top": rect["top"],
+            "right": rect["right"],
+            "bottom": rect["bottom"],
+        },
+        "width": rect["width"],
+        "height": rect["height"],
+        "center_x": rect["center_x"],
+        "center_y": rect["center_y"],
+        "is_separator": _is_separator_by_geometry(rect),
+        "source_scope": source_scope,
+        "process_id": getattr(info, "process_id", None),
+        "native_handle": getattr(info, "handle", None),
+    }
+    topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+    row["topbar_candidate"] = topbar_candidate
+    row["popup_candidate"] = popup_candidate
+    return row
+
+
 def _menu_like_controls_from_main_window() -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    topbar_band = _main_window_topbar_band()
     for item in _menu_items():
-        if not _is_visible(item):
+        row = _menu_row_from_wrapper(item, source_scope="main_window", topbar_band=topbar_band)
+        if row is None:
             continue
-
-        rect = _rectangle_data(item)
-        if rect is None:
-            continue
-
-        info = getattr(item, "element_info", item)
-        process_id = getattr(info, "process_id", None)
-        native_handle = getattr(info, "handle", None)
-        row = {
-                "text": _name(item),
-                "normalized_text": _normalize(_name(item)),
-                "control_type": getattr(getattr(item, "element_info", item), "control_type", None),
-                "class_name": _class_name(item),
-                "rectangle": {
-                    "left": rect["left"],
-                    "top": rect["top"],
-                    "right": rect["right"],
-                    "bottom": rect["bottom"],
-                },
-                "width": rect["width"],
-                "height": rect["height"],
-                "center_x": rect["center_x"],
-                "center_y": rect["center_y"],
-                "is_separator": _is_separator_by_geometry(rect),
-                "source_scope": "main_window",
-                "process_id": process_id,
-                "native_handle": native_handle,
-            }
-        topbar_candidate, popup_candidate = _classify_row_geometry(row, _main_window_topbar_band())
-        row["topbar_candidate"] = topbar_candidate
-        row["popup_candidate"] = popup_candidate
         rows.append(row)
         _log_popup_fragment("DBG_MENU_FRAGMENT_MAIN_WINDOW", row)
     logger.info("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=main_window count={}", len(rows))
@@ -762,6 +885,7 @@ def _menu_like_controls_from_global_process_scan() -> list[dict[str, Any]]:
     main_window = get_cached_main_window()
     process_id = main_window.process_id()
     desktop = Desktop(backend="uia")
+    topbar_band = _main_window_topbar_band()
 
     rows: list[dict[str, Any]] = []
     for window in desktop.windows(top_level_only=True):
@@ -772,37 +896,9 @@ def _menu_like_controls_from_global_process_scan() -> list[dict[str, Any]]:
             if not callable(descendants):
                 continue
             for item in descendants(control_type="MenuItem"):
-                if not _is_visible(item):
+                row = _menu_row_from_wrapper(item, source_scope="global_process_scan", topbar_band=topbar_band)
+                if row is None:
                     continue
-                rect = _rectangle_data(item)
-                if rect is None:
-                    continue
-                info = getattr(item, "element_info", item)
-                process_item_id = getattr(info, "process_id", None)
-                native_handle = getattr(info, "handle", None)
-                row = {
-                        "text": _name(item),
-                        "normalized_text": _normalize(_name(item)),
-                        "control_type": getattr(getattr(item, "element_info", item), "control_type", None),
-                        "class_name": _class_name(item),
-                        "rectangle": {
-                            "left": rect["left"],
-                            "top": rect["top"],
-                            "right": rect["right"],
-                            "bottom": rect["bottom"],
-                        },
-                        "width": rect["width"],
-                        "height": rect["height"],
-                        "center_x": rect["center_x"],
-                        "center_y": rect["center_y"],
-                        "is_separator": _is_separator_by_geometry(rect),
-                        "source_scope": "global_process_scan",
-                        "process_id": process_item_id,
-                        "native_handle": native_handle,
-                    }
-                topbar_candidate, popup_candidate = _classify_row_geometry(row, _main_window_topbar_band())
-                row["topbar_candidate"] = topbar_candidate
-                row["popup_candidate"] = popup_candidate
                 rows.append(row)
                 _log_popup_fragment("DBG_MENU_FRAGMENT_GLOBAL_SCAN", row)
         except Exception:
