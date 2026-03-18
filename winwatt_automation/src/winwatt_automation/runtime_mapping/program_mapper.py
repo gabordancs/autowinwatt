@@ -318,6 +318,20 @@ def _build_menu_rows_from_popup_rows(
         title_clean = clean_menu_title(title)
         normalized_title = normalize_menu_title(title)
         logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', title, normalized_title)
+        if not normalized_title:
+            logger.info(
+                "DBG_WINWATT_EMPTY_NORMALIZED_MENU_TITLE row_index={} raw_text={} normalized_text={} is_separator={} source_scope={} control_type={} class_name={} rectangle={} fragment_count={} fragment_texts={} ",
+                index,
+                text,
+                normalized_title,
+                bool(row.get("is_separator")),
+                row.get("source_scope"),
+                row.get("control_type"),
+                row.get("class_name"),
+                row.get("rectangle"),
+                len(list(row.get("fragments") or [])),
+                [fragment.get("text") for fragment in list(row.get("fragments") or [])],
+            )
         mapped.append(
             RuntimeMenuRow(
                 state_id=state_id,
@@ -353,6 +367,14 @@ def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str
         menu_helpers.click_structured_popup_row(popup_rows, row.row_index)
         return
     except Exception as exc:
+        popup_count = len(popup_rows) if popup_rows is not None else None
+        logger.info(
+            "DBG_WINWATT_STRUCTURED_ROW_CLICK_EXCEPTION exception_class={} exception_message={} current_path={} fallback_to_hover=True popup_rows_count={}",
+            exc.__class__.__name__,
+            str(exc),
+            row.menu_path,
+            popup_count,
+        )
         logger.debug("structured row click failed; fallback to hover path={} error={}", row.menu_path, exc)
     _hover_row(asdict(row))
 
