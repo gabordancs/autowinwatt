@@ -214,7 +214,34 @@ def _resolve_main_window_candidate(backend: str = "win32") -> dict[str, Any]:
 def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
     from pywinauto import Application
 
-    selected = _resolve_main_window_candidate(backend="win32")
+    candidates = list_candidate_windows(backend="win32")
+    ranked_candidates = sorted(
+        ((candidate, _selection_score(candidate)) for candidate in candidates if candidate.get("process_id") is not None),
+        key=lambda item: item[1],
+        reverse=True,
+    )
+    logger.info(
+        "DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates={} ",
+        [
+            {
+                "rank": index + 1,
+                "score": score,
+                "process_id": candidate.get("process_id"),
+                "handle": candidate.get("handle"),
+                "class_name": candidate.get("class_name"),
+                "title": candidate.get("title"),
+                "visible": candidate.get("is_visible"),
+                "enabled": candidate.get("is_enabled"),
+            }
+            for index, (candidate, score) in enumerate(ranked_candidates)
+        ],
+    )
+    selected = select_main_window(candidates, backend="win32")
+    logger.info(
+        "DBG_WINWATT_CONNECT_WIN32_SELECTED selected_payload={} selected_handle_is_none={}",
+        selected,
+        selected.get("handle") is None,
+    )
     process_id = selected.get("process_id")
     if process_id is None:
         raise WinWattNotRunningError("Selected WinWatt window has no process_id")
@@ -222,7 +249,16 @@ def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
     handle = selected.get("handle")
     connector = Application(backend="win32")
     if handle is not None:
-        app = connector.connect(handle=handle)
+        try:
+            app = connector.connect(handle=handle)
+        except Exception as exc:
+            logger.exception(
+                "DBG_WINWATT_CONNECT_WIN32_EXCEPTION locator=handle:{} exception_class={} exception_message={}",
+                handle,
+                exc.__class__.__name__,
+                exc,
+            )
+            raise
         logger.info(
             "Connected to WinWatt backend=win32 attach_mode=handle candidate={}",
             {
@@ -234,7 +270,16 @@ def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
         )
         return app, selected
 
-    app = connector.connect(process=process_id)
+    try:
+        app = connector.connect(process=process_id)
+    except Exception as exc:
+        logger.exception(
+            "DBG_WINWATT_CONNECT_WIN32_EXCEPTION locator=process:{} exception_class={} exception_message={}",
+            process_id,
+            exc.__class__.__name__,
+            exc,
+        )
+        raise
     logger.info(
         "Connected to WinWatt backend=win32 attach_mode=process candidate={}",
         {
@@ -250,9 +295,10 @@ def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
     if resolved_handle is not None:
         selected["handle"] = int(resolved_handle)
     logger.info(
-        "Resolved win32 main window after process attach process_id={} resolved_handle={}",
+        "DBG_WINWATT_CONNECT_WIN32_RESOLVED process_id={} resolved_handle={} selected_payload={}",
         process_id,
         selected.get("handle"),
+        selected,
     )
     return app, selected
 
@@ -280,6 +326,7 @@ def _resolve_uia_main_window() -> Any:
     from pywinauto import Application
 
     _, selected = _connect_with_win32_handle()
+    logger.info("DBG_WINWATT_RESOLVE_UIA_WIN32_SELECTED selected_payload={}", selected)
     process_id = selected.get("process_id")
     if process_id is None:
         raise WinWattNotRunningError("Selected WinWatt window has no process_id")
@@ -296,21 +343,29 @@ def _resolve_uia_main_window() -> Any:
         exists = getattr(main_window, "exists", None)
         if callable(exists) and not exists(timeout=1):
             raise WinWattNotRunningError("UIA main window lookup did not resolve an existing window")
+        logger.info(
+            "DBG_WINWATT_RESOLVE_UIA_PRIMARY selected_payload={} primary_result={} identity_match_with_win32={}",
+            selected,
+            _window_identity_payload(main_window),
+            _wrapper_handle(main_window) == selected.get("handle") if selected.get("handle") is not None else None,
+        )
         WinWattSession.app = app_uia
         WinWattSession.main_window = main_window
         WinWattSession.process_id = process_id
         WinWattSession.handle = _wrapper_handle(main_window)
         return main_window
-    except Exception:
+    except Exception as exc:
         logger.exception(
-            "Primary UIA lookup failed for process_id={}, enumerating top-level windows for fallback",
+            "DBG_WINWATT_RESOLVE_UIA_PRIMARY_EXCEPTION process_id={} reason={} exception_class={} exception_message={}",
             process_id,
+            "primary_lookup_failed",
+            exc.__class__.__name__,
+            exc,
         )
 
     top_level_windows = app_uia.windows(top_level_only=True)
     candidates = [_candidate_from_window(window, backend="uia") for window in top_level_windows]
-    for candidate in candidates:
-        logger.info("Fallback UIA candidate: {}", candidate)
+    logger.info("DBG_WINWATT_RESOLVE_UIA_FALLBACK_CANDIDATES candidates={}", candidates)
 
     def _uia_fallback_score(candidate: dict[str, Any]) -> tuple[int, int, int, int]:
         title = str(candidate.get("title") or "").lower()
@@ -331,11 +386,11 @@ def _resolve_uia_main_window() -> Any:
     best_candidate = ranked_candidates[0]
     best_handle = best_candidate.get("handle")
     logger.info(
-        "Fallback selected UIA candidate process_id={} handle={} class_name={} title={}",
+        "DBG_WINWATT_RESOLVE_UIA_FALLBACK_SELECTED process_id={} selected_candidate={} win32_selected={} identity_match_with_win32={}",
         process_id,
-        best_handle,
-        best_candidate.get("class_name"),
-        best_candidate.get("title"),
+        best_candidate,
+        selected,
+        best_handle == selected.get("handle") if best_handle is not None and selected.get("handle") is not None else None,
     )
     if best_handle is not None:
         main_window = app_uia.window(handle=best_handle)
@@ -354,23 +409,29 @@ def _cached_window_is_healthy(main_window: Any) -> bool:
     if callable(exists):
         try:
             if not bool(exists(timeout=0.2)):
+                logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=exists_failed payload={}", _window_identity_payload(main_window))
                 return False
-        except Exception:
+        except Exception as exc:
+            logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=exists_failed payload={} exception_class={} exception_message={}", _window_identity_payload(main_window), exc.__class__.__name__, exc)
             return False
 
     cached_process_id = WinWattSession.process_id
     process_id = _safe_call(main_window, "process_id", None)
     if cached_process_id is not None and process_id is not None and int(process_id) != int(cached_process_id):
+        logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=pid_mismatch cached_process_id={} actual_process_id={} payload={}", cached_process_id, process_id, _window_identity_payload(main_window))
         return False
 
     cached_handle = WinWattSession.handle
     handle = _wrapper_handle(main_window)
     if cached_handle is not None and handle is not None and int(handle) != int(cached_handle):
+        logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=handle_mismatch cached_handle={} actual_handle={} payload={}", cached_handle, handle, _window_identity_payload(main_window))
         return False
 
     if not is_winwatt_foreground_context(main_window, allow_dialog=True):
+        logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=foreground_context_failed payload={} foreground={}", _window_identity_payload(main_window), describe_foreground_window())
         return False
 
+    logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={}", _window_identity_payload(main_window))
     return True
 
 
@@ -383,12 +444,16 @@ def get_cached_main_window() -> Any:
         MainWindowSession.window = cached_main_window
         MainWindowSession.process_id = WinWattSession.process_id
         if now - MainWindowSession.last_validation_monotonic < MainWindowSession.validation_interval_s:
-            logger.debug("reusing cached WinWatt connection (validation deferred)")
+            logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_reused_without_validation payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), now - MainWindowSession.last_validation_monotonic)
             return cached_main_window
+        age_s = now - MainWindowSession.last_validation_monotonic
         if _cached_window_is_healthy(cached_main_window):
             MainWindowSession.last_validation_monotonic = now
-            logger.debug("reusing cached WinWatt connection")
+            logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), age_s)
             return cached_main_window
+        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_invalid_resolving_fresh payload={}", _window_identity_payload(cached_main_window))
+    else:
+        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh")
 
     resolved = _resolve_uia_main_window()
     MainWindowSession.window = resolved
@@ -412,6 +477,40 @@ def _wrapper_handle(wrapper: Any) -> int | None:
         return None
     info_handle = _safe_getattr(element_info, "handle", None)
     return int(info_handle) if info_handle is not None else None
+
+
+def _window_identity_payload(window: Any) -> dict[str, Any]:
+    """Return best-effort identity payload for a wrapper."""
+
+    element_info = _safe_getattr(window, "element_info", None)
+    title = _safe_call(window, "window_text", "") or ""
+    class_name = _safe_call(window, "class_name", None)
+    if class_name in (None, ""):
+        class_name = _safe_getattr(element_info, "class_name", None) or ""
+    process_id = _safe_call(window, "process_id", None)
+    handle = _wrapper_handle(window)
+    wrapper_type = type(window).__name__ if window is not None else None
+    control_type = _safe_getattr(element_info, "control_type", None)
+    return {
+        "wrapper_type": wrapper_type,
+        "handle": int(handle) if handle is not None else None,
+        "process_id": int(process_id) if process_id is not None else None,
+        "title": title,
+        "class_name": class_name,
+        "control_type": str(control_type) if control_type is not None else None,
+    }
+
+
+def _foreground_context_alignment(expected: dict[str, Any], actual: dict[str, Any], *, allow_dialog: bool) -> tuple[str, bool]:
+    expected_handle = expected.get("handle")
+    actual_handle = actual.get("handle")
+    expected_pid = expected.get("process_id")
+    actual_pid = actual.get("process_id")
+    if expected_handle is not None and actual_handle == expected_handle:
+        return "handle_match", True
+    if allow_dialog and expected_pid is not None and actual_pid == expected_pid:
+        return "pid_match_allow_dialog", True
+    return "no_match", False
 
 
 def focus_main_window() -> Any:
@@ -647,14 +746,23 @@ def describe_foreground_window() -> dict[str, Any]:
 def is_winwatt_foreground_context(main_window: Any, *, allow_dialog: bool = True) -> bool:
     """Validate whether foreground belongs to WinWatt main window or its own dialogs."""
 
-    main_handle = _wrapper_handle(main_window)
-    main_pid = _safe_call(main_window, "process_id", None)
-    fg = describe_foreground_window()
-    if fg.get("handle") == main_handle:
-        return True
-    if allow_dialog and main_pid is not None and fg.get("process_id") == main_pid:
-        return True
-    return False
+    expected = _window_identity_payload(main_window)
+    actual = describe_foreground_window()
+    result_reason, is_match = _foreground_context_alignment(expected, actual, allow_dialog=allow_dialog)
+    logger.info(
+        "DBG_WINWATT_FOREGROUND_CONTEXT expected_handle={} expected_process_id={} expected_title={} expected_class_name={} actual_foreground_handle={} actual_foreground_process_id={} actual_foreground_title={} actual_foreground_class_name={} allow_dialog={} result_reason={}",
+        expected.get("handle"),
+        expected.get("process_id"),
+        expected.get("title"),
+        expected.get("class_name"),
+        actual.get("handle"),
+        actual.get("process_id"),
+        actual.get("title"),
+        actual.get("class_name"),
+        allow_dialog,
+        result_reason,
+    )
+    return is_match
 
 
 def ensure_main_window_foreground_before_click(
@@ -671,10 +779,15 @@ def ensure_main_window_foreground_before_click(
     visible = bool(_safe_call(main_window, "is_visible", False))
     enabled = bool(_safe_call(main_window, "is_enabled", False))
     rect_payload = _rect_payload(_safe_call(main_window, "rectangle", None))
+    identity = _window_identity_payload(main_window)
     logger.info(
-        "focus_guard precheck action={} main_handle={} exists={} visible={} enabled={} rect={}",
+        "DBG_WINWATT_FOCUS_GUARD_PRECHECK action_label={} wrapper_type={} cached_handle={} cached_pid={} cached_title={} cached_class={} precheck_exists={} precheck_visible={} precheck_enabled={} rect={}",
         action_label,
-        _wrapper_handle(main_window),
+        identity.get("wrapper_type"),
+        identity.get("handle"),
+        identity.get("process_id"),
+        identity.get("title"),
+        identity.get("class_name"),
         exists,
         visible,
         enabled,
@@ -690,7 +803,16 @@ def ensure_main_window_foreground_before_click(
     deadline = time.time() + max(timeout, poll_interval)
     while time.time() < deadline:
         if is_winwatt_foreground_context(main_window, allow_dialog=allow_dialog):
-            logger.info("focus_guard result action={} status=focus_ok", action_label)
+            fg = describe_foreground_window()
+            context_reason, same_context = _foreground_context_alignment(identity, fg, allow_dialog=allow_dialog)
+            logger.info(
+                "DBG_WINWATT_FOCUS_GUARD_RESULT action_label={} status=focus_ok reason={} foreground={} same_context_as_cached_main={} win32_uia_identity_match={}",
+                action_label,
+                context_reason,
+                fg,
+                same_context,
+                fg.get("handle") == identity.get("handle") if fg.get("handle") is not None and identity.get("handle") is not None else None,
+            )
             return main_window
 
         set_focus = getattr(main_window, "set_focus", None)
@@ -714,7 +836,15 @@ def ensure_main_window_foreground_before_click(
         time.sleep(poll_interval)
 
     fg = describe_foreground_window()
-    logger.error("focus_guard result action={} status=focus_failed foreground={}", action_label, fg)
+    context_reason, same_context = _foreground_context_alignment(identity, fg, allow_dialog=allow_dialog)
+    logger.error(
+        "DBG_WINWATT_FOCUS_GUARD_RESULT action_label={} status=focus_failed reason={} foreground={} same_context_as_cached_main={} win32_uia_identity_match={}",
+        action_label,
+        context_reason,
+        fg,
+        same_context,
+        fg.get("handle") == identity.get("handle") if fg.get("handle") is not None and identity.get("handle") is not None else None,
+    )
     raise RuntimeError(
         "focus_not_restored: could not bring WinWatt to foreground "
         f"for action={action_label} foreground_title={fg.get('title')} foreground_class={fg.get('class_name')}"
