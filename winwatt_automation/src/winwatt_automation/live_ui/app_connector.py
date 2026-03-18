@@ -632,6 +632,40 @@ def _foreground_context_alignment(expected: dict[str, Any], actual: dict[str, An
     return "no_match", False
 
 
+def _is_probationary_focus_action(action_label: str) -> bool:
+    normalized = (action_label or "").strip().lower()
+    return normalized == "open_system_menu" or normalized.startswith("baseline_restore:")
+
+
+def _has_probationary_main_window_identity(identity: dict[str, Any], rect_payload: dict[str, int] | None, *, visible: bool, enabled: bool) -> tuple[bool, list[str]]:
+    reasons: list[str] = []
+    if identity.get("handle") is not None:
+        reasons.append("handle")
+    if identity.get("process_id") is not None:
+        reasons.append("process_id")
+    if identity.get("title"):
+        reasons.append("title")
+    if identity.get("class_name"):
+        reasons.append("class_name")
+    if rect_payload is not None and rect_payload.get("width", 0) > 0 and rect_payload.get("height", 0) > 0:
+        reasons.append("rect")
+    if visible:
+        reasons.append("visible")
+    if enabled:
+        reasons.append("enabled")
+
+    strong_identity = (
+        visible
+        and enabled
+        and rect_payload is not None
+        and rect_payload.get("width", 0) > 0
+        and rect_payload.get("height", 0) > 0
+        and any(identity.get(key) is not None for key in ("handle", "process_id"))
+        and bool(identity.get("title") or identity.get("class_name"))
+    )
+    return strong_identity, reasons
+
+
 def focus_main_window() -> Any:
     """Bring WinWatt main window to the foreground and focus it."""
 
@@ -899,6 +933,13 @@ def ensure_main_window_foreground_before_click(
     enabled = bool(_safe_call(main_window, "is_enabled", False))
     rect_payload = _rect_payload(_safe_call(main_window, "rectangle", None))
     identity = _window_identity_payload(main_window)
+    probationary_allowed = _is_probationary_focus_action(action_label)
+    strong_identity, identity_reasons = _has_probationary_main_window_identity(
+        identity,
+        rect_payload,
+        visible=visible,
+        enabled=enabled,
+    )
     logger.info(
         "DBG_WINWATT_FOCUS_GUARD_PRECHECK action_label={} wrapper_type={} cached_handle={} cached_pid={} cached_title={} cached_class={} precheck_exists={} precheck_visible={} precheck_enabled={} rect={}",
         action_label,
@@ -913,8 +954,33 @@ def ensure_main_window_foreground_before_click(
         rect_payload,
     )
     if not exists:
-        raise RuntimeError(f"focus_not_restored: main window no longer exists before action={action_label}")
+        if probationary_allowed and strong_identity:
+            logger.warning(
+                "DBG_WINWATT_FOCUS_GUARD_SOFT_CONTINUE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
+                action_label,
+                identity.get("wrapper_type"),
+                identity_reasons,
+                identity,
+                rect_payload,
+            )
+        else:
+            logger.error(
+                "DBG_WINWATT_FOCUS_GUARD_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={}",
+                action_label,
+                identity_reasons,
+                identity,
+                rect_payload,
+            )
+            raise RuntimeError(f"focus_not_restored: main window no longer exists before action={action_label}")
     if not visible or not enabled:
+        logger.error(
+            "DBG_WINWATT_FOCUS_GUARD_HARD_FAIL action_label={} reason=window_not_ready precheck_visible={} precheck_enabled={} cached_identity={} rect={}",
+            action_label,
+            visible,
+            enabled,
+            identity,
+            rect_payload,
+        )
         raise RuntimeError(
             f"focus_not_restored: main window not ready before action={action_label} visible={visible} enabled={enabled}"
         )
@@ -934,6 +1000,14 @@ def ensure_main_window_foreground_before_click(
             )
             return main_window
 
+        logger.info(
+            "DBG_WINWATT_FOCUS_GUARD_REFOCUS_ATTEMPT action_label={} exists={} probationary_allowed={} strong_identity={} identity_reasons={}",
+            action_label,
+            exists,
+            probationary_allowed,
+            strong_identity,
+            identity_reasons,
+        )
         set_focus = getattr(main_window, "set_focus", None)
         if callable(set_focus):
             try:
@@ -957,12 +1031,14 @@ def ensure_main_window_foreground_before_click(
     fg = describe_foreground_window()
     context_reason, same_context = _foreground_context_alignment(identity, fg, allow_dialog=allow_dialog)
     logger.error(
-        "DBG_WINWATT_FOCUS_GUARD_RESULT action_label={} status=focus_failed reason={} foreground={} same_context_as_cached_main={} win32_uia_identity_match={}",
+        "DBG_WINWATT_FOCUS_GUARD_RESULT action_label={} status=focus_failed reason={} foreground={} same_context_as_cached_main={} win32_uia_identity_match={} probationary_allowed={} strong_identity={}",
         action_label,
         context_reason,
         fg,
         same_context,
         fg.get("handle") == identity.get("handle") if fg.get("handle") is not None and identity.get("handle") is not None else None,
+        probationary_allowed,
+        strong_identity,
     )
     raise RuntimeError(
         "focus_not_restored: could not bring WinWatt to foreground "
