@@ -310,7 +310,30 @@ def _build_menu_rows_from_popup_rows(
 ) -> list[RuntimeMenuRow]:
     mapped: list[RuntimeMenuRow] = []
     for index, row in enumerate(rows):
+        logger.info(
+            "DBG_MENU_BUILD_INPUT_ROW state={} top_menu={} row_index={} text={!r} rectangle={} topbar_like={} popup_like={} source_scope={} fragments={} ",
+            state_id,
+            top_menu,
+            index,
+            row.get("text"),
+            row.get("rectangle"),
+            bool(row.get("topbar_candidate")),
+            bool(row.get("popup_candidate")),
+            row.get("source_scope"),
+            len(list(row.get("fragments") or [])),
+        )
         if canonical_top_menu_names and is_top_menu_like_popup_row(row, canonical_top_menu_names):
+            logger.info(
+                "DBG_MENU_BUILD_FILTER_REASON state={} top_menu={} row_index={} reason=top-level overlap row_text={!r} rectangle={} topbar_like={} popup_like={} normalized_text={} canonical_match=True",
+                state_id,
+                top_menu,
+                index,
+                row.get("text"),
+                row.get("rectangle"),
+                bool(row.get("topbar_candidate")),
+                bool(row.get("popup_candidate")),
+                normalize_menu_title(str(row.get("text") or "")),
+            )
             logger.debug("popup row filtered as top-level overlap top_menu={} row_text={}", top_menu, row.get("text"))
             continue
         text = str(row.get("text") or "")
@@ -395,6 +418,34 @@ def _detect_child_rows(parent_row: dict[str, Any], all_rows: list[dict[str, Any]
     return children
 
 
+def _is_system_menu(top_menu: str) -> bool:
+    return normalize_menu_title(top_menu) == normalize_menu_title(menu_helpers.SYSTEM_MENU_TITLE)
+
+
+def _open_and_capture_root_menu(
+    *,
+    state_id: str,
+    top_menu: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    before_click = capture_state_snapshot(state_id)
+    if _is_system_menu(top_menu):
+        main_window = get_cached_main_window()
+        menu_helpers.open_system_menu(main_window)
+        popup_rows = menu_helpers.capture_system_menu_popup()
+        logger.info(
+            "DBG_WINWATT_SYSTEM_MENU_MAPPING_ROOT state={} top_menu={} row_count={} note=system_menu_is_separate_from_menubar",
+            state_id,
+            top_menu,
+            len(popup_rows),
+        )
+    else:
+        menu_helpers.click_top_menu_item(top_menu)
+        popup_rows = menu_helpers.capture_menu_popup_snapshot()
+    after_click = capture_state_snapshot(state_id)
+    top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
+    return popup_rows, top_transition
+
+
 def _find_popup_row_by_title(rows: list[dict[str, Any]], title: str) -> dict[str, Any] | None:
     wanted = normalize_menu_title(title)
     for row in rows:
@@ -420,8 +471,13 @@ def _reopen_parent_popup_rows(
     if not restore_clean_menu_baseline(state_id=state_id, stage=f"reopen_parent:{' > '.join(parent_path)}"):
         return []
 
-    menu_helpers.click_top_menu_item(top_menu)
-    current_rows = menu_helpers.capture_menu_popup_snapshot()
+    if _is_system_menu(top_menu):
+        main_window = get_cached_main_window()
+        menu_helpers.open_system_menu(main_window)
+        current_rows = menu_helpers.capture_system_menu_popup()
+    else:
+        menu_helpers.click_top_menu_item(top_menu)
+        current_rows = menu_helpers.capture_menu_popup_snapshot()
 
     for part in parent_path[1:]:
         row = _find_popup_row_by_title(current_rows, part)
@@ -924,15 +980,23 @@ def explore_menu_tree(
         if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
             popup_rows = list(popup_state.popup_rows)
         else:
-            popup_rows = menu_helpers.capture_menu_popup_snapshot()
+            popup_rows = menu_helpers.capture_system_menu_popup() if _is_system_menu(top_menu) else menu_helpers.capture_menu_popup_snapshot()
         if popup_rows:
+            popup_like_count = sum(1 for row in popup_rows if bool(row.get("popup_candidate")))
+            topbar_like_count = sum(1 for row in popup_rows if bool(row.get("topbar_candidate")))
+            logger.info(
+                "DBG_REUSING_OPEN_POPUP_SNAPSHOT state={} top_menu={} row_count={} popup_like_count={} topbar_like_count={} normalized_parent={} popup_state_path={}",
+                state_id,
+                top_menu,
+                len(popup_rows),
+                popup_like_count,
+                topbar_like_count,
+                normalized_parent,
+                getattr(popup_state, "current_menu_path", None) if popup_state is not None else None,
+            )
             logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(popup_rows))
         else:
-            before_click = capture_state_snapshot(state_id)
-            menu_helpers.click_top_menu_item(top_menu)
-            popup_rows = menu_helpers.capture_menu_popup_snapshot()
-            after_click = capture_state_snapshot(state_id)
-            top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
+            popup_rows, top_transition = _open_and_capture_root_menu(state_id=state_id, top_menu=top_menu)
         if top_transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
             candidate = top_transition.get("window_snapshot") or {}
             if top_transition.get("result_type") == "dialog_opened" or top_transition.get("result_type") == "main_window_disabled_modal_likely":
