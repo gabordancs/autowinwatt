@@ -82,6 +82,7 @@ class FakeWindow:
         handle: int | None = 10,
         visible: bool = True,
         enabled: bool = True,
+        exists: bool = True,
         rect: FakeRect | None = None,
     ):
         self._title = title
@@ -90,8 +91,14 @@ class FakeWindow:
         self._handle = handle
         self._visible = visible
         self._enabled = enabled
+        self._exists = exists
         self._rect = rect or FakeRect(0, 0, 100, 100)
+        self.focus_calls = 0
+        self.restore_calls = 0
+        self.keyboard_focus_calls = 0
         self.element_info = FakeElementInfo(name=title, control_type=control_type, class_name=class_name)
+        self.element_info.handle = handle
+        self.element_info.process_id = process_id
 
     def window_text(self):
         return self._title
@@ -105,6 +112,9 @@ class FakeWindow:
     def handle(self):
         return self._handle
 
+    def exists(self, *args, **kwargs):
+        return self._exists
+
     def is_visible(self):
         return self._visible
 
@@ -113,6 +123,15 @@ class FakeWindow:
 
     def rectangle(self):
         return self._rect
+
+    def set_focus(self):
+        self.focus_calls += 1
+
+    def restore(self):
+        self.restore_calls += 1
+
+    def set_keyboard_focus(self):
+        self.keyboard_focus_calls += 1
 
 
 class FakeControl:
@@ -589,3 +608,98 @@ def test_get_cached_main_window_throttles_foreground_resolve_loop(monkeypatch):
             app_connector.MainWindowSession.last_foreground_failure_monotonic,
             app_connector.MainWindowSession.last_resolve_attempt_monotonic,
         ) = original_main_window_state
+
+
+def test_focus_guard_soft_continues_for_open_system_menu_when_exists_false_but_identity_strong(monkeypatch):
+    main_window = FakeWindow(
+        title="WinWatt gólya",
+        class_name="TMainForm",
+        process_id=1048,
+        handle=4328702,
+        exists=False,
+        visible=True,
+        enabled=True,
+        rect=FakeRect(171, 96, 1170, 1151),
+    )
+    app_connector.WinWattSession.main_window = main_window
+    app_connector.WinWattSession.process_id = 1048
+    app_connector.WinWattSession.handle = 4328702
+    app_connector.MainWindowSession.window = main_window
+    app_connector.MainWindowSession.process_id = 1048
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: main_window)
+    monkeypatch.setattr(app_connector, "is_winwatt_foreground_context", lambda window, allow_dialog=False: window is main_window)
+    monkeypatch.setattr(
+        app_connector,
+        "describe_foreground_window",
+        lambda: {"handle": 4328702, "title": "WinWatt gólya", "class_name": "TMainForm", "process_id": 1048},
+    )
+
+    resolved = app_connector.ensure_main_window_foreground_before_click(action_label="open_system_menu", timeout=0.01)
+
+    assert resolved is main_window
+    assert main_window.focus_calls == 0
+    assert main_window.restore_calls == 0
+
+
+def test_focus_guard_soft_continues_for_baseline_restore_before_refocus(monkeypatch):
+    main_window = FakeWindow(
+        title="WinWatt gólya",
+        class_name="TMainForm",
+        process_id=1048,
+        handle=4328702,
+        exists=False,
+        visible=True,
+        enabled=True,
+        rect=FakeRect(171, 96, 1170, 1151),
+    )
+    app_connector.WinWattSession.main_window = main_window
+    app_connector.WinWattSession.process_id = 1048
+    app_connector.WinWattSession.handle = 4328702
+    app_connector.MainWindowSession.window = main_window
+    app_connector.MainWindowSession.process_id = 1048
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: main_window)
+
+    state = {"calls": 0}
+
+    def _foreground(window, allow_dialog=False):
+        state["calls"] += 1
+        return state["calls"] >= 2
+
+    monkeypatch.setattr(app_connector, "is_winwatt_foreground_context", _foreground)
+    monkeypatch.setattr(
+        app_connector,
+        "describe_foreground_window",
+        lambda: {"handle": 4328702, "title": "WinWatt gólya", "class_name": "TMainForm", "process_id": 1048},
+    )
+    monkeypatch.setattr(app_connector.time, "sleep", lambda _: None)
+
+    resolved = app_connector.ensure_main_window_foreground_before_click(
+        action_label="baseline_restore:project_open:before:Rendszer",
+        timeout=0.2,
+        poll_interval=0.01,
+        allow_dialog=True,
+    )
+
+    assert resolved is main_window
+    assert main_window.focus_calls >= 1
+    assert main_window.restore_calls >= 1
+    assert main_window.keyboard_focus_calls >= 1
+
+
+def test_focus_guard_still_fails_for_real_window_loss_when_exists_false_and_identity_weak(monkeypatch):
+    main_window = FakeWindow(
+        title="",
+        class_name="",
+        process_id=None,
+        handle=None,
+        exists=False,
+        visible=True,
+        enabled=True,
+        rect=FakeRect(0, 0, 0, 0),
+    )
+    app_connector.WinWattSession.main_window = main_window
+    app_connector.MainWindowSession.window = main_window
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: main_window)
+
+    with pytest.raises(RuntimeError, match="main window no longer exists before action=open_system_menu"):
+        app_connector.ensure_main_window_foreground_before_click(action_label="open_system_menu", timeout=0.01)
