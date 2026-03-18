@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 8840,
+  "process_id": 1048,
   "state_id": "no_project",
-  "timestamp": "2026-03-18T20:50:57.296664+00:00",
+  "timestamp": "2026-03-18T21:08:02.145733+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -37,10 +37,10 @@
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 8840,
-      "title": "WinWatt gólya"
+      "process_id": 4588,
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -49,10 +49,16 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "TMainForm",
       "handle": null,
-      "process_id": 4588,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+      "process_id": 1048,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "XamlWindow",
+      "handle": null,
+      "process_id": 32836,
+      "title": "Képmetsző"
     },
     {
       "class_name": "CabinetWClass",
@@ -65,12 +71,6 @@
       "handle": null,
       "process_id": 26964,
       "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
-    },
-    {
-      "class_name": "WinUIDesktopWin32WindowClass",
-      "handle": null,
-      "process_id": 26180,
-      "title": "Képernyőkép 2026-03-16 140357.png"
     },
     {
       "class_name": "WindowsForms10.Window.8.app.0.d3a00f_r10_ad1",
@@ -97,12 +97,6 @@
       "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
     },
     {
-      "class_name": "WinUIDesktopWin32WindowClass",
-      "handle": null,
-      "process_id": 22180,
-      "title": "Képernyőkép 2026-03-16 140452.png"
-    },
-    {
       "class_name": "Notepad",
       "handle": null,
       "process_id": 21160,
@@ -113,12 +107,6 @@
       "handle": null,
       "process_id": 29804,
       "title": "8 emlékeztető"
-    },
-    {
-      "class_name": "TeamsWebView",
-      "handle": null,
-      "process_id": 18552,
-      "title": "Csevegés | CORDIA EON energetikai projektmegbeszélés | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
     },
     {
       "class_name": "Notepad",

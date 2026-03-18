@@ -410,6 +410,26 @@
       },
       "log_path": "data\\run_logs\\runs\\0026_true_2026-03-18_20-50-51.log",
       "json_path": "data\\run_logs\\runs\\0026_true_2026-03-18_20-50-51.json"
+    },
+    {
+      "sequence_number": 27,
+      "run_id": "0027_true_2026-03-18_21-07-52",
+      "started_at": "2026-03-18T21:07:52.577977+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode safe --max-submenu-depth 1 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0027_true_2026-03-18_21-07-52.log",
+      "json_path": "data\\run_logs\\runs\\0027_true_2026-03-18_21-07-52.json"
     }
   ]
 }
