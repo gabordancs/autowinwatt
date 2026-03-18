@@ -7,6 +7,8 @@ from pathlib import Path
 import re
 from typing import Any
 
+from winwatt_automation.runtime_logging.progress_display import write_progress_status
+
 
 DEFAULT_LOGS_ROOT = Path("data/run_logs")
 RETENTION_TODO = "TODO: implement retention policy (max files/age) in future iteration."
@@ -25,6 +27,7 @@ class RunContext:
     runs_dir: Path
     log_path: Path
     json_path: Path
+    status_path: Path
     log_handle: Any
     tags: list[str] = field(default_factory=list)
     important_events: list[dict[str, Any]] = field(default_factory=list)
@@ -101,6 +104,7 @@ def start_run(command: str, context: dict[str, Any]) -> RunContext:
     run_id = f"{sequence:04d}_{slug}_{_filename_timestamp(now)}"
     log_path = paths["runs"] / f"{run_id}.log"
     json_path = paths["runs"] / f"{run_id}.json"
+    status_path = logs_root / "live_status.json"
 
     handle = log_path.open("w", encoding="utf-8")
     handle.write(f"run_id={run_id}\n")
@@ -120,6 +124,7 @@ def start_run(command: str, context: dict[str, Any]) -> RunContext:
         runs_dir=paths["runs"],
         log_path=log_path,
         json_path=json_path,
+        status_path=status_path,
         log_handle=handle,
         tags=list(context.get("tags") or []),
     )
@@ -140,6 +145,17 @@ def record_event(run_ctx: RunContext, event_type: str, payload: dict[str, Any]) 
     }
     run_ctx.important_events.append(event)
     append_terminal_line(run_ctx, f"[event] {event_type}: {json.dumps(payload, ensure_ascii=False, sort_keys=True)}")
+
+
+def update_status(run_ctx: RunContext, state: str, message: str, details: dict[str, Any] | None = None) -> Path:
+    return write_progress_status(
+        run_ctx.status_path,
+        run_id=run_ctx.run_id,
+        state=state,
+        message=message,
+        command=run_ctx.command,
+        details=details,
+    )
 
 
 def finalize_run(run_ctx: RunContext, success: bool, exit_code: int, summary: dict[str, Any]) -> Path:
@@ -210,6 +226,16 @@ def finalize_run(run_ctx: RunContext, success: bool, exit_code: int, summary: di
         }
     )
     _write_json(index_path, index)
+
+    update_status(
+        run_ctx,
+        "finished" if success else "failed",
+        "Mapping finished successfully." if success else "Mapping failed.",
+        {
+            "exit_code": exit_code,
+            "summary": summary_payload,
+        },
+    )
 
     run_ctx.log_handle.write(f"\nfinished_at={finished_at} success={success} exit_code={exit_code}\n")
     run_ctx.log_handle.flush()
