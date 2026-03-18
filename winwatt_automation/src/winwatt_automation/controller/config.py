@@ -24,9 +24,9 @@ class ControllerConfig:
         except ValueError:
             timeout_seconds = 300
 
-        safe_mode = os.getenv("WWA_CONTROLLER_SAFE_MODE", "safe").strip().lower() or "safe"
-        if safe_mode not in {"safe", "hybrid", "caution", "blocked"}:
-            safe_mode = "safe"
+        safe_mode = os.getenv("WWA_CONTROLLER_SAFE_MODE", "off").strip().lower() or "off"
+        if safe_mode not in {"safe", "hybrid", "caution", "blocked", "off", "unsafe"}:
+            safe_mode = "off"
 
         chat_path_raw = os.getenv("WWA_CHAT_BRIEF_OUTPUT", "data/chat_prep/latest_chat_brief.txt")
         chat_path = (resolved_repo / chat_path_raw).resolve() if not Path(chat_path_raw).is_absolute() else Path(chat_path_raw)

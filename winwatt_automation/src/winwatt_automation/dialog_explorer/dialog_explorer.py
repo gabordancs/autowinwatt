@@ -214,13 +214,13 @@ def explore_dialog(
     dialog: Any,
     *,
     depth: int = 0,
-    max_depth: int = 3,
+    max_depth: int | None = None,
     visited_states: set[str] | None = None,
     safe_mode: bool = True,
 ) -> dict[str, Any]:
     logger.info("dialog_explorer_start depth={} max_depth={}", depth, max_depth)
     visited = visited_states if visited_states is not None else set()
-    if depth >= max_depth:
+    if max_depth is not None and max_depth >= 0 and depth >= max_depth:
         logger.info("dialog_explorer_depth_limit depth={} max_depth={}", depth, max_depth)
         return {
             "dialog_title": str(_safe_call(dialog, "window_text", "") or ""),
@@ -261,7 +261,7 @@ def explore_dialog(
             next_hash = compute_dialog_state_hash(dialog)
             if next_hash not in states:
                 states.append(next_hash)
-            if next_hash not in visited and depth + 1 < max_depth:
+            if next_hash not in visited and (max_depth is None or max_depth < 0 or depth + 1 < max_depth):
                 nested = explore_dialog(dialog, depth=depth + 1, max_depth=max_depth, visited_states=visited, safe_mode=safe_mode)
                 states.extend([item for item in nested.get("states", []) if item not in states])
 
