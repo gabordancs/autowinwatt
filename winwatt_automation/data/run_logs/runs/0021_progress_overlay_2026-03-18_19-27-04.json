@@ -1,0 +1,39 @@
+{
+  "run_id": "0021_progress_overlay_2026-03-18_19-27-04",
+  "sequence_number": 21,
+  "started_at": "2026-03-18T19:27:04.212380+00:00",
+  "finished_at": "2026-03-18T19:27:05.677663+00:00",
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "off",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 1,
+  "success": false,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "skipped_by_safety": null,
+    "last_error": "No WinWatt-like windows found on backend=win32",
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-18T19:27:05.676276+00:00",
+      "event_type": "run_failed",
+      "payload": {
+        "error": "No WinWatt-like windows found on backend=win32"
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0021_progress_overlay_2026-03-18_19-27-04.log",
+    "json_path": "data\\run_logs\\runs\\0021_progress_overlay_2026-03-18_19-27-04.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

@@ -320,6 +320,46 @@
       "short_summary": "runtime_mapping_failed",
       "log_path": "data\\run_logs\\runs\\0020_1_2026-03-18_19-08-46.log",
       "json_path": "data\\run_logs\\runs\\0020_1_2026-03-18_19-08-46.json"
+    },
+    {
+      "sequence_number": 21,
+      "run_id": "0021_progress_overlay_2026-03-18_19-27-04",
+      "started_at": "2026-03-18T19:27:04.212380+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0021_progress_overlay_2026-03-18_19-27-04.log",
+      "json_path": "data\\run_logs\\runs\\0021_progress_overlay_2026-03-18_19-27-04.json"
+    },
+    {
+      "sequence_number": 22,
+      "run_id": "0022_progress_overlay_2026-03-18_19-27-23",
+      "started_at": "2026-03-18T19:27:23.497152+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0022_progress_overlay_2026-03-18_19-27-23.log",
+      "json_path": "data\\run_logs\\runs\\0022_progress_overlay_2026-03-18_19-27-23.json"
+    },
+    {
+      "sequence_number": 23,
+      "run_id": "0023_progress_overlay_2026-03-18_19-27-45",
+      "started_at": "2026-03-18T19:27:45.028468+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1 --progress-overlay",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 7,
+        "project_open top_menus": 7,
+        "diff summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0023_progress_overlay_2026-03-18_19-27-45.log",
+      "json_path": "data\\run_logs\\runs\\0023_progress_overlay_2026-03-18_19-27-45.json"
     }
   ]
 }

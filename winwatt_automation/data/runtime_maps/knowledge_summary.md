@@ -1,6 +1,6 @@
 # Runtime tudás verifikáció
 
-- baseline loaded: False
+- baseline loaded: True
 - known menu paths: 0
 - covered known paths: 0
 - missing menu paths: 0

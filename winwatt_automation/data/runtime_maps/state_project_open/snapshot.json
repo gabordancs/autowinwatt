@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 10096212,
-    "process_id": 25992,
+    "handle": 986842,
+    "process_id": 1348,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -20,10 +20,44 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 25992,
+  "process_id": 1348,
+  "project_open_recovery": {
+    "close_attempts": [],
+    "diagnostics": {
+      "dialog_candidates": [],
+      "foreground_window": {
+        "class_name": "TMainForm",
+        "handle": 986842,
+        "process_id": 1348,
+        "title": "WinWatt gólya"
+      },
+      "main_window": {
+        "class_name": "TMainForm",
+        "enabled": true,
+        "exists": true,
+        "handle": null,
+        "process_id": 1348,
+        "rect": {
+          "bottom": 1150,
+          "left": -10,
+          "right": 1930,
+          "top": -10
+        },
+        "title": "WinWatt gólya",
+        "visible": true
+      }
+    },
+    "success": true
+  },
   "state_id": "project_open",
-  "timestamp": "2026-03-17T10:45:09.260120+00:00",
+  "timestamp": "2026-03-18T19:32:23.422334+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 1348,
+      "title": ""
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -31,34 +65,58 @@
       "title": "Tálca"
     },
     {
-      "class_name": "Shell_SecondaryTrayWnd",
+      "class_name": "TkTopLevel",
       "handle": null,
-      "process_id": 14856,
-      "title": ""
+      "process_id": 29668,
+      "title": "WinWatt mapper status"
     },
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 25992,
+      "process_id": 1348,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 33532,
+      "process_id": 17008,
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 1152,
+      "process_id": 31036,
       "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Codex-generated pull request by gabordancs · Pull Request #44 · gabordancs/autowinwatt - Google Chrome"
+      "title": "Codex - Google Chrome"
+    },
+    {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 26964,
+      "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14856,
+      "title": "02. Vízhálózat és Csatorna – Fájlkezelő"
+    },
+    {
+      "class_name": "WinUIDesktopWin32WindowClass",
+      "handle": null,
+      "process_id": 26180,
+      "title": "Képernyőkép 2026-03-16 140357.png"
+    },
+    {
+      "class_name": "WindowsForms10.Window.8.app.0.d3a00f_r10_ad1",
+      "handle": null,
+      "process_id": 4036,
+      "title": "Dalux"
     },
     {
       "class_name": "rctrl_renwnd32",
@@ -67,22 +125,52 @@
       "title": "Beérkezett üzenetek – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
-      "class_name": "CabinetWClass",
+      "class_name": "rctrl_renwnd32",
       "handle": null,
-      "process_id": 14856,
-      "title": "GitHub – Fájlkezelő"
+      "process_id": 29804,
+      "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
     },
     {
-      "class_name": "Notepad",
+      "class_name": "rctrl_renwnd32",
       "handle": null,
-      "process_id": 21160,
-      "title": "*xml version=1.0 encoding=utf-8 – Jegyzettömb"
+      "process_id": 29804,
+      "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
+    },
+    {
+      "class_name": "XamlWindow",
+      "handle": null,
+      "process_id": 26264,
+      "title": "Képmetsző"
+    },
+    {
+      "class_name": "WinUIDesktopWin32WindowClass",
+      "handle": null,
+      "process_id": 22180,
+      "title": "Képernyőkép 2026-03-16 140452.png"
     },
     {
       "class_name": "Notepad",
       "handle": null,
       "process_id": 21160,
       "title": "*antal áron – Jegyzettömb"
+    },
+    {
+      "class_name": "#32770",
+      "handle": null,
+      "process_id": 29804,
+      "title": "8 emlékeztető"
+    },
+    {
+      "class_name": "TeamsWebView",
+      "handle": null,
+      "process_id": 18552,
+      "title": "Csevegés | CORDIA EON energetikai projektmegbeszélés | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
+    },
+    {
+      "class_name": "Notepad",
+      "handle": null,
+      "process_id": 21160,
+      "title": "*xml version=1.0 encoding=utf-8 – Jegyzettömb"
     },
     {
       "class_name": "Progman",

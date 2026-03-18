@@ -9,10 +9,10 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "Chrome_WidgetWin_1",
-    "handle": 4264188,
-    "process_id": 17008,
-    "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+    "class_name": "TkTopLevel",
+    "handle": 5312104,
+    "process_id": 29668,
+    "title": "WinWatt mapper status"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
@@ -20,15 +20,27 @@
   "main_window_visible": true,
   "mapping_partial": true,
   "mapping_stop_reason": "lost_main_window_after:Rendszer",
-  "process_id": 37448,
+  "process_id": 1348,
   "state_id": "no_project",
-  "timestamp": "2026-03-18T19:09:00.542499+00:00",
+  "timestamp": "2026-03-18T19:27:59.911513+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "Windows.UI.Core.CoreWindow",
+      "handle": null,
+      "process_id": 35732,
+      "title": "Új értesítés"
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
       "process_id": 14856,
       "title": "Tálca"
+    },
+    {
+      "class_name": "TkTopLevel",
+      "handle": null,
+      "process_id": 29668,
+      "title": "WinWatt mapper status"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -37,15 +49,9 @@
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 4588,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
-    },
-    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 37448,
+      "process_id": 1348,
       "title": "WinWatt gólya"
     },
     {
@@ -53,6 +59,12 @@
       "handle": null,
       "process_id": 31036,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 4588,
+      "title": "Codex - Google Chrome"
     },
     {
       "class_name": "Window",
