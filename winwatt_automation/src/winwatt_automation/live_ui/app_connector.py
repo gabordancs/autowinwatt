@@ -348,6 +348,7 @@ def _resolve_uia_main_window() -> Any:
         exists = getattr(main_window, "exists", None)
         if callable(exists) and not exists(timeout=1):
             raise WinWattNotRunningError("UIA main window lookup did not resolve an existing window")
+        main_window = _materialize_window_wrapper(main_window)
         logger.info(
             "DBG_WINWATT_RESOLVE_UIA_PRIMARY selected_payload={} primary_result={} identity_match_with_win32={}",
             selected,
@@ -401,6 +402,7 @@ def _resolve_uia_main_window() -> Any:
         main_window = app_uia.window(handle=best_handle)
     else:
         main_window = app_uia.window(title=best_candidate.get("title"), class_name=best_candidate.get("class_name"))
+    main_window = _materialize_window_wrapper(main_window)
 
     WinWattSession.app = app_uia
     WinWattSession.main_window = main_window
@@ -466,6 +468,8 @@ def get_cached_main_window() -> Any:
 
     cached_main_window = WinWattSession.main_window
     if cached_main_window is not None:
+        cached_main_window = _materialize_window_wrapper(cached_main_window)
+        WinWattSession.main_window = cached_main_window
         now = time.monotonic()
         MainWindowSession.window = cached_main_window
         MainWindowSession.process_id = WinWattSession.process_id
@@ -506,10 +510,81 @@ def get_cached_main_window() -> Any:
     return resolved
 
 
+
+
+def get_cached_main_window_snapshot() -> Any:
+    """Return the current cached main-window wrapper without forcing health validation."""
+
+    cached_main_window = WinWattSession.main_window or MainWindowSession.window
+    if cached_main_window is None:
+        return get_cached_main_window()
+
+    cached_main_window = _materialize_window_wrapper(cached_main_window)
+    WinWattSession.main_window = cached_main_window
+    MainWindowSession.window = cached_main_window
+    logger.info(
+        "DBG_WINWATT_CACHE_SNAPSHOT reason_code=cache_snapshot_reused payload={}",
+        _window_identity_payload(cached_main_window),
+    )
+    return cached_main_window
+
+
 def get_main_window() -> Any:
     """Backward-compatible wrapper around cached main window access."""
 
     return get_cached_main_window()
+
+
+
+
+def _materialize_window_wrapper(window: Any) -> Any:
+    if window is None:
+        return None
+    wrapper_object = getattr(window, "wrapper_object", None)
+    if callable(wrapper_object):
+        try:
+            materialized = wrapper_object()
+            if materialized is not None:
+                return materialized
+        except Exception as exc:
+            logger.warning(
+                "DBG_WINWATT_WINDOW_MATERIALIZE_FAILED wrapper_type={} exception_class={} exception_message={}",
+                type(window).__name__,
+                exc.__class__.__name__,
+                exc,
+            )
+    return window
+
+
+def _best_effort_focus_window(window: Any, *, maximize: bool = False) -> None:
+    restore = getattr(window, "restore", None)
+    if callable(restore):
+        try:
+            restore()
+        except Exception:
+            pass
+
+    set_focus = getattr(window, "set_focus", None)
+    if callable(set_focus):
+        try:
+            set_focus()
+        except Exception:
+            pass
+
+    set_keyboard_focus = getattr(window, "set_keyboard_focus", None)
+    if callable(set_keyboard_focus):
+        try:
+            set_keyboard_focus()
+        except Exception:
+            pass
+
+    if maximize:
+        maximize_fn = getattr(window, "maximize", None)
+        if callable(maximize_fn):
+            try:
+                maximize_fn()
+            except Exception:
+                pass
 
 
 def _wrapper_handle(wrapper: Any) -> int | None:
