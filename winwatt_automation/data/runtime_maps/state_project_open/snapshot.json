@@ -16,8 +16,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 4328702,
-    "process_id": 1048,
+    "handle": 656610,
+    "process_id": 38608,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -26,9 +26,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 1048,
+  "process_id": 38608,
   "state_id": "project_open",
-  "timestamp": "2026-03-18T21:09:12.909072+00:00",
+  "timestamp": "2026-03-18T21:23:23.627314+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -39,7 +39,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 1048,
+      "process_id": 38608,
       "title": "WinWatt gólya"
     },
     {
@@ -55,6 +55,24 @@
       "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 26964,
+      "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
+    },
+    {
+      "class_name": "ApplicationFrameWindow",
+      "handle": null,
+      "process_id": 26372,
+      "title": "Számológép"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Lilla-Peti – Fájlkezelő"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 31036,
@@ -65,18 +83,6 @@
       "handle": null,
       "process_id": 32836,
       "title": "Képmetsző"
-    },
-    {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14856,
-      "title": "Lilla-Peti – Fájlkezelő"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 26964,
-      "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
     },
     {
       "class_name": "WindowsForms10.Window.8.app.0.d3a00f_r10_ad1",

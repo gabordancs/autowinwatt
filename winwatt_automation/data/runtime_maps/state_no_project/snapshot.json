@@ -9,10 +9,10 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "Chrome_WidgetWin_1",
-    "handle": 4264188,
-    "process_id": 17008,
-    "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+    "class_name": "TMainForm",
+    "handle": 3544040,
+    "process_id": 24996,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
@@ -20,15 +20,21 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 1048,
+  "process_id": 24996,
   "state_id": "no_project",
-  "timestamp": "2026-03-18T21:08:02.145733+00:00",
+  "timestamp": "2026-03-18T21:31:44.806411+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
       "process_id": 14856,
       "title": "Tálca"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 24996,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -49,24 +55,6 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 1048,
-      "title": "WinWatt gólya"
-    },
-    {
-      "class_name": "XamlWindow",
-      "handle": null,
-      "process_id": 32836,
-      "title": "Képmetsző"
-    },
-    {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14856,
-      "title": "Lilla-Peti – Fájlkezelő"
-    },
-    {
       "class_name": "Window",
       "handle": null,
       "process_id": 26964,
@@ -77,24 +65,6 @@
       "handle": null,
       "process_id": 4036,
       "title": "Dalux"
-    },
-    {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 29804,
-      "title": "Beérkezett üzenetek – dancs.gabor@pedranogroup.com - Outlook"
-    },
-    {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 29804,
-      "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
-    },
-    {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 29804,
-      "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
     },
     {
       "class_name": "Notepad",
