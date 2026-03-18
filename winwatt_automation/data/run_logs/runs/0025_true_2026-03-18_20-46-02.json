@@ -1,9 +1,9 @@
 {
-  "run_id": "0026_true_2026-03-18_20-50-51",
-  "sequence_number": 26,
-  "started_at": "2026-03-18T20:50:51.022665+00:00",
-  "finished_at": "2026-03-18T20:52:35.641682+00:00",
-  "duration_seconds": 104.619,
+  "run_id": "0025_true_2026-03-18_20-46-02",
+  "sequence_number": 25,
+  "started_at": "2026-03-18T20:46:02.862896+00:00",
+  "finished_at": "2026-03-18T20:46:35.094833+00:00",
+  "duration_seconds": 32.232,
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode safe --max-submenu-depth 1 --include-disabled true",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
   "safe_mode": "safe",
@@ -28,7 +28,7 @@
   },
   "important_events": [
     {
-      "timestamp": "2026-03-18T20:51:59.787793+00:00",
+      "timestamp": "2026-03-18T20:46:25.725906+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "no_project",
@@ -38,7 +38,7 @@
       }
     },
     {
-      "timestamp": "2026-03-18T20:51:59.792287+00:00",
+      "timestamp": "2026-03-18T20:46:25.731178+00:00",
       "event_type": "project_open_result",
       "payload": {
         "success": false,
@@ -47,7 +47,7 @@
       }
     },
     {
-      "timestamp": "2026-03-18T20:52:35.629650+00:00",
+      "timestamp": "2026-03-18T20:46:35.085824+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "project_open",
@@ -57,7 +57,7 @@
       }
     },
     {
-      "timestamp": "2026-03-18T20:52:35.633063+00:00",
+      "timestamp": "2026-03-18T20:46:35.090061+00:00",
       "event_type": "runtime_diff",
       "payload": {
         "summary": {
@@ -72,7 +72,7 @@
       }
     },
     {
-      "timestamp": "2026-03-18T20:52:35.637360+00:00",
+      "timestamp": "2026-03-18T20:46:35.092646+00:00",
       "event_type": "knowledge_verification",
       "payload": {
         "baseline_loaded": true,
@@ -89,7 +89,7 @@
       }
     },
     {
-      "timestamp": "2026-03-18T20:52:35.639539+00:00",
+      "timestamp": "2026-03-18T20:46:35.094050+00:00",
       "event_type": "runtime_mapping_summary",
       "payload": {
         "no_project_top_menus": 1,
@@ -105,8 +105,8 @@
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0026_true_2026-03-18_20-50-51.log",
-    "json_path": "data\\run_logs\\runs\\0026_true_2026-03-18_20-50-51.json"
+    "log_path": "data\\run_logs\\runs\\0025_true_2026-03-18_20-46-02.log",
+    "json_path": "data\\run_logs\\runs\\0025_true_2026-03-18_20-46-02.json"
   },
   "tags": [
     "map_full_program",

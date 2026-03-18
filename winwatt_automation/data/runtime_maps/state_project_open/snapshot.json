@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 986842,
-    "process_id": 1348,
+    "handle": 2822630,
+    "process_id": 8840,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -20,44 +20,10 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 1348,
-  "project_open_recovery": {
-    "close_attempts": [],
-    "diagnostics": {
-      "dialog_candidates": [],
-      "foreground_window": {
-        "class_name": "TMainForm",
-        "handle": 986842,
-        "process_id": 1348,
-        "title": "WinWatt gólya"
-      },
-      "main_window": {
-        "class_name": "TMainForm",
-        "enabled": true,
-        "exists": true,
-        "handle": null,
-        "process_id": 1348,
-        "rect": {
-          "bottom": 1150,
-          "left": -10,
-          "right": 1930,
-          "top": -10
-        },
-        "title": "WinWatt gólya",
-        "visible": true
-      }
-    },
-    "success": true
-  },
+  "process_id": 8840,
   "state_id": "project_open",
-  "timestamp": "2026-03-18T19:32:23.422334+00:00",
+  "timestamp": "2026-03-18T20:52:12.136410+00:00",
   "visible_top_windows": [
-    {
-      "class_name": "SysShadow",
-      "handle": null,
-      "process_id": 1348,
-      "title": ""
-    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -65,15 +31,9 @@
       "title": "Tálca"
     },
     {
-      "class_name": "TkTopLevel",
-      "handle": null,
-      "process_id": 29668,
-      "title": "WinWatt mapper status"
-    },
-    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 1348,
+      "process_id": 8840,
       "title": "WinWatt gólya"
     },
     {
@@ -92,19 +52,19 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Codex - Google Chrome"
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Lilla-Peti – Fájlkezelő"
     },
     {
       "class_name": "Window",
       "handle": null,
       "process_id": 26964,
       "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
-    },
-    {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14856,
-      "title": "02. Vízhálózat és Csatorna – Fájlkezelő"
     },
     {
       "class_name": "WinUIDesktopWin32WindowClass",
@@ -135,12 +95,6 @@
       "handle": null,
       "process_id": 29804,
       "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
-    },
-    {
-      "class_name": "XamlWindow",
-      "handle": null,
-      "process_id": 26264,
-      "title": "Képmetsző"
     },
     {
       "class_name": "WinUIDesktopWin32WindowClass",

@@ -9,32 +9,26 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TkTopLevel",
-    "handle": 4263782,
-    "process_id": 34036,
-    "title": "WinWatt mapper status"
+    "class_name": "Chrome_WidgetWin_1",
+    "handle": 4264188,
+    "process_id": 17008,
+    "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_after:Rendszer",
-  "process_id": 14532,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "process_id": 8840,
   "state_id": "no_project",
-  "timestamp": "2026-03-18T19:49:55.367517+00:00",
+  "timestamp": "2026-03-18T20:50:57.296664+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
       "process_id": 14856,
       "title": "Tálca"
-    },
-    {
-      "class_name": "TkTopLevel",
-      "handle": null,
-      "process_id": 34036,
-      "title": "WinWatt mapper status"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -45,7 +39,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 14532,
+      "process_id": 8840,
       "title": "WinWatt gólya"
     },
     {
@@ -58,19 +52,19 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Review ujfutas commit for optimizations - Google Chrome"
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14856,
+      "title": "Lilla-Peti – Fájlkezelő"
     },
     {
       "class_name": "Window",
       "handle": null,
       "process_id": 26964,
       "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
-    },
-    {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14856,
-      "title": "02. Vízhálózat és Csatorna – Fájlkezelő"
     },
     {
       "class_name": "WinUIDesktopWin32WindowClass",
@@ -101,12 +95,6 @@
       "handle": null,
       "process_id": 29804,
       "title": "RE: SR9-10: Hőszivattyú alátámasztás  - Üzenet (HTML) "
-    },
-    {
-      "class_name": "XamlWindow",
-      "handle": null,
-      "process_id": 26264,
-      "title": "Képmetsző"
     },
     {
       "class_name": "WinUIDesktopWin32WindowClass",
