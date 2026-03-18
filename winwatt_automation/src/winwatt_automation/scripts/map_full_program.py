@@ -8,7 +8,8 @@ import sys
 from loguru import logger
 
 from winwatt_automation.live_ui.app_connector import get_cached_main_window
-from winwatt_automation.runtime_logging import append_terminal_line, finalize_run, record_event, start_run
+from winwatt_automation.runtime_logging import append_terminal_line, finalize_run, record_event, start_run, update_status
+from winwatt_automation.runtime_logging.progress_display import launch_progress_overlay
 from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
 from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TEST_PROJECT_PATH, build_full_runtime_program_map
 
@@ -52,12 +53,13 @@ def _close_winwatt_after_mapping() -> dict[str, str | bool | None]:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Map full WinWatt runtime structure")
     parser.add_argument("--project-path", default=DEFAULT_TEST_PROJECT_PATH)
-    parser.add_argument("--safe-mode", default="safe", choices=["safe", "hybrid", "caution", "blocked"])
+    parser.add_argument("--safe-mode", default="off", choices=["safe", "hybrid", "caution", "blocked", "off", "unsafe"])
     parser.add_argument("--output-dir", default="data/runtime_maps")
     parser.add_argument("--state-id-prefix", default="state")
     parser.add_argument("--top-menus", default=None)
-    parser.add_argument("--max-submenu-depth", type=int, default=3)
+    parser.add_argument("--max-submenu-depth", type=int, default=-1, help="Use -1 for unlimited submenu traversal depth")
     parser.add_argument("--include-disabled", default="true")
+    parser.add_argument("--progress-overlay", action="store_true", help="Show a non-activating status HUD while mapping runs")
     return parser
 
 
@@ -74,8 +76,23 @@ def main() -> int:
         },
     )
     sink_id = logger.add(lambda msg: append_terminal_line(run_ctx, str(msg).rstrip("\n")), level="INFO")
+    update_status(run_ctx, "starting", "Runtime mapping is starting…")
+    if args.progress_overlay:
+        launch_progress_overlay(run_ctx.status_path)
 
     try:
+        def _event_recorder(event_type: str, payload: dict[str, object]) -> None:
+            record_event(run_ctx, event_type, payload)
+            message_map = {
+                "state_mapped": f"Állapot feltérképezve: {payload.get('state_id')}",
+                "project_open_result": "Projektmegnyitás eredménye rögzítve.",
+                "project_open_recovery": "Projektmegnyitás utáni helyreállítás futott.",
+                "runtime_diff": "A két runtime állapot diffje elkészült.",
+                "knowledge_verification": "A tudásverifikáció elkészült.",
+            }
+            if event_type in message_map:
+                update_status(run_ctx, "running", message_map[event_type], {"event_type": event_type, **payload})
+
         result = build_full_runtime_program_map(
             project_path=args.project_path,
             safe_mode=args.safe_mode,
@@ -84,7 +101,7 @@ def main() -> int:
             top_menus=_parse_top_menus(args.top_menus),
             max_submenu_depth=args.max_submenu_depth,
             include_disabled=_parse_bool(args.include_disabled),
-            event_recorder=lambda event_type, payload: record_event(run_ctx, event_type, payload),
+            event_recorder=_event_recorder,
         )
 
         no_project = result["state_no_project"]
@@ -99,6 +116,16 @@ def main() -> int:
         record_event(
             run_ctx,
             "runtime_mapping_summary",
+            {
+                "no_project_top_menus": len(no_project.top_menus),
+                "project_open_top_menus": len(project_open.top_menus),
+                "diff_summary": diff.get("summary", {}),
+            },
+        )
+        update_status(
+            run_ctx,
+            "running",
+            "A runtime mapping összesítése elkészült.",
             {
                 "no_project_top_menus": len(no_project.top_menus),
                 "project_open_top_menus": len(project_open.top_menus),
@@ -130,6 +157,7 @@ def main() -> int:
         return 0
     except Exception as exc:
         record_event(run_ctx, "run_failed", {"error": str(exc)})
+        update_status(run_ctx, "failed", f"Hiba történt: {exc}", {"error": str(exc)})
         finalize_run(
             run_ctx,
             success=False,
