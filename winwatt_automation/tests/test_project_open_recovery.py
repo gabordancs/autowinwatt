@@ -50,6 +50,9 @@ def test_recover_after_project_open_success_after_disabled(monkeypatch):
 
     assert result["success"] is True
     assert result["close_attempts"] == [{"method": "key", "name": "Esc"}]
+    assert result["modal_pending"] is True
+    assert result["close_attempted"] is True
+    assert result["main_window_reenabled"] is True
 
 
 def test_build_full_runtime_program_map_stops_on_recovery_failure(monkeypatch, tmp_path):
@@ -84,6 +87,7 @@ def test_restore_clean_menu_baseline_modal_pending_uses_recovery(monkeypatch):
     monkeypatch.setattr(program_mapper, "get_cached_main_window", lambda: _FakeMainWindow(visible=True, enabled=False))
     monkeypatch.setattr(program_mapper, "recover_after_project_open", lambda **kwargs: {"success": True, "diagnostics": {}, "close_attempts": []})
     monkeypatch.setattr(program_mapper.menu_helpers, "capture_menu_popup_snapshot", lambda: [])
+    monkeypatch.setattr(program_mapper.menu_helpers, "wait_for_popup_to_close", lambda **kwargs: True)
 
     assert program_mapper.restore_clean_menu_baseline(state_id="s", stage="before:Fájl") is True
 

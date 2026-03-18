@@ -103,14 +103,43 @@ def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
     monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: types.SimpleNamespace())
     monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: types.SimpleNamespace(rectangle=lambda: types.SimpleNamespace(left=0, top=0, right=500, bottom=300)))
     monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
-    popup_checks = iter([False, True])
-    monkeypatch.setattr(menu_helpers, "did_any_new_menu_popup_appear", lambda before, after: next(popup_checks))
+    snapshots = iter([set(), {("popup", "", "", "", "")}])
+    monkeypatch.setattr(menu_helpers, "wait_for_new_menu_popup", lambda before_snapshot, **kwargs: next(snapshots))
 
     relative_clicks = []
     monkeypatch.setattr(menu_helpers, "_click_by_relative_rect_center", lambda item, main: relative_clicks.append(item))
 
     menu_helpers.click_top_menu_item("Fájl")
     assert relative_clicks == [file_item]
+
+
+def test_click_top_menu_item_adjusts_point_outside_forbidden_zone(monkeypatch):
+    menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+    file_item = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(0, 0, 20, 20))
+
+    class MainWindow:
+        def rectangle(self):
+            return types.SimpleNamespace(left=0, top=0, right=500, bottom=300)
+
+        def click_input(self, coords):
+            clicks.append(coords)
+
+    clicks = []
+    main_window = MainWindow()
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: FakeContainer([file_item]))
+    monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: main_window)
+    monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: main_window)
+    monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
+    monkeypatch.setattr(menu_helpers, "wait_for_new_menu_popup", lambda before_snapshot, **kwargs: {("popup", "", "", "", "")})
+    monkeypatch.setattr(menu_helpers, "_menu_snapshot", lambda: set())
+
+    menu_helpers.click_top_menu_item("Fájl")
+
+    assert clicks
+    rel_x, rel_y = clicks[0]
+    assert rel_x >= menu_helpers.TITLEBAR_ICON_GUARD_WIDTH
+    assert rel_y >= menu_helpers.TITLEBAR_ICON_GUARD_HEIGHT
 
 
 def test_structured_popup_rows_from_snapshots_sorts_filters_and_marks_separator(monkeypatch):

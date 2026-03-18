@@ -6,7 +6,12 @@ import time
 from typing import Any
 
 from loguru import logger
-from winwatt_automation.runtime_mapping.timing import DEFAULT_UI_DELAY, POPUP_OPEN_DELAY
+from winwatt_automation.runtime_mapping.timing import (
+    DEFAULT_UI_DELAY,
+    POPUP_CLOSE_TIMEOUT,
+    POPUP_WAIT_POLL_INTERVAL,
+    POPUP_WAIT_TIMEOUT,
+)
 from winwatt_automation.live_ui.ui_cache import UIObjectCache
 from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
@@ -40,6 +45,56 @@ def _validate_not_in_forbidden_top_left_zone(main_window: Any, point: tuple[int,
     if point[0] <= left + TITLEBAR_ICON_GUARD_WIDTH and point[1] <= top + TITLEBAR_ICON_GUARD_HEIGHT:
         logger.error("blocked_click_forbidden_zone point={} main_left={} main_top={}", point, left, top)
         raise RuntimeError("click_blocked_forbidden_zone")
+
+
+def _coerce_point_outside_forbidden_top_left_zone(main_window: Any, point: tuple[int, int]) -> tuple[int, int]:
+    rect = main_window.rectangle()
+    left = int(rect.left)
+    top = int(rect.top)
+    right = int(rect.right)
+    bottom = int(rect.bottom)
+
+    safe_x = max(point[0], left + TITLEBAR_ICON_GUARD_WIDTH + 8)
+    safe_y = max(point[1], top + TITLEBAR_ICON_GUARD_HEIGHT + 8)
+    safe_x = min(max(left + 1, safe_x), max(left + 1, right - 1))
+    safe_y = min(max(top + 1, safe_y), max(top + 1, bottom - 1))
+
+    if (safe_x, safe_y) != point:
+        logger.warning(
+            "adjusted_click_outside_forbidden_zone original_point={} adjusted_point={} main_left={} main_top={}",
+            point,
+            (safe_x, safe_y),
+            left,
+            top,
+        )
+
+    return safe_x, safe_y
+
+
+def _relative_coords_for_point(main_window: Any, point: tuple[int, int]) -> tuple[int, int]:
+    menu_bar = getattr(main_window, "child_window", None)
+    if callable(menu_bar):
+        try:
+            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
+            menu_bar_rect = menu_bar_ctrl.rectangle()
+            return int(point[0] - int(menu_bar_rect.left)), int(point[1] - int(menu_bar_rect.top))
+        except Exception:
+            pass
+
+    window_rect = main_window.rectangle()
+    return int(point[0] - int(window_rect.left)), int(point[1] - int(window_rect.top))
+
+
+def _click_main_window_at_point(main_window: Any, point: tuple[int, int], *, log_label: str) -> None:
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point)
+    rel_x, rel_y = _relative_coords_for_point(main_window, safe_point)
+    if callable(getattr(main_window, "click_input", None)):
+        main_window.click_input(coords=(rel_x, rel_y))
+        logger.info("{} rel_x={} rel_y={}", log_label, rel_x, rel_y)
+        return
+
+    _mouse_click(safe_point)
+    logger.info("{} x={} y={}", log_label, safe_point[0], safe_point[1])
 
 
 def _validate_post_menu_open_foreground(main_window: Any, *, title: str) -> None:
@@ -146,7 +201,7 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
 
 
 def _menu_items(*, force_refresh: bool = False) -> list[Any]:
-    root = get_cached_main_window()
+    root = get_main_window()
     handle = getattr(getattr(root, "element_info", root), "handle", None)
     descendants = getattr(root, "descendants", None)
     if not callable(descendants):
@@ -155,10 +210,16 @@ def _menu_items(*, force_refresh: bool = False) -> list[Any]:
     def _query() -> list[Any]:
         return [item for item in descendants() if _control_type(item) == "menuitem"]
 
-    ttl_s = 0.0 if force_refresh else 0.5
+    ttl_s = 0.0 if force_refresh or handle is None else 0.5
     items = _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
     logger.debug("Discovered {} MenuItem controls", len(items))
     return items
+
+
+def get_main_window() -> Any:
+    """Backward-compatible accessor used by tests and helper code."""
+
+    return get_cached_main_window()
 
 
 def _top_level_menu_items_raw(*, force_refresh: bool = False) -> list[Any]:
@@ -446,7 +507,7 @@ def _structured_popup_rows_from_snapshots(
 
             rejection_reason = _reject_popup_candidate_reason(row, top_level_rects, top_level_texts, permissive=True)
             if rejection_reason is not None:
-                logger.info(
+                logger.debug(
                     "Rejected popup row: rect={} text={!r} scope={} control_type={} reason={}",
                     row.get("rectangle"),
                     row.get("text", ""),
@@ -463,7 +524,7 @@ def _structured_popup_rows_from_snapshots(
                 str(row.get("source_scope", "")),
             )
             if dedupe_key in seen_fallback:
-                logger.info(
+                logger.debug(
                     "Rejected popup row: rect={} text={!r} scope={} control_type={} reason={}",
                     row.get("rectangle"),
                     row.get("text", ""),
@@ -476,7 +537,7 @@ def _structured_popup_rows_from_snapshots(
             popup_candidates.append(row)
 
     if not popup_candidates:
-        logger.info(
+        logger.debug(
             "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count=0",
             len(before_rows),
             len(after_rows),
@@ -498,7 +559,7 @@ def _structured_popup_rows_from_snapshots(
         existing = deduped_by_visual_identity.get(identity_key)
         if existing is None:
             deduped_by_visual_identity[identity_key] = candidate
-            logger.info(
+            logger.debug(
                 "Popup row dedupe: rect={} text={!r} control_type={} chosen preferred source={}",
                 candidate.get("rectangle"),
                 candidate.get("text", ""),
@@ -513,7 +574,7 @@ def _structured_popup_rows_from_snapshots(
             deduped_by_visual_identity[identity_key] = candidate
 
         preferred = deduped_by_visual_identity[identity_key]
-        logger.info(
+        logger.debug(
             "Popup row dedupe: rect={} text={!r} control_type={} chosen preferred source={} dropped source={}",
             preferred.get("rectangle"),
             preferred.get("text", ""),
@@ -531,7 +592,7 @@ def _structured_popup_rows_from_snapshots(
     for idx, entry in enumerate(filtered):
         entry["index"] = idx
 
-    logger.info(
+    logger.debug(
         "Structured popup rows: before snapshot row count={} after snapshot row count={} structured row count={} deduped fragment count={} logical row count={}",
         len(before_rows),
         len(after_rows),
@@ -669,13 +730,18 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
             process_id = None
     top_menu_click_count = 0
     click_mode = "object"
+    item_rect = item.rectangle()
+    point = (
+        int((int(item_rect.left) + int(item_rect.right)) / 2),
+        int((int(item_rect.top) + int(item_rect.bottom)) / 2),
+    )
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point)
     try:
-        item_rect = item.rectangle()
-        _validate_not_in_forbidden_top_left_zone(
-            main_window,
-            (int((int(item_rect.left) + int(item_rect.right)) / 2), int((int(item_rect.top) + int(item_rect.bottom)) / 2)),
-        )
-        item.click_input()
+        if safe_point == point:
+            item.click_input()
+        else:
+            click_mode = "adjusted_coordinate"
+            _click_main_window_at_point(main_window, safe_point, log_label="Adjusted top menu click used title=Fájl")
         top_menu_click_count += 1
     except Exception as exc:
         logger.warning("Top menu item 'Fájl' click_input() failed: {}", exc)
@@ -685,7 +751,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         _click_by_relative_rect_center(item, main_window)
         top_menu_click_count += 1
 
-    time.sleep(max(0.05, DEFAULT_UI_DELAY / 2))
+    time.sleep(max(0.02, DEFAULT_UI_DELAY / 4))
     try:
         _validate_post_menu_open_foreground(main_window, title="Fájl")
     except Exception as exc:
@@ -705,6 +771,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
             "click_mode": click_mode,
         }
 
+    wait_for_new_menu_popup(_snapshot_keys(before_rows))
     after_rows = capture_menu_popup_snapshot()
     popup_open = did_any_new_menu_popup_appear(_snapshot_keys(before_rows), _snapshot_keys(after_rows))
     structured_rows = _structured_popup_rows_from_snapshots(before_rows, after_rows)
@@ -788,7 +855,7 @@ def did_any_new_menu_popup_appear(
     after_snapshot: set[tuple[str, str, str, str, str]],
 ) -> bool:
     new_items = after_snapshot - before_snapshot
-    logger.info(
+    logger.debug(
         "Menu popup snapshot diff: before={} after={} new={}",
         len(before_snapshot),
         len(after_snapshot),
@@ -797,37 +864,44 @@ def did_any_new_menu_popup_appear(
     return bool(new_items)
 
 
+def wait_for_new_menu_popup(
+    before_snapshot: set[tuple[str, str, str, str, str]],
+    *,
+    timeout: float = POPUP_WAIT_TIMEOUT,
+    poll_interval: float = POPUP_WAIT_POLL_INTERVAL,
+) -> set[tuple[str, str, str, str, str]]:
+    deadline = time.monotonic() + max(timeout, poll_interval)
+    latest_snapshot = before_snapshot
+    while time.monotonic() <= deadline:
+        latest_snapshot = _menu_snapshot()
+        if did_any_new_menu_popup_appear(before_snapshot, latest_snapshot):
+            return latest_snapshot
+        time.sleep(poll_interval)
+    return latest_snapshot
+
+
+def wait_for_popup_to_close(
+    *,
+    timeout: float = POPUP_CLOSE_TIMEOUT,
+    poll_interval: float = POPUP_WAIT_POLL_INTERVAL,
+) -> bool:
+    deadline = time.monotonic() + max(timeout, poll_interval)
+    while time.monotonic() <= deadline:
+        if not capture_menu_popup_snapshot():
+            return True
+        time.sleep(poll_interval)
+    return False
+
+
 def _click_by_relative_rect_center(item: Any, main_window: Any) -> None:
     rect = item.rectangle()
-    x = int((int(rect.left) + int(rect.right)) / 2)
-    y = int((int(rect.top) + int(rect.bottom)) / 2)
+    point = _coerce_point_outside_forbidden_top_left_zone(
+        main_window,
+        (int((int(rect.left) + int(rect.right)) / 2), int((int(rect.top) + int(rect.bottom)) / 2)),
+    )
 
     ensure_main_window_foreground_before_click(action_label="relative_menu_click")
-    menu_bar = getattr(main_window, "child_window", None)
-    if callable(menu_bar):
-        try:
-            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
-            menu_bar_rect = menu_bar_ctrl.rectangle()
-            rel_x = int(x - int(menu_bar_rect.left))
-            rel_y = int(y - int(menu_bar_rect.top))
-        except Exception:
-            window_rect = main_window.rectangle()
-            rel_x = int(x - int(window_rect.left))
-            rel_y = int(y - int(window_rect.top))
-    else:
-        window_rect = main_window.rectangle()
-        rel_x = int(x - int(window_rect.left))
-        rel_y = int(y - int(window_rect.top))
-
-    _validate_not_in_forbidden_top_left_zone(main_window, (x, y))
-
-    if callable(getattr(main_window, "click_input", None)):
-        main_window.click_input(coords=(rel_x, rel_y))
-        logger.info("Fallback menu click used rel coords rel_x={} rel_y={}", rel_x, rel_y)
-        return
-
-    _mouse_click((x, y))
-    logger.info("Fallback menu click used absolute coords x={} y={}", x, y)
+    _click_main_window_at_point(main_window, point, log_label="Fallback menu click used")
 
 
 def click_top_menu_item(title: str) -> None:
@@ -840,25 +914,28 @@ def click_top_menu_item(title: str) -> None:
     before_snapshot = _menu_snapshot()
     _LAST_MENU_SNAPSHOT_BEFORE_OPEN = before_snapshot
 
+    item_rect = item.rectangle()
+    point = (
+        int((int(item_rect.left) + int(item_rect.right)) / 2),
+        int((int(item_rect.top) + int(item_rect.bottom)) / 2),
+    )
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point)
+
     try:
-        item_rect = item.rectangle()
-        _validate_not_in_forbidden_top_left_zone(
-            main_window,
-            (int((int(item_rect.left) + int(item_rect.right)) / 2), int((int(item_rect.top) + int(item_rect.bottom)) / 2)),
-        )
-        item.click_input()
+        if safe_point == point:
+            item.click_input()
+        else:
+            _click_main_window_at_point(main_window, safe_point, log_label=f"Adjusted top menu click used title={title}")
     except Exception as exc:
         logger.warning("Top menu item '{}' click_input() failed: {}", title, exc)
 
-    time.sleep(max(0.05, POPUP_OPEN_DELAY / 2))
     _validate_post_menu_open_foreground(main_window, title=title)
-    after_snapshot = _menu_snapshot()
+    after_snapshot = wait_for_new_menu_popup(before_snapshot)
     if did_any_new_menu_popup_appear(before_snapshot, after_snapshot):
         return
 
     _click_by_relative_rect_center(item, main_window)
-    time.sleep(max(0.05, POPUP_OPEN_DELAY / 2))
-    fallback_snapshot = _menu_snapshot()
+    fallback_snapshot = wait_for_new_menu_popup(before_snapshot)
     if did_any_new_menu_popup_appear(before_snapshot, fallback_snapshot):
         return
 
