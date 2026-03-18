@@ -25,6 +25,357 @@ SYSTEM_MENU_CLASS_NAMES = {"#32768"}
 TOP_MENU_NAMES = ("Fájl", "Jegyzékek", "Adatbázis", "Beállítások", "Ablak", "Súgó")
 TITLEBAR_ICON_GUARD_WIDTH = 64
 TITLEBAR_ICON_GUARD_HEIGHT = 40
+SYSTEM_MENU_TITLE = "Rendszer"
+SYSTEM_MENU_DEFAULT_ITEMS = {
+    "restore",
+    "move",
+    "size",
+    "minimize",
+    "maximize",
+    "close",
+}
+
+
+def _rect_tuple(rect: dict[str, int] | None) -> tuple[int, int, int, int]:
+    rect = rect or {}
+    return (
+        int(rect.get("left", 0)),
+        int(rect.get("top", 0)),
+        int(rect.get("right", 0)),
+        int(rect.get("bottom", 0)),
+    )
+
+
+def _center_tuple(row: dict[str, Any]) -> tuple[int, int]:
+    return int(row.get("center_x") or 0), int(row.get("center_y") or 0)
+
+
+def _main_window_topbar_band() -> dict[str, int] | None:
+    try:
+        main_window = get_cached_main_window()
+    except Exception:
+        return None
+
+    menu_bar = getattr(main_window, "child_window", None)
+    if callable(menu_bar):
+        try:
+            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
+            rect = _rectangle_data(menu_bar_ctrl)
+            if rect is not None:
+                return rect
+        except Exception:
+            pass
+
+    top_level_rects = [
+        rect
+        for item in _top_level_menu_items_raw(force_refresh=True)
+        for rect in [_rectangle_data(item)]
+        if rect is not None
+    ]
+    if not top_level_rects:
+        return None
+
+    left = min(rect["left"] for rect in top_level_rects)
+    top = min(rect["top"] for rect in top_level_rects)
+    right = max(rect["right"] for rect in top_level_rects)
+    bottom = max(rect["bottom"] for rect in top_level_rects)
+    return {
+        "left": left,
+        "top": top,
+        "right": right,
+        "bottom": bottom,
+        "width": max(0, right - left),
+        "height": max(0, bottom - top),
+        "center_x": int((left + right) / 2),
+        "center_y": int((top + bottom) / 2),
+    }
+
+
+def _row_in_vertical_band(row: dict[str, Any], band: dict[str, int] | None) -> bool:
+    if band is None:
+        return False
+    center_y = int(row.get("center_y") or 0)
+    return int(band["top"]) <= center_y <= int(band["bottom"])
+
+
+def _row_below_band(row: dict[str, Any], band: dict[str, int] | None) -> bool:
+    if band is None:
+        return False
+    rect = row.get("rectangle") or {}
+    return int(rect.get("top", 0)) >= int(band["bottom"])
+
+
+def _classify_row_geometry(row: dict[str, Any], topbar_band: dict[str, int] | None) -> tuple[bool, bool]:
+    topbar_candidate = _row_in_vertical_band(row, topbar_band)
+    popup_candidate = _row_below_band(row, topbar_band)
+    return topbar_candidate, popup_candidate
+
+
+def _row_identity_payload(row: dict[str, Any]) -> dict[str, Any]:
+    handle = row.get("native_handle")
+    try:
+        handle = int(handle) if handle is not None else None
+    except Exception:
+        handle = None
+
+    process_id = row.get("process_id")
+    try:
+        process_id = int(process_id) if process_id is not None else None
+    except Exception:
+        process_id = None
+
+    return {
+        "source_scope": row.get("source_scope", ""),
+        "control_type": row.get("control_type", ""),
+        "class_name": row.get("class_name", ""),
+        "text": row.get("text", ""),
+        "rectangle": dict(row.get("rectangle") or {}),
+        "center": _center_tuple(row),
+        "process_id": process_id,
+        "native_handle": handle,
+        "topbar_candidate": bool(row.get("topbar_candidate")),
+        "popup_candidate": bool(row.get("popup_candidate")),
+    }
+
+
+def _log_popup_fragment(label: str, row: dict[str, Any]) -> None:
+    payload = _row_identity_payload(row)
+    logger.info(
+        "{} source_scope={} control_type={} class_name={} text={!r} rectangle={} center={} process_id={} native_handle={} topbar_candidate={} popup_candidate={}",
+        label,
+        payload["source_scope"],
+        payload["control_type"],
+        payload["class_name"],
+        payload["text"],
+        payload["rectangle"],
+        payload["center"],
+        payload["process_id"],
+        payload["native_handle"],
+        payload["topbar_candidate"],
+        payload["popup_candidate"],
+    )
+
+
+def _log_top_menu_popup_diagnostics(title: str, item_rect: Any, topbar_band: dict[str, int] | None) -> None:
+    snapshot_rows = capture_menu_popup_snapshot()
+    all_visible_menu_items = [item for item in _menu_items(force_refresh=True) if _is_visible(item)]
+    topbar_count = 0
+    popup_count = 0
+    popup_texts_under_title: list[str] = []
+    system_popup_cluster = False
+    title_norm = _normalize(title)
+    item_center_x = int((int(item_rect.left) + int(item_rect.right)) / 2)
+    for row in snapshot_rows:
+        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        if topbar_candidate:
+            topbar_count += 1
+        if popup_candidate:
+            popup_count += 1
+            left, _, right, _ = _rect_tuple(row.get("rectangle"))
+            if left <= item_center_x <= right and str(row.get("normalized_text") or "") != title_norm:
+                popup_texts_under_title.append(str(row.get("text") or ""))
+    popup_cluster_tops = sorted(
+        {int((row.get("rectangle") or {}).get("top", 0)) for row in snapshot_rows if bool(row.get("popup_candidate"))}
+    )
+    if popup_cluster_tops:
+        topbar_bottom = int((topbar_band or {}).get("bottom", 0))
+        system_popup_cluster = any(top > topbar_bottom for top in popup_cluster_tops)
+    logger.info(
+        "DBG_TOP_MENU_CLICK_POPUP_DIAG title={} total_visible_menuitems={} topbar_band_menuitems={} popup_region_menuitems={} new_cluster_below_topbar={} visible_texts_under_title={} topbar_band={} snapshot_row_count={} ",
+        title,
+        len(all_visible_menu_items),
+        topbar_count,
+        popup_count,
+        system_popup_cluster,
+        popup_texts_under_title,
+        _rect_tuple(topbar_band),
+        len(snapshot_rows),
+    )
+
+
+def _is_system_menu_title(title: str) -> bool:
+    return _normalize(title) == _normalize(SYSTEM_MENU_TITLE)
+
+
+def _system_menu_icon_point(main_window: Any) -> tuple[int, int]:
+    rect = main_window.rectangle()
+    left = int(rect.left)
+    top = int(rect.top)
+    return left + 16, top + 16
+
+
+def _is_system_menu_window(wrapper: Any) -> bool:
+    class_name_getter = getattr(wrapper, "class_name", None)
+    class_name = class_name_getter() if callable(class_name_getter) else getattr(getattr(wrapper, "element_info", wrapper), "class_name", "")
+    return _normalize(str(class_name)) in {_normalize(name) for name in SYSTEM_MENU_CLASS_NAMES}
+
+
+def _system_menu_windows() -> list[Any]:
+    try:
+        from pywinauto import Desktop
+    except Exception:
+        return []
+
+    windows: list[Any] = []
+    for window in Desktop(backend="uia").windows(top_level_only=True):
+        try:
+            if not bool(getattr(window, "is_visible", lambda: False)()):
+                continue
+            if not _is_system_menu_window(window):
+                continue
+            windows.append(window)
+        except Exception:
+            continue
+    logger.info(
+        "DBG_WINWATT_SYSTEM_MENU_WINDOW_SCAN visible_system_menu_windows={} foreground={}",
+        len(windows),
+        describe_foreground_window(),
+    )
+    return windows
+
+
+def _system_menu_fragment_candidates(window: Any) -> list[Any]:
+    candidates: list[Any] = []
+    children = getattr(window, "children", None)
+    descendants = getattr(window, "descendants", None)
+    for getter in (children, descendants):
+        if not callable(getter):
+            continue
+        try:
+            candidates.extend(list(getter()))
+        except Exception:
+            continue
+    deduped: list[Any] = []
+    seen: set[int] = set()
+    for item in candidates:
+        marker = id(item)
+        if marker in seen:
+            continue
+        seen.add(marker)
+        deduped.append(item)
+    return deduped
+
+
+def _system_menu_row_from_wrapper(item: Any, *, source_scope: str) -> dict[str, Any] | None:
+    if not _is_visible(item):
+        return None
+    rect = _rectangle_data(item)
+    if rect is None:
+        return None
+    info = getattr(item, "element_info", item)
+    text = _name(item)
+    control_type = getattr(info, "control_type", None)
+    class_name = getattr(info, "class_name", None) or ""
+    row = {
+        "text": text,
+        "normalized_text": _normalize(text),
+        "control_type": control_type,
+        "class_name": class_name,
+        "rectangle": {
+            "left": rect["left"],
+            "top": rect["top"],
+            "right": rect["right"],
+            "bottom": rect["bottom"],
+        },
+        "width": rect["width"],
+        "height": rect["height"],
+        "center_x": rect["center_x"],
+        "center_y": rect["center_y"],
+        "is_separator": _is_separator_by_geometry(rect),
+        "source_scope": source_scope,
+        "process_id": getattr(info, "process_id", None),
+        "native_handle": getattr(info, "handle", None),
+        "enabled": getattr(info, "enabled", None),
+        "topbar_candidate": False,
+        "popup_candidate": True,
+    }
+    return row
+
+
+def open_system_menu(main_window: Any) -> None:
+    ensure_main_window_foreground_before_click(action_label="open_system_menu")
+    logger.info("DBG_WINWATT_SYSTEM_MENU_OPEN_START method=alt_space foreground_before={}", describe_foreground_window())
+    try:
+        from pywinauto import keyboard
+
+        keyboard.send_keys("%{SPACE}")
+    except Exception as exc:
+        logger.warning("DBG_WINWATT_SYSTEM_MENU_ALTSPACE_FAILED error={} fallback=titlebar_icon_click", exc)
+        _mouse_click(_system_menu_icon_point(main_window))
+
+    time.sleep(max(0.05, DEFAULT_UI_DELAY / 2))
+    fg = describe_foreground_window()
+    logger.info("DBG_WINWATT_SYSTEM_MENU_OPEN_RESULT foreground_after={} system_menu_foreground={}", fg, _is_system_menu_foreground())
+
+
+def capture_system_menu_popup() -> list[dict[str, Any]]:
+    windows = _system_menu_windows()
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple[int, int, int, int, str, str]] = set()
+
+    for window_index, window in enumerate(windows):
+        info = getattr(window, "element_info", window)
+        logger.info(
+            "DBG_WINWATT_SYSTEM_MENU_WINDOW window_index={} class_name={} name={!r} control_type={} handle={} process_id={}",
+            window_index,
+            getattr(info, "class_name", None),
+            getattr(info, "name", None),
+            getattr(info, "control_type", None),
+            getattr(info, "handle", None),
+            getattr(info, "process_id", None),
+        )
+        for item in _system_menu_fragment_candidates(window):
+            row = _system_menu_row_from_wrapper(item, source_scope="system_menu_window")
+            if row is None:
+                continue
+            rect = row["rectangle"]
+            key = (
+                rect["left"],
+                rect["top"],
+                rect["right"],
+                rect["bottom"],
+                row["normalized_text"],
+                _normalize(str(row.get("control_type") or "")),
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append(row)
+            logger.info(
+                "DBG_WINWATT_SYSTEM_MENU_FRAGMENT source_scope={} control_type={} class_name={} text={!r} rectangle={} center={} process_id={} native_handle={} is_separator={} enabled={}",
+                row.get("source_scope"),
+                row.get("control_type"),
+                row.get("class_name"),
+                row.get("text"),
+                row.get("rectangle"),
+                (row.get("center_x"), row.get("center_y")),
+                row.get("process_id"),
+                row.get("native_handle"),
+                row.get("is_separator"),
+                row.get("enabled"),
+            )
+
+    rows.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
+    logical_rows = _group_popup_fragments_into_logical_rows(rows)
+    for index, row in enumerate(logical_rows):
+        row["index"] = index
+        row["topbar_candidate"] = False
+        row["popup_candidate"] = True
+
+    control_types = sorted({str(row.get("control_type") or "") for row in rows})
+    class_names = sorted({str(row.get("class_name") or "") for row in rows})
+    default_item_rows = [row.get("text") for row in logical_rows if _normalize(str(row.get("text") or "")) in SYSTEM_MENU_DEFAULT_ITEMS]
+    logger.info(
+        "DBG_WINWATT_SYSTEM_MENU_CAPTURE_SUMMARY raw_fragments={} logical_rows={} control_types={} class_names={} default_item_rows={} foreground={}",
+        len(rows),
+        len(logical_rows),
+        control_types,
+        class_names,
+        default_item_rows,
+        describe_foreground_window(),
+    )
+    return logical_rows
+
 
 def _mouse_click(coords: tuple[int, int]) -> None:
     from pywinauto import mouse
@@ -202,6 +553,7 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
 
 def _menu_items(*, force_refresh: bool = False) -> list[Any]:
     root = get_main_window()
+    topbar_band = _main_window_topbar_band()
     handle = getattr(getattr(root, "element_info", root), "handle", None)
     descendants = getattr(root, "descendants", None)
     if not callable(descendants):
@@ -212,6 +564,32 @@ def _menu_items(*, force_refresh: bool = False) -> list[Any]:
 
     ttl_s = 0.0 if force_refresh or handle is None else 0.5
     items = _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
+    topbar_visible = 0
+    popup_visible = 0
+    visible_count = 0
+    for item in items:
+        if not _is_visible(item):
+            continue
+        visible_count += 1
+        rect = _rectangle_data(item)
+        if rect is None:
+            continue
+        row = {"rectangle": rect, "center_x": rect["center_x"], "center_y": rect["center_y"]}
+        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        if topbar_candidate:
+            topbar_visible += 1
+        if popup_candidate:
+            popup_visible += 1
+    logger.info(
+        "DBG_MENU_ITEMS_SUMMARY total_items={} visible_items={} topbar_band={} topbar_band_visible_count={} popup_region_visible_count={} force_refresh={} handle={}",
+        len(items),
+        visible_count,
+        _rect_tuple(topbar_band),
+        topbar_visible,
+        popup_visible,
+        force_refresh,
+        handle,
+    )
     logger.debug("Discovered {} MenuItem controls", len(items))
     return items
 
@@ -294,8 +672,10 @@ def _menu_like_controls_from_main_window() -> list[dict[str, Any]]:
         if rect is None:
             continue
 
-        rows.append(
-            {
+        info = getattr(item, "element_info", item)
+        process_id = getattr(info, "process_id", None)
+        native_handle = getattr(info, "handle", None)
+        row = {
                 "text": _name(item),
                 "normalized_text": _normalize(_name(item)),
                 "control_type": getattr(getattr(item, "element_info", item), "control_type", None),
@@ -312,8 +692,15 @@ def _menu_like_controls_from_main_window() -> list[dict[str, Any]]:
                 "center_y": rect["center_y"],
                 "is_separator": _is_separator_by_geometry(rect),
                 "source_scope": "main_window",
+                "process_id": process_id,
+                "native_handle": native_handle,
             }
-        )
+        topbar_candidate, popup_candidate = _classify_row_geometry(row, _main_window_topbar_band())
+        row["topbar_candidate"] = topbar_candidate
+        row["popup_candidate"] = popup_candidate
+        rows.append(row)
+        _log_popup_fragment("DBG_MENU_FRAGMENT_MAIN_WINDOW", row)
+    logger.info("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=main_window count={}", len(rows))
     return rows
 
 
@@ -341,8 +728,10 @@ def _menu_like_controls_from_global_process_scan() -> list[dict[str, Any]]:
                 rect = _rectangle_data(item)
                 if rect is None:
                     continue
-                rows.append(
-                    {
+                info = getattr(item, "element_info", item)
+                process_item_id = getattr(info, "process_id", None)
+                native_handle = getattr(info, "handle", None)
+                row = {
                         "text": _name(item),
                         "normalized_text": _normalize(_name(item)),
                         "control_type": getattr(getattr(item, "element_info", item), "control_type", None),
@@ -359,10 +748,17 @@ def _menu_like_controls_from_global_process_scan() -> list[dict[str, Any]]:
                         "center_y": rect["center_y"],
                         "is_separator": _is_separator_by_geometry(rect),
                         "source_scope": "global_process_scan",
+                        "process_id": process_item_id,
+                        "native_handle": native_handle,
                     }
-                )
+                topbar_candidate, popup_candidate = _classify_row_geometry(row, _main_window_topbar_band())
+                row["topbar_candidate"] = topbar_candidate
+                row["popup_candidate"] = popup_candidate
+                rows.append(row)
+                _log_popup_fragment("DBG_MENU_FRAGMENT_GLOBAL_SCAN", row)
         except Exception:
             continue
+    logger.info("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=global_process_scan count={} process_id={}", len(rows), process_id)
     return rows
 
 
@@ -386,7 +782,10 @@ def _snapshot_keys(rows: list[dict[str, Any]]) -> set[tuple[str, str, str, str, 
 def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
     """Capture current menu-like controls from main window and global process scans."""
 
-    merged = _menu_like_controls_from_main_window() + _menu_like_controls_from_global_process_scan()
+    main_rows = _menu_like_controls_from_main_window()
+    global_rows = _menu_like_controls_from_global_process_scan()
+    merged = main_rows + global_rows
+    topbar_band = _main_window_topbar_band()
     seen: set[tuple[int, int, int, int, str, str, str]] = set()
     unique_rows: list[dict[str, Any]] = []
 
@@ -407,6 +806,29 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
         row["appeared_after_popup_open"] = False
         unique_rows.append(row)
 
+    topbar_like_count = 0
+    popup_like_count = 0
+    empty_text_count = 0
+    for row in unique_rows:
+        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        row["topbar_candidate"] = topbar_candidate
+        row["popup_candidate"] = popup_candidate
+        if topbar_candidate:
+            topbar_like_count += 1
+        if popup_candidate:
+            popup_like_count += 1
+        if not str(row.get("text") or "").strip():
+            empty_text_count += 1
+    logger.info(
+        "DBG_MENU_SNAPSHOT_SUMMARY main_window_fragments={} global_scan_fragments={} deduped_fragments={} topbar_like={} popup_like={} empty_text={} topbar_band={}",
+        len(main_rows),
+        len(global_rows),
+        len(unique_rows),
+        topbar_like_count,
+        popup_like_count,
+        empty_text_count,
+        _rect_tuple(topbar_band),
+    )
     logger.debug("Captured menu snapshot rows={}", len(unique_rows))
     return unique_rows
 
@@ -647,7 +1069,8 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
         matched_cluster.append(fragment)
 
     logical_rows: list[dict[str, Any]] = []
-    for cluster in clusters:
+    topbar_band = _main_window_topbar_band()
+    for row_index, cluster in enumerate(clusters):
         left = min(int(item["rectangle"]["left"]) for item in cluster)
         top = min(int(item["rectangle"]["top"]) for item in cluster)
         right = max(int(item["rectangle"]["right"]) for item in cluster)
@@ -659,6 +1082,21 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
         representative_text = next((text for text in texts if text.strip()), "")
         representative = cluster[0]
 
+        source_scope_summary = sorted({str(item.get("source_scope", "")) for item in cluster})
+        row_class_summary = sorted({str(item.get("class_name", "")) for item in cluster})
+        topbar_candidate, popup_candidate = _classify_row_geometry({"rectangle": {"left": left, "top": top, "right": right, "bottom": bottom}, "center_x": int((left + right) / 2), "center_y": int((top + bottom) / 2)}, topbar_band)
+        logger.info(
+            "DBG_MENU_GROUP_ROW row_index={} representative_text={!r} fragment_count={} fragment_texts={} row_rectangle={} source_scope_summary={} row_class_summary={} topbar_like={} popup_like={}",
+            row_index,
+            representative_text,
+            len(cluster),
+            texts,
+            {"left": left, "top": top, "right": right, "bottom": bottom},
+            source_scope_summary,
+            row_class_summary,
+            topbar_candidate,
+            popup_candidate,
+        )
         logical_rows.append(
             {
                 "text": representative_text,
@@ -678,12 +1116,22 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "is_separator": all(bool(item.get("is_separator")) for item in cluster),
                 "source_scope": representative.get("source_scope", ""),
                 "appeared_after_popup_open": any(bool(item.get("appeared_after_popup_open")) for item in cluster),
+                "topbar_candidate": topbar_candidate,
+                "popup_candidate": popup_candidate,
+                "source_scope_summary": source_scope_summary,
+                "row_class_summary": row_class_summary,
                 "fragments": [
                     {
                         "rectangle": dict(item.get("rectangle") or {}),
                         "text": item.get("text", ""),
                         "control_type": item.get("control_type", ""),
                         "source_scope": item.get("source_scope", ""),
+                        "class_name": item.get("class_name", ""),
+                        "center": (int(item.get("center_x") or 0), int(item.get("center_y") or 0)),
+                        "process_id": item.get("process_id"),
+                        "native_handle": item.get("native_handle"),
+                        "topbar_candidate": bool(item.get("topbar_candidate")),
+                        "popup_candidate": bool(item.get("popup_candidate")),
                     }
                     for item in cluster
                 ],
@@ -905,6 +1353,9 @@ def _click_by_relative_rect_center(item: Any, main_window: Any) -> None:
 
 
 def click_top_menu_item(title: str) -> None:
+    if _is_system_menu_title(title):
+        raise ValueError("system menu must be opened via open_system_menu()")
+    topbar_band = _main_window_topbar_band()
     main_window = prepare_main_window_for_menu_interaction()
     main_window = ensure_main_window_foreground_before_click(action_label=f"click_top_menu_item:{title}")
     logger.info("click_top_menu_item('{}'): foreground_before_click={}", title, describe_foreground_window())
@@ -932,11 +1383,13 @@ def click_top_menu_item(title: str) -> None:
     _validate_post_menu_open_foreground(main_window, title=title)
     after_snapshot = wait_for_new_menu_popup(before_snapshot)
     if did_any_new_menu_popup_appear(before_snapshot, after_snapshot):
+        _log_top_menu_popup_diagnostics(title, item_rect, topbar_band)
         return
 
     _click_by_relative_rect_center(item, main_window)
     fallback_snapshot = wait_for_new_menu_popup(before_snapshot)
     if did_any_new_menu_popup_appear(before_snapshot, fallback_snapshot):
+        _log_top_menu_popup_diagnostics(title, item_rect, topbar_band)
         return
 
     raise RuntimeError(f"Top menu item '{title}' click attempts did not open a menu popup")
