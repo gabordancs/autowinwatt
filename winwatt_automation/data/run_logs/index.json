@@ -385,6 +385,7 @@
           "actions_only_in_a": 0,
           "actions_only_in_b": 0,
           "enabled_changes": 0,
+          "project_only_paths": 0
         }
       },
       "log_path": "data\\run_logs\\runs\\0025_true_2026-03-18_20-46-02.log",
