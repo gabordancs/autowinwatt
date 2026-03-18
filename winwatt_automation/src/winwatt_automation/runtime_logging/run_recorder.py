@@ -159,7 +159,10 @@ def update_status(run_ctx: RunContext, state: str, message: str, details: dict[s
 
 
 def finalize_run(run_ctx: RunContext, success: bool, exit_code: int, summary: dict[str, Any]) -> Path:
-    finished_at = _iso_timestamp(_utc_now())
+    finished_dt = _utc_now()
+    finished_at = _iso_timestamp(finished_dt)
+    started_dt = datetime.fromisoformat(run_ctx.started_at)
+    duration_seconds = round((finished_dt - started_dt).total_seconds(), 3)
     summary_payload = {
         "no_project_top_menus": summary.get("no_project_top_menus"),
         "project_open_top_menus": summary.get("project_open_top_menus"),
@@ -176,6 +179,7 @@ def finalize_run(run_ctx: RunContext, success: bool, exit_code: int, summary: di
         "sequence_number": run_ctx.sequence_number,
         "started_at": run_ctx.started_at,
         "finished_at": finished_at,
+        "duration_seconds": duration_seconds,
         "command": run_ctx.command,
         "cwd": run_ctx.cwd,
         "safe_mode": run_ctx.safe_mode,

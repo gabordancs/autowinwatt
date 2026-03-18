@@ -29,7 +29,7 @@ from winwatt_automation.runtime_mapping.models import (
 from winwatt_automation.runtime_mapping.menu_text import clean_menu_title, normalize_menu_title
 from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
-from winwatt_automation.runtime_mapping.timing import BASELINE_DELAY
+from winwatt_automation.runtime_mapping.timing import BASELINE_DELAY, POPUP_WAIT_TIMEOUT
 from winwatt_automation.runtime_mapping.config import is_fast_mode
 from winwatt_automation.live_ui.ui_cache import PopupState
 
@@ -271,7 +271,8 @@ def restore_clean_menu_baseline(*, state_id: str, stage: str) -> bool:
             from pywinauto import keyboard
 
             keyboard.send_keys("{ESC}")
-            time.sleep(BASELINE_DELAY)
+            if menu_helpers.wait_for_popup_to_close(timeout=BASELINE_DELAY):
+                break
         except Exception:
             pass
 
@@ -407,7 +408,10 @@ def _reopen_parent_popup_rows(
             break
 
         _hover_row(row)
-        time.sleep(BASELINE_DELAY)
+        menu_helpers.wait_for_new_menu_popup(
+            menu_helpers._snapshot_keys(current_rows),
+            timeout=POPUP_WAIT_TIMEOUT,
+        )
         snapshot_rows = menu_helpers.capture_menu_popup_snapshot()
         child_rows = _detect_child_rows(row, snapshot_rows)
         if canonical_top_menu_names:
@@ -777,6 +781,7 @@ def recover_after_project_open(*, timeout_s: float = 15.0, poll_interval_s: floa
     diagnostics: dict[str, Any] = {}
     close_attempts: list[dict[str, Any]] = []
     modal_logged = False
+    modal_pending = False
 
     while time.monotonic() <= deadline:
         main_window = get_cached_main_window()
@@ -784,9 +789,18 @@ def recover_after_project_open(*, timeout_s: float = 15.0, poll_interval_s: floa
         if main_state["exists"] and main_state["visible"] and main_state["enabled"]:
             logger.info("project_open_recovery_success")
             diagnostics = _collect_project_open_recovery_diagnostics(main_window)
-            return {"success": True, "diagnostics": diagnostics, "close_attempts": close_attempts}
+            return {
+                "success": True,
+                "diagnostics": diagnostics,
+                "close_attempts": close_attempts,
+                "modal_pending": modal_pending,
+                "close_attempted": bool(close_attempts),
+                "main_window_reenabled": True,
+                "reason": "main_window_ready",
+            }
 
         if main_state["visible"] and not main_state["enabled"]:
+            modal_pending = True
             diagnostics = _collect_project_open_recovery_diagnostics(main_window)
             if not modal_logged:
                 logger.warning("project_open_recovery_modal_detected diagnostics={}", diagnostics)
@@ -802,7 +816,15 @@ def recover_after_project_open(*, timeout_s: float = 15.0, poll_interval_s: floa
 
     diagnostics = _collect_project_open_recovery_diagnostics(get_cached_main_window())
     logger.error("project_open_recovery_failed diagnostics={}", diagnostics)
-    return {"success": False, "diagnostics": diagnostics, "close_attempts": close_attempts}
+    return {
+        "success": False,
+        "diagnostics": diagnostics,
+        "close_attempts": close_attempts,
+        "modal_pending": modal_pending,
+        "close_attempted": bool(close_attempts),
+        "main_window_reenabled": False,
+        "reason": "timeout",
+    }
 
 
 def classify_post_click_result(

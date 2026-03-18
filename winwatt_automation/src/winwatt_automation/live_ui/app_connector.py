@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from typing import Any
 
 from loguru import logger
+from winwatt_automation.runtime_mapping.timing import WINDOW_READY_POLL_INTERVAL, WINDOW_READY_TIMEOUT
 
 MAIN_FRAME_CLASS_HINTS = ("main", "frame", "mdi", "awin", "tmain")
 MODAL_CLASS_HINTS = ("dialog", "popup", "tool", "splash")
@@ -543,10 +544,6 @@ def prepare_main_window_for_menu_interaction() -> Any:
     else:
         logger.warning("prepare_main_window_for_menu_interaction: maximize() unavailable")
 
-    import time
-
-    time.sleep(0.3)
-
     if callable(set_focus):
         try:
             set_focus()
@@ -554,7 +551,31 @@ def prepare_main_window_for_menu_interaction() -> Any:
         except Exception as exc:
             logger.warning("prepare_main_window_for_menu_interaction: final set_focus() failed: {}", exc)
 
+    wait_for_main_window_ready(
+        main_window,
+        timeout=WINDOW_READY_TIMEOUT,
+        poll_interval=WINDOW_READY_POLL_INTERVAL,
+    )
+
     return main_window
+
+
+def wait_for_main_window_ready(
+    main_window: Any,
+    *,
+    timeout: float = WINDOW_READY_TIMEOUT,
+    poll_interval: float = WINDOW_READY_POLL_INTERVAL,
+) -> bool:
+    """Wait briefly until the main window becomes interactable."""
+
+    deadline = time.monotonic() + max(timeout, poll_interval)
+    while time.monotonic() <= deadline:
+        visible = bool(_safe_call(main_window, "is_visible", False))
+        enabled = bool(_safe_call(main_window, "is_enabled", False))
+        if visible and enabled:
+            return True
+        time.sleep(poll_interval)
+    return False
 
 def is_main_window_foreground() -> bool:
     """Return whether WinWatt main window is currently the OS foreground window."""

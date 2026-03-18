@@ -74,6 +74,7 @@ def test_summary_json_is_created(tmp_path: Path, monkeypatch):
     assert payload["summary"]["no_project_top_menus"] == 6
     assert payload["summary"]["project_open_top_menus"] == 6
     assert payload["summary"]["diff_summary"]["enabled_changes"] == 3
+    assert payload["duration_seconds"] >= 0
 
 
 def test_failed_run_is_logged(tmp_path: Path, monkeypatch):
