@@ -8,7 +8,6 @@ from pathlib import Path
 from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers
-from winwatt_automation.runtime_logging.progress_display import launch_progress_overlay, write_progress_status
 from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
 from winwatt_automation.runtime_mapping.program_mapper import (
     _detect_child_rows,
@@ -30,7 +29,6 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pause-ms", type=int, default=800)
     parser.add_argument("--max-submenu-depth", type=int, default=-1, help="Use -1 for unlimited menu traversal depth")
     parser.add_argument("--skip-remap", action="store_true", help="Replay the existing saved menu tree instead of remapping first")
-    parser.add_argument("--progress-overlay", action="store_true", help="Show a non-activating status HUD while the walkthrough runs")
     return parser
 
 
@@ -109,14 +107,8 @@ def _replay_menu_path(path: list[str], *, pause_ms: int) -> None:
 def main() -> int:
     args = _build_parser().parse_args()
     output_dir = Path(args.output_dir)
-    status_path = output_dir / "walkthrough_status.json"
-
-    write_progress_status(status_path, run_id="walkthrough", state="starting", message="A walkthrough indul…")
-    if args.progress_overlay:
-        launch_progress_overlay(status_path)
 
     if not args.skip_remap:
-        write_progress_status(status_path, run_id="walkthrough", state="running", message="Menüstruktúra újramappelése folyamatban…")
         build_full_runtime_program_map(
             project_path=args.project_path,
             safe_mode=args.safe_mode,
@@ -126,7 +118,6 @@ def main() -> int:
 
     paths = _load_walkthrough_paths(output_dir)
     if not paths:
-        write_progress_status(status_path, run_id="walkthrough", state="failed", message="Nem található visszajátszható menüútvonal.")
         print(f"No walkthrough paths found under: {output_dir}")
         return 1
 
@@ -135,7 +126,6 @@ def main() -> int:
     for path in paths:
         printable = " > ".join(path)
         print(f"[walkthrough] {printable}")
-        write_progress_status(status_path, run_id="walkthrough", state="running", message=f"Épp ezt játssza vissza: {printable}")
         try:
             _replay_menu_path(path, pause_ms=args.pause_ms)
         except Exception as exc:
@@ -146,13 +136,11 @@ def main() -> int:
             _pause(args.pause_ms)
 
     if failures:
-        write_progress_status(status_path, run_id="walkthrough", state="failed", message="A walkthrough hibákkal fejeződött be.", details={"failures": failures})
         print("Walkthrough finished with failures:")
         for item in failures:
             print(f"- {item}")
         return 1
 
-    write_progress_status(status_path, run_id="walkthrough", state="finished", message="A walkthrough sikeresen befejeződött.")
     print("Walkthrough finished successfully.")
     return 0
 

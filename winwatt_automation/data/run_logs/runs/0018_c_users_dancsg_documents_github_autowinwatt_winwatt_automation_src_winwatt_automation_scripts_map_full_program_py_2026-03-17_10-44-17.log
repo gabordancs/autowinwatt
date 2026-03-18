@@ -1,0 +1,7 @@
+run_id=0018_c_users_dancsg_documents_github_autowinwatt_winwatt_automation_src_winwatt_automation_scripts_map_full_program_py_2026-03-17_10-44-17
+started_at=2026-03-17T10:44:17.198855+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py
+
+[event] run_failed: {"error": "No WinWatt-like windows found on backend=win32"}
+
+finished_at=2026-03-17T10:44:17.462881+00:00 success=False exit_code=1
