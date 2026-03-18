@@ -57,7 +57,6 @@ def _center_tuple(row: dict[str, Any]) -> tuple[int, int]:
 
 
 def _query_menu_items_from_root(root: Any, *, force_refresh: bool = False) -> list[Any]:
-    root = _materialize_window_wrapper(root)
     handle = getattr(getattr(root, "element_info", root), "handle", None)
     descendants = getattr(root, "descendants", None)
     if not callable(descendants):
@@ -124,7 +123,7 @@ def _compute_topbar_band_from_items(items: list[Any]) -> dict[str, int] | None:
 
 def _main_window_topbar_band(*, force_refresh: bool = False) -> dict[str, int] | None:
     try:
-        main_window = _materialize_window_wrapper(get_cached_main_window())
+        main_window = get_cached_main_window()
     except Exception:
         return None
 

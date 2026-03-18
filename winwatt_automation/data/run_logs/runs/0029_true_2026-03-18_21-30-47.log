@@ -1,0 +1,514 @@
+run_id=0029_true_2026-03-18_21-30-47
+started_at=2026-03-18T21:30:47.303618+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --top-menus Rendszer --safe-mode off --max-submenu-depth 1 --include-disabled true
+
+2026-03-18 22:30:47.307 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:456 - DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh
+2026-03-18 22:30:47.660 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:223 - DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates=[{'rank': 1, 'score': (1, 1, 1, 1, 1053945), 'process_id': 24996, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya', 'visible': True, 'enabled': True}]
+2026-03-18 22:30:47.662 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:185 - Candidate ranking score=(1, 1, 1, 1, 1053945) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 24996, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}}
+2026-03-18 22:30:47.662 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:195 - Selected main window process_id=24996 handle=None score=(1, 1, 1, 1, 1053945) reasons=['has_process_id=True', 'has_handle=False', 'visible=True', 'enabled=True', 'title_has_winwatt=True', 'area=1053945']
+2026-03-18 22:30:47.662 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:240 - DBG_WINWATT_CONNECT_WIN32_SELECTED selected_payload={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 24996, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}} selected_handle_is_none=True
+2026-03-18 22:30:47.663 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:283 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 24996, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+2026-03-18 22:30:47.666 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:297 - DBG_WINWATT_CONNECT_WIN32_RESOLVED process_id=24996 resolved_handle=None selected_payload={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 24996, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}}
+2026-03-18 22:30:47.667 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:329 - DBG_WINWATT_RESOLVE_UIA_WIN32_SELECTED selected_payload={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 24996, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}}
+2026-03-18 22:30:47.667 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:335 - Connected to WinWatt backend=uia process_id=24996
+2026-03-18 22:30:47.667 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:337 - Resolving main WinWatt window backend=uia class_name=TMainForm title_re=.*WinWatt.*
+2026-03-18 22:30:49.634 | INFO     | winwatt_automation.live_ui.app_connector:_resolve_uia_main_window:346 - DBG_WINWATT_RESOLVE_UIA_PRIMARY selected_payload={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 24996, 'handle': None, 'is_visible': True, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}} primary_result={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} identity_match_with_win32=None
+2026-03-18 22:30:52.962 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:447 - DBG_WINWATT_CACHE_GET reason_code=cache_reused_without_validation payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=0.924373299931176
+2026-03-18 22:30:55.388 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:447 - DBG_WINWATT_CACHE_GET reason_code=cache_reused_without_validation payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=2.957445799955167
+2026-03-18 22:30:59.932 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:02.109 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:04.341 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=6.361261200043373
+2026-03-18 22:31:07.760 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:09.858 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:12.050 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=7.975993399973959
+2026-03-18 22:31:16.609 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:18.801 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:21.052 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.525691799935885
+2026-03-18 22:31:24.537 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:26.615 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:28.771 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.185298299998976
+2026-03-18 22:31:32.164 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:33.389 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:34.526 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.544569700025022
+2026-03-18 22:31:36.437 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:37.557 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:38.678 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.928811899968423
+2026-03-18 22:31:40.141 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:632 - DBG_MENU_ITEMS_SUMMARY total_items=7 visible_items=6 topbar_band=(145, 108, 928, 127) topbar_band_visible_count=6 popup_region_visible_count=0 force_refresh=True handle=3544040
+2026-03-18 22:31:41.421 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:632 - DBG_MENU_ITEMS_SUMMARY total_items=7 visible_items=6 topbar_band=(145, 85, 472, 127) topbar_band_visible_count=6 popup_region_visible_count=0 force_refresh=True handle=3544040
+2026-03-18 22:31:42.887 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:632 - DBG_MENU_ITEMS_SUMMARY total_items=7 visible_items=6 topbar_band=(145, 85, 472, 127) topbar_band_visible_count=6 popup_region_visible_count=0 force_refresh=True handle=3544040
+2026-03-18 22:31:44.341 | INFO     | winwatt_automation.live_ui.menu_helpers:_menu_items:632 - DBG_MENU_ITEMS_SUMMARY total_items=7 visible_items=6 topbar_band=(145, 85, 472, 127) topbar_band_visible_count=6 popup_region_visible_count=0 force_refresh=True handle=3544040
+2026-03-18 22:31:44.806 | INFO     | winwatt_automation.live_ui.menu_helpers:list_top_menu_items:678 - Top-level menu items (raw): ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 22:31:47.263 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:48.696 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:49.930 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=10.664674500003457
+2026-03-18 22:31:50.173 | INFO     | winwatt_automation.runtime_mapping.program_mapper:get_canonical_top_menu_names:216 - Canonical top-level menus [7]: ['Rendszer', 'Fájl', 'Jegyzékek', 'Adatbázis...', 'Beállítások', 'Ablak', 'Súgó']
+2026-03-18 22:31:50.458 | INFO     | winwatt_automation.live_ui.menu_helpers:_system_menu_windows:229 - DBG_WINWATT_SYSTEM_MENU_WINDOW_SCAN visible_system_menu_windows=0 foreground={'handle': 3544040, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'process_id': 24996}
+2026-03-18 22:31:52.399 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:53.755 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:31:55.084 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.267419200041331
+2026-03-18 22:31:57.941 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:31:59.233 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:00.558 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.29578120005317
+2026-03-18 22:32:02.599 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:04.553 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:06.623 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.804270299966447
+2026-03-18 22:32:10.956 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:13.190 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:15.339 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=6.879627399961464
+2026-03-18 22:32:19.175 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:21.425 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:23.587 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=7.901058500050567
+2026-03-18 22:32:27.911 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:30.131 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:32.326 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=9.07501729996875
+2026-03-18 22:32:35.887 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:38.092 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:40.117 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=7.91303189995233
+2026-03-18 22:32:44.642 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:46.772 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:49.103 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.60003339999821
+2026-03-18 22:32:52.772 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:32:54.999 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:32:57.315 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.176606000051834
+2026-03-18 22:33:01.807 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:03.950 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:06.131 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=9.074463099939749
+2026-03-18 22:33:09.775 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:11.979 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:14.198 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=7.952803899999708
+2026-03-18 22:33:18.735 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:21.294 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:23.444 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.935359900002368
+2026-03-18 22:33:27.183 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:29.409 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:31.575 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.377435600035824
+2026-03-18 22:33:35.618 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:37.032 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:38.421 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=8.987739200005308
+2026-03-18 22:33:40.422 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:41.573 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:42.752 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.989642200060189
+2026-03-18 22:33:45.381 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:46.625 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:47.995 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.899980399990454
+2026-03-18 22:33:49.987 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:51.250 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:52.470 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.673789799911901
+2026-03-18 22:33:55.191 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:33:56.660 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:33:58.172 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.081123300013132
+2026-03-18 22:34:00.428 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:01.812 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:03.527 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.096410900005139
+2026-03-18 22:34:06.404 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:07.822 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:09.011 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.9364684000611305
+2026-03-18 22:34:11.088 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:12.284 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:13.394 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.902270899969153
+2026-03-18 22:34:15.748 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:16.926 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:18.156 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.921730999951251
+2026-03-18 22:34:20.515 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:21.645 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:22.966 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.223572700051591
+2026-03-18 22:34:25.572 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:26.955 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:28.246 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.358344999956898
+2026-03-18 22:34:30.166 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:31.268 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:32.470 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.731316199991852
+2026-03-18 22:34:35.035 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:36.208 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:37.384 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.852540099993348
+2026-03-18 22:34:39.252 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:40.416 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:41.466 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.285477700061165
+2026-03-18 22:34:43.819 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:45.076 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:46.338 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.604481399990618
+2026-03-18 22:34:48.483 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:49.771 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:51.004 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.3491169000044465
+2026-03-18 22:34:53.639 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:54.973 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:34:56.282 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.25767259998247
+2026-03-18 22:34:58.409 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:34:59.635 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:01.039 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.686850600061007
+2026-03-18 22:35:03.689 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:04.900 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:06.202 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.353300399961881
+2026-03-18 22:35:08.292 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:09.657 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:10.823 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.5668959999457
+2026-03-18 22:35:13.236 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:14.324 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:15.407 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.187476100050844
+2026-03-18 22:35:17.696 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:19.362 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:20.479 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.017741600051522
+2026-03-18 22:35:22.957 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:24.051 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:25.306 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=5.649179399944842
+2026-03-18 22:35:28.360 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:30.449 | INFO     | winwatt_automation.live_ui.app_connector:_cached_window_is_healthy:434 - DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'}
+2026-03-18 22:35:32.494 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:452 - DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={'wrapper_type': 'WindowSpecification', 'handle': 3544040, 'process_id': 24996, 'title': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': 'Window'} last_validation_age_s=4.24945690005552
+2026-03-18 22:35:36.870 | INFO     | winwatt_automation.live_ui.app_connector:is_winwatt_foreground_context:752 - DBG_WINWATT_FOREGROUND_CONTEXT expected_handle=3544040 expected_process_id=24996 expected_title=WinWatt gólya expected_class_name=TMainForm actual_foreground_handle=3544040 actual_foreground_process_id=24996 actual_foreground_title=WinWatt gólya actual_foreground_class_name=TMainForm allow_dialog=True result_reason=handle_match
+2026-03-18 22:35:42.322 | ERROR    | winwatt_automation.runtime_mapping.program_mapper:map_runtime_state:1318 - Top menu mapping failed: Rendszer
+Traceback (most recent call last):
+
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 250, in __resolve_control
+    ctrl = wait_until_passes(
+           └ <function wait_until_passes at 0x000002173B58C9E0>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\timings.py", line 458, in wait_until_passes
+    raise err
+          └ TimeoutError()
+
+pywinauto.timings.TimeoutError
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 178, in <module>
+    raise SystemExit(main())
+                     └ <function main at 0x000002173A676560>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py", line 96, in main
+    result = build_full_runtime_program_map(
+             └ <function build_full_runtime_program_map at 0x000002173A675FE0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1592, in build_full_runtime_program_map
+    state_no_project = map_runtime_state(
+                       └ <function map_runtime_state at 0x000002173A674F60>
+
+> File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 1297, in map_runtime_state
+    tree, rows, actions, dialogs, windows = explore_menu_tree(
+          │                                 └ <function explore_menu_tree at 0x000002173A674B40>
+          └ []
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\runtime_mapping\program_mapper.py", line 983, in explore_menu_tree
+    popup_rows = menu_helpers.capture_system_menu_popup() if _is_system_menu(top_menu) else menu_helpers.capture_menu_popup_snapshot()
+                 │            │                              │               │              │            └ <function capture_menu_popup_snapshot at 0x000002173A611220>
+                 │            │                              │               │              └ <module 'winwatt_automation.live_ui.menu_helpers' from 'C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation...
+                 │            │                              │               └ 'Rendszer'
+                 │            │                              └ <function _is_system_menu at 0x000002173A67EAE0>
+                 │            └ <function capture_system_menu_popup at 0x000002173AF3AF00>
+                 └ <module 'winwatt_automation.live_ui.menu_helpers' from 'C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation...
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 360, in capture_system_menu_popup
+    return _system_menu_fallback_rows_from_popup_region()
+           └ <function _system_menu_fallback_rows_from_popup_region at 0x000002173AF3AC40>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 297, in _system_menu_fallback_rows_from_popup_region
+    snapshot_rows = capture_menu_popup_snapshot()
+                    └ <function capture_menu_popup_snapshot at 0x000002173A611220>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 834, in capture_menu_popup_snapshot
+    main_rows = _menu_like_controls_from_main_window()
+                └ <function _menu_like_controls_from_main_window at 0x000002173A610E00>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 716, in _menu_like_controls_from_main_window
+    for item in _menu_items():
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 605, in _menu_items
+    topbar_band = _main_window_topbar_band()
+                  └ <function _main_window_topbar_band at 0x000002173AF39A60>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 71, in _main_window_topbar_band
+    for item in _top_level_menu_items_raw(force_refresh=True)
+                └ <function _top_level_menu_items_raw at 0x000002173A610880>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 654, in _top_level_menu_items_raw
+    for item in _menu_items(force_refresh=force_refresh):
+                │                         └ True
+                └ <function _menu_items at 0x000002173A6105C0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 604, in _menu_items
+    root = get_main_window()
+           └ <function get_main_window at 0x000002173A610720>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\menu_helpers.py", line 649, in get_main_window
+    return get_cached_main_window()
+           └ <function get_cached_main_window at 0x000002173A59FED0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 450, in get_cached_main_window
+    if _cached_window_is_healthy(cached_main_window):
+       │                         └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+       └ <function _cached_window_is_healthy at 0x000002173A59FD70>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 434, in _cached_window_is_healthy
+    logger.info("DBG_WINWATT_CACHE_HEALTH reason_code=healthy payload={}", _window_identity_payload(main_window))
+    │      │                                                               │                        └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+    │      │                                                               └ <function _window_identity_payload at 0x000002173A5CC3B0>
+    │      └ <function Logger.info at 0x000002173A58B270>
+    └ <loguru.logger handlers=[(id=0, level=10, sink=<stderr>), (id=1, level=20, sink=<lambda>)]>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 486, in _window_identity_payload
+    title = _safe_call(window, "window_text", "") or ""
+            │          └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+            └ <function _safe_call at 0x000002173A59EDA0>
+
+  File "C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\live_ui\app_connector.py", line 50, in _safe_call
+    method = getattr(obj, method_name, None)
+                     │    └ 'window_text'
+                     └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 396, in __getattribute__
+    ctrls = self.__resolve_control(self.criteria)
+            │                      │    └ [{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'app': <pywinauto.application.Application object at...
+            │                      └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+            └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 261, in __resolve_control
+    raise e.original_exception
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\timings.py", line 436, in wait_until_passes
+    func_val = func(*args, **kwargs)
+               │     │       └ {}
+               │     └ ([{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'app': <pywinauto.application.Application object a...
+               └ <bound method WindowSpecification.__get_ctrl of <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\application.py", line 203, in __get_ctrl
+    dialog = self.backend.generic_wrapper_class(findwindows.find_element(**criteria[0]))
+             │    │       │                     │           │              └ [{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'proc...
+             │    │       │                     │           └ <function find_element at 0x000002173B00C040>
+             │    │       │                     └ <module 'pywinauto.findwindows' from 'C:\\Users\\dancsg\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\pyw...
+             │    │       └ <class 'pywinauto.controls.uiawrapper.UIAWrapper'>
+             │    └ <pywinauto.backend.BackEnd object at 0x000002173B694050>
+             └ <pywinauto.application.WindowSpecification object at 0x000002173B602AD0>
+  File "C:\Users\dancsg\AppData\Local\Programs\Python\Python314\Lib\site-packages\pywinauto\findwindows.py", line 87, in find_element
+    raise ElementNotFoundError(kwargs)
+          │                    └ {'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'proce...
+          └ <class 'pywinauto.findwindows.ElementNotFoundError'>
+
+pywinauto.findwindows.ElementNotFoundError: {'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'process': 24996}
+[event] state_mapped: {"actions": 1, "dialogs": 0, "state_id": "no_project", "top_menus": 1}
+[event] run_failed: {"error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'process': 24996}"}
+
+finished_at=2026-03-18T21:36:24.622561+00:00 success=False exit_code=1
