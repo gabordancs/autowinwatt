@@ -493,6 +493,68 @@ def test_system_menu_detected_and_failed(monkeypatch):
         menu_helpers._validate_post_menu_open_foreground(types.SimpleNamespace(), title="Fájl")
 
 
+
+
+def test_main_window_topbar_band_uses_low_level_query_without_menu_items(monkeypatch):
+    class MenuItem:
+        def __init__(self, left, top, right, bottom, *, parent=None):
+            self._rect = types.SimpleNamespace(left=left, top=top, right=right, bottom=bottom)
+            self._parent = parent
+            self.element_info = types.SimpleNamespace(control_type="MenuItem", handle=100, process_id=1, class_name="")
+
+        def rectangle(self):
+            return self._rect
+
+        def parent(self):
+            return self._parent
+
+    menubar = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
+    items = [MenuItem(10, 5, 80, 30, parent=menubar), MenuItem(90, 6, 150, 31, parent=menubar)]
+
+    class MainWindow:
+        element_info = types.SimpleNamespace(handle=555)
+
+        def descendants(self):
+            return list(items)
+
+    monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: MainWindow())
+    monkeypatch.setattr(menu_helpers, "_menu_items", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("_menu_items should not be called")))
+
+    band = menu_helpers._main_window_topbar_band(force_refresh=True)
+
+    assert band == {"left": 10, "top": 5, "right": 150, "bottom": 31, "width": 140, "height": 26, "center_x": 80, "center_y": 18}
+
+
+def test_menu_items_reentrancy_guard_falls_back_to_direct_query(monkeypatch):
+    class MenuItem:
+        def __init__(self):
+            self.element_info = types.SimpleNamespace(control_type="MenuItem", handle=100, process_id=1, class_name="")
+
+    items = [MenuItem(), MenuItem()]
+
+    class MainWindow:
+        element_info = types.SimpleNamespace(handle=777)
+
+        def descendants(self):
+            return list(items)
+
+    state = {"reentered": False}
+
+    def recursive_topbar(*, force_refresh=False):
+        if not state["reentered"]:
+            state["reentered"] = True
+            nested = menu_helpers._menu_items(force_refresh=force_refresh)
+            assert nested == items
+        return None
+
+    monkeypatch.setattr(menu_helpers, "get_main_window", lambda: MainWindow())
+    monkeypatch.setattr(menu_helpers, "_main_window_topbar_band", recursive_topbar)
+
+    result = menu_helpers._menu_items(force_refresh=True)
+
+    assert result == items
+    assert state["reentered"] is True
+
 def test_capture_system_menu_popup_falls_back_to_popup_region_rows(monkeypatch):
     monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [])
     monkeypatch.setattr(

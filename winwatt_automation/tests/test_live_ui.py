@@ -7,6 +7,54 @@ import pytest
 from winwatt_automation.live_ui import app_connector, locators, window_tree
 
 
+
+
+@pytest.fixture(autouse=True)
+def _reset_app_connector_sessions():
+    original_winwatt_state = (
+        app_connector.WinWattSession.app,
+        app_connector.WinWattSession.main_window,
+        app_connector.WinWattSession.process_id,
+        app_connector.WinWattSession.handle,
+    )
+    original_main_window_state = (
+        app_connector.MainWindowSession.window,
+        app_connector.MainWindowSession.process_id,
+        app_connector.MainWindowSession.last_validation_monotonic,
+        app_connector.MainWindowSession.validation_interval_s,
+        app_connector.MainWindowSession.foreground_failure_count,
+        app_connector.MainWindowSession.last_foreground_failure_monotonic,
+        app_connector.MainWindowSession.last_resolve_attempt_monotonic,
+    )
+    app_connector.WinWattSession.app = None
+    app_connector.WinWattSession.main_window = None
+    app_connector.WinWattSession.process_id = None
+    app_connector.WinWattSession.handle = None
+    app_connector.MainWindowSession.window = None
+    app_connector.MainWindowSession.process_id = None
+    app_connector.MainWindowSession.last_validation_monotonic = 0.0
+    app_connector.MainWindowSession.validation_interval_s = 4.0
+    app_connector.MainWindowSession.foreground_failure_count = 0
+    app_connector.MainWindowSession.last_foreground_failure_monotonic = 0.0
+    app_connector.MainWindowSession.last_resolve_attempt_monotonic = 0.0
+    yield
+    (
+        app_connector.WinWattSession.app,
+        app_connector.WinWattSession.main_window,
+        app_connector.WinWattSession.process_id,
+        app_connector.WinWattSession.handle,
+    ) = original_winwatt_state
+    (
+        app_connector.MainWindowSession.window,
+        app_connector.MainWindowSession.process_id,
+        app_connector.MainWindowSession.last_validation_monotonic,
+        app_connector.MainWindowSession.validation_interval_s,
+        app_connector.MainWindowSession.foreground_failure_count,
+        app_connector.MainWindowSession.last_foreground_failure_monotonic,
+        app_connector.MainWindowSession.last_resolve_attempt_monotonic,
+    ) = original_main_window_state
+
+
 class FakeElementInfo:
     def __init__(self, name=None, control_type=None, class_name=None, automation_id=None):
         self.name = name
@@ -488,10 +536,56 @@ def test_locator_prefers_automation_id_then_type_then_index(monkeypatch):
     form = FakeControl(name="ProjectForm", children=[fallback, control_by_name, control_by_id, control_by_type])
     root = FakeControl(name="Root", children=[form])
 
-    monkeypatch.setattr(locators, "get_main_window", lambda: root)
+    monkeypatch.setattr(locators, "get_cached_main_window", lambda: root)
 
     assert locators.find_form("ProjectForm") is form
     assert locators.find_control("ProjectForm", "save_button") is control_by_id
     assert locators.find_control("ProjectForm", "save:listitem") is control_by_name
     assert locators.find_control("ProjectForm", "missing:listitem") is control_by_type
     assert locators.find_control("ProjectForm", "missing") is fallback
+
+
+def test_get_cached_main_window_throttles_foreground_resolve_loop(monkeypatch):
+    original_winwatt_state = (
+        app_connector.WinWattSession.main_window,
+        app_connector.WinWattSession.process_id,
+        app_connector.WinWattSession.handle,
+    )
+    original_main_window_state = (
+        app_connector.MainWindowSession.last_validation_monotonic,
+        app_connector.MainWindowSession.validation_interval_s,
+        app_connector.MainWindowSession.foreground_failure_count,
+        app_connector.MainWindowSession.last_foreground_failure_monotonic,
+        app_connector.MainWindowSession.last_resolve_attempt_monotonic,
+    )
+
+    try:
+        cached_window = FakeWindow(title="WinWatt - Project", class_name="TMainForm", process_id=999, handle=444)
+        app_connector.WinWattSession.main_window = cached_window
+        app_connector.WinWattSession.process_id = 999
+        app_connector.WinWattSession.handle = 444
+        app_connector.MainWindowSession.last_validation_monotonic = 0.0
+        app_connector.MainWindowSession.validation_interval_s = 0.0
+        app_connector.MainWindowSession.foreground_failure_count = 2
+        app_connector.MainWindowSession.last_foreground_failure_monotonic = 96.0
+        app_connector.MainWindowSession.last_resolve_attempt_monotonic = 95.0
+
+        monkeypatch.setattr(app_connector.time, "monotonic", lambda: 100.0)
+        monkeypatch.setattr(app_connector, "_cached_window_health_status", lambda window: (False, "foreground_context_failed"))
+        monkeypatch.setattr(app_connector, "describe_foreground_window", lambda: {"title": "VS Code", "process_id": 1})
+        monkeypatch.setattr(app_connector, "_resolve_uia_main_window", lambda: (_ for _ in ()).throw(AssertionError("resolve should be throttled")))
+
+        result = app_connector.get_cached_main_window()
+
+        assert result is cached_window
+        assert app_connector.MainWindowSession.last_validation_monotonic == 100.0
+        assert app_connector.MainWindowSession.foreground_failure_count == 3
+    finally:
+        app_connector.WinWattSession.main_window, app_connector.WinWattSession.process_id, app_connector.WinWattSession.handle = original_winwatt_state
+        (
+            app_connector.MainWindowSession.last_validation_monotonic,
+            app_connector.MainWindowSession.validation_interval_s,
+            app_connector.MainWindowSession.foreground_failure_count,
+            app_connector.MainWindowSession.last_foreground_failure_monotonic,
+            app_connector.MainWindowSession.last_resolve_attempt_monotonic,
+        ) = original_main_window_state

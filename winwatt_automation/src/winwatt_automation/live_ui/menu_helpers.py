@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+from contextlib import contextmanager
 from typing import Any
 
 from loguru import logger
@@ -34,6 +35,9 @@ SYSTEM_MENU_DEFAULT_ITEMS = {
     "maximize",
     "close",
 }
+TOPBAR_BAND_CACHE_TTL_S = 0.5
+_MENU_ITEMS_REENTRANCY_DEPTH = 0
+_TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
 
 
 def _rect_tuple(rect: dict[str, int] | None) -> tuple[int, int, int, int]:
@@ -50,28 +54,52 @@ def _center_tuple(row: dict[str, Any]) -> tuple[int, int]:
     return int(row.get("center_x") or 0), int(row.get("center_y") or 0)
 
 
-def _main_window_topbar_band() -> dict[str, int] | None:
+def _query_menu_items_from_root(root: Any, *, force_refresh: bool = False) -> list[Any]:
+    handle = getattr(getattr(root, "element_info", root), "handle", None)
+    descendants = getattr(root, "descendants", None)
+    if not callable(descendants):
+        return []
+
+    def _query() -> list[Any]:
+        return [item for item in descendants() if _control_type(item) == "menuitem"]
+
+    ttl_s = 0.0 if force_refresh or handle is None else 0.5
+    return _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
+
+
+@contextmanager
+def _menu_items_reentrancy_guard(*, force_refresh: bool) -> Any:
+    global _MENU_ITEMS_REENTRANCY_DEPTH
+    if _MENU_ITEMS_REENTRANCY_DEPTH > 0:
+        logger.warning(
+            "DBG_WINWATT_MENU_REENTRANCY_GUARD depth={} force_refresh={} action=direct_query_fallback",
+            _MENU_ITEMS_REENTRANCY_DEPTH,
+            force_refresh,
+        )
+        yield False
+        return
+
+    _MENU_ITEMS_REENTRANCY_DEPTH += 1
     try:
-        main_window = get_cached_main_window()
-    except Exception:
-        return None
+        yield True
+    finally:
+        _MENU_ITEMS_REENTRANCY_DEPTH = max(0, _MENU_ITEMS_REENTRANCY_DEPTH - 1)
 
-    menu_bar = getattr(main_window, "child_window", None)
-    if callable(menu_bar):
-        try:
-            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
-            rect = _rectangle_data(menu_bar_ctrl)
-            if rect is not None:
-                return rect
-        except Exception:
-            pass
 
-    top_level_rects = [
-        rect
-        for item in _top_level_menu_items_raw(force_refresh=True)
-        for rect in [_rectangle_data(item)]
-        if rect is not None
-    ]
+def _top_level_menu_items_from_items(items: list[Any]) -> list[Any]:
+    top_level_items: list[Any] = []
+    for item in items:
+        parent_type = _control_type(_parent_wrapper(item))
+        if parent_type not in {"menu", "menubar"}:
+            continue
+        if _has_menuitem_ancestor(item):
+            continue
+        top_level_items.append(item)
+    return top_level_items
+
+
+def _compute_topbar_band_from_items(items: list[Any]) -> dict[str, int] | None:
+    top_level_rects = [rect for item in _top_level_menu_items_from_items(items) for rect in [_rectangle_data(item)] if rect is not None]
     if not top_level_rects:
         return None
 
@@ -89,6 +117,38 @@ def _main_window_topbar_band() -> dict[str, int] | None:
         "center_x": int((left + right) / 2),
         "center_y": int((top + bottom) / 2),
     }
+
+
+def _main_window_topbar_band(*, force_refresh: bool = False) -> dict[str, int] | None:
+    try:
+        main_window = get_cached_main_window()
+    except Exception:
+        return None
+
+    handle = getattr(getattr(main_window, "element_info", main_window), "handle", None)
+    now = time.monotonic()
+    if (
+        not force_refresh
+        and _TOPBAR_BAND_CACHE.get("handle") == handle
+        and now - float(_TOPBAR_BAND_CACHE.get("captured_at") or 0.0) < TOPBAR_BAND_CACHE_TTL_S
+    ):
+        return _TOPBAR_BAND_CACHE.get("band")
+
+    band: dict[str, int] | None = None
+    menu_bar = getattr(main_window, "child_window", None)
+    if callable(menu_bar):
+        try:
+            menu_bar_ctrl = main_window.child_window(control_type="MenuBar").wrapper_object()
+            band = _rectangle_data(menu_bar_ctrl)
+        except Exception:
+            band = None
+
+    if band is None:
+        low_level_items = _query_menu_items_from_root(main_window, force_refresh=force_refresh)
+        band = _compute_topbar_band_from_items(low_level_items)
+
+    _TOPBAR_BAND_CACHE.update({"handle": handle, "captured_at": now, "band": band})
+    return band
 
 
 def _row_in_vertical_band(row: dict[str, Any], band: dict[str, int] | None) -> bool:
@@ -602,17 +662,12 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
 
 def _menu_items(*, force_refresh: bool = False) -> list[Any]:
     root = get_main_window()
-    topbar_band = _main_window_topbar_band()
+    with _menu_items_reentrancy_guard(force_refresh=force_refresh) as can_inspect_topbar:
+        if not can_inspect_topbar:
+            return _query_menu_items_from_root(root, force_refresh=force_refresh)
+        topbar_band = _main_window_topbar_band(force_refresh=force_refresh)
+        items = _query_menu_items_from_root(root, force_refresh=force_refresh)
     handle = getattr(getattr(root, "element_info", root), "handle", None)
-    descendants = getattr(root, "descendants", None)
-    if not callable(descendants):
-        return []
-
-    def _query() -> list[Any]:
-        return [item for item in descendants() if _control_type(item) == "menuitem"]
-
-    ttl_s = 0.0 if force_refresh or handle is None else 0.5
-    items = _UI_CACHE.get_or_query((handle, "menu_items", "MenuItem"), _query, ttl_s=ttl_s)
     topbar_visible = 0
     popup_visible = 0
     visible_count = 0
@@ -650,15 +705,7 @@ def get_main_window() -> Any:
 
 
 def _top_level_menu_items_raw(*, force_refresh: bool = False) -> list[Any]:
-    items: list[Any] = []
-    for item in _menu_items(force_refresh=force_refresh):
-        parent_type = _control_type(_parent_wrapper(item))
-        if parent_type not in {"menu", "menubar"}:
-            continue
-        if _has_menuitem_ancestor(item):
-            continue
-        items.append(item)
-    return items
+    return _top_level_menu_items_from_items(_menu_items(force_refresh=force_refresh))
 
 
 def list_top_menu_items() -> list[str]:
