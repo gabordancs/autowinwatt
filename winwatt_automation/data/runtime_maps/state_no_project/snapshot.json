@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 27140,
+  "process_id": 25992,
   "state_id": "no_project",
-  "timestamp": "2026-03-17T10:34:58.736091+00:00",
+  "timestamp": "2026-03-17T10:44:34.368520+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -31,10 +31,22 @@
       "title": "Tálca"
     },
     {
+      "class_name": "Shell_SecondaryTrayWnd",
+      "handle": null,
+      "process_id": 14856,
+      "title": ""
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 33532,
       "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 25992,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -43,16 +55,10 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 27140,
-      "title": "WinWatt gólya"
-    },
-    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Codex - Google Chrome"
+      "title": "Codex-generated pull request by gabordancs · Pull Request #44 · gabordancs/autowinwatt - Google Chrome"
     },
     {
       "class_name": "rctrl_renwnd32",

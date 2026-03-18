@@ -10,26 +10,20 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 1576324,
-    "process_id": 27140,
+    "handle": 10096212,
+    "process_id": 25992,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_after:Súgó",
-  "process_id": 27140,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "process_id": 25992,
   "state_id": "project_open",
-  "timestamp": "2026-03-17T10:35:25.617657+00:00",
+  "timestamp": "2026-03-17T10:45:09.260120+00:00",
   "visible_top_windows": [
-    {
-      "class_name": "Windows.UI.Core.CoreWindow",
-      "handle": null,
-      "process_id": 35732,
-      "title": "Új értesítés"
-    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -37,9 +31,15 @@
       "title": "Tálca"
     },
     {
+      "class_name": "Shell_SecondaryTrayWnd",
+      "handle": null,
+      "process_id": 14856,
+      "title": ""
+    },
+    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 27140,
+      "process_id": 25992,
       "title": "WinWatt gólya"
     },
     {
@@ -58,7 +58,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 4588,
-      "title": "Codex - Google Chrome"
+      "title": "Codex-generated pull request by gabordancs · Pull Request #44 · gabordancs/autowinwatt - Google Chrome"
     },
     {
       "class_name": "rctrl_renwnd32",
