@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 from dataclasses import asdict
 from pathlib import Path
+import subprocess
 import sys
+import time
 
 from loguru import logger
 
@@ -24,17 +26,54 @@ def _parse_bool(raw: str) -> bool:
     return str(raw).strip().lower() in {"1", "true", "yes", "y"}
 
 
+def _window_is_gone(main_window: object) -> bool:
+    exists = getattr(main_window, "exists", None)
+    if callable(exists):
+        try:
+            return not bool(exists(timeout=0.2))
+        except Exception:
+            pass
+
+    is_visible = getattr(main_window, "is_visible", None)
+    if callable(is_visible):
+        try:
+            return not bool(is_visible())
+        except Exception:
+            pass
+
+    return False
+
+
+def _wait_for_window_to_close(main_window: object, *, timeout_s: float = 5.0, poll_interval_s: float = 0.2) -> bool:
+    deadline = time.monotonic() + max(timeout_s, poll_interval_s)
+    while time.monotonic() < deadline:
+        if _window_is_gone(main_window):
+            return True
+        time.sleep(poll_interval_s)
+    return _window_is_gone(main_window)
+
+
 def _close_winwatt_after_mapping() -> dict[str, str | bool | None]:
     try:
         main_window = get_cached_main_window()
     except Exception as exc:
         return {"closed": False, "method": None, "error": f"main_window_unavailable:{exc}"}
 
+    process_id = None
+    process_id_getter = getattr(main_window, "process_id", None)
+    if callable(process_id_getter):
+        try:
+            process_id = int(process_id_getter())
+        except Exception:
+            process_id = None
+
     close = getattr(main_window, "close", None)
     if callable(close):
         try:
             close()
-            return {"closed": True, "method": "window.close", "error": None}
+            if _wait_for_window_to_close(main_window):
+                return {"closed": True, "method": "window.close", "error": None}
+            logger.warning("WinWatt close() did not close the window within timeout")
         except Exception as exc:
             logger.warning("WinWatt close() failed: {}", exc)
 
@@ -45,9 +84,28 @@ def _close_winwatt_after_mapping() -> dict[str, str | bool | None]:
         if callable(set_focus):
             set_focus()
         keyboard.send_keys("%{F4}")
-        return {"closed": True, "method": "alt+f4", "error": None}
+        if _wait_for_window_to_close(main_window):
+            return {"closed": True, "method": "alt+f4", "error": None}
+        logger.warning("WinWatt Alt+F4 did not close the window within timeout")
     except Exception as exc:
-        return {"closed": False, "method": None, "error": f"keyboard_close_failed:{exc}"}
+        logger.warning("WinWatt Alt+F4 fallback failed: {}", exc)
+
+    if process_id is not None:
+        try:
+            taskkill = subprocess.run(
+                ["taskkill", "/PID", str(process_id), "/T"],
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            if taskkill.returncode == 0:
+                return {"closed": True, "method": "taskkill_pid", "error": None}
+            stderr = taskkill.stderr.strip() or taskkill.stdout.strip() or "taskkill_failed"
+            return {"closed": False, "method": "taskkill_pid", "error": stderr}
+        except Exception as exc:
+            return {"closed": False, "method": "taskkill_pid", "error": f"taskkill_exception:{exc}"}
+
+    return {"closed": False, "method": None, "error": "close_failed"}
 
 
 def build_parser() -> argparse.ArgumentParser:
