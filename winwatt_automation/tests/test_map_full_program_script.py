@@ -26,4 +26,4 @@ from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TOP_MENUS
 
 
 def test_default_top_menu_targets_include_all_discovered_menus_from_logs():
-    assert DEFAULT_TOP_MENUS == ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
+    assert DEFAULT_TOP_MENUS == ["Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
