@@ -641,6 +641,37 @@ def test_focus_guard_soft_continues_for_open_system_menu_when_exists_false_but_i
     assert main_window.restore_calls == 0
 
 
+def test_focus_guard_allows_normal_top_menu_click_when_exists_false_but_identity_strong(monkeypatch):
+    main_window = FakeWindow(
+        title="WinWatt gólya",
+        class_name="TMainForm",
+        process_id=1048,
+        handle=4328702,
+        exists=False,
+        visible=True,
+        enabled=True,
+        rect=FakeRect(171, 96, 1170, 1151),
+    )
+    app_connector.WinWattSession.main_window = main_window
+    app_connector.WinWattSession.process_id = 1048
+    app_connector.WinWattSession.handle = 4328702
+    app_connector.MainWindowSession.window = main_window
+    app_connector.MainWindowSession.process_id = 1048
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: main_window)
+    monkeypatch.setattr(app_connector, "is_winwatt_foreground_context", lambda window, allow_dialog=False: window is main_window)
+    monkeypatch.setattr(
+        app_connector,
+        "describe_foreground_window",
+        lambda: {"handle": 4328702, "title": "WinWatt gólya", "class_name": "TMainForm", "process_id": 1048},
+    )
+
+    resolved = app_connector.ensure_main_window_foreground_before_click(action_label="click_top_menu_item:Fájl", timeout=0.01)
+
+    assert resolved is main_window
+    assert main_window.focus_calls == 0
+    assert main_window.restore_calls == 0
+
+
 def test_focus_guard_soft_continues_for_baseline_restore_before_refocus(monkeypatch):
     main_window = FakeWindow(
         title="WinWatt gólya",
@@ -681,6 +712,43 @@ def test_focus_guard_soft_continues_for_baseline_restore_before_refocus(monkeypa
     )
 
     assert resolved is main_window
+    assert main_window.focus_calls >= 1
+    assert main_window.restore_calls >= 1
+    assert main_window.keyboard_focus_calls >= 1
+
+
+def test_focus_guard_still_fails_for_top_menu_click_when_identity_drifts(monkeypatch):
+    main_window = FakeWindow(
+        title="WinWatt gólya",
+        class_name="TMainForm",
+        process_id=1048,
+        handle=4328702,
+        exists=False,
+        visible=True,
+        enabled=True,
+        rect=FakeRect(171, 96, 1170, 1151),
+    )
+    app_connector.WinWattSession.main_window = main_window
+    app_connector.WinWattSession.process_id = 1048
+    app_connector.WinWattSession.handle = 4328702
+    app_connector.MainWindowSession.window = main_window
+    app_connector.MainWindowSession.process_id = 1048
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: main_window)
+    monkeypatch.setattr(app_connector, "is_winwatt_foreground_context", lambda window, allow_dialog=False: False)
+    monkeypatch.setattr(
+        app_connector,
+        "describe_foreground_window",
+        lambda: {"handle": 999, "title": "Másik ablak", "class_name": "OtherWindow", "process_id": 9999},
+    )
+    monkeypatch.setattr(app_connector.time, "sleep", lambda _: None)
+
+    with pytest.raises(RuntimeError, match="could not bring WinWatt to foreground for action=click_top_menu_item:Fájl"):
+        app_connector.ensure_main_window_foreground_before_click(
+            action_label="click_top_menu_item:Fájl",
+            timeout=0.02,
+            poll_interval=0.01,
+        )
+
     assert main_window.focus_calls >= 1
     assert main_window.restore_calls >= 1
     assert main_window.keyboard_focus_calls >= 1
