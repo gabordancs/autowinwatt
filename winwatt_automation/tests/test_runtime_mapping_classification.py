@@ -129,3 +129,28 @@ def test_classify_post_click_result_forced_failure_types():
         forced_result_type="failed_system_menu",
     )
     assert result.result_type == "failed_system_menu"
+
+
+def test_build_menu_rows_geometry_placeholder_uses_rect_center_for_empty_popup_rows():
+    rows = _build_menu_rows_from_popup_rows(
+        "state_no_project",
+        "Fájl",
+        [
+            {
+                "text": "",
+                "rectangle": {"left": 10, "top": 20, "right": 30, "bottom": 50},
+                "is_separator": False,
+                "source_scope": "main_window",
+                "fragments": [],
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "popup_reason": "empty_text_vertical_cluster_below_topbar",
+            },
+        ],
+    )
+    assert rows[0].text == "[unlabeled row 0]"
+    assert rows[0].center_x == 20
+    assert rows[0].center_y == 35
+    assert rows[0].meta["click_point"] == {"x": 20, "y": 35}
+    assert rows[0].menu_path == ["Fájl", "[unlabeled row 0]"]
+

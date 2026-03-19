@@ -37,6 +37,7 @@ from winwatt_automation.live_ui.ui_cache import PopupState
 DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
 SYSTEM_TOP_MENUS = ["Rendszer"]
 DEFAULT_TEST_PROJECT_PATH = str(Path(__file__).resolve().parents[2] / "tests" / "testwwp.wwp")
+ENABLE_GEOMETRY_PLACEHOLDERS = True
 
 _TOP_MENU_CACHE: dict[str, Any] | None = None
 _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE: int | None = None
@@ -110,6 +111,35 @@ def _guess_enabled(row: dict[str, Any]) -> bool | None:
         value = row.get("enabled")
         return bool(value) if value is not None else None
     return True
+
+
+def _rect_dimensions(rect: dict[str, Any]) -> tuple[int, int]:
+    left = int(rect.get("left") or 0)
+    right = int(rect.get("right") or 0)
+    top = int(rect.get("top") or 0)
+    bottom = int(rect.get("bottom") or 0)
+    return max(0, right - left), max(0, bottom - top)
+
+
+def _has_valid_rectangle(rect: dict[str, Any]) -> bool:
+    width, height = _rect_dimensions(rect)
+    return width > 0 and height > 0
+
+
+def _rect_center(rect: dict[str, Any]) -> dict[str, int]:
+    left = int(rect.get("left") or 0)
+    right = int(rect.get("right") or 0)
+    top = int(rect.get("top") or 0)
+    bottom = int(rect.get("bottom") or 0)
+    return {"x": left + ((right - left) // 2), "y": top + ((bottom - top) // 2)}
+
+
+def _row_popup_like(row: dict[str, Any]) -> bool:
+    return bool(row.get("popup_like", row.get("popup_candidate")))
+
+
+def _row_topbar_like(row: dict[str, Any]) -> bool:
+    return bool(row.get("topbar_like", row.get("topbar_candidate")))
 
 
 def _row_to_node(
@@ -314,15 +344,18 @@ def _build_menu_rows_from_popup_rows(
 ) -> list[RuntimeMenuRow]:
     mapped: list[RuntimeMenuRow] = []
     for index, row in enumerate(rows):
+        popup_like = _row_popup_like(row)
+        topbar_like = _row_topbar_like(row)
+        rect = dict(row.get("rectangle") or {})
         logger.info(
             "DBG_MENU_BUILD_INPUT_ROW state={} top_menu={} row_index={} text={!r} rectangle={} topbar_like={} popup_like={} source_scope={} fragments={} ",
             state_id,
             top_menu,
             index,
             row.get("text"),
-            row.get("rectangle"),
-            bool(row.get("topbar_candidate")),
-            bool(row.get("popup_candidate")),
+            rect,
+            topbar_like,
+            popup_like,
             row.get("source_scope"),
             len(list(row.get("fragments") or [])),
         )
@@ -345,6 +378,9 @@ def _build_menu_rows_from_popup_rows(
         title_clean = clean_menu_title(title)
         normalized_title = normalize_menu_title(title)
         logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', title, normalized_title)
+        meta: dict[str, Any] = {}
+        actionable = not bool(row.get("is_separator"))
+        action_type = "click"
         if not normalized_title:
             logger.info(
                 "DBG_WINWATT_EMPTY_NORMALIZED_MENU_TITLE row_index={} raw_text={} normalized_text={} is_separator={} source_scope={} control_type={} class_name={} rectangle={} fragment_count={} fragment_texts={} ",
@@ -355,21 +391,55 @@ def _build_menu_rows_from_popup_rows(
                 row.get("source_scope"),
                 row.get("control_type"),
                 row.get("class_name"),
-                row.get("rectangle"),
+                rect,
                 len(list(row.get("fragments") or [])),
                 [fragment.get("text") for fragment in list(row.get("fragments") or [])],
             )
-            if not bool(row.get("is_separator")):
+            placeholder_eligible = (
+                ENABLE_GEOMETRY_PLACEHOLDERS
+                and not bool(row.get("is_separator"))
+                and popup_like
+                and not topbar_like
+                and not text.strip()
+                and _has_valid_rectangle(rect)
+            )
+            if placeholder_eligible:
+                title_clean = f"[unlabeled row {index}]"
+                normalized_title = normalize_menu_title(title_clean)
+                click_point = _rect_center(rect)
+                meta = {
+                    "id": f"__geom_row_{index:03d}",
+                    "source": "geometry_placeholder",
+                    "row_index": index,
+                    "rectangle": rect,
+                    "popup_reason": row.get("popup_reason"),
+                    "text_was_empty": True,
+                    "click_point": click_point,
+                    "click_strategy": "center_point_fallback",
+                }
+                actionable = True
+                action_type = "click"
+                logger.info(
+                    "REPLACED_EMPTY_POPUP_ROW_WITH_PLACEHOLDER row_index={:02d}",
+                    index,
+                )
+                logger.info(
+                    "GEOM_PLACEHOLDER_CREATED row_index={:02d} rect={} popup_reason={}",
+                    index,
+                    rect,
+                    row.get("popup_reason"),
+                )
+            elif not bool(row.get("is_separator")):
                 logger.info(
                     "DBG_MENU_BUILD_FILTER_REASON state={} top_menu={} row_index={} reason=empty_popup_text_non_actionable row_text={!r} rectangle={} popup_reason={} topbar_like={} popup_like={}",
                     state_id,
                     top_menu,
                     index,
                     row.get("text"),
-                    row.get("rectangle"),
+                    rect,
                     row.get("popup_reason"),
-                    bool(row.get("topbar_candidate")),
-                    bool(row.get("popup_candidate")),
+                    topbar_like,
+                    popup_like,
                 )
                 continue
         mapped.append(
@@ -380,14 +450,17 @@ def _build_menu_rows_from_popup_rows(
                 menu_path=[clean_menu_title(top_menu), title_clean],
                 text=title_clean,
                 normalized_text=normalized_title,
-                rectangle=dict(row.get("rectangle") or {}),
-                center_x=int(row.get("center_x") or 0),
-                center_y=int(row.get("center_y") or 0),
+                rectangle=rect,
+                center_x=int(row.get("center_x") or meta.get("click_point", {}).get("x") or 0),
+                center_y=int(row.get("center_y") or meta.get("click_point", {}).get("y") or 0),
                 is_separator=bool(row.get("is_separator")),
                 source_scope=str(row.get("source_scope") or ""),
                 fragments=list(row.get("fragments") or []),
                 enabled_guess=_guess_enabled(row),
                 discovered_in_state=state_id,
+                actionable=actionable,
+                action_type=action_type,
+                meta=meta,
             )
         )
         logger.info(
@@ -1331,6 +1404,9 @@ def explore_menu_tree(
                         fragments=list(matching_row.get("fragments") or row.fragments),
                         enabled_guess=_guess_enabled(matching_row),
                         discovered_in_state=row.discovered_in_state,
+                        actionable=row.actionable,
+                        action_type=row.action_type,
+                        meta=dict(row.meta),
                     )
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
