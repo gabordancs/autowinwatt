@@ -351,6 +351,106 @@ def test_filter_normal_popup_rows_excludes_topbar_and_system_menu_overlap():
     assert [row["text"] for row in filtered] == ["Megnyitás"]
 
 
+def test_explore_menu_tree_does_not_reuse_topbar_only_snapshot_for_normal_menu(monkeypatch):
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    click_calls: list[str] = []
+
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item",
+        lambda title: click_calls.append(title),
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+
+    topbar_only_rows = [
+        {
+            "text": "Fájl",
+            "center_x": 10,
+            "center_y": 10,
+            "rectangle": {"left": 0, "top": 0, "right": 50, "bottom": 20},
+            "is_separator": False,
+            "source_scope": "main",
+            "topbar_candidate": True,
+            "popup_candidate": False,
+        }
+    ]
+    snapshots = iter([topbar_only_rows, topbar_only_rows, topbar_only_rows])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+
+    nodes, rows, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        visited_paths={("fájl",)},
+        canonical_top_menu_names={"fájl"},
+    )
+
+    assert nodes == []
+    assert rows == []
+    assert click_calls == ["Fájl", "Fájl"]
+
+
+def test_explore_menu_tree_recurses_when_real_popup_rows_exist(monkeypatch):
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: (_ for _ in ()).throw(AssertionError("valid popup snapshot should be reused")))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+
+    root_rows = [
+        {
+            "text": "Export",
+            "center_x": 10,
+            "center_y": 10,
+            "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20},
+            "is_separator": False,
+            "source_scope": "main",
+            "topbar_candidate": False,
+            "popup_candidate": True,
+        }
+    ]
+    child_rows = [
+        {
+            "text": "CSV",
+            "center_x": 150,
+            "center_y": 10,
+            "rectangle": {"left": 140, "top": 10, "right": 220, "bottom": 20},
+            "is_separator": False,
+            "source_scope": "main",
+            "topbar_candidate": False,
+            "popup_candidate": True,
+        }
+    ]
+    snapshots = iter([child_rows, child_rows])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration", lambda row, popup_rows: None)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows",
+        lambda **kwargs: root_rows,
+    )
+
+    nodes, _, _, _, _ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        visited_paths={("fájl",)},
+        popup_rows=root_rows,
+        canonical_top_menu_names={"fájl"},
+    )
+
+    assert [node["title"] for node in nodes] == ["Export"]
+    assert nodes[0]["opens_submenu"] is True
+    assert [child["title"] for child in nodes[0]["children"]] == ["CSV"]
+
+
 def test_map_runtime_state_prioritizes_normal_top_menus_by_default(monkeypatch):
     snapshot = RuntimeStateSnapshot(
         state_id="s",
