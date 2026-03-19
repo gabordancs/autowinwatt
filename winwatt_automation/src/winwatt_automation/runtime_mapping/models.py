@@ -34,6 +34,9 @@ class RuntimeMenuRow:
     fragments: list[dict[str, Any]]
     enabled_guess: bool | None
     discovered_in_state: str
+    actionable: bool = True
+    action_type: str = "click"
+    meta: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)

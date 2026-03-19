@@ -79,7 +79,7 @@ def test_best_effort_top_menu_processing(monkeypatch):
 
 
 
-def test_build_menu_rows_skips_empty_text_popup_rows():
+def test_build_menu_rows_replaces_empty_text_popup_rows_with_geometry_placeholders():
     rows = _build_menu_rows_from_popup_rows(
         "no_project",
         "Fájl",
@@ -92,6 +92,8 @@ def test_build_menu_rows_skips_empty_text_popup_rows():
                 "is_separator": False,
                 "source_scope": "main",
                 "popup_reason": "empty_text_vertical_cluster_below_topbar",
+                "popup_candidate": True,
+                "topbar_candidate": False,
             },
             {
                 "text": "Megnyitás",
@@ -104,7 +106,12 @@ def test_build_menu_rows_skips_empty_text_popup_rows():
         ],
     )
 
-    assert [row.text for row in rows] == ["Megnyitás"]
+    assert [row.text for row in rows] == ["[unlabeled row 0]", "Megnyitás"]
+    assert rows[0].meta["id"] == "__geom_row_000"
+    assert rows[0].meta["source"] == "geometry_placeholder"
+    assert rows[0].meta["click_strategy"] == "center_point_fallback"
+    assert rows[0].actionable is True
+    assert rows[0].action_type == "click"
 
 def test_popup_top_level_name_is_filtered_from_children():
     rows = _build_menu_rows_from_popup_rows(
