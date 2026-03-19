@@ -9,32 +9,26 @@
     "only_in_a": [],
     "only_in_b": [
       [
-        "fájl",
-        ""
+        "jegyzékek"
       ]
     ],
     "shared": []
   },
-  "project_only_paths": [
-    [
-      "fájl",
-      ""
-    ]
-  ],
+  "project_only_paths": [],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
     "actions_only_in_a": 0,
     "actions_only_in_b": 1,
     "enabled_changes": 0,
-    "project_only_paths": 1,
+    "project_only_paths": 0,
     "shared_top_menus": 1
   },
   "top_menu_diff": {
     "only_in_a": [],
     "only_in_b": [],
     "shared": [
-      "fájl"
+      "jegyzékek"
     ]
   },
   "window_diff": {

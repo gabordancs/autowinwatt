@@ -750,6 +750,26 @@
       },
       "log_path": "data\\run_logs\\runs\\0047_true_2026-03-19_09-09-43.log",
       "json_path": "data\\run_logs\\runs\\0047_true_2026-03-19_09-09-43.json"
+    },
+    {
+      "sequence_number": 48,
+      "run_id": "0048_true_2026-03-19_09-21-42",
+      "started_at": "2026-03-19T09:21:42.924870+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Jegyzékek --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0048_true_2026-03-19_09-21-42.log",
+      "json_path": "data\\run_logs\\runs\\0048_true_2026-03-19_09-21-42.json"
     }
   ]
 }

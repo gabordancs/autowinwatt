@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 18236,
+  "process_id": 21308,
   "state_id": "no_project",
-  "timestamp": "2026-03-19T09:09:48.627186+00:00",
+  "timestamp": "2026-03-19T09:21:48.496540+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -39,8 +39,20 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 18236,
+      "process_id": 21308,
       "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23032,
+      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 19280,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "XLMAIN",
@@ -61,22 +73,10 @@
       "title": ""
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 19280,
-      "title": "GitHub Desktop"
-    },
-    {
       "class_name": "#32770",
       "handle": null,
       "process_id": 8512,
       "title": "10 emlékeztető"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 23032,
-      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
     },
     {
       "class_name": "Progman",
