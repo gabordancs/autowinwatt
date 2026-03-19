@@ -637,6 +637,11 @@ def _is_probationary_focus_action(action_label: str) -> bool:
     return normalized == "open_system_menu" or normalized.startswith("baseline_restore:")
 
 
+def _is_normal_top_menu_click_focus_action(action_label: str) -> bool:
+    normalized = (action_label or "").strip().lower()
+    return normalized.startswith("click_top_menu_item:")
+
+
 def _has_probationary_main_window_identity(identity: dict[str, Any], rect_payload: dict[str, int] | None, *, visible: bool, enabled: bool) -> tuple[bool, list[str]]:
     reasons: list[str] = []
     if identity.get("handle") is not None:
@@ -934,6 +939,7 @@ def ensure_main_window_foreground_before_click(
     rect_payload = _rect_payload(_safe_call(main_window, "rectangle", None))
     identity = _window_identity_payload(main_window)
     probationary_allowed = _is_probationary_focus_action(action_label)
+    top_menu_click_override = _is_normal_top_menu_click_focus_action(action_label)
     strong_identity, identity_reasons = _has_probationary_main_window_identity(
         identity,
         rect_payload,
@@ -957,6 +963,15 @@ def ensure_main_window_foreground_before_click(
         if probationary_allowed and strong_identity:
             logger.warning(
                 "DBG_WINWATT_FOCUS_GUARD_SOFT_CONTINUE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
+                action_label,
+                identity.get("wrapper_type"),
+                identity_reasons,
+                identity,
+                rect_payload,
+            )
+        elif top_menu_click_override and strong_identity:
+            logger.warning(
+                "DBG_WINWATT_FOCUS_GUARD_CLICK_OVERRIDE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
                 action_label,
                 identity.get("wrapper_type"),
                 identity_reasons,
