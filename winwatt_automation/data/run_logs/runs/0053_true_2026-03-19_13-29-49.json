@@ -1,9 +1,9 @@
 {
-  "run_id": "0059_true_2026-03-19_19-37-59",
-  "sequence_number": 59,
-  "started_at": "2026-03-19T19:37:59.105372+00:00",
-  "finished_at": "2026-03-19T19:40:50.056485+00:00",
-  "duration_seconds": 170.951,
+  "run_id": "0053_true_2026-03-19_13-29-49",
+  "sequence_number": 53,
+  "started_at": "2026-03-19T13:29:49.011985+00:00",
+  "finished_at": "2026-03-19T13:29:54.617055+00:00",
+  "duration_seconds": 5.605,
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode hybrid --max-submenu-depth 1 --include-disabled true",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
   "safe_mode": "hybrid",
@@ -15,33 +15,23 @@
     "project_open_top_menus": null,
     "diff_summary": {},
     "skipped_by_safety": null,
-    "last_error": "No WinWatt-like windows were found",
+    "last_error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'win32', 'process': 26876}",
     "modal_detected": false,
     "recovery_attempted": false,
     "recovery_success": false
   },
   "important_events": [
     {
-      "timestamp": "2026-03-19T19:40:37.350130+00:00",
-      "event_type": "state_mapped",
-      "payload": {
-        "state_id": "no_project",
-        "top_menus": 1,
-        "actions": 1,
-        "dialogs": 0
-      }
-    },
-    {
-      "timestamp": "2026-03-19T19:40:50.054719+00:00",
+      "timestamp": "2026-03-19T13:29:54.614632+00:00",
       "event_type": "run_failed",
       "payload": {
-        "error": "No WinWatt-like windows were found"
+        "error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'win32', 'process': 26876}"
       }
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0059_true_2026-03-19_19-37-59.log",
-    "json_path": "data\\run_logs\\runs\\0059_true_2026-03-19_19-37-59.json"
+    "log_path": "data\\run_logs\\runs\\0053_true_2026-03-19_13-29-49.log",
+    "json_path": "data\\run_logs\\runs\\0053_true_2026-03-19_13-29-49.json"
   },
   "tags": [
     "map_full_program",

@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "Chrome_WidgetWin_1",
-    "handle": 66746,
-    "process_id": 8888,
+    "handle": 594612,
+    "process_id": 13168,
     "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
   },
   "main_window_class": "TMainForm",
@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 21308,
+  "process_id": 19052,
   "state_id": "no_project",
-  "timestamp": "2026-03-19T09:21:48.496540+00:00",
+  "timestamp": "2026-03-19T19:38:03.308808+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -33,50 +33,50 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 8888,
+      "process_id": 13168,
       "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 21308,
+      "process_id": 19052,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 23032,
-      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
+      "process_id": 19884,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 19280,
-      "title": "GitHub Desktop"
+      "process_id": 23032,
+      "title": "WebWatt - Google Chrome"
     },
     {
-      "class_name": "XLMAIN",
+      "class_name": "TeamsWebView",
       "handle": null,
-      "process_id": 23120,
-      "title": "Cordia_Alap_Szaniter_kínálat_2026.03.12 - Excel"
+      "process_id": 16952,
+      "title": "Calendar | Calendar | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
     },
     {
-      "class_name": "CabinetWClass",
+      "class_name": "rctrl_renwnd32",
       "handle": null,
-      "process_id": 14600,
-      "title": "Sasad_9_10 – Fájlkezelő"
+      "process_id": 9340,
+      "title": "Naptár – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
-      "class_name": "NetUIToolWindow",
+      "class_name": "Notepad",
       "handle": null,
-      "process_id": 8512,
-      "title": ""
+      "process_id": 5264,
+      "title": "*antal áron – Jegyzettömb"
     },
     {
-      "class_name": "#32770",
+      "class_name": "Window",
       "handle": null,
-      "process_id": 8512,
-      "title": "10 emlékeztető"
+      "process_id": 29956,
+      "title": "PDF-XChange Editor"
     },
     {
       "class_name": "Progman",

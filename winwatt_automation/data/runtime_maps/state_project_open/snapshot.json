@@ -10,24 +10,56 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 593392,
-    "process_id": 21308,
+    "handle": 459692,
+    "process_id": 10908,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": false,
-  "mapping_stop_reason": null,
-  "process_id": 21308,
+  "mapping_partial": true,
+  "mapping_stop_reason": "lost_main_window_after:Fájl",
+  "process_id": 10908,
+  "project_open_recovery": {
+    "close_attempted": false,
+    "close_attempts": [],
+    "diagnostics": {
+      "dialog_candidates": [],
+      "foreground_window": {
+        "class_name": "TMainForm",
+        "handle": 459692,
+        "process_id": 10908,
+        "title": "WinWatt gólya"
+      },
+      "main_window": {
+        "class_name": "TMainForm",
+        "enabled": true,
+        "exists": true,
+        "handle": null,
+        "process_id": 10908,
+        "rect": {
+          "bottom": 1150,
+          "left": -10,
+          "right": 1930,
+          "top": -10
+        },
+        "title": "WinWatt gólya",
+        "visible": true
+      }
+    },
+    "main_window_reenabled": true,
+    "modal_pending": false,
+    "reason": "main_window_ready",
+    "success": true
+  },
   "state_id": "project_open",
-  "timestamp": "2026-03-19T09:27:06.211170+00:00",
+  "timestamp": "2026-03-19T19:26:00.184825+00:00",
   "visible_top_windows": [
     {
       "class_name": "SysShadow",
       "handle": null,
-      "process_id": 21308,
+      "process_id": 10908,
       "title": ""
     },
     {
@@ -39,50 +71,50 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 21308,
+      "process_id": 10908,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 8888,
+      "process_id": 13168,
       "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 19280,
+      "process_id": 19884,
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "XLMAIN",
+      "class_name": "TeamsWebView",
       "handle": null,
-      "process_id": 23120,
-      "title": "Cordia_Alap_Szaniter_kínálat_2026.03.12 - Excel"
+      "process_id": 16952,
+      "title": "Calendar | Calendar | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
     },
     {
-      "class_name": "CabinetWClass",
+      "class_name": "rctrl_renwnd32",
       "handle": null,
-      "process_id": 14600,
-      "title": "Sasad_9_10 – Fájlkezelő"
+      "process_id": 9340,
+      "title": "Naptár – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
-      "class_name": "NetUIToolWindow",
+      "class_name": "Notepad",
       "handle": null,
-      "process_id": 8512,
-      "title": ""
+      "process_id": 5264,
+      "title": "*antal áron – Jegyzettömb"
     },
     {
-      "class_name": "#32770",
+      "class_name": "Window",
       "handle": null,
-      "process_id": 8512,
-      "title": "10 emlékeztető"
+      "process_id": 29956,
+      "title": "PDF-XChange Editor"
     },
     {
       "class_name": "Progman",
