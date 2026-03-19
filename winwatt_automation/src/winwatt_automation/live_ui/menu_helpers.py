@@ -38,6 +38,10 @@ SYSTEM_MENU_DEFAULT_ITEMS = {
     "close",
 }
 TOPBAR_BAND_CACHE_TTL_S = 0.5
+TOPBAR_MAX_EXPECTED_HEIGHT = 80
+VERTICAL_POPUP_CLUSTER_MIN_ROWS = 4
+VERTICAL_POPUP_CLUSTER_MAX_TOP_GAP = 24
+VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE = 24
 _MENU_ITEMS_REENTRANCY_DEPTH = 0
 _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
 
@@ -167,10 +171,118 @@ def _row_below_band(row: dict[str, Any], band: dict[str, int] | None) -> bool:
     return int(rect.get("top", 0)) >= int(band["bottom"])
 
 
-def _classify_row_geometry(row: dict[str, Any], topbar_band: dict[str, int] | None) -> tuple[bool, bool]:
+def _resolved_topbar_band(rows: list[dict[str, Any]], topbar_band: dict[str, int] | None) -> dict[str, int] | None:
+    if not rows:
+        return topbar_band
+
+    named_topbar_rows = [
+        row
+        for row in rows
+        if _normalize(str(row.get("text") or "")) in {_normalize(name) for name in TOP_MENU_NAMES}
+    ]
+    if named_topbar_rows:
+        candidate_band = _compute_topbar_band_from_rows(named_topbar_rows)
+        if candidate_band is not None:
+            return candidate_band
+
+    if topbar_band is None:
+        return None
+
+    if int(topbar_band.get("height", 0)) <= TOPBAR_MAX_EXPECTED_HEIGHT:
+        return topbar_band
+
+    compact_band = _compute_topbar_band_from_rows(rows)
+    if compact_band is not None and int(compact_band.get("height", 0)) < int(topbar_band.get("height", 0)):
+        return compact_band
+    return topbar_band
+
+
+def _detect_empty_text_vertical_popup_cluster(
+    rows: list[dict[str, Any]],
+    topbar_band: dict[str, int] | None,
+) -> tuple[set[tuple[int, int, int, int]], dict[str, Any]]:
+    accepted_keys: set[tuple[int, int, int, int]] = set()
+    diagnostic = {
+        "detected": False,
+        "accepted_rows": 0,
+        "reason": "no_cluster",
+    }
+    if topbar_band is None:
+        diagnostic["reason"] = "missing_topbar_band"
+        return accepted_keys, diagnostic
+
+    candidates = []
+    for row in rows:
+        rect = row.get("rectangle") or {}
+        text = str(row.get("text") or "")
+        if text.strip():
+            continue
+        if _normalize(str(row.get("control_type") or "")) != "menuitem":
+            continue
+        if int(rect.get("top", 0)) < int(topbar_band.get("bottom", 0)):
+            continue
+        candidates.append(row)
+
+    if len(candidates) < VERTICAL_POPUP_CLUSTER_MIN_ROWS:
+        diagnostic["reason"] = "candidate_count_below_threshold"
+        return accepted_keys, diagnostic
+
+    candidates.sort(key=lambda item: ((item.get("rectangle") or {}).get("top", 0), ((item.get("rectangle") or {}).get("left", 0))))
+    cluster = [candidates[0]]
+    base_rect = candidates[0].get("rectangle") or {}
+    base_left = int(base_rect.get("left", 0))
+    base_right = int(base_rect.get("right", 0))
+    last_top = int(base_rect.get("top", 0))
+    for row in candidates[1:]:
+        rect = row.get("rectangle") or {}
+        left = int(rect.get("left", 0))
+        right = int(rect.get("right", 0))
+        top = int(rect.get("top", 0))
+        if abs(left - base_left) > VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE:
+            continue
+        if abs(right - base_right) > VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE:
+            continue
+        if top - last_top > VERTICAL_POPUP_CLUSTER_MAX_TOP_GAP:
+            continue
+        cluster.append(row)
+        last_top = top
+
+    if len(cluster) < VERTICAL_POPUP_CLUSTER_MIN_ROWS:
+        diagnostic["reason"] = "cluster_below_threshold"
+        return accepted_keys, diagnostic
+
+    for row in cluster:
+        rect = row.get("rectangle") or {}
+        accepted_keys.add((int(rect.get("left", 0)), int(rect.get("top", 0)), int(rect.get("right", 0)), int(rect.get("bottom", 0))))
+
+    diagnostic.update(
+        {
+            "detected": True,
+            "accepted_rows": len(cluster),
+            "reason": "empty_text_vertical_cluster_below_topbar",
+            "cluster_left": base_left,
+            "cluster_right": base_right,
+            "cluster_top": int((cluster[0].get("rectangle") or {}).get("top", 0)),
+            "cluster_bottom": int((cluster[-1].get("rectangle") or {}).get("bottom", 0)),
+        }
+    )
+    return accepted_keys, diagnostic
+
+
+def _classify_row_geometry(
+    row: dict[str, Any],
+    topbar_band: dict[str, int] | None,
+    *,
+    vertical_popup_override_keys: set[tuple[int, int, int, int]] | None = None,
+) -> tuple[bool, bool, str | None]:
+    rect = row.get("rectangle") or {}
+    rect_key = (int(rect.get("left", 0)), int(rect.get("top", 0)), int(rect.get("right", 0)), int(rect.get("bottom", 0)))
+    if vertical_popup_override_keys and rect_key in vertical_popup_override_keys:
+        return False, True, "empty_text_vertical_cluster_below_topbar"
+
     topbar_candidate = _row_in_vertical_band(row, topbar_band)
     popup_candidate = _row_below_band(row, topbar_band)
-    return topbar_candidate, popup_candidate
+    return topbar_candidate, popup_candidate, ("below_topbar_band" if popup_candidate else None)
 
 
 def _row_identity_payload(row: dict[str, Any]) -> dict[str, Any]:
@@ -227,8 +339,17 @@ def _log_top_menu_popup_diagnostics(title: str, item_rect: Any, topbar_band: dic
     system_popup_cluster = False
     title_norm = _normalize(title)
     item_center_x = int((int(item_rect.left) + int(item_rect.right)) / 2)
+    resolved_topbar_band = _resolved_topbar_band(snapshot_rows, topbar_band)
+    vertical_popup_override_keys, vertical_popup_diag = _detect_empty_text_vertical_popup_cluster(snapshot_rows, resolved_topbar_band)
+    logger.info(
+        "DBG_MENU_EMPTY_TEXT_VERTICAL_CLUSTER detected={} accepted_popup_rows={} reason={} topbar_band={} ",
+        vertical_popup_diag.get("detected"),
+        vertical_popup_diag.get("accepted_rows"),
+        vertical_popup_diag.get("reason"),
+        _rect_tuple(resolved_topbar_band),
+    )
     for row in snapshot_rows:
-        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        topbar_candidate, popup_candidate, _popup_reason = _classify_row_geometry(row, resolved_topbar_band, vertical_popup_override_keys=vertical_popup_override_keys)
         if topbar_candidate:
             topbar_count += 1
         if popup_candidate:
@@ -250,7 +371,7 @@ def _log_top_menu_popup_diagnostics(title: str, item_rect: Any, topbar_band: dic
         popup_count,
         system_popup_cluster,
         popup_texts_under_title,
-        _rect_tuple(topbar_band),
+        _rect_tuple(resolved_topbar_band),
         len(snapshot_rows),
     )
 
@@ -574,25 +695,49 @@ def _validate_not_in_forbidden_top_left_zone(main_window: Any, point: tuple[int,
         raise RuntimeError("click_blocked_forbidden_zone")
 
 
-def _coerce_point_outside_forbidden_top_left_zone(main_window: Any, point: tuple[int, int]) -> tuple[int, int]:
+def _coerce_point_outside_forbidden_top_left_zone(
+    main_window: Any,
+    point: tuple[int, int],
+    *,
+    target_rect: Any | None = None,
+) -> tuple[int, int]:
     rect = main_window.rectangle()
     left = int(rect.left)
     top = int(rect.top)
     right = int(rect.right)
     bottom = int(rect.bottom)
+    guard_right = left + TITLEBAR_ICON_GUARD_WIDTH
+    guard_bottom = top + TITLEBAR_ICON_GUARD_HEIGHT
 
-    safe_x = max(point[0], left + TITLEBAR_ICON_GUARD_WIDTH + 8)
-    safe_y = max(point[1], top + TITLEBAR_ICON_GUARD_HEIGHT + 8)
+    safe_x, safe_y = point
+    if safe_x <= guard_right and safe_y <= guard_bottom and target_rect is not None:
+        target_left = int(getattr(target_rect, "left", safe_x))
+        target_top = int(getattr(target_rect, "top", safe_y))
+        target_right = int(getattr(target_rect, "right", safe_x + 1))
+        target_bottom = int(getattr(target_rect, "bottom", safe_y + 1))
+        candidate_y = max(safe_y, guard_bottom + 1)
+        if target_top <= candidate_y < target_bottom:
+            safe_y = candidate_y
+        else:
+            candidate_x = max(safe_x, guard_right + 1)
+            if target_left <= candidate_x < target_right:
+                safe_x = candidate_x
+
+    if safe_x <= guard_right and safe_y <= guard_bottom:
+        safe_x = max(safe_x, left + TITLEBAR_ICON_GUARD_WIDTH + 8)
+        safe_y = max(safe_y, top + TITLEBAR_ICON_GUARD_HEIGHT + 8)
+
     safe_x = min(max(left + 1, safe_x), max(left + 1, right - 1))
     safe_y = min(max(top + 1, safe_y), max(top + 1, bottom - 1))
 
     if (safe_x, safe_y) != point:
         logger.warning(
-            "adjusted_click_outside_forbidden_zone original_point={} adjusted_point={} main_left={} main_top={}",
+            "adjusted_click_outside_forbidden_zone original_point={} adjusted_point={} main_left={} main_top={} target_rect_preserved={}",
             point,
             (safe_x, safe_y),
             left,
             top,
+            target_rect is not None,
         )
 
     return safe_x, safe_y
@@ -612,8 +757,14 @@ def _relative_coords_for_point(main_window: Any, point: tuple[int, int]) -> tupl
     return int(point[0] - int(window_rect.left)), int(point[1] - int(window_rect.top))
 
 
-def _click_main_window_at_point(main_window: Any, point: tuple[int, int], *, log_label: str) -> None:
-    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point)
+def _click_main_window_at_point(
+    main_window: Any,
+    point: tuple[int, int],
+    *,
+    log_label: str,
+    target_rect: Any | None = None,
+) -> None:
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point, target_rect=target_rect)
     rel_x, rel_y = _relative_coords_for_point(main_window, safe_point)
     if callable(getattr(main_window, "click_input", None)):
         main_window.click_input(coords=(rel_x, rel_y))
@@ -746,7 +897,7 @@ def _menu_items(*, force_refresh: bool = False) -> list[Any]:
         if rect is None:
             continue
         row = {"rectangle": rect, "center_x": rect["center_x"], "center_y": rect["center_y"]}
-        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        topbar_candidate, popup_candidate, _popup_reason = _classify_row_geometry(row, topbar_band)
         if topbar_candidate:
             topbar_visible += 1
         if popup_candidate:
@@ -856,9 +1007,10 @@ def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[st
         "process_id": getattr(info, "process_id", None),
         "native_handle": getattr(info, "handle", None),
     }
-    topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+    topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry(row, topbar_band)
     row["topbar_candidate"] = topbar_candidate
     row["popup_candidate"] = popup_candidate
+    row["popup_reason"] = popup_reason
     return row
 
 
@@ -950,13 +1102,20 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
         row["appeared_after_popup_open"] = False
         unique_rows.append(row)
 
+    resolved_topbar_band = _resolved_topbar_band(unique_rows, topbar_band)
+    vertical_popup_override_keys, vertical_popup_diag = _detect_empty_text_vertical_popup_cluster(unique_rows, resolved_topbar_band)
     topbar_like_count = 0
     popup_like_count = 0
     empty_text_count = 0
     for row in unique_rows:
-        topbar_candidate, popup_candidate = _classify_row_geometry(row, topbar_band)
+        topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry(
+            row,
+            resolved_topbar_band,
+            vertical_popup_override_keys=vertical_popup_override_keys,
+        )
         row["topbar_candidate"] = topbar_candidate
         row["popup_candidate"] = popup_candidate
+        row["popup_reason"] = popup_reason
         if topbar_candidate:
             topbar_like_count += 1
         if popup_candidate:
@@ -964,14 +1123,17 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
         if not str(row.get("text") or "").strip():
             empty_text_count += 1
     logger.info(
-        "DBG_MENU_SNAPSHOT_SUMMARY main_window_fragments={} global_scan_fragments={} deduped_fragments={} topbar_like={} popup_like={} empty_text={} topbar_band={}",
+        "DBG_MENU_SNAPSHOT_SUMMARY main_window_fragments={} global_scan_fragments={} deduped_fragments={} topbar_like={} popup_like={} empty_text={} topbar_band={} empty_text_vertical_cluster_detected={} accepted_popup_rows={} popup_heuristic={}",
         len(main_rows),
         len(global_rows),
         len(unique_rows),
         topbar_like_count,
         popup_like_count,
         empty_text_count,
-        _rect_tuple(topbar_band),
+        _rect_tuple(resolved_topbar_band),
+        vertical_popup_diag.get("detected"),
+        vertical_popup_diag.get("accepted_rows"),
+        vertical_popup_diag.get("reason"),
     )
     logger.debug("Captured menu snapshot rows={}", len(unique_rows))
     return unique_rows
@@ -1228,9 +1390,9 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
 
         source_scope_summary = sorted({str(item.get("source_scope", "")) for item in cluster})
         row_class_summary = sorted({str(item.get("class_name", "")) for item in cluster})
-        topbar_candidate, popup_candidate = _classify_row_geometry({"rectangle": {"left": left, "top": top, "right": right, "bottom": bottom}, "center_x": int((left + right) / 2), "center_y": int((top + bottom) / 2)}, topbar_band)
+        topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry({"rectangle": {"left": left, "top": top, "right": right, "bottom": bottom}, "center_x": int((left + right) / 2), "center_y": int((top + bottom) / 2)}, topbar_band)
         logger.info(
-            "DBG_MENU_GROUP_ROW row_index={} representative_text={!r} fragment_count={} fragment_texts={} row_rectangle={} source_scope_summary={} row_class_summary={} topbar_like={} popup_like={}",
+            "DBG_MENU_GROUP_ROW row_index={} representative_text={!r} fragment_count={} fragment_texts={} row_rectangle={} source_scope_summary={} row_class_summary={} topbar_like={} popup_like={} popup_reason={}",
             row_index,
             representative_text,
             len(cluster),
@@ -1240,6 +1402,7 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
             row_class_summary,
             topbar_candidate,
             popup_candidate,
+            popup_reason,
         )
         logical_rows.append(
             {
@@ -1262,6 +1425,7 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "appeared_after_popup_open": any(bool(item.get("appeared_after_popup_open")) for item in cluster),
                 "topbar_candidate": topbar_candidate,
                 "popup_candidate": popup_candidate,
+                "popup_reason": popup_reason,
                 "source_scope_summary": source_scope_summary,
                 "row_class_summary": row_class_summary,
                 "fragments": [
@@ -1327,13 +1491,13 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         int((int(item_rect.left) + int(item_rect.right)) / 2),
         int((int(item_rect.top) + int(item_rect.bottom)) / 2),
     )
-    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point)
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point, target_rect=rect)
     try:
         if safe_point == point:
             item.click_input()
         else:
             click_mode = "adjusted_coordinate"
-            _click_main_window_at_point(main_window, safe_point, log_label="Adjusted top menu click used title=Fájl")
+            _click_main_window_at_point(main_window, safe_point, log_label="Adjusted top menu click used title=Fájl", target_rect=item_rect)
         top_menu_click_count += 1
     except Exception as exc:
         logger.warning("Top menu item 'Fájl' click_input() failed: {}", exc)
@@ -1487,13 +1651,10 @@ def wait_for_popup_to_close(
 
 def _click_by_relative_rect_center(item: Any, main_window: Any) -> None:
     rect = item.rectangle()
-    point = _coerce_point_outside_forbidden_top_left_zone(
-        main_window,
-        (int((int(rect.left) + int(rect.right)) / 2), int((int(rect.top) + int(rect.bottom)) / 2)),
-    )
+    point = (int((int(rect.left) + int(rect.right)) / 2), int((int(rect.top) + int(rect.bottom)) / 2))
 
     ensure_main_window_foreground_before_click(action_label="relative_menu_click")
-    _click_main_window_at_point(main_window, point, log_label="Fallback menu click used")
+    _click_main_window_at_point(main_window, point, log_label="Fallback menu click used", target_rect=rect)
 
 
 def click_top_menu_item(title: str) -> None:
@@ -1514,13 +1675,13 @@ def click_top_menu_item(title: str) -> None:
         int((int(item_rect.left) + int(item_rect.right)) / 2),
         int((int(item_rect.top) + int(item_rect.bottom)) / 2),
     )
-    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point)
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point, target_rect=item_rect)
 
     try:
         if safe_point == point:
             item.click_input()
         else:
-            _click_main_window_at_point(main_window, safe_point, log_label=f"Adjusted top menu click used title={title}")
+            _click_main_window_at_point(main_window, safe_point, log_label=f"Adjusted top menu click used title={title}", target_rect=item_rect)
     except Exception as exc:
         logger.warning("Top menu item '{}' click_input() failed: {}", title, exc)
 

@@ -115,9 +115,9 @@ def test_click_top_menu_item_fallback_to_relative_click(monkeypatch):
     assert relative_clicks == [file_item]
 
 
-def test_click_top_menu_item_adjusts_point_outside_forbidden_zone(monkeypatch):
+def test_click_top_menu_item_adjusts_point_outside_forbidden_zone_without_leaving_target_rect(monkeypatch):
     menu_parent = types.SimpleNamespace(element_info=types.SimpleNamespace(control_type="MenuBar"))
-    file_item = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(0, 0, 20, 20))
+    file_item = FakeMenuItem("Fájl", parent=menu_parent, rect=FakeRect(0, 23, 32, 42))
 
     class MainWindow:
         def rectangle(self):
@@ -141,8 +141,9 @@ def test_click_top_menu_item_adjusts_point_outside_forbidden_zone(monkeypatch):
 
     assert clicks
     rel_x, rel_y = clicks[0]
-    assert rel_x >= menu_helpers.TITLEBAR_ICON_GUARD_WIDTH
-    assert rel_y >= menu_helpers.TITLEBAR_ICON_GUARD_HEIGHT
+    assert 0 <= rel_x < 32
+    assert 23 <= rel_y < 42
+    assert rel_y > menu_helpers.TITLEBAR_ICON_GUARD_HEIGHT
 
 
 def test_structured_popup_rows_from_snapshots_sorts_filters_and_marks_separator(monkeypatch):
@@ -556,14 +557,45 @@ def test_menu_items_reentrancy_guard_falls_back_to_direct_query(monkeypatch):
     assert state["reentered"] is True
 
 def test_capture_system_menu_popup_falls_back_to_popup_region_rows(monkeypatch):
+    popup_candidates = [
+        {
+            "text": "Előző méret",
+            "normalized_text": "előző méret",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 4, "top": 55, "right": 220, "bottom": 80},
+            "width": 216,
+            "height": 25,
+            "center_x": 112,
+            "center_y": 67,
+            "is_separator": False,
+            "source_scope": "system_menu_fallback_main_window",
+            "topbar_candidate": False,
+            "popup_candidate": True,
+        },
+        {
+            "text": "Bezárás",
+            "normalized_text": "bezárás",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 4, "top": 82, "right": 220, "bottom": 107},
+            "width": 216,
+            "height": 25,
+            "center_x": 112,
+            "center_y": 94,
+            "is_separator": False,
+            "source_scope": "system_menu_fallback_main_window",
+            "topbar_candidate": False,
+            "popup_candidate": True,
+        },
+    ]
+
     monkeypatch.setattr(menu_helpers, "_system_menu_windows", lambda: [])
-    monkeypatch.setattr(menu_helpers, "get_cached_main_window_snapshot", lambda: MainWindow())
-    monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: (_ for _ in ()).throw(AssertionError("fallback should not force validated cache resolve")))
     monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm", "process_id": 1})
     monkeypatch.setattr(
         menu_helpers,
-        "capture_menu_popup_snapshot",
-        lambda: (_ for _ in ()).throw(AssertionError("normal snapshot pipeline must not be used for system menu fallback")),
+        "_capture_popup_region_rows_for_system_menu",
+        lambda: (popup_candidates, [], {"left": 0, "top": 0, "right": 500, "bottom": 40, "width": 500, "height": 40, "center_x": 250, "center_y": 20}),
     )
 
     rows = menu_helpers.capture_system_menu_popup()
@@ -683,6 +715,103 @@ def test_capture_system_menu_popup_prefers_real_system_menu_windows(monkeypatch)
 
     assert rows == []
     assert fallback_calls == []
+
+
+
+
+def test_capture_menu_popup_snapshot_accepts_empty_text_vertical_cluster_as_popup(monkeypatch):
+    rows = []
+    for index in range(6):
+        top = 45 + index * 24
+        rows.append(
+            {
+                "text": "",
+                "normalized_text": "",
+                "control_type": "MenuItem",
+                "class_name": "",
+                "rectangle": {"left": 40, "top": top, "right": 280, "bottom": top + 22},
+                "width": 240,
+                "height": 22,
+                "center_x": 160,
+                "center_y": top + 11,
+                "source_scope": "main_window",
+            }
+        )
+    topbar_rows = [
+        {
+            "text": "Fájl",
+            "normalized_text": "fájl",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 0, "top": 0, "right": 50, "bottom": 24},
+            "width": 50,
+            "height": 24,
+            "center_x": 25,
+            "center_y": 12,
+            "source_scope": "main_window",
+        },
+        {
+            "text": "Jegyzékek",
+            "normalized_text": "jegyzékek",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 55, "top": 0, "right": 140, "bottom": 24},
+            "width": 85,
+            "height": 24,
+            "center_x": 97,
+            "center_y": 12,
+            "source_scope": "main_window",
+        },
+    ]
+    monkeypatch.setattr(menu_helpers, '_menu_like_controls_from_main_window', lambda: topbar_rows + rows)
+    monkeypatch.setattr(menu_helpers, '_menu_like_controls_from_global_process_scan', lambda: [])
+    monkeypatch.setattr(menu_helpers, '_main_window_topbar_band', lambda: {"left": 0, "top": 0, "right": 327, "bottom": 464, "width": 327, "height": 464, "center_x": 163, "center_y": 232})
+
+    snapshot = menu_helpers.capture_menu_popup_snapshot()
+
+    popup_rows = [row for row in snapshot if row['rectangle']['top'] >= 45]
+    assert len(popup_rows) == 6
+    assert all(row['popup_candidate'] is True for row in popup_rows)
+    assert all(row['topbar_candidate'] is False for row in popup_rows)
+    assert all(row['popup_reason'] == 'empty_text_vertical_cluster_below_topbar' for row in popup_rows)
+
+
+def test_capture_menu_popup_snapshot_keeps_topbar_only_snapshot_non_popup(monkeypatch):
+    topbar_rows = [
+        {
+            "text": "Fájl",
+            "normalized_text": "fájl",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 0, "top": 0, "right": 50, "bottom": 24},
+            "width": 50,
+            "height": 24,
+            "center_x": 25,
+            "center_y": 12,
+            "source_scope": "main_window",
+        },
+        {
+            "text": "Jegyzékek",
+            "normalized_text": "jegyzékek",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 55, "top": 0, "right": 140, "bottom": 24},
+            "width": 85,
+            "height": 24,
+            "center_x": 97,
+            "center_y": 12,
+            "source_scope": "main_window",
+        },
+    ]
+    monkeypatch.setattr(menu_helpers, '_menu_like_controls_from_main_window', lambda: topbar_rows)
+    monkeypatch.setattr(menu_helpers, '_menu_like_controls_from_global_process_scan', lambda: [])
+    monkeypatch.setattr(menu_helpers, '_main_window_topbar_band', lambda: {"left": 0, "top": 0, "right": 327, "bottom": 24, "width": 327, "height": 24, "center_x": 163, "center_y": 12})
+
+    snapshot = menu_helpers.capture_menu_popup_snapshot()
+
+    assert all(row['topbar_candidate'] is True for row in snapshot)
+    assert all(row['popup_candidate'] is False for row in snapshot)
+    assert all(row['popup_reason'] is None for row in snapshot)
 
 
 def test_click_top_menu_item_focus_guard_failure(monkeypatch):
