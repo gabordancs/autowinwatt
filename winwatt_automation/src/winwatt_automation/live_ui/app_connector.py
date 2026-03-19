@@ -642,6 +642,11 @@ def _is_normal_top_menu_click_focus_action(action_label: str) -> bool:
     return normalized.startswith("click_top_menu_item:")
 
 
+def _is_open_top_menu_focus_action(action_label: str) -> bool:
+    normalized = (action_label or "").strip().lower()
+    return normalized.startswith("open_top_menu:")
+
+
 def _is_relative_menu_click_focus_action(action_label: str) -> bool:
     normalized = (action_label or "").strip().lower()
     return normalized == "relative_menu_click"
@@ -945,6 +950,7 @@ def ensure_main_window_foreground_before_click(
     identity = _window_identity_payload(main_window)
     probationary_allowed = _is_probationary_focus_action(action_label)
     top_menu_click_override = _is_normal_top_menu_click_focus_action(action_label)
+    open_top_menu_override = _is_open_top_menu_focus_action(action_label)
     relative_menu_click_override = _is_relative_menu_click_focus_action(action_label)
     strong_identity, identity_reasons = _has_probationary_main_window_identity(
         identity,
@@ -969,6 +975,15 @@ def ensure_main_window_foreground_before_click(
         if probationary_allowed and strong_identity:
             logger.warning(
                 "DBG_WINWATT_FOCUS_GUARD_SOFT_CONTINUE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
+                action_label,
+                identity.get("wrapper_type"),
+                identity_reasons,
+                identity,
+                rect_payload,
+            )
+        elif open_top_menu_override and strong_identity:
+            logger.warning(
+                "DBG_WINWATT_FOCUS_GUARD_OPEN_TOP_MENU_OVERRIDE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
                 action_label,
                 identity.get("wrapper_type"),
                 identity_reasons,
