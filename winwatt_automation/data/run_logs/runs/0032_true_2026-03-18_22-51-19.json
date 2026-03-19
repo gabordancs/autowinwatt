@@ -1,12 +1,12 @@
 {
-  "run_id": "0047_true_2026-03-19_09-09-43",
-  "sequence_number": 47,
-  "started_at": "2026-03-19T09:09:43.824975+00:00",
-  "finished_at": "2026-03-19T09:17:26.453300+00:00",
-  "duration_seconds": 462.628,
-  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+  "run_id": "0032_true_2026-03-18_22-51-19",
+  "sequence_number": 32,
+  "started_at": "2026-03-18T22:51:19.617532+00:00",
+  "finished_at": "2026-03-18T22:51:37.729845+00:00",
+  "duration_seconds": 18.112,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode off --max-submenu-depth 1 --include-disabled true",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
-  "safe_mode": "safe",
+  "safe_mode": "off",
   "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
   "exit_code": 0,
   "success": true,
@@ -16,85 +16,89 @@
     "diff_summary": {
       "shared_top_menus": 1,
       "actions_only_in_a": 0,
-      "actions_only_in_b": 1,
+      "actions_only_in_b": 0,
       "enabled_changes": 0,
-      "project_only_paths": 1
+      "project_only_paths": 0
     },
-    "skipped_by_safety": 28,
+    "skipped_by_safety": 2,
     "last_error": null,
     "modal_detected": false,
-    "recovery_attempted": false,
-    "recovery_success": false
+    "recovery_attempted": true,
+    "recovery_success": true
   },
   "important_events": [
     {
-      "timestamp": "2026-03-19T09:14:52.320593+00:00",
+      "timestamp": "2026-03-18T22:51:26.654882+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "no_project",
         "top_menus": 1,
-        "actions": 0,
+        "actions": 1,
         "dialogs": 0
       }
     },
     {
-      "timestamp": "2026-03-19T09:14:52.338109+00:00",
+      "timestamp": "2026-03-18T22:51:29.832405+00:00",
       "event_type": "project_open_result",
       "payload": {
         "success": false,
-        "error": "Safe mode only allows explicitly approved test project path.",
+        "error": "Could not locate 'Projekt megnyitás' row in Fájl popup.",
         "dialog_found": false
       }
     },
     {
-      "timestamp": "2026-03-19T09:17:26.414037+00:00",
+      "timestamp": "2026-03-18T22:51:29.833942+00:00",
+      "event_type": "project_open_recovery",
+      "payload": {
+        "success": true,
+        "reason": "main_window_ready",
+        "modal_detected": false
+      }
+    },
+    {
+      "timestamp": "2026-03-18T22:51:37.669872+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "project_open",
         "top_menus": 1,
-        "actions": 28,
+        "actions": 1,
         "dialogs": 0
       }
     },
     {
-      "timestamp": "2026-03-19T09:17:26.431212+00:00",
+      "timestamp": "2026-03-18T22:51:37.693666+00:00",
       "event_type": "runtime_diff",
       "payload": {
         "summary": {
           "shared_top_menus": 1,
           "actions_only_in_a": 0,
-          "actions_only_in_b": 1,
+          "actions_only_in_b": 0,
           "enabled_changes": 0,
-          "project_only_paths": 1
+          "project_only_paths": 0
         },
         "enabled_changes": 0,
-        "project_only_paths": 1
+        "project_only_paths": 0
       }
     },
     {
-      "timestamp": "2026-03-19T09:17:26.442032+00:00",
+      "timestamp": "2026-03-18T22:51:37.716436+00:00",
       "event_type": "knowledge_verification",
       "payload": {
         "baseline_loaded": true,
         "missing_menu_paths": [],
-        "new_menu_paths": [
-          [
-            "fájl",
-            ""
-          ]
-        ],
+        "new_menu_paths": [],
         "missing_dialogs": [],
         "new_dialogs": [],
         "missing_windows": [],
         "new_windows": [],
         "known_menu_paths": 0,
-        "current_menu_paths": 1,
+        "current_menu_paths": 0,
         "covered_known_menu_paths": 0,
         "coverage_pct": 100.0
       }
     },
     {
-      "timestamp": "2026-03-19T09:17:26.450384+00:00",
+      "timestamp": "2026-03-18T22:51:37.724521+00:00",
       "event_type": "runtime_mapping_summary",
       "payload": {
         "no_project_top_menus": 1,
@@ -102,16 +106,16 @@
         "diff_summary": {
           "shared_top_menus": 1,
           "actions_only_in_a": 0,
-          "actions_only_in_b": 1,
+          "actions_only_in_b": 0,
           "enabled_changes": 0,
-          "project_only_paths": 1
+          "project_only_paths": 0
         }
       }
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0047_true_2026-03-19_09-09-43.log",
-    "json_path": "data\\run_logs\\runs\\0047_true_2026-03-19_09-09-43.json"
+    "log_path": "data\\run_logs\\runs\\0032_true_2026-03-18_22-51-19.log",
+    "json_path": "data\\run_logs\\runs\\0032_true_2026-03-18_22-51-19.json"
   },
   "tags": [
     "map_full_program",

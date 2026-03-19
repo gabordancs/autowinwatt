@@ -1,12 +1,965 @@
 [
   {
-    "children": [],
+    "children": [
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 44,
+            "right": 318,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "",
+        "opens_dialog": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          ""
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "project_open",
+        "title": "",
+        "title_raw": ""
+      }
+    ],
     "path": [
-      "Rendszer"
+      "Fájl"
     ],
     "state_id": "project_open",
-    "title": "Rendszer",
-    "title_normalized": "rendszer",
-    "title_raw": "Rendszer"
+    "title": "Fájl",
+    "title_normalized": "fájl",
+    "title_raw": "Fájl"
   }
 ]

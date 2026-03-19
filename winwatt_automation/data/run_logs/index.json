@@ -460,6 +460,296 @@
       "short_summary": "runtime_mapping_failed",
       "log_path": "data\\run_logs\\runs\\0029_true_2026-03-18_21-30-47.log",
       "json_path": "data\\run_logs\\runs\\0029_true_2026-03-18_21-30-47.json"
+    },
+    {
+      "sequence_number": 30,
+      "run_id": "0030_true_2026-03-18_22-33-13",
+      "started_at": "2026-03-18T22:33:13.781375+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode off --max-submenu-depth 1 --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0030_true_2026-03-18_22-33-13.log",
+      "json_path": "data\\run_logs\\runs\\0030_true_2026-03-18_22-33-13.json"
+    },
+    {
+      "sequence_number": 31,
+      "run_id": "0031_true_2026-03-18_22-50-59",
+      "started_at": "2026-03-18T22:50:59.075150+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode off --max-submenu-depth 1 --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0031_true_2026-03-18_22-50-59.log",
+      "json_path": "data\\run_logs\\runs\\0031_true_2026-03-18_22-50-59.json"
+    },
+    {
+      "sequence_number": 32,
+      "run_id": "0032_true_2026-03-18_22-51-19",
+      "started_at": "2026-03-18T22:51:19.617532+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode off --max-submenu-depth 1 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0032_true_2026-03-18_22-51-19.log",
+      "json_path": "data\\run_logs\\runs\\0032_true_2026-03-18_22-51-19.json"
+    },
+    {
+      "sequence_number": 33,
+      "run_id": "0033_true_2026-03-18_22-59-50",
+      "started_at": "2026-03-18T22:59:50.124831+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0033_true_2026-03-18_22-59-50.log",
+      "json_path": "data\\run_logs\\runs\\0033_true_2026-03-18_22-59-50.json"
+    },
+    {
+      "sequence_number": 34,
+      "run_id": "0034_true_2026-03-18_23-00-04",
+      "started_at": "2026-03-18T23:00:04.947245+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 7,
+        "project_open top_menus": 7,
+        "diff summary": {
+          "shared_top_menus": 7,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0034_true_2026-03-18_23-00-04.log",
+      "json_path": "data\\run_logs\\runs\\0034_true_2026-03-18_23-00-04.json"
+    },
+    {
+      "sequence_number": 35,
+      "run_id": "0035_true_2026-03-19_07-56-04",
+      "started_at": "2026-03-19T07:56:04.676794+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --max-submenu-depth 1 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 6,
+        "diff summary": {
+          "shared_top_menus": 6,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0035_true_2026-03-19_07-56-04.log",
+      "json_path": "data\\run_logs\\runs\\0035_true_2026-03-19_07-56-04.json"
+    },
+    {
+      "sequence_number": 36,
+      "run_id": "0036_true_2026-03-19_07-59-53",
+      "started_at": "2026-03-19T07:59:53.844825+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 0,
+        "diff summary": {
+          "shared_top_menus": 0,
+          "actions_only_in_a": 1,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0036_true_2026-03-19_07-59-53.log",
+      "json_path": "data\\run_logs\\runs\\0036_true_2026-03-19_07-59-53.json"
+    },
+    {
+      "sequence_number": 37,
+      "run_id": "0037_true_2026-03-19_08-16-59",
+      "started_at": "2026-03-19T08:16:59.788111+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0037_true_2026-03-19_08-16-59.log",
+      "json_path": "data\\run_logs\\runs\\0037_true_2026-03-19_08-16-59.json"
+    },
+    {
+      "sequence_number": 38,
+      "run_id": "0038_true_2026-03-19_08-17-20",
+      "started_at": "2026-03-19T08:17:20.886625+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0038_true_2026-03-19_08-17-20.log",
+      "json_path": "data\\run_logs\\runs\\0038_true_2026-03-19_08-17-20.json"
+    },
+    {
+      "sequence_number": 39,
+      "run_id": "0039_true_2026-03-19_08-18-00",
+      "started_at": "2026-03-19T08:18:00.511238+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 6,
+        "diff summary": {
+          "shared_top_menus": 6,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0039_true_2026-03-19_08-18-00.log",
+      "json_path": "data\\run_logs\\runs\\0039_true_2026-03-19_08-18-00.json"
+    },
+    {
+      "sequence_number": 40,
+      "run_id": "0040_true_2026-03-19_08-21-01",
+      "started_at": "2026-03-19T08:21:01.780898+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 5 --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0040_true_2026-03-19_08-21-01.log",
+      "json_path": "data\\run_logs\\runs\\0040_true_2026-03-19_08-21-01.json"
+    },
+    {
+      "sequence_number": 41,
+      "run_id": "0041_true_2026-03-19_08-21-15",
+      "started_at": "2026-03-19T08:21:15.556062+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 5 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 6,
+        "diff summary": {
+          "shared_top_menus": 6,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0041_true_2026-03-19_08-21-15.log",
+      "json_path": "data\\run_logs\\runs\\0041_true_2026-03-19_08-21-15.json"
+    },
+    {
+      "sequence_number": 42,
+      "run_id": "0042_true_2026-03-19_08-37-41",
+      "started_at": "2026-03-19T08:37:41.080485+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0042_true_2026-03-19_08-37-41.log",
+      "json_path": "data\\run_logs\\runs\\0042_true_2026-03-19_08-37-41.json"
+    },
+    {
+      "sequence_number": 43,
+      "run_id": "0043_true_2026-03-19_08-46-16",
+      "started_at": "2026-03-19T08:46:16.994772+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0043_true_2026-03-19_08-46-16.log",
+      "json_path": "data\\run_logs\\runs\\0043_true_2026-03-19_08-46-16.json"
+    },
+    {
+      "sequence_number": 44,
+      "run_id": "0044_true_2026-03-19_08-59-37",
+      "started_at": "2026-03-19T08:59:37.160799+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0044_true_2026-03-19_08-59-37.log",
+      "json_path": "data\\run_logs\\runs\\0044_true_2026-03-19_08-59-37.json"
+    },
+    {
+      "sequence_number": 45,
+      "run_id": "0045_true_2026-03-19_09-05-23",
+      "started_at": "2026-03-19T09:05:23.818219+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0045_true_2026-03-19_09-05-23.log",
+      "json_path": "data\\run_logs\\runs\\0045_true_2026-03-19_09-05-23.json"
+    },
+    {
+      "sequence_number": 46,
+      "run_id": "0046_true_2026-03-19_09-05-37",
+      "started_at": "2026-03-19T09:05:37.426656+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 0,
+        "diff summary": {
+          "shared_top_menus": 0,
+          "actions_only_in_a": 1,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0046_true_2026-03-19_09-05-37.log",
+      "json_path": "data\\run_logs\\runs\\0046_true_2026-03-19_09-05-37.json"
+    },
+    {
+      "sequence_number": 47,
+      "run_id": "0047_true_2026-03-19_09-09-43",
+      "started_at": "2026-03-19T09:09:43.824975+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode safe --max-submenu-depth 2 --include-disabled true",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 0,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 1
+        }
+      },
+      "log_path": "data\\run_logs\\runs\\0047_true_2026-03-19_09-09-43.log",
+      "json_path": "data\\run_logs\\runs\\0047_true_2026-03-19_09-09-43.json"
     }
   ]
 }

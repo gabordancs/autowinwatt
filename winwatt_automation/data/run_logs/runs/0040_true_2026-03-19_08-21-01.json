@@ -1,0 +1,40 @@
+{
+  "run_id": "0040_true_2026-03-19_08-21-01",
+  "sequence_number": 40,
+  "started_at": "2026-03-19T08:21:01.780898+00:00",
+  "finished_at": "2026-03-19T08:21:02.038578+00:00",
+  "duration_seconds": 0.258,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 5 --include-disabled true",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "safe",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 1,
+  "success": false,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "skipped_by_safety": null,
+    "last_error": "No WinWatt-like windows were found",
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-19T08:21:02.037702+00:00",
+      "event_type": "run_failed",
+      "payload": {
+        "error": "No WinWatt-like windows were found"
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0040_true_2026-03-19_08-21-01.log",
+    "json_path": "data\\run_logs\\runs\\0040_true_2026-03-19_08-21-01.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

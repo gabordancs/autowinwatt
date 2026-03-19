@@ -1,7 +1,12 @@
 {
   "current": {
     "dialog_signatures": [],
-    "menu_paths": [],
+    "menu_paths": [
+      [
+        "fájl",
+        ""
+      ]
+    ],
     "window_signatures": []
   },
   "states": {
@@ -12,22 +17,32 @@
     },
     "state_project_open": {
       "dialog_signatures": [],
-      "menu_paths": [],
+      "menu_paths": [
+        [
+          "fájl",
+          ""
+        ]
+      ],
       "window_signatures": []
     }
   },
-  "updated_at": "2026-03-18T21:24:31.737233+00:00",
+  "updated_at": "2026-03-19T09:17:26.438194+00:00",
   "verification": {
     "baseline_loaded": true,
     "coverage_pct": 100.0,
     "covered_known_menu_paths": 0,
-    "current_menu_paths": 0,
+    "current_menu_paths": 1,
     "known_menu_paths": 0,
     "missing_dialogs": [],
     "missing_menu_paths": [],
     "missing_windows": [],
     "new_dialogs": [],
-    "new_menu_paths": [],
+    "new_menu_paths": [
+      [
+        "fájl",
+        ""
+      ]
+    ],
     "new_windows": []
   }
 }

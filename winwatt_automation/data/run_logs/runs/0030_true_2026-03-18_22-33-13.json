@@ -1,0 +1,50 @@
+{
+  "run_id": "0030_true_2026-03-18_22-33-13",
+  "sequence_number": 30,
+  "started_at": "2026-03-18T22:33:13.781375+00:00",
+  "finished_at": "2026-03-18T22:34:48.622020+00:00",
+  "duration_seconds": 94.841,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Rendszer --safe-mode off --max-submenu-depth 1 --include-disabled true",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "off",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 1,
+  "success": false,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "skipped_by_safety": null,
+    "last_error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'process': 24104}",
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-18T22:34:27.560237+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "no_project",
+        "top_menus": 1,
+        "actions": 1,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-18T22:34:48.621114+00:00",
+      "event_type": "run_failed",
+      "payload": {
+        "error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'uia', 'enabled_only': False, 'visible_only': False, 'process': 24104}"
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0030_true_2026-03-18_22-33-13.log",
+    "json_path": "data\\run_logs\\runs\\0030_true_2026-03-18_22-33-13.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

@@ -7,24 +7,34 @@
   "enabled_state_changes": [],
   "menu_action_diff": {
     "only_in_a": [],
-    "only_in_b": [],
+    "only_in_b": [
+      [
+        "fájl",
+        ""
+      ]
+    ],
     "shared": []
   },
-  "project_only_paths": [],
+  "project_only_paths": [
+    [
+      "fájl",
+      ""
+    ]
+  ],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
     "actions_only_in_a": 0,
-    "actions_only_in_b": 0,
+    "actions_only_in_b": 1,
     "enabled_changes": 0,
-    "project_only_paths": 0,
+    "project_only_paths": 1,
     "shared_top_menus": 1
   },
   "top_menu_diff": {
     "only_in_a": [],
     "only_in_b": [],
     "shared": [
-      "rendszer"
+      "fájl"
     ]
   },
   "window_diff": {

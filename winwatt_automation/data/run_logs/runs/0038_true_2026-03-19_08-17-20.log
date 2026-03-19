@@ -1,0 +1,13 @@
+run_id=0038_true_2026-03-19_08-17-20
+started_at=2026-03-19T08:17:20.886625+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --top-menus Fájl,Jegyzékek,Adatbázis...,Beállítások,Ablak,Súgó --safe-mode safe --max-submenu-depth 2 --include-disabled true
+
+2026-03-19 09:17:20.948 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:502 - DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh
+2026-03-19 09:17:23.879 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:228 - DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates=[{'rank': 1, 'score': (0, 1, 1, 1, 1053945), 'process_id': 23260, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya', 'visible': False, 'enabled': True}]
+2026-03-19 09:17:23.880 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:190 - Candidate ranking score=(0, 1, 1, 1, 1053945) data={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 23260, 'handle': None, 'is_visible': False, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}}
+2026-03-19 09:17:23.880 | INFO     | winwatt_automation.live_ui.app_connector:select_main_window:200 - Selected main window process_id=23260 handle=None score=(0, 1, 1, 1, 1053945) reasons=['has_process_id=True', 'has_handle=False', 'visible=False', 'enabled=True', 'title_has_winwatt=True', 'area=1053945']
+2026-03-19 09:17:23.880 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:245 - DBG_WINWATT_CONNECT_WIN32_SELECTED selected_payload={'title': 'WinWatt gólya', 'window_text': 'WinWatt gólya', 'class_name': 'TMainForm', 'control_type': None, 'process_id': 23260, 'handle': None, 'is_visible': False, 'is_enabled': True, 'rectangle': {'left': 171, 'top': 96, 'right': 1170, 'bottom': 1151, 'width': 999, 'height': 1055}, 'size': {'width': 999, 'height': 1055}} selected_handle_is_none=True
+2026-03-19 09:17:23.903 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:288 - Connected to WinWatt backend=win32 attach_mode=process candidate={'process_id': 23260, 'handle': None, 'class_name': 'TMainForm', 'title': 'WinWatt gólya'}
+[event] run_failed: {"error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'win32', 'process': 23260}"}
+
+finished_at=2026-03-19T08:17:28.908725+00:00 success=False exit_code=1

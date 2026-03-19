@@ -9,10 +9,10 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TMainForm",
-    "handle": 3544040,
-    "process_id": 24996,
-    "title": "WinWatt gólya"
+    "class_name": "Chrome_WidgetWin_1",
+    "handle": 66746,
+    "process_id": 8888,
+    "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
@@ -20,74 +20,68 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 24996,
+  "process_id": 18236,
   "state_id": "no_project",
-  "timestamp": "2026-03-18T21:31:44.806411+00:00",
+  "timestamp": "2026-03-19T09:09:48.627186+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
-      "process_id": 14856,
+      "process_id": 14600,
       "title": "Tálca"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 8888,
+      "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 24996,
+      "process_id": 18236,
       "title": "WinWatt gólya"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "XLMAIN",
       "handle": null,
-      "process_id": 17008,
-      "title": "dev_cycle_controller_gui.py - autowinwatt - Visual Studio Code"
+      "process_id": 23120,
+      "title": "Cordia_Alap_Szaniter_kínálat_2026.03.12 - Excel"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "Sasad_9_10 – Fájlkezelő"
+    },
+    {
+      "class_name": "NetUIToolWindow",
+      "handle": null,
+      "process_id": 8512,
+      "title": ""
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 4588,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 31036,
+      "process_id": 19280,
       "title": "GitHub Desktop"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 26964,
-      "title": "SR10-4KT-4GEP-1AL-AB--1_mélygarázs_alaprajz_R2 - PDF-XChange Editor"
-    },
-    {
-      "class_name": "WindowsForms10.Window.8.app.0.d3a00f_r10_ad1",
-      "handle": null,
-      "process_id": 4036,
-      "title": "Dalux"
-    },
-    {
-      "class_name": "Notepad",
-      "handle": null,
-      "process_id": 21160,
-      "title": "*antal áron – Jegyzettömb"
     },
     {
       "class_name": "#32770",
       "handle": null,
-      "process_id": 29804,
-      "title": "8 emlékeztető"
+      "process_id": 8512,
+      "title": "10 emlékeztető"
     },
     {
-      "class_name": "Notepad",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 21160,
-      "title": "*xml version=1.0 encoding=utf-8 – Jegyzettömb"
+      "process_id": 23032,
+      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
     },
     {
       "class_name": "Progman",
       "handle": null,
-      "process_id": 14856,
+      "process_id": 14600,
       "title": "Program Manager"
     }
   ]
