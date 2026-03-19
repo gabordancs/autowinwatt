@@ -3,6 +3,7 @@ from __future__ import annotations
 from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
     _build_menu_rows_from_popup_rows,
+    _filter_normal_popup_rows,
     compare_runtime_states,
     explore_menu_tree,
     get_canonical_top_menu_names,
@@ -336,3 +337,81 @@ def test_explore_menu_tree_reopens_parent_popup_for_each_row(monkeypatch):
     assert activate_calls == ["A", "B"]
     assert reopen_calls == [["Fájl"], ["Fájl"]]
     assert sum(1 for action in actions if action.attempted) == 2
+
+
+def test_filter_normal_popup_rows_excludes_topbar_and_system_menu_overlap():
+    rows = [
+        {"text": "Rendszer", "topbar_candidate": True, "popup_candidate": False, "rectangle": {"left": 0, "top": 0, "right": 10, "bottom": 10}},
+        {"text": "Fájl", "topbar_candidate": False, "popup_candidate": True, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}},
+        {"text": "Megnyitás", "topbar_candidate": False, "popup_candidate": True, "rectangle": {"left": 0, "top": 21, "right": 100, "bottom": 31}},
+    ]
+
+    filtered = _filter_normal_popup_rows(rows, canonical_top_menu_names={"rendszer", "fájl"})
+
+    assert [row["text"] for row in filtered] == ["Megnyitás"]
+
+
+def test_map_runtime_state_prioritizes_normal_top_menus_by_default(monkeypatch):
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="W",
+        main_window_class="C",
+        visible_top_windows=[],
+        discovered_top_menus=["Rendszer", "Fájl", "Súgó"],
+        timestamp="t",
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: snapshot)
+
+    explored: list[str] = []
+
+    def _explore_menu_tree(**kwargs):
+        explored.append(kwargs["top_menu"])
+        return ([], [], [], [], [])
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree", _explore_menu_tree)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.should_restore_clean_menu_baseline", lambda **kwargs: False)
+
+    state = map_runtime_state(state_id="s")
+
+    assert explored == ["Fájl", "Súgó"]
+    assert [item["text"] for item in state.top_menus] == ["Fájl", "Súgó"]
+
+
+def test_depth_one_retains_leaf_disabled_separator_and_submenu_metadata(monkeypatch):
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    popup_rows = [
+        {"text": "Megnyitás", "center_x": 10, "center_y": 10, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20}, "is_separator": False, "source_scope": "main", "enabled": True},
+        {"text": "", "center_x": 10, "center_y": 20, "rectangle": {"left": 0, "top": 21, "right": 100, "bottom": 22}, "is_separator": True, "source_scope": "main"},
+        {"text": "Mentés", "center_x": 10, "center_y": 30, "rectangle": {"left": 0, "top": 23, "right": 100, "bottom": 33}, "is_separator": False, "source_scope": "main", "enabled": False},
+        {"text": "Export", "center_x": 10, "center_y": 40, "rectangle": {"left": 0, "top": 34, "right": 100, "bottom": 44}, "is_separator": False, "source_scope": "main", "enabled": True},
+    ]
+    child_snapshot = [
+        {"text": "PDF", "center_x": 150, "center_y": 40, "rectangle": {"left": 140, "top": 34, "right": 220, "bottom": 44}, "is_separator": False, "source_scope": "main", "enabled": True},
+    ]
+
+    snapshots = iter([child_snapshot, []])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows", lambda **kwargs: popup_rows)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration", lambda row, popup_rows: None)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._detect_child_rows",
+        lambda parent_row, all_rows: child_snapshot if parent_row.get("text") == "Export" else [],
+    )
+
+    nodes, _, _, _, _ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="off",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=popup_rows,
+        visited_paths={("fájl",)},
+    )
+
+    assert [node["action_classification"] for node in nodes] == ["leaf_action", "separator", "disabled", "opens_submenu"]
+    assert nodes[3]["children"][0]["title"] == "PDF"

@@ -34,7 +34,8 @@ from winwatt_automation.runtime_mapping.config import is_fast_mode
 from winwatt_automation.live_ui.ui_cache import PopupState
 
 
-DEFAULT_TOP_MENUS = ["Rendszer", "Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
+DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
+SYSTEM_TOP_MENUS = ["Rendszer"]
 DEFAULT_TEST_PROJECT_PATH = str(Path(__file__).resolve().parents[2] / "tests" / "testwwp.wwp")
 
 _TOP_MENU_CACHE: dict[str, Any] | None = None
@@ -102,6 +103,9 @@ def _extract_shortcut(text: str) -> tuple[str, str | None]:
 def _guess_enabled(row: dict[str, Any]) -> bool | None:
     if row.get("is_separator"):
         return None
+    if "enabled_guess" in row:
+        value = row.get("enabled_guess")
+        return bool(value) if value is not None else None
     if "enabled" in row:
         value = row.get("enabled")
         return bool(value) if value is not None else None
@@ -141,11 +145,11 @@ def _row_to_node(
     elif opens_submenu:
         action_classification = "opens_submenu"
     elif opens_dialog:
-        action_classification = "opens_dialog"
+        action_classification = "dialog_window_action"
     elif enabled is False:
         action_classification = "disabled"
     elif enabled is True:
-        action_classification = "enabled"
+        action_classification = "leaf_action"
     else:
         action_classification = "unknown"
 
@@ -373,6 +377,18 @@ def _build_menu_rows_from_popup_rows(
                 discovered_in_state=state_id,
             )
         )
+        logger.info(
+            "DBG_WINWATT_NORMAL_MENU_ROW state={} top_menu={} row_index={} text={!r} normalized_text={} source_scope={} separator={} enabled_guess={} rectangle={} depth=1",
+            state_id,
+            top_menu,
+            index,
+            title_clean,
+            normalized_title,
+            row.get("source_scope"),
+            bool(row.get("is_separator")),
+            _guess_enabled(row),
+            row.get("rectangle"),
+        )
     return mapped
 
 
@@ -422,11 +438,37 @@ def _is_system_menu(top_menu: str) -> bool:
     return normalize_menu_title(top_menu) == normalize_menu_title(menu_helpers.SYSTEM_MENU_TITLE)
 
 
+def _is_primary_normal_top_menu(top_menu: str) -> bool:
+    return not _is_system_menu(top_menu)
+
+
+def _filter_normal_popup_rows(
+    rows: list[dict[str, Any]],
+    *,
+    canonical_top_menu_names: set[str] | None = None,
+) -> list[dict[str, Any]]:
+    filtered: list[dict[str, Any]] = []
+    for row in rows:
+        normalized_text = normalize_menu_title(str(row.get("text") or ""))
+        if bool(row.get("topbar_candidate")):
+            continue
+        if canonical_top_menu_names and normalized_text and normalized_text in canonical_top_menu_names:
+            continue
+        filtered.append(row)
+    return filtered
+
+
 def _open_and_capture_root_menu(
     *,
     state_id: str,
     top_menu: str,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    logger.info(
+        "DBG_WINWATT_NORMAL_MENU_OPEN_START state={} top_menu={} menu_kind={}",
+        state_id,
+        top_menu,
+        "normal" if _is_primary_normal_top_menu(top_menu) else "system",
+    )
     before_click = capture_state_snapshot(state_id)
     if _is_system_menu(top_menu):
         main_window = get_cached_main_window()
@@ -443,6 +485,29 @@ def _open_and_capture_root_menu(
         popup_rows = menu_helpers.capture_menu_popup_snapshot()
     after_click = capture_state_snapshot(state_id)
     top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
+    if _is_primary_normal_top_menu(top_menu):
+        popup_like_count = sum(1 for row in popup_rows if bool(row.get("popup_candidate")))
+        topbar_like_count = sum(1 for row in popup_rows if bool(row.get("topbar_candidate")))
+        filtered_rows = _filter_normal_popup_rows(popup_rows)
+        logger.info(
+            "DBG_WINWATT_NORMAL_MENU_OPEN_RESULT state={} top_menu={} result_type={} raw_row_count={} filtered_row_count={} popup_like_count={} topbar_like_count={}",
+            state_id,
+            top_menu,
+            top_transition.get("result_type"),
+            len(popup_rows),
+            len(filtered_rows),
+            popup_like_count,
+            topbar_like_count,
+        )
+        logger.info(
+            "DBG_WINWATT_NORMAL_MENU_POPUP_SUMMARY state={} top_menu={} depth=1 rows={} popup_like_count={} topbar_like_count={}",
+            state_id,
+            top_menu,
+            len(filtered_rows),
+            popup_like_count,
+            topbar_like_count,
+        )
+        popup_rows = filtered_rows
     return popup_rows, top_transition
 
 
@@ -464,6 +529,13 @@ def _reopen_parent_popup_rows(
     canonical_top_menu_names: set[str] | None,
     popup_state: PopupState | None,
 ) -> list[dict[str, Any]]:
+    logger.info(
+        "DBG_WINWATT_NORMAL_MENU_REOPEN_PARENT state={} top_menu={} parent_path={} cached_popup_path={}",
+        state_id,
+        top_menu,
+        parent_path,
+        getattr(popup_state, "current_menu_path", None) if popup_state is not None else None,
+    )
     normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
     if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
         return list(popup_state.popup_rows)
@@ -478,6 +550,7 @@ def _reopen_parent_popup_rows(
     else:
         menu_helpers.click_top_menu_item(top_menu)
         current_rows = menu_helpers.capture_menu_popup_snapshot()
+        current_rows = _filter_normal_popup_rows(current_rows, canonical_top_menu_names=canonical_top_menu_names)
 
     for part in parent_path[1:]:
         row = _find_popup_row_by_title(current_rows, part)
@@ -491,6 +564,7 @@ def _reopen_parent_popup_rows(
             timeout=POPUP_WAIT_TIMEOUT,
         )
         snapshot_rows = menu_helpers.capture_menu_popup_snapshot()
+        snapshot_rows = _filter_normal_popup_rows(snapshot_rows, canonical_top_menu_names=canonical_top_menu_names)
         child_rows = _detect_child_rows(row, snapshot_rows)
         if canonical_top_menu_names:
             child_rows = [
@@ -1048,7 +1122,7 @@ def explore_menu_tree(
     current_level_rows = _build_menu_rows_from_popup_rows(
         state_id,
         top_menu,
-        popup_rows,
+        _filter_normal_popup_rows(popup_rows, canonical_top_menu_names=canonical_top_menu_names) if _is_primary_normal_top_menu(top_menu) else popup_rows,
         canonical_top_menu_names=canonical_top_menu_names,
     )
     collected_rows: list[RuntimeMenuRow] = list(current_level_rows)
@@ -1124,6 +1198,8 @@ def explore_menu_tree(
                     )
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
+            if _is_primary_normal_top_menu(top_menu):
+                current_rows = _filter_normal_popup_rows(current_rows, canonical_top_menu_names=canonical_top_menu_names)
             child_rows = _detect_child_rows(asdict(row), current_rows)
             if canonical_top_menu_names:
                 child_rows = [
