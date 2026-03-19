@@ -359,6 +359,19 @@ def _build_menu_rows_from_popup_rows(
                 len(list(row.get("fragments") or [])),
                 [fragment.get("text") for fragment in list(row.get("fragments") or [])],
             )
+            if not bool(row.get("is_separator")):
+                logger.info(
+                    "DBG_MENU_BUILD_FILTER_REASON state={} top_menu={} row_index={} reason=empty_popup_text_non_actionable row_text={!r} rectangle={} popup_reason={} topbar_like={} popup_like={}",
+                    state_id,
+                    top_menu,
+                    index,
+                    row.get("text"),
+                    row.get("rectangle"),
+                    row.get("popup_reason"),
+                    bool(row.get("topbar_candidate")),
+                    bool(row.get("popup_candidate")),
+                )
+                continue
         mapped.append(
             RuntimeMenuRow(
                 state_id=state_id,

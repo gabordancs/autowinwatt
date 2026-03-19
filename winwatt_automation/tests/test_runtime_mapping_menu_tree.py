@@ -77,6 +77,35 @@ def test_best_effort_top_menu_processing(monkeypatch):
     assert any(root.get("title") == "Súgó" for root in state.menu_tree)
 
 
+
+
+def test_build_menu_rows_skips_empty_text_popup_rows():
+    rows = _build_menu_rows_from_popup_rows(
+        "no_project",
+        "Fájl",
+        [
+            {
+                "text": "",
+                "center_x": 1,
+                "center_y": 1,
+                "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 20},
+                "is_separator": False,
+                "source_scope": "main",
+                "popup_reason": "empty_text_vertical_cluster_below_topbar",
+            },
+            {
+                "text": "Megnyitás",
+                "center_x": 1,
+                "center_y": 2,
+                "rectangle": {"left": 0, "top": 22, "right": 100, "bottom": 32},
+                "is_separator": False,
+                "source_scope": "main",
+            },
+        ],
+    )
+
+    assert [row.text for row in rows] == ["Megnyitás"]
+
 def test_popup_top_level_name_is_filtered_from_children():
     rows = _build_menu_rows_from_popup_rows(
         "no_project",
