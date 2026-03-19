@@ -1450,13 +1450,14 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
     return logical_rows
 
 
-def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
-    """Open ``Fájl`` once and return popup snapshots plus structured rows."""
+def open_top_menu_and_capture_popup_state(title: str) -> dict[str, Any]:
+    """Open a top menu once and return popup snapshots plus structured rows."""
 
     main_window = prepare_main_window_for_menu_interaction()
     focus_status = "focus_ok"
+    action_suffix = _normalize(title) or "top_menu"
     try:
-        main_window = ensure_main_window_foreground_before_click(action_label="open_file_menu")
+        main_window = ensure_main_window_foreground_before_click(action_label=f"open_top_menu:{action_suffix}")
     except Exception as exc:
         focus_status = "focus_failed"
         return {
@@ -1470,11 +1471,11 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
             "status": "failed_focus",
             "error": str(exc),
             "focus_status": focus_status,
-            "clicked_target": "Fájl",
+            "clicked_target": title,
             "system_menu_opened": False,
         }
 
-    item = find_top_menu_item("Fájl")
+    item = find_top_menu_item(title)
 
     before_rows = capture_menu_popup_snapshot()
     process_id = None
@@ -1491,25 +1492,25 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         int((int(item_rect.left) + int(item_rect.right)) / 2),
         int((int(item_rect.top) + int(item_rect.bottom)) / 2),
     )
-    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point, target_rect=rect)
+    safe_point = _coerce_point_outside_forbidden_top_left_zone(main_window, point, target_rect=item_rect)
     try:
         if safe_point == point:
             item.click_input()
         else:
             click_mode = "adjusted_coordinate"
-            _click_main_window_at_point(main_window, safe_point, log_label="Adjusted top menu click used title=Fájl", target_rect=item_rect)
+            _click_main_window_at_point(main_window, safe_point, log_label=f"Adjusted top menu click used title={title}", target_rect=item_rect)
         top_menu_click_count += 1
     except Exception as exc:
-        logger.warning("Top menu item 'Fájl' click_input() failed: {}", exc)
-        logger.warning("using_coordinate_fallback_for_top_menu top_menu=Fájl")
+        logger.warning("Top menu item '{}' click_input() failed: {}", title, exc)
+        logger.warning("using_coordinate_fallback_for_top_menu top_menu={}", title)
         click_mode = "coordinate_fallback"
-        main_window = ensure_main_window_foreground_before_click(action_label="open_file_menu_fallback")
+        main_window = ensure_main_window_foreground_before_click(action_label=f"open_top_menu_fallback:{action_suffix}")
         _click_by_relative_rect_center(item, main_window)
         top_menu_click_count += 1
 
     time.sleep(max(0.02, DEFAULT_UI_DELAY / 4))
     try:
-        _validate_post_menu_open_foreground(main_window, title="Fájl")
+        _validate_post_menu_open_foreground(main_window, title=title)
     except Exception as exc:
         return {
             "before_snapshot": before_rows,
@@ -1522,7 +1523,7 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
             "status": str(exc),
             "error": str(exc),
             "focus_status": focus_status,
-            "clicked_target": "Fájl",
+            "clicked_target": title,
             "system_menu_opened": "system_menu" in str(exc),
             "click_mode": click_mode,
         }
@@ -1553,10 +1554,16 @@ def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
         "deduped_fragment_count": deduped_fragment_count,
         "status": "success_popup_opened" if popup_open and structured_rows else "failed_no_visible_change",
         "focus_status": focus_status,
-        "clicked_target": "Fájl",
+        "clicked_target": title,
         "system_menu_opened": False,
         "click_mode": click_mode,
     }
+
+
+def open_file_menu_and_capture_popup_state() -> dict[str, Any]:
+    """Open ``Fájl`` once and return popup snapshots plus structured rows."""
+
+    return open_top_menu_and_capture_popup_state("Fájl")
 
 
 def click_structured_popup_row(rows: list[dict[str, Any]], index: int) -> dict[str, Any]:
