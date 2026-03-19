@@ -276,6 +276,57 @@ def test_group_popup_fragments_into_logical_rows_merges_overlapping_rows():
     assert len(logical_rows[0]["fragments"]) == 2
     assert logical_rows[1]["text"] == "Projekt megnyitása"
 
+
+def test_group_popup_fragments_marks_empty_vertical_cluster_as_popup_by_geometry(monkeypatch):
+    fragments = []
+    for index in range(4):
+        top = 56 + index * 24
+        fragments.append(
+            {
+                "text": "",
+                "normalized_text": "",
+                "control_type": "MenuItem",
+                "class_name": "",
+                "rectangle": {"left": 4, "top": top, "right": 932, "bottom": top + 22},
+                "width": 928,
+                "height": 22,
+                "center_x": 468,
+                "center_y": top + 11,
+                "is_separator": False,
+                "source_scope": "main_window",
+                "appeared_after_popup_open": True,
+            }
+        )
+    fragments.append(
+        {
+            "text": "Fájl",
+            "normalized_text": "fájl",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 0, "top": 0, "right": 48, "bottom": 24},
+            "width": 48,
+            "height": 24,
+            "center_x": 24,
+            "center_y": 12,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": False,
+        }
+    )
+    monkeypatch.setattr(
+        menu_helpers,
+        "_main_window_topbar_band",
+        lambda: {"left": 0, "top": 0, "right": 327, "bottom": 42, "width": 327, "height": 42, "center_x": 163, "center_y": 21},
+    )
+
+    logical_rows = menu_helpers._group_popup_fragments_into_logical_rows(fragments)
+    popup_rows = [row for row in logical_rows if row["rectangle"]["top"] >= 56]
+
+    assert len(popup_rows) == 4
+    assert all(row["popup_candidate"] is True for row in popup_rows)
+    assert all(row["topbar_candidate"] is False for row in popup_rows)
+    assert all(row["popup_reason"] == "empty_text_vertical_cluster_below_topbar" for row in popup_rows)
+
 def test_click_structured_popup_row_clicks_center(monkeypatch):
     clicks = []
     monkeypatch.setattr(menu_helpers, "_mouse_click", lambda coords: clicks.append(("left", coords)))

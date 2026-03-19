@@ -42,6 +42,8 @@ TOPBAR_MAX_EXPECTED_HEIGHT = 80
 VERTICAL_POPUP_CLUSTER_MIN_ROWS = 4
 VERTICAL_POPUP_CLUSTER_MAX_TOP_GAP = 24
 VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE = 24
+VERTICAL_POPUP_CLUSTER_HEIGHT_TOLERANCE = 10
+VERTICAL_POPUP_CLUSTER_MIN_X_OVERLAP_RATIO = 0.8
 _MENU_ITEMS_REENTRANCY_DEPTH = 0
 _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
 
@@ -232,15 +234,22 @@ def _detect_empty_text_vertical_popup_cluster(
     base_rect = candidates[0].get("rectangle") or {}
     base_left = int(base_rect.get("left", 0))
     base_right = int(base_rect.get("right", 0))
+    base_height = max(1, int(base_rect.get("bottom", 0)) - int(base_rect.get("top", 0)))
     last_top = int(base_rect.get("top", 0))
     for row in candidates[1:]:
         rect = row.get("rectangle") or {}
         left = int(rect.get("left", 0))
         right = int(rect.get("right", 0))
         top = int(rect.get("top", 0))
-        if abs(left - base_left) > VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE:
+        height = max(1, int(rect.get("bottom", 0)) - top)
+        overlap_width = max(0, min(base_right, right) - max(base_left, left))
+        min_width = max(1, min(base_right - base_left, right - left))
+        overlap_ratio = overlap_width / min_width
+        if abs(left - base_left) > VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE and overlap_ratio < VERTICAL_POPUP_CLUSTER_MIN_X_OVERLAP_RATIO:
             continue
-        if abs(right - base_right) > VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE:
+        if abs(right - base_right) > VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE and overlap_ratio < VERTICAL_POPUP_CLUSTER_MIN_X_OVERLAP_RATIO:
+            continue
+        if abs(height - base_height) > VERTICAL_POPUP_CLUSTER_HEIGHT_TOLERANCE:
             continue
         if top - last_top > VERTICAL_POPUP_CLUSTER_MAX_TOP_GAP:
             continue
@@ -262,6 +271,7 @@ def _detect_empty_text_vertical_popup_cluster(
             "reason": "empty_text_vertical_cluster_below_topbar",
             "cluster_left": base_left,
             "cluster_right": base_right,
+            "cluster_height": base_height,
             "cluster_top": int((cluster[0].get("rectangle") or {}).get("top", 0)),
             "cluster_bottom": int((cluster[-1].get("rectangle") or {}).get("bottom", 0)),
         }
@@ -1375,7 +1385,6 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
         matched_cluster.append(fragment)
 
     logical_rows: list[dict[str, Any]] = []
-    topbar_band = _main_window_topbar_band()
     for row_index, cluster in enumerate(clusters):
         left = min(int(item["rectangle"]["left"]) for item in cluster)
         top = min(int(item["rectangle"]["top"]) for item in cluster)
@@ -1390,20 +1399,6 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
 
         source_scope_summary = sorted({str(item.get("source_scope", "")) for item in cluster})
         row_class_summary = sorted({str(item.get("class_name", "")) for item in cluster})
-        topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry({"rectangle": {"left": left, "top": top, "right": right, "bottom": bottom}, "center_x": int((left + right) / 2), "center_y": int((top + bottom) / 2)}, topbar_band)
-        logger.info(
-            "DBG_MENU_GROUP_ROW row_index={} representative_text={!r} fragment_count={} fragment_texts={} row_rectangle={} source_scope_summary={} row_class_summary={} topbar_like={} popup_like={} popup_reason={}",
-            row_index,
-            representative_text,
-            len(cluster),
-            texts,
-            {"left": left, "top": top, "right": right, "bottom": bottom},
-            source_scope_summary,
-            row_class_summary,
-            topbar_candidate,
-            popup_candidate,
-            popup_reason,
-        )
         logical_rows.append(
             {
                 "text": representative_text,
@@ -1423,11 +1418,12 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "is_separator": all(bool(item.get("is_separator")) for item in cluster),
                 "source_scope": representative.get("source_scope", ""),
                 "appeared_after_popup_open": any(bool(item.get("appeared_after_popup_open")) for item in cluster),
-                "topbar_candidate": topbar_candidate,
-                "popup_candidate": popup_candidate,
-                "popup_reason": popup_reason,
+                "topbar_candidate": False,
+                "popup_candidate": False,
+                "popup_reason": None,
                 "source_scope_summary": source_scope_summary,
                 "row_class_summary": row_class_summary,
+                "fragment_texts": texts,
                 "fragments": [
                     {
                         "rectangle": dict(item.get("rectangle") or {}),
@@ -1446,6 +1442,30 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
             }
         )
 
+    resolved_topbar_band = _resolved_topbar_band(logical_rows, _main_window_topbar_band())
+    vertical_popup_override_keys, _vertical_popup_diag = _detect_empty_text_vertical_popup_cluster(logical_rows, resolved_topbar_band)
+    for row_index, row in enumerate(logical_rows):
+        topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry(
+            row,
+            resolved_topbar_band,
+            vertical_popup_override_keys=vertical_popup_override_keys,
+        )
+        row["topbar_candidate"] = topbar_candidate
+        row["popup_candidate"] = popup_candidate
+        row["popup_reason"] = popup_reason
+        logger.info(
+            "DBG_MENU_GROUP_ROW row_index={} representative_text={!r} fragment_count={} fragment_texts={} row_rectangle={} source_scope_summary={} row_class_summary={} topbar_like={} popup_like={} popup_reason={}",
+            row_index,
+            row["text"],
+            len(row["fragments"]),
+            row["fragment_texts"],
+            row["rectangle"],
+            row["source_scope_summary"],
+            row["row_class_summary"],
+            topbar_candidate,
+            popup_candidate,
+            popup_reason,
+        )
     logical_rows.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
     return logical_rows
 
