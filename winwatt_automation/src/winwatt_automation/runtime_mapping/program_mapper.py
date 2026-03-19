@@ -458,10 +458,40 @@ def _filter_normal_popup_rows(
     return filtered
 
 
+def _summarize_normal_popup_rows(
+    rows: list[dict[str, Any]],
+    *,
+    canonical_top_menu_names: set[str] | None = None,
+) -> tuple[int, int, list[dict[str, Any]]]:
+    popup_like_count = sum(
+        1
+        for row in rows
+        if bool(row.get("popup_candidate")) or (
+            "popup_candidate" not in row and not bool(row.get("topbar_candidate"))
+        )
+    )
+    topbar_like_count = sum(1 for row in rows if bool(row.get("topbar_candidate")))
+    filtered_rows = _filter_normal_popup_rows(rows, canonical_top_menu_names=canonical_top_menu_names)
+    return popup_like_count, topbar_like_count, filtered_rows
+
+
+def _has_valid_normal_popup_rows(
+    rows: list[dict[str, Any]],
+    *,
+    canonical_top_menu_names: set[str] | None = None,
+) -> tuple[bool, int, int, list[dict[str, Any]]]:
+    popup_like_count, topbar_like_count, filtered_rows = _summarize_normal_popup_rows(
+        rows,
+        canonical_top_menu_names=canonical_top_menu_names,
+    )
+    return popup_like_count > 0 and bool(filtered_rows), popup_like_count, topbar_like_count, filtered_rows
+
+
 def _open_and_capture_root_menu(
     *,
     state_id: str,
     top_menu: str,
+    canonical_top_menu_names: set[str] | None = None,
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     logger.info(
         "DBG_WINWATT_NORMAL_MENU_OPEN_START state={} top_menu={} menu_kind={}",
@@ -481,14 +511,61 @@ def _open_and_capture_root_menu(
             len(popup_rows),
         )
     else:
-        menu_helpers.click_top_menu_item(top_menu)
-        popup_rows = menu_helpers.capture_menu_popup_snapshot()
+        popup_rows = []
+        for attempt in range(2):
+            if attempt:
+                logger.info(
+                    "DBG_WINWATT_NORMAL_MENU_RETRY_OPEN state={} top_menu={} attempt={}",
+                    state_id,
+                    top_menu,
+                    attempt + 1,
+                )
+                restore_clean_menu_baseline(state_id=state_id, stage=f"retry_open:{top_menu}:{attempt + 1}")
+            menu_helpers.click_top_menu_item(top_menu)
+            candidate_rows = menu_helpers.capture_menu_popup_snapshot()
+            valid_popup, popup_like_count, topbar_like_count, filtered_rows = _has_valid_normal_popup_rows(
+                candidate_rows,
+                canonical_top_menu_names=canonical_top_menu_names,
+            )
+            if valid_popup:
+                logger.info(
+                    "DBG_WINWATT_NORMAL_MENU_OPEN_VALIDATED state={} top_menu={} attempt={} raw_row_count={} popup_like_count={} topbar_like_count={}",
+                    state_id,
+                    top_menu,
+                    attempt + 1,
+                    len(candidate_rows),
+                    popup_like_count,
+                    topbar_like_count,
+                )
+                logger.info(
+                    "DBG_WINWATT_NORMAL_MENU_POPUP_ROWS_ACCEPTED state={} top_menu={} attempt={} accepted_row_count={}",
+                    state_id,
+                    top_menu,
+                    attempt + 1,
+                    len(filtered_rows),
+                )
+                popup_rows = filtered_rows
+                break
+            logger.info(
+                "DBG_WINWATT_NORMAL_MENU_OPEN_NO_POPUP state={} top_menu={} attempt={} raw_row_count={} popup_like_count={} topbar_like_count={} filtered_row_count={}",
+                state_id,
+                top_menu,
+                attempt + 1,
+                len(candidate_rows),
+                popup_like_count,
+                topbar_like_count,
+                len(filtered_rows),
+            )
     after_click = capture_state_snapshot(state_id)
     top_transition = detect_dialog_or_window_transition(before_click, after_click, child_rows=popup_rows)
     if _is_primary_normal_top_menu(top_menu):
-        popup_like_count = sum(1 for row in popup_rows if bool(row.get("popup_candidate")))
-        topbar_like_count = sum(1 for row in popup_rows if bool(row.get("topbar_candidate")))
-        filtered_rows = _filter_normal_popup_rows(popup_rows)
+        popup_like_count, topbar_like_count, filtered_rows = _summarize_normal_popup_rows(
+            popup_rows,
+            canonical_top_menu_names=canonical_top_menu_names,
+        )
+        if not filtered_rows and popup_like_count == 0:
+            top_transition = dict(top_transition)
+            top_transition["result_type"] = "open_failed_no_popup"
         logger.info(
             "DBG_WINWATT_NORMAL_MENU_OPEN_RESULT state={} top_menu={} result_type={} raw_row_count={} filtered_row_count={} popup_like_count={} topbar_like_count={}",
             state_id,
@@ -1051,26 +1128,72 @@ def explore_menu_tree(
 
     if popup_rows is None:
         normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
+        reusable_popup_rows: list[dict[str, Any]] = []
         if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
-            popup_rows = list(popup_state.popup_rows)
+            reusable_popup_rows = list(popup_state.popup_rows)
         else:
-            popup_rows = menu_helpers.capture_system_menu_popup() if _is_system_menu(top_menu) else menu_helpers.capture_menu_popup_snapshot()
-        if popup_rows:
-            popup_like_count = sum(1 for row in popup_rows if bool(row.get("popup_candidate")))
-            topbar_like_count = sum(1 for row in popup_rows if bool(row.get("topbar_candidate")))
-            logger.info(
-                "DBG_REUSING_OPEN_POPUP_SNAPSHOT state={} top_menu={} row_count={} popup_like_count={} topbar_like_count={} normalized_parent={} popup_state_path={}",
-                state_id,
-                top_menu,
-                len(popup_rows),
-                popup_like_count,
-                topbar_like_count,
-                normalized_parent,
-                getattr(popup_state, "current_menu_path", None) if popup_state is not None else None,
+            reusable_popup_rows = menu_helpers.capture_system_menu_popup() if _is_system_menu(top_menu) else menu_helpers.capture_menu_popup_snapshot()
+        if reusable_popup_rows:
+            if _is_primary_normal_top_menu(top_menu):
+                valid_popup, popup_like_count, topbar_like_count, filtered_rows = _has_valid_normal_popup_rows(
+                    reusable_popup_rows,
+                    canonical_top_menu_names=canonical_top_menu_names,
+                )
+                if valid_popup:
+                    popup_rows = filtered_rows
+                    logger.info(
+                        "DBG_REUSING_OPEN_POPUP_SNAPSHOT state={} top_menu={} row_count={} popup_like_count={} topbar_like_count={} normalized_parent={} popup_state_path={}",
+                        state_id,
+                        top_menu,
+                        len(reusable_popup_rows),
+                        popup_like_count,
+                        topbar_like_count,
+                        normalized_parent,
+                        getattr(popup_state, "current_menu_path", None) if popup_state is not None else None,
+                    )
+                    logger.info(
+                        "DBG_WINWATT_NORMAL_MENU_POPUP_ROWS_ACCEPTED state={} top_menu={} attempt=0 accepted_row_count={}",
+                        state_id,
+                        top_menu,
+                        len(filtered_rows),
+                    )
+                    logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(reusable_popup_rows))
+                else:
+                    logger.info(
+                        "DBG_WINWATT_NORMAL_MENU_OPEN_NO_POPUP state={} top_menu={} attempt=0 raw_row_count={} popup_like_count={} topbar_like_count={} filtered_row_count={}",
+                        state_id,
+                        top_menu,
+                        len(reusable_popup_rows),
+                        popup_like_count,
+                        topbar_like_count,
+                        len(filtered_rows),
+                    )
+                    popup_rows, top_transition = _open_and_capture_root_menu(
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        canonical_top_menu_names=canonical_top_menu_names,
+                    )
+            else:
+                popup_rows = reusable_popup_rows
+                popup_like_count = sum(1 for row in popup_rows if bool(row.get("popup_candidate")))
+                topbar_like_count = sum(1 for row in popup_rows if bool(row.get("topbar_candidate")))
+                logger.info(
+                    "DBG_REUSING_OPEN_POPUP_SNAPSHOT state={} top_menu={} row_count={} popup_like_count={} topbar_like_count={} normalized_parent={} popup_state_path={}",
+                    state_id,
+                    top_menu,
+                    len(popup_rows),
+                    popup_like_count,
+                    topbar_like_count,
+                    normalized_parent,
+                    getattr(popup_state, "current_menu_path", None) if popup_state is not None else None,
+                )
+                logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(popup_rows))
+        else:
+            popup_rows, top_transition = _open_and_capture_root_menu(
+                state_id=state_id,
+                top_menu=top_menu,
+                canonical_top_menu_names=canonical_top_menu_names,
             )
-            logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(popup_rows))
-        else:
-            popup_rows, top_transition = _open_and_capture_root_menu(state_id=state_id, top_menu=top_menu)
         if top_transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
             candidate = top_transition.get("window_snapshot") or {}
             if top_transition.get("result_type") == "dialog_opened" or top_transition.get("result_type") == "main_window_disabled_modal_likely":
