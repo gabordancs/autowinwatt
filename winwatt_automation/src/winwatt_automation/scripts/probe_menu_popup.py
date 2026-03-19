@@ -116,6 +116,8 @@ def classify_probe_row(row: dict[str, Any], hover_result: dict[str, Any], click_
         return "submenu"
     if not text and (hover_result.get("structure_changed") or hover_result.get("active_row_changed")):
         return "empty_but_hover_reactive"
+    if not text and bool(row.get("popup_candidate")):
+        return "geometry_actionable_candidate"
     if click_result and click_result.get("popup_closed"):
         return "actionable"
     if not hover_result.get("structure_changed") and not click_result:
@@ -234,6 +236,13 @@ def probe_top_menu_popup(top_menu: str, *, allow_safe_click: bool = False, hover
         "submenu_rows": [row["row_index"] for row in classified_rows if row["classification"] in {"submenu", "empty_but_submenu_spawning"}],
         "actionable_rows": [row["row_index"] for row in classified_rows if row["classification"] == "actionable"],
         "empty_hover_rows": [row["row_index"] for row in classified_rows if row["classification"] == "empty_but_hover_reactive"],
+        "geometry_candidate_rows": [row["row_index"] for row in classified_rows if row["classification"] == "geometry_actionable_candidate"],
+        "inert_rows": [row["row_index"] for row in classified_rows if row["classification"] == "inert"],
+        "popup_rows_accepted_by_geometry": [
+            row["row_index"]
+            for row in classified_rows
+            if row.get("popup_reason") == "empty_text_vertical_cluster_below_topbar"
+        ],
         "unknown_rows": [row["row_index"] for row in classified_rows if row["classification"] == "unknown"],
     }
     logger.info("DBG_MENU_PROBE_SUMMARY {}", summary)
