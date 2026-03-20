@@ -1,4 +1,5 @@
 from __future__ import annotations
+import pytest
 
 from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
@@ -603,6 +604,61 @@ def test_explore_menu_tree_placeholder_fast_mode_skips_parent_reopen(monkeypatch
     assert reopen_calls == []
     configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
 
+
+
+
+def test_explore_menu_tree_placeholder_focus_hard_fails_without_fresh_popup(monkeypatch):
+    from winwatt_automation.runtime_mapping.config import configure_diagnostics
+
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=True)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=1,
+            main_window_title="W",
+            main_window_class="C",
+            visible_top_windows=[],
+            discovered_top_menus=["Fájl"],
+            timestamp="t",
+            main_window_enabled=True,
+            main_window_visible=True,
+            foreground_window={"title": "W", "class_name": "TMainForm"},
+        ),
+    )
+
+    popup_rows = [
+        {
+            "text": "",
+            "center_x": 15,
+            "center_y": 15,
+            "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        }
+    ]
+
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows",
+        lambda **kwargs: [],
+    )
+
+    with pytest.raises(RuntimeError, match="fresh root popup reopen failed"):
+        explore_menu_tree(
+            state_id="s",
+            top_menu="Fájl",
+            safe_mode="safe",
+            max_depth=2,
+            include_disabled=True,
+            popup_rows=popup_rows,
+            visited_paths={("fájl",)},
+            canonical_top_menu_names={"fájl"},
+        )
+
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
 
 def test_explore_menu_tree_placeholder_focus_reopens_fresh_root_snapshot(monkeypatch):
     from winwatt_automation.runtime_mapping.config import configure_diagnostics
