@@ -130,6 +130,46 @@ A generált fájl fő blokkjai:
 
 Ha nincs `latest.json/latest.txt`, fallback szöveget generál.
 
+### Mapping Cycle Orchestrator (MVP)
+
+A meglévő dev-cycle controllerre ráépítve most már van egy kifejezetten a runtime mapping fejlesztési körre optimalizált, fájlalapú orchestration flow is.
+
+#### Fő artefactok
+
+- `data/mapping_cycle/status.json` – milestone/state + legutóbbi ingest/test/handoff állapot
+- `data/mapping_cycle/codex_prompt.txt` – következő Codex prompt sablonból generálva
+- `data/mapping_cycle/codex_result.json` – szabványos Codex result input
+- `data/mapping_cycle/chatgpt_handoff.md` – tömör ChatGPT handoff összefoglaló
+- `data/mapping_cycle/log_extract.json` – releváns logminták kivágata
+
+#### Támogatott mezők a Codex resultben
+
+- `diagnosis`
+- `changes`
+- `files`
+- `tests_run`
+- `test_results`
+- `manual_run_command`
+- `expected_logs`
+- `open_risks`
+- `next_step`
+- `commit`
+
+#### Mapping-cycle CLI
+
+```bash
+python -m winwatt_automation.scripts.dev_cycle_controller prepare --milestone placeholder_traversal --state active
+python -m winwatt_automation.scripts.dev_cycle_controller ingest --result data/mapping_cycle/codex_result.json
+python -m winwatt_automation.scripts.dev_cycle_controller test --result data/mapping_cycle/codex_result.json
+python -m winwatt_automation.scripts.dev_cycle_controller handoff --result data/mapping_cycle/codex_result.json
+python -m winwatt_automation.scripts.dev_cycle_controller mapping-cycle --result data/mapping_cycle/codex_result.json
+```
+
+#### WinWatt mappinghez előkészített milestone-ok és logminták
+
+- milestone-ok: `top_menu_stability`, `placeholder_traversal`, `modal_handling`, `recent_projects_policy`, `project_open_transition`, `full_state_mapping`
+- default log patternök: `PLACEHOLDER_ACTION_OUTCOME`, `MODAL_CLOSE_RESULT`, `ROOT_MENU_REOPEN_EXECUTED`, `FRESH_ROOT_SNAPSHOT_CAPTURED`, `ACTION_CHANGED_MENU_STATE`, `PROJECT_OPEN_STATE_TRANSITION`, `DBG_PHASE_TIMING phase=subtree_traversal`
+
 ### Korlátok (v1)
 
 - Nincs ChatGPT/Codex API integráció (szándékosan).
