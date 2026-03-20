@@ -835,6 +835,7 @@ def _reopen_parent_popup_rows(
     parent_path: list[str],
     canonical_top_menu_names: set[str] | None,
     popup_state: PopupState | None,
+    force_ui_reopen: bool = False,
 ) -> list[dict[str, Any]]:
     started_at = time.monotonic()
     logger.info(
@@ -846,7 +847,12 @@ def _reopen_parent_popup_rows(
         diagnostic_options().suppress_placeholder_top_menu_relist,
     )
     normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
-    if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
+    if (
+        not force_ui_reopen
+        and popup_state is not None
+        and popup_state.current_menu_path == normalized_parent
+        and popup_state.popup_rows
+    ):
         cached = list(popup_state.popup_rows)
         _log_phase_timing("reopen_parent_popup_rows", started_at, strategy="popup_state_reuse", row_count=len(cached), parent_path=" > ".join(parent_path))
         return cached
@@ -895,6 +901,84 @@ def _reopen_parent_popup_rows(
     return current_rows
 
 
+
+
+
+
+def _capture_fresh_root_popup_for_sibling(
+    *,
+    state_id: str,
+    top_menu: str,
+    parent_path: list[str],
+    target_row: RuntimeMenuRow,
+    canonical_top_menu_names: set[str] | None,
+    popup_state: PopupState | None,
+    stage: str,
+) -> tuple[list[dict[str, Any]], RuntimeMenuRow]:
+    logger.info("ROOT_MENU_REOPEN_FOR_NEXT_SIBLING state={} top_menu={} parent_path={} next_after={}", state_id, top_menu, parent_path, stage)
+    refreshed_rows = _reopen_parent_popup_rows(
+        state_id=state_id,
+        top_menu=top_menu,
+        parent_path=parent_path,
+        canonical_top_menu_names=canonical_top_menu_names,
+        popup_state=popup_state,
+        force_ui_reopen=True,
+    )
+    valid_popup = False
+    popup_like_count = 0
+    target_match = None
+    if refreshed_rows:
+        valid_popup, popup_like_count, _topbar_like_count, filtered_rows = _has_valid_normal_popup_rows(
+            refreshed_rows,
+            canonical_top_menu_names=canonical_top_menu_names,
+        )
+        refreshed_rows = filtered_rows
+        if valid_popup:
+            target_match = _find_matching_popup_row(refreshed_rows, target_row)
+    if not valid_popup or popup_like_count <= 0 or target_match is None:
+        logger.error(
+            "ROOT_MENU_REOPEN_FAILED state={} top_menu={} parent_path={} stage={} popup_visible={} popup_row_count={} target_reidentified={} target_path={}",
+            state_id,
+            top_menu,
+            parent_path,
+            stage,
+            valid_popup,
+            len(refreshed_rows),
+            target_match is not None,
+            target_row.menu_path,
+        )
+        logger.error(
+            "NEXT_SIBLING_BLOCKED_NO_FRESH_POPUP state={} top_menu={} parent_path={} stage={} target_path={}",
+            state_id,
+            top_menu,
+            parent_path,
+            stage,
+            target_row.menu_path,
+        )
+        raise RuntimeError(f"fresh root popup reopen failed for {' > '.join(target_row.menu_path)}")
+    row_idx, matching_row = target_match
+    refreshed_row = RuntimeMenuRow(
+        state_id=target_row.state_id,
+        top_menu=target_row.top_menu,
+        row_index=row_idx,
+        menu_path=target_row.menu_path,
+        text=target_row.text,
+        normalized_text=target_row.normalized_text,
+        rectangle=dict(matching_row.get("rectangle") or target_row.rectangle),
+        center_x=int(matching_row.get("center_x") or target_row.center_x),
+        center_y=int(matching_row.get("center_y") or target_row.center_y),
+        is_separator=target_row.is_separator,
+        source_scope=str(matching_row.get("source_scope") or target_row.source_scope),
+        fragments=list(matching_row.get("fragments") or target_row.fragments),
+        enabled_guess=_guess_enabled(matching_row),
+        discovered_in_state=target_row.discovered_in_state,
+        actionable=target_row.actionable,
+        action_type=target_row.action_type,
+        meta=dict(target_row.meta),
+    )
+    logger.info("ROOT_MENU_REOPEN_EXECUTED state={} top_menu={} parent_path={} row_count={} target_path={}", state_id, top_menu, parent_path, len(refreshed_rows), target_row.menu_path)
+    logger.info("FRESH_ROOT_SNAPSHOT_CAPTURED state={} top_menu={} parent_path={} row_count={}", state_id, top_menu, parent_path, len(refreshed_rows))
+    return refreshed_rows, refreshed_row
 
 
 def _foreground_window_info() -> dict[str, Any]:
@@ -1755,14 +1839,31 @@ def explore_menu_tree(
             )
             if focus_refresh_mode:
                 logger.info("SIBLING_REFRESH_REQUIRED state={} top_menu={} parent_path={} path={}", state_id, top_menu, parent_path, path)
-            active_popup_rows = popup_rows if skip_parent_reopen else _reopen_parent_popup_rows(
-                state_id=state_id,
-                top_menu=top_menu,
-                parent_path=parent_path,
-                canonical_top_menu_names=canonical_top_menu_names,
-                popup_state=popup_state,
-            )
-            if active_popup_rows:
+                should_restore_clean_menu_baseline(
+                    state_id=state_id,
+                    stage=f"pre_sibling:{' > '.join(path)}",
+                    popup_rows=popup_rows,
+                )
+            active_popup_rows = popup_rows
+            if not skip_parent_reopen and not focus_refresh_mode:
+                active_popup_rows = _reopen_parent_popup_rows(
+                    state_id=state_id,
+                    top_menu=top_menu,
+                    parent_path=parent_path,
+                    canonical_top_menu_names=canonical_top_menu_names,
+                    popup_state=popup_state,
+                )
+            if focus_refresh_mode:
+                popup_rows, row = _capture_fresh_root_popup_for_sibling(
+                    state_id=state_id,
+                    top_menu=top_menu,
+                    parent_path=parent_path,
+                    target_row=row,
+                    canonical_top_menu_names=canonical_top_menu_names,
+                    popup_state=popup_state,
+                    stage=f"pre_sibling:{' > '.join(path)}",
+                )
+            elif active_popup_rows:
                 popup_rows = active_popup_rows
                 match = _find_matching_popup_row(active_popup_rows, row)
                 if match is not None:
@@ -1786,8 +1887,6 @@ def explore_menu_tree(
                         action_type=row.action_type,
                         meta=dict(row.meta),
                     )
-            if focus_refresh_mode:
-                logger.info("FRESH_ROOT_SNAPSHOT_CAPTURED state={} top_menu={} parent_path={} row_count={}", state_id, top_menu, parent_path, len(popup_rows))
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
             popup_visible_count, topbar_visible_count = menu_helpers._popup_visibility_counts(current_rows)
@@ -1927,22 +2026,20 @@ def explore_menu_tree(
                     action_snapshot = capture_state_snapshot(state_id)
                     if action_snapshot.main_window_enabled is False:
                         logger.error("ACTION_LEFT_MAIN_WINDOW_DISABLED state={} top_menu={} path={}", state_id, top_menu, path)
-                logger.info("ROOT_MENU_REOPEN_FOR_NEXT_SIBLING state={} top_menu={} parent_path={} next_after={}", state_id, top_menu, parent_path, path)
-                refreshed_rows = _reopen_parent_popup_rows(
+                previous_rows = popup_rows
+                popup_rows, _ = _capture_fresh_root_popup_for_sibling(
                     state_id=state_id,
                     top_menu=top_menu,
                     parent_path=parent_path,
+                    target_row=row,
                     canonical_top_menu_names=canonical_top_menu_names,
                     popup_state=popup_state,
+                    stage=f"post_action:{' > '.join(path)}",
                 )
-                if refreshed_rows:
-                    previous_rows = popup_rows
-                    popup_rows = refreshed_rows
-                    logger.info("FRESH_ROOT_SNAPSHOT_CAPTURED state={} top_menu={} parent_path={} row_count={}", state_id, top_menu, parent_path, len(refreshed_rows))
-                    if menu_helpers._snapshot_keys(previous_rows) != menu_helpers._snapshot_keys(refreshed_rows):
-                        transition["menu_state_changed"] = True
-                        logger.info("ACTION_CHANGED_MENU_STATE state={} top_menu={} path={} action_state_classification=changes_menu_state", state_id, top_menu, path)
-                        action_state_classification = "changes_menu_state"
+                if menu_helpers._snapshot_keys(previous_rows) != menu_helpers._snapshot_keys(popup_rows):
+                    transition["menu_state_changed"] = True
+                    logger.info("ACTION_CHANGED_MENU_STATE state={} top_menu={} path={} action_state_classification=changes_menu_state", state_id, top_menu, path)
+                    action_state_classification = "changes_menu_state"
 
         node = _row_to_node(
             state_id,
