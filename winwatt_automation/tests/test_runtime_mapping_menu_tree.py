@@ -988,3 +988,74 @@ def test_safe_depth_policy_blocks_modal_recent_and_command_branches():
         max_depth=2,
         action_state_classification="opens_submenu",
     ) is True
+
+
+class _FakeComError(Exception):
+    __module__ = "pythoncom"
+
+
+class _FakeMenuParent:
+    def __init__(self, control_type: str):
+        self.element_info = type("Info", (), {"control_type": control_type, "name": control_type, "class_name": ""})()
+
+
+class _FakeMenuItem:
+    def __init__(self, name: str, rect: tuple[int, int, int, int], *, parent_mode: str = "ok"):
+        self.element_info = type("Info", (), {"name": name, "control_type": "MenuItem", "class_name": "MenuItem", "handle": id(self)})()
+        self._rect = rect
+        self._parent_mode = parent_mode
+
+    def is_visible(self):
+        return True
+
+    def rectangle(self):
+        left, top, right, bottom = self._rect
+        return type("Rect", (), {"left": left, "top": top, "right": right, "bottom": bottom})()
+
+    def parent(self):
+        if self._parent_mode == "comerror":
+            raise _FakeComError("uia parent lookup failed")
+        return _FakeMenuParent("MenuBar")
+
+
+def test_explore_menu_tree_builds_action_catalog_after_parent_comerror(monkeypatch):
+    from winwatt_automation.live_ui import menu_helpers
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Ablak"], timestamp="t"))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda name: None)
+
+    comerror_items = [
+        _FakeMenuItem("Fájl", (4, 4, 70, 28), parent_mode="comerror"),
+        _FakeMenuItem("Ablak", (71, 4, 150, 28), parent_mode="comerror"),
+        _FakeMenuItem("Súgó", (151, 4, 220, 28), parent_mode="comerror"),
+    ]
+    popup_rows = [
+        {"text": "Rendezés", "center_x": 40, "center_y": 70, "rectangle": {"left": 5, "top": 60, "right": 140, "bottom": 82}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False},
+        {"text": "Mozaik", "center_x": 40, "center_y": 94, "rectangle": {"left": 5, "top": 84, "right": 140, "bottom": 106}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False},
+    ]
+
+    def _capture():
+        menu_helpers._consume_topbar_parent_error_state()
+        recovered = menu_helpers._top_level_menu_items_from_items(comerror_items)
+        assert any(menu_helpers._normalize(menu_helpers._name(item)) == "ablak" for item in recovered)
+        return [dict(row) for row in popup_rows]
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", _capture)
+
+    nodes, rows, actions, dialogs, windows, catalog = explore_menu_tree(
+        state_id="s",
+        top_menu="Ablak",
+        safe_mode="safe",
+        max_depth=1,
+        include_disabled=True,
+    )
+
+    assert [node["title"] for node in nodes] == ["Rendezés", "Mozaik"]
+    assert [row.text for row in rows] == ["Rendezés", "Mozaik"]
+    assert actions
+    assert dialogs == []
+    assert windows == []
+    assert catalog
+    assert catalog[0]["path"] == ["Ablak", "Rendezés"]
