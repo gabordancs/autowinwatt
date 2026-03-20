@@ -14,6 +14,7 @@ from winwatt_automation.runtime_mapping.timing import (
     POPUP_WAIT_TIMEOUT,
 )
 from winwatt_automation.live_ui.ui_cache import UIObjectCache
+from winwatt_automation.runtime_mapping.config import diagnostic_options
 from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
@@ -46,6 +47,18 @@ VERTICAL_POPUP_CLUSTER_HEIGHT_TOLERANCE = 10
 VERTICAL_POPUP_CLUSTER_MIN_X_OVERLAP_RATIO = 0.8
 _MENU_ITEMS_REENTRANCY_DEPTH = 0
 _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
+
+
+def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
+    details = " ".join(f"{key}={value}" for key, value in payload.items())
+    suffix = f" {details}" if details else ""
+    logger.info("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, (time.monotonic() - started_at) * 1000.0, suffix)
+
+
+def _popup_visibility_counts(rows: list[dict[str, Any]]) -> tuple[int, int]:
+    popup_visible = sum(1 for row in rows if bool(row.get("popup_candidate")))
+    topbar_visible = sum(1 for row in rows if bool(row.get("topbar_candidate")))
+    return popup_visible, topbar_visible
 
 
 def _rect_tuple(rect: dict[str, int] | None) -> tuple[int, int, int, int]:
@@ -889,6 +902,7 @@ def _has_menuitem_ancestor(wrapper: Any) -> bool:
 
 
 def _menu_items(*, force_refresh: bool = False) -> list[Any]:
+    started_at = time.monotonic()
     root = get_main_window()
     with _menu_items_reentrancy_guard(force_refresh=force_refresh) as can_inspect_topbar:
         if not can_inspect_topbar:
@@ -923,6 +937,7 @@ def _menu_items(*, force_refresh: bool = False) -> list[Any]:
         handle,
     )
     logger.debug("Discovered {} MenuItem controls", len(items))
+    _log_phase_timing("_menu_items", started_at, force_refresh=force_refresh, total_items=len(items), visible_items=visible_count)
     return items
 
 
@@ -937,6 +952,7 @@ def _top_level_menu_items_raw(*, force_refresh: bool = False) -> list[Any]:
 
 
 def list_top_menu_items() -> list[str]:
+    started_at = time.monotonic()
     names: list[str] = []
     seen: set[str] = set()
 
@@ -951,6 +967,7 @@ def list_top_menu_items() -> list[str]:
         names.append(text)
 
     logger.info("Top-level menu items (raw): {}", names)
+    _log_phase_timing("list_top_menu_items", started_at, count=len(names))
     return names
 
 
@@ -1088,8 +1105,10 @@ def _snapshot_keys(rows: list[dict[str, Any]]) -> set[tuple[str, str, str, str, 
 def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
     """Capture current menu-like controls from main window and global process scans."""
 
+    started_at = time.monotonic()
+    options = diagnostic_options()
     main_rows = _menu_like_controls_from_main_window()
-    global_rows = _menu_like_controls_from_global_process_scan()
+    global_rows = [] if options.disable_global_process_scan_rows else _menu_like_controls_from_global_process_scan()
     merged = main_rows + global_rows
     topbar_band = _main_window_topbar_band()
     seen: set[tuple[int, int, int, int, str, str, str]] = set()
@@ -1107,8 +1126,10 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
             row["source_scope"],
         )
         if key in seen:
+            logger.info("DBG_POPUP_ROW_DEDUPE rect={} normalized_text={} class_name={} source_scope={} deduplicated=True", rect, row["normalized_text"], row["class_name"], row["source_scope"])
             continue
         seen.add(key)
+        logger.info("DBG_POPUP_ROW_DEDUPE rect={} normalized_text={} class_name={} source_scope={} deduplicated=False", rect, row["normalized_text"], row["class_name"], row["source_scope"])
         row["appeared_after_popup_open"] = False
         unique_rows.append(row)
 
@@ -1146,6 +1167,7 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
         vertical_popup_diag.get("reason"),
     )
     logger.debug("Captured menu snapshot rows={}", len(unique_rows))
+    _log_phase_timing("capture_menu_popup_snapshot", started_at, main_rows=len(main_rows), global_rows=len(global_rows), unique_rows=len(unique_rows), diagnostic_fast_mode=options.diagnostic_fast_mode)
     return unique_rows
 
 

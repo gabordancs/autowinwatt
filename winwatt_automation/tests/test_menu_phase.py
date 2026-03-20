@@ -875,3 +875,45 @@ def test_click_top_menu_item_focus_guard_failure(monkeypatch):
 
     with pytest.raises(RuntimeError, match="focus_not_restored"):
         menu_helpers.click_top_menu_item("Fájl")
+
+
+def test_capture_menu_popup_snapshot_diagnostic_fast_mode_uses_only_main_window(monkeypatch):
+    from winwatt_automation.runtime_mapping.config import configure_diagnostics
+
+    configure_diagnostics(diagnostic_fast_mode=True, placeholder_traversal_focus=False)
+    topbar_rows = [
+        {
+            "text": "Fájl",
+            "normalized_text": "fájl",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 0, "top": 0, "right": 50, "bottom": 24},
+            "width": 50,
+            "height": 24,
+            "center_x": 25,
+            "center_y": 12,
+            "source_scope": "main_window",
+        }
+    ]
+    popup_rows = [
+        {
+            "text": "Megnyitás",
+            "normalized_text": "megnyitás",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 0, "top": 30, "right": 120, "bottom": 54},
+            "width": 120,
+            "height": 24,
+            "center_x": 60,
+            "center_y": 42,
+            "source_scope": "main_window",
+        }
+    ]
+    monkeypatch.setattr(menu_helpers, '_menu_like_controls_from_main_window', lambda: topbar_rows + popup_rows)
+    monkeypatch.setattr(menu_helpers, '_menu_like_controls_from_global_process_scan', lambda: (_ for _ in ()).throw(AssertionError('global scan disabled')))
+    monkeypatch.setattr(menu_helpers, '_main_window_topbar_band', lambda: {"left": 0, "top": 0, "right": 120, "bottom": 24, "width": 120, "height": 24, "center_x": 60, "center_y": 12})
+
+    snapshot = menu_helpers.capture_menu_popup_snapshot()
+
+    assert [row['text'] for row in snapshot] == ['Fájl', 'Megnyitás']
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
