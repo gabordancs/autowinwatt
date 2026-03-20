@@ -36,6 +36,7 @@ from winwatt_automation.runtime_mapping.config import (
     is_fast_mode,
     is_placeholder_traversal_focus_mode,
     placeholder_modal_policy,
+    recent_projects_policy,
 )
 from winwatt_automation.live_ui.ui_cache import PopupState
 
@@ -815,6 +816,8 @@ def _action_state_classification(
     opens_submenu: bool,
     opens_modal: bool,
 ) -> str:
+    if transition.get("project_open_state_transition"):
+        return "opens_project_and_changes_runtime_state"
     if opens_submenu:
         return "opens_submenu"
     if opens_modal:
@@ -826,6 +829,87 @@ def _action_state_classification(
     if transition.get("attempted"):
         return "executes_command"
     return "unknown"
+
+
+def _is_recent_projects_candidate(*, top_menu: str, path: list[str], row: RuntimeMenuRow) -> bool:
+    if normalize_menu_title(top_menu) != normalize_menu_title("Fájl"):
+        return False
+    normalized_path = [normalize_menu_title(part) for part in path]
+    if any(token in {"korábbiprojektek", "recentprojects"} for token in normalized_path):
+        return True
+    return len(path) == 2 and _is_placeholder_row(row) and row.row_index >= 4
+
+
+def _invalidate_stale_menu_references(*, popup_state: PopupState | None, reason: str) -> None:
+    if popup_state is not None:
+        popup_state.current_menu_path = None
+        popup_state.popup_handle = None
+        popup_state.popup_rows = None
+        popup_state.runtime_state_reset_required = True
+    reset_top_menu_cache()
+    logger.info("STALE_MENU_REFERENCES_INVALIDATED reason={}", reason)
+
+
+def _refresh_runtime_state_after_project_open(*, state_id: str, transition: dict[str, Any], popup_state: PopupState | None) -> dict[str, Any]:
+    _invalidate_stale_menu_references(
+        popup_state=popup_state,
+        reason="project_open_state_transition",
+    )
+    main_window = get_cached_main_window()
+    main_title = _safe_call(main_window, "window_text", "") or ""
+    logger.info("PROJECT_OPEN_STATE_TRANSITION state={} title={}", state_id, main_title)
+    refreshed_snapshot = capture_state_snapshot(f"{state_id}_project_open_transition")
+    refreshed_canonical_top_menus = get_canonical_top_menu_names(refreshed_snapshot.discovered_top_menus)
+    logger.info("CANONICAL_TOP_MENUS_REFRESHED state={} menus={}", state_id, [item["raw"] for item in refreshed_canonical_top_menus["items"]])
+    logger.info(
+        "NEW_RUNTIME_STATE_AFTER_PROJECT_OPEN state={} title={} top_menus={}",
+        state_id,
+        refreshed_snapshot.main_window_title,
+        [item["raw"] for item in refreshed_canonical_top_menus["items"]],
+    )
+    transition["project_open_state_transition"] = True
+    transition["result_type"] = "project_open_state_transition"
+    transition["new_runtime_state"] = {
+        "main_window_title": refreshed_snapshot.main_window_title,
+        "discovered_top_menus": list(refreshed_snapshot.discovered_top_menus),
+    }
+    return refreshed_canonical_top_menus
+
+
+def _detect_project_open_transition(
+    *,
+    state_id: str,
+    top_menu: str,
+    path: list[str],
+    row: RuntimeMenuRow,
+    before_action: RuntimeStateSnapshot,
+    after_action: RuntimeStateSnapshot,
+    transition: dict[str, Any],
+    popup_state: PopupState | None,
+) -> bool:
+    recent_candidate = bool(transition.get("recent_project_candidate")) or _is_recent_projects_candidate(top_menu=top_menu, path=path, row=row)
+    if recent_candidate:
+        logger.info("RECENT_PROJECT_ACTION_DETECTED state={} path={} policy={}", state_id, path, recent_projects_policy())
+    if not recent_candidate:
+        return False
+    title_changed = before_action.main_window_title != after_action.main_window_title
+    before_menus = {normalize_menu_title(item) for item in before_action.discovered_top_menus}
+    after_menus = {normalize_menu_title(item) for item in after_action.discovered_top_menus}
+    top_menus_changed = before_menus != after_menus
+    recovery_success = bool((transition.get("project_open_recovery") or {}).get("success"))
+    if not (title_changed or top_menus_changed or recovery_success):
+        return False
+    transition["project_open_transition_reasons"] = {
+        "title_changed": title_changed,
+        "top_menus_changed": top_menus_changed,
+        "recovery_success": recovery_success,
+    }
+    _refresh_runtime_state_after_project_open(
+        state_id=state_id,
+        transition=transition,
+        popup_state=popup_state,
+    )
+    return True
 
 
 def _reopen_parent_popup_rows(
@@ -1810,9 +1894,58 @@ def explore_menu_tree(
         )
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
         action_state_classification = "unknown"
+        project_open_transition_detected = False
 
         if (max_depth is None or max_depth < 0 or depth < max_depth) and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
             placeholder = _is_placeholder_row(row)
+            recent_candidate = _is_recent_projects_candidate(top_menu=top_menu, path=path, row=row)
+            transition["recent_project_candidate"] = recent_candidate
+            recent_policy = recent_projects_policy()
+            if recent_candidate and recent_policy == "skip_recent_projects":
+                transition = {"result_type": "skipped_recent_project", "attempted": False}
+                action_state_classification = "unknown"
+            elif recent_candidate and recent_policy == "probe_recent_projects":
+                transition = {"result_type": "probed_recent_project", "attempted": False}
+                action_state_classification = "unknown"
+            else:
+                transition = transition
+            if recent_candidate and recent_policy in {"skip_recent_projects", "probe_recent_projects"}:
+                logger.info("RECENT_PROJECT_ACTION_DETECTED state={} path={} policy={}", state_id, path, recent_policy)
+            if recent_candidate and recent_policy in {"skip_recent_projects", "probe_recent_projects"}:
+                node = _row_to_node(
+                    state_id,
+                    top_menu,
+                    asdict(row),
+                    level=depth,
+                    index=row.row_index,
+                    path=path,
+                    children=[],
+                    opens_submenu=False,
+                    opens_dialog=False,
+                    opens_modal=False,
+                    skipped_by_safety=skipped,
+                    reused_from_previous_state=reused_from_previous_state,
+                )
+                node.action_state_classification = action_state_classification
+                nodes.append(asdict(node))
+                actions.append(
+                    classify_post_click_result(
+                        process_id=None,
+                        before_snapshot=before_action,
+                        after_snapshot=before_action,
+                        dialog_detection=transition,
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        row_index=row.row_index,
+                        menu_path=path,
+                        action_key=" > ".join(path),
+                        safety_level=classify_safety([clean_menu_title(part) for part in path]),
+                        attempted=False,
+                        notes=recent_policy,
+                        action_state_classification=action_state_classification,
+                    )
+                )
+                continue
             focus_refresh_mode = bool(
                 is_placeholder_traversal_focus_mode()
                 and _is_primary_normal_top_menu(top_menu)
@@ -1908,7 +2041,7 @@ def explore_menu_tree(
                     for child_row in child_rows
                     if not is_top_menu_like_popup_row(child_row, canonical_top_menu_names)
                 ]
-            after_action = capture_state_snapshot(state_id) if not is_fast_mode() else before_action
+            after_action = capture_state_snapshot(state_id) if (recent_candidate or not is_fast_mode()) else before_action
             placeholder_outcome = None
             if placeholder:
                 placeholder_outcome = _classify_placeholder_action_outcome(
@@ -1941,6 +2074,13 @@ def explore_menu_tree(
             elif placeholder_outcome:
                 transition = dict(transition)
                 transition["placeholder_outcome"] = placeholder_outcome.get("outcome")
+            if recent_candidate and (
+                transition.get("result_type") in {"modal_opened", "main_window_disabled"}
+                or after_action.main_window_enabled is False
+            ):
+                transition["project_open_recovery"] = recover_after_project_open()
+                if transition["project_open_recovery"].get("success"):
+                    after_action = capture_state_snapshot(state_id)
             transition["attempted"] = True
             if child_rows:
                 opens_submenu = True
@@ -2014,12 +2154,22 @@ def explore_menu_tree(
                         visible=candidate.get("visible"),
                         controls=list(candidate.get("controls") or []),
                     ))
+            project_open_transition_detected = _detect_project_open_transition(
+                state_id=state_id,
+                top_menu=top_menu,
+                path=path,
+                row=row,
+                before_action=before_action,
+                after_action=after_action,
+                transition=transition,
+                popup_state=popup_state,
+            )
             action_state_classification = _action_state_classification(
                 transition=transition,
                 opens_submenu=opens_submenu,
                 opens_modal=opens_modal,
             )
-            if focus_refresh_mode:
+            if focus_refresh_mode and not project_open_transition_detected:
                 restore_clean_menu_baseline(state_id=state_id, stage=f"post_action:{' > '.join(path)}")
                 logger.info("ACTION_BASELINE_RESTORED state={} top_menu={} path={}", state_id, top_menu, path)
                 if opens_modal or transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened", "main_window_disabled"}:
@@ -2050,7 +2200,7 @@ def explore_menu_tree(
             path=path,
             children=children_nodes,
             opens_submenu=opens_submenu,
-            opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened", "modal_opened", "main_window_disabled"},
+            opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened", "modal_opened", "main_window_disabled", "project_open_state_transition"},
             opens_modal=opens_modal,
             skipped_by_safety=skipped,
             reused_from_previous_state=reused_from_previous_state,
@@ -2069,11 +2219,13 @@ def explore_menu_tree(
                 menu_path=path,
                 action_key=" > ".join(path),
                 safety_level=classify_safety([clean_menu_title(part) for part in path]),
-                attempted=not skipped and not reused_from_previous_state,
+                attempted=bool(transition.get("project_open_state_transition")) or (not skipped and not reused_from_previous_state),
                 notes="reused_from_previous_state" if reused_from_previous_state else "mapped_only",
                 action_state_classification=action_state_classification,
             )
         )
+        if project_open_transition_detected:
+            break
 
     _log_phase_timing("subtree_traversal", traversal_started_at, state_id=state_id, top_menu=top_menu, depth=depth, rows=len(current_level_rows), nodes=len(nodes), actions=len(actions))
     return nodes, collected_rows, actions, dialogs, windows
@@ -2137,9 +2289,13 @@ def map_runtime_state(
     stop_reason: str | None = None
     popup_state = PopupState()
 
-    for top_menu_normalized, _ in target_menu_map.items():
+    target_menu_keys = list(target_menu_map.keys())
+    index = 0
+    while index < len(target_menu_keys):
+        top_menu_normalized = target_menu_keys[index]
         discovered_top_menu = canonical_top_menus["normalized_to_raw"].get(top_menu_normalized)
         if not discovered_top_menu:
+            index += 1
             continue
 
         rows: list[RuntimeMenuRow] = []
@@ -2164,6 +2320,10 @@ def map_runtime_state(
             all_actions.extend(actions)
             all_dialogs.extend(dialogs)
             all_windows.extend(windows)
+            if popup_state.runtime_state_reset_required:
+                snapshot = capture_state_snapshot(state_id)
+                canonical_top_menus = get_canonical_top_menu_names(snapshot.discovered_top_menus)
+                popup_state.runtime_state_reset_required = False
         except Exception as exc:
             logger.exception("Top menu mapping failed: {}", discovered_top_menu)
             all_actions.append(
@@ -2205,6 +2365,7 @@ def map_runtime_state(
                 stop_reason = f"lost_main_window_after:{discovered_top_menu}"
                 logger.error("unrecoverable main window loss after top menu state={} top_menu={}", state_id, discovered_top_menu)
                 break
+        index += 1
 
     snapshot_payload = asdict(snapshot)
     snapshot_payload["mapping_partial"] = partial_mapping

@@ -34,3 +34,9 @@ def test_parser_placeholder_modal_policy_default():
     parser = map_full_program.build_parser()
     args = parser.parse_args([])
     assert args.placeholder_modal_policy == "submenu_only"
+
+
+def test_parser_recent_projects_policy_default():
+    parser = map_full_program.build_parser()
+    args = parser.parse_args([])
+    assert args.recent_projects_policy == "skip_recent_projects"
