@@ -1059,3 +1059,64 @@ def test_explore_menu_tree_builds_action_catalog_after_parent_comerror(monkeypat
     assert windows == []
     assert catalog
     assert catalog[0]["path"] == ["Ablak", "Rendezés"]
+
+
+def test_build_menu_rows_recovers_text_from_popup_fragments_instead_of_placeholder():
+    rows = _build_menu_rows_from_popup_rows(
+        "no_project",
+        "Fájl",
+        [
+            {
+                "text": "",
+                "raw_text_sources": [],
+                "text_confidence": "none",
+                "center_x": 50,
+                "center_y": 15,
+                "rectangle": {"left": 0, "top": 10, "right": 120, "bottom": 22},
+                "is_separator": False,
+                "source_scope": "main",
+                "popup_reason": "empty_text_vertical_cluster_below_topbar",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "fragments": [
+                    {"text": "Projekt", "rectangle": {"left": 8, "top": 10, "right": 50, "bottom": 22}, "center": (29, 16)},
+                    {"text": "megnyitása", "rectangle": {"left": 54, "top": 10, "right": 116, "bottom": 22}, "center": (85, 16)},
+                ],
+            }
+        ],
+    )
+
+    assert rows[0].text == "Projekt megnyitása"
+    assert rows[0].meta.get("source") != "geometry_placeholder"
+    assert rows[0].raw_text_sources == ["fragment_merge"]
+    assert rows[0].text_confidence == "medium"
+
+
+
+def test_grouped_popup_rows_preserve_usable_text_when_uia_name_is_empty():
+    grouped = _build_menu_rows_from_popup_rows(
+        "no_project",
+        "Fájl",
+        [
+            {
+                "text": "Mentés másként",
+                "raw_text_sources": ["window_text"],
+                "text_confidence": "high",
+                "center_x": 50,
+                "center_y": 15,
+                "rectangle": {"left": 0, "top": 10, "right": 140, "bottom": 24},
+                "is_separator": False,
+                "source_scope": "main",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "fragments": [
+                    {"text": "Mentés", "rectangle": {"left": 8, "top": 10, "right": 60, "bottom": 24}, "center": (34, 17)},
+                    {"text": "másként", "rectangle": {"left": 64, "top": 10, "right": 132, "bottom": 24}, "center": (98, 17)},
+                ],
+            }
+        ],
+    )
+
+    assert grouped[0].text == "Mentés másként"
+    assert grouped[0].raw_text_sources == ["window_text"]
+    assert grouped[0].text_confidence == "high"
