@@ -173,6 +173,39 @@ def _row_topbar_like(row: dict[str, Any]) -> bool:
     return bool(row.get("topbar_like", row.get("topbar_candidate")))
 
 
+def _resolve_row_text_with_fallback(row: dict[str, Any], *, row_index: int) -> tuple[str, list[str], str]:
+    direct_text = str(row.get("text") or "").strip()
+    raw_sources = [str(source) for source in list(row.get("raw_text_sources") or []) if str(source)]
+    confidence = str(row.get("text_confidence") or ("high" if direct_text else "none"))
+    if direct_text:
+        return direct_text, raw_sources or ["existing_text"], confidence
+
+    fragments = list(row.get("fragments") or [])
+    merged = menu_helpers._merge_text_fragments(fragments, rect=dict(row.get("rectangle") or {}))
+    if merged:
+        merged_sources = list(dict.fromkeys([*raw_sources, "fragment_merge"]))
+        logger.info(
+            "TEXT_FRAGMENT_MERGE_APPLIED row_index={} fragment_count={} merged_text={!r}",
+            row_index,
+            len(fragments),
+            merged,
+        )
+        logger.info(
+            "TEXT_EXTRACTION_FALLBACK_USED row_index={} source=fragment_merge confidence=medium",
+            row_index,
+        )
+        return merged, merged_sources, "medium"
+
+    logger.warning(
+        "TEXT_EXTRACTION_FAILED row_index={} source_scope={} fragment_count={} rectangle={}",
+        row_index,
+        row.get("source_scope"),
+        len(fragments),
+        row.get("rectangle"),
+    )
+    return "", raw_sources, "none"
+
+
 def _foreground_matches_main_window(snapshot: RuntimeStateSnapshot | None) -> bool:
     if snapshot is None:
         return False
@@ -503,7 +536,7 @@ def _build_menu_rows_from_popup_rows(
             )
             logger.debug("popup row filtered as top-level overlap top_menu={} row_text={}", top_menu, row.get("text"))
             continue
-        text = str(row.get("text") or "")
+        text, raw_text_sources, text_confidence = _resolve_row_text_with_fallback(row, row_index=index)
         title, _ = _extract_shortcut(text)
         title_clean = clean_menu_title(title)
         normalized_title = normalize_menu_title(title)
@@ -553,6 +586,8 @@ def _build_menu_rows_from_popup_rows(
                     "recent_projects_block": bool(row.get("recent_projects_block")),
                     "recent_project_entry": recent_project_entry,
                     "stateful_menu_block": stateful_menu_block,
+                    "raw_text_sources": raw_text_sources,
+                    "text_confidence": text_confidence,
                 }
                 actionable = True
                 action_type = "click"
@@ -599,6 +634,8 @@ def _build_menu_rows_from_popup_rows(
                 fragments=list(row.get("fragments") or []),
                 enabled_guess=_guess_enabled(row),
                 discovered_in_state=state_id,
+                raw_text_sources=raw_text_sources,
+                text_confidence=text_confidence,
                 actionable=actionable,
                 action_type=action_type,
                 recent_project_entry=recent_project_entry,
@@ -1310,6 +1347,8 @@ def _capture_fresh_root_popup_for_sibling(
         fragments=list(matching_row.get("fragments") or target_row.fragments),
         enabled_guess=_guess_enabled(matching_row),
         discovered_in_state=target_row.discovered_in_state,
+        raw_text_sources=list(matching_row.get("raw_text_sources") or target_row.raw_text_sources),
+        text_confidence=str(matching_row.get("text_confidence") or target_row.text_confidence),
         actionable=target_row.actionable,
         action_type=target_row.action_type,
         recent_project_entry=target_row.recent_project_entry,
@@ -2298,6 +2337,8 @@ def explore_menu_tree(
                         fragments=list(matching_row.get("fragments") or row.fragments),
                         enabled_guess=_guess_enabled(matching_row),
                         discovered_in_state=row.discovered_in_state,
+                        raw_text_sources=list(matching_row.get("raw_text_sources") or row.raw_text_sources),
+                        text_confidence=str(matching_row.get("text_confidence") or row.text_confidence),
                         actionable=row.actionable,
                         action_type=row.action_type,
                         recent_project_entry=row.recent_project_entry,
