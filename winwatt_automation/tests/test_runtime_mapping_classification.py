@@ -47,7 +47,7 @@ def test_classify_post_click_result_no_visible_change():
         safety_level="safe",
         attempted=True,
     )
-    assert result.result_type == "no_visible_change"
+    assert result.result_type == "no_observable_effect"
 
 
 def test_classify_post_click_result_skipped_and_failed():
@@ -153,4 +153,3 @@ def test_build_menu_rows_geometry_placeholder_uses_rect_center_for_empty_popup_r
     assert rows[0].center_y == 35
     assert rows[0].meta["click_point"] == {"x": 20, "y": 35}
     assert rows[0].menu_path == ["Fájl", "[unlabeled row 0]"]
-
