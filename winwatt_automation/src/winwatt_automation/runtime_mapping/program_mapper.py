@@ -831,6 +831,118 @@ def _action_state_classification(
     return "unknown"
 
 
+def _safe_depth_decision(
+    *,
+    state_id: str,
+    path: list[str],
+    current_depth: int,
+    max_depth: int | None,
+    action_state_classification: str,
+) -> bool:
+    if max_depth is not None and max_depth >= 0 and current_depth >= max_depth:
+        logger.info(
+            "SAFE_DEPTH_BLOCKED state={} path={} current_depth={} max_depth={} action_state_classification={} reason=max_depth_reached",
+            state_id,
+            path,
+            current_depth,
+            max_depth,
+            action_state_classification,
+        )
+        return False
+    if action_state_classification == "opens_submenu":
+        logger.info(
+            "SAFE_DEPTH_ALLOWED state={} path={} current_depth={} next_depth={} action_state_classification={}",
+            state_id,
+            path,
+            current_depth,
+            current_depth + 1,
+            action_state_classification,
+        )
+        return True
+    logger.info(
+        "SAFE_DEPTH_BLOCKED state={} path={} current_depth={} max_depth={} action_state_classification={} reason=non_submenu_branch",
+        state_id,
+        path,
+        current_depth,
+        max_depth,
+        action_state_classification,
+    )
+    return False
+
+
+def _build_action_catalog_entry(
+    *,
+    path: list[str],
+    action_type: str,
+    action_state_classification: str,
+    opens_modal: bool,
+    opens_submenu: bool,
+    changes_menu_state: bool,
+    opens_project_and_changes_runtime_state: bool,
+    traversal_depth: int,
+    skip_reason: str | None = None,
+) -> dict[str, Any]:
+    entry = {
+        "path": list(path),
+        "action_type": action_type,
+        "action_state_classification": action_state_classification,
+        "opens_modal": opens_modal,
+        "opens_submenu": opens_submenu,
+        "changes_menu_state": changes_menu_state,
+        "opens_project_and_changes_runtime_state": opens_project_and_changes_runtime_state,
+        "traversal_depth": traversal_depth,
+    }
+    if skip_reason:
+        entry["skip_reason"] = skip_reason
+    logger.info("ACTION_CATALOG_ENTRY state_path={} entry={}", path, entry)
+    return entry
+
+
+def _build_state_transitions_from_actions(actions: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    transitions: list[dict[str, Any]] = []
+    for action in actions:
+        details = dict(action.get("event_details") or {})
+        if not details.get("project_open_state_transition"):
+            continue
+        transition = {
+            "path": list(action.get("menu_path") or []),
+            "trigger": "opens_project_and_changes_runtime_state",
+            "result_type": details.get("result_type"),
+            "new_runtime_state": dict(details.get("new_runtime_state") or {}),
+            "project_open_transition_reasons": dict(details.get("project_open_transition_reasons") or {}),
+        }
+        logger.info("STATE_TRANSITION_RECORDED transition={}", transition)
+        transitions.append(transition)
+    return transitions
+
+
+def _build_state_atlas_entry(state_map: RuntimeStateMap) -> dict[str, Any]:
+    entry = {
+        "state_id": state_map.state_id,
+        "canonical_top_menus": list(state_map.top_menus),
+        "top_menu_rows": list(state_map.menu_rows),
+        "action_catalog": list(state_map.action_catalog),
+        "state_transitions": list(state_map.state_transitions),
+    }
+    logger.info(
+        "STATE_ATLAS_ENTRY_CREATED state_id={} top_menus={} rows={} actions={} transitions={}",
+        state_map.state_id,
+        len(state_map.top_menus),
+        len(state_map.menu_rows),
+        len(state_map.action_catalog),
+        len(state_map.state_transitions),
+    )
+    return entry
+
+
+def _build_runtime_state_atlas(*, states: list[RuntimeStateMap]) -> dict[str, Any]:
+    atlas_states = {state.state_id: _build_state_atlas_entry(state) for state in states}
+    return {
+        "states": atlas_states,
+        "state_order": [state.state_id for state in states],
+    }
+
+
 def _is_recent_projects_candidate(*, top_menu: str, path: list[str], row: RuntimeMenuRow) -> bool:
     if normalize_menu_title(top_menu) != normalize_menu_title("Fájl"):
         return False
@@ -1729,7 +1841,7 @@ def explore_menu_tree(
     visited_path_hashes: set[int] | None = None,
     known_paths_to_skip: set[tuple[str, ...]] | None = None,
     popup_state: PopupState | None = None,
-) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord]]:
+) -> tuple[list[dict[str, Any]], list[RuntimeMenuRow], list[RuntimeActionResult], list[RuntimeDialogRecord], list[RuntimeWindowRecord], list[dict[str, Any]]]:
     parent_path = list(parent_path or [clean_menu_title(top_menu)])
     dialogs: list[RuntimeDialogRecord] = []
     windows: list[RuntimeWindowRecord] = []
@@ -1860,6 +1972,7 @@ def explore_menu_tree(
     collected_rows: list[RuntimeMenuRow] = list(current_level_rows)
     nodes: list[dict[str, Any]] = []
     actions: list[RuntimeActionResult] = []
+    action_catalog: list[dict[str, Any]] = []
 
     traversal_started_at = time.monotonic()
     for row in current_level_rows:
@@ -1895,6 +2008,7 @@ def explore_menu_tree(
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
         action_state_classification = "unknown"
         project_open_transition_detected = False
+        skip_reason: str | None = None
 
         if (max_depth is None or max_depth < 0 or depth < max_depth) and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
             placeholder = _is_placeholder_row(row)
@@ -1904,9 +2018,11 @@ def explore_menu_tree(
             if recent_candidate and recent_policy == "skip_recent_projects":
                 transition = {"result_type": "skipped_recent_project", "attempted": False}
                 action_state_classification = "unknown"
+                skip_reason = "recent_project_blocked_by_policy"
             elif recent_candidate and recent_policy == "probe_recent_projects":
                 transition = {"result_type": "probed_recent_project", "attempted": False}
                 action_state_classification = "unknown"
+                skip_reason = "recent_project_catalog_only"
             else:
                 transition = transition
             if recent_candidate and recent_policy in {"skip_recent_projects", "probe_recent_projects"}:
@@ -1943,6 +2059,19 @@ def explore_menu_tree(
                         attempted=False,
                         notes=recent_policy,
                         action_state_classification=action_state_classification,
+                    )
+                )
+                action_catalog.append(
+                    _build_action_catalog_entry(
+                        path=path,
+                        action_type=row.action_type,
+                        action_state_classification=action_state_classification,
+                        opens_modal=False,
+                        opens_submenu=False,
+                        changes_menu_state=False,
+                        opens_project_and_changes_runtime_state=False,
+                        traversal_depth=depth,
+                        skip_reason=skip_reason,
                     )
                 )
                 continue
@@ -2084,30 +2213,39 @@ def explore_menu_tree(
             transition["attempted"] = True
             if child_rows:
                 opens_submenu = True
+                action_state_classification = "opens_submenu"
                 logger.info("DBG_SUBTREE_TRAVERSAL_SUBMENU_OPENED state={} path={} child_row_count={} placeholder={}", state_id, path, len(child_rows), placeholder)
                 if popup_state is not None:
                     popup_state.current_menu_path = tuple(normalize_menu_title(part) for part in path)
                     popup_state.popup_rows = list(child_rows)
-                child_nodes, child_menu_rows, child_actions, child_dialogs, child_windows = explore_menu_tree(
+                if _safe_depth_decision(
                     state_id=state_id,
-                    top_menu=top_menu,
-                    safe_mode=safe_mode,
+                    path=path,
+                    current_depth=depth,
                     max_depth=max_depth,
-                    include_disabled=include_disabled,
-                    depth=depth + 1,
-                    parent_path=path,
-                    popup_rows=child_rows,
-                    canonical_top_menu_names=canonical_top_menu_names,
-                    visited_paths=visited_paths,
-                    visited_path_hashes=visited_path_hashes,
-                    known_paths_to_skip=known_paths_to_skip,
-                    popup_state=popup_state,
-                )
-                children_nodes = child_nodes
-                collected_rows.extend(child_menu_rows)
-                actions.extend(child_actions)
-                dialogs.extend(child_dialogs)
-                windows.extend(child_windows)
+                    action_state_classification=action_state_classification,
+                ):
+                    child_nodes, child_menu_rows, child_actions, child_dialogs, child_windows, child_action_catalog = explore_menu_tree(
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        safe_mode=safe_mode,
+                        max_depth=max_depth,
+                        include_disabled=include_disabled,
+                        depth=depth + 1,
+                        parent_path=path,
+                        popup_rows=child_rows,
+                        canonical_top_menu_names=canonical_top_menu_names,
+                        visited_paths=visited_paths,
+                        visited_path_hashes=visited_path_hashes,
+                        known_paths_to_skip=known_paths_to_skip,
+                        popup_state=popup_state,
+                    )
+                    children_nodes = child_nodes
+                    collected_rows.extend(child_menu_rows)
+                    actions.extend(child_actions)
+                    dialogs.extend(child_dialogs)
+                    windows.extend(child_windows)
+                    action_catalog.extend(child_action_catalog)
             elif transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened", "main_window_disabled"}:
                 candidate = transition.get("window_snapshot") or {}
                 if transition.get("result_type") in {"modal_opened", "main_window_disabled"}:
@@ -2154,6 +2292,13 @@ def explore_menu_tree(
                         visible=candidate.get("visible"),
                         controls=list(candidate.get("controls") or []),
                     ))
+                _safe_depth_decision(
+                    state_id=state_id,
+                    path=path,
+                    current_depth=depth,
+                    max_depth=max_depth,
+                    action_state_classification="opens_modal" if opens_modal else "changes_menu_state",
+                )
             project_open_transition_detected = _detect_project_open_transition(
                 state_id=state_id,
                 top_menu=top_menu,
@@ -2190,6 +2335,14 @@ def explore_menu_tree(
                     transition["menu_state_changed"] = True
                     logger.info("ACTION_CHANGED_MENU_STATE state={} top_menu={} path={} action_state_classification=changes_menu_state", state_id, top_menu, path)
                     action_state_classification = "changes_menu_state"
+            if transition.get("result_type") in {"no_visible_change"} and transition.get("attempted"):
+                _safe_depth_decision(
+                    state_id=state_id,
+                    path=path,
+                    current_depth=depth,
+                    max_depth=max_depth,
+                    action_state_classification=action_state_classification or "executes_command",
+                )
 
         node = _row_to_node(
             state_id,
@@ -2224,11 +2377,30 @@ def explore_menu_tree(
                 action_state_classification=action_state_classification,
             )
         )
+        action_catalog.append(
+            _build_action_catalog_entry(
+                path=path,
+                action_type=row.action_type,
+                action_state_classification=action_state_classification,
+                opens_modal=opens_modal,
+                opens_submenu=opens_submenu,
+                changes_menu_state=action_state_classification == "changes_menu_state",
+                opens_project_and_changes_runtime_state=action_state_classification == "opens_project_and_changes_runtime_state",
+                traversal_depth=depth,
+                skip_reason=skip_reason,
+            )
+        )
         if project_open_transition_detected:
             break
 
     _log_phase_timing("subtree_traversal", traversal_started_at, state_id=state_id, top_menu=top_menu, depth=depth, rows=len(current_level_rows), nodes=len(nodes), actions=len(actions))
-    return nodes, collected_rows, actions, dialogs, windows
+    for action in action_catalog:
+        actions_by_path = {tuple(item.menu_path if isinstance(item, RuntimeActionResult) else item.get("menu_path", [])): item for item in actions}
+        action_result = actions_by_path.get(tuple(action["path"]))
+        if action_result is not None:
+            details = action_result.event_details if isinstance(action_result, RuntimeActionResult) else action_result.get("event_details", {})
+            action["changes_menu_state"] = bool(action["changes_menu_state"] or details.get("menu_state_changed"))
+    return nodes, collected_rows, actions, dialogs, windows, action_catalog
 
 
 def _state_summary_markdown(state_map: RuntimeStateMap) -> str:
@@ -2284,6 +2456,7 @@ def map_runtime_state(
     all_actions: list[RuntimeActionResult] = []
     all_dialogs: list[RuntimeDialogRecord] = []
     all_windows: list[RuntimeWindowRecord] = []
+    all_action_catalog: list[dict[str, Any]] = []
 
     partial_mapping = False
     stop_reason: str | None = None
@@ -2300,7 +2473,7 @@ def map_runtime_state(
 
         rows: list[RuntimeMenuRow] = []
         try:
-            tree, rows, actions, dialogs, windows = explore_menu_tree(
+            tree, rows, actions, dialogs, windows, action_catalog = explore_menu_tree(
                 state_id=state_id,
                 top_menu=discovered_top_menu,
                 safe_mode=safe_mode,
@@ -2320,6 +2493,7 @@ def map_runtime_state(
             all_actions.extend(actions)
             all_dialogs.extend(dialogs)
             all_windows.extend(windows)
+            all_action_catalog.extend(action_catalog)
             if popup_state.runtime_state_reset_required:
                 snapshot = capture_state_snapshot(state_id)
                 canonical_top_menus = get_canonical_top_menu_names(snapshot.discovered_top_menus)
@@ -2370,8 +2544,10 @@ def map_runtime_state(
     snapshot_payload = asdict(snapshot)
     snapshot_payload["mapping_partial"] = partial_mapping
     snapshot_payload["mapping_stop_reason"] = stop_reason
+    state_actions = [item if isinstance(item, dict) else asdict(item) for item in all_actions]
+    state_transitions = _build_state_transitions_from_actions(state_actions)
 
-    return RuntimeStateMap(
+    state_map = RuntimeStateMap(
         state_id=state_id,
         snapshot=snapshot_payload,
         top_menus=[
@@ -2381,11 +2557,15 @@ def map_runtime_state(
         ],
         menu_rows=[asdict(item) for item in all_rows],
         menu_tree=all_tree,
-        actions=[item if isinstance(item, dict) else asdict(item) for item in all_actions],
+        actions=state_actions,
         dialogs=[asdict(item) for item in all_dialogs],
         windows=[asdict(item) for item in all_windows],
         skipped_actions=[item if isinstance(item, dict) else asdict(item) for item in all_actions if (item.get("attempted") if isinstance(item, dict) else item.attempted) is False],
+        action_catalog=all_action_catalog,
+        state_transitions=state_transitions,
     )
+    state_map.state_atlas = _build_state_atlas_entry(state_map)
+    return state_map
 
 
 def _normalized_path(path: list[str] | tuple[str, ...]) -> tuple[str, ...]:
@@ -2468,6 +2648,12 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
 def _write_state_outputs(state_dir: Path, state_map: RuntimeStateMap) -> None:
     write_json(state_dir / "snapshot.json", state_map.snapshot)
     write_json(state_dir / "menu_tree.json", state_map.menu_tree)
+    write_json(state_dir / "top_menus.json", state_map.top_menus)
+    write_json(state_dir / "top_menu_rows.json", state_map.menu_rows)
+    write_json(state_dir / "actions.json", state_map.actions)
+    write_json(state_dir / "action_catalog.json", state_map.action_catalog)
+    write_json(state_dir / "state_transitions.json", state_map.state_transitions)
+    write_json(state_dir / "state_atlas.json", state_map.state_atlas)
     write_json(state_dir / "dialogs.json", state_map.dialogs)
     write_json(state_dir / "windows.json", state_map.windows)
     (state_dir / "summary.md").write_text(_state_summary_markdown(state_map), encoding="utf-8")
@@ -2659,6 +2845,7 @@ def build_full_runtime_program_map(
             windows=[],
             skipped_actions=[],
         )
+        state_project_open.state_atlas = _build_state_atlas_entry(state_project_open)
     else:
         state_project_open = map_runtime_state(
             state_id=project_id,
@@ -2680,6 +2867,9 @@ def build_full_runtime_program_map(
             },
         )
     _write_state_outputs(paths["state_project_open"], state_project_open)
+
+    runtime_state_atlas = _build_runtime_state_atlas(states=[state_no_project, state_project_open])
+    write_json(paths["base"] / "runtime_state_atlas.json", runtime_state_atlas)
 
     diff = compare_runtime_states(state_no_project, state_project_open)
     if event_recorder:
@@ -2735,5 +2925,6 @@ def build_full_runtime_program_map(
         "diff": diff,
         "project_open_result": project_open_result,
         "knowledge_verification": knowledge_verification,
+        "runtime_state_atlas": runtime_state_atlas,
         "output_dir": str(paths["base"]),
     }

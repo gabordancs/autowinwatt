@@ -157,8 +157,8 @@ def test_mapper_documents_dialog_and_continues(monkeypatch):
     def _explore_menu_tree(**kwargs):
         tm = kwargs["top_menu"]
         if tm == "Fájl":
-            return ([], [], [], [RuntimeDialogRecord(state_id="s", top_menu=tm, row_index=0, menu_path=[tm], title="D", class_name="#32770", process_id=1)], [])
-        return ([{"title": "Névjegy"}], [], [], [], [])
+            return ([], [], [], [RuntimeDialogRecord(state_id="s", top_menu=tm, row_index=0, menu_path=[tm], title="D", class_name="#32770", process_id=1)], [], [])
+        return ([{"title": "Névjegy"}], [], [], [], [], [])
 
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree", _explore_menu_tree)
     state = map_runtime_state(state_id="s", top_menus=["Fájl", "Súgó"])
