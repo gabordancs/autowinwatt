@@ -1140,6 +1140,127 @@ def list_open_menu_items() -> list[str]:
     return names
 
 
+
+
+def _clean_text_candidate(text: Any) -> str:
+    return " ".join(str(text or "").replace(" ", " ").split()).strip()
+
+
+def _safe_window_text(wrapper: Any) -> str:
+    getter = getattr(wrapper, "window_text", None)
+    if callable(getter):
+        try:
+            return _clean_text_candidate(getter())
+        except Exception:
+            return ""
+    return ""
+
+
+def _safe_legacy_text(wrapper: Any) -> str:
+    legacy_props = getattr(wrapper, "legacy_properties", None)
+    if callable(legacy_props):
+        try:
+            props = legacy_props() or {}
+            for key in ("Name", "Value", "DefaultAction", "Description"):
+                value = _clean_text_candidate(props.get(key))
+                if value:
+                    return value
+        except Exception:
+            return ""
+    iface = getattr(wrapper, "iface_legacy_iaccessible", None)
+    if iface is not None:
+        for attr in ("accName", "accValue", "accDescription"):
+            try:
+                value = getattr(iface, attr)(0) if callable(getattr(iface, attr, None)) else getattr(iface, attr, None)
+            except Exception:
+                value = None
+            value = _clean_text_candidate(value)
+            if value:
+                return value
+    return ""
+
+
+def _rect_intersects(first: dict[str, Any], second: dict[str, Any]) -> bool:
+    return not (
+        int(first.get("right") or 0) <= int(second.get("left") or 0)
+        or int(first.get("left") or 0) >= int(second.get("right") or 0)
+        or int(first.get("bottom") or 0) <= int(second.get("top") or 0)
+        or int(first.get("top") or 0) >= int(second.get("bottom") or 0)
+    )
+
+
+def _merge_text_fragments(fragments: list[dict[str, Any]], *, rect: dict[str, Any] | None = None) -> str:
+    merged: list[str] = []
+    seen: set[str] = set()
+    ordered = sorted(fragments or [], key=lambda item: (int((item.get("rectangle") or {}).get("left") or 0), int((item.get("rectangle") or {}).get("top") or 0)))
+    for fragment in ordered:
+        fragment_rect = dict(fragment.get("rectangle") or {})
+        if rect and fragment_rect and not _rect_intersects(rect, fragment_rect):
+            center = fragment.get("center") or ()
+            if len(center) == 2:
+                cx, cy = int(center[0]), int(center[1])
+                if not (int(rect.get("left") or 0) <= cx <= int(rect.get("right") or 0) and int(rect.get("top") or 0) <= cy <= int(rect.get("bottom") or 0)):
+                    continue
+            else:
+                continue
+        text = _clean_text_candidate(fragment.get("text"))
+        if not text:
+            continue
+        key = _normalize(text)
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(text)
+    return " ".join(merged).strip()
+
+
+def _child_text_fragments(wrapper: Any, *, row_rect: dict[str, Any]) -> list[dict[str, Any]]:
+    descendants = getattr(wrapper, "descendants", None)
+    if not callable(descendants):
+        return []
+    fragments: list[dict[str, Any]] = []
+    try:
+        children = descendants()
+    except Exception:
+        return []
+    for child in children:
+        control_type = _control_type(child)
+        class_name = _class_name(child)
+        if control_type not in {"text", "static"} and _normalize(class_name) not in {"static", "text"}:
+            continue
+        child_rect = _rectangle_data(child)
+        if child_rect is None or not _rect_intersects(row_rect, child_rect):
+            continue
+        text = _clean_text_candidate(_name(child) or _safe_window_text(child) or _safe_legacy_text(child))
+        if not text:
+            continue
+        fragments.append({
+            "text": text,
+            "rectangle": {k: child_rect[k] for k in ("left", "top", "right", "bottom")},
+            "center": (child_rect["center_x"], child_rect["center_y"]),
+            "control_type": control_type,
+            "class_name": class_name,
+            "source_scope": "child_text",
+        })
+    return fragments
+
+
+def _extract_text_with_fallbacks(wrapper: Any, *, row_rect: dict[str, Any]) -> tuple[str, list[str], str, list[dict[str, Any]]]:
+    source_values = [
+        ("uia_name", _clean_text_candidate(_name(wrapper))),
+        ("window_text", _safe_window_text(wrapper)),
+        ("legacy_text", _safe_legacy_text(wrapper)),
+    ]
+    raw_sources: list[str] = []
+    for label, value in source_values:
+        if value:
+            raw_sources.append(label)
+            return value, raw_sources, "high", []
+    child_fragments = _child_text_fragments(wrapper, row_rect=row_rect)
+    child_text = _merge_text_fragments(child_fragments, rect=row_rect)
+    if child_text:
+        return child_text, ["child_text"], "medium", child_fragments
+    return "", [], "none", child_fragments
 def _is_separator_by_geometry(rect: dict[str, int]) -> bool:
     width = rect["width"]
     height = rect["height"]
@@ -1157,9 +1278,22 @@ def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[st
         return None
 
     info = getattr(item, "element_info", item)
+    row_rect = {
+        "left": rect["left"],
+        "top": rect["top"],
+        "right": rect["right"],
+        "bottom": rect["bottom"],
+    }
+    extracted_text, raw_text_sources, text_confidence, child_fragments = _extract_text_with_fallbacks(item, row_rect=row_rect)
+    if extracted_text and raw_text_sources and raw_text_sources[0] != "uia_name":
+        logger.info("TEXT_EXTRACTION_FALLBACK_USED source={} confidence={} rect={}", raw_text_sources[0], text_confidence, row_rect)
+    elif not extracted_text:
+        logger.warning("TEXT_EXTRACTION_FAILED source_scope={} rect={}", source_scope, row_rect)
     row = {
-        "text": _name(item),
-        "normalized_text": _normalize(_name(item)),
+        "text": extracted_text,
+        "normalized_text": _normalize(extracted_text),
+        "raw_text_sources": raw_text_sources,
+        "text_confidence": text_confidence,
         "control_type": getattr(getattr(item, "element_info", item), "control_type", None),
         "class_name": _class_name(item),
         "rectangle": {
@@ -1176,6 +1310,7 @@ def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[st
         "source_scope": source_scope,
         "process_id": getattr(info, "process_id", None),
         "native_handle": getattr(info, "handle", None),
+        "fragments": child_fragments,
     }
     topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry(row, topbar_band)
     row["topbar_candidate"] = topbar_candidate
@@ -1585,6 +1720,36 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
         texts = [str(item.get("text", "")) for item in cluster]
         representative_text = next((text for text in texts if text.strip()), "")
         representative = cluster[0]
+        cluster_fragments = [
+            {
+                "rectangle": dict(item.get("rectangle") or {}),
+                "text": item.get("text", ""),
+                "control_type": item.get("control_type", ""),
+                "source_scope": item.get("source_scope", ""),
+                "class_name": item.get("class_name", ""),
+                "center": (int(item.get("center_x") or 0), int(item.get("center_y") or 0)),
+                "process_id": item.get("process_id"),
+                "native_handle": item.get("native_handle"),
+                "topbar_candidate": bool(item.get("topbar_candidate")),
+                "popup_candidate": bool(item.get("popup_candidate")),
+            }
+            for item in cluster
+        ]
+        merged_fragment_text = _merge_text_fragments(cluster_fragments, rect={"left": left, "top": top, "right": right, "bottom": bottom})
+        if not representative_text and merged_fragment_text:
+            representative_text = merged_fragment_text
+        raw_text_sources = sorted({str(source) for item in cluster for source in list(item.get("raw_text_sources") or []) if str(source)})
+        if merged_fragment_text and "fragment_merge" not in raw_text_sources:
+            raw_text_sources.append("fragment_merge")
+        confidences = [str(item.get("text_confidence") or "none") for item in cluster]
+        if any(level == "high" for level in confidences):
+            text_confidence = "high"
+        elif representative_text and any(level == "medium" for level in confidences):
+            text_confidence = "medium"
+        elif representative_text:
+            text_confidence = "low"
+        else:
+            text_confidence = "none"
 
         source_scope_summary = sorted({str(item.get("source_scope", "")) for item in cluster})
         row_class_summary = sorted({str(item.get("class_name", "")) for item in cluster})
@@ -1592,6 +1757,8 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
             {
                 "text": representative_text,
                 "normalized_text": _normalize(representative_text),
+                "raw_text_sources": raw_text_sources,
+                "text_confidence": text_confidence,
                 "control_type": representative.get("control_type") or "MenuRow",
                 "class_name": representative.get("class_name", ""),
                 "rectangle": {
@@ -1613,21 +1780,7 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "source_scope_summary": source_scope_summary,
                 "row_class_summary": row_class_summary,
                 "fragment_texts": texts,
-                "fragments": [
-                    {
-                        "rectangle": dict(item.get("rectangle") or {}),
-                        "text": item.get("text", ""),
-                        "control_type": item.get("control_type", ""),
-                        "source_scope": item.get("source_scope", ""),
-                        "class_name": item.get("class_name", ""),
-                        "center": (int(item.get("center_x") or 0), int(item.get("center_y") or 0)),
-                        "process_id": item.get("process_id"),
-                        "native_handle": item.get("native_handle"),
-                        "topbar_candidate": bool(item.get("topbar_candidate")),
-                        "popup_candidate": bool(item.get("popup_candidate")),
-                    }
-                    for item in cluster
-                ],
+                "fragments": cluster_fragments,
             }
         )
 
