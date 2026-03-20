@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 import time
 from contextlib import contextmanager
 from typing import Any
@@ -39,6 +40,27 @@ SYSTEM_MENU_DEFAULT_ITEMS = {
     "close",
 }
 TOPBAR_BAND_CACHE_TTL_S = 0.5
+POPUP_LOG_STATS = {
+    "source_counts": Counter(),
+    "dedupe": Counter(),
+    "snapshot_count": 0,
+    "topbar_like": 0,
+    "popup_like": 0,
+    "empty_text": 0,
+}
+
+
+def log_popup_snapshot_summary() -> None:
+    logger.info(
+        "POPUP_SNAPSHOT_SUMMARY snapshots={} sources={} dedupe={} topbar_like={} popup_like={} empty_text={}",
+        POPUP_LOG_STATS["snapshot_count"],
+        dict(sorted(POPUP_LOG_STATS["source_counts"].items())),
+        dict(sorted(POPUP_LOG_STATS["dedupe"].items())),
+        POPUP_LOG_STATS["topbar_like"],
+        POPUP_LOG_STATS["popup_like"],
+        POPUP_LOG_STATS["empty_text"],
+    )
+
 TOPBAR_MAX_EXPECTED_HEIGHT = 80
 VERTICAL_POPUP_CLUSTER_MIN_ROWS = 4
 VERTICAL_POPUP_CLUSTER_MAX_TOP_GAP = 24
@@ -52,7 +74,7 @@ _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band"
 def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
     details = " ".join(f"{key}={value}" for key, value in payload.items())
     suffix = f" {details}" if details else ""
-    logger.info("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, (time.monotonic() - started_at) * 1000.0, suffix)
+    logger.debug("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, (time.monotonic() - started_at) * 1000.0, suffix)
 
 
 def _popup_visibility_counts(rows: list[dict[str, Any]]) -> tuple[int, int]:
@@ -337,7 +359,7 @@ def _row_identity_payload(row: dict[str, Any]) -> dict[str, Any]:
 
 def _log_popup_fragment(label: str, row: dict[str, Any]) -> None:
     payload = _row_identity_payload(row)
-    logger.info(
+    logger.debug(
         "{} source_scope={} control_type={} class_name={} text={!r} rectangle={} center={} process_id={} native_handle={} topbar_candidate={} popup_candidate={}",
         label,
         payload["source_scope"],
@@ -1050,7 +1072,8 @@ def _menu_like_controls_from_main_window() -> list[dict[str, Any]]:
             continue
         rows.append(row)
         _log_popup_fragment("DBG_MENU_FRAGMENT_MAIN_WINDOW", row)
-    logger.info("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=main_window count={}", len(rows))
+    POPUP_LOG_STATS["source_counts"]["main_window"] += len(rows)
+    logger.debug("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=main_window count={}", len(rows))
     return rows
 
 
@@ -1081,7 +1104,8 @@ def _menu_like_controls_from_global_process_scan() -> list[dict[str, Any]]:
                 _log_popup_fragment("DBG_MENU_FRAGMENT_GLOBAL_SCAN", row)
         except Exception:
             continue
-    logger.info("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=global_process_scan count={} process_id={}", len(rows), process_id)
+    POPUP_LOG_STATS["source_counts"]["global_process_scan"] += len(rows)
+    logger.debug("DBG_MENU_FRAGMENT_SOURCE_SUMMARY source_scope=global_process_scan count={} process_id={}", len(rows), process_id)
     return rows
 
 
@@ -1126,10 +1150,12 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
             row["source_scope"],
         )
         if key in seen:
-            logger.info("DBG_POPUP_ROW_DEDUPE rect={} normalized_text={} class_name={} source_scope={} deduplicated=True", rect, row["normalized_text"], row["class_name"], row["source_scope"])
+            POPUP_LOG_STATS["dedupe"]["deduplicated"] += 1
+            logger.debug("DBG_POPUP_ROW_DEDUPE rect={} normalized_text={} class_name={} source_scope={} deduplicated=True", rect, row["normalized_text"], row["class_name"], row["source_scope"])
             continue
         seen.add(key)
-        logger.info("DBG_POPUP_ROW_DEDUPE rect={} normalized_text={} class_name={} source_scope={} deduplicated=False", rect, row["normalized_text"], row["class_name"], row["source_scope"])
+        POPUP_LOG_STATS["dedupe"]["kept"] += 1
+        logger.debug("DBG_POPUP_ROW_DEDUPE rect={} normalized_text={} class_name={} source_scope={} deduplicated=False", rect, row["normalized_text"], row["class_name"], row["source_scope"])
         row["appeared_after_popup_open"] = False
         unique_rows.append(row)
 
@@ -1153,8 +1179,12 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
             popup_like_count += 1
         if not str(row.get("text") or "").strip():
             empty_text_count += 1
+    POPUP_LOG_STATS["snapshot_count"] += 1
+    POPUP_LOG_STATS["topbar_like"] += topbar_like_count
+    POPUP_LOG_STATS["popup_like"] += popup_like_count
+    POPUP_LOG_STATS["empty_text"] += empty_text_count
     logger.info(
-        "DBG_MENU_SNAPSHOT_SUMMARY main_window_fragments={} global_scan_fragments={} deduped_fragments={} topbar_like={} popup_like={} empty_text={} topbar_band={} empty_text_vertical_cluster_detected={} accepted_popup_rows={} popup_heuristic={}",
+        "POPUP_SNAPSHOT_SUMMARY main_window_fragments={} global_scan_fragments={} deduped_fragments={} topbar_like={} popup_like={} empty_text={} topbar_band={} empty_text_vertical_cluster_detected={} accepted_popup_rows={} popup_heuristic={}",
         len(main_rows),
         len(global_rows),
         len(unique_rows),

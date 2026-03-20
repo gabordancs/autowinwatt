@@ -9,11 +9,17 @@ import time
 
 from loguru import logger
 
-from winwatt_automation.live_ui.app_connector import get_cached_main_window
+from winwatt_automation.live_ui.app_connector import get_cached_main_window, log_cache_usage_summary
+from winwatt_automation.live_ui.menu_helpers import log_popup_snapshot_summary
 from winwatt_automation.runtime_logging import append_terminal_line, finalize_run, record_event, start_run, update_status
 from winwatt_automation.runtime_logging.progress_display import launch_progress_overlay
 from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
-from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TEST_PROJECT_PATH, build_full_runtime_program_map
+from winwatt_automation.runtime_mapping.program_mapper import (
+    DEFAULT_TEST_PROJECT_PATH,
+    build_full_runtime_program_map,
+    log_action_catalog_summary,
+)
+from winwatt_automation.logging_config import configure_logging
 from winwatt_automation.runtime_mapping.config import configure_diagnostics
 
 
@@ -123,17 +129,20 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--placeholder-traversal-focus", action="store_true", help="Diagnostic mode: focus logs and traversal behavior around geometry placeholder rows")
     parser.add_argument("--placeholder-modal-policy", default="submenu_only", choices=["submenu_only", "allow_modal_probe"], help="How placeholder traversal handles modal dialogs opened by geometry click points")
     parser.add_argument("--recent-projects-policy", default="skip_recent_projects", choices=["skip_recent_projects", "probe_recent_projects", "open_sample_recent_project"], help="How the File > recent projects area is handled during runtime mapping")
+    parser.add_argument("--log-profile", default="concise", choices=["concise", "diagnostic"], help="Concise keeps INFO high-signal, diagnostic exposes low-level DEBUG details.")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
     command = " ".join(["python", *sys.argv])
+    configure_logging(log_profile=args.log_profile)
     configure_diagnostics(
         diagnostic_fast_mode=args.diagnostic_fast_mode,
         placeholder_traversal_focus=args.placeholder_traversal_focus,
         placeholder_modal_policy=args.placeholder_modal_policy,
         recent_projects_policy=args.recent_projects_policy,
+        log_profile=args.log_profile,
     )
     run_ctx = start_run(
         command=command,
@@ -144,7 +153,8 @@ def main() -> int:
             "tags": ["map_full_program", "runtime_mapping"],
         },
     )
-    sink_id = logger.add(lambda msg: append_terminal_line(run_ctx, str(msg).rstrip("\n")), level="INFO")
+    sink_level = "DEBUG" if args.log_profile == "diagnostic" else "INFO"
+    sink_id = logger.add(lambda msg: append_terminal_line(run_ctx, str(msg).rstrip("\n")), level=sink_level)
     update_status(run_ctx, "starting", "Runtime mapping is starting…")
     if args.progress_overlay:
         launch_progress_overlay(run_ctx.status_path)
@@ -172,6 +182,9 @@ def main() -> int:
             include_disabled=_parse_bool(args.include_disabled),
             event_recorder=_event_recorder,
         )
+        log_cache_usage_summary()
+        log_popup_snapshot_summary()
+        log_action_catalog_summary()
 
         no_project = result["state_no_project"]
         project_open = result["state_project_open"]
@@ -181,6 +194,13 @@ def main() -> int:
         print(f"- no_project top_menus: {len(no_project.top_menus)}")
         print(f"- project_open top_menus: {len(project_open.top_menus)}")
         print(f"- diff summary: {diff.get('summary', {})}")
+        logger.info(
+            "Runtime mapping completed summary no_project_top_menus={} project_open_top_menus={} diff_summary={} log_profile={}",
+            len(no_project.top_menus),
+            len(project_open.top_menus),
+            diff.get("summary", {}),
+            args.log_profile,
+        )
 
         record_event(
             run_ctx,
