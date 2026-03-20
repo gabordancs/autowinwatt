@@ -551,3 +551,54 @@ def test_depth_one_retains_leaf_disabled_separator_and_submenu_metadata(monkeypa
 
     assert [node["action_classification"] for node in nodes] == ["leaf_action", "separator", "disabled", "opens_submenu"]
     assert nodes[3]["children"][0]["title"] == "PDF"
+
+
+def test_explore_menu_tree_placeholder_fast_mode_skips_parent_reopen(monkeypatch):
+    from winwatt_automation.runtime_mapping.config import configure_diagnostics
+
+    configure_diagnostics(diagnostic_fast_mode=True, placeholder_traversal_focus=False)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"),
+    )
+
+    popup_rows = [
+        {
+            "text": "",
+            "center_x": 15,
+            "center_y": 15,
+            "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        }
+    ]
+
+    reopen_calls = []
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows",
+        lambda **kwargs: reopen_calls.append(kwargs) or (_ for _ in ()).throw(AssertionError("should not reopen")),
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration",
+        lambda row, popup_rows: None,
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot",
+        lambda: popup_rows,
+    )
+
+    explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=popup_rows,
+        visited_paths={("fájl",)},
+    )
+
+    assert reopen_calls == []
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
