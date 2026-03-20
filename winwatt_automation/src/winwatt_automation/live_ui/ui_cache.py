@@ -29,4 +29,5 @@ class PopupState:
     current_menu_path: tuple[str, ...] | None = None
     popup_handle: int | None = None
     popup_rows: list[dict[str, Any]] | None = None
+    runtime_state_reset_required: bool = False
 
