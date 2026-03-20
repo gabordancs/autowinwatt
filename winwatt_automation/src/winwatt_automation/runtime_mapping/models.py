@@ -53,6 +53,7 @@ class RuntimeMenuNode:
     shortcut: str | None
     opens_submenu: bool
     opens_dialog: bool
+    opens_modal: bool
     likely_destructive: bool
     likely_state_changing: bool
     action_classification: str

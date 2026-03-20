@@ -3,8 +3,10 @@ from __future__ import annotations
 import sys
 import types
 
-from winwatt_automation.runtime_mapping.models import RuntimeDialogRecord, RuntimeStateSnapshot
+from winwatt_automation.runtime_mapping.config import configure_diagnostics
+from winwatt_automation.runtime_mapping.models import RuntimeDialogRecord, RuntimeMenuRow, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
+    _classify_placeholder_action_outcome,
     close_transient_dialog_or_window,
     detect_dialog_or_window_transition,
     map_runtime_state,
@@ -42,6 +44,46 @@ def test_dialog_opened_when_new_window_candidate_appears():
     ])
     result = detect_dialog_or_window_transition(before, after, child_rows=[])
     assert result["result_type"] == "dialog_opened"
+
+
+def test_placeholder_outcome_treats_32770_without_popup_as_modal():
+    configure_diagnostics(placeholder_modal_policy="submenu_only")
+    before = _snapshot(enabled=True)
+    after = _snapshot(
+        enabled=False,
+        windows=[
+            {"title": "WinWatt", "class_name": "TMainForm", "process_id": 123, "handle": 1},
+            {"title": "Projekt létrehozása", "class_name": "#32770", "process_id": 123, "handle": 2},
+        ],
+        foreground={"title": "Projekt létrehozása", "class_name": "#32770", "process_id": 123},
+    )
+    row = RuntimeMenuRow(
+        state_id="s",
+        top_menu="Fájl",
+        row_index=2,
+        menu_path=["Fájl", "Projekt létrehozása"],
+        text="Projekt létrehozása",
+        normalized_text="projekt letrehozasa",
+        rectangle={},
+        center_x=1,
+        center_y=1,
+        is_separator=False,
+        source_scope="popup",
+        fragments=[],
+        enabled_guess=True,
+        discovered_in_state="s",
+        meta={"source": "geometry_placeholder"},
+    )
+    outcome = _classify_placeholder_action_outcome(
+        state_id="s",
+        path=row.menu_path,
+        row=row,
+        before_action=before,
+        after_action=after,
+        current_rows=[],
+        child_rows=[],
+    )
+    assert outcome["outcome"] == "modal_opened"
 
 
 def test_close_helper_esc_success(monkeypatch):
