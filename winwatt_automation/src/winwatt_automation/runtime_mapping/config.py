@@ -14,6 +14,7 @@ class DiagnosticOptions:
     placeholder_traversal_focus: bool = False
     placeholder_modal_policy: str = "submenu_only"
     recent_projects_policy: str = "skip_recent_projects"
+    log_profile: str = "concise"
     disable_global_process_scan_rows: bool = False
     minimize_cache_validation: bool = False
     suppress_placeholder_top_menu_relist: bool = False
@@ -33,11 +34,13 @@ def configure_diagnostics(
     placeholder_traversal_focus: bool = False,
     placeholder_modal_policy: str = "submenu_only",
     recent_projects_policy: str = "skip_recent_projects",
+    log_profile: str = "concise",
 ) -> None:
     _DIAGNOSTIC_OPTIONS.diagnostic_fast_mode = diagnostic_fast_mode
     _DIAGNOSTIC_OPTIONS.placeholder_traversal_focus = placeholder_traversal_focus
     _DIAGNOSTIC_OPTIONS.placeholder_modal_policy = str(placeholder_modal_policy or "submenu_only").strip().lower()
     _DIAGNOSTIC_OPTIONS.recent_projects_policy = str(recent_projects_policy or "skip_recent_projects").strip().lower()
+    _DIAGNOSTIC_OPTIONS.log_profile = str(log_profile or "concise").strip().lower()
     _DIAGNOSTIC_OPTIONS.disable_global_process_scan_rows = diagnostic_fast_mode
     _DIAGNOSTIC_OPTIONS.minimize_cache_validation = diagnostic_fast_mode
     _DIAGNOSTIC_OPTIONS.suppress_placeholder_top_menu_relist = diagnostic_fast_mode or placeholder_traversal_focus
@@ -62,3 +65,11 @@ def placeholder_modal_policy() -> str:
 
 def recent_projects_policy() -> str:
     return _DIAGNOSTIC_OPTIONS.recent_projects_policy
+
+
+def log_profile() -> str:
+    return _DIAGNOSTIC_OPTIONS.log_profile
+
+
+def is_diagnostic_log_profile() -> bool:
+    return log_profile() == "diagnostic"
