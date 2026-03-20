@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter, defaultdict
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -35,6 +36,7 @@ from winwatt_automation.runtime_mapping.config import (
     is_diagnostic_fast_mode,
     is_fast_mode,
     is_placeholder_traversal_focus_mode,
+    is_diagnostic_log_profile,
     placeholder_modal_policy,
     recent_projects_policy,
 )
@@ -48,12 +50,18 @@ ENABLE_GEOMETRY_PLACEHOLDERS = True
 
 _TOP_MENU_CACHE: dict[str, Any] | None = None
 _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE: int | None = None
+ACTION_CATALOG_LOG_STATS: dict[str, Counter[str]] = defaultdict(Counter)
+SKIP_REASON_LOG_STATS: dict[str, Counter[str]] = defaultdict(Counter)
 
 
 def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
     details = " ".join(f"{key}={value}" for key, value in payload.items())
     suffix = f" {details}" if details else ""
-    logger.info("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, (time.monotonic() - started_at) * 1000.0, suffix)
+    elapsed_ms = (time.monotonic() - started_at) * 1000.0
+    if phase == "subtree_traversal":
+        logger.info("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, elapsed_ms, suffix)
+        return
+    logger.debug("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, elapsed_ms, suffix)
 
 
 def _placeholder_meta(row: RuntimeMenuRow | dict[str, Any]) -> dict[str, Any]:
@@ -243,6 +251,7 @@ def _row_to_node(
             "reused_from_previous_state": reused_from_previous_state,
         },
     )
+    logger.debug("_row_to_node state={} top_menu={} level={} index={} title={} placeholder={} classification={}", state_id, top_menu, level, index, title_clean, _is_placeholder_row(row), action_classification)
     _log_phase_timing("_row_to_node", started_at, top_menu=top_menu, level=level, index=index, title=title_clean, placeholder=_is_placeholder_row(row))
     return node
 
@@ -894,8 +903,22 @@ def _build_action_catalog_entry(
     }
     if skip_reason:
         entry["skip_reason"] = skip_reason
-    logger.info("ACTION_CATALOG_ENTRY state_path={} entry={}", path, entry)
+    top_menu_key = path[0] if path else "<unknown>"
+    ACTION_CATALOG_LOG_STATS[top_menu_key][action_state_classification or action_type or "unknown"] += 1
+    if skip_reason:
+        SKIP_REASON_LOG_STATS[top_menu_key][skip_reason] += 1
+    if is_diagnostic_log_profile():
+        logger.info("ACTION_CATALOG_ENTRY state_path={} entry={}", path, entry)
+    else:
+        logger.debug("ACTION_CATALOG_ENTRY state_path={} entry={}", path, entry)
     return entry
+
+
+def log_action_catalog_summary() -> None:
+    for top_menu, counts in sorted(ACTION_CATALOG_LOG_STATS.items()):
+        logger.info("ACTION_CATALOG_SUMMARY top_menu={} counts={}", top_menu, dict(sorted(counts.items())))
+    for top_menu, counts in sorted(SKIP_REASON_LOG_STATS.items()):
+        logger.info("SKIP_REASON_SUMMARY top_menu={} counts={}", top_menu, dict(sorted(counts.items())))
 
 
 def _build_state_transitions_from_actions(actions: list[dict[str, Any]]) -> list[dict[str, Any]]:
