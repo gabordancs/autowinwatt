@@ -122,6 +122,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--diagnostic-fast-mode", action="store_true", help="Diagnostic mode: disable global popup scan, reduce cache validation, and avoid placeholder-triggered relists")
     parser.add_argument("--placeholder-traversal-focus", action="store_true", help="Diagnostic mode: focus logs and traversal behavior around geometry placeholder rows")
     parser.add_argument("--placeholder-modal-policy", default="submenu_only", choices=["submenu_only", "allow_modal_probe"], help="How placeholder traversal handles modal dialogs opened by geometry click points")
+    parser.add_argument("--recent-projects-policy", default="skip_recent_projects", choices=["skip_recent_projects", "probe_recent_projects", "open_sample_recent_project"], help="How the File > recent projects area is handled during runtime mapping")
     return parser
 
 
@@ -132,6 +133,7 @@ def main() -> int:
         diagnostic_fast_mode=args.diagnostic_fast_mode,
         placeholder_traversal_focus=args.placeholder_traversal_focus,
         placeholder_modal_policy=args.placeholder_modal_policy,
+        recent_projects_policy=args.recent_projects_policy,
     )
     run_ctx = start_run(
         command=command,
