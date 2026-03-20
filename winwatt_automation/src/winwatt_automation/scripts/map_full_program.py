@@ -14,6 +14,7 @@ from winwatt_automation.runtime_logging import append_terminal_line, finalize_ru
 from winwatt_automation.runtime_logging.progress_display import launch_progress_overlay
 from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
 from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TEST_PROJECT_PATH, build_full_runtime_program_map
+from winwatt_automation.runtime_mapping.config import configure_diagnostics
 
 
 def _parse_top_menus(raw: str | None) -> list[str] | None:
@@ -118,12 +119,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-submenu-depth", type=int, default=-1, help="Use -1 for unlimited submenu traversal depth")
     parser.add_argument("--include-disabled", default="true")
     parser.add_argument("--progress-overlay", action="store_true", help="Show a non-activating status HUD while mapping runs")
+    parser.add_argument("--diagnostic-fast-mode", action="store_true", help="Diagnostic mode: disable global popup scan, reduce cache validation, and avoid placeholder-triggered relists")
+    parser.add_argument("--placeholder-traversal-focus", action="store_true", help="Diagnostic mode: focus logs and traversal behavior around geometry placeholder rows")
     return parser
 
 
 def main() -> int:
     args = build_parser().parse_args()
     command = " ".join(["python", *sys.argv])
+    configure_diagnostics(
+        diagnostic_fast_mode=args.diagnostic_fast_mode,
+        placeholder_traversal_focus=args.placeholder_traversal_focus,
+    )
     run_ctx = start_run(
         command=command,
         context={
