@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict
 import json
 from pathlib import Path
 
-from winwatt_automation.controller import ControllerConfig, DevCycleController
+from winwatt_automation.controller import ControllerConfig, DevCycleController, MappingCycleOrchestrator
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -36,6 +37,27 @@ def build_parser() -> argparse.ArgumentParser:
     cycle.add_argument("--timeout", type=int, default=None)
     cycle.add_argument("--stop-winwatt-on-timeout", action="store_true")
 
+
+    mapping_prepare = sub.add_parser("prepare", help="Generate next Codex prompt for mapping cycle")
+    mapping_prepare.add_argument("--goal", default=None)
+    mapping_prepare.add_argument("--request", default=None)
+    mapping_prepare.add_argument("--milestone", default=None, choices=["top_menu_stability", "placeholder_traversal", "modal_handling", "recent_projects_policy", "project_open_transition", "full_state_mapping"])
+    mapping_prepare.add_argument("--state", default=None)
+
+    mapping_ingest = sub.add_parser("ingest", help="Ingest standardized Codex result JSON")
+    mapping_ingest.add_argument("--result", default=None)
+
+    mapping_test = sub.add_parser("test", help="Run tests/manual command/log extract from Codex result")
+    mapping_test.add_argument("--result", default=None)
+    mapping_test.add_argument("--skip-manual", action="store_true")
+
+    mapping_handoff = sub.add_parser("handoff", help="Generate ChatGPT handoff summary from mapping cycle state")
+    mapping_handoff.add_argument("--result", default=None)
+
+    mapping_cycle = sub.add_parser("mapping-cycle", help="Run prepare/ingest/test/handoff orchestration")
+    mapping_cycle.add_argument("--result", default=None)
+    mapping_cycle.add_argument("--skip-manual", action="store_true")
+
     add = sub.add_parser("add", help="Run git add")
     add.add_argument("target", default=".", nargs="?")
 
@@ -50,6 +72,7 @@ def main() -> int:
     args = build_parser().parse_args()
     config = ControllerConfig.from_env()
     controller = DevCycleController(config)
+    mapping = MappingCycleOrchestrator(config)
 
     if args.command == "status":
         print(json.dumps(controller.repo_status(), ensure_ascii=False, indent=2))
@@ -95,6 +118,37 @@ def main() -> int:
         print(f"script: {cycle_result.script_result.status} ({cycle_result.script_result.elapsed_seconds:.2f}s)")
         print(f"chat brief: {cycle_result.chat_brief_path}")
         return 0 if cycle_result.script_result.status == "success" else 1
+
+
+    if args.command == "prepare":
+        output = mapping.prepare(goal=args.goal, request=args.request, milestone=args.milestone, state=args.state)
+        print(f"Codex prompt written: {output}")
+        return 0
+
+    if args.command == "ingest":
+        result = mapping.ingest(Path(args.result).resolve() if args.result else None)
+        print(json.dumps(result.codex_result, ensure_ascii=False, indent=2))
+        return 0
+
+    if args.command == "test":
+        result = mapping.run_tests(Path(args.result).resolve() if args.result else None, run_manual=not args.skip_manual)
+        payload = {
+            "tests": [asdict(item) for item in result.tests],
+            "manual_run": asdict(result.manual_run) if result.manual_run else None,
+            "log_extract_count": len(result.log_extract),
+        }
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+        return 0 if all(item.ok for item in result.tests) and (result.manual_run is None or result.manual_run.ok) else 1
+
+    if args.command == "handoff":
+        output = mapping.handoff(Path(args.result).resolve() if args.result else None)
+        print(f"Handoff written: {output}")
+        return 0
+
+    if args.command == "mapping-cycle":
+        outputs = mapping.cycle(Path(args.result).resolve() if args.result else None, run_manual=not args.skip_manual)
+        print(json.dumps({key: str(value) for key, value in outputs.items()}, ensure_ascii=False, indent=2))
+        return 0
 
     if args.command == "add":
         result = controller.git.add(args.target)
