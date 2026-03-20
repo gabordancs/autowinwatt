@@ -3,6 +3,7 @@ import pytest
 
 from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
+    _classify_popup_block,
     _build_menu_rows_from_popup_rows,
     _filter_normal_popup_rows,
     _safe_depth_decision,
@@ -114,6 +115,44 @@ def test_build_menu_rows_replaces_empty_text_popup_rows_with_geometry_placeholde
     assert rows[0].meta["click_strategy"] == "center_point_fallback"
     assert rows[0].actionable is True
     assert rows[0].action_type == "click"
+    assert rows[0].recent_project_entry is False
+
+
+def test_classify_popup_block_accepts_empty_file_recent_projects_block():
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl", "Súgó"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    rows = [
+        {
+            "text": "",
+            "center_x": 20,
+            "center_y": 50 + (idx * 18),
+            "rectangle": {"left": 10, "top": 40 + (idx * 18), "right": 150, "bottom": 56 + (idx * 18)},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        }
+        for idx in range(17)
+    ]
+
+    classification, accepted_rows, meta = _classify_popup_block(top_menu="Fájl", rows=rows, snapshot=snapshot)
+
+    assert classification == "recent_projects_block"
+    assert len(accepted_rows) == 17
+    assert meta["empty_popup_row_count"] == 17
+    assert all(row["recent_project_entry"] is True for row in accepted_rows)
+    assert all(row["stateful_menu_block"] is True for row in accepted_rows)
 
 def test_popup_top_level_name_is_filtered_from_children():
     rows = _build_menu_rows_from_popup_rows(
@@ -861,6 +900,62 @@ def test_explore_menu_tree_open_sample_recent_project_invalidates_stale_refs(mon
     assert popup_state.current_menu_path is None
     assert popup_state.popup_rows is None
     assert popup_state.runtime_state_reset_required is True
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
+
+
+def test_recent_project_entries_are_cataloged_not_unknown(monkeypatch):
+    from winwatt_automation.runtime_mapping.config import configure_diagnostics
+
+    configure_diagnostics(
+        diagnostic_fast_mode=False,
+        placeholder_traversal_focus=False,
+        recent_projects_policy="skip_recent_projects",
+    )
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl", "Súgó"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda _state_id: snapshot)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper._is_recent_projects_candidate", lambda **_kwargs: True)
+    popup_rows = [
+        {
+            "text": "",
+            "center_x": 15,
+            "center_y": 95,
+            "rectangle": {"left": 0, "top": 90, "right": 100, "bottom": 110},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+            "recent_project_entry": True,
+            "recent_projects_block": True,
+            "stateful_menu_block": True,
+            "popup_block_classification": "recent_projects_block",
+        }
+    ]
+
+    nodes, _, _actions, _dialogs, _windows, action_catalog = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=popup_rows,
+        visited_paths={("fájl",)},
+    )
+
+    assert nodes[0]["action_state_classification"] == "recent_project_entry"
+    assert action_catalog[0]["action_state_classification"] == "recent_project_entry"
+    assert action_catalog[0]["skip_reason"] == "recent_project_blocked_by_policy"
     configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
 
 

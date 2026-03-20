@@ -6,6 +6,7 @@ import types
 from winwatt_automation.runtime_mapping.config import configure_diagnostics
 from winwatt_automation.runtime_mapping.models import RuntimeDialogRecord, RuntimeMenuRow, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
+    _action_state_classification,
     _classify_placeholder_action_outcome,
     _verify_modal_close_outcome,
     close_transient_dialog_or_window,
@@ -177,3 +178,13 @@ def test_verify_modal_close_outcome_hard_fail_when_main_window_stays_disabled(mo
     assert result["ok"] is False
     assert result["main_window_enabled"] is False
     assert result["root_menu_reopenable"] is False
+
+
+def test_recent_project_open_transition_classification_preferred_over_leaf_classification():
+    classification = _action_state_classification(
+        transition={"recent_project_candidate": True, "project_open_state_transition": True, "attempted": True},
+        opens_submenu=False,
+        opens_modal=False,
+    )
+
+    assert classification == "opens_project_and_changes_runtime_state"
