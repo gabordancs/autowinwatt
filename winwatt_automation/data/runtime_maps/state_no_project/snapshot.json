@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 2116,
+  "process_id": 35688,
   "state_id": "no_project",
-  "timestamp": "2026-03-19T19:46:01.673621+00:00",
+  "timestamp": "2026-03-20T09:44:29.876554+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -37,10 +37,10 @@
       "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 2116,
-      "title": "WinWatt gólya"
+      "process_id": 23032,
+      "title": "Handle modal dialogs opened by geometry placeholder clicks by gabordancs · Pull Request #64 · gabordancs/autowinwatt - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -49,22 +49,34 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "TeamsWebView",
       "handle": null,
-      "process_id": 23032,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+      "process_id": 16952,
+      "title": "Gépészeti egyeztetés | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 35688,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "rctrl_renwnd32",
+      "handle": null,
+      "process_id": 9340,
+      "title": "Elküldött elemek – dancs.gabor@pedranogroup.com - Outlook"
+    },
+    {
+      "class_name": "rctrl_renwnd32",
+      "handle": null,
+      "process_id": 9340,
+      "title": "FW: MR2,3 tanulmány megküldése - Üzenet (HTML) "
     },
     {
       "class_name": "TeamsWebView",
       "handle": null,
       "process_id": 16952,
       "title": "Calendar | Calendar | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
-    },
-    {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 9340,
-      "title": "Naptár – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
       "class_name": "Notepad",

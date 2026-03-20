@@ -23,6 +23,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 0]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -57,6 +58,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 1]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -91,6 +93,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 2]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -125,6 +128,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 3]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -159,6 +163,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 4]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -193,6 +198,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 5]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -227,6 +233,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 6]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -261,6 +268,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 7]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -295,6 +303,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 8]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -329,6 +338,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 9]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -363,6 +373,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 10]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -397,6 +408,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 11]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -431,6 +443,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 12]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -465,6 +478,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 13]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -499,6 +513,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 14]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -533,6 +548,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 15]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -567,6 +583,7 @@
         "likely_state_changing": true,
         "normalized_title": "[unlabeled row 16]",
         "opens_dialog": false,
+        "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
@@ -578,584 +595,6 @@
         "state_id": "no_project",
         "title": "[unlabeled row 16]",
         "title_raw": "[unlabeled row 16]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 84,
-            "left": 4,
-            "right": 932,
-            "top": 56
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 17,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 17]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 17]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 17]",
-        "title_raw": "[unlabeled row 17]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 112,
-            "left": 4,
-            "right": 932,
-            "top": 84
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 18,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 18]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 18]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 18]",
-        "title_raw": "[unlabeled row 18]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 139,
-            "left": 4,
-            "right": 932,
-            "top": 111
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 19,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 19]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 19]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 20,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 20]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 20]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 20]",
-        "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 194,
-            "left": 4,
-            "right": 932,
-            "top": 166
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 21,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 21]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 21]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 21]",
-        "title_raw": "[unlabeled row 21]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 22,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 257,
-            "left": 4,
-            "right": 932,
-            "top": 229
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 23,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 23]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 23]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 23]",
-        "title_raw": "[unlabeled row 23]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 292,
-            "left": 4,
-            "right": 932,
-            "top": 264
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 24,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 24]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 24]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 24]",
-        "title_raw": "[unlabeled row 24]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 319,
-            "left": 4,
-            "right": 932,
-            "top": 291
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 25,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 25]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 25]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 25]",
-        "title_raw": "[unlabeled row 25]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 347,
-            "left": 4,
-            "right": 932,
-            "top": 319
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 26,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 26]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 26]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 26]",
-        "title_raw": "[unlabeled row 26]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 374,
-            "left": 4,
-            "right": 932,
-            "top": 346
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 27,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 27]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 27]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 27]",
-        "title_raw": "[unlabeled row 27]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 402,
-            "left": 4,
-            "right": 932,
-            "top": 374
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 28,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 28]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 28]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 28]",
-        "title_raw": "[unlabeled row 28]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 429,
-            "left": 4,
-            "right": 932,
-            "top": 401
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 29,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 29]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 29]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 29]",
-        "title_raw": "[unlabeled row 29]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 457,
-            "left": 4,
-            "right": 932,
-            "top": 429
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 30,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 30]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 30]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 30]",
-        "title_raw": "[unlabeled row 30]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 484,
-            "left": 4,
-            "right": 932,
-            "top": 456
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 31,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 31]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 31]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 31]",
-        "title_raw": "[unlabeled row 31]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 512,
-            "left": 4,
-            "right": 932,
-            "top": 484
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 32,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 32]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 32]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 32]",
-        "title_raw": "[unlabeled row 32]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 547,
-            "left": 4,
-            "right": 932,
-            "top": 519
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 33,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 33]",
-        "opens_dialog": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 33]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 33]",
-        "title_raw": "[unlabeled row 33]"
       }
     ],
     "path": [

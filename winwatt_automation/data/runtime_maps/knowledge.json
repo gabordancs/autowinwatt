@@ -36,79 +36,11 @@
       ],
       [
         "fájl",
-        "[unlabeled row 17]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 18]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 19]"
-      ],
-      [
-        "fájl",
         "[unlabeled row 1]"
       ],
       [
         "fájl",
-        "[unlabeled row 20]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 21]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 22]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 23]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 24]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 25]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 26]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 27]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 28]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 29]"
-      ],
-      [
-        "fájl",
         "[unlabeled row 2]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 30]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 31]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 32]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 33]"
       ],
       [
         "fájl",
@@ -179,79 +111,11 @@
         ],
         [
           "fájl",
-          "[unlabeled row 17]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 18]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 19]"
-        ],
-        [
-          "fájl",
           "[unlabeled row 1]"
         ],
         [
           "fájl",
-          "[unlabeled row 20]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 21]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 22]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 23]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 24]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 25]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 26]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 27]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 28]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 29]"
-        ],
-        [
-          "fájl",
           "[unlabeled row 2]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 30]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 31]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 32]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 33]"
         ],
         [
           "fájl",
@@ -286,159 +150,71 @@
     },
     "state_project_open": {
       "dialog_signatures": [],
-      "menu_paths": [],
+      "menu_paths": [
+        [
+          "fájl",
+          "[unlabeled row 0]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 10]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 11]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 1]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 2]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 3]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 4]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 5]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 6]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 7]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 8]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 9]"
+        ]
+      ],
       "window_signatures": []
     }
   },
-  "updated_at": "2026-03-19T19:50:07.845115+00:00",
+  "updated_at": "2026-03-20T09:46:41.102944+00:00",
   "verification": {
     "baseline_loaded": true,
     "coverage_pct": 100.0,
-    "covered_known_menu_paths": 0,
-    "current_menu_paths": 34,
-    "known_menu_paths": 0,
+    "covered_known_menu_paths": 17,
+    "current_menu_paths": 17,
+    "known_menu_paths": 17,
     "missing_dialogs": [],
     "missing_menu_paths": [],
     "missing_windows": [],
     "new_dialogs": [],
-    "new_menu_paths": [
-      [
-        "fájl",
-        "[unlabeled row 0]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 10]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 11]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 12]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 13]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 14]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 15]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 16]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 17]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 18]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 19]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 1]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 20]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 21]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 22]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 23]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 24]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 25]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 26]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 27]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 28]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 29]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 2]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 30]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 31]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 32]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 33]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 3]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 4]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 5]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 6]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 7]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 8]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 9]"
-      ]
-    ],
+    "new_menu_paths": [],
     "new_windows": []
   }
 }

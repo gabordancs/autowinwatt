@@ -9,18 +9,6 @@
     "only_in_a": [
       [
         "fájl",
-        "[unlabeled row 0]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 10]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 11]"
-      ],
-      [
-        "fájl",
         "[unlabeled row 12]"
       ],
       [
@@ -38,18 +26,21 @@
       [
         "fájl",
         "[unlabeled row 16]"
+      ]
+    ],
+    "only_in_b": [],
+    "shared": [
+      [
+        "fájl",
+        "[unlabeled row 0]"
       ],
       [
         "fájl",
-        "[unlabeled row 17]"
+        "[unlabeled row 10]"
       ],
       [
         "fájl",
-        "[unlabeled row 18]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 19]"
+        "[unlabeled row 11]"
       ],
       [
         "fájl",
@@ -57,63 +48,7 @@
       ],
       [
         "fájl",
-        "[unlabeled row 20]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 21]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 22]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 23]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 24]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 25]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 26]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 27]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 28]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 29]"
-      ],
-      [
-        "fájl",
         "[unlabeled row 2]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 30]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 31]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 32]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 33]"
       ],
       [
         "fájl",
@@ -143,20 +78,14 @@
         "fájl",
         "[unlabeled row 9]"
       ]
-    ],
-    "only_in_b": [
-      [
-        "fájl"
-      ]
-    ],
-    "shared": []
+    ]
   },
   "project_only_paths": [],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 34,
-    "actions_only_in_b": 1,
+    "actions_only_in_a": 5,
+    "actions_only_in_b": 0,
     "enabled_changes": 0,
     "project_only_paths": 0,
     "shared_top_menus": 1
