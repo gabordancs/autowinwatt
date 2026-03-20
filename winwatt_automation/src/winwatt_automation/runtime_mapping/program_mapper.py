@@ -173,6 +173,21 @@ def _row_topbar_like(row: dict[str, Any]) -> bool:
     return bool(row.get("topbar_like", row.get("topbar_candidate")))
 
 
+def _row_local_fragments_for_text_recovery(row: dict[str, Any]) -> list[dict[str, Any]]:
+    safe_fragments: list[dict[str, Any]] = []
+    for fragment in list(row.get("fragments") or []):
+        raw_sources = [str(source) for source in list(fragment.get("raw_text_sources") or []) if str(source)]
+        source_scope = str(fragment.get("source_scope") or "")
+        if raw_sources and raw_sources[0] == "legacy_text":
+            continue
+        if source_scope == "child_text" or not raw_sources:
+            safe_fragments.append(fragment)
+            continue
+        if any(source in {"child_text", "uia_name", "window_text"} for source in raw_sources):
+            safe_fragments.append(fragment)
+    return safe_fragments
+
+
 def _resolve_row_text_with_fallback(row: dict[str, Any], *, row_index: int) -> tuple[str, list[str], str]:
     direct_text = str(row.get("text") or "").strip()
     raw_sources = [str(source) for source in list(row.get("raw_text_sources") or []) if str(source)]
@@ -180,7 +195,13 @@ def _resolve_row_text_with_fallback(row: dict[str, Any], *, row_index: int) -> t
     if direct_text:
         return direct_text, raw_sources or ["existing_text"], confidence
 
-    fragments = list(row.get("fragments") or [])
+    if str(row.get("rejected_text_recovery_reason") or "") == "repeated_legacy_text":
+        logger.info(
+            "POPUP_TEXT_RECOVERY_SOURCE_REJECTED row_index={} source=legacy_text reason=repeated_fallback_text_mapper_guard",
+            row_index,
+        )
+
+    fragments = _row_local_fragments_for_text_recovery(row)
     merged = menu_helpers._merge_text_fragments(fragments, rect=dict(row.get("rectangle") or {}))
     if merged:
         merged_sources = list(dict.fromkeys([*raw_sources, "fragment_merge"]))
