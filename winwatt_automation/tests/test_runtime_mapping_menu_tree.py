@@ -1120,3 +1120,72 @@ def test_grouped_popup_rows_preserve_usable_text_when_uia_name_is_empty():
     assert grouped[0].text == "Mentés másként"
     assert grouped[0].raw_text_sources == ["window_text"]
     assert grouped[0].text_confidence == "high"
+
+
+def test_build_menu_rows_does_not_reuse_same_repeated_legacy_text_across_many_popup_rows():
+    popup_rows = []
+    for index in range(12):
+        popup_rows.append(
+            {
+                "text": "",
+                "raw_text_sources": ["legacy_text"],
+                "text_confidence": "none",
+                "rejected_text_recovery_reason": "repeated_legacy_text",
+                "center_x": 50,
+                "center_y": 20 + index * 24,
+                "rectangle": {"left": 0, "top": 10 + index * 24, "right": 140, "bottom": 32 + index * 24},
+                "is_separator": False,
+                "source_scope": "main",
+                "popup_reason": "below_topbar_band",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "fragments": [
+                    {
+                        "text": "Végrehajtás",
+                        "rectangle": {"left": 8, "top": 10 + index * 24, "right": 100, "bottom": 32 + index * 24},
+                        "center": (54, 20 + index * 24),
+                        "source_scope": "main",
+                        "raw_text_sources": ["legacy_text"],
+                    }
+                ],
+            }
+        )
+
+    rows = _build_menu_rows_from_popup_rows("no_project", "Fájl", popup_rows)
+
+    assert len(rows) == 12
+    assert all(row.text.startswith("[unlabeled row ") for row in rows)
+    assert all(row.meta.get("text_confidence") == "none" for row in rows)
+    assert all(row.meta.get("raw_text_sources") == ["legacy_text"] for row in rows)
+
+
+def test_build_menu_rows_prefers_row_local_fragment_merge_over_repeated_legacy_text():
+    rows = _build_menu_rows_from_popup_rows(
+        "no_project",
+        "Fájl",
+        [
+            {
+                "text": "",
+                "raw_text_sources": ["legacy_text"],
+                "text_confidence": "none",
+                "rejected_text_recovery_reason": "repeated_legacy_text",
+                "center_x": 50,
+                "center_y": 15,
+                "rectangle": {"left": 0, "top": 10, "right": 160, "bottom": 30},
+                "is_separator": False,
+                "source_scope": "main",
+                "popup_reason": "below_topbar_band",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "fragments": [
+                    {"text": "Projekt", "rectangle": {"left": 8, "top": 10, "right": 54, "bottom": 30}, "center": (31, 20), "source_scope": "child_text"},
+                    {"text": "megnyitása", "rectangle": {"left": 58, "top": 10, "right": 148, "bottom": 30}, "center": (103, 20), "source_scope": "child_text"},
+                    {"text": "Végrehajtás", "rectangle": {"left": 8, "top": 10, "right": 100, "bottom": 30}, "center": (54, 20), "source_scope": "main", "raw_text_sources": ["legacy_text"]},
+                ],
+            }
+        ],
+    )
+
+    assert rows[0].text == "Projekt megnyitása"
+    assert rows[0].raw_text_sources == ["legacy_text", "fragment_merge"]
+    assert rows[0].text_confidence == "medium"
