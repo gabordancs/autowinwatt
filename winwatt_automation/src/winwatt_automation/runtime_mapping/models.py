@@ -34,6 +34,8 @@ class RuntimeMenuRow:
     fragments: list[dict[str, Any]]
     enabled_guess: bool | None
     discovered_in_state: str
+    raw_text_sources: list[str] = field(default_factory=list)
+    text_confidence: str = "none"
     actionable: bool = True
     action_type: str = "click"
     recent_project_entry: bool = False
