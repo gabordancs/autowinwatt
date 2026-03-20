@@ -602,3 +602,86 @@ def test_explore_menu_tree_placeholder_fast_mode_skips_parent_reopen(monkeypatch
 
     assert reopen_calls == []
     configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
+
+
+def test_explore_menu_tree_placeholder_focus_reopens_fresh_root_snapshot(monkeypatch):
+    from winwatt_automation.runtime_mapping.config import configure_diagnostics
+
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=True)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=1,
+            main_window_title="W",
+            main_window_class="C",
+            visible_top_windows=[],
+            discovered_top_menus=["Fájl"],
+            timestamp="t",
+            main_window_enabled=True,
+            main_window_visible=True,
+            foreground_window={"title": "W", "class_name": "TMainForm"},
+        ),
+    )
+
+    popup_rows = [
+        {
+            "text": "",
+            "center_x": 15,
+            "center_y": 15,
+            "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        }
+    ]
+    refreshed_rows = [
+        {
+            "text": "",
+            "center_x": 18,
+            "center_y": 18,
+            "rectangle": {"left": 1, "top": 11, "right": 101, "bottom": 31},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        }
+    ]
+
+    reopen_calls = []
+    restore_calls = []
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._reopen_parent_popup_rows",
+        lambda **kwargs: reopen_calls.append(kwargs) or (popup_rows if len(reopen_calls) == 1 else refreshed_rows),
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration",
+        lambda row, popup_rows: None,
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot",
+        lambda: [],
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline",
+        lambda **kwargs: restore_calls.append(kwargs) or True,
+    )
+
+    nodes, _, actions, _, _ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=popup_rows,
+        visited_paths={("fájl",)},
+    )
+
+    assert len(reopen_calls) == 2
+    assert restore_calls[0]["stage"] == "post_action:Fájl > [unlabeled row 0]"
+    assert nodes[0]["action_state_classification"] == "changes_menu_state"
+    assert actions[0].event_details["action_state_classification"] == "changes_menu_state"
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
