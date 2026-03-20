@@ -129,6 +129,9 @@ class RuntimeStateMap:
     dialogs: list[dict[str, Any]]
     windows: list[dict[str, Any]]
     skipped_actions: list[dict[str, Any]] = field(default_factory=list)
+    action_catalog: list[dict[str, Any]] = field(default_factory=list)
+    state_transitions: list[dict[str, Any]] = field(default_factory=list)
+    state_atlas: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass(slots=True)
