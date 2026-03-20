@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 19052,
+  "process_id": 2116,
   "state_id": "no_project",
-  "timestamp": "2026-03-19T19:38:03.308808+00:00",
+  "timestamp": "2026-03-19T19:46:01.673621+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -39,7 +39,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 19052,
+      "process_id": 2116,
       "title": "WinWatt gólya"
     },
     {
@@ -52,7 +52,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "WebWatt - Google Chrome"
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "TeamsWebView",

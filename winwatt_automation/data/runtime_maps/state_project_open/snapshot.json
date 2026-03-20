@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 459692,
-    "process_id": 10908,
+    "handle": 722174,
+    "process_id": 2116,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -19,8 +19,8 @@
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": true,
-  "mapping_stop_reason": "lost_main_window_after:Fájl",
-  "process_id": 10908,
+  "mapping_stop_reason": "unrecoverable:Fájl",
+  "process_id": 2116,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -28,8 +28,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 459692,
-        "process_id": 10908,
+        "handle": 722174,
+        "process_id": 2116,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -37,7 +37,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 10908,
+        "process_id": 2116,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -54,14 +54,8 @@
     "success": true
   },
   "state_id": "project_open",
-  "timestamp": "2026-03-19T19:26:00.184825+00:00",
+  "timestamp": "2026-03-19T19:49:23.649576+00:00",
   "visible_top_windows": [
-    {
-      "class_name": "SysShadow",
-      "handle": null,
-      "process_id": 10908,
-      "title": ""
-    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -71,7 +65,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 10908,
+      "process_id": 2116,
       "title": "WinWatt gólya"
     },
     {
@@ -83,14 +77,14 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 23032,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+      "process_id": 19884,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 19884,
-      "title": "GitHub Desktop"
+      "process_id": 23032,
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "TeamsWebView",

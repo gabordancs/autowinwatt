@@ -1,20 +1,26 @@
 {
-  "run_id": "0059_true_2026-03-19_19-37-59",
-  "state": "failed",
-  "message": "Mapping failed.",
-  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode hybrid --max-submenu-depth 1 --include-disabled true",
+  "run_id": "0061_false_2026-03-19_19-45-58",
+  "state": "finished",
+  "message": "Mapping finished successfully.",
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode off --max-submenu-depth 1 --include-disabled false",
   "details": {
-    "exit_code": 1,
+    "exit_code": 0,
     "summary": {
-      "no_project_top_menus": null,
-      "project_open_top_menus": null,
-      "diff_summary": {},
-      "skipped_by_safety": null,
-      "last_error": "No WinWatt-like windows were found",
+      "no_project_top_menus": 1,
+      "project_open_top_menus": 1,
+      "diff_summary": {
+        "shared_top_menus": 1,
+        "actions_only_in_a": 34,
+        "actions_only_in_b": 1,
+        "enabled_changes": 0,
+        "project_only_paths": 0
+      },
+      "skipped_by_safety": 1,
+      "last_error": null,
       "modal_detected": false,
-      "recovery_attempted": false,
-      "recovery_success": false
+      "recovery_attempted": true,
+      "recovery_success": true
     }
   },
-  "updated_at": "2026-03-19T19:40:50.063133+00:00"
+  "updated_at": "2026-03-19T19:50:07.856766+00:00"
 }
