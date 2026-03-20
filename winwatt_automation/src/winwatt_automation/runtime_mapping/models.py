@@ -57,6 +57,7 @@ class RuntimeMenuNode:
     likely_destructive: bool
     likely_state_changing: bool
     action_classification: str
+    action_state_classification: str
     skipped_by_safety: bool
     children: list[dict[str, Any]] = field(default_factory=list)
     debug: dict[str, Any] = field(default_factory=dict)
