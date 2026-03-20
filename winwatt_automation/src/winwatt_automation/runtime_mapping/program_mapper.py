@@ -395,20 +395,27 @@ def _row_to_node(
 
 
 def reset_top_menu_cache() -> None:
-    global _TOP_MENU_CACHE, _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE
+    global _TOP_MENU_CACHE, _TOP_MENU_CACHE_DISCOVERED_SIGNATURE, _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE
     _TOP_MENU_CACHE = None
+    _TOP_MENU_CACHE_DISCOVERED_SIGNATURE = None
     _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE = None
 
 
 def get_canonical_top_menu_names(discovered_top_menus: list[str]) -> dict[str, Any]:
-    global _TOP_MENU_CACHE, _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE
+    global _TOP_MENU_CACHE, _TOP_MENU_CACHE_DISCOVERED_SIGNATURE, _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE
 
     try:
         main_window = get_cached_main_window()
     except Exception:
         main_window = None
     current_handle = _safe_call(main_window, "handle", None)
-    if current_handle is not None and _TOP_MENU_CACHE is not None and _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE == current_handle:
+    discovered_signature = tuple(normalize_menu_title(item) for item in discovered_top_menus if normalize_menu_title(item))
+    if (
+        current_handle is not None
+        and _TOP_MENU_CACHE is not None
+        and _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE == current_handle
+        and _TOP_MENU_CACHE_DISCOVERED_SIGNATURE == discovered_signature
+    ):
         return _TOP_MENU_CACHE
 
     items: list[dict[str, str]] = []
@@ -429,6 +436,7 @@ def get_canonical_top_menu_names(discovered_top_menus: list[str]) -> dict[str, A
     }
     if current_handle is not None:
         _TOP_MENU_CACHE = canonical
+        _TOP_MENU_CACHE_DISCOVERED_SIGNATURE = discovered_signature
         _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE = current_handle
     logger.info("Canonical top-level menus [{}]: {}", len(items), [item["raw"] for item in items])
     return canonical
@@ -527,6 +535,8 @@ def _build_menu_rows_from_popup_rows(
 ) -> list[RuntimeMenuRow]:
     started_at = time.monotonic()
     mapped: list[RuntimeMenuRow] = []
+    filtered_counts = {"top_level_overlap": 0, "empty_popup_text_non_actionable": 0}
+    placeholder_count = 0
     for index, row in enumerate(rows):
         popup_like = _row_popup_like(row)
         topbar_like = _row_topbar_like(row)
@@ -556,6 +566,7 @@ def _build_menu_rows_from_popup_rows(
                 normalize_menu_title(str(row.get("text") or "")),
             )
             logger.debug("popup row filtered as top-level overlap top_menu={} row_text={}", top_menu, row.get("text"))
+            filtered_counts["top_level_overlap"] += 1
             continue
         text, raw_text_sources, text_confidence = _resolve_row_text_with_fallback(row, row_index=index)
         title, _ = _extract_shortcut(text)
@@ -622,6 +633,7 @@ def _build_menu_rows_from_popup_rows(
                     rect,
                     row.get("popup_reason"),
                 )
+                placeholder_count += 1
             elif not bool(row.get("is_separator")):
                 logger.info(
                     "DBG_MENU_BUILD_FILTER_REASON state={} top_menu={} row_index={} reason=empty_popup_text_non_actionable row_text={!r} rectangle={} popup_reason={} topbar_like={} popup_like={}",
@@ -634,6 +646,7 @@ def _build_menu_rows_from_popup_rows(
                     topbar_like,
                     popup_like,
                 )
+                filtered_counts["empty_popup_text_non_actionable"] += 1
                 continue
         meta.setdefault("popup_block_classification", row.get("popup_block_classification", "normal_popup"))
         meta.setdefault("recent_projects_block", bool(row.get("recent_projects_block")))
@@ -676,6 +689,16 @@ def _build_menu_rows_from_popup_rows(
             _guess_enabled(row),
             row.get("rectangle"),
         )
+    logger.info(
+        "MENU_ROW_BUILD_SUMMARY state={} top_menu={} input_rows={} mapped_rows={} placeholders={} filtered_overlap={} filtered_empty_non_actionable={}",
+        state_id,
+        top_menu,
+        len(rows),
+        len(mapped),
+        placeholder_count,
+        filtered_counts["top_level_overlap"],
+        filtered_counts["empty_popup_text_non_actionable"],
+    )
     _log_phase_timing("_build_menu_rows_from_popup_rows", started_at, state_id=state_id, top_menu=top_menu, input_rows=len(rows), mapped_rows=len(mapped))
     return mapped
 
@@ -1125,12 +1148,14 @@ def _build_state_atlas_entry(state_map: RuntimeStateMap) -> dict[str, Any]:
         "state_transitions": list(state_map.state_transitions),
     }
     logger.info(
-        "STATE_ATLAS_ENTRY_CREATED state_id={} top_menus={} rows={} actions={} transitions={}",
+        "STATE_ATLAS_ENTRY_CREATED state_id={} top_menus={} rows={} actions={} transitions={} top_menu_texts={} action_sample={} ",
         state_map.state_id,
         len(state_map.top_menus),
         len(state_map.menu_rows),
         len(state_map.action_catalog),
         len(state_map.state_transitions),
+        [item.get("text") for item in state_map.top_menus],
+        [item.get("path") for item in state_map.action_catalog[:3]],
     )
     return entry
 
@@ -2655,6 +2680,24 @@ def _diff_summary_markdown(diff: RuntimeStateDiff) -> str:
     )
 
 
+def _retain_selected_top_menus(
+    *,
+    retained: dict[str, dict[str, Any]],
+    canonical_top_menus: dict[str, Any],
+    target_menu_map: dict[str, str],
+    state_id: str,
+) -> None:
+    for item in canonical_top_menus["items"]:
+        if item["normalized"] not in target_menu_map:
+            continue
+        retained[item["normalized"]] = {
+            "state_id": state_id,
+            "text": item["clean"],
+            "text_raw": item["raw"],
+            "text_normalized": item["normalized"],
+        }
+
+
 def map_runtime_state(
     *,
     state_id: str,
@@ -2669,6 +2712,21 @@ def map_runtime_state(
     canonical_top_menus = get_canonical_top_menu_names(discovered)
     target_menus = top_menus or DEFAULT_TOP_MENUS
     target_menu_map = {normalize_menu_title(item): item for item in target_menus}
+    retained_top_menus: dict[str, dict[str, Any]] = {}
+    _retain_selected_top_menus(
+        retained=retained_top_menus,
+        canonical_top_menus=canonical_top_menus,
+        target_menu_map=target_menu_map,
+        state_id=state_id,
+    )
+    logger.info(
+        "MAP_RUNTIME_STATE_SELECTION state_id={} discovered={} canonical={} requested={} normalized_targets={}",
+        state_id,
+        discovered,
+        [item["raw"] for item in canonical_top_menus["items"]],
+        top_menus or DEFAULT_TOP_MENUS,
+        list(target_menu_map),
+    )
 
     all_rows: list[RuntimeMenuRow] = []
     all_tree: list[dict[str, Any]] = []
@@ -2687,6 +2745,12 @@ def map_runtime_state(
         top_menu_normalized = target_menu_keys[index]
         discovered_top_menu = canonical_top_menus["normalized_to_raw"].get(top_menu_normalized)
         if not discovered_top_menu:
+            logger.warning(
+                "MAP_RUNTIME_STATE_MENU_SKIPPED state_id={} requested_menu={} reason=not_found_in_canonical available={}",
+                state_id,
+                top_menu_normalized,
+                [item["raw"] for item in canonical_top_menus["items"]],
+            )
             index += 1
             continue
 
@@ -2708,14 +2772,44 @@ def map_runtime_state(
             normalized_top_menu = normalize_menu_title(discovered_top_menu)
             logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', discovered_top_menu, normalized_top_menu)
             all_tree.append({"state_id": state_id, "title_raw": discovered_top_menu, "title_normalized": normalized_top_menu, "title": clean_top_menu, "path": [clean_top_menu], "children": tree})
+            retained_top_menus[normalized_top_menu] = {
+                "state_id": state_id,
+                "text": clean_top_menu,
+                "text_raw": discovered_top_menu,
+                "text_normalized": normalized_top_menu,
+            }
             all_rows.extend(rows)
             all_actions.extend(actions)
             all_dialogs.extend(dialogs)
             all_windows.extend(windows)
             all_action_catalog.extend(action_catalog)
+            logger.info(
+                "MAP_RUNTIME_STATE_MENU_RESULT state_id={} top_menu={} rows={} nodes={} actions={} dialogs={} windows={} catalog={}",
+                state_id,
+                discovered_top_menu,
+                len(rows),
+                len(tree),
+                len(actions),
+                len(dialogs),
+                len(windows),
+                len(action_catalog),
+            )
             if popup_state.runtime_state_reset_required:
                 snapshot = capture_state_snapshot(state_id)
                 canonical_top_menus = get_canonical_top_menu_names(snapshot.discovered_top_menus)
+                _retain_selected_top_menus(
+                    retained=retained_top_menus,
+                    canonical_top_menus=canonical_top_menus,
+                    target_menu_map=target_menu_map,
+                    state_id=state_id,
+                )
+                logger.info(
+                    "MAP_RUNTIME_STATE_POST_RESET state_id={} discovered={} canonical={} retained={}",
+                    state_id,
+                    snapshot.discovered_top_menus,
+                    [item["raw"] for item in canonical_top_menus["items"]],
+                    list(retained_top_menus),
+                )
                 popup_state.runtime_state_reset_required = False
         except Exception as exc:
             logger.exception("Top menu mapping failed: {}", discovered_top_menu)
@@ -2766,14 +2860,24 @@ def map_runtime_state(
     state_actions = [item if isinstance(item, dict) else asdict(item) for item in all_actions]
     state_transitions = _build_state_transitions_from_actions(state_actions)
 
+    final_top_menus = [retained_top_menus[key] for key in target_menu_map if key in retained_top_menus]
+    logger.info(
+        "MAP_RUNTIME_STATE_FINAL_COUNTS state_id={} retained_top_menus={} rows={} actions={} dialogs={} windows={} transitions={} partial={} stop_reason={}",
+        state_id,
+        [item["text_raw"] for item in final_top_menus],
+        len(all_rows),
+        len(state_actions),
+        len(all_dialogs),
+        len(all_windows),
+        len(state_transitions),
+        partial_mapping,
+        stop_reason,
+    )
+
     state_map = RuntimeStateMap(
         state_id=state_id,
         snapshot=snapshot_payload,
-        top_menus=[
-            {"state_id": state_id, "text": item["clean"], "text_raw": item["raw"], "text_normalized": item["normalized"]}
-            for item in canonical_top_menus["items"]
-            if item["normalized"] in set(target_menu_map)
-        ],
+        top_menus=final_top_menus,
         menu_rows=[asdict(item) for item in all_rows],
         menu_tree=all_tree,
         actions=state_actions,
