@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from typing import Any
 
 from loguru import logger
+from winwatt_automation.runtime_mapping.config import diagnostic_options
 from winwatt_automation.runtime_mapping.timing import WINDOW_READY_POLL_INTERVAL, WINDOW_READY_TIMEOUT
 
 MAIN_FRAME_CLASS_HINTS = ("main", "frame", "mdi", "awin", "tmain")
@@ -466,6 +467,12 @@ def _foreground_resolve_is_throttled(now: float) -> bool:
 def get_cached_main_window() -> Any:
     """Return cached WinWatt main window wrapper, reconnecting only when unhealthy."""
 
+    started_at = time.monotonic()
+    options = diagnostic_options()
+    validation_interval_s = MainWindowSession.validation_interval_s
+    if options.minimize_cache_validation:
+        validation_interval_s = max(validation_interval_s, 30.0)
+
     cached_main_window = WinWattSession.main_window
     if cached_main_window is not None:
         cached_main_window = _materialize_window_wrapper(cached_main_window)
@@ -473,15 +480,17 @@ def get_cached_main_window() -> Any:
         now = time.monotonic()
         MainWindowSession.window = cached_main_window
         MainWindowSession.process_id = WinWattSession.process_id
-        if now - MainWindowSession.last_validation_monotonic < MainWindowSession.validation_interval_s:
-            logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_reused_without_validation payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), now - MainWindowSession.last_validation_monotonic)
+        if now - MainWindowSession.last_validation_monotonic < validation_interval_s:
+            logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_reused_without_validation payload={} last_validation_age_s={} diagnostic_fast_mode={}", _window_identity_payload(cached_main_window), now - MainWindowSession.last_validation_monotonic, options.diagnostic_fast_mode)
+            logger.info("DBG_PHASE_TIMING phase=get_cached_main_window elapsed_ms={:.3f} reason_code=cache_reused_without_validation", (time.monotonic() - started_at) * 1000.0)
             return cached_main_window
         age_s = now - MainWindowSession.last_validation_monotonic
         is_healthy, reason_code = _cached_window_health_status(cached_main_window)
         _register_cached_window_health_result(reason_code=reason_code, now=now)
         if is_healthy:
             MainWindowSession.last_validation_monotonic = now
-            logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={} last_validation_age_s={}", _window_identity_payload(cached_main_window), age_s)
+            logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_validated_ok payload={} last_validation_age_s={} diagnostic_fast_mode={}", _window_identity_payload(cached_main_window), age_s, options.diagnostic_fast_mode)
+            logger.info("DBG_PHASE_TIMING phase=get_cached_main_window elapsed_ms={:.3f} reason_code=cache_validated_ok", (time.monotonic() - started_at) * 1000.0)
             return cached_main_window
         if reason_code == "foreground_context_failed" and _foreground_resolve_is_throttled(now):
             elapsed_since_last_resolve_s = now - MainWindowSession.last_resolve_attempt_monotonic
@@ -495,11 +504,12 @@ def get_cached_main_window() -> Any:
                 describe_foreground_window(),
             )
             MainWindowSession.last_validation_monotonic = now
+            logger.info("DBG_PHASE_TIMING phase=get_cached_main_window elapsed_ms={:.3f} reason_code=cache_resolve_throttled", (time.monotonic() - started_at) * 1000.0)
             return cached_main_window
         MainWindowSession.last_resolve_attempt_monotonic = now
-        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_invalid_resolving_fresh payload={} health_reason={}", _window_identity_payload(cached_main_window), reason_code)
+        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_invalid_resolving_fresh payload={} health_reason={} diagnostic_fast_mode={}", _window_identity_payload(cached_main_window), reason_code, options.diagnostic_fast_mode)
     else:
-        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh")
+        logger.info("DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh diagnostic_fast_mode={}", options.diagnostic_fast_mode)
 
     resolved = _resolve_uia_main_window()
     MainWindowSession.window = resolved
@@ -507,6 +517,7 @@ def get_cached_main_window() -> Any:
     MainWindowSession.last_validation_monotonic = time.monotonic()
     MainWindowSession.foreground_failure_count = 0
     MainWindowSession.last_foreground_failure_monotonic = 0.0
+    logger.info("DBG_PHASE_TIMING phase=get_cached_main_window elapsed_ms={:.3f} reason_code=fresh_resolve", (time.monotonic() - started_at) * 1000.0)
     return resolved
 
 

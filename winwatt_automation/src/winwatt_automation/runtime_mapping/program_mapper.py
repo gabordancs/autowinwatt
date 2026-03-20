@@ -30,7 +30,7 @@ from winwatt_automation.runtime_mapping.menu_text import clean_menu_title, norma
 from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
 from winwatt_automation.runtime_mapping.timing import BASELINE_DELAY, POPUP_WAIT_TIMEOUT
-from winwatt_automation.runtime_mapping.config import is_fast_mode
+from winwatt_automation.runtime_mapping.config import diagnostic_options, is_diagnostic_fast_mode, is_fast_mode, is_placeholder_traversal_focus_mode
 from winwatt_automation.live_ui.ui_cache import PopupState
 
 
@@ -42,6 +42,22 @@ ENABLE_GEOMETRY_PLACEHOLDERS = True
 _TOP_MENU_CACHE: dict[str, Any] | None = None
 _TOP_MENU_CACHE_MAIN_WINDOW_HANDLE: int | None = None
 
+
+def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
+    details = " ".join(f"{key}={value}" for key, value in payload.items())
+    suffix = f" {details}" if details else ""
+    logger.info("DBG_PHASE_TIMING phase={} elapsed_ms={:.3f}{}", phase, (time.monotonic() - started_at) * 1000.0, suffix)
+
+
+def _placeholder_meta(row: RuntimeMenuRow | dict[str, Any]) -> dict[str, Any]:
+    if isinstance(row, RuntimeMenuRow):
+        return dict(row.meta)
+    return dict(row.get("meta") or {})
+
+
+def _is_placeholder_row(row: RuntimeMenuRow | dict[str, Any]) -> bool:
+    meta = _placeholder_meta(row)
+    return meta.get("source") == "geometry_placeholder"
 
 
 class UnrecoverableMainWindowError(RuntimeError):
@@ -156,6 +172,7 @@ def _row_to_node(
     skipped_by_safety: bool = False,
     reused_from_previous_state: bool = False,
 ) -> RuntimeMenuNode:
+    started_at = time.monotonic()
     title_raw = str(row.get("text") or "")
     title, shortcut = _extract_shortcut(title_raw)
     title_clean = clean_menu_title(title)
@@ -183,7 +200,7 @@ def _row_to_node(
     else:
         action_classification = "unknown"
 
-    return RuntimeMenuNode(
+    node = RuntimeMenuNode(
         state_id=state_id,
         title_raw=title,
         title=title_clean,
@@ -209,6 +226,8 @@ def _row_to_node(
             "reused_from_previous_state": reused_from_previous_state,
         },
     )
+    _log_phase_timing("_row_to_node", started_at, top_menu=top_menu, level=level, index=index, title=title_clean, placeholder=_is_placeholder_row(row))
+    return node
 
 
 def reset_top_menu_cache() -> None:
@@ -342,6 +361,7 @@ def _build_menu_rows_from_popup_rows(
     *,
     canonical_top_menu_names: set[str] | None = None,
 ) -> list[RuntimeMenuRow]:
+    started_at = time.monotonic()
     mapped: list[RuntimeMenuRow] = []
     for index, row in enumerate(rows):
         popup_like = _row_popup_like(row)
@@ -408,6 +428,7 @@ def _build_menu_rows_from_popup_rows(
                 normalized_title = normalize_menu_title(title_clean)
                 click_point = _rect_center(rect)
                 meta = {
+                    "source_scope": str(row.get("source_scope") or ""),
                     "id": f"__geom_row_{index:03d}",
                     "source": "geometry_placeholder",
                     "row_index": index,
@@ -475,6 +496,7 @@ def _build_menu_rows_from_popup_rows(
             _guess_enabled(row),
             row.get("rectangle"),
         )
+    _log_phase_timing("_build_menu_rows_from_popup_rows", started_at, state_id=state_id, top_menu=top_menu, input_rows=len(rows), mapped_rows=len(mapped))
     return mapped
 
 
@@ -488,11 +510,51 @@ def _hover_row(row: dict[str, Any]) -> None:
 
 
 def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str, Any]]) -> None:
+    options = diagnostic_options()
+    popup_count = len(popup_rows) if popup_rows is not None else 0
+    popup_visible_now, topbar_visible_now = menu_helpers._popup_visibility_counts(popup_rows or [])
+    meta = dict(row.meta)
+    placeholder = _is_placeholder_row(row)
+    logger.info(
+        "DBG_PLACEHOLDER_TRAVERSAL_CANDIDATE path={} row_index={} placeholder={} action_type={} source_scope={} meta={} popup_visible_count={} topbar_visible_count={} diagnostic_fast_mode={}",
+        row.menu_path,
+        row.row_index,
+        placeholder,
+        row.action_type,
+        row.source_scope,
+        meta,
+        popup_visible_now,
+        topbar_visible_now,
+        options.diagnostic_fast_mode,
+    )
+    decision = "click_structured_row"
+    if placeholder and meta.get("click_point"):
+        decision = "click_placeholder_point"
+    elif placeholder and row.action_type == "hover":
+        decision = "hover_placeholder"
+    logger.info(
+        "DBG_PLACEHOLDER_TRAVERSAL_DECISION path={} decision={} action_type={} source_scope={} popup_visible_count={} popup_rows_count={} meta_source={} click_strategy={}",
+        row.menu_path,
+        decision,
+        row.action_type,
+        row.source_scope,
+        popup_visible_now,
+        popup_count,
+        meta.get("source_scope", row.source_scope),
+        meta.get("click_strategy"),
+    )
     try:
+        if decision == "click_placeholder_point":
+            from pywinauto import mouse
+            point = meta.get("click_point") or {}
+            mouse.click(button="left", coords=(int(point.get("x") or row.center_x), int(point.get("y") or row.center_y)))
+            return
+        if decision == "hover_placeholder":
+            _hover_row(asdict(row))
+            return
         menu_helpers.click_structured_popup_row(popup_rows, row.row_index)
         return
     except Exception as exc:
-        popup_count = len(popup_rows) if popup_rows is not None else None
         logger.info(
             "DBG_WINWATT_STRUCTURED_ROW_CLICK_EXCEPTION exception_class={} exception_message={} current_path={} fallback_to_hover=True popup_rows_count={}",
             exc.__class__.__name__,
@@ -692,16 +754,20 @@ def _reopen_parent_popup_rows(
     canonical_top_menu_names: set[str] | None,
     popup_state: PopupState | None,
 ) -> list[dict[str, Any]]:
+    started_at = time.monotonic()
     logger.info(
-        "DBG_WINWATT_NORMAL_MENU_REOPEN_PARENT state={} top_menu={} parent_path={} cached_popup_path={}",
+        "DBG_WINWATT_NORMAL_MENU_REOPEN_PARENT state={} top_menu={} parent_path={} cached_popup_path={} suppress_placeholder_top_menu_relist={}",
         state_id,
         top_menu,
         parent_path,
         getattr(popup_state, "current_menu_path", None) if popup_state is not None else None,
+        diagnostic_options().suppress_placeholder_top_menu_relist,
     )
     normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
     if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
-        return list(popup_state.popup_rows)
+        cached = list(popup_state.popup_rows)
+        _log_phase_timing("reopen_parent_popup_rows", started_at, strategy="popup_state_reuse", row_count=len(cached), parent_path=" > ".join(parent_path))
+        return cached
 
     if not restore_clean_menu_baseline(state_id=state_id, stage=f"reopen_parent:{' > '.join(parent_path)}"):
         return []
@@ -743,6 +809,7 @@ def _reopen_parent_popup_rows(
     if popup_state is not None:
         popup_state.current_menu_path = normalized_parent
         popup_state.popup_rows = list(current_rows)
+    _log_phase_timing("reopen_parent_popup_rows", started_at, strategy="reopened", row_count=len(current_rows), parent_path=" > ".join(parent_path))
     return current_rows
 
 
@@ -1338,6 +1405,7 @@ def explore_menu_tree(
     nodes: list[dict[str, Any]] = []
     actions: list[RuntimeActionResult] = []
 
+    traversal_started_at = time.monotonic()
     for row in current_level_rows:
         if not include_disabled and row.enabled_guess is False:
             continue
@@ -1370,7 +1438,22 @@ def explore_menu_tree(
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
 
         if (max_depth is None or max_depth < 0 or depth < max_depth) and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
-            active_popup_rows = _reopen_parent_popup_rows(
+            placeholder = _is_placeholder_row(row)
+            skip_parent_reopen = bool(placeholder and diagnostic_options().suppress_placeholder_top_menu_relist and popup_rows)
+            logger.info(
+                "DBG_SUBTREE_TRAVERSAL_DECISION state={} path={} placeholder={} skipped_by_safety={} reused_from_previous_state={} action_type={} source_scope={} skip_parent_reopen={} diagnostic_fast_mode={} placeholder_focus_mode={}",
+                state_id,
+                path,
+                placeholder,
+                skipped,
+                reused_from_previous_state,
+                row.action_type,
+                row.source_scope,
+                skip_parent_reopen,
+                is_diagnostic_fast_mode(),
+                is_placeholder_traversal_focus_mode(),
+            )
+            active_popup_rows = popup_rows if skip_parent_reopen else _reopen_parent_popup_rows(
                 state_id=state_id,
                 top_menu=top_menu,
                 parent_path=parent_path,
@@ -1410,6 +1493,16 @@ def explore_menu_tree(
                     )
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
+            popup_visible_count, topbar_visible_count = menu_helpers._popup_visibility_counts(current_rows)
+            logger.info(
+                "DBG_POST_ACTION_POPUP_VISIBILITY state={} path={} popup_visible_count={} topbar_visible_count={} snapshot_rows={} placeholder={} ",
+                state_id,
+                path,
+                popup_visible_count,
+                topbar_visible_count,
+                len(current_rows),
+                placeholder,
+            )
             if _is_primary_normal_top_menu(top_menu):
                 current_rows = _filter_normal_popup_rows(current_rows, canonical_top_menu_names=canonical_top_menu_names)
             child_rows = _detect_child_rows(asdict(row), current_rows)
@@ -1424,6 +1517,7 @@ def explore_menu_tree(
                 transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
             if child_rows:
                 opens_submenu = True
+                logger.info("DBG_SUBTREE_TRAVERSAL_SUBMENU_OPENED state={} path={} child_row_count={} placeholder={}", state_id, path, len(child_rows), placeholder)
                 if popup_state is not None:
                     popup_state.current_menu_path = tuple(normalize_menu_title(part) for part in path)
                     popup_state.popup_rows = list(child_rows)
@@ -1514,6 +1608,7 @@ def explore_menu_tree(
             )
         )
 
+    _log_phase_timing("subtree_traversal", traversal_started_at, state_id=state_id, top_menu=top_menu, depth=depth, rows=len(current_level_rows), nodes=len(nodes), actions=len(actions))
     return nodes, collected_rows, actions, dialogs, windows
 
 
