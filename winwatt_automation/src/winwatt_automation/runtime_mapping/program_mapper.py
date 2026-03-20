@@ -173,6 +173,90 @@ def _row_topbar_like(row: dict[str, Any]) -> bool:
     return bool(row.get("topbar_like", row.get("topbar_candidate")))
 
 
+def _foreground_matches_main_window(snapshot: RuntimeStateSnapshot | None) -> bool:
+    if snapshot is None:
+        return False
+    foreground = dict(snapshot.foreground_window or {})
+    return bool(foreground) and str(foreground.get("title") or "") == snapshot.main_window_title and str(foreground.get("class_name") or "") == snapshot.main_window_class
+
+
+def _is_stable_vertical_popup_list(rows: list[dict[str, Any]]) -> bool:
+    popup_rows = [row for row in rows if _row_popup_like(row)]
+    if not popup_rows:
+        return False
+    base_rect = dict((popup_rows[0].get("rectangle") or {}))
+    base_left = int(base_rect.get("left") or 0)
+    base_right = int(base_rect.get("right") or 0)
+    last_top = int(base_rect.get("top") or 0)
+    base_height = max(1, int(base_rect.get("bottom") or 0) - last_top)
+    for row in popup_rows[1:]:
+        rect = dict(row.get("rectangle") or {})
+        left = int(rect.get("left") or 0)
+        right = int(rect.get("right") or 0)
+        top = int(rect.get("top") or 0)
+        height = max(1, int(rect.get("bottom") or 0) - top)
+        if abs(left - base_left) > 6 or abs(right - base_right) > 6:
+            return False
+        if abs(height - base_height) > 8:
+            return False
+        if top <= last_top or top - last_top > max(40, base_height * 2):
+            return False
+        last_top = top
+    return True
+
+
+def _classify_popup_block(
+    *,
+    top_menu: str,
+    rows: list[dict[str, Any]],
+    snapshot: RuntimeStateSnapshot | None,
+    canonical_top_menu_names: set[str] | None = None,
+) -> tuple[str, list[dict[str, Any]], dict[str, Any]]:
+    popup_like_count, topbar_like_count, filtered_rows = _summarize_normal_popup_rows(
+        rows,
+        canonical_top_menu_names=canonical_top_menu_names,
+    )
+    popup_rows = [row for row in filtered_rows if _row_popup_like(row)]
+    empty_popup_rows = [row for row in popup_rows if not str(row.get("text") or "").strip()]
+    empty_ratio = (len(empty_popup_rows) / len(popup_rows)) if popup_rows else 0.0
+    recent_candidate = (
+        normalize_menu_title(top_menu) == normalize_menu_title("Fájl")
+        and popup_like_count > 0
+        and bool(popup_rows)
+        and empty_ratio >= 0.8
+        and all(str(row.get("popup_reason") or "") == "empty_text_vertical_cluster_below_topbar" for row in empty_popup_rows)
+        and snapshot is not None
+        and snapshot.main_window_enabled is not False
+        and _foreground_matches_main_window(snapshot)
+        and _is_stable_vertical_popup_list(popup_rows)
+    )
+    classification = "recent_projects_block" if recent_candidate else "normal_popup"
+    accepted_rows = filtered_rows
+    if popup_like_count > 0 and empty_ratio >= 0.8 and not recent_candidate and not filtered_rows:
+        classification = "ambiguous_empty_block"
+        accepted_rows = []
+    stateful = classification == "recent_projects_block"
+    for row in rows:
+        row["popup_block_classification"] = classification
+        row["recent_projects_block"] = stateful
+        row["stateful_menu_block"] = stateful
+        row["recent_project_entry"] = False
+    if stateful:
+        for row in accepted_rows:
+            row["popup_block_classification"] = classification
+            row["recent_projects_block"] = True
+            row["stateful_menu_block"] = True
+            row["recent_project_entry"] = _row_popup_like(row) and not str(row.get("text") or "").strip()
+    return classification, accepted_rows, {
+        "popup_like_count": popup_like_count,
+        "topbar_like_count": topbar_like_count,
+        "filtered_row_count": len(filtered_rows),
+        "accepted_row_count": len(accepted_rows),
+        "empty_popup_row_count": len(empty_popup_rows),
+        "empty_popup_ratio": empty_ratio,
+    }
+
+
 def _row_to_node(
     state_id: str,
     top_menu: str,
@@ -427,6 +511,8 @@ def _build_menu_rows_from_popup_rows(
         meta: dict[str, Any] = {}
         actionable = not bool(row.get("is_separator"))
         action_type = "click"
+        recent_project_entry = bool(row.get("recent_project_entry"))
+        stateful_menu_block = bool(row.get("stateful_menu_block"))
         if not normalized_title:
             logger.info(
                 "DBG_WINWATT_EMPTY_NORMALIZED_MENU_TITLE row_index={} raw_text={} normalized_text={} is_separator={} source_scope={} control_type={} class_name={} rectangle={} fragment_count={} fragment_texts={} ",
@@ -463,6 +549,10 @@ def _build_menu_rows_from_popup_rows(
                     "text_was_empty": True,
                     "click_point": click_point,
                     "click_strategy": "center_point_fallback",
+                    "popup_block_classification": row.get("popup_block_classification"),
+                    "recent_projects_block": bool(row.get("recent_projects_block")),
+                    "recent_project_entry": recent_project_entry,
+                    "stateful_menu_block": stateful_menu_block,
                 }
                 actionable = True
                 action_type = "click"
@@ -489,6 +579,10 @@ def _build_menu_rows_from_popup_rows(
                     popup_like,
                 )
                 continue
+        meta.setdefault("popup_block_classification", row.get("popup_block_classification", "normal_popup"))
+        meta.setdefault("recent_projects_block", bool(row.get("recent_projects_block")))
+        meta.setdefault("recent_project_entry", recent_project_entry)
+        meta.setdefault("stateful_menu_block", stateful_menu_block)
         mapped.append(
             RuntimeMenuRow(
                 state_id=state_id,
@@ -507,6 +601,8 @@ def _build_menu_rows_from_popup_rows(
                 discovered_in_state=state_id,
                 actionable=actionable,
                 action_type=action_type,
+                recent_project_entry=recent_project_entry,
+                stateful_menu_block=stateful_menu_block,
                 meta=meta,
             )
         )
@@ -653,12 +749,12 @@ def _has_valid_normal_popup_rows(
     rows: list[dict[str, Any]],
     *,
     canonical_top_menu_names: set[str] | None = None,
-) -> tuple[bool, int, int, list[dict[str, Any]]]:
+) -> tuple[bool, int, int, list[dict[str, Any]], str]:
     popup_like_count, topbar_like_count, filtered_rows = _summarize_normal_popup_rows(
         rows,
         canonical_top_menu_names=canonical_top_menu_names,
     )
-    return popup_like_count > 0 and bool(filtered_rows), popup_like_count, topbar_like_count, filtered_rows
+    return popup_like_count > 0 and bool(filtered_rows), popup_like_count, topbar_like_count, filtered_rows, "normal_popup"
 
 
 def _open_and_capture_root_menu(
@@ -697,11 +793,20 @@ def _open_and_capture_root_menu(
                 restore_clean_menu_baseline(state_id=state_id, stage=f"retry_open:{top_menu}:{attempt + 1}")
             menu_helpers.click_top_menu_item(top_menu)
             candidate_rows = menu_helpers.capture_menu_popup_snapshot()
-            valid_popup, popup_like_count, topbar_like_count, filtered_rows = _has_valid_normal_popup_rows(
-                candidate_rows,
+            snapshot = capture_state_snapshot(state_id)
+            classification, filtered_rows, popup_meta = _classify_popup_block(
+                top_menu=top_menu,
+                rows=candidate_rows,
+                snapshot=snapshot,
                 canonical_top_menu_names=canonical_top_menu_names,
             )
+            valid_popup = popup_meta["popup_like_count"] > 0 and bool(filtered_rows)
+            popup_like_count = popup_meta["popup_like_count"]
+            topbar_like_count = popup_meta["topbar_like_count"]
             if valid_popup:
+                if classification == "recent_projects_block":
+                    logger.info("RECENT_PROJECT_BLOCK_ACCEPTED state={} top_menu={} attempt={} accepted_rows={} empty_popup_rows={} popup_like_count={}", state_id, top_menu, attempt + 1, popup_meta["accepted_row_count"], popup_meta["empty_popup_row_count"], popup_like_count)
+                logger.info("RECENT_PROJECT_BLOCK_SUMMARY state={} top_menu={} attempt={} popup_block_classification={} recent_projects_block={} stateful_menu_block={} accepted_rows={} filtered_rows={}", state_id, top_menu, attempt + 1, classification, classification == "recent_projects_block", classification == "recent_projects_block", popup_meta["accepted_row_count"], popup_meta["filtered_row_count"])
                 logger.info(
                     "DBG_WINWATT_NORMAL_MENU_OPEN_VALIDATED state={} top_menu={} attempt={} raw_row_count={} popup_like_count={} topbar_like_count={}",
                     state_id,
@@ -720,6 +825,8 @@ def _open_and_capture_root_menu(
                 )
                 popup_rows = filtered_rows
                 break
+            if classification in {"recent_projects_block", "ambiguous_empty_block"}:
+                logger.info("RECENT_PROJECT_BLOCK_REJECTED state={} top_menu={} attempt={} popup_block_classification={} popup_like_count={} filtered_rows={} empty_popup_rows={}", state_id, top_menu, attempt + 1, classification, popup_like_count, popup_meta["filtered_row_count"], popup_meta["empty_popup_row_count"])
             logger.info(
                 "DBG_WINWATT_NORMAL_MENU_OPEN_NO_POPUP state={} top_menu={} attempt={} raw_row_count={} popup_like_count={} topbar_like_count={} filtered_row_count={}",
                 state_id,
@@ -827,6 +934,8 @@ def _action_state_classification(
 ) -> str:
     if transition.get("project_open_state_transition"):
         return "opens_project_and_changes_runtime_state"
+    if transition.get("recent_project_candidate"):
+        return "recent_project_entry"
     if opens_submenu:
         return "opens_submenu"
     if opens_modal:
@@ -868,6 +977,16 @@ def _safe_depth_decision(
             action_state_classification,
         )
         return True
+    if action_state_classification == "recent_project_entry":
+        logger.info(
+            "SAFE_DEPTH_BLOCKED state={} path={} current_depth={} max_depth={} action_state_classification={} reason=recent_project_entries_are_stateful_leafs",
+            state_id,
+            path,
+            current_depth,
+            max_depth,
+            action_state_classification,
+        )
+        return False
     logger.info(
         "SAFE_DEPTH_BLOCKED state={} path={} current_depth={} max_depth={} action_state_classification={} reason=non_submenu_branch",
         state_id,
@@ -1147,7 +1266,7 @@ def _capture_fresh_root_popup_for_sibling(
     popup_like_count = 0
     target_match = None
     if refreshed_rows:
-        valid_popup, popup_like_count, _topbar_like_count, filtered_rows = _has_valid_normal_popup_rows(
+        valid_popup, popup_like_count, _topbar_like_count, filtered_rows, _popup_block_classification = _has_valid_normal_popup_rows(
             refreshed_rows,
             canonical_top_menu_names=canonical_top_menu_names,
         )
@@ -1193,6 +1312,8 @@ def _capture_fresh_root_popup_for_sibling(
         discovered_in_state=target_row.discovered_in_state,
         actionable=target_row.actionable,
         action_type=target_row.action_type,
+        recent_project_entry=target_row.recent_project_entry,
+        stateful_menu_block=target_row.stateful_menu_block,
         meta=dict(target_row.meta),
     )
     logger.info("ROOT_MENU_REOPEN_EXECUTED state={} top_menu={} parent_path={} row_count={} target_path={}", state_id, top_menu, parent_path, len(refreshed_rows), target_row.menu_path)
@@ -1879,12 +2000,18 @@ def explore_menu_tree(
             reusable_popup_rows = menu_helpers.capture_system_menu_popup() if _is_system_menu(top_menu) else menu_helpers.capture_menu_popup_snapshot()
         if reusable_popup_rows:
             if _is_primary_normal_top_menu(top_menu):
-                valid_popup, popup_like_count, topbar_like_count, filtered_rows = _has_valid_normal_popup_rows(
-                    reusable_popup_rows,
+                classification, filtered_rows, popup_meta = _classify_popup_block(
+                    top_menu=top_menu,
+                    rows=reusable_popup_rows,
+                    snapshot=capture_state_snapshot(state_id),
                     canonical_top_menu_names=canonical_top_menu_names,
                 )
+                valid_popup = popup_meta["popup_like_count"] > 0 and bool(filtered_rows)
+                popup_like_count = popup_meta["popup_like_count"]
+                topbar_like_count = popup_meta["topbar_like_count"]
                 if valid_popup:
                     popup_rows = filtered_rows
+                    logger.info("RECENT_PROJECT_BLOCK_SUMMARY state={} top_menu={} attempt=0 popup_block_classification={} recent_projects_block={} stateful_menu_block={} accepted_rows={} filtered_rows={}", state_id, top_menu, classification, classification == "recent_projects_block", classification == "recent_projects_block", popup_meta["accepted_row_count"], popup_meta["filtered_row_count"])
                     logger.info(
                         "DBG_REUSING_OPEN_POPUP_SNAPSHOT state={} top_menu={} row_count={} popup_like_count={} topbar_like_count={} normalized_parent={} popup_state_path={}",
                         state_id,
@@ -1903,6 +2030,8 @@ def explore_menu_tree(
                     )
                     logger.debug("reusing_open_popup_snapshot state={} top_menu={} row_count={}", state_id, top_menu, len(reusable_popup_rows))
                 else:
+                    if classification in {"recent_projects_block", "ambiguous_empty_block"}:
+                        logger.info("RECENT_PROJECT_BLOCK_REJECTED state={} top_menu={} attempt=0 popup_block_classification={} popup_like_count={} filtered_rows={} empty_popup_rows={}", state_id, top_menu, classification, popup_like_count, popup_meta["filtered_row_count"], popup_meta["empty_popup_row_count"])
                     logger.info(
                         "DBG_WINWATT_NORMAL_MENU_OPEN_NO_POPUP state={} top_menu={} attempt=0 raw_row_count={} popup_like_count={} topbar_like_count={} filtered_row_count={}",
                         state_id,
@@ -2039,17 +2168,18 @@ def explore_menu_tree(
             transition["recent_project_candidate"] = recent_candidate
             recent_policy = recent_projects_policy()
             if recent_candidate and recent_policy == "skip_recent_projects":
-                transition = {"result_type": "skipped_recent_project", "attempted": False}
-                action_state_classification = "unknown"
+                transition = {"result_type": "skipped_recent_project", "attempted": False, "recent_project_candidate": True}
+                action_state_classification = "recent_project_entry"
                 skip_reason = "recent_project_blocked_by_policy"
             elif recent_candidate and recent_policy == "probe_recent_projects":
-                transition = {"result_type": "probed_recent_project", "attempted": False}
-                action_state_classification = "unknown"
+                transition = {"result_type": "probed_recent_project", "attempted": False, "recent_project_candidate": True}
+                action_state_classification = "recent_project_entry"
                 skip_reason = "recent_project_catalog_only"
             else:
                 transition = transition
             if recent_candidate and recent_policy in {"skip_recent_projects", "probe_recent_projects"}:
                 logger.info("RECENT_PROJECT_ACTION_DETECTED state={} path={} policy={}", state_id, path, recent_policy)
+                logger.info("RECENT_PROJECT_ENTRY_CLASSIFIED state={} path={} classification={} skip_reason={}", state_id, path, action_state_classification, skip_reason)
             if recent_candidate and recent_policy in {"skip_recent_projects", "probe_recent_projects"}:
                 node = _row_to_node(
                     state_id,
@@ -2170,6 +2300,8 @@ def explore_menu_tree(
                         discovered_in_state=row.discovered_in_state,
                         actionable=row.actionable,
                         action_type=row.action_type,
+                        recent_project_entry=row.recent_project_entry,
+                        stateful_menu_block=row.stateful_menu_block,
                         meta=dict(row.meta),
                     )
             _activate_row_for_exploration(row, popup_rows)
@@ -2337,6 +2469,8 @@ def explore_menu_tree(
                 opens_submenu=opens_submenu,
                 opens_modal=opens_modal,
             )
+            if recent_candidate:
+                logger.info("RECENT_PROJECT_ENTRY_CLASSIFIED state={} path={} classification={} skip_reason={}", state_id, path, action_state_classification, skip_reason)
             if focus_refresh_mode and not project_open_transition_detected:
                 restore_clean_menu_baseline(state_id=state_id, stage=f"post_action:{' > '.join(path)}")
                 logger.info("ACTION_BASELINE_RESTORED state={} top_menu={} path={}", state_id, top_menu, path)

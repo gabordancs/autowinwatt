@@ -3,7 +3,8 @@ from __future__ import annotations
 import json
 
 from winwatt_automation.runtime_mapping import program_mapper
-from winwatt_automation.runtime_mapping.models import RuntimeStateMap
+from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeStateSnapshot
+from winwatt_automation.runtime_mapping.config import configure_diagnostics
 
 
 class _FakeMainWindow:
@@ -173,6 +174,53 @@ def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeyp
     assert result["runtime_state_atlas"]["states"]["project_open"]["state_transitions"][0]["trigger"] == "opens_project_and_changes_runtime_state"
     atlas_json = json.loads((tmp_path / "runtime_state_atlas.json").read_text(encoding="utf-8"))
     assert set(atlas_json["states"].keys()) == {"no_project", "project_open"}
+
+
+def test_recent_project_probe_policy_keeps_recent_project_classification(monkeypatch):
+    configure_diagnostics(recent_projects_policy="probe_recent_projects", diagnostic_fast_mode=False, placeholder_traversal_focus=False)
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    monkeypatch.setattr(program_mapper, "capture_state_snapshot", lambda _state_id: snapshot)
+    monkeypatch.setattr(program_mapper, "_is_recent_projects_candidate", lambda **_kwargs: True)
+    popup_rows = [{
+        "text": "",
+        "center_x": 15,
+        "center_y": 95,
+        "rectangle": {"left": 0, "top": 90, "right": 100, "bottom": 110},
+        "is_separator": False,
+        "source_scope": "main_window",
+        "popup_candidate": True,
+        "topbar_candidate": False,
+        "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        "recent_project_entry": True,
+        "recent_projects_block": True,
+        "stateful_menu_block": True,
+        "popup_block_classification": "recent_projects_block",
+    }]
+
+    nodes, _, actions, _, _, catalog = program_mapper.explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=popup_rows,
+        visited_paths={("fájl",)},
+    )
+
+    assert nodes[0]["action_state_classification"] == "recent_project_entry"
+    assert actions[0].event_details["action_state_classification"] == "recent_project_entry"
+    assert catalog[0]["skip_reason"] == "recent_project_catalog_only"
 
 
 def test_build_full_runtime_program_map_rechecks_paths_in_project_state(monkeypatch, tmp_path):

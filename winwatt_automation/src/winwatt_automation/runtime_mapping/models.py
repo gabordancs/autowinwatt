@@ -36,6 +36,8 @@ class RuntimeMenuRow:
     discovered_in_state: str
     actionable: bool = True
     action_type: str = "click"
+    recent_project_entry: bool = False
+    stateful_menu_block: bool = False
     meta: dict[str, Any] = field(default_factory=dict)
 
 
