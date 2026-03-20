@@ -5,6 +5,7 @@ from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeSt
 from winwatt_automation.runtime_mapping.program_mapper import (
     _build_menu_rows_from_popup_rows,
     _filter_normal_popup_rows,
+    _safe_depth_decision,
     compare_runtime_states,
     explore_menu_tree,
     get_canonical_top_menu_names,
@@ -177,7 +178,7 @@ def test_mapping_continues_when_focus_loss_is_recovered(monkeypatch):
     def _explore_menu_tree(**kwargs):
         if kwargs["top_menu"] == "Fájl":
             raise RuntimeError("focus_not_restored: temporary")
-        return ([], [], [], [], [])
+        return ([], [], [], [], [], [])
 
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree", _explore_menu_tree)
 
@@ -201,7 +202,7 @@ def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", _restore)
     monkeypatch.setattr(
         "winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree",
-        lambda **kwargs: ([], [], [], [], []),
+        lambda **kwargs: ([], [], [], [], [], []),
     )
 
     state = map_runtime_state(state_id="s", top_menus=["Fájl", "Súgó"])
@@ -472,7 +473,7 @@ def test_explore_menu_tree_recurses_when_real_popup_rows_exist(monkeypatch):
         lambda **kwargs: root_rows,
     )
 
-    nodes, _, _, _, _ = explore_menu_tree(
+    nodes, _, _, _, _, _ = explore_menu_tree(
         state_id="s",
         top_menu="Fájl",
         safe_mode="safe",
@@ -504,7 +505,7 @@ def test_map_runtime_state_prioritizes_normal_top_menus_by_default(monkeypatch):
 
     def _explore_menu_tree(**kwargs):
         explored.append(kwargs["top_menu"])
-        return ([], [], [], [], [])
+        return ([], [], [], [], [], [])
 
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree", _explore_menu_tree)
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.should_restore_clean_menu_baseline", lambda **kwargs: False)
@@ -540,7 +541,7 @@ def test_depth_one_retains_leaf_disabled_separator_and_submenu_metadata(monkeypa
         lambda parent_row, all_rows: child_snapshot if parent_row.get("text") == "Export" else [],
     )
 
-    nodes, _, _, _, _ = explore_menu_tree(
+    nodes, _, _, _, _, _ = explore_menu_tree(
         state_id="s",
         top_menu="Fájl",
         safe_mode="off",
@@ -726,7 +727,7 @@ def test_explore_menu_tree_placeholder_focus_reopens_fresh_root_snapshot(monkeyp
         lambda **kwargs: restore_calls.append(kwargs) or True,
     )
 
-    nodes, _, actions, _, _ = explore_menu_tree(
+    nodes, _, actions, _, _, _ = explore_menu_tree(
         state_id="s",
         top_menu="Fájl",
         safe_mode="safe",
@@ -844,7 +845,7 @@ def test_explore_menu_tree_open_sample_recent_project_invalidates_stale_refs(mon
         }
     ]
 
-    nodes, _, actions, _, _ = explore_menu_tree(
+    nodes, _, actions, _, _, _ = explore_menu_tree(
         state_id="s",
         top_menu="Fájl",
         safe_mode="safe",
@@ -861,3 +862,34 @@ def test_explore_menu_tree_open_sample_recent_project_invalidates_stale_refs(mon
     assert popup_state.popup_rows is None
     assert popup_state.runtime_state_reset_required is True
     configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
+
+
+def test_safe_depth_policy_blocks_modal_recent_and_command_branches():
+    assert _safe_depth_decision(
+        state_id="s",
+        path=["Fájl", "Megnyitás"],
+        current_depth=1,
+        max_depth=2,
+        action_state_classification="opens_modal",
+    ) is False
+    assert _safe_depth_decision(
+        state_id="s",
+        path=["Fájl", "Korábbi projektek", "Minta"],
+        current_depth=1,
+        max_depth=2,
+        action_state_classification="opens_project_and_changes_runtime_state",
+    ) is False
+    assert _safe_depth_decision(
+        state_id="s",
+        path=["Súgó", "Névjegy"],
+        current_depth=1,
+        max_depth=2,
+        action_state_classification="executes_command",
+    ) is False
+    assert _safe_depth_decision(
+        state_id="s",
+        path=["Ablak", "Nézetek"],
+        current_depth=1,
+        max_depth=2,
+        action_state_classification="opens_submenu",
+    ) is True
