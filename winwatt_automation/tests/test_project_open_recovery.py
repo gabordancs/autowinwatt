@@ -305,3 +305,79 @@ def test_build_full_runtime_program_map_writes_knowledge_verification(monkeypatc
     assert result["knowledge_verification"]["baseline_loaded"] is False
     assert (tmp_path / "knowledge.json").exists()
     assert (tmp_path / "knowledge_summary.md").exists()
+
+
+class _FakeComError(Exception):
+    __module__ = "pythoncom"
+
+
+class _FakeMenuParent:
+    def __init__(self, control_type: str):
+        self.element_info = type("Info", (), {"control_type": control_type, "name": control_type, "class_name": ""})()
+
+
+class _FakeMenuItem:
+    def __init__(self, name: str, rect: tuple[int, int, int, int], *, parent_mode: str = "ok"):
+        self.element_info = type("Info", (), {"name": name, "control_type": "MenuItem", "class_name": "MenuItem", "process_id": 42, "handle": id(self)})()
+        self._rect = rect
+        self._parent_mode = parent_mode
+
+    def is_visible(self):
+        return True
+
+    def rectangle(self):
+        left, top, right, bottom = self._rect
+        return type("Rect", (), {"left": left, "top": top, "right": right, "bottom": bottom})()
+
+    def parent(self):
+        if self._parent_mode == "comerror":
+            raise _FakeComError("uia parent lookup failed")
+        return _FakeMenuParent("MenuBar")
+
+
+def test_capture_menu_popup_snapshot_recovers_from_parent_comerror(monkeypatch):
+    from loguru import logger
+    from winwatt_automation.live_ui import menu_helpers
+
+    menu_helpers._TOPBAR_BAND_CACHE.update({"handle": None, "captured_at": 0.0, "band": None})
+    menu_helpers._consume_topbar_parent_error_state()
+
+    main_rows = [
+        {
+            "text": "Megnyitás",
+            "normalized_text": "megnyitás",
+            "control_type": "MenuItem",
+            "class_name": "MenuItem",
+            "rectangle": {"left": 5, "top": 60, "right": 140, "bottom": 82},
+            "width": 135,
+            "height": 22,
+            "center_x": 72,
+            "center_y": 71,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "process_id": 42,
+            "native_handle": 1,
+        }
+    ]
+    top_items = [
+        _FakeMenuItem("Fájl", (4, 4, 70, 28), parent_mode="comerror"),
+        _FakeMenuItem("Ablak", (71, 4, 150, 28), parent_mode="comerror"),
+        _FakeMenuItem("Súgó", (151, 4, 220, 28), parent_mode="comerror"),
+    ]
+    events: list[str] = []
+    sink_id = logger.add(lambda msg: events.append(msg.record["message"]), level="INFO")
+    try:
+        monkeypatch.setattr(menu_helpers, "_menu_like_controls_from_main_window", lambda: [dict(row) for row in main_rows])
+        monkeypatch.setattr(menu_helpers, "_menu_like_controls_from_global_process_scan", lambda: [])
+        monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: type("Main", (), {"element_info": type("Info", (), {"handle": 99})(), "child_window": lambda self, **kwargs: (_ for _ in ()).throw(RuntimeError("no menubar"))})())
+        monkeypatch.setattr(menu_helpers, "_query_menu_items_from_root", lambda _root, **kwargs: top_items)
+
+        rows = menu_helpers.capture_menu_popup_snapshot()
+    finally:
+        logger.remove(sink_id)
+
+    assert rows
+    assert rows[0]["popup_candidate"] is True
+    assert any("TOPBAR_PARENT_COMERROR_FALLBACK" in event for event in events)
+    assert any("TOPBAR_GEOMETRY_FALLBACK_USED" in event for event in events)
+    assert any("POPUP_SNAPSHOT_COMSAFE_RECOVERY" in event for event in events)
