@@ -75,6 +75,35 @@ def _is_placeholder_row(row: RuntimeMenuRow | dict[str, Any]) -> bool:
     return meta.get("source") == "geometry_placeholder"
 
 
+def _row_has_legacy_text_only(row: RuntimeMenuRow | dict[str, Any]) -> bool:
+    if isinstance(row, RuntimeMenuRow):
+        raw_sources = list(row.raw_text_sources)
+    else:
+        raw_sources = list(row.get("raw_text_sources") or [])
+    normalized = [str(source) for source in raw_sources if str(source)]
+    return bool(normalized) and set(normalized) == {"legacy_text"}
+
+
+def _row_text_confidence(row: RuntimeMenuRow | dict[str, Any]) -> str:
+    if isinstance(row, RuntimeMenuRow):
+        return str(row.text_confidence or "none")
+    return str(row.get("text_confidence") or "none")
+
+
+def _update_row_admission_flags(
+    row: RuntimeMenuRow,
+    *,
+    admitted: bool,
+    admission_reason: str | None,
+    rejection_reason: str | None,
+) -> RuntimeMenuRow:
+    row.admitted_to_action_catalog = admitted
+    row.retained_as_structure_only = not admitted
+    row.admission_reason = admission_reason
+    row.rejection_reason = rejection_reason
+    return row
+
+
 class UnrecoverableMainWindowError(RuntimeError):
     """Raised when the mapper loses WinWatt main window context and cannot recover."""
 
@@ -1112,6 +1141,116 @@ def _build_action_catalog_entry(
     else:
         logger.debug("ACTION_CATALOG_ENTRY state_path={} entry={}", path, entry)
     return entry
+
+
+def _evaluate_action_admission(
+    *,
+    row: RuntimeMenuRow,
+    path: list[str],
+    action_state_classification: str,
+    transition: dict[str, Any],
+    opens_submenu: bool,
+    opens_modal: bool,
+    skip_reason: str | None,
+    traversal_depth: int,
+) -> tuple[bool, str | None, str | None]:
+    result_type = str(transition.get("result_type") or "no_visible_change")
+    text_confidence = _row_text_confidence(row)
+    legacy_text_only = _row_has_legacy_text_only(row)
+    placeholder = _is_placeholder_row(row)
+    structural_interaction_evidence = bool(
+        not placeholder
+        and row.is_separator is False
+        and row.enabled_guess is True
+        and text_confidence in {"high", "medium"}
+        and not legacy_text_only
+    )
+    separate_interaction_evidence = bool(
+        opens_submenu
+        or opens_modal
+        or transition.get("menu_state_changed")
+        or transition.get("project_open_state_transition")
+        or transition.get("dialog_detected")
+        or result_type in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened", "main_window_disabled", "project_open_state_transition"}
+        or action_state_classification in {
+            "opens_submenu",
+            "opens_modal",
+            "changes_menu_state",
+            "opens_project_and_changes_runtime_state",
+            "recent_project_entry",
+        }
+        or structural_interaction_evidence
+    )
+
+    rejection_reason: str | None = None
+    admission_reason: str | None = None
+
+    if placeholder and not separate_interaction_evidence:
+        rejection_reason = "placeholder_without_state_change"
+    elif text_confidence in {"none", "low"} and not separate_interaction_evidence:
+        rejection_reason = f"text_confidence_{text_confidence}_without_interaction_evidence"
+    elif legacy_text_only and not separate_interaction_evidence:
+        rejection_reason = "legacy_text_only_without_interaction_evidence"
+    elif result_type == "no_visible_change" and not separate_interaction_evidence:
+        rejection_reason = "no_visible_change_without_interaction_evidence"
+    elif skip_reason:
+        admission_reason = f"policy_cataloged:{skip_reason}"
+    elif structural_interaction_evidence:
+        admission_reason = "interaction_evidence:validated_enabled_menu_row"
+    elif action_state_classification == "unknown":
+        logger.info(
+            "ACTION_UNKNOWN_SUPPRESSED top_menu={} path={} traversal_depth={} result_type={} placeholder={} text_confidence={} legacy_text_only={}",
+            path[0] if path else "<unknown>",
+            path,
+            traversal_depth,
+            result_type,
+            placeholder,
+            text_confidence,
+            legacy_text_only,
+        )
+        rejection_reason = "unknown_classification_suppressed"
+    elif separate_interaction_evidence:
+        admission_reason = f"interaction_evidence:{action_state_classification or result_type}"
+    else:
+        admission_reason = f"validated_action:{action_state_classification or row.action_type}"
+
+    if rejection_reason:
+        logger.info(
+            "ACTION_ADMISSION_REJECTED top_menu={} path={} traversal_depth={} reason={} classification={} result_type={} placeholder={} text_confidence={} raw_text_sources={} skip_reason={}",
+            path[0] if path else "<unknown>",
+            path,
+            traversal_depth,
+            rejection_reason,
+            action_state_classification,
+            result_type,
+            placeholder,
+            text_confidence,
+            list(row.raw_text_sources),
+            skip_reason,
+        )
+        logger.info(
+            "ACTION_STRUCTURE_ONLY_ROW top_menu={} path={} traversal_depth={} reason={}",
+            path[0] if path else "<unknown>",
+            path,
+            traversal_depth,
+            rejection_reason,
+        )
+        return False, None, rejection_reason
+
+    logger.info(
+        "ACTION_ADMISSION_ACCEPTED top_menu={} path={} traversal_depth={} reason={} classification={} result_type={} placeholder={} text_confidence={} raw_text_sources={} skip_reason={}",
+        path[0] if path else "<unknown>",
+        path,
+        traversal_depth,
+        admission_reason,
+        action_state_classification,
+        result_type,
+        placeholder,
+        text_confidence,
+        list(row.raw_text_sources),
+        skip_reason,
+    )
+    return True, admission_reason, None
 
 
 def log_action_catalog_summary() -> None:
@@ -2206,6 +2345,16 @@ def explore_menu_tree(
         _filter_normal_popup_rows(popup_rows, canonical_top_menu_names=canonical_top_menu_names) if _is_primary_normal_top_menu(top_menu) else popup_rows,
         canonical_top_menu_names=canonical_top_menu_names,
     )
+    logger.info(
+        "ACTION_CATALOG_INPUT_SUMMARY state={} top_menu={} depth={} candidate_rows={} placeholders={} low_or_none_confidence={} legacy_text_only={} unknown_pending=0",
+        state_id,
+        top_menu,
+        depth,
+        len(current_level_rows),
+        sum(1 for row in current_level_rows if _is_placeholder_row(row)),
+        sum(1 for row in current_level_rows if _row_text_confidence(row) in {"none", "low"}),
+        sum(1 for row in current_level_rows if _row_has_legacy_text_only(row)),
+    )
     collected_rows: list[RuntimeMenuRow] = list(current_level_rows)
     nodes: list[dict[str, Any]] = []
     actions: list[RuntimeActionResult] = []
@@ -2299,19 +2448,36 @@ def explore_menu_tree(
                         action_state_classification=action_state_classification,
                     )
                 )
-                action_catalog.append(
-                    _build_action_catalog_entry(
-                        path=path,
-                        action_type=row.action_type,
-                        action_state_classification=action_state_classification,
-                        opens_modal=False,
-                        opens_submenu=False,
-                        changes_menu_state=False,
-                        opens_project_and_changes_runtime_state=False,
-                        traversal_depth=depth,
-                        skip_reason=skip_reason,
-                    )
+                admitted, admission_reason, rejection_reason = _evaluate_action_admission(
+                    row=row,
+                    path=path,
+                    action_state_classification=action_state_classification,
+                    transition=transition,
+                    opens_submenu=False,
+                    opens_modal=False,
+                    skip_reason=skip_reason,
+                    traversal_depth=depth,
                 )
+                _update_row_admission_flags(
+                    row,
+                    admitted=admitted,
+                    admission_reason=admission_reason,
+                    rejection_reason=rejection_reason,
+                )
+                if admitted:
+                    action_catalog.append(
+                        _build_action_catalog_entry(
+                            path=path,
+                            action_type=row.action_type,
+                            action_state_classification=action_state_classification,
+                            opens_modal=False,
+                            opens_submenu=False,
+                            changes_menu_state=False,
+                            opens_project_and_changes_runtime_state=False,
+                            traversal_depth=depth,
+                            skip_reason=skip_reason,
+                        )
+                    )
                 continue
             focus_refresh_mode = bool(
                 is_placeholder_traversal_focus_mode()
@@ -2621,23 +2787,51 @@ def explore_menu_tree(
                 action_state_classification=action_state_classification,
             )
         )
-        action_catalog.append(
-            _build_action_catalog_entry(
-                path=path,
-                action_type=row.action_type,
-                action_state_classification=action_state_classification,
-                opens_modal=opens_modal,
-                opens_submenu=opens_submenu,
-                changes_menu_state=action_state_classification == "changes_menu_state",
-                opens_project_and_changes_runtime_state=action_state_classification == "opens_project_and_changes_runtime_state",
-                traversal_depth=depth,
-                skip_reason=skip_reason,
-            )
+        admitted, admission_reason, rejection_reason = _evaluate_action_admission(
+            row=row,
+            path=path,
+            action_state_classification=action_state_classification,
+            transition=transition,
+            opens_submenu=opens_submenu,
+            opens_modal=opens_modal,
+            skip_reason=skip_reason,
+            traversal_depth=depth,
         )
+        _update_row_admission_flags(
+            row,
+            admitted=admitted,
+            admission_reason=admission_reason,
+            rejection_reason=rejection_reason,
+        )
+        if admitted:
+            action_catalog.append(
+                _build_action_catalog_entry(
+                    path=path,
+                    action_type=row.action_type,
+                    action_state_classification=action_state_classification,
+                    opens_modal=opens_modal,
+                    opens_submenu=opens_submenu,
+                    changes_menu_state=action_state_classification == "changes_menu_state",
+                    opens_project_and_changes_runtime_state=action_state_classification == "opens_project_and_changes_runtime_state",
+                    traversal_depth=depth,
+                    skip_reason=skip_reason,
+                )
+            )
         if project_open_transition_detected:
             break
 
     _log_phase_timing("subtree_traversal", traversal_started_at, state_id=state_id, top_menu=top_menu, depth=depth, rows=len(current_level_rows), nodes=len(nodes), actions=len(actions))
+    logger.info(
+        "ACTION_CATALOG_OUTPUT_SUMMARY state={} top_menu={} depth={} candidate_rows={} admitted_actions={} structure_only_rows={} suppressed_unknown={} placeholders_retained={} ",
+        state_id,
+        top_menu,
+        depth,
+        len(current_level_rows),
+        len(action_catalog),
+        sum(1 for row in current_level_rows if row.retained_as_structure_only),
+        sum(1 for row in current_level_rows if row.rejection_reason == "unknown_classification_suppressed"),
+        sum(1 for row in current_level_rows if _is_placeholder_row(row)),
+    )
     for action in action_catalog:
         actions_by_path = {tuple(item.menu_path if isinstance(item, RuntimeActionResult) else item.get("menu_path", [])): item for item in actions}
         action_result = actions_by_path.get(tuple(action["path"]))

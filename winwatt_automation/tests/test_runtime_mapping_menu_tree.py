@@ -5,6 +5,7 @@ from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeSt
 from winwatt_automation.runtime_mapping.program_mapper import (
     _classify_popup_block,
     _build_menu_rows_from_popup_rows,
+    _evaluate_action_admission,
     _filter_normal_popup_rows,
     _safe_depth_decision,
     compare_runtime_states,
@@ -1241,11 +1242,14 @@ def test_map_runtime_state_keeps_placeholder_rows_and_actions_in_state_atlas(mon
 
     assert len(state.top_menus) == 1
     assert len(state.menu_rows) == 1
-    assert len(state.action_catalog) == 1
+    assert len(state.action_catalog) == 0
     assert state.menu_rows[0]["text"] == "[unlabeled row 0]"
+    assert state.menu_rows[0]["retained_as_structure_only"] is True
+    assert state.menu_rows[0]["admitted_to_action_catalog"] is False
+    assert state.menu_rows[0]["rejection_reason"] == "placeholder_without_state_change"
     assert state.state_atlas["canonical_top_menus"][0]["text"] == "Fájl"
     assert len(state.state_atlas["top_menu_rows"]) == 1
-    assert len(state.state_atlas["action_catalog"]) == 1
+    assert len(state.state_atlas["action_catalog"]) == 0
 
 
 def test_build_menu_rows_preserves_placeholder_rows_after_repeated_legacy_rejection():
@@ -1275,3 +1279,220 @@ def test_build_menu_rows_preserves_placeholder_rows_after_repeated_legacy_reject
     assert rows[0].actionable is True
     assert rows[0].recent_project_entry is True
     assert rows[0].stateful_menu_block is True
+
+
+def test_placeholder_row_retained_but_not_admitted_to_action_catalog(monkeypatch):
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda _state_id: snapshot)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
+
+    rows = [{
+        "text": "",
+        "center_x": 15,
+        "center_y": 20,
+        "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+        "is_separator": False,
+        "source_scope": "main_window",
+        "popup_candidate": True,
+        "topbar_candidate": False,
+        "popup_reason": "below_topbar_band",
+    }]
+
+    nodes, retained_rows, _actions, _dialogs, _windows, action_catalog = explore_menu_tree(
+        state_id="s",
+        top_menu="Jegyzékek",
+        safe_mode="safe",
+        max_depth=1,
+        include_disabled=True,
+        popup_rows=rows,
+        visited_paths={("jegyzékek",)},
+    )
+
+    assert len(nodes) == 1
+    assert len(retained_rows) == 1
+    assert retained_rows[0].retained_as_structure_only is True
+    assert retained_rows[0].admitted_to_action_catalog is False
+    assert retained_rows[0].rejection_reason == "placeholder_without_state_change"
+    assert action_catalog == []
+
+
+def test_legacy_text_only_low_confidence_row_stays_structure_only(monkeypatch):
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda _state_id: snapshot)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
+
+    rows = [{
+        "text": "Végrehajtás",
+        "center_x": 15,
+        "center_y": 20,
+        "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+        "is_separator": False,
+        "source_scope": "main_window",
+        "popup_candidate": True,
+        "topbar_candidate": False,
+        "raw_text_sources": ["legacy_text"],
+        "text_confidence": "low",
+        "enabled_guess": None,
+    }]
+
+    _nodes, retained_rows, _actions, _dialogs, _windows, action_catalog = explore_menu_tree(
+        state_id="s",
+        top_menu="Jegyzékek",
+        safe_mode="safe",
+        max_depth=1,
+        include_disabled=True,
+        popup_rows=rows,
+        visited_paths={("jegyzékek",)},
+    )
+
+    assert retained_rows[0].retained_as_structure_only is True
+    assert retained_rows[0].admitted_to_action_catalog is False
+    assert retained_rows[0].rejection_reason == "text_confidence_low_without_interaction_evidence"
+    assert action_catalog == []
+
+
+def test_unknown_classification_is_suppressed_from_action_catalog():
+    rows = _build_menu_rows_from_popup_rows(
+        "s",
+        "Jegyzékek",
+        [{
+            "text": "Végrehajtás",
+            "center_x": 15,
+            "center_y": 20,
+            "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "enabled_guess": None,
+        }],
+    )
+
+    admitted, admission_reason, rejection_reason = _evaluate_action_admission(
+        row=rows[0],
+        path=["Jegyzékek", "Végrehajtás"],
+        action_state_classification="unknown",
+        transition={"result_type": "suppressed_pending_validation", "attempted": True},
+        opens_submenu=False,
+        opens_modal=False,
+        skip_reason=None,
+        traversal_depth=1,
+    )
+
+    assert admitted is False
+    assert admission_reason is None
+    assert rejection_reason == "unknown_classification_suppressed"
+
+
+def test_no_visible_change_row_is_not_admitted_action(monkeypatch):
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda _state_id: snapshot)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
+
+    rows = [{
+        "text": "Lista",
+        "center_x": 15,
+        "center_y": 20,
+        "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+        "is_separator": False,
+        "source_scope": "main_window",
+        "popup_candidate": True,
+        "topbar_candidate": False,
+        "enabled_guess": None,
+        "raw_text_sources": ["uia_name"],
+        "text_confidence": "high",
+    }]
+
+    _nodes, retained_rows, _actions, _dialogs, _windows, action_catalog = explore_menu_tree(
+        state_id="s",
+        top_menu="Jegyzékek",
+        safe_mode="safe",
+        max_depth=1,
+        include_disabled=True,
+        popup_rows=rows,
+        visited_paths={("jegyzékek",)},
+    )
+
+    assert retained_rows[0].retained_as_structure_only is True
+    assert retained_rows[0].admitted_to_action_catalog is False
+    assert retained_rows[0].rejection_reason == "no_visible_change_without_interaction_evidence"
+    assert action_catalog == []
+
+
+def test_action_count_drops_while_row_retention_remains(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Jegyzékek"], timestamp="t", main_window_enabled=True, main_window_visible=True, foreground_window={"title": "W", "class_name": "C"}))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    snapshots = iter([
+        [
+            {
+                "text": "",
+                "center_x": 20,
+                "center_y": 20,
+                "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+                "is_separator": False,
+                "source_scope": "global_process_scan",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "popup_reason": "below_topbar_band",
+            },
+            {
+                "text": "Végrehajtás",
+                "center_x": 20,
+                "center_y": 40,
+                "rectangle": {"left": 0, "top": 30, "right": 100, "bottom": 50},
+                "is_separator": False,
+                "source_scope": "global_process_scan",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "raw_text_sources": ["legacy_text"],
+                "text_confidence": "low",
+                "enabled_guess": None,
+            },
+        ],
+        [],
+    ])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+
+    state = map_runtime_state(state_id="s", top_menus=["Jegyzékek"], max_submenu_depth=1)
+
+    assert len(state.menu_rows) == 2
+    assert len(state.action_catalog) == 0
+    assert all(row["retained_as_structure_only"] for row in state.menu_rows)

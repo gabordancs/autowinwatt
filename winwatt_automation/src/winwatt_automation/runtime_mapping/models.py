@@ -40,6 +40,10 @@ class RuntimeMenuRow:
     action_type: str = "click"
     recent_project_entry: bool = False
     stateful_menu_block: bool = False
+    retained_as_structure_only: bool = False
+    admitted_to_action_catalog: bool = False
+    admission_reason: str | None = None
+    rejection_reason: str | None = None
     meta: dict[str, Any] = field(default_factory=dict)
 
 
