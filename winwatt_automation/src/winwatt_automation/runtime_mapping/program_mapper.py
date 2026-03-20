@@ -30,7 +30,13 @@ from winwatt_automation.runtime_mapping.menu_text import clean_menu_title, norma
 from winwatt_automation.runtime_mapping.safety import classify_safety, is_action_allowed
 from winwatt_automation.runtime_mapping.serializers import ensure_output_dirs, write_json
 from winwatt_automation.runtime_mapping.timing import BASELINE_DELAY, POPUP_WAIT_TIMEOUT
-from winwatt_automation.runtime_mapping.config import diagnostic_options, is_diagnostic_fast_mode, is_fast_mode, is_placeholder_traversal_focus_mode
+from winwatt_automation.runtime_mapping.config import (
+    diagnostic_options,
+    is_diagnostic_fast_mode,
+    is_fast_mode,
+    is_placeholder_traversal_focus_mode,
+    placeholder_modal_policy,
+)
 from winwatt_automation.live_ui.ui_cache import PopupState
 
 
@@ -169,6 +175,7 @@ def _row_to_node(
     children: list[dict[str, Any]],
     opens_submenu: bool,
     opens_dialog: bool = False,
+    opens_modal: bool = False,
     skipped_by_safety: bool = False,
     reused_from_previous_state: bool = False,
 ) -> RuntimeMenuNode:
@@ -191,6 +198,8 @@ def _row_to_node(
         action_classification = "skipped_by_safety"
     elif opens_submenu:
         action_classification = "opens_submenu"
+    elif opens_modal:
+        action_classification = "opens_modal"
     elif opens_dialog:
         action_classification = "dialog_window_action"
     elif enabled is False:
@@ -213,6 +222,7 @@ def _row_to_node(
         shortcut=shortcut,
         opens_submenu=opens_submenu,
         opens_dialog=opens_dialog,
+        opens_modal=opens_modal,
         likely_destructive=likely_destructive,
         likely_state_changing=likely_state_changing,
         action_classification=action_classification,
@@ -941,6 +951,142 @@ def detect_dialog_or_window_transition(
     return {"result_type": "no_visible_change", "dialog_detected": False}
 
 
+def _is_modal_window_snapshot(window_snapshot: dict[str, Any] | None) -> bool:
+    window_snapshot = window_snapshot or {}
+    class_name = str(window_snapshot.get("class_name") or "")
+    return class_name == "#32770" or "dialog" in class_name.lower()
+
+
+def _classify_placeholder_action_outcome(
+    *,
+    state_id: str,
+    path: list[str],
+    row: RuntimeMenuRow,
+    before_action: RuntimeStateSnapshot,
+    after_action: RuntimeStateSnapshot,
+    current_rows: list[dict[str, Any]],
+    child_rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    popup_visible_count, topbar_visible_count = menu_helpers._popup_visibility_counts(current_rows)
+    foreground = after_action.foreground_window or {}
+    modal_detected = _is_modal_window_snapshot(foreground)
+    if child_rows:
+        outcome = "submenu_opened"
+    elif modal_detected:
+        outcome = "modal_opened"
+    elif after_action.main_window_enabled is False:
+        outcome = "main_window_disabled"
+    elif popup_visible_count == 0:
+        outcome = "popup_closed_without_child"
+    else:
+        outcome = "no_visible_change"
+    details = {
+        "outcome": outcome,
+        "state_id": state_id,
+        "path": path,
+        "row_index": row.row_index,
+        "placeholder": _is_placeholder_row(row),
+        "popup_visible_count": popup_visible_count,
+        "topbar_visible_count": topbar_visible_count,
+        "child_row_count": len(child_rows),
+        "main_window_enabled_before": before_action.main_window_enabled,
+        "main_window_enabled_after": after_action.main_window_enabled,
+        "foreground_window": foreground,
+        "foreground_class_name": str(foreground.get("class_name") or ""),
+        "foreground_title": str(foreground.get("title") or ""),
+        "policy": placeholder_modal_policy(),
+    }
+    logger.info(
+        "PLACEHOLDER_ACTION_OUTCOME state={} path={} outcome={} row_index={} popup_visible_count={} topbar_visible_count={} child_row_count={} main_window_enabled_before={} main_window_enabled_after={} foreground_class_name={} foreground_title={!r} policy={}",
+        state_id,
+        path,
+        outcome,
+        row.row_index,
+        popup_visible_count,
+        topbar_visible_count,
+        len(child_rows),
+        before_action.main_window_enabled,
+        after_action.main_window_enabled,
+        details["foreground_class_name"],
+        details["foreground_title"],
+        details["policy"],
+    )
+    return details
+
+
+def _handle_placeholder_modal_outcome(
+    *,
+    state_id: str,
+    top_menu: str,
+    safe_mode: str,
+    path: list[str],
+    row: RuntimeMenuRow,
+    transition: dict[str, Any],
+) -> tuple[dict[str, Any], RuntimeDialogRecord]:
+    candidate = dict(transition.get("window_snapshot") or transition.get("foreground_window") or {})
+    logger.warning(
+        "MODAL_DETECTED_AFTER_PLACEHOLDER state={} top_menu={} path={} row_index={} title={!r} class_name={} policy={}",
+        state_id,
+        top_menu,
+        path,
+        row.row_index,
+        str(candidate.get("title") or ""),
+        str(candidate.get("class_name") or ""),
+        placeholder_modal_policy(),
+    )
+    exploration = {"controls": [], "interactions": [], "states": [], "exploration_depth": 0}
+    if placeholder_modal_policy() == "allow_modal_probe":
+        exploration = _explore_dialog_candidate(candidate, safe_mode=safe_mode)
+    logger.info(
+        "PLACEHOLDER_MARKED_AS_MODAL_ACTION state={} top_menu={} path={} row_index={} opens_modal=True policy={}",
+        state_id,
+        top_menu,
+        path,
+        row.row_index,
+        placeholder_modal_policy(),
+    )
+    logger.info(
+        "MODAL_CLOSE_ATTEMPT state={} top_menu={} path={} row_index={} title={!r} class_name={} policy={}",
+        state_id,
+        top_menu,
+        path,
+        row.row_index,
+        str(candidate.get("title") or ""),
+        str(candidate.get("class_name") or ""),
+        placeholder_modal_policy(),
+    )
+    close_result = close_transient_dialog_or_window(_resolve_window_wrapper(candidate), action_label=" > ".join(path))
+    logger.info(
+        "MODAL_CLOSE_RESULT state={} top_menu={} path={} row_index={} closed={} method={} error={} policy={}",
+        state_id,
+        top_menu,
+        path,
+        row.row_index,
+        close_result.get("closed"),
+        close_result.get("method"),
+        close_result.get("error"),
+        placeholder_modal_policy(),
+    )
+    restore_clean_menu_baseline(state_id=state_id, stage=f"placeholder_modal:{' > '.join(path)}")
+    return close_result, RuntimeDialogRecord(
+        state_id=state_id,
+        top_menu=top_menu,
+        row_index=row.row_index,
+        menu_path=path,
+        title=str(candidate.get("title") or ""),
+        class_name=str(candidate.get("class_name") or ""),
+        process_id=candidate.get("process_id"),
+        rectangle=dict(candidate.get("rectangle") or {}),
+        enabled=candidate.get("enabled"),
+        visible=candidate.get("visible"),
+        controls=list(candidate.get("controls") or []),
+        explored_controls=list(exploration.get("controls") or []),
+        interactions_attempted=list(exploration.get("interactions") or []),
+        resulting_states=list(exploration.get("states") or []),
+        exploration_depth=int(exploration.get("exploration_depth") or 0),
+    )
+
+
 def close_transient_dialog_or_window(window: Any | None, *, action_label: str = "") -> dict[str, Any]:
     logger.info("dialog_close_attempt action_label={}", action_label)
     if window is None:
@@ -1425,6 +1571,7 @@ def explore_menu_tree(
         skipped = row.is_separator or (not is_action_allowed(path, mode=safe_mode))
         reused_from_previous_state = normalized_path in known_paths_to_skip
         opens_submenu = False
+        opens_modal = False
         children_nodes: list[dict[str, Any]] = []
         before_action = capture_state_snapshot(state_id) if not is_fast_mode() else RuntimeStateSnapshot(
             state_id=state_id,
@@ -1513,8 +1660,38 @@ def explore_menu_tree(
                     if not is_top_menu_like_popup_row(child_row, canonical_top_menu_names)
                 ]
             after_action = capture_state_snapshot(state_id) if not is_fast_mode() else before_action
+            placeholder_outcome = None
+            if placeholder:
+                placeholder_outcome = _classify_placeholder_action_outcome(
+                    state_id=state_id,
+                    path=path,
+                    row=row,
+                    before_action=before_action,
+                    after_action=after_action,
+                    current_rows=current_rows,
+                    child_rows=child_rows,
+                )
             if child_rows or not is_fast_mode():
                 transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
+            if placeholder_outcome and placeholder_outcome.get("outcome") == "modal_opened":
+                transition = {
+                    "result_type": "modal_opened",
+                    "dialog_detected": True,
+                    "window_snapshot": dict(placeholder_outcome.get("foreground_window") or {}),
+                    "foreground_window": dict(placeholder_outcome.get("foreground_window") or {}),
+                    "placeholder_outcome": "modal_opened",
+                }
+            elif placeholder_outcome and placeholder_outcome.get("outcome") == "main_window_disabled":
+                transition = {
+                    "result_type": "main_window_disabled",
+                    "dialog_detected": True,
+                    "window_snapshot": dict(placeholder_outcome.get("foreground_window") or {}),
+                    "foreground_window": dict(placeholder_outcome.get("foreground_window") or {}),
+                    "placeholder_outcome": "main_window_disabled",
+                }
+            elif placeholder_outcome:
+                transition = dict(transition)
+                transition["placeholder_outcome"] = placeholder_outcome.get("outcome")
             if child_rows:
                 opens_submenu = True
                 logger.info("DBG_SUBTREE_TRAVERSAL_SUBMENU_OPENED state={} path={} child_row_count={} placeholder={}", state_id, path, len(child_rows), placeholder)
@@ -1541,9 +1718,20 @@ def explore_menu_tree(
                 actions.extend(child_actions)
                 dialogs.extend(child_dialogs)
                 windows.extend(child_windows)
-            elif transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+            elif transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened", "main_window_disabled"}:
                 candidate = transition.get("window_snapshot") or {}
-                if transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely"}:
+                if transition.get("result_type") in {"modal_opened", "main_window_disabled"}:
+                    opens_modal = True
+                    _, dialog_record = _handle_placeholder_modal_outcome(
+                        state_id=state_id,
+                        top_menu=top_menu,
+                        safe_mode=safe_mode,
+                        path=path,
+                        row=row,
+                        transition=transition,
+                    )
+                    dialogs.append(dialog_record)
+                elif transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely"}:
                     exploration = _explore_dialog_candidate(candidate, safe_mode=safe_mode)
                     dialogs.append(RuntimeDialogRecord(
                         state_id=state_id,
@@ -1586,7 +1774,8 @@ def explore_menu_tree(
             path=path,
             children=children_nodes,
             opens_submenu=opens_submenu,
-            opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened"},
+            opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened", "modal_opened", "main_window_disabled"},
+            opens_modal=opens_modal,
             skipped_by_safety=skipped,
             reused_from_previous_state=reused_from_previous_state,
         )
