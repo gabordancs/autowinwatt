@@ -3,6 +3,8 @@ from __future__ import annotations
 import sys
 import types
 
+from loguru import logger
+
 from winwatt_automation.runtime_mapping.config import configure_diagnostics
 from winwatt_automation.runtime_mapping.models import RuntimeDialogRecord, RuntimeMenuRow, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
@@ -188,3 +190,69 @@ def test_recent_project_open_transition_classification_preferred_over_leaf_class
     )
 
     assert classification == "opens_project_and_changes_runtime_state"
+
+
+class _FakeComError(Exception):
+    __module__ = "pythoncom"
+
+
+class _FakeMenuParent:
+    def __init__(self, control_type: str):
+        self.element_info = type("Info", (), {"control_type": control_type, "name": control_type, "class_name": ""})()
+
+
+class _FakeClickableMenuItem:
+    def __init__(self, name: str, rect: tuple[int, int, int, int], *, parent_mode: str = "ok"):
+        self.element_info = type("Info", (), {"name": name, "control_type": "MenuItem", "class_name": "MenuItem", "handle": id(self)})()
+        self._rect = rect
+        self._parent_mode = parent_mode
+        self.clicked = 0
+
+    def is_visible(self):
+        return True
+
+    def rectangle(self):
+        left, top, right, bottom = self._rect
+        return type("Rect", (), {"left": left, "top": top, "right": right, "bottom": bottom})()
+
+    def parent(self):
+        if self._parent_mode == "comerror":
+            raise _FakeComError("parent lookup failed")
+        return _FakeMenuParent("MenuBar")
+
+    def click_input(self):
+        self.clicked += 1
+
+
+def test_click_top_menu_item_uses_geometry_fallback_when_parent_comerror(monkeypatch):
+    from winwatt_automation.live_ui import menu_helpers
+
+    items = [
+        _FakeClickableMenuItem("Fájl", (4, 4, 70, 28), parent_mode="comerror"),
+        _FakeClickableMenuItem("Ablak", (71, 4, 150, 28), parent_mode="comerror"),
+        _FakeClickableMenuItem("Súgó", (151, 4, 220, 28), parent_mode="comerror"),
+    ]
+    target = items[1]
+    events: list[str] = []
+    sink_id = logger.add(lambda msg: events.append(msg.record["message"]), level="INFO")
+    try:
+        menu_helpers._TOPBAR_BAND_CACHE.update({"handle": None, "captured_at": 0.0, "band": None})
+        menu_helpers._consume_topbar_parent_error_state()
+        monkeypatch.setattr(menu_helpers, "get_cached_main_window", lambda: type("Main", (), {"element_info": type("Info", (), {"handle": 99})(), "child_window": lambda self, **kwargs: (_ for _ in ()).throw(RuntimeError("no menubar")), "rectangle": lambda self: type("Rect", (), {"left": 0, "top": 0, "right": 400, "bottom": 300})()})())
+        monkeypatch.setattr(menu_helpers, "prepare_main_window_for_menu_interaction", lambda: type("Main", (), {"rectangle": lambda self: type("Rect", (), {"left": 0, "top": 0, "right": 400, "bottom": 300})()})())
+        monkeypatch.setattr(menu_helpers, "ensure_main_window_foreground_before_click", lambda **kwargs: type("Main", (), {"rectangle": lambda self: type("Rect", (), {"left": 0, "top": 0, "right": 400, "bottom": 300})(), "click_input": lambda self, coords=None: None})())
+        monkeypatch.setattr(menu_helpers, "describe_foreground_window", lambda: {"title": "WinWatt"})
+        monkeypatch.setattr(menu_helpers, "is_winwatt_foreground_context", lambda *args, **kwargs: True)
+        monkeypatch.setattr(menu_helpers, "_is_system_menu_foreground", lambda: False)
+        monkeypatch.setattr(menu_helpers, "_query_menu_items_from_root", lambda _root, **kwargs: items)
+        monkeypatch.setattr(menu_helpers, "wait_for_new_menu_popup", lambda before_snapshot, **kwargs: before_snapshot | {("x", "y", "z", "w", "scope")})
+        monkeypatch.setattr(menu_helpers, "_menu_snapshot", lambda: set())
+        monkeypatch.setattr(menu_helpers, "_log_top_menu_popup_diagnostics", lambda *args, **kwargs: None)
+
+        menu_helpers.click_top_menu_item("Ablak")
+    finally:
+        logger.remove(sink_id)
+
+    assert target.clicked == 1
+    assert any("TOPBAR_PARENT_COMERROR_FALLBACK" in event for event in events)
+    assert any("TOPBAR_GEOMETRY_FALLBACK_USED context=click_top_menu_item" in event for event in events)
