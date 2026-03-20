@@ -1,0 +1,22 @@
+{
+  "state_order": [
+    "no_project",
+    "project_open"
+  ],
+  "states": {
+    "no_project": {
+      "action_catalog": [],
+      "canonical_top_menus": [],
+      "state_id": "no_project",
+      "state_transitions": [],
+      "top_menu_rows": []
+    },
+    "project_open": {
+      "action_catalog": [],
+      "canonical_top_menus": [],
+      "state_id": "project_open",
+      "state_transitions": [],
+      "top_menu_rows": []
+    }
+  }
+}

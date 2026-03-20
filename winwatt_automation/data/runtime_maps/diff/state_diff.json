@@ -6,96 +6,24 @@
   },
   "enabled_state_changes": [],
   "menu_action_diff": {
-    "only_in_a": [
-      [
-        "fájl",
-        "[unlabeled row 12]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 13]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 14]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 15]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 16]"
-      ]
-    ],
+    "only_in_a": [],
     "only_in_b": [],
-    "shared": [
-      [
-        "fájl",
-        "[unlabeled row 0]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 10]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 11]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 1]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 2]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 3]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 4]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 5]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 6]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 7]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 8]"
-      ],
-      [
-        "fájl",
-        "[unlabeled row 9]"
-      ]
-    ]
+    "shared": []
   },
   "project_only_paths": [],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 5,
+    "actions_only_in_a": 0,
     "actions_only_in_b": 0,
     "enabled_changes": 0,
     "project_only_paths": 0,
-    "shared_top_menus": 1
+    "shared_top_menus": 0
   },
   "top_menu_diff": {
     "only_in_a": [],
     "only_in_b": [],
-    "shared": [
-      "fájl"
-    ]
+    "shared": []
   },
   "window_diff": {
     "only_in_a": [],

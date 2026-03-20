@@ -1,0 +1,133 @@
+{
+  "run_id": "0072_concise_2026-03-20_12-47-15",
+  "sequence_number": 72,
+  "started_at": "2026-03-20T12:47:15.448649+00:00",
+  "finished_at": "2026-03-20T12:51:31.577575+00:00",
+  "duration_seconds": 256.129,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 2 --include-disabled false --diagnostic-fast-mode --placeholder-traversal-focus --placeholder-modal-policy submenu_only --recent-projects-policy skip_recent_projects --log-profile concise",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "off",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 0,
+  "success": true,
+  "summary": {
+    "no_project_top_menus": 6,
+    "project_open_top_menus": 6,
+    "diff_summary": {
+      "shared_top_menus": 6,
+      "actions_only_in_a": 2,
+      "actions_only_in_b": 2,
+      "enabled_changes": 0,
+      "project_only_paths": 0
+    },
+    "skipped_by_safety": 34,
+    "last_error": null,
+    "modal_detected": false,
+    "recovery_attempted": true,
+    "recovery_success": true
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-20T12:49:26.341844+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "no_project",
+        "top_menus": 6,
+        "actions": 22,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-20T12:49:30.565399+00:00",
+      "event_type": "project_open_result",
+      "payload": {
+        "success": false,
+        "error": "Could not locate 'Projekt megnyitás' row in Fájl popup.",
+        "dialog_found": false
+      }
+    },
+    {
+      "timestamp": "2026-03-20T12:49:30.567586+00:00",
+      "event_type": "project_open_recovery",
+      "payload": {
+        "success": true,
+        "reason": "main_window_ready",
+        "modal_detected": false
+      }
+    },
+    {
+      "timestamp": "2026-03-20T12:51:31.553402+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "project_open",
+        "top_menus": 6,
+        "actions": 22,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-20T12:51:31.567459+00:00",
+      "event_type": "runtime_diff",
+      "payload": {
+        "summary": {
+          "shared_top_menus": 6,
+          "actions_only_in_a": 2,
+          "actions_only_in_b": 2,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        },
+        "enabled_changes": 0,
+        "project_only_paths": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-20T12:51:31.571725+00:00",
+      "event_type": "knowledge_verification",
+      "payload": {
+        "baseline_loaded": true,
+        "missing_menu_paths": [],
+        "new_menu_paths": [
+          [
+            "ablak",
+            "[unlabeled row 0]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 0]"
+          ]
+        ],
+        "missing_dialogs": [],
+        "new_dialogs": [],
+        "missing_windows": [],
+        "new_windows": [],
+        "known_menu_paths": 17,
+        "current_menu_paths": 19,
+        "covered_known_menu_paths": 17,
+        "coverage_pct": 100.0
+      }
+    },
+    {
+      "timestamp": "2026-03-20T12:51:31.576087+00:00",
+      "event_type": "runtime_mapping_summary",
+      "payload": {
+        "no_project_top_menus": 6,
+        "project_open_top_menus": 6,
+        "diff_summary": {
+          "shared_top_menus": 6,
+          "actions_only_in_a": 2,
+          "actions_only_in_b": 2,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        }
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0072_concise_2026-03-20_12-47-15.log",
+    "json_path": "data\\run_logs\\runs\\0072_concise_2026-03-20_12-47-15.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

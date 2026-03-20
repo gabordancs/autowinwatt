@@ -3,24 +3,24 @@
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Eszközök",
+    "Adatbázis...",
     "Beállítások",
     "Ablak",
     "Súgó"
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 134394,
-    "process_id": 35688,
-    "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\Személyes\\Lilla-Peti\\Pályázati dokumentumok 0319\\lillapeti_szigetelt_de alap gepeszet.wwp"
+    "handle": 855794,
+    "process_id": 25400,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
-  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\Személyes\\Lilla-Peti\\Pályázati dokumentumok 0319\\lillapeti_szigetelt_de alap gepeszet.wwp",
+  "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 35688,
+  "process_id": 25400,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -28,23 +28,23 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 134394,
-        "process_id": 35688,
-        "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\Személyes\\Lilla-Peti\\Pályázati dokumentumok 0319\\lillapeti_szigetelt_de alap gepeszet.wwp"
+        "handle": 855794,
+        "process_id": 25400,
+        "title": "WinWatt gólya"
       },
       "main_window": {
         "class_name": "TMainForm",
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 35688,
+        "process_id": 25400,
         "rect": {
           "bottom": 1150,
           "left": -10,
           "right": 1930,
           "top": -10
         },
-        "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\Személyes\\Lilla-Peti\\Pályázati dokumentumok 0319\\lillapeti_szigetelt_de alap gepeszet.wwp",
+        "title": "WinWatt gólya",
         "visible": true
       }
     },
@@ -54,12 +54,12 @@
     "success": true
   },
   "state_id": "project_open",
-  "timestamp": "2026-03-20T09:45:50.812445+00:00",
+  "timestamp": "2026-03-20T13:19:09.249655+00:00",
   "visible_top_windows": [
     {
       "class_name": "SysShadow",
       "handle": null,
-      "process_id": 35688,
+      "process_id": 25400,
       "title": ""
     },
     {
@@ -71,20 +71,20 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 35688,
-      "title": "WinWatt gólya - C:\\Users\\dancsg\\Documents\\Személyes\\Lilla-Peti\\Pályázati dokumentumok 0319\\lillapeti_szigetelt_de alap gepeszet.wwp"
+      "process_id": 25400,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 13168,
-      "title": "explore_file_menu.py - autowinwatt - Visual Studio Code"
+      "process_id": 35256,
+      "title": "gui_helpers.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Handle modal dialogs opened by geometry placeholder clicks by gabordancs · Pull Request #64 · gabordancs/autowinwatt - Google Chrome"
+      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -93,10 +93,40 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "TeamsWebView",
+      "class_name": "CabinetWClass",
       "handle": null,
-      "process_id": 16952,
-      "title": "Gépészeti egyeztetés | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
+      "process_id": 14600,
+      "title": "tests – Fájlkezelő"
+    },
+    {
+      "class_name": "OpusApp",
+      "handle": null,
+      "process_id": 25136,
+      "title": "TENDERZÁRÓ JEGYZŐKÖNYV_Sasad_Resort_09_lemez alatti munkák  -  Védett nézet  -  Legutóbb a felhasználó mentette - Word"
+    },
+    {
+      "class_name": "OpusApp",
+      "handle": null,
+      "process_id": 25136,
+      "title": "Dokumentum1 - Word"
+    },
+    {
+      "class_name": "OpusApp",
+      "handle": null,
+      "process_id": 25136,
+      "title": "Pedrano_Hazepito_Nyilatkozat baleset vagy egyéb rendkívüli esemény esetén értesíthető személyről  -  Védett nézet  -  Legutóbb a felhasználó mentette - Word"
+    },
+    {
+      "class_name": "Notepad",
+      "handle": null,
+      "process_id": 5264,
+      "title": "*antal áron – Jegyzettömb"
+    },
+    {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 29956,
+      "title": "PDF-XChange Editor"
     },
     {
       "class_name": "rctrl_renwnd32",
@@ -115,18 +145,6 @@
       "handle": null,
       "process_id": 16952,
       "title": "Calendar | Calendar | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
-    },
-    {
-      "class_name": "Notepad",
-      "handle": null,
-      "process_id": 5264,
-      "title": "*antal áron – Jegyzettömb"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 29956,
-      "title": "PDF-XChange Editor"
     },
     {
       "class_name": "Progman",
