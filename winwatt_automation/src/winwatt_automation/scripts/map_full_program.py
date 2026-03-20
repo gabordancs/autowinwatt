@@ -26,7 +26,12 @@ from winwatt_automation.runtime_mapping.config import configure_diagnostics
 def _parse_top_menus(raw: str | None) -> list[str] | None:
     if not raw:
         return None
-    return [normalize_menu_title(item) for item in raw.split(",") if item.strip()]
+    normalized = [
+        normalize_menu_title(item)
+        for item in raw.replace(";", ",").split(",")
+        if item.strip()
+    ]
+    return normalized or None
 
 
 def _parse_bool(raw: str) -> bool:
