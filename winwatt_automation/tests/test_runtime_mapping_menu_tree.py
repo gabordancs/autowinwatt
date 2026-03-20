@@ -6,6 +6,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     _classify_popup_block,
     _build_menu_rows_from_popup_rows,
     _evaluate_action_admission,
+    _run_action_evidence_probe,
     _filter_normal_popup_rows,
     _safe_depth_decision,
     compare_runtime_states,
@@ -1496,3 +1497,61 @@ def test_action_count_drops_while_row_retention_remains(monkeypatch):
     assert len(state.menu_rows) == 2
     assert len(state.action_catalog) == 0
     assert all(row["retained_as_structure_only"] for row in state.menu_rows)
+
+
+def test_legacy_text_only_row_probe_is_admitted_when_child_popup_opens(monkeypatch):
+    before = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="WinWatt", main_window_class="TMainForm", visible_top_windows=[], discovered_top_menus=["Jegyzékek"], timestamp="t", main_window_enabled=True, main_window_visible=True, foreground_window={"title": "WinWatt", "class_name": "TMainForm"})
+    after = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="WinWatt", main_window_class="TMainForm", visible_top_windows=[], discovered_top_menus=["Jegyzékek"], timestamp="t2", main_window_enabled=True, main_window_visible=True, foreground_window={"title": "WinWatt", "class_name": "TMainForm"})
+    rows = _build_menu_rows_from_popup_rows("s", "Jegyzékek", [{"text": "Végrehajtás", "center_x": 15, "center_y": 20, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "raw_text_sources": ["legacy_text"], "text_confidence": "low", "enabled_guess": None}])
+    snapshots = iter([before, after])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda _state_id: next(snapshots))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration", lambda row, popup_rows: None)
+    before_popup = [{"text": "Végrehajtás", "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False}]
+    after_popup = before_popup + [{"text": "Almenü", "rectangle": {"left": 120, "top": 10, "right": 220, "bottom": 30}, "is_separator": False}]
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: after_popup)
+    evidence = _run_action_evidence_probe(state_id="s", top_menu="Jegyzékek", path=["Jegyzékek", "Végrehajtás"], row=rows[0], popup_rows=before_popup, current_rows=before_popup)
+    admitted, reason, rejected = _evaluate_action_admission(row=rows[0], path=["Jegyzékek", "Végrehajtás"], action_state_classification="unknown", transition={"result_type": evidence["result_type"], "attempted": True}, opens_submenu=False, opens_modal=False, skip_reason=None, traversal_depth=1, probe_evidence=evidence)
+    assert evidence["result_type"] == "child_popup_opened"
+    assert admitted is True
+    assert reason == "interaction_evidence:child_popup_opened"
+    assert rejected is None
+
+
+def test_placeholder_row_probe_is_admitted_when_dialog_opens():
+    row = _build_menu_rows_from_popup_rows("s", "Jegyzékek", [{"text": "", "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "popup_reason": "empty_text_vertical_cluster_below_topbar"}])[0]
+    admitted, reason, rejected = _evaluate_action_admission(row=row, path=row.menu_path, action_state_classification="unknown", transition={"result_type": "dialog_opened", "attempted": True}, opens_submenu=False, opens_modal=False, skip_reason=None, traversal_depth=1, probe_evidence={"result_type": "dialog_opened", "new_dialog_detected": True, "evidence_strength": "strong"})
+    assert admitted is True
+    assert reason == "interaction_evidence:dialog_opened"
+    assert rejected is None
+
+
+def test_placeholder_row_stays_structure_only_when_probe_has_no_observable_effect():
+    row = _build_menu_rows_from_popup_rows("s", "Jegyzékek", [{"text": "", "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "popup_reason": "empty_text_vertical_cluster_below_topbar"}])[0]
+    admitted, reason, rejected = _evaluate_action_admission(row=row, path=row.menu_path, action_state_classification="unknown", transition={"result_type": "no_observable_effect", "attempted": True}, opens_submenu=False, opens_modal=False, skip_reason=None, traversal_depth=1, probe_evidence={"result_type": "no_observable_effect", "evidence_strength": "none"})
+    assert admitted is False
+    assert reason is None
+    assert rejected == "placeholder_without_state_change"
+
+
+def test_click_failed_focus_guard_is_not_admission_evidence():
+    row = _build_menu_rows_from_popup_rows("s", "Jegyzékek", [{"text": "Lista", "center_x": 15, "center_y": 20, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "enabled_guess": None, "raw_text_sources": ["uia_name"], "text_confidence": "high"}])[0]
+    admitted, reason, rejected = _evaluate_action_admission(row=row, path=row.menu_path, action_state_classification="unknown", transition={"result_type": "click_failed_focus_guard", "attempted": True}, opens_submenu=False, opens_modal=False, skip_reason=None, traversal_depth=1, probe_evidence={"result_type": "click_failed_focus_guard", "click_exception": "RuntimeError: focus lost", "evidence_strength": "weak"})
+    assert admitted is False
+    assert reason is None
+    assert rejected == "unknown_classification_suppressed"
+
+
+def test_output_summary_reports_probe_counters(monkeypatch):
+    snapshot = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="WinWatt", main_window_class="TMainForm", visible_top_windows=[], discovered_top_menus=["Jegyzékek"], timestamp="t", main_window_enabled=True, main_window_visible=True, foreground_window={"title": "WinWatt", "class_name": "TMainForm"})
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda _state_id: snapshot)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper._run_action_evidence_probe", lambda **kwargs: {"result_type": "no_observable_effect", "evidence_strength": "none"})
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
+    messages = []
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.logger.info", lambda message, *args: messages.append(message.format(*args)))
+    explore_menu_tree(state_id="s", top_menu="Jegyzékek", safe_mode="safe", max_depth=1, include_disabled=True, popup_rows=[{"text": "", "center_x": 15, "center_y": 20, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "popup_reason": "below_topbar_band"}], visited_paths={("jegyzékek",)})
+    summary = next(message for message in messages if message.startswith("ACTION_CATALOG_OUTPUT_SUMMARY"))
+    assert "candidate_rows=1" in summary
+    assert "probed_rows=1" in summary
+    assert "admitted_after_probe=0" in summary
+    assert "still_structure_only=1" in summary
