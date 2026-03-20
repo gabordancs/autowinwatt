@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 2032520,
-    "process_id": 19572,
+    "handle": 2232786,
+    "process_id": 20184,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -20,7 +20,7 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 19572,
+  "process_id": 20184,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -28,8 +28,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 2032520,
-        "process_id": 19572,
+        "handle": 2232786,
+        "process_id": 20184,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -37,7 +37,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 19572,
+        "process_id": 20184,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -54,14 +54,8 @@
     "success": true
   },
   "state_id": "project_open",
-  "timestamp": "2026-03-20T18:53:15.962164+00:00",
+  "timestamp": "2026-03-20T20:40:11.728708+00:00",
   "visible_top_windows": [
-    {
-      "class_name": "SysShadow",
-      "handle": null,
-      "process_id": 19572,
-      "title": ""
-    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -71,7 +65,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 19572,
+      "process_id": 20184,
       "title": "WinWatt gólya"
     },
     {
@@ -93,10 +87,16 @@
       "title": "GitHub Desktop"
     },
     {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 29976,
+      "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
+    },
+    {
       "class_name": "CabinetWClass",
       "handle": null,
       "process_id": 14600,
-      "title": "tests – Fájlkezelő"
+      "title": "Languages – Fájlkezelő"
     },
     {
       "class_name": "OpusApp",
@@ -121,12 +121,6 @@
       "handle": null,
       "process_id": 5264,
       "title": "*antal áron – Jegyzettömb"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 29956,
-      "title": "PDF-XChange Editor"
     },
     {
       "class_name": "rctrl_renwnd32",

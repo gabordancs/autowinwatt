@@ -1,1 +1,1474 @@
-[]
+[
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 70,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 84,
+      "left": 44,
+      "right": 318,
+      "top": 56
+    },
+    "row_index": 0,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 98,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 112,
+      "left": 44,
+      "right": 318,
+      "top": 84
+    },
+    "row_index": 1,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 125,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 2]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 125
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_002",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 44,
+        "right": 318,
+        "top": 111
+      },
+      "row_index": 2,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 2]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 139,
+      "left": 44,
+      "right": 318,
+      "top": 111
+    },
+    "row_index": 2,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 2]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 153,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 3]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 153
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_003",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 44,
+        "right": 318,
+        "top": 139
+      },
+      "row_index": 3,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 3]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 167,
+      "left": 44,
+      "right": 318,
+      "top": 139
+    },
+    "row_index": 3,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 3]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 180,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 4]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 180
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_004",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 44,
+        "right": 318,
+        "top": 166
+      },
+      "row_index": 4,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 4]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 194,
+      "left": 44,
+      "right": 318,
+      "top": 166
+    },
+    "row_index": 4,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 4]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 215,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 5]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 215
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_005",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 229,
+        "left": 44,
+        "right": 318,
+        "top": 201
+      },
+      "row_index": 5,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 5]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 229,
+      "left": 44,
+      "right": 318,
+      "top": 201
+    },
+    "row_index": 5,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 5]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 243,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 6]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 243
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_006",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 257,
+        "left": 44,
+        "right": 318,
+        "top": 229
+      },
+      "row_index": 6,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 6]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 257,
+      "left": 44,
+      "right": 318,
+      "top": 229
+    },
+    "row_index": 6,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 6]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 270,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 7]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 270
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_007",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 284,
+        "left": 44,
+        "right": 318,
+        "top": 256
+      },
+      "row_index": 7,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 7]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 284,
+      "left": 44,
+      "right": 318,
+      "top": 256
+    },
+    "row_index": 7,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 7]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 298,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 8]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 298
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_008",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 44,
+        "right": 318,
+        "top": 284
+      },
+      "row_index": 8,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 8]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 312,
+      "left": 44,
+      "right": 318,
+      "top": 284
+    },
+    "row_index": 8,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 8]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 333,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 9]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 333
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_009",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 347,
+        "left": 44,
+        "right": 318,
+        "top": 319
+      },
+      "row_index": 9,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 9]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 347,
+      "left": 44,
+      "right": 318,
+      "top": 319
+    },
+    "row_index": 9,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 9]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 360,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 10]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 360
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_010",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 374,
+        "left": 44,
+        "right": 318,
+        "top": 346
+      },
+      "row_index": 10,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 10]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 374,
+      "left": 44,
+      "right": 318,
+      "top": 346
+    },
+    "row_index": 10,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 10]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 388,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 11]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 388
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_011",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 44,
+        "right": 318,
+        "top": 374
+      },
+      "row_index": 11,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 11]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 402,
+      "left": 44,
+      "right": 318,
+      "top": 374
+    },
+    "row_index": 11,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 11]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 415,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 12]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 415
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_012",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 429,
+        "left": 44,
+        "right": 318,
+        "top": 401
+      },
+      "row_index": 12,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 12]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 429,
+      "left": 44,
+      "right": 318,
+      "top": 401
+    },
+    "row_index": 12,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 12]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 450,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 13]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 450
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_013",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 464,
+        "left": 44,
+        "right": 318,
+        "top": 436
+      },
+      "row_index": 13,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 13]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 464,
+      "left": 44,
+      "right": 318,
+      "top": 436
+    },
+    "row_index": 13,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 13]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 70,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 84,
+      "left": 44,
+      "right": 318,
+      "top": 56
+    },
+    "row_index": 14,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 98,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 112,
+      "left": 44,
+      "right": 318,
+      "top": 84
+    },
+    "row_index": 15,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 125,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 16]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 125
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_016",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 44,
+        "right": 318,
+        "top": 111
+      },
+      "row_index": 16,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 16]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 139,
+      "left": 44,
+      "right": 318,
+      "top": 111
+    },
+    "row_index": 16,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 16]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 153,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 17]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 153
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_017",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 44,
+        "right": 318,
+        "top": 139
+      },
+      "row_index": 17,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 17]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 167,
+      "left": 44,
+      "right": 318,
+      "top": 139
+    },
+    "row_index": 17,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 17]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 180,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 18]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 180
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_018",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 44,
+        "right": 318,
+        "top": 166
+      },
+      "row_index": 18,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 18]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 194,
+      "left": 44,
+      "right": 318,
+      "top": 166
+    },
+    "row_index": 18,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 18]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 215,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 19]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 215
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_019",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 229,
+        "left": 44,
+        "right": 318,
+        "top": 201
+      },
+      "row_index": 19,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 19]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 229,
+      "left": 44,
+      "right": 318,
+      "top": 201
+    },
+    "row_index": 19,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 19]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 243,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 20]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 243
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_020",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 257,
+        "left": 44,
+        "right": 318,
+        "top": 229
+      },
+      "row_index": 20,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 20]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 257,
+      "left": 44,
+      "right": 318,
+      "top": 229
+    },
+    "row_index": 20,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 20]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 270,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 21]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 270
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_021",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 284,
+        "left": 44,
+        "right": 318,
+        "top": 256
+      },
+      "row_index": 21,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 21]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 284,
+      "left": 44,
+      "right": 318,
+      "top": 256
+    },
+    "row_index": 21,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 21]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 298,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 22]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 298
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_022",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 44,
+        "right": 318,
+        "top": 284
+      },
+      "row_index": 22,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 22]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 312,
+      "left": 44,
+      "right": 318,
+      "top": 284
+    },
+    "row_index": 22,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 22]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 333,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 23]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 333
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_023",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 347,
+        "left": 44,
+        "right": 318,
+        "top": 319
+      },
+      "row_index": 23,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 23]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 347,
+      "left": 44,
+      "right": 318,
+      "top": 319
+    },
+    "row_index": 23,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 23]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 360,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 24]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 360
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_024",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 374,
+        "left": 44,
+        "right": 318,
+        "top": 346
+      },
+      "row_index": 24,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 24]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 374,
+      "left": 44,
+      "right": 318,
+      "top": 346
+    },
+    "row_index": 24,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 24]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 388,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 25]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 388
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_025",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 44,
+        "right": 318,
+        "top": 374
+      },
+      "row_index": 25,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 25]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 402,
+      "left": 44,
+      "right": 318,
+      "top": 374
+    },
+    "row_index": 25,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 25]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 415,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 26]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 415
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_026",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 429,
+        "left": 44,
+        "right": 318,
+        "top": 401
+      },
+      "row_index": 26,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 26]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 429,
+      "left": 44,
+      "right": 318,
+      "top": 401
+    },
+    "row_index": 26,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 26]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  },
+  {
+    "action_type": "click",
+    "actionable": true,
+    "center_x": 181,
+    "center_y": 450,
+    "discovered_in_state": "no_project",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Jegyzékek",
+      "[unlabeled row 27]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 181,
+        "y": 450
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_027",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 464,
+        "left": 44,
+        "right": 318,
+        "top": 436
+      },
+      "row_index": 27,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 27]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 464,
+      "left": 44,
+      "right": 318,
+      "top": 436
+    },
+    "row_index": 27,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 27]",
+    "text_confidence": "none",
+    "top_menu": "Jegyzékek"
+  }
+]

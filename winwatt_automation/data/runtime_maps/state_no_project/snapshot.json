@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 19572,
+  "process_id": 20184,
   "state_id": "no_project",
-  "timestamp": "2026-03-20T18:52:59.166917+00:00",
+  "timestamp": "2026-03-20T20:36:56.966643+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -39,7 +39,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 19572,
+      "process_id": 20184,
       "title": "WinWatt gólya"
     },
     {
@@ -55,10 +55,16 @@
       "title": "GitHub Desktop"
     },
     {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 29976,
+      "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
+    },
+    {
       "class_name": "CabinetWClass",
       "handle": null,
       "process_id": 14600,
-      "title": "tests – Fájlkezelő"
+      "title": "Languages – Fájlkezelő"
     },
     {
       "class_name": "OpusApp",
@@ -83,12 +89,6 @@
       "handle": null,
       "process_id": 5264,
       "title": "*antal áron – Jegyzettömb"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 29956,
-      "title": "PDF-XChange Editor"
     },
     {
       "class_name": "rctrl_renwnd32",
