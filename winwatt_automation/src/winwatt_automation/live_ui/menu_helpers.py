@@ -48,6 +48,7 @@ POPUP_LOG_STATS = {
     "popup_like": 0,
     "empty_text": 0,
 }
+_TOPBAR_PARENT_ERROR_STATE: dict[str, Any] = {"active": False, "contexts": set(), "count": 0}
 
 
 def log_popup_snapshot_summary() -> None:
@@ -129,20 +130,107 @@ def _menu_items_reentrancy_guard(*, force_refresh: bool) -> Any:
         _MENU_ITEMS_REENTRANCY_DEPTH = max(0, _MENU_ITEMS_REENTRANCY_DEPTH - 1)
 
 
-def _top_level_menu_items_from_items(items: list[Any]) -> list[Any]:
-    top_level_items: list[Any] = []
+def _is_com_error(exc: Exception) -> bool:
+    name = type(exc).__name__.lower()
+    module = str(getattr(type(exc), "__module__", "")).lower()
+    return "comerror" in name or "com_error" in name or "pythoncom" in module or "pywintypes" in module or "comtypes" in module
+
+
+def _remember_topbar_parent_comerror(context: str, wrapper: Any, exc: Exception) -> None:
+    _TOPBAR_PARENT_ERROR_STATE["active"] = True
+    _TOPBAR_PARENT_ERROR_STATE["count"] = int(_TOPBAR_PARENT_ERROR_STATE.get("count") or 0) + 1
+    contexts = _TOPBAR_PARENT_ERROR_STATE.setdefault("contexts", set())
+    if isinstance(contexts, set):
+        contexts.add(context)
+    logger.info(
+        "TOPBAR_PARENT_COMERROR_FALLBACK context={} wrapper_name={!r} control_type={} class_name={} rectangle={} error_type={} error={!r}",
+        context,
+        _name(wrapper),
+        _control_type(wrapper),
+        _class_name(wrapper),
+        _rect_tuple(_rectangle_data(wrapper)),
+        type(exc).__name__,
+        str(exc),
+    )
+    logger.debug("TOPBAR_PARENT_COMERROR_FALLBACK exception detail", exception=exc)
+
+
+def _consume_topbar_parent_error_state() -> dict[str, Any]:
+    state = {
+        "active": bool(_TOPBAR_PARENT_ERROR_STATE.get("active")),
+        "contexts": sorted(str(item) for item in (_TOPBAR_PARENT_ERROR_STATE.get("contexts") or set())),
+        "count": int(_TOPBAR_PARENT_ERROR_STATE.get("count") or 0),
+    }
+    _TOPBAR_PARENT_ERROR_STATE.update({"active": False, "contexts": set(), "count": 0})
+    return state
+
+
+def _geometry_only_top_level_menu_items_from_items(items: list[Any]) -> list[Any]:
+    candidate_rows: list[dict[str, Any]] = []
+    candidate_items: list[tuple[Any, dict[str, Any]]] = []
+    normalized_top_names = {_normalize(name) for name in TOP_MENU_NAMES}
     for item in items:
-        parent_type = _control_type(_parent_wrapper(item))
+        rect = _rectangle_data(item)
+        if rect is None or not _is_visible(item):
+            continue
+        row = {"text": _name(item), "normalized_text": _normalize(_name(item)), "rectangle": rect, "center_x": rect["center_x"], "center_y": rect["center_y"]}
+        candidate_items.append((item, row))
+        if row["normalized_text"] in normalized_top_names:
+            candidate_rows.append(row)
+    if not candidate_items:
+        return []
+    seed_rows = candidate_rows or [row for _item, row in candidate_items]
+    band = _compute_topbar_band_from_rows(seed_rows)
+    if band is None:
+        return [item for item, _row in candidate_items if _normalize(_name(item)) in normalized_top_names]
+    selected: list[Any] = []
+    for item, row in candidate_items:
+        if _row_in_vertical_band(row, band):
+            selected.append(item)
+    return selected
+
+
+def _top_level_menu_items_with_meta_from_items(items: list[Any]) -> tuple[list[Any], dict[str, Any]]:
+    top_level_items: list[Any] = []
+    geometry_needed = False
+    for item in items:
+        parent_wrapper, parent_comerror = _safe_parent_wrapper(item, context="top_level_menu_items")
+        geometry_needed = geometry_needed or parent_comerror
+        parent_type = _control_type(parent_wrapper)
         if parent_type not in {"menu", "menubar"}:
             continue
         if _has_menuitem_ancestor(item):
             continue
         top_level_items.append(item)
+    geometry_items: list[Any] = []
+    if geometry_needed:
+        geometry_items = _geometry_only_top_level_menu_items_from_items(items)
+        if geometry_items:
+            logger.info(
+                "TOPBAR_GEOMETRY_FALLBACK_USED context=top_level_menu_items items={} named_candidates={} parent_comerror_count={}",
+                len(geometry_items),
+                sum(1 for item in geometry_items if _normalize(_name(item)) in {_normalize(name) for name in TOP_MENU_NAMES}),
+                int(_TOPBAR_PARENT_ERROR_STATE.get("count") or 0),
+            )
+    merged: list[Any] = []
+    seen_ids: set[int] = set()
+    for item in top_level_items + geometry_items:
+        marker = id(item)
+        if marker in seen_ids:
+            continue
+        seen_ids.add(marker)
+        merged.append(item)
+    return merged, {"geometry_fallback_used": bool(geometry_items), "parent_comerror": geometry_needed}
+
+
+def _top_level_menu_items_from_items(items: list[Any]) -> list[Any]:
+    top_level_items, _meta = _top_level_menu_items_with_meta_from_items(items)
     return top_level_items
 
 
 def _compute_topbar_band_from_items(items: list[Any]) -> dict[str, int] | None:
-    top_level_rects = [rect for item in _top_level_menu_items_from_items(items) for rect in [_rectangle_data(item)] if rect is not None]
+    top_level_items, meta = _top_level_menu_items_with_meta_from_items(items)
+    top_level_rects = [rect for item in top_level_items for rect in [_rectangle_data(item)] if rect is not None]
     if not top_level_rects:
         return None
 
@@ -150,7 +238,7 @@ def _compute_topbar_band_from_items(items: list[Any]) -> dict[str, int] | None:
     top = min(rect["top"] for rect in top_level_rects)
     right = max(rect["right"] for rect in top_level_rects)
     bottom = max(rect["bottom"] for rect in top_level_rects)
-    return {
+    band = {
         "left": left,
         "top": top,
         "right": right,
@@ -160,6 +248,9 @@ def _compute_topbar_band_from_items(items: list[Any]) -> dict[str, int] | None:
         "center_x": int((left + right) / 2),
         "center_y": int((top + bottom) / 2),
     }
+    if meta.get("geometry_fallback_used"):
+        band["_fallback_mode"] = "geometry_only"
+    return band
 
 
 def _main_window_topbar_band(*, force_refresh: bool = False) -> dict[str, int] | None:
@@ -189,6 +280,23 @@ def _main_window_topbar_band(*, force_refresh: bool = False) -> dict[str, int] |
     if band is None:
         low_level_items = _query_menu_items_from_root(main_window, force_refresh=force_refresh)
         band = _compute_topbar_band_from_items(low_level_items)
+        if band is None:
+            geometry_items = _geometry_only_top_level_menu_items_from_items(low_level_items)
+            geometry_band = _compute_topbar_band_from_rows([
+                {"text": _name(item), "normalized_text": _normalize(_name(item)), "rectangle": rect, "center_x": rect["center_x"], "center_y": rect["center_y"]}
+                for item in geometry_items
+                for rect in [_rectangle_data(item)]
+                if rect is not None
+            ])
+            if geometry_band is not None:
+                band = dict(geometry_band)
+                band["_fallback_mode"] = "geometry_only"
+                logger.info(
+                    "TOPBAR_GEOMETRY_FALLBACK_USED context=main_window_topbar_band items={} handle={} force_refresh={}",
+                    len(geometry_items),
+                    handle,
+                    force_refresh,
+                )
 
     _TOPBAR_BAND_CACHE.update({"handle": handle, "captured_at": now, "band": band})
     return band
@@ -903,9 +1011,22 @@ def _rectangle_data(wrapper: Any) -> dict[str, int] | None:
     }
 
 
-def _parent_wrapper(wrapper: Any) -> Any | None:
+def _safe_parent_wrapper(wrapper: Any, *, context: str) -> tuple[Any | None, bool]:
     parent = getattr(wrapper, "parent", None)
-    return parent() if callable(parent) else None
+    if not callable(parent):
+        return None, False
+    try:
+        return parent(), False
+    except Exception as exc:
+        if _is_com_error(exc):
+            _remember_topbar_parent_comerror(context, wrapper, exc)
+            return None, True
+        raise
+
+
+def _parent_wrapper(wrapper: Any) -> Any | None:
+    parent, _parent_comerror = _safe_parent_wrapper(wrapper, context="parent_wrapper")
+    return parent
 
 
 def _has_menuitem_ancestor(wrapper: Any) -> bool:
@@ -1065,6 +1186,7 @@ def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[st
 
 def _menu_like_controls_from_main_window() -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    topbar_parent_state = _consume_topbar_parent_error_state()
     topbar_band = _main_window_topbar_band()
     for item in _menu_items():
         row = _menu_row_from_wrapper(item, source_scope="main_window", topbar_band=topbar_band)
@@ -1135,6 +1257,7 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
     global_rows = [] if options.disable_global_process_scan_rows else _menu_like_controls_from_global_process_scan()
     merged = main_rows + global_rows
     topbar_band = _main_window_topbar_band()
+    topbar_parent_state = _consume_topbar_parent_error_state()
     seen: set[tuple[int, int, int, int, str, str, str]] = set()
     unique_rows: list[dict[str, Any]] = []
 
@@ -1160,6 +1283,20 @@ def capture_menu_popup_snapshot() -> list[dict[str, Any]]:
         unique_rows.append(row)
 
     resolved_topbar_band = _resolved_topbar_band(unique_rows, topbar_band)
+    if topbar_parent_state.get("active"):
+        logger.info(
+            "POPUP_SNAPSHOT_COMSAFE_RECOVERY contexts={} parent_comerror_count={} topbar_band={} recovered_rows={}",
+            topbar_parent_state.get("contexts"),
+            topbar_parent_state.get("count"),
+            _rect_tuple(resolved_topbar_band),
+            len(unique_rows),
+        )
+    if resolved_topbar_band is not None and str(resolved_topbar_band.get("_fallback_mode") or "") == "geometry_only":
+        logger.info(
+            "TOPBAR_GEOMETRY_FALLBACK_USED context=capture_menu_popup_snapshot topbar_band={} unique_rows={}",
+            _rect_tuple(resolved_topbar_band),
+            len(unique_rows),
+        )
     vertical_popup_override_keys, vertical_popup_diag = _detect_empty_text_vertical_popup_cluster(unique_rows, resolved_topbar_band)
     topbar_like_count = 0
     popup_like_count = 0
@@ -1740,6 +1877,8 @@ def click_top_menu_item(title: str) -> None:
     if _is_system_menu_title(title):
         raise ValueError("system menu must be opened via open_system_menu()")
     topbar_band = _main_window_topbar_band()
+    if topbar_band is not None and str(topbar_band.get("_fallback_mode") or "") == "geometry_only":
+        logger.info("TOPBAR_GEOMETRY_FALLBACK_USED context=click_top_menu_item title={} topbar_band={}", title, _rect_tuple(topbar_band))
     main_window = prepare_main_window_for_menu_interaction()
     main_window = ensure_main_window_foreground_before_click(action_label=f"click_top_menu_item:{title}")
     logger.info("click_top_menu_item('{}'): foreground_before_click={}", title, describe_foreground_window())
