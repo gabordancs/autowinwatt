@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from winwatt_automation.runtime_mapping import program_mapper
 from winwatt_automation.runtime_mapping.models import RuntimeStateMap
 
@@ -115,8 +117,34 @@ def test_recovery_diagnostics_payload_shape(monkeypatch):
 
 
 def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeypatch, tmp_path):
-    no_project = RuntimeStateMap("no_project", {"state_id": "no_project"}, [{"text": "Fájl"}], [], [], [], [], [])
-    project_open = RuntimeStateMap("project_open", {"state_id": "project_open"}, [{"text": "Fájl"}], [], [], [], [], [])
+    no_project = RuntimeStateMap(
+        "no_project",
+        {"state_id": "no_project"},
+        [{"text": "Fájl"}],
+        [],
+        [],
+        [{"menu_path": ["Fájl", "Megnyitás"], "attempted": True, "event_details": {}}],
+        [],
+        [],
+        [],
+        [{"path": ["Fájl", "Megnyitás"], "action_type": "click", "action_state_classification": "executes_command", "opens_modal": False, "opens_submenu": False, "changes_menu_state": False, "opens_project_and_changes_runtime_state": False, "traversal_depth": 1}],
+        [],
+        {},
+    )
+    project_open = RuntimeStateMap(
+        "project_open",
+        {"state_id": "project_open"},
+        [{"text": "Fájl"}],
+        [],
+        [],
+        [{"menu_path": ["Fájl", "Recent", "Sample"], "attempted": True, "event_details": {"project_open_state_transition": True, "result_type": "project_open_state_transition", "new_runtime_state": {"main_window_title": "WinWatt - Sample"}}}],
+        [],
+        [],
+        [],
+        [{"path": ["Fájl", "Recent", "Sample"], "action_type": "click", "action_state_classification": "opens_project_and_changes_runtime_state", "opens_modal": False, "opens_submenu": False, "changes_menu_state": False, "opens_project_and_changes_runtime_state": True, "traversal_depth": 1}],
+        [{"path": ["Fájl", "Recent", "Sample"], "trigger": "opens_project_and_changes_runtime_state", "result_type": "project_open_state_transition", "new_runtime_state": {"main_window_title": "WinWatt - Sample"}, "project_open_transition_reasons": {}}],
+        {},
+    )
 
     monkeypatch.setattr(program_mapper, "ensure_output_dirs", lambda _path: {
         "base": tmp_path,
@@ -140,6 +168,11 @@ def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeyp
 
     assert calls == ["no_project", "project_open"]
     assert result["state_project_open"].snapshot["project_open_recovery"]["success"] is True
+    assert set(result["runtime_state_atlas"]["states"].keys()) == {"no_project", "project_open"}
+    assert result["runtime_state_atlas"]["states"]["no_project"]["action_catalog"]
+    assert result["runtime_state_atlas"]["states"]["project_open"]["state_transitions"][0]["trigger"] == "opens_project_and_changes_runtime_state"
+    atlas_json = json.loads((tmp_path / "runtime_state_atlas.json").read_text(encoding="utf-8"))
+    assert set(atlas_json["states"].keys()) == {"no_project", "project_open"}
 
 
 def test_build_full_runtime_program_map_rechecks_paths_in_project_state(monkeypatch, tmp_path):
