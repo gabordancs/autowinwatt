@@ -68,6 +68,8 @@ VERTICAL_POPUP_CLUSTER_MAX_TOP_GAP = 24
 VERTICAL_POPUP_CLUSTER_EDGE_TOLERANCE = 24
 VERTICAL_POPUP_CLUSTER_HEIGHT_TOLERANCE = 10
 VERTICAL_POPUP_CLUSTER_MIN_X_OVERLAP_RATIO = 0.8
+REPEATED_LEGACY_TEXT_MIN_ROWS = 2
+REPEATED_LEGACY_TEXT_MIN_RATIO = 0.4
 _MENU_ITEMS_REENTRANCY_DEPTH = 0
 _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
 
@@ -1245,21 +1247,159 @@ def _child_text_fragments(wrapper: Any, *, row_rect: dict[str, Any]) -> list[dic
     return fragments
 
 
+def _source_priority(raw_sources: list[str], *, popup_priority: bool) -> tuple[int, int]:
+    if not raw_sources:
+        return (99, 99)
+    primary = str(raw_sources[0])
+    popup_order = {
+        "child_text": 0,
+        "fragment_merge": 1,
+        "uia_name": 2,
+        "window_text": 3,
+        "legacy_text": 4,
+    }
+    default_order = {
+        "uia_name": 0,
+        "window_text": 1,
+        "child_text": 2,
+        "fragment_merge": 3,
+        "legacy_text": 4,
+    }
+    order = popup_order if popup_priority else default_order
+    return (order.get(primary, 98), len(raw_sources))
+
+
+def _select_cluster_text_candidate(cluster: list[dict[str, Any]], *, rect: dict[str, int], popup_priority: bool) -> tuple[str, list[str], str, str]:
+    candidates: list[dict[str, Any]] = []
+    for item in cluster:
+        item_text = str(item.get("text") or "").strip()
+        if not item_text:
+            continue
+        raw_sources = [str(source) for source in list(item.get("raw_text_sources") or []) if str(source)] or ["existing_text"]
+        confidence = str(item.get("text_confidence") or ("high" if item_text else "none"))
+        candidates.append({
+            "text": item_text,
+            "raw_sources": raw_sources,
+            "confidence": confidence,
+            "origin": "direct",
+        })
+
+    cluster_fragments = []
+    for item in cluster:
+        for fragment in list(item.get("child_fragments") or []):
+            cluster_fragments.append(dict(fragment))
+    merged_fragment_text = _merge_text_fragments(cluster_fragments, rect=rect)
+    if merged_fragment_text:
+        candidates.append({
+            "text": merged_fragment_text,
+            "raw_sources": ["fragment_merge"],
+            "confidence": "medium",
+            "origin": "fragment_merge",
+        })
+
+    if not candidates:
+        return "", [], "none", "none"
+
+    ranked = sorted(
+        candidates,
+        key=lambda candidate: (
+            _source_priority(candidate["raw_sources"], popup_priority=popup_priority),
+            -len(candidate["text"]),
+        ),
+    )
+    selected = ranked[0]
+    return selected["text"], list(selected["raw_sources"]), selected["confidence"], selected["origin"]
+
+
+def _popup_row_has_reliable_local_text(row: dict[str, Any]) -> bool:
+    raw_sources = [str(source) for source in list(row.get("raw_text_sources") or []) if str(source)]
+    if any(source in {"child_text", "fragment_merge", "uia_name", "window_text"} for source in raw_sources):
+        return True
+    fragments = list(row.get("fragments") or [])
+    return any(str(fragment.get("source_scope") or "") == "child_text" for fragment in fragments)
+
+
+def _adjust_popup_row_text_confidence(row: dict[str, Any], *, row_index: int) -> None:
+    if not bool(row.get("popup_candidate") or row.get("popup_priority_candidate")):
+        return
+    raw_sources = [str(source) for source in list(row.get("raw_text_sources") or []) if str(source)]
+    original_confidence = str(row.get("text_confidence") or "none")
+    updated_confidence = original_confidence
+    if raw_sources and raw_sources[0] == "legacy_text":
+        updated_confidence = "medium" if _popup_row_has_reliable_local_text(row) else "low"
+    if updated_confidence != original_confidence:
+        row["text_confidence"] = updated_confidence
+        logger.info(
+            "POPUP_ROW_TEXT_CONFIDENCE_ADJUSTED row_index={} source={} old_confidence={} new_confidence={} text={!r}",
+            row_index,
+            raw_sources[0] if raw_sources else "none",
+            original_confidence,
+            updated_confidence,
+            row.get("text"),
+        )
+
+
+def _reject_repeated_popup_legacy_texts(logical_rows: list[dict[str, Any]]) -> None:
+    popup_rows = [row for row in logical_rows if bool(row.get("popup_candidate") or row.get("popup_priority_candidate"))]
+    if not popup_rows:
+        return
+    counts = Counter(
+        _normalize(str(row.get("text") or ""))
+        for row in popup_rows
+        if str(row.get("text") or "").strip() and list(row.get("raw_text_sources") or [None])[0] == "legacy_text"
+    )
+    if not counts:
+        return
+    popup_count = len(popup_rows)
+    suspicious = {
+        text for text, count in counts.items()
+        if text and count >= REPEATED_LEGACY_TEXT_MIN_ROWS and (count / popup_count) >= REPEATED_LEGACY_TEXT_MIN_RATIO
+    }
+    for row_index, row in enumerate(logical_rows):
+        text = str(row.get("text") or "").strip()
+        normalized = _normalize(text)
+        raw_sources = [str(source) for source in list(row.get("raw_text_sources") or []) if str(source)]
+        if not text or normalized not in suspicious or not raw_sources or raw_sources[0] != "legacy_text":
+            continue
+        if _popup_row_has_reliable_local_text(row) or str(row.get("text_confidence") or "none") == "high":
+            continue
+        logger.warning(
+            "TEXT_EXTRACTION_REJECTED_REPEATED_LEGACY_TEXT row_index={} repeated_text={!r} occurrence_count={} popup_row_count={} raw_sources={} rectangle={}",
+            row_index,
+            text,
+            counts[normalized],
+            popup_count,
+            raw_sources,
+            row.get("rectangle"),
+        )
+        logger.info(
+            "POPUP_TEXT_RECOVERY_SOURCE_REJECTED row_index={} source=legacy_text reason=repeated_fallback_text repeated_text={!r}",
+            row_index,
+            text,
+        )
+        row["text"] = ""
+        row["normalized_text"] = ""
+        row["text_confidence"] = "none"
+        row["rejected_text_recovery_reason"] = "repeated_legacy_text"
+
+
 def _extract_text_with_fallbacks(wrapper: Any, *, row_rect: dict[str, Any]) -> tuple[str, list[str], str, list[dict[str, Any]]]:
     source_values = [
-        ("uia_name", _clean_text_candidate(_name(wrapper))),
-        ("window_text", _safe_window_text(wrapper)),
-        ("legacy_text", _safe_legacy_text(wrapper)),
+        ("uia_name", _clean_text_candidate(_name(wrapper)), "high"),
+        ("window_text", _safe_window_text(wrapper), "high"),
     ]
     raw_sources: list[str] = []
-    for label, value in source_values:
+    for label, value, confidence in source_values:
         if value:
             raw_sources.append(label)
-            return value, raw_sources, "high", []
+            return value, raw_sources, confidence, []
     child_fragments = _child_text_fragments(wrapper, row_rect=row_rect)
     child_text = _merge_text_fragments(child_fragments, rect=row_rect)
     if child_text:
         return child_text, ["child_text"], "medium", child_fragments
+    legacy_text = _safe_legacy_text(wrapper)
+    if legacy_text:
+        return legacy_text, ["legacy_text"], "medium", child_fragments
     return "", [], "none", child_fragments
 def _is_separator_by_geometry(rect: dict[str, int]) -> bool:
     width = rect["width"]
@@ -1718,8 +1858,8 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
         height = max(0, bottom - top)
 
         texts = [str(item.get("text", "")) for item in cluster]
-        representative_text = next((text for text in texts if text.strip()), "")
         representative = cluster[0]
+        popup_priority = any(bool(item.get("popup_candidate")) for item in cluster) and not any(bool(item.get("topbar_candidate")) for item in cluster)
         cluster_fragments = [
             {
                 "rectangle": dict(item.get("rectangle") or {}),
@@ -1732,24 +1872,30 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "native_handle": item.get("native_handle"),
                 "topbar_candidate": bool(item.get("topbar_candidate")),
                 "popup_candidate": bool(item.get("popup_candidate")),
+                "raw_text_sources": list(item.get("raw_text_sources") or []),
+                "text_confidence": item.get("text_confidence"),
             }
             for item in cluster
         ]
-        merged_fragment_text = _merge_text_fragments(cluster_fragments, rect={"left": left, "top": top, "right": right, "bottom": bottom})
-        if not representative_text and merged_fragment_text:
-            representative_text = merged_fragment_text
-        raw_text_sources = sorted({str(source) for item in cluster for source in list(item.get("raw_text_sources") or []) if str(source)})
-        if merged_fragment_text and "fragment_merge" not in raw_text_sources:
-            raw_text_sources.append("fragment_merge")
-        confidences = [str(item.get("text_confidence") or "none") for item in cluster]
-        if any(level == "high" for level in confidences):
-            text_confidence = "high"
-        elif representative_text and any(level == "medium" for level in confidences):
-            text_confidence = "medium"
-        elif representative_text:
-            text_confidence = "low"
-        else:
-            text_confidence = "none"
+        representative_text, raw_text_sources, text_confidence, selected_origin = _select_cluster_text_candidate(
+            cluster,
+            rect={"left": left, "top": top, "right": right, "bottom": bottom},
+            popup_priority=popup_priority,
+        )
+        if popup_priority:
+            if representative_text:
+                logger.info(
+                    "POPUP_TEXT_RECOVERY_SOURCE_SELECTED row_index={} source={} confidence={} text={!r}",
+                    row_index,
+                    raw_text_sources[0] if raw_text_sources else selected_origin,
+                    text_confidence,
+                    representative_text,
+                )
+            else:
+                logger.info(
+                    "POPUP_TEXT_RECOVERY_SOURCE_REJECTED row_index={} source=none reason=no_viable_text_candidate",
+                    row_index,
+                )
 
         source_scope_summary = sorted({str(item.get("source_scope", "")) for item in cluster})
         row_class_summary = sorted({str(item.get("class_name", "")) for item in cluster})
@@ -1777,10 +1923,12 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "topbar_candidate": False,
                 "popup_candidate": False,
                 "popup_reason": None,
+                "popup_priority_candidate": popup_priority,
                 "source_scope_summary": source_scope_summary,
                 "row_class_summary": row_class_summary,
                 "fragment_texts": texts,
                 "fragments": cluster_fragments,
+                "child_fragments": cluster_fragments,
             }
         )
 
@@ -1795,6 +1943,7 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
         row["topbar_candidate"] = topbar_candidate
         row["popup_candidate"] = popup_candidate
         row["popup_reason"] = popup_reason
+        _adjust_popup_row_text_confidence(row, row_index=row_index)
         logger.info(
             "DBG_MENU_GROUP_ROW row_index={} representative_text={!r} fragment_count={} fragment_texts={} row_rectangle={} source_scope_summary={} row_class_summary={} topbar_like={} popup_like={} popup_reason={}",
             row_index,
@@ -1808,6 +1957,7 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
             popup_candidate,
             popup_reason,
         )
+    _reject_repeated_popup_legacy_texts(logical_rows)
     logical_rows.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
     return logical_rows
 

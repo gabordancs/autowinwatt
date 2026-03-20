@@ -917,3 +917,109 @@ def test_capture_menu_popup_snapshot_diagnostic_fast_mode_uses_only_main_window(
 
     assert [row['text'] for row in snapshot] == ['Fájl', 'Megnyitás']
     configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
+
+
+def test_group_popup_fragments_rejects_repeated_legacy_text_for_popup_rows():
+    fragments = []
+    for index in range(4):
+        top = 56 + index * 24
+        fragments.append(
+            {
+                "text": "Végrehajtás",
+                "normalized_text": "végrehajtás",
+                "raw_text_sources": ["legacy_text"],
+                "text_confidence": "medium",
+                "control_type": "MenuItem",
+                "class_name": "",
+                "rectangle": {"left": 8, "top": top, "right": 220, "bottom": top + 22},
+                "width": 212,
+                "height": 22,
+                "center_x": 114,
+                "center_y": top + 11,
+                "is_separator": False,
+                "source_scope": "main_window",
+                "appeared_after_popup_open": True,
+                "popup_candidate": True,
+                "topbar_candidate": False,
+            }
+        )
+
+    logical_rows = menu_helpers._group_popup_fragments_into_logical_rows(fragments)
+
+    assert len(logical_rows) == 4
+    assert all(row["text"] == "" for row in logical_rows)
+    assert all(row["rejected_text_recovery_reason"] == "repeated_legacy_text" for row in logical_rows)
+
+
+def test_group_popup_fragments_prefers_child_text_over_repeated_legacy_text():
+    fragments = [
+        {
+            "text": "Végrehajtás",
+            "normalized_text": "végrehajtás",
+            "raw_text_sources": ["legacy_text"],
+            "text_confidence": "medium",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 8, "top": 56, "right": 220, "bottom": 78},
+            "width": 212,
+            "height": 22,
+            "center_x": 114,
+            "center_y": 67,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": True,
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "child_fragments": [
+                {
+                    "text": "Projekt megnyitása",
+                    "rectangle": {"left": 18, "top": 58, "right": 170, "bottom": 76},
+                    "center": (94, 67),
+                    "source_scope": "child_text",
+                }
+            ],
+        },
+        {
+            "text": "Végrehajtás",
+            "normalized_text": "végrehajtás",
+            "raw_text_sources": ["legacy_text"],
+            "text_confidence": "medium",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 8, "top": 82, "right": 220, "bottom": 104},
+            "width": 212,
+            "height": 22,
+            "center_x": 114,
+            "center_y": 93,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": True,
+            "popup_candidate": True,
+            "topbar_candidate": False,
+        },
+        {
+            "text": "Végrehajtás",
+            "normalized_text": "végrehajtás",
+            "raw_text_sources": ["legacy_text"],
+            "text_confidence": "medium",
+            "control_type": "MenuItem",
+            "class_name": "",
+            "rectangle": {"left": 8, "top": 108, "right": 220, "bottom": 130},
+            "width": 212,
+            "height": 22,
+            "center_x": 114,
+            "center_y": 119,
+            "is_separator": False,
+            "source_scope": "main_window",
+            "appeared_after_popup_open": True,
+            "popup_candidate": True,
+            "topbar_candidate": False,
+        },
+    ]
+
+    logical_rows = menu_helpers._group_popup_fragments_into_logical_rows(fragments)
+
+    assert logical_rows[0]["text"] == "Projekt megnyitása"
+    assert logical_rows[0]["raw_text_sources"] == ["fragment_merge"]
+    assert logical_rows[1]["text"] == ""
+    assert logical_rows[2]["text"] == ""
