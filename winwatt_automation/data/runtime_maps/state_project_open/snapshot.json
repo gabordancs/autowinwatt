@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 855794,
-    "process_id": 25400,
+    "handle": 2032520,
+    "process_id": 19572,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -20,7 +20,7 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 25400,
+  "process_id": 19572,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -28,8 +28,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 855794,
-        "process_id": 25400,
+        "handle": 2032520,
+        "process_id": 19572,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -37,7 +37,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 25400,
+        "process_id": 19572,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -54,12 +54,12 @@
     "success": true
   },
   "state_id": "project_open",
-  "timestamp": "2026-03-20T13:19:09.249655+00:00",
+  "timestamp": "2026-03-20T18:53:15.962164+00:00",
   "visible_top_windows": [
     {
       "class_name": "SysShadow",
       "handle": null,
-      "process_id": 25400,
+      "process_id": 19572,
       "title": ""
     },
     {
@@ -71,7 +71,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 25400,
+      "process_id": 19572,
       "title": "WinWatt gólya"
     },
     {
