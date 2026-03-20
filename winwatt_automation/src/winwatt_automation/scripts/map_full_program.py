@@ -121,6 +121,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--progress-overlay", action="store_true", help="Show a non-activating status HUD while mapping runs")
     parser.add_argument("--diagnostic-fast-mode", action="store_true", help="Diagnostic mode: disable global popup scan, reduce cache validation, and avoid placeholder-triggered relists")
     parser.add_argument("--placeholder-traversal-focus", action="store_true", help="Diagnostic mode: focus logs and traversal behavior around geometry placeholder rows")
+    parser.add_argument("--placeholder-modal-policy", default="submenu_only", choices=["submenu_only", "allow_modal_probe"], help="How placeholder traversal handles modal dialogs opened by geometry click points")
     return parser
 
 
@@ -130,6 +131,7 @@ def main() -> int:
     configure_diagnostics(
         diagnostic_fast_mode=args.diagnostic_fast_mode,
         placeholder_traversal_focus=args.placeholder_traversal_focus,
+        placeholder_modal_policy=args.placeholder_modal_policy,
     )
     run_ctx = start_run(
         command=command,
