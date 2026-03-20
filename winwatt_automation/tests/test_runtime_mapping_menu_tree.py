@@ -352,7 +352,7 @@ def test_child_rows_are_not_reprocessed_as_top_level_rows(monkeypatch):
     assert sum(1 for action in actions if action.menu_path == ["Fájl", "CSV"]) == 0
 
 
-def test_top_menu_cache_reused_until_main_window_handle_changes(monkeypatch):
+def test_top_menu_cache_refreshes_when_discovered_menus_change(monkeypatch):
     class _MainWindow:
         def __init__(self, handle: int):
             self._handle = handle
@@ -368,11 +368,11 @@ def test_top_menu_cache_reused_until_main_window_handle_changes(monkeypatch):
     second = get_canonical_top_menu_names(["Rendszer"])
 
     assert [item["raw"] for item in first["items"]] == ["Fájl", "Súgó"]
-    assert second == first
+    assert [item["raw"] for item in second["items"]] == ["Rendszer"]
 
     window._handle = 200
-    third = get_canonical_top_menu_names(["Rendszer"])
-    assert [item["raw"] for item in third["items"]] == ["Rendszer"]
+    third = get_canonical_top_menu_names(["Fájl"])
+    assert [item["raw"] for item in third["items"]] == ["Fájl"]
 
 
 def test_explore_menu_tree_reopens_parent_popup_for_each_row(monkeypatch):
@@ -1189,3 +1189,89 @@ def test_build_menu_rows_prefers_row_local_fragment_merge_over_repeated_legacy_t
     assert rows[0].text == "Projekt megnyitása"
     assert rows[0].raw_text_sources == ["legacy_text", "fragment_merge"]
     assert rows[0].text_confidence == "medium"
+
+
+def test_map_runtime_state_retains_selected_top_menus_after_runtime_reset(monkeypatch):
+    snapshots = iter([
+        RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Jegyzékek"], timestamp="t1"),
+        RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=[], timestamp="t2"),
+    ])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: next(snapshots))
+
+    def _explore_menu_tree(**kwargs):
+        kwargs["popup_state"].runtime_state_reset_required = True
+        return ([], [], [], [], [], [])
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.explore_menu_tree", _explore_menu_tree)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+
+    state = map_runtime_state(state_id="s", top_menus=["Fájl", "Jegyzékek"])
+
+    assert [item["text"] for item in state.top_menus] == ["Fájl", "Jegyzékek"]
+    assert state.state_atlas["canonical_top_menus"] == state.top_menus
+
+
+def test_map_runtime_state_keeps_placeholder_rows_and_actions_in_state_atlas(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl"], timestamp="t"))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", lambda **kwargs: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda _: None)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+
+    snapshots = iter([
+        [
+            {
+                "text": "",
+                "center_x": 20,
+                "center_y": 20,
+                "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+                "is_separator": False,
+                "source_scope": "global_process_scan",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "popup_reason": "below_topbar_band",
+                "recent_project_entry": True,
+                "stateful_menu_block": True,
+            }
+        ],
+        [],
+    ])
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: next(snapshots, []))
+
+    state = map_runtime_state(state_id="no_project", top_menus=["Fájl"], max_submenu_depth=1)
+
+    assert len(state.top_menus) == 1
+    assert len(state.menu_rows) == 1
+    assert len(state.action_catalog) == 1
+    assert state.menu_rows[0]["text"] == "[unlabeled row 0]"
+    assert state.state_atlas["canonical_top_menus"][0]["text"] == "Fájl"
+    assert len(state.state_atlas["top_menu_rows"]) == 1
+    assert len(state.state_atlas["action_catalog"]) == 1
+
+
+def test_build_menu_rows_preserves_placeholder_rows_after_repeated_legacy_rejection():
+    rows = _build_menu_rows_from_popup_rows(
+        "project_open",
+        "Fájl",
+        [
+            {
+                "text": "",
+                "center_x": 20,
+                "center_y": 20,
+                "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30},
+                "is_separator": False,
+                "source_scope": "global_process_scan",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "popup_reason": "below_topbar_band",
+                "recent_projects_block": True,
+                "recent_project_entry": True,
+                "stateful_menu_block": True,
+            }
+        ],
+    )
+
+    assert len(rows) == 1
+    assert rows[0].text == "[unlabeled row 0]"
+    assert rows[0].actionable is True
+    assert rows[0].recent_project_entry is True
+    assert rows[0].stateful_menu_block is True
