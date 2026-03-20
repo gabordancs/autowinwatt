@@ -741,3 +741,123 @@ def test_explore_menu_tree_placeholder_focus_reopens_fresh_root_snapshot(monkeyp
     assert nodes[0]["action_state_classification"] == "changes_menu_state"
     assert actions[0].event_details["action_state_classification"] == "changes_menu_state"
     configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
+
+
+def test_explore_menu_tree_open_sample_recent_project_invalidates_stale_refs(monkeypatch):
+    from winwatt_automation.runtime_mapping.config import configure_diagnostics
+    from winwatt_automation.live_ui.ui_cache import PopupState
+
+    configure_diagnostics(
+        diagnostic_fast_mode=False,
+        placeholder_traversal_focus=False,
+        recent_projects_policy="open_sample_recent_project",
+    )
+
+    no_project_snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl", "Súgó"],
+        timestamp="t0",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    project_open_snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt - Sample Project",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl", "Eszközök", "Súgó"],
+        timestamp="t1",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt - Sample Project", "class_name": "TMainForm"},
+    )
+    project_open_transition_snapshot = RuntimeStateSnapshot(
+        state_id="s_project_open_transition",
+        process_id=1,
+        main_window_title="WinWatt - Sample Project",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl", "Eszközök", "Súgó"],
+        timestamp="t2",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt - Sample Project", "class_name": "TMainForm"},
+    )
+    capture_calls = {"count": 0}
+
+    def _capture_snapshot(state_id: str) -> RuntimeStateSnapshot:
+        capture_calls["count"] += 1
+        if capture_calls["count"] <= 4:
+            return no_project_snapshot
+        if capture_calls["count"] == 5:
+            return project_open_snapshot
+        if capture_calls["count"] == 6:
+            return project_open_transition_snapshot
+        return project_open_snapshot
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        _capture_snapshot,
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.get_cached_main_window",
+        lambda: type("W", (), {"window_text": lambda self: "WinWatt - Sample Project"})(),
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot",
+        lambda: [],
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration",
+        lambda row, popup_rows: None,
+    )
+    popup_state = PopupState(current_menu_path=("fájl",), popup_handle=42, popup_rows=[{"text": "stale"}])
+    popup_rows = [
+        {
+            "text": f"Elem {idx}",
+            "center_x": 15,
+            "center_y": 15 + idx,
+            "rectangle": {"left": 0, "top": 10 + (idx * 20), "right": 100, "bottom": 30 + (idx * 20)},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "",
+        }
+        for idx in range(4)
+    ] + [
+        {
+            "text": "",
+            "center_x": 15,
+            "center_y": 95,
+            "rectangle": {"left": 0, "top": 90, "right": 100, "bottom": 110},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "empty_text_vertical_cluster_below_topbar",
+        }
+    ]
+
+    nodes, _, actions, _, _ = explore_menu_tree(
+        state_id="s",
+        top_menu="Fájl",
+        safe_mode="safe",
+        max_depth=2,
+        include_disabled=True,
+        popup_rows=popup_rows,
+        visited_paths={("fájl",)},
+        popup_state=popup_state,
+    )
+
+    assert nodes[-1]["action_state_classification"] == "opens_project_and_changes_runtime_state"
+    assert actions[-1].event_details["action_state_classification"] == "opens_project_and_changes_runtime_state"
+    assert popup_state.current_menu_path is None
+    assert popup_state.popup_rows is None
+    assert popup_state.runtime_state_reset_required is True
+    configure_diagnostics(diagnostic_fast_mode=False, placeholder_traversal_focus=False)
