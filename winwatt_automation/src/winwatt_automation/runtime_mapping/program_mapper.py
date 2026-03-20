@@ -190,6 +190,7 @@ def _row_to_node(
     likely_destructive = safety == "blocked"
     likely_state_changing = safety in {"caution", "blocked"}
     enabled = _guess_enabled(row)
+    action_state_classification = "unknown"
     if row.get("is_separator"):
         action_classification = "separator"
     elif reused_from_previous_state:
@@ -198,14 +199,18 @@ def _row_to_node(
         action_classification = "skipped_by_safety"
     elif opens_submenu:
         action_classification = "opens_submenu"
+        action_state_classification = "opens_submenu"
     elif opens_modal:
         action_classification = "opens_modal"
+        action_state_classification = "opens_modal"
     elif opens_dialog:
         action_classification = "dialog_window_action"
+        action_state_classification = "changes_menu_state"
     elif enabled is False:
         action_classification = "disabled"
     elif enabled is True:
         action_classification = "leaf_action"
+        action_state_classification = "executes_command"
     else:
         action_classification = "unknown"
 
@@ -226,6 +231,7 @@ def _row_to_node(
         likely_destructive=likely_destructive,
         likely_state_changing=likely_state_changing,
         action_classification=action_classification,
+        action_state_classification=action_state_classification,
         skipped_by_safety=skipped_by_safety,
         children=children,
         debug={
@@ -756,6 +762,72 @@ def _find_popup_row_by_title(rows: list[dict[str, Any]], title: str) -> dict[str
     return None
 
 
+def _popup_row_identity(row: RuntimeMenuRow | dict[str, Any]) -> dict[str, Any]:
+    source = asdict(row) if isinstance(row, RuntimeMenuRow) else dict(row)
+    rect = dict(source.get("rectangle") or {})
+    meta = dict(source.get("meta") or {})
+    click_point = dict(meta.get("click_point") or {})
+    return {
+        "normalized_text": normalize_menu_title(str(source.get("text") or "")),
+        "rectangle": rect,
+        "center_x": int(source.get("center_x") or 0),
+        "center_y": int(source.get("center_y") or 0),
+        "enabled": source.get("enabled_guess", source.get("enabled")),
+        "source_scope": str(source.get("source_scope") or ""),
+        "click_point": click_point,
+        "placeholder_source": str(meta.get("source") or ""),
+        "popup_reason": str(source.get("popup_reason") or meta.get("popup_reason") or ""),
+    }
+
+
+def _find_matching_popup_row(rows: list[dict[str, Any]], target_row: RuntimeMenuRow) -> tuple[int, dict[str, Any]] | None:
+    target = _popup_row_identity(target_row)
+    candidates: list[tuple[int, int, dict[str, Any]]] = []
+    for index, row in enumerate(rows):
+        current = _popup_row_identity(row)
+        score = 0
+        if target["normalized_text"] and current["normalized_text"] == target["normalized_text"]:
+            score += 100
+        if target["source_scope"] and current["source_scope"] == target["source_scope"]:
+            score += 10
+        if target["enabled"] is not None and current["enabled"] == target["enabled"]:
+            score += 5
+        if target["placeholder_source"] and current["placeholder_source"] == target["placeholder_source"]:
+            score += 5
+        if target["popup_reason"] and current["popup_reason"] == target["popup_reason"]:
+            score += 5
+        if target["click_point"] and current["click_point"]:
+            score -= abs(int(target["click_point"].get("x", 0)) - int(current["click_point"].get("x", 0)))
+            score -= abs(int(target["click_point"].get("y", 0)) - int(current["click_point"].get("y", 0)))
+        score -= abs(target["center_x"] - current["center_x"])
+        score -= abs(target["center_y"] - current["center_y"])
+        candidates.append((score, index, row))
+    if not candidates:
+        return None
+    candidates.sort(key=lambda item: item[0], reverse=True)
+    _, index, row = candidates[0]
+    return index, row
+
+
+def _action_state_classification(
+    *,
+    transition: dict[str, Any],
+    opens_submenu: bool,
+    opens_modal: bool,
+) -> str:
+    if opens_submenu:
+        return "opens_submenu"
+    if opens_modal:
+        return "opens_modal"
+    if transition.get("menu_state_changed"):
+        return "changes_menu_state"
+    if transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+        return "changes_menu_state"
+    if transition.get("attempted"):
+        return "executes_command"
+    return "unknown"
+
+
 def _reopen_parent_popup_rows(
     *,
     state_id: str,
@@ -1056,8 +1128,15 @@ def _handle_placeholder_modal_outcome(
         placeholder_modal_policy(),
     )
     close_result = close_transient_dialog_or_window(_resolve_window_wrapper(candidate), action_label=" > ".join(path))
+    verification = _verify_modal_close_outcome(
+        state_id=state_id,
+        top_menu=top_menu,
+        path=path,
+        row_index=row.row_index,
+    )
+    close_result["verification"] = verification
     logger.info(
-        "MODAL_CLOSE_RESULT state={} top_menu={} path={} row_index={} closed={} method={} error={} policy={}",
+        "MODAL_CLOSE_RESULT state={} top_menu={} path={} row_index={} closed={} method={} error={} verification={} policy={}",
         state_id,
         top_menu,
         path,
@@ -1065,8 +1144,20 @@ def _handle_placeholder_modal_outcome(
         close_result.get("closed"),
         close_result.get("method"),
         close_result.get("error"),
+        verification,
         placeholder_modal_policy(),
     )
+    if not verification.get("ok"):
+        logger.error(
+            "MODAL_CLOSE_HARD_FAIL state={} top_menu={} path={} row_index={} foreground_class={} main_window_enabled={} root_menu_reopenable={}",
+            state_id,
+            top_menu,
+            path,
+            row.row_index,
+            verification.get("foreground_class_name"),
+            verification.get("main_window_enabled"),
+            verification.get("root_menu_reopenable"),
+        )
     restore_clean_menu_baseline(state_id=state_id, stage=f"placeholder_modal:{' > '.join(path)}")
     return close_result, RuntimeDialogRecord(
         state_id=state_id,
@@ -1303,6 +1394,54 @@ def _attempt_project_open_modal_close(
     return attempts
 
 
+def _verify_modal_close_outcome(
+    *,
+    state_id: str,
+    top_menu: str,
+    path: list[str],
+    row_index: int,
+) -> dict[str, Any]:
+    snapshot = capture_state_snapshot(state_id)
+    foreground = snapshot.foreground_window or {}
+    foreground_is_modal = _is_modal_window_snapshot(foreground)
+    main_enabled = bool(snapshot.main_window_enabled)
+    root_menu_rows: list[dict[str, Any]] = []
+    root_menu_reopenable = False
+    if main_enabled and not foreground_is_modal:
+        try:
+            root_menu_rows, _ = _open_and_capture_root_menu(state_id=state_id, top_menu=top_menu)
+            root_menu_reopenable = bool(root_menu_rows)
+        except Exception as exc:
+            logger.warning(
+                "MODAL_CLOSE_VERIFY_REOPEN_FAILED state={} top_menu={} path={} row_index={} error={}",
+                state_id,
+                top_menu,
+                path,
+                row_index,
+                exc,
+            )
+    verification = {
+        "ok": bool((not foreground_is_modal) and main_enabled and root_menu_reopenable),
+        "foreground_class_name": str(foreground.get("class_name") or ""),
+        "foreground_title": str(foreground.get("title") or ""),
+        "main_window_enabled": main_enabled,
+        "root_menu_reopenable": root_menu_reopenable,
+        "root_menu_row_count": len(root_menu_rows),
+    }
+    logger.info(
+        "MODAL_CLOSE_VERIFICATION state={} top_menu={} path={} row_index={} foreground_is_modal={} main_window_enabled={} root_menu_reopenable={} root_menu_row_count={}",
+        state_id,
+        top_menu,
+        path,
+        row_index,
+        foreground_is_modal,
+        main_enabled,
+        root_menu_reopenable,
+        len(root_menu_rows),
+    )
+    return verification
+
+
 def recover_after_project_open(*, timeout_s: float = 15.0, poll_interval_s: float = 0.25) -> dict[str, Any]:
     logger.info("project_open_recovery_start timeout_s={} poll_interval_s={}", timeout_s, poll_interval_s)
     deadline = time.monotonic() + timeout_s
@@ -1372,8 +1511,11 @@ def classify_post_click_result(
     notes: str | None = None,
     top_menu_click_count: int | None = None,
     forced_result_type: str | None = None,
+    action_state_classification: str | None = None,
 ) -> RuntimeActionResult:
     details = dict(dialog_detection or {})
+    if action_state_classification:
+        details["action_state_classification"] = action_state_classification
     if forced_result_type:
         result_type = forced_result_type
     elif not attempted:
@@ -1583,10 +1725,21 @@ def explore_menu_tree(
             timestamp=datetime.now(tz=timezone.utc).isoformat(),
         )
         transition: dict[str, Any] = {"result_type": "no_visible_change"}
+        action_state_classification = "unknown"
 
         if (max_depth is None or max_depth < 0 or depth < max_depth) and not row.is_separator and row.enabled_guess is not False and not reused_from_previous_state:
             placeholder = _is_placeholder_row(row)
-            skip_parent_reopen = bool(placeholder and diagnostic_options().suppress_placeholder_top_menu_relist and popup_rows)
+            focus_refresh_mode = bool(
+                is_placeholder_traversal_focus_mode()
+                and _is_primary_normal_top_menu(top_menu)
+                and depth == 1
+            )
+            skip_parent_reopen = bool(
+                placeholder
+                and diagnostic_options().suppress_placeholder_top_menu_relist
+                and popup_rows
+                and not focus_refresh_mode
+            )
             logger.info(
                 "DBG_SUBTREE_TRAVERSAL_DECISION state={} path={} placeholder={} skipped_by_safety={} reused_from_previous_state={} action_type={} source_scope={} skip_parent_reopen={} diagnostic_fast_mode={} placeholder_focus_mode={}",
                 state_id,
@@ -1600,6 +1753,8 @@ def explore_menu_tree(
                 is_diagnostic_fast_mode(),
                 is_placeholder_traversal_focus_mode(),
             )
+            if focus_refresh_mode:
+                logger.info("SIBLING_REFRESH_REQUIRED state={} top_menu={} parent_path={} path={}", state_id, top_menu, parent_path, path)
             active_popup_rows = popup_rows if skip_parent_reopen else _reopen_parent_popup_rows(
                 state_id=state_id,
                 top_menu=top_menu,
@@ -1609,16 +1764,9 @@ def explore_menu_tree(
             )
             if active_popup_rows:
                 popup_rows = active_popup_rows
-                matching_row = next(
-                    (
-                        popup_row
-                        for popup_row in active_popup_rows
-                        if normalize_menu_title(str(popup_row.get("text") or "")) == row.normalized_text
-                    ),
-                    None,
-                )
-                if matching_row is not None:
-                    row_idx = int(active_popup_rows.index(matching_row))
+                match = _find_matching_popup_row(active_popup_rows, row)
+                if match is not None:
+                    row_idx, matching_row = match
                     row = RuntimeMenuRow(
                         state_id=row.state_id,
                         top_menu=row.top_menu,
@@ -1638,6 +1786,8 @@ def explore_menu_tree(
                         action_type=row.action_type,
                         meta=dict(row.meta),
                     )
+            if focus_refresh_mode:
+                logger.info("FRESH_ROOT_SNAPSHOT_CAPTURED state={} top_menu={} parent_path={} row_count={}", state_id, top_menu, parent_path, len(popup_rows))
             _activate_row_for_exploration(row, popup_rows)
             current_rows = menu_helpers.capture_menu_popup_snapshot()
             popup_visible_count, topbar_visible_count = menu_helpers._popup_visibility_counts(current_rows)
@@ -1692,6 +1842,7 @@ def explore_menu_tree(
             elif placeholder_outcome:
                 transition = dict(transition)
                 transition["placeholder_outcome"] = placeholder_outcome.get("outcome")
+            transition["attempted"] = True
             if child_rows:
                 opens_submenu = True
                 logger.info("DBG_SUBTREE_TRAVERSAL_SUBMENU_OPENED state={} path={} child_row_count={} placeholder={}", state_id, path, len(child_rows), placeholder)
@@ -1764,6 +1915,34 @@ def explore_menu_tree(
                         visible=candidate.get("visible"),
                         controls=list(candidate.get("controls") or []),
                     ))
+            action_state_classification = _action_state_classification(
+                transition=transition,
+                opens_submenu=opens_submenu,
+                opens_modal=opens_modal,
+            )
+            if focus_refresh_mode:
+                restore_clean_menu_baseline(state_id=state_id, stage=f"post_action:{' > '.join(path)}")
+                logger.info("ACTION_BASELINE_RESTORED state={} top_menu={} path={}", state_id, top_menu, path)
+                if opens_modal or transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened", "main_window_disabled"}:
+                    action_snapshot = capture_state_snapshot(state_id)
+                    if action_snapshot.main_window_enabled is False:
+                        logger.error("ACTION_LEFT_MAIN_WINDOW_DISABLED state={} top_menu={} path={}", state_id, top_menu, path)
+                logger.info("ROOT_MENU_REOPEN_FOR_NEXT_SIBLING state={} top_menu={} parent_path={} next_after={}", state_id, top_menu, parent_path, path)
+                refreshed_rows = _reopen_parent_popup_rows(
+                    state_id=state_id,
+                    top_menu=top_menu,
+                    parent_path=parent_path,
+                    canonical_top_menu_names=canonical_top_menu_names,
+                    popup_state=popup_state,
+                )
+                if refreshed_rows:
+                    previous_rows = popup_rows
+                    popup_rows = refreshed_rows
+                    logger.info("FRESH_ROOT_SNAPSHOT_CAPTURED state={} top_menu={} parent_path={} row_count={}", state_id, top_menu, parent_path, len(refreshed_rows))
+                    if menu_helpers._snapshot_keys(previous_rows) != menu_helpers._snapshot_keys(refreshed_rows):
+                        transition["menu_state_changed"] = True
+                        logger.info("ACTION_CHANGED_MENU_STATE state={} top_menu={} path={} action_state_classification=changes_menu_state", state_id, top_menu, path)
+                        action_state_classification = "changes_menu_state"
 
         node = _row_to_node(
             state_id,
@@ -1779,6 +1958,7 @@ def explore_menu_tree(
             skipped_by_safety=skipped,
             reused_from_previous_state=reused_from_previous_state,
         )
+        node.action_state_classification = action_state_classification
         nodes.append(asdict(node))
         actions.append(
             classify_post_click_result(
@@ -1794,6 +1974,7 @@ def explore_menu_tree(
                 safety_level=classify_safety([clean_menu_title(part) for part in path]),
                 attempted=not skipped and not reused_from_previous_state,
                 notes="reused_from_previous_state" if reused_from_previous_state else "mapped_only",
+                action_state_classification=action_state_classification,
             )
         )
 

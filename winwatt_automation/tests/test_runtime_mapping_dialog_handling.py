@@ -7,6 +7,7 @@ from winwatt_automation.runtime_mapping.config import configure_diagnostics
 from winwatt_automation.runtime_mapping.models import RuntimeDialogRecord, RuntimeMenuRow, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
     _classify_placeholder_action_outcome,
+    _verify_modal_close_outcome,
     close_transient_dialog_or_window,
     detect_dialog_or_window_transition,
     map_runtime_state,
@@ -163,3 +164,16 @@ def test_mapper_documents_dialog_and_continues(monkeypatch):
     state = map_runtime_state(state_id="s", top_menus=["Fájl", "Súgó"])
     assert any(root.get("title") == "Súgó" for root in state.menu_tree)
     assert len(state.dialogs) == 1
+
+
+def test_verify_modal_close_outcome_hard_fail_when_main_window_stays_disabled(monkeypatch):
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda _state_id: _snapshot(enabled=False, foreground={"title": "Megnyitás", "class_name": "#32770", "process_id": 123}),
+    )
+
+    result = _verify_modal_close_outcome(state_id="s", top_menu="Fájl", path=["Fájl", "Megnyitás"], row_index=1)
+
+    assert result["ok"] is False
+    assert result["main_window_enabled"] is False
+    assert result["root_menu_reopenable"] is False
