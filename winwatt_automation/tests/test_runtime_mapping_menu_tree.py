@@ -1,13 +1,15 @@
 from __future__ import annotations
 import pytest
 
-from winwatt_automation.runtime_mapping.models import RuntimeStateMap, RuntimeStateSnapshot
+from winwatt_automation.runtime_mapping.menu_text import normalize_menu_title
+from winwatt_automation.runtime_mapping.models import RuntimeMenuRow, RuntimeStateMap, RuntimeStateSnapshot
 from winwatt_automation.runtime_mapping.program_mapper import (
     _classify_popup_block,
     _build_menu_rows_from_popup_rows,
     _evaluate_action_admission,
     _run_action_evidence_probe,
     _filter_normal_popup_rows,
+    _select_probe_target_row,
     _safe_depth_decision,
     compare_runtime_states,
     explore_menu_tree,
@@ -1635,3 +1637,67 @@ def test_run_single_row_probe_detects_dialog_open(monkeypatch):
     assert result["final_classification"] == "dialog_opened"
     assert result["summary"]["provable_change"] is True
     assert result["summary"]["action_like"] is True
+
+
+def test_select_probe_target_row_falls_back_to_row_index_when_text_missing():
+    menu_rows = [
+        RuntimeMenuRow(
+            state_id="probe",
+            top_menu="Jegyzékek",
+            row_index=0,
+            menu_path=["Jegyzékek", "[unlabeled row 0]"],
+            text="[unlabeled row 0]",
+            normalized_text=normalize_menu_title("[unlabeled row 0]"),
+            rectangle={"left": 1, "top": 2, "right": 3, "bottom": 4},
+            center_x=2,
+            center_y=3,
+            is_separator=False,
+            source_scope="geometry",
+            fragments=[],
+            enabled_guess=True,
+            discovered_in_state="probe",
+            meta={"source": "geometry_placeholder"},
+        ),
+    ]
+
+    target_row, resolution = _select_probe_target_row(
+        menu_rows=menu_rows,
+        probe_row_text="Nem létező sor",
+        probe_row_index=0,
+    )
+
+    assert target_row is menu_rows[0]
+    assert resolution["matched_by"] == "row_index"
+    assert resolution["resolved_row_index"] == 0
+
+
+def test_select_probe_target_row_returns_diagnostics_when_unresolved():
+    menu_rows = [
+        RuntimeMenuRow(
+            state_id="probe",
+            top_menu="Jegyzékek",
+            row_index=2,
+            menu_path=["Jegyzékek", "Valami"],
+            text="Valami",
+            normalized_text=normalize_menu_title("Valami"),
+            rectangle={"left": 10, "top": 20, "right": 30, "bottom": 40},
+            center_x=20,
+            center_y=30,
+            is_separator=False,
+            source_scope="uia",
+            fragments=[],
+            enabled_guess=True,
+            discovered_in_state="probe",
+        ),
+    ]
+
+    target_row, resolution = _select_probe_target_row(
+        menu_rows=menu_rows,
+        probe_row_text="Hiányzó sor",
+        probe_row_index=None,
+    )
+
+    assert target_row is None
+    assert resolution["matched_by"] is None
+    assert resolution["available_row_texts"] == ["Valami"]
+    assert resolution["available_row_indices"] == [2]
