@@ -703,6 +703,11 @@ def _is_relative_menu_click_focus_action(action_label: str) -> bool:
     return normalized == "relative_menu_click"
 
 
+def _is_single_row_probe_click_focus_action(action_label: str) -> bool:
+    normalized = (action_label or "").strip().lower()
+    return normalized.startswith("single_row_probe_click[")
+
+
 def _has_probationary_main_window_identity(identity: dict[str, Any], rect_payload: dict[str, int] | None, *, visible: bool, enabled: bool) -> tuple[bool, list[str]]:
     reasons: list[str] = []
     if identity.get("handle") is not None:
@@ -1003,6 +1008,7 @@ def ensure_main_window_foreground_before_click(
     top_menu_click_override = _is_normal_top_menu_click_focus_action(action_label)
     open_top_menu_override = _is_open_top_menu_focus_action(action_label)
     relative_menu_click_override = _is_relative_menu_click_focus_action(action_label)
+    single_row_probe_click_override = _is_single_row_probe_click_focus_action(action_label)
     strong_identity, identity_reasons = _has_probationary_main_window_identity(
         identity,
         rect_payload,
@@ -1032,6 +1038,15 @@ def ensure_main_window_foreground_before_click(
                 identity,
                 rect_payload,
             )
+        elif single_row_probe_click_override and strong_identity:
+            logger.warning(
+                "DBG_WINWATT_FOCUS_GUARD_PROBE_CLICK_SOFT_CONTINUE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
+                action_label,
+                identity.get("wrapper_type"),
+                identity_reasons,
+                identity,
+                rect_payload,
+            )
         elif open_top_menu_override and strong_identity:
             logger.warning(
                 "DBG_WINWATT_FOCUS_GUARD_OPEN_TOP_MENU_OVERRIDE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
@@ -1051,6 +1066,14 @@ def ensure_main_window_foreground_before_click(
                 rect_payload,
             )
         else:
+            if single_row_probe_click_override:
+                logger.error(
+                    "DBG_WINWATT_FOCUS_GUARD_PROBE_CLICK_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={}",
+                    action_label,
+                    identity_reasons,
+                    identity,
+                    rect_payload,
+                )
             logger.error(
                 "DBG_WINWATT_FOCUS_GUARD_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={}",
                 action_label,
