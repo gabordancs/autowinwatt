@@ -801,6 +801,7 @@ def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str
     try:
         if decision == "click_placeholder_point":
             from pywinauto import mouse
+
             point = meta.get("click_point") or {}
             mouse.click(button="left", coords=(int(point.get("x") or row.center_x), int(point.get("y") or row.center_y)))
             return
@@ -819,6 +820,93 @@ def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str
         )
         logger.debug("structured row click failed; fallback to hover path={} error={}", row.menu_path, exc)
     _hover_row(asdict(row))
+
+
+def _single_row_probe_target_payload(*, top_menu: str, row: RuntimeMenuRow) -> dict[str, Any]:
+    meta = dict(row.meta)
+    click_point = dict(meta.get("click_point") or {"x": row.center_x, "y": row.center_y})
+    return {
+        "top_menu": top_menu,
+        "row_index": row.row_index,
+        "text": row.text,
+        "target_rect": dict(row.rectangle),
+        "target_click_point": click_point,
+        "source_scope": meta.get("source_scope", row.source_scope),
+    }
+
+
+def _hover_single_row_probe_target(*, target: RuntimeMenuRow, top_menu: str, hover_pause_s: float = 0.05) -> dict[str, Any]:
+    payload = _single_row_probe_target_payload(top_menu=top_menu, row=target)
+    _hover_row({"center_x": payload["target_click_point"]["x"], "center_y": payload["target_click_point"]["y"]})
+    if hover_pause_s > 0:
+        time.sleep(hover_pause_s)
+    logger.info(
+        "SINGLE_ROW_PROBE_HOVER top_menu={} row_index={} source_scope={} target_rect={} target_click_point={} hover_pause_s={}",
+        payload["top_menu"],
+        payload["row_index"],
+        payload["source_scope"],
+        payload["target_rect"],
+        payload["target_click_point"],
+        hover_pause_s,
+    )
+    return payload
+
+
+def _dispatch_single_row_probe_click(
+    *,
+    target: RuntimeMenuRow,
+    popup_rows: list[dict[str, Any]],
+    top_menu: str,
+    pre_click_pause_s: float = 0.05,
+    post_click_pause_s: float = 0.1,
+) -> dict[str, Any]:
+    payload = _single_row_probe_target_payload(top_menu=top_menu, row=target)
+    click_point = payload["target_click_point"]
+    logger.info(
+        "SINGLE_ROW_PROBE_CLICK_START top_menu={} row_index={} source_scope={} target_rect={} target_click_point={} click_method={} popup_rows_count={}",
+        payload["top_menu"],
+        payload["row_index"],
+        payload["source_scope"],
+        payload["target_rect"],
+        click_point,
+        "explicit_mouse_down_up_after_move",
+        len(popup_rows or []),
+    )
+    ensure_main_window_foreground_before_click(action_label=f"single_row_probe_click[{target.row_index}]", allow_dialog=True)
+    from pywinauto import mouse
+
+    coords = (int(click_point.get("x") or target.center_x), int(click_point.get("y") or target.center_y))
+    mouse.move(coords=coords)
+    if pre_click_pause_s > 0:
+        time.sleep(pre_click_pause_s)
+    mouse.press(button="left", coords=coords)
+    mouse.release(button="left", coords=coords)
+    logger.info(
+        "SINGLE_ROW_PROBE_CLICK_DISPATCHED top_menu={} row_index={} source_scope={} target_rect={} target_click_point={} click_method={} pre_click_pause_s={} post_click_pause_s={}",
+        payload["top_menu"],
+        payload["row_index"],
+        payload["source_scope"],
+        payload["target_rect"],
+        click_point,
+        "explicit_mouse_down_up_after_move",
+        pre_click_pause_s,
+        post_click_pause_s,
+    )
+    if post_click_pause_s > 0:
+        time.sleep(post_click_pause_s)
+    payload["click_method"] = "explicit_mouse_down_up_after_move"
+    payload["dispatched"] = True
+    logger.info(
+        "SINGLE_ROW_PROBE_CLICK_DONE top_menu={} row_index={} source_scope={} target_rect={} target_click_point={} click_method={} dispatched={}",
+        payload["top_menu"],
+        payload["row_index"],
+        payload["source_scope"],
+        payload["target_rect"],
+        click_point,
+        payload["click_method"],
+        payload["dispatched"],
+    )
+    return payload
 
 
 def _detect_child_rows(parent_row: dict[str, Any], all_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -3500,15 +3588,16 @@ def run_single_row_probe(
                     "diagnostic_summary": diagnostic_summary,
                 },
             }
-        click_point = dict((target_row.meta or {}).get("click_point") or {"x": target_row.center_x, "y": target_row.center_y})
+        target_payload = _single_row_probe_target_payload(top_menu=canonical_name, row=target_row)
         logger.info(
-            "SINGLE_ROW_PROBE_CLICK_TARGET attempt={} top_menu={} row_index={} text={!r} rect={} clickpoint={}",
+            "SINGLE_ROW_PROBE_TARGET attempt={} top_menu={} row_index={} text={!r} source_scope={} target_rect={} target_click_point={}",
             attempt + 1,
             canonical_name,
             target_row.row_index,
             target_row.text,
-            target_row.rectangle,
-            click_point,
+            target_payload["source_scope"],
+            target_payload["target_rect"],
+            target_payload["target_click_point"],
         )
 
         main_window = get_cached_main_window()
@@ -3516,9 +3605,12 @@ def run_single_row_probe(
         before_log = {key: value for key, value in before_state.items() if key != "runtime_snapshot"}
         logger.info("SINGLE_ROW_PROBE_PRE_STATE attempt={} payload={}", attempt + 1, before_log)
 
+        _hover_single_row_probe_target(target=target_row, top_menu=canonical_name)
+
         click_error: str | None = None
+        click_dispatch: dict[str, Any] | None = None
         try:
-            _activate_row_for_exploration(target_row, popup_rows)
+            click_dispatch = _dispatch_single_row_probe_click(target=target_row, popup_rows=popup_rows, top_menu=canonical_name)
         except Exception as exc:
             click_error = f"{exc.__class__.__name__}: {exc}"
 
@@ -3539,7 +3631,9 @@ def run_single_row_probe(
                     "row_index": target_row.row_index,
                     "text": target_row.text,
                     "rectangle": dict(target_row.rectangle),
-                    "clickpoint": click_point,
+                    "clickpoint": target_payload["target_click_point"],
+                    "source_scope": target_payload["source_scope"],
+                    "click_method": (click_dispatch or {}).get("click_method"),
                 },
                 "pre_state": before_log,
                 "post_state": after_log,
