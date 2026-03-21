@@ -67,6 +67,14 @@ ACTION_PROBE_ADMISSION_RESULT_TYPES = {
 ACTION_PROBE_STRONG_RESULT_TYPES = ACTION_PROBE_ADMISSION_RESULT_TYPES | {
     "popup_closed_without_dialog",
 }
+TRANSIENT_WINDOW_CLASS_NAMES = {
+    "thintwindow",
+}
+TRANSIENT_WINDOW_CLASS_SUBSTRINGS = (
+    "hint",
+    "tooltip",
+)
+
 
 
 def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
@@ -1722,6 +1730,8 @@ def _classify_single_row_probe_diff(diff: dict[str, Any]) -> str:
         return "dialog_opened"
     if diff.get("new_window"):
         return "window_opened"
+    if diff.get("transient_hint_window"):
+        return "transient_hint_opened"
     if diff.get("popup_closed"):
         return "popup_closed"
     if diff.get("focus_changed"):
@@ -1738,7 +1748,9 @@ def _summarize_single_row_probe_diff(*, before: dict[str, Any], after: dict[str,
     after_ids = {_window_identity(window) for window in after_windows}
     new_windows = [window for window in after_windows if _window_identity(window) not in before_ids]
     closed_windows = [window for window in before_windows if _window_identity(window) not in after_ids]
-    new_dialog_window = any(_is_modal_window_snapshot(window) for window in new_windows)
+    transient_new_windows = [window for window in new_windows if _is_transient_window_snapshot(window)]
+    functional_new_windows = [window for window in new_windows if not _is_transient_window_snapshot(window)]
+    new_dialog_window = any(_is_modal_window_snapshot(window) for window in functional_new_windows)
     focus_changed = before_foreground != after_foreground
     popup_closed = bool(before.get("popup_visible")) and not bool(after.get("popup_visible"))
     before_subtree = dict(before.get("uia_subtree") or {})
@@ -1747,9 +1759,14 @@ def _summarize_single_row_probe_diff(*, before: dict[str, Any], after: dict[str,
         "new_window_count": len(new_windows),
         "closed_window_count": len(closed_windows),
         "new_windows": new_windows,
+        "functional_new_window_count": len(functional_new_windows),
+        "functional_new_windows": functional_new_windows,
+        "transient_hint_window_count": len(transient_new_windows),
+        "transient_hint_windows": transient_new_windows,
         "closed_windows": closed_windows,
         "new_dialog_window": new_dialog_window,
-        "new_window": bool(new_windows) and not new_dialog_window,
+        "new_window": bool(functional_new_windows) and not new_dialog_window,
+        "transient_hint_window": bool(transient_new_windows),
         "popup_closed": popup_closed,
         "focus_changed": focus_changed,
         "main_window_enabled_changed": before.get("main_window_enabled") != after.get("main_window_enabled"),
@@ -1945,12 +1962,18 @@ def detect_dialog_or_window_transition(
         return {"result_type": "child_popup_opened", "new_windows": new_windows}
 
     if new_windows:
-        candidate = new_windows[0]
-        title = str(candidate.get("title") or "")
-        class_name = str(candidate.get("class_name") or "")
-        result_type = "dialog_opened" if class_name == "#32770" or "dialog" in class_name.lower() else "window_opened"
-        logger.info("dialog_detected result_type={} title={} class_name={}", result_type, title, class_name)
-        return {"result_type": result_type, "dialog_detected": result_type == "dialog_opened", "window_snapshot": candidate}
+        transient_new_windows = [window for window in new_windows if _is_transient_window_snapshot(window)]
+        functional_new_windows = [window for window in new_windows if not _is_transient_window_snapshot(window)]
+        if functional_new_windows:
+            candidate = functional_new_windows[0]
+            title = str(candidate.get("title") or "")
+            class_name = str(candidate.get("class_name") or "")
+            result_type = "dialog_opened" if class_name == "#32770" or "dialog" in class_name.lower() else "window_opened"
+            logger.info("dialog_detected result_type={} title={} class_name={} transient_new_window_count={}", result_type, title, class_name, len(transient_new_windows))
+            return {"result_type": result_type, "dialog_detected": result_type == "dialog_opened", "window_snapshot": candidate, "transient_windows": transient_new_windows}
+        candidate = transient_new_windows[0]
+        logger.info("transient_window_detected result_type=transient_hint_opened title={} class_name={}", candidate.get("title") or "", candidate.get("class_name") or "")
+        return {"result_type": "transient_hint_opened", "dialog_detected": False, "transient_window_detected": True, "window_snapshot": candidate, "transient_windows": transient_new_windows}
 
     if main_disabled:
         logger.warning("modal_likely_main_disabled title={}", after_snapshot.main_window_title)
@@ -1966,6 +1989,19 @@ def _is_modal_window_snapshot(window_snapshot: dict[str, Any] | None) -> bool:
     window_snapshot = window_snapshot or {}
     class_name = str(window_snapshot.get("class_name") or "")
     return class_name == "#32770" or "dialog" in class_name.lower()
+
+
+def _is_transient_window_snapshot(window_snapshot: dict[str, Any] | None) -> bool:
+    window_snapshot = window_snapshot or {}
+    class_name = str(window_snapshot.get("class_name") or "").strip().lower()
+    title = str(window_snapshot.get("title") or "").strip().lower()
+    if class_name in TRANSIENT_WINDOW_CLASS_NAMES:
+        return True
+    if any(marker in class_name for marker in TRANSIENT_WINDOW_CLASS_SUBSTRINGS):
+        return True
+    if class_name.endswith("tooltips_class32"):
+        return True
+    return not title and "hint" in class_name
 
 
 def _classify_placeholder_action_outcome(
@@ -3523,8 +3559,9 @@ def run_single_row_probe(
 
     iterations: list[dict[str, Any]] = []
     classification_priority = {
-        "dialog_opened": 5,
-        "window_opened": 4,
+        "dialog_opened": 6,
+        "window_opened": 5,
+        "transient_hint_opened": 4,
         "popup_closed": 3,
         "focus_changed": 2,
         "no_observable_effect": 1,
@@ -3647,6 +3684,14 @@ def run_single_row_probe(
     )
     provable_change = final_classification != "no_observable_effect"
     action_like = final_classification in {"dialog_opened", "window_opened", "popup_closed", "focus_changed"}
+    human_readable_outcome = {
+        "dialog_opened": "A probe kattintás valódi dialogot nyitott.",
+        "window_opened": "A probe kattintás valódi új ablakot nyitott.",
+        "transient_hint_opened": "A probe kattintás után csak transient hint/tooltip jelent meg, nem valódi dialog vagy funkcionális ablak.",
+        "popup_closed": "A probe kattintás bezárta a popupot.",
+        "focus_changed": "A probe kattintás fókuszváltást okozott.",
+        "no_observable_effect": "A probe kattintás után nem látszott bizonyítható UI-változás.",
+    }.get(final_classification, f"Probe outcome: {final_classification}")
     summary = {
         "provable_change": provable_change,
         "action_like": action_like,
@@ -3655,6 +3700,8 @@ def run_single_row_probe(
         "probe_row_text": probe_row_text,
         "probe_row_index": probe_row_index,
         "final_classification": final_classification,
+        "human_readable_outcome": human_readable_outcome,
+        "transient_hint_only": final_classification == "transient_hint_opened",
     }
     logger.info(
         "SINGLE_ROW_PROBE_FINAL_CLASSIFICATION top_menu={} probe_row_text={!r} probe_row_index={} repeat={} classification={} provable_change={} action_like={}",
