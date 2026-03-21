@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import sys
+
 from winwatt_automation.scripts import map_full_program
 
 
@@ -53,3 +55,50 @@ def test_parser_single_row_probe_defaults():
     assert args.probe_row_text is None
     assert args.probe_row_index is None
     assert args.probe_repeat == 1
+
+
+def test_parser_single_row_probe_accepts_row_index():
+    parser = map_full_program.build_parser()
+    args = parser.parse_args(["--probe-row-index", "1"])
+    assert args.probe_row_index == 1
+
+
+def test_main_allows_probe_row_index_without_probe_row_text(monkeypatch):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["map_full_program.py", "--probe-top-menu", "Jegyzékek", "--probe-row-index", "1"],
+    )
+    monkeypatch.setattr(map_full_program, "configure_logging", lambda **kwargs: None)
+    monkeypatch.setattr(map_full_program, "configure_diagnostics", lambda **kwargs: None)
+    monkeypatch.setattr(map_full_program, "start_run", lambda **kwargs: type("RunCtx", (), {"status_path": "status.json"})())
+    monkeypatch.setattr(map_full_program, "append_terminal_line", lambda *args, **kwargs: None)
+    monkeypatch.setattr(map_full_program, "update_status", lambda *args, **kwargs: None)
+    monkeypatch.setattr(map_full_program, "record_event", lambda *args, **kwargs: None)
+    monkeypatch.setattr(map_full_program, "finalize_run", lambda *args, **kwargs: None)
+    monkeypatch.setattr(map_full_program.logger, "add", lambda *args, **kwargs: 1)
+    monkeypatch.setattr(map_full_program.logger, "remove", lambda *args, **kwargs: None)
+    probe_calls: list[dict[str, object]] = []
+    monkeypatch.setattr(
+        map_full_program,
+        "run_single_row_probe",
+        lambda **kwargs: probe_calls.append(kwargs) or {
+            "top_menu": "Jegyzékek",
+            "probe_row_text": None,
+            "probe_row_index": 1,
+            "repeat": 1,
+            "final_classification": "target_unresolved",
+            "summary": {"provable_change": False, "action_like": False},
+        },
+    )
+
+    assert map_full_program.main() == 0
+    assert probe_calls == [
+        {
+            "state_id": "single_row_probe",
+            "top_menu": "Jegyzékek",
+            "probe_row_text": None,
+            "probe_row_index": 1,
+            "repeat": 1,
+        }
+    ]

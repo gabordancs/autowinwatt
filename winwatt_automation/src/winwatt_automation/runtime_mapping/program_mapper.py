@@ -4,6 +4,7 @@ from collections import Counter, defaultdict
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
+import re
 import time
 from typing import Any, Callable
 
@@ -1678,21 +1679,92 @@ def _summarize_single_row_probe_diff(*, before: dict[str, Any], after: dict[str,
     return diff
 
 
-def _select_probe_target_row(*, menu_rows: list[RuntimeMenuRow], probe_row_text: str, probe_row_index: int | None) -> RuntimeMenuRow:
-    normalized_text = normalize_menu_title(probe_row_text)
+def _select_probe_target_row(
+    *,
+    menu_rows: list[RuntimeMenuRow],
+    probe_row_text: str | None,
+    probe_row_index: int | None,
+) -> tuple[RuntimeMenuRow | None, dict[str, Any]]:
+    requested_text = str(probe_row_text or "")
+    normalized_text = normalize_menu_title(requested_text)
+    available_row_texts = [row.text for row in menu_rows]
+    available_row_indices = [row.row_index for row in menu_rows]
+    placeholder_count = sum(1 for row in menu_rows if _is_placeholder_row(row))
+    requested_placeholder_text = ""
+    placeholder_match = re.fullmatch(r"\[unlabeled row (\d+)\]", requested_text.strip(), flags=re.IGNORECASE)
+    if placeholder_match:
+        requested_placeholder_text = placeholder_match.group(1)
+
+    resolution: dict[str, Any] = {
+        "requested_text": probe_row_text,
+        "requested_index": probe_row_index,
+        "matched_by": None,
+        "resolved_row_text": None,
+        "resolved_row_index": None,
+        "resolved_rectangle": None,
+        "available_row_texts": available_row_texts,
+        "available_row_indices": available_row_indices,
+        "placeholder_count": placeholder_count,
+    }
+
+    if requested_text:
+        for row in menu_rows:
+            if row.text == requested_text:
+                resolution.update(
+                    matched_by="text",
+                    resolved_row_text=row.text,
+                    resolved_row_index=row.row_index,
+                    resolved_rectangle=dict(row.rectangle),
+                )
+                return row, resolution
+
+        for row in menu_rows:
+            if normalized_text and row.normalized_text == normalized_text:
+                resolution.update(
+                    matched_by="normalized_text",
+                    resolved_row_text=row.text,
+                    resolved_row_index=row.row_index,
+                    resolved_rectangle=dict(row.rectangle),
+                )
+                return row, resolution
+
+    if requested_text:
+        logger.info(
+            "PROBE_ROW_TEXT_NOT_FOUND requested_text={!r} available_row_texts={} available_row_indices={} placeholder_count={}",
+            probe_row_text,
+            available_row_texts,
+            available_row_indices,
+            placeholder_count,
+        )
+
     if probe_row_index is not None:
         for row in menu_rows:
             if row.row_index != probe_row_index:
                 continue
-            if normalized_text and row.normalized_text != normalized_text:
-                raise ValueError(f"Probe row index {probe_row_index} does not match requested text {probe_row_text!r}.")
-            return row
-        raise ValueError(f"Probe row index {probe_row_index} not found for requested text {probe_row_text!r}.")
+            resolution.update(
+                matched_by="row_index",
+                resolved_row_text=row.text,
+                resolved_row_index=row.row_index,
+                resolved_rectangle=dict(row.rectangle),
+            )
+            return row, resolution
 
-    for row in menu_rows:
-        if row.normalized_text == normalized_text:
-            return row
-    raise ValueError(f"Probe row text {probe_row_text!r} not found.")
+    if requested_placeholder_text:
+        placeholder_index = int(requested_placeholder_text)
+        for row in menu_rows:
+            if not _is_placeholder_row(row):
+                continue
+            if row.row_index != placeholder_index:
+                continue
+            resolution.update(
+                matched_by="placeholder_index",
+                resolved_row_text=row.text,
+                resolved_row_index=row.row_index,
+                resolved_rectangle=dict(row.rectangle),
+            )
+            return row, resolution
+
+    return None, resolution
 
 
 def _window_identity(row: dict[str, Any]) -> tuple[Any, ...]:
@@ -3384,11 +3456,50 @@ def run_single_row_probe(
             popup_rows,
             canonical_top_menu_names=canonical_top_menus["normalized_names"],
         )
-        target_row = _select_probe_target_row(
+        target_row, resolution = _select_probe_target_row(
             menu_rows=menu_rows,
             probe_row_text=probe_row_text,
             probe_row_index=probe_row_index,
         )
+        logger.info(
+            "SINGLE_ROW_PROBE_TARGET_RESOLUTION requested_text={!r} requested_index={} matched_by={} resolved_row_text={!r} resolved_row_index={} resolved_rectangle={}",
+            resolution.get("requested_text"),
+            resolution.get("requested_index"),
+            resolution.get("matched_by"),
+            resolution.get("resolved_row_text"),
+            resolution.get("resolved_row_index"),
+            resolution.get("resolved_rectangle"),
+        )
+        if target_row is None:
+            diagnostic_summary = {
+                "top_menu": canonical_name,
+                "requested_text": probe_row_text,
+                "requested_index": probe_row_index,
+                "available_row_texts": resolution.get("available_row_texts", []),
+                "available_row_indices": resolution.get("available_row_indices", []),
+                "placeholder_count": resolution.get("placeholder_count", 0),
+                "message": "Probe target could not be resolved from the currently available popup rows.",
+            }
+            logger.info("SINGLE_ROW_PROBE_TARGET_UNRESOLVED attempt={} payload={}", attempt + 1, diagnostic_summary)
+            return {
+                "state_id": state_id,
+                "top_menu": canonical_name,
+                "probe_row_text": probe_row_text,
+                "probe_row_index": probe_row_index,
+                "repeat": repeat,
+                "iterations": iterations,
+                "final_classification": "target_unresolved",
+                "summary": {
+                    "provable_change": False,
+                    "action_like": False,
+                    "repeat": repeat,
+                    "top_menu": canonical_name,
+                    "probe_row_text": probe_row_text,
+                    "probe_row_index": probe_row_index,
+                    "final_classification": "target_unresolved",
+                    "diagnostic_summary": diagnostic_summary,
+                },
+            }
         click_point = dict((target_row.meta or {}).get("click_point") or {"x": target_row.center_x, "y": target_row.center_y})
         logger.info(
             "SINGLE_ROW_PROBE_CLICK_TARGET attempt={} top_menu={} row_index={} text={!r} rect={} clickpoint={}",
