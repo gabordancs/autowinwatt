@@ -44,3 +44,12 @@ def test_parser_recent_projects_policy_default():
 
 def test_parse_top_menus_accepts_semicolon_separated_targets():
     assert map_full_program._parse_top_menus("Fájl;Jegyzékek") == ["fájl", "jegyzékek"]
+
+
+def test_parser_single_row_probe_defaults():
+    parser = map_full_program.build_parser()
+    args = parser.parse_args([])
+    assert args.probe_top_menu is None
+    assert args.probe_row_text is None
+    assert args.probe_row_index is None
+    assert args.probe_repeat == 1
