@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from winwatt_automation.runtime_mapping.models import RuntimeStateSnapshot
-from winwatt_automation.runtime_mapping.program_mapper import _build_menu_rows_from_popup_rows, classify_post_click_result
+from winwatt_automation.runtime_mapping.program_mapper import _build_menu_rows_from_popup_rows, classify_post_click_result, detect_dialog_or_window_transition
 
 
 def _snapshot(*, title: str = "WinWatt", windows: int = 1) -> RuntimeStateSnapshot:
@@ -153,3 +153,53 @@ def test_build_menu_rows_geometry_placeholder_uses_rect_center_for_empty_popup_r
     assert rows[0].center_y == 35
     assert rows[0].meta["click_point"] == {"x": 20, "y": 35}
     assert rows[0].menu_path == ["Fájl", "[unlabeled row 0]"]
+
+
+def test_classify_post_click_result_transient_hint_window_opened():
+    before = RuntimeStateSnapshot(
+        state_id="state_no_project",
+        process_id=123,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[{"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 123}],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="2026-01-01T00:00:00+00:00",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 123},
+    )
+    after = RuntimeStateSnapshot(
+        state_id="state_no_project",
+        process_id=123,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[
+            {"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 123},
+            {"handle": 2, "title": "Egycsöves körök", "class_name": "THintWindow", "process_id": 123},
+        ],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="2026-01-01T00:00:01+00:00",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 123},
+    )
+
+    transition = detect_dialog_or_window_transition(before, after)
+
+    result = classify_post_click_result(
+        process_id=123,
+        before_snapshot=before,
+        after_snapshot=after,
+        dialog_detection=transition,
+        state_id="state_no_project",
+        top_menu="Jegyzékek",
+        row_index=0,
+        menu_path=["Jegyzékek", "Egycsöves körök"],
+        action_key="Jegyzékek > Egycsöves körök",
+        safety_level="safe",
+        attempted=True,
+    )
+
+    assert result.result_type == "transient_hint_opened"
+    assert result.event_details["dialog_detected"] is False
+    assert result.event_details["transient_window_detected"] is True
