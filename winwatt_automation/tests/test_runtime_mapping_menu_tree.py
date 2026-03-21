@@ -6,6 +6,7 @@ from winwatt_automation.runtime_mapping.models import RuntimeMenuRow, RuntimeSta
 from winwatt_automation.runtime_mapping.program_mapper import (
     _classify_popup_block,
     _build_menu_rows_from_popup_rows,
+    _dispatch_single_row_probe_click,
     _evaluate_action_admission,
     _run_action_evidence_probe,
     _filter_normal_popup_rows,
@@ -1621,10 +1622,15 @@ def test_run_single_row_probe_detects_dialog_open(monkeypatch):
         lambda **kwargs: (popup_rows, {"result_type": "child_popup_opened"}),
     )
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
-    activated: list[str] = []
+    hovered: list[str] = []
+    dispatched: list[str] = []
     monkeypatch.setattr(
-        "winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration",
-        lambda row, popup_rows: activated.append(row.text),
+        "winwatt_automation.runtime_mapping.program_mapper._hover_single_row_probe_target",
+        lambda *, target, top_menu, hover_pause_s=0.05: hovered.append(target.text) or {"top_menu": top_menu},
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._dispatch_single_row_probe_click",
+        lambda *, target, popup_rows, top_menu, pre_click_pause_s=0.05, post_click_pause_s=0.1: dispatched.append(target.text) or {"click_method": "explicit_mouse_down_up_after_move", "dispatched": True},
     )
 
     result = run_single_row_probe(
@@ -1633,11 +1639,70 @@ def test_run_single_row_probe_detects_dialog_open(monkeypatch):
         probe_row_text="Megnyitás",
     )
 
-    assert activated == ["Megnyitás"]
+    assert hovered == ["Megnyitás"]
+    assert dispatched == ["Megnyitás"]
     assert result["final_classification"] == "dialog_opened"
     assert result["summary"]["provable_change"] is True
     assert result["summary"]["action_like"] is True
 
+
+
+def test_dispatch_single_row_probe_click_uses_explicit_left_button_dispatch(monkeypatch):
+    row = RuntimeMenuRow(
+        state_id="probe",
+        top_menu="Jegyzékek",
+        row_index=2,
+        menu_path=["Jegyzékek", "Anyagok"],
+        text="Anyagok",
+        normalized_text=normalize_menu_title("Anyagok"),
+        rectangle={"left": 10, "top": 20, "right": 110, "bottom": 44},
+        center_x=60,
+        center_y=32,
+        is_separator=False,
+        source_scope="main_window",
+        fragments=[],
+        enabled_guess=True,
+        discovered_in_state="probe",
+        meta={"click_point": {"x": 62, "y": 30}, "source_scope": "global_process_scan"},
+    )
+    mouse_calls: list[tuple[str, object]] = []
+
+    class FakeMouse:
+        @staticmethod
+        def move(*, coords):
+            mouse_calls.append(("move", coords))
+
+        @staticmethod
+        def press(*, button, coords):
+            mouse_calls.append(("press", button, coords))
+
+        @staticmethod
+        def release(*, button, coords):
+            mouse_calls.append(("release", button, coords))
+
+    import sys
+    import types
+
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(mouse=FakeMouse))
+    focus_calls: list[dict[str, object]] = []
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click",
+        lambda **kwargs: focus_calls.append(kwargs),
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.time.sleep", lambda _: None)
+
+    result = _dispatch_single_row_probe_click(target=row, popup_rows=[{"text": "Anyagok"}], top_menu="Jegyzékek")
+
+    assert focus_calls == [{"action_label": "single_row_probe_click[2]", "allow_dialog": True}]
+    assert mouse_calls == [
+        ("move", (62, 30)),
+        ("press", "left", (62, 30)),
+        ("release", "left", (62, 30)),
+    ]
+    assert result["click_method"] == "explicit_mouse_down_up_after_move"
+    assert result["dispatched"] is True
+    assert result["target_click_point"] == {"x": 62, "y": 30}
+    assert result["source_scope"] == "global_process_scan"
 
 def test_select_probe_target_row_falls_back_to_row_index_when_text_missing():
     menu_rows = [
