@@ -172,8 +172,8 @@ def main() -> int:
     try:
         probe_requested = bool(args.probe_top_menu or args.probe_row_text or args.probe_row_index is not None)
         if probe_requested:
-            if not args.probe_top_menu or not args.probe_row_text:
-                raise ValueError("Probe mode requires both --probe-top-menu and --probe-row-text.")
+            if not args.probe_top_menu or (not args.probe_row_text and args.probe_row_index is None):
+                raise ValueError("Probe mode requires --probe-top-menu and either --probe-row-text or --probe-row-index.")
 
             result = run_single_row_probe(
                 state_id=f"{args.state_id_prefix}_single_row_probe" if args.state_id_prefix != "state" else "single_row_probe",
