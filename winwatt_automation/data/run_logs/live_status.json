@@ -1,8 +1,8 @@
 {
-  "run_id": "0087_hybrid_2026-03-21_19-44-03",
+  "run_id": "0088_hybrid_2026-03-21_20-14-55",
   "state": "finished",
   "message": "Mapping finished successfully.",
-  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid",
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 1 --safe-mode hybrid",
   "details": {
     "exit_code": 0,
     "summary": {
@@ -16,5 +16,5 @@
       "recovery_success": false
     }
   },
-  "updated_at": "2026-03-21T19:48:55.394330+00:00"
+  "updated_at": "2026-03-21T20:16:42.015790+00:00"
 }
