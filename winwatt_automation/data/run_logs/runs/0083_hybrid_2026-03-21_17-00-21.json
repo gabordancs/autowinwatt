@@ -1,43 +1,37 @@
 {
-  "run_id": "0084_hybrid_2026-03-21_17-00-30",
-  "sequence_number": 84,
-  "started_at": "2026-03-21T17:00:30.733683+00:00",
-  "finished_at": "2026-03-21T17:01:40.537247+00:00",
-  "duration_seconds": 69.804,
+  "run_id": "0083_hybrid_2026-03-21_17-00-21",
+  "sequence_number": 83,
+  "started_at": "2026-03-21T17:00:21.995252+00:00",
+  "finished_at": "2026-03-21T17:00:22.456856+00:00",
+  "duration_seconds": 0.462,
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
   "safe_mode": "hybrid",
   "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
-  "exit_code": 0,
-  "success": true,
+  "exit_code": 1,
+  "success": false,
   "summary": {
     "no_project_top_menus": null,
     "project_open_top_menus": null,
     "diff_summary": {},
     "skipped_by_safety": null,
-    "last_error": null,
+    "last_error": "No WinWatt-like windows were found",
     "modal_detected": false,
     "recovery_attempted": false,
     "recovery_success": false
   },
   "important_events": [
     {
-      "timestamp": "2026-03-21T17:01:40.532540+00:00",
-      "event_type": "single_row_probe_summary",
+      "timestamp": "2026-03-21T17:00:22.455165+00:00",
+      "event_type": "run_failed",
       "payload": {
-        "top_menu": "Jegyzékek",
-        "probe_row_text": null,
-        "probe_row_index": 0,
-        "repeat": 2,
-        "final_classification": "no_observable_effect",
-        "provable_change": false,
-        "action_like": false
+        "error": "No WinWatt-like windows were found"
       }
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0084_hybrid_2026-03-21_17-00-30.log",
-    "json_path": "data\\run_logs\\runs\\0084_hybrid_2026-03-21_17-00-30.json"
+    "log_path": "data\\run_logs\\runs\\0083_hybrid_2026-03-21_17-00-21.log",
+    "json_path": "data\\run_logs\\runs\\0083_hybrid_2026-03-21_17-00-21.json"
   },
   "tags": [
     "map_full_program",

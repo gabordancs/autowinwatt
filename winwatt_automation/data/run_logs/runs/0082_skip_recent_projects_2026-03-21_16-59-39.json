@@ -1,0 +1,40 @@
+{
+  "run_id": "0082_skip_recent_projects_2026-03-21_16-59-39",
+  "sequence_number": 82,
+  "started_at": "2026-03-21T16:59:39.085457+00:00",
+  "finished_at": "2026-03-21T16:59:39.531990+00:00",
+  "duration_seconds": 0.447,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode off --max-submenu-depth 2 --include-disabled false --diagnostic-fast-mode --placeholder-traversal-focus --placeholder-modal-policy submenu_only --recent-projects-policy skip_recent_projects",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "off",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 1,
+  "success": false,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "skipped_by_safety": null,
+    "last_error": "No WinWatt-like windows were found",
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-21T16:59:39.530740+00:00",
+      "event_type": "run_failed",
+      "payload": {
+        "error": "No WinWatt-like windows were found"
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0082_skip_recent_projects_2026-03-21_16-59-39.log",
+    "json_path": "data\\run_logs\\runs\\0082_skip_recent_projects_2026-03-21_16-59-39.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

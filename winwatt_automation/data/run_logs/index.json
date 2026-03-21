@@ -1320,6 +1320,45 @@
       "short_summary": "runtime_mapping_failed",
       "log_path": "data\\run_logs\\runs\\0081_hybrid_2026-03-21_08-06-59.log",
       "json_path": "data\\run_logs\\runs\\0081_hybrid_2026-03-21_08-06-59.json"
+    },
+    {
+      "sequence_number": 82,
+      "run_id": "0082_skip_recent_projects_2026-03-21_16-59-39",
+      "started_at": "2026-03-21T16:59:39.085457+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Fájl --safe-mode off --max-submenu-depth 2 --include-disabled false --diagnostic-fast-mode --placeholder-traversal-focus --placeholder-modal-policy submenu_only --recent-projects-policy skip_recent_projects",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0082_skip_recent_projects_2026-03-21_16-59-39.log",
+      "json_path": "data\\run_logs\\runs\\0082_skip_recent_projects_2026-03-21_16-59-39.json"
+    },
+    {
+      "sequence_number": 83,
+      "run_id": "0083_hybrid_2026-03-21_17-00-21",
+      "started_at": "2026-03-21T17:00:21.995252+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0083_hybrid_2026-03-21_17-00-21.log",
+      "json_path": "data\\run_logs\\runs\\0083_hybrid_2026-03-21_17-00-21.json"
+    },
+    {
+      "sequence_number": 84,
+      "run_id": "0084_hybrid_2026-03-21_17-00-30",
+      "started_at": "2026-03-21T17:00:30.733683+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid",
+      "success": true,
+      "short_summary": {
+        "no_project_top_menus": null,
+        "project_open_top_menus": null,
+        "diff_summary": {},
+        "skipped_by_safety": null,
+        "last_error": null,
+        "modal_detected": false,
+        "recovery_attempted": false,
+        "recovery_success": false
+      },
+      "log_path": "data\\run_logs\\runs\\0084_hybrid_2026-03-21_17-00-30.log",
+      "json_path": "data\\run_logs\\runs\\0084_hybrid_2026-03-21_17-00-30.json"
     }
   ]
 }
