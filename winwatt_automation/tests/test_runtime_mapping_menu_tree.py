@@ -15,6 +15,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     is_top_menu_like_popup_row,
     map_runtime_state,
     reset_top_menu_cache,
+    run_single_row_probe,
 )
 
 
@@ -1555,3 +1556,82 @@ def test_output_summary_reports_probe_counters(monkeypatch):
     assert "probed_rows=1" in summary
     assert "admitted_after_probe=0" in summary
     assert "still_structure_only=1" in summary
+
+
+def test_run_single_row_probe_detects_dialog_open(monkeypatch):
+    popup_rows = [
+        {
+            "text": "Megnyitás",
+            "center_x": 25,
+            "center_y": 35,
+            "rectangle": {"left": 10, "top": 20, "right": 40, "bottom": 50},
+            "is_separator": False,
+            "source_scope": "main",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+        }
+    ]
+    before_snapshot = RuntimeStateSnapshot(
+        state_id="probe",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[{"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1}],
+        discovered_top_menus=["Fájl"],
+        timestamp="t1",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1},
+    )
+    after_snapshot = RuntimeStateSnapshot(
+        state_id="probe",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[
+            {"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1},
+            {"handle": 2, "title": "Megnyitás", "class_name": "#32770", "process_id": 1},
+        ],
+        discovered_top_menus=["Fájl"],
+        timestamp="t2",
+        main_window_enabled=False,
+        main_window_visible=True,
+        foreground_window={"handle": 2, "title": "Megnyitás", "class_name": "#32770", "process_id": 1},
+    )
+    snapshots = iter([before_snapshot, before_snapshot, after_snapshot])
+
+    class _Window:
+        def children(self):
+            return [object()]
+
+        def descendants(self):
+            return [object(), object()]
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: next(snapshots))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.get_cached_main_window", lambda: _Window())
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.get_canonical_top_menu_names",
+        lambda discovered: {"normalized_to_raw": {"fájl": "Fájl"}, "normalized_names": {"fájl"}, "items": [{"raw": "Fájl"}]},
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._open_and_capture_root_menu",
+        lambda **kwargs: (popup_rows, {"result_type": "child_popup_opened"}),
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
+    activated: list[str] = []
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._activate_row_for_exploration",
+        lambda row, popup_rows: activated.append(row.text),
+    )
+
+    result = run_single_row_probe(
+        state_id="probe",
+        top_menu="Fájl",
+        probe_row_text="Megnyitás",
+    )
+
+    assert activated == ["Megnyitás"]
+    assert result["final_classification"] == "dialog_opened"
+    assert result["summary"]["provable_change"] is True
+    assert result["summary"]["action_like"] is True

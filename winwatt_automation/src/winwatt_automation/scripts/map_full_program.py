@@ -18,6 +18,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     DEFAULT_TEST_PROJECT_PATH,
     build_full_runtime_program_map,
     log_action_catalog_summary,
+    run_single_row_probe,
 )
 from winwatt_automation.logging_config import configure_logging
 from winwatt_automation.runtime_mapping.config import configure_diagnostics
@@ -135,6 +136,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--placeholder-modal-policy", default="submenu_only", choices=["submenu_only", "allow_modal_probe"], help="How placeholder traversal handles modal dialogs opened by geometry click points")
     parser.add_argument("--recent-projects-policy", default="skip_recent_projects", choices=["skip_recent_projects", "probe_recent_projects", "open_sample_recent_project"], help="How the File > recent projects area is handled during runtime mapping")
     parser.add_argument("--log-profile", default="concise", choices=["concise", "diagnostic"], help="Concise keeps INFO high-signal, diagnostic exposes low-level DEBUG details.")
+    parser.add_argument("--probe-top-menu", default=None, help="Run targeted single-row diagnostics for one top menu.")
+    parser.add_argument("--probe-row-text", default=None, help="Target row text for single-row probe diagnostics.")
+    parser.add_argument("--probe-row-index", type=int, default=None, help="Optional popup row index for single-row probe diagnostics.")
+    parser.add_argument("--probe-repeat", type=int, default=1, help="Repeat count for single-row probe diagnostics.")
     return parser
 
 
@@ -165,6 +170,50 @@ def main() -> int:
         launch_progress_overlay(run_ctx.status_path)
 
     try:
+        probe_requested = bool(args.probe_top_menu or args.probe_row_text or args.probe_row_index is not None)
+        if probe_requested:
+            if not args.probe_top_menu or not args.probe_row_text:
+                raise ValueError("Probe mode requires both --probe-top-menu and --probe-row-text.")
+
+            result = run_single_row_probe(
+                state_id=f"{args.state_id_prefix}_single_row_probe" if args.state_id_prefix != "state" else "single_row_probe",
+                top_menu=args.probe_top_menu,
+                probe_row_text=args.probe_row_text,
+                probe_row_index=args.probe_row_index,
+                repeat=args.probe_repeat,
+            )
+            print("Single row probe completed")
+            print(f"- final classification: {result['final_classification']}")
+            print(f"- provable change: {result['summary']['provable_change']}")
+            print(f"- action-like: {result['summary']['action_like']}")
+
+            record_event(
+                run_ctx,
+                "single_row_probe_summary",
+                {
+                    "top_menu": result["top_menu"],
+                    "probe_row_text": result["probe_row_text"],
+                    "probe_row_index": result["probe_row_index"],
+                    "repeat": result["repeat"],
+                    "final_classification": result["final_classification"],
+                    "provable_change": result["summary"]["provable_change"],
+                    "action_like": result["summary"]["action_like"],
+                },
+            )
+            update_status(
+                run_ctx,
+                "running",
+                "A single-row probe diagnosztika elkészült.",
+                result["summary"],
+            )
+            finalize_run(
+                run_ctx,
+                success=True,
+                exit_code=0,
+                summary=result["summary"],
+            )
+            return 0
+
         def _event_recorder(event_type: str, payload: dict[str, object]) -> None:
             record_event(run_ctx, event_type, payload)
             message_map = {
