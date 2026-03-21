@@ -74,6 +74,12 @@ TRANSIENT_WINDOW_CLASS_SUBSTRINGS = (
     "hint",
     "tooltip",
 )
+INTERNAL_CHILD_CONTEXT_MENU_NAMES = {
+    normalize_menu_title(name)
+    for name in ("Dokumentumablak", "Szerkesztés", "Csoport", "Elem")
+}
+INTERNAL_CHILD_CONTROL_TYPES = {"window", "pane", "group"}
+INTERNAL_CHILD_DESCENDANT_GROWTH_MIN = 25
 
 
 
@@ -1230,7 +1236,7 @@ def _safe_depth_decision(
 
 def _derive_action_type(*, classification: str | None, provable_change: bool, action_like: bool) -> str:
     normalized = str(classification or "unknown")
-    if normalized in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened"}:
+    if normalized in {"dialog_opened", "window_opened", "internal_child_window_opened", "main_window_disabled_modal_likely", "modal_opened"}:
         return "functional_action"
     if normalized == "transient_hint_opened":
         return "transient_ui_only"
@@ -1783,6 +1789,36 @@ def _foreground_window_info() -> dict[str, Any]:
         return {}
 
 
+def _control_type_name(control: Any) -> str:
+    for attr in ("friendly_class_name",):
+        try:
+            value = getattr(control, attr)()
+            if value:
+                return str(value).strip().lower()
+        except Exception:
+            pass
+    element_info = getattr(control, "element_info", None)
+    control_type = getattr(element_info, "control_type", None)
+    if control_type:
+        return str(control_type).strip().lower()
+    return ""
+
+
+def _control_text_value(control: Any) -> str:
+    for attr in ("window_text",):
+        try:
+            value = getattr(control, attr)()
+            if value:
+                return str(value).strip()
+        except Exception:
+            pass
+    element_info = getattr(control, "element_info", None)
+    name = getattr(element_info, "name", None)
+    if name:
+        return str(name).strip()
+    return ""
+
+
 def _uia_subtree_metrics(window: Any) -> dict[str, int]:
     if window is None:
         return {"child_count": 0, "descendant_count": 0}
@@ -1800,6 +1836,117 @@ def _uia_subtree_metrics(window: Any) -> dict[str, int]:
     }
 
 
+def _main_window_child_summary(window: Any) -> dict[str, Any]:
+    summary: dict[str, Any] = {
+        "child_control_types": {},
+        "descendant_control_types": {},
+        "child_window_like_count": 0,
+        "descendant_window_like_count": 0,
+        "title_bar_like_count": 0,
+        "close_button_like_count": 0,
+        "window_like_titles": [],
+    }
+    if window is None:
+        return summary
+    try:
+        children = list(_safe_call(window, "children", []) or [])
+    except Exception:
+        children = []
+    try:
+        descendants = list(_safe_call(window, "descendants", []) or [])
+    except Exception:
+        descendants = []
+
+    child_types = Counter()
+    descendant_types = Counter()
+    window_like_titles: list[str] = []
+    window_like_title_keys: set[str] = set()
+    title_bar_like_count = 0
+    close_button_like_count = 0
+
+    for control in children:
+        control_type = _control_type_name(control)
+        if control_type:
+            child_types[control_type] += 1
+        title = _control_text_value(control)
+        if control_type in INTERNAL_CHILD_CONTROL_TYPES:
+            title_key = title.lower()
+            if title and title_key not in window_like_title_keys:
+                window_like_titles.append(title)
+                window_like_title_keys.add(title_key)
+    for control in descendants:
+        control_type = _control_type_name(control)
+        if control_type:
+            descendant_types[control_type] += 1
+        raw_title = _control_text_value(control)
+        title = raw_title.lower()
+        if control_type in INTERNAL_CHILD_CONTROL_TYPES and title and title not in window_like_title_keys:
+            window_like_titles.append(raw_title)
+            window_like_title_keys.add(title)
+        if "title bar" in title or "titlebar" in title:
+            title_bar_like_count += 1
+        if control_type == "button" and title in {"close", "bezárás", "bezaras", "x"}:
+            close_button_like_count += 1
+
+    summary.update(
+        {
+            "child_control_types": dict(sorted(child_types.items())),
+            "descendant_control_types": dict(sorted(descendant_types.items())),
+            "child_window_like_count": sum(child_types.get(item, 0) for item in INTERNAL_CHILD_CONTROL_TYPES),
+            "descendant_window_like_count": sum(descendant_types.get(item, 0) for item in INTERNAL_CHILD_CONTROL_TYPES),
+            "title_bar_like_count": title_bar_like_count,
+            "close_button_like_count": close_button_like_count,
+            "window_like_titles": window_like_titles[:10],
+        }
+    )
+    return summary
+
+
+def _top_menu_expansion_summary(*, before_menus: list[str], after_menus: list[str]) -> dict[str, Any]:
+    before_normalized = {normalize_menu_title(item) for item in before_menus if normalize_menu_title(item)}
+    after_normalized = {normalize_menu_title(item) for item in after_menus if normalize_menu_title(item)}
+    new_context_menus = sorted(after_normalized - before_normalized)
+    context_matches = sorted(menu for menu in new_context_menus if menu in INTERNAL_CHILD_CONTEXT_MENU_NAMES)
+    return {
+        "before_count": len(before_menus),
+        "after_count": len(after_menus),
+        "count_diff": len(after_menus) - len(before_menus),
+        "new_menus": new_context_menus,
+        "context_menu_expanded": bool(context_matches),
+        "context_menu_matches": context_matches,
+    }
+
+
+def _detect_internal_child_window_opened(*, subtree_diff: dict[str, Any], child_summary_before: dict[str, Any], child_summary_after: dict[str, Any], top_menu_expansion: dict[str, Any]) -> dict[str, Any]:
+    descendant_growth = int(subtree_diff.get("descendant_count_diff") or 0)
+    child_growth = int(subtree_diff.get("child_count_diff") or 0)
+    window_like_growth = int(child_summary_after.get("descendant_window_like_count") or 0) - int(child_summary_before.get("descendant_window_like_count") or 0)
+    title_bar_growth = int(child_summary_after.get("title_bar_like_count") or 0) - int(child_summary_before.get("title_bar_like_count") or 0)
+    close_button_growth = int(child_summary_after.get("close_button_like_count") or 0) - int(child_summary_before.get("close_button_like_count") or 0)
+    signals = {
+        "descendant_growth": descendant_growth >= INTERNAL_CHILD_DESCENDANT_GROWTH_MIN,
+        "child_growth": child_growth > 0,
+        "window_like_growth": window_like_growth > 0,
+        "context_menu_expanded": bool(top_menu_expansion.get("context_menu_expanded")),
+        "chrome_detected": title_bar_growth > 0 or close_button_growth > 0,
+    }
+    detected = signals["descendant_growth"] and (
+        signals["window_like_growth"]
+        or signals["context_menu_expanded"]
+        or signals["chrome_detected"]
+        or signals["child_growth"]
+    )
+    return {
+        "detected": detected,
+        "signals": signals,
+        "descendant_growth": descendant_growth,
+        "child_growth": child_growth,
+        "window_like_growth": window_like_growth,
+        "title_bar_growth": title_bar_growth,
+        "close_button_growth": close_button_growth,
+    }
+
+
 def _probe_snapshot(*, state_id: str, main_window: Any, popup_rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     snapshot = capture_state_snapshot(state_id)
     windows = list(snapshot.visible_top_windows)
@@ -1812,7 +1959,10 @@ def _probe_snapshot(*, state_id: str, main_window: Any, popup_rows: list[dict[st
         "main_window_visible": snapshot.main_window_visible,
         "popup_visible": bool(popup_rows),
         "popup_row_count": len(popup_rows),
+        "discovered_top_menus": list(snapshot.discovered_top_menus),
+        "top_menu_count": len(snapshot.discovered_top_menus),
         "uia_subtree": _uia_subtree_metrics(main_window),
+        "main_window_child_summary": _main_window_child_summary(main_window),
         "runtime_snapshot": snapshot,
     }
 
@@ -1822,6 +1972,8 @@ def _classify_single_row_probe_diff(diff: dict[str, Any]) -> str:
         return "dialog_opened"
     if diff.get("new_window"):
         return "window_opened"
+    if (diff.get("internal_child_window_detection") or {}).get("detected"):
+        return "internal_child_window_opened"
     if diff.get("transient_hint_window"):
         return "transient_hint_opened"
     if diff.get("popup_closed"):
@@ -1847,6 +1999,29 @@ def _summarize_single_row_probe_diff(*, before: dict[str, Any], after: dict[str,
     popup_closed = bool(before.get("popup_visible")) and not bool(after.get("popup_visible"))
     before_subtree = dict(before.get("uia_subtree") or {})
     after_subtree = dict(after.get("uia_subtree") or {})
+    subtree_diff = {
+        "child_count_before": int(before_subtree.get("child_count") or 0),
+        "child_count_after": int(after_subtree.get("child_count") or 0),
+        "child_count_diff": int(after_subtree.get("child_count") or 0) - int(before_subtree.get("child_count") or 0),
+        "descendant_count_before": int(before_subtree.get("descendant_count") or 0),
+        "descendant_count_after": int(after_subtree.get("descendant_count") or 0),
+        "descendant_count_diff": int(after_subtree.get("descendant_count") or 0) - int(before_subtree.get("descendant_count") or 0),
+    }
+    child_summary_before = dict(before.get("main_window_child_summary") or {})
+    child_summary_after = dict(after.get("main_window_child_summary") or {})
+    top_menu_expansion = _top_menu_expansion_summary(
+        before_menus=list(before.get("discovered_top_menus") or []),
+        after_menus=list(after.get("discovered_top_menus") or []),
+    )
+    internal_child_window_detection = _detect_internal_child_window_opened(
+        subtree_diff=subtree_diff,
+        child_summary_before=child_summary_before,
+        child_summary_after=child_summary_after,
+        top_menu_expansion=top_menu_expansion,
+    )
+    logger.info("SINGLE_ROW_PROBE_SUBTREE_SUMMARY before={} after={} before_child_summary={} after_child_summary={}", before_subtree, after_subtree, child_summary_before, child_summary_after)
+    logger.info("SINGLE_ROW_PROBE_CONTEXT_MENU_EXPANSION result={}", top_menu_expansion)
+    logger.info("SINGLE_ROW_PROBE_INTERNAL_CHILD_WINDOW_DETECTION result={}", internal_child_window_detection)
     diff = {
         "new_window_count": len(new_windows),
         "closed_window_count": len(closed_windows),
@@ -1863,14 +2038,11 @@ def _summarize_single_row_probe_diff(*, before: dict[str, Any], after: dict[str,
         "focus_changed": focus_changed,
         "main_window_enabled_changed": before.get("main_window_enabled") != after.get("main_window_enabled"),
         "top_level_window_count_diff": int(after.get("top_level_window_count") or 0) - int(before.get("top_level_window_count") or 0),
-        "uia_subtree_diff": {
-            "child_count_before": int(before_subtree.get("child_count") or 0),
-            "child_count_after": int(after_subtree.get("child_count") or 0),
-            "child_count_diff": int(after_subtree.get("child_count") or 0) - int(before_subtree.get("child_count") or 0),
-            "descendant_count_before": int(before_subtree.get("descendant_count") or 0),
-            "descendant_count_after": int(after_subtree.get("descendant_count") or 0),
-            "descendant_count_diff": int(after_subtree.get("descendant_count") or 0) - int(before_subtree.get("descendant_count") or 0),
-        },
+        "uia_subtree_diff": subtree_diff,
+        "top_menu_expansion": top_menu_expansion,
+        "main_window_child_summary_before": child_summary_before,
+        "main_window_child_summary_after": child_summary_after,
+        "internal_child_window_detection": internal_child_window_detection,
     }
     diff["classification"] = _classify_single_row_probe_diff(diff)
     return diff
@@ -3669,8 +3841,9 @@ def run_single_row_probe(
 
     iterations: list[dict[str, Any]] = []
     classification_priority = {
-        "dialog_opened": 6,
-        "window_opened": 5,
+        "dialog_opened": 7,
+        "window_opened": 6,
+        "internal_child_window_opened": 5,
         "transient_hint_opened": 4,
         "popup_closed": 3,
         "focus_changed": 2,
@@ -3795,10 +3968,11 @@ def run_single_row_probe(
         key=lambda value: classification_priority.get(str(value), 0),
     )
     provable_change = final_classification != "no_observable_effect"
-    action_like = final_classification in {"dialog_opened", "window_opened", "popup_closed", "focus_changed"}
+    action_like = final_classification in {"dialog_opened", "window_opened", "internal_child_window_opened", "popup_closed", "focus_changed"}
     human_readable_outcome = {
         "dialog_opened": "A probe kattintás valódi dialogot nyitott.",
         "window_opened": "A probe kattintás valódi új ablakot nyitott.",
+        "internal_child_window_opened": "A probe kattintás a fő WinWatt ablakon belül valódi belső dokumentum/MDI gyerekablakot nyitott.",
         "transient_hint_opened": "A probe kattintás után csak transient hint/tooltip jelent meg, nem valódi dialog vagy funkcionális ablak.",
         "popup_closed": "A probe kattintás bezárta a popupot.",
         "focus_changed": "A probe kattintás fókuszváltást okozott.",
