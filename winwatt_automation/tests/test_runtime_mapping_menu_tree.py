@@ -12,6 +12,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     _filter_normal_popup_rows,
     _select_probe_target_row,
     _safe_depth_decision,
+    _action_state_classification,
     compare_runtime_states,
     explore_menu_tree,
     get_canonical_top_menu_names,
@@ -1868,3 +1869,97 @@ def test_select_probe_target_row_returns_diagnostics_when_unresolved():
     assert resolution["matched_by"] is None
     assert resolution["available_row_texts"] == ["Valami"]
     assert resolution["available_row_indices"] == [2]
+
+
+def test_run_single_row_probe_reports_transient_hint_opened(monkeypatch):
+    popup_rows = [
+        {
+            "text": "Egycsöves körök",
+            "center_x": 25,
+            "center_y": 35,
+            "rectangle": {"left": 10, "top": 20, "right": 40, "bottom": 50},
+            "is_separator": False,
+            "source_scope": "main",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+        }
+    ]
+    before_snapshot = RuntimeStateSnapshot(
+        state_id="probe",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[{"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1}],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="t1",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1},
+    )
+    after_snapshot = RuntimeStateSnapshot(
+        state_id="probe",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[
+            {"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1},
+            {"handle": 2, "title": "Egycsöves körök", "class_name": "THintWindow", "process_id": 1},
+        ],
+        discovered_top_menus=["Jegyzékek"],
+        timestamp="t2",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"handle": 1, "title": "WinWatt", "class_name": "TMainForm", "process_id": 1},
+    )
+    snapshots = iter([before_snapshot, before_snapshot, after_snapshot])
+
+    class _Window:
+        def children(self):
+            return [object()]
+
+        def descendants(self):
+            return [object(), object()]
+
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: next(snapshots))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.get_cached_main_window", lambda: _Window())
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.get_canonical_top_menu_names",
+        lambda discovered: {"normalized_to_raw": {"jegyzékek": "Jegyzékek"}, "normalized_names": {"jegyzékek"}, "items": [{"raw": "Jegyzékek"}]},
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._open_and_capture_root_menu",
+        lambda **kwargs: (popup_rows, {"result_type": "child_popup_opened"}),
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot", lambda: [])
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._hover_single_row_probe_target",
+        lambda *, target, top_menu, hover_pause_s=0.05: {"top_menu": top_menu},
+    )
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper._dispatch_single_row_probe_click",
+        lambda *, target, popup_rows, top_menu, pre_click_pause_s=0.05, post_click_pause_s=0.1: {"click_method": "explicit_mouse_down_up_after_move", "dispatched": True},
+    )
+
+    result = run_single_row_probe(
+        state_id="probe",
+        top_menu="Jegyzékek",
+        probe_row_text="Egycsöves körök",
+    )
+
+    assert result["final_classification"] == "transient_hint_opened"
+    assert result["summary"]["provable_change"] is True
+    assert result["summary"]["action_like"] is False
+    assert result["summary"]["transient_hint_only"] is True
+    assert "transient hint/tooltip" in result["summary"]["human_readable_outcome"]
+    assert result["iterations"][0]["diff"]["transient_hint_window_count"] == 1
+
+
+def test_action_state_classification_does_not_promote_transient_hint_to_modal():
+    classification = _action_state_classification(
+        transition={"result_type": "transient_hint_opened", "attempted": True, "dialog_detected": False},
+        opens_submenu=False,
+        opens_modal=False,
+    )
+
+    assert classification == "executes_command"
