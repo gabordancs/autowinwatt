@@ -10,8 +10,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 2232786,
-    "process_id": 20184,
+    "handle": 2296300,
+    "process_id": 34484,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -20,7 +20,7 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 20184,
+  "process_id": 34484,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -28,8 +28,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 2232786,
-        "process_id": 20184,
+        "handle": 2296300,
+        "process_id": 34484,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -37,7 +37,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 20184,
+        "process_id": 34484,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -54,7 +54,7 @@
     "success": true
   },
   "state_id": "project_open",
-  "timestamp": "2026-03-20T20:40:11.728708+00:00",
+  "timestamp": "2026-03-20T21:34:18.892648+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -65,7 +65,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 20184,
+      "process_id": 34484,
       "title": "WinWatt gólya"
     },
     {
@@ -78,7 +78,13 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
+      "title": "Codex - Google Chrome"
+    },
+    {
+      "class_name": "XamlWindow",
+      "handle": null,
+      "process_id": 34912,
+      "title": "Képmetsző"
     },
     {
       "class_name": "Chrome_WidgetWin_1",

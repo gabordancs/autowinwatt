@@ -1,0 +1,40 @@
+{
+  "run_id": "0079_true_2026-03-20_21-30-22",
+  "sequence_number": 79,
+  "started_at": "2026-03-20T21:30:22.137612+00:00",
+  "finished_at": "2026-03-20T21:30:27.658483+00:00",
+  "duration_seconds": 5.521,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Jegyzékek --safe-mode hybrid --max-submenu-depth 1 --include-disabled true",
+  "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "hybrid",
+  "project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+  "exit_code": 1,
+  "success": false,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "skipped_by_safety": null,
+    "last_error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'win32', 'process': 28744}",
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-03-20T21:30:27.656654+00:00",
+      "event_type": "run_failed",
+      "payload": {
+        "error": "{'class_name': 'TMainForm', 'title_re': '.*WinWatt.*', 'backend': 'win32', 'process': 28744}"
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0079_true_2026-03-20_21-30-22.log",
+    "json_path": "data\\run_logs\\runs\\0079_true_2026-03-20_21-30-22.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}
