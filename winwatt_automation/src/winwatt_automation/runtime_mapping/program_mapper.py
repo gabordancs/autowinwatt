@@ -1594,6 +1594,107 @@ def _foreground_window_info() -> dict[str, Any]:
         return {}
 
 
+def _uia_subtree_metrics(window: Any) -> dict[str, int]:
+    if window is None:
+        return {"child_count": 0, "descendant_count": 0}
+    try:
+        children = _safe_call(window, "children", []) or []
+    except Exception:
+        children = []
+    try:
+        descendants = _safe_call(window, "descendants", []) or []
+    except Exception:
+        descendants = []
+    return {
+        "child_count": len(children),
+        "descendant_count": len(descendants),
+    }
+
+
+def _probe_snapshot(*, state_id: str, main_window: Any, popup_rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    snapshot = capture_state_snapshot(state_id)
+    windows = list(snapshot.visible_top_windows)
+    popup_rows = list(popup_rows or [])
+    return {
+        "foreground_window": dict(snapshot.foreground_window or {}),
+        "top_level_window_count": len(windows),
+        "top_level_windows": windows,
+        "main_window_enabled": snapshot.main_window_enabled,
+        "main_window_visible": snapshot.main_window_visible,
+        "popup_visible": bool(popup_rows),
+        "popup_row_count": len(popup_rows),
+        "uia_subtree": _uia_subtree_metrics(main_window),
+        "runtime_snapshot": snapshot,
+    }
+
+
+def _classify_single_row_probe_diff(diff: dict[str, Any]) -> str:
+    if diff.get("new_dialog_window"):
+        return "dialog_opened"
+    if diff.get("new_window"):
+        return "window_opened"
+    if diff.get("popup_closed"):
+        return "popup_closed"
+    if diff.get("focus_changed"):
+        return "focus_changed"
+    return "no_observable_effect"
+
+
+def _summarize_single_row_probe_diff(*, before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:
+    before_foreground = dict(before.get("foreground_window") or {})
+    after_foreground = dict(after.get("foreground_window") or {})
+    before_windows = list(before.get("top_level_windows") or [])
+    after_windows = list(after.get("top_level_windows") or [])
+    before_ids = {_window_identity(window) for window in before_windows}
+    after_ids = {_window_identity(window) for window in after_windows}
+    new_windows = [window for window in after_windows if _window_identity(window) not in before_ids]
+    closed_windows = [window for window in before_windows if _window_identity(window) not in after_ids]
+    new_dialog_window = any(_is_modal_window_snapshot(window) for window in new_windows)
+    focus_changed = before_foreground != after_foreground
+    popup_closed = bool(before.get("popup_visible")) and not bool(after.get("popup_visible"))
+    before_subtree = dict(before.get("uia_subtree") or {})
+    after_subtree = dict(after.get("uia_subtree") or {})
+    diff = {
+        "new_window_count": len(new_windows),
+        "closed_window_count": len(closed_windows),
+        "new_windows": new_windows,
+        "closed_windows": closed_windows,
+        "new_dialog_window": new_dialog_window,
+        "new_window": bool(new_windows) and not new_dialog_window,
+        "popup_closed": popup_closed,
+        "focus_changed": focus_changed,
+        "main_window_enabled_changed": before.get("main_window_enabled") != after.get("main_window_enabled"),
+        "top_level_window_count_diff": int(after.get("top_level_window_count") or 0) - int(before.get("top_level_window_count") or 0),
+        "uia_subtree_diff": {
+            "child_count_before": int(before_subtree.get("child_count") or 0),
+            "child_count_after": int(after_subtree.get("child_count") or 0),
+            "child_count_diff": int(after_subtree.get("child_count") or 0) - int(before_subtree.get("child_count") or 0),
+            "descendant_count_before": int(before_subtree.get("descendant_count") or 0),
+            "descendant_count_after": int(after_subtree.get("descendant_count") or 0),
+            "descendant_count_diff": int(after_subtree.get("descendant_count") or 0) - int(before_subtree.get("descendant_count") or 0),
+        },
+    }
+    diff["classification"] = _classify_single_row_probe_diff(diff)
+    return diff
+
+
+def _select_probe_target_row(*, menu_rows: list[RuntimeMenuRow], probe_row_text: str, probe_row_index: int | None) -> RuntimeMenuRow:
+    normalized_text = normalize_menu_title(probe_row_text)
+    if probe_row_index is not None:
+        for row in menu_rows:
+            if row.row_index != probe_row_index:
+                continue
+            if normalized_text and row.normalized_text != normalized_text:
+                raise ValueError(f"Probe row index {probe_row_index} does not match requested text {probe_row_text!r}.")
+            return row
+        raise ValueError(f"Probe row index {probe_row_index} not found for requested text {probe_row_text!r}.")
+
+    for row in menu_rows:
+        if row.normalized_text == normalized_text:
+            return row
+    raise ValueError(f"Probe row text {probe_row_text!r} not found.")
+
+
 def _window_identity(row: dict[str, Any]) -> tuple[Any, ...]:
     return (
         row.get("handle"),
@@ -3231,6 +3332,145 @@ def map_runtime_state(
     )
     state_map.state_atlas = _build_state_atlas_entry(state_map)
     return state_map
+
+
+def run_single_row_probe(
+    *,
+    state_id: str,
+    top_menu: str,
+    probe_row_text: str,
+    probe_row_index: int | None = None,
+    repeat: int = 1,
+) -> dict[str, Any]:
+    repeat = max(1, int(repeat))
+    if not restore_clean_menu_baseline(state_id=state_id, stage="single_row_probe:start"):
+        raise UnrecoverableMainWindowError("single_row_probe_baseline_restore_failed")
+
+    initial_snapshot = capture_state_snapshot(state_id)
+    canonical_top_menus = get_canonical_top_menu_names(initial_snapshot.discovered_top_menus)
+    canonical_name = canonical_top_menus["normalized_to_raw"].get(normalize_menu_title(top_menu))
+    if not canonical_name:
+        raise ValueError(f"Top menu {top_menu!r} not found.")
+
+    logger.info(
+        "SINGLE_ROW_PROBE_START state_id={} top_menu={} probe_row_text={!r} probe_row_index={} repeat={}",
+        state_id,
+        canonical_name,
+        probe_row_text,
+        probe_row_index,
+        repeat,
+    )
+
+    iterations: list[dict[str, Any]] = []
+    classification_priority = {
+        "dialog_opened": 5,
+        "window_opened": 4,
+        "popup_closed": 3,
+        "focus_changed": 2,
+        "no_observable_effect": 1,
+    }
+
+    for attempt in range(repeat):
+        if not restore_clean_menu_baseline(state_id=state_id, stage=f"single_row_probe:attempt:{attempt + 1}:baseline"):
+            raise UnrecoverableMainWindowError(f"single_row_probe_baseline_restore_failed:{attempt + 1}")
+        popup_rows, _transition = _open_and_capture_root_menu(
+            state_id=state_id,
+            top_menu=canonical_name,
+            canonical_top_menu_names=canonical_top_menus["normalized_names"],
+        )
+        menu_rows = _build_menu_rows_from_popup_rows(
+            state_id,
+            canonical_name,
+            popup_rows,
+            canonical_top_menu_names=canonical_top_menus["normalized_names"],
+        )
+        target_row = _select_probe_target_row(
+            menu_rows=menu_rows,
+            probe_row_text=probe_row_text,
+            probe_row_index=probe_row_index,
+        )
+        click_point = dict((target_row.meta or {}).get("click_point") or {"x": target_row.center_x, "y": target_row.center_y})
+        logger.info(
+            "SINGLE_ROW_PROBE_CLICK_TARGET attempt={} top_menu={} row_index={} text={!r} rect={} clickpoint={}",
+            attempt + 1,
+            canonical_name,
+            target_row.row_index,
+            target_row.text,
+            target_row.rectangle,
+            click_point,
+        )
+
+        main_window = get_cached_main_window()
+        before_state = _probe_snapshot(state_id=state_id, main_window=main_window, popup_rows=popup_rows)
+        before_log = {key: value for key, value in before_state.items() if key != "runtime_snapshot"}
+        logger.info("SINGLE_ROW_PROBE_PRE_STATE attempt={} payload={}", attempt + 1, before_log)
+
+        click_error: str | None = None
+        try:
+            _activate_row_for_exploration(target_row, popup_rows)
+        except Exception as exc:
+            click_error = f"{exc.__class__.__name__}: {exc}"
+
+        post_popup_rows = menu_helpers.capture_menu_popup_snapshot()
+        after_state = _probe_snapshot(state_id=state_id, main_window=main_window, popup_rows=post_popup_rows)
+        after_log = {key: value for key, value in after_state.items() if key != "runtime_snapshot"}
+        logger.info("SINGLE_ROW_PROBE_POST_STATE attempt={} payload={}", attempt + 1, after_log)
+
+        diff = _summarize_single_row_probe_diff(before=before_state, after=after_state)
+        if click_error:
+            diff["click_error"] = click_error
+        logger.info("SINGLE_ROW_PROBE_DIFF attempt={} payload={}", attempt + 1, diff)
+        iterations.append(
+            {
+                "attempt": attempt + 1,
+                "target": {
+                    "top_menu": canonical_name,
+                    "row_index": target_row.row_index,
+                    "text": target_row.text,
+                    "rectangle": dict(target_row.rectangle),
+                    "clickpoint": click_point,
+                },
+                "pre_state": before_log,
+                "post_state": after_log,
+                "diff": diff,
+            }
+        )
+
+    final_classification = max(
+        (item["diff"].get("classification") or "no_observable_effect" for item in iterations),
+        key=lambda value: classification_priority.get(str(value), 0),
+    )
+    provable_change = final_classification != "no_observable_effect"
+    action_like = final_classification in {"dialog_opened", "window_opened", "popup_closed", "focus_changed"}
+    summary = {
+        "provable_change": provable_change,
+        "action_like": action_like,
+        "repeat": repeat,
+        "top_menu": canonical_name,
+        "probe_row_text": probe_row_text,
+        "probe_row_index": probe_row_index,
+        "final_classification": final_classification,
+    }
+    logger.info(
+        "SINGLE_ROW_PROBE_FINAL_CLASSIFICATION top_menu={} probe_row_text={!r} probe_row_index={} repeat={} classification={} provable_change={} action_like={}",
+        canonical_name,
+        probe_row_text,
+        probe_row_index,
+        repeat,
+        final_classification,
+        provable_change,
+        action_like,
+    )
+    return {
+        "state_id": state_id,
+        "top_menu": canonical_name,
+        "probe_row_text": probe_row_text,
+        "probe_row_index": probe_row_index,
+        "repeat": repeat,
+        "iterations": iterations,
+        "final_classification": final_classification,
+        "summary": summary,
+    }
 
 
 def _normalized_path(path: list[str] | tuple[str, ...]) -> tuple[str, ...]:
