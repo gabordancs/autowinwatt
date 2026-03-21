@@ -736,6 +736,37 @@ def test_focus_guard_allows_relative_menu_click_when_exists_false_but_identity_s
     assert main_window.restore_calls == 0
 
 
+def test_focus_guard_allows_single_row_probe_click_when_exists_false_but_identity_strong(monkeypatch):
+    main_window = FakeWindow(
+        title="WinWatt gólya",
+        class_name="TMainForm",
+        process_id=1048,
+        handle=4328702,
+        exists=False,
+        visible=True,
+        enabled=True,
+        rect=FakeRect(171, 96, 1170, 1151),
+    )
+    app_connector.WinWattSession.main_window = main_window
+    app_connector.WinWattSession.process_id = 1048
+    app_connector.WinWattSession.handle = 4328702
+    app_connector.MainWindowSession.window = main_window
+    app_connector.MainWindowSession.process_id = 1048
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: main_window)
+    monkeypatch.setattr(app_connector, "is_winwatt_foreground_context", lambda window, allow_dialog=False: window is main_window)
+    monkeypatch.setattr(
+        app_connector,
+        "describe_foreground_window",
+        lambda: {"handle": 4328702, "title": "WinWatt gólya", "class_name": "TMainForm", "process_id": 1048},
+    )
+
+    resolved = app_connector.ensure_main_window_foreground_before_click(action_label="single_row_probe_click[0]", timeout=0.01, allow_dialog=True)
+
+    assert resolved is main_window
+    assert main_window.focus_calls == 0
+    assert main_window.restore_calls == 0
+
+
 def test_focus_guard_still_fails_for_open_top_menu_when_identity_drifts(monkeypatch):
     main_window = FakeWindow(
         title="WinWatt gólya",
