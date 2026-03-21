@@ -1310,6 +1310,16 @@
       },
       "log_path": "data\\run_logs\\runs\\0080_true_2026-03-20_21-31-03.log",
       "json_path": "data\\run_logs\\runs\\0080_true_2026-03-20_21-31-03.json"
+    },
+    {
+      "sequence_number": 81,
+      "run_id": "0081_hybrid_2026-03-21_08-06-59",
+      "started_at": "2026-03-21T08:06:59.607876+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-text Anyagok --probe-repeat 2 --safe-mode hybrid",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0081_hybrid_2026-03-21_08-06-59.log",
+      "json_path": "data\\run_logs\\runs\\0081_hybrid_2026-03-21_08-06-59.json"
     }
   ]
 }

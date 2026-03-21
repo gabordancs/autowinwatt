@@ -1,26 +1,20 @@
 {
-  "run_id": "0080_true_2026-03-20_21-31-03",
-  "state": "finished",
-  "message": "Mapping finished successfully.",
-  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --top-menus Jegyzékek --safe-mode hybrid --max-submenu-depth 1 --include-disabled true",
+  "run_id": "0081_hybrid_2026-03-21_08-06-59",
+  "state": "failed",
+  "message": "Mapping failed.",
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-text Anyagok --probe-repeat 2 --safe-mode hybrid",
   "details": {
-    "exit_code": 0,
+    "exit_code": 1,
     "summary": {
-      "no_project_top_menus": 1,
-      "project_open_top_menus": 1,
-      "diff_summary": {
-        "shared_top_menus": 1,
-        "actions_only_in_a": 0,
-        "actions_only_in_b": 0,
-        "enabled_changes": 0,
-        "project_only_paths": 0
-      },
-      "skipped_by_safety": 0,
-      "last_error": null,
+      "no_project_top_menus": null,
+      "project_open_top_menus": null,
+      "diff_summary": {},
+      "skipped_by_safety": null,
+      "last_error": "Probe row text 'Anyagok' not found.",
       "modal_detected": false,
-      "recovery_attempted": true,
-      "recovery_success": true
+      "recovery_attempted": false,
+      "recovery_success": false
     }
   },
-  "updated_at": "2026-03-20T21:36:59.592035+00:00"
+  "updated_at": "2026-03-21T08:08:05.834680+00:00"
 }
