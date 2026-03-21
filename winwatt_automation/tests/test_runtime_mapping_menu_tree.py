@@ -13,6 +13,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     _select_probe_target_row,
     _safe_depth_decision,
     _action_state_classification,
+    build_action_discovery_report,
     compare_runtime_states,
     explore_menu_tree,
     get_canonical_top_menu_names,
@@ -121,7 +122,8 @@ def test_build_menu_rows_replaces_empty_text_popup_rows_with_geometry_placeholde
     assert rows[0].meta["source"] == "geometry_placeholder"
     assert rows[0].meta["click_strategy"] == "center_point_fallback"
     assert rows[0].actionable is True
-    assert rows[0].action_type == "click"
+    assert rows[0].dispatch_type == "click"
+    assert rows[0].action_type == "unknown"
     assert rows[0].recent_project_entry is False
 
 
@@ -1645,6 +1647,8 @@ def test_run_single_row_probe_detects_dialog_open(monkeypatch):
     assert result["final_classification"] == "dialog_opened"
     assert result["summary"]["provable_change"] is True
     assert result["summary"]["action_like"] is True
+    assert result["summary"]["action_type"] == "functional_action"
+    assert result["summary"]["policy"]["treat_as_navigation"] is True
 
 
 
@@ -1950,6 +1954,9 @@ def test_run_single_row_probe_reports_transient_hint_opened(monkeypatch):
     assert result["final_classification"] == "transient_hint_opened"
     assert result["summary"]["provable_change"] is True
     assert result["summary"]["action_like"] is False
+    assert result["summary"]["action_type"] == "transient_ui_only"
+    assert result["summary"]["policy"]["treat_as_navigation"] is False
+    assert result["summary"]["policy"]["retry_on_next_pass"] is False
     assert result["summary"]["transient_hint_only"] is True
     assert "transient hint/tooltip" in result["summary"]["human_readable_outcome"]
     assert result["iterations"][0]["diff"]["transient_hint_window_count"] == 1
@@ -1963,3 +1970,61 @@ def test_action_state_classification_does_not_promote_transient_hint_to_modal():
     )
 
     assert classification == "executes_command"
+
+
+def test_build_action_discovery_report_groups_rows_by_top_menu():
+    report = build_action_discovery_report([
+        {
+            "top_menu": "Fájl",
+            "probe_row_text": "Megnyitás",
+            "probe_row_index": 0,
+            "final_classification": "dialog_opened",
+            "summary": {
+                "final_classification": "dialog_opened",
+                "provable_change": True,
+                "action_like": True,
+                "action_type": "functional_action",
+            },
+        },
+        {
+            "top_menu": "Súgó",
+            "probe_row_text": "Tippek",
+            "probe_row_index": 1,
+            "final_classification": "transient_hint_opened",
+            "summary": {
+                "final_classification": "transient_hint_opened",
+                "provable_change": True,
+                "action_like": False,
+                "action_type": "transient_ui_only",
+            },
+        },
+    ])
+
+    assert report == {
+        "top_menus": {
+            "Fájl": [
+                {
+                    "row": {"text": "Megnyitás", "row_index": 0},
+                    "classification": "dialog_opened",
+                    "action_type": "functional_action",
+                    "policy": {
+                        "treat_as_navigation": True,
+                        "expand_children": True,
+                        "retry_on_next_pass": True,
+                    },
+                }
+            ],
+            "Súgó": [
+                {
+                    "row": {"text": "Tippek", "row_index": 1},
+                    "classification": "transient_hint_opened",
+                    "action_type": "transient_ui_only",
+                    "policy": {
+                        "treat_as_navigation": False,
+                        "expand_children": False,
+                        "retry_on_next_pass": False,
+                    },
+                }
+            ],
+        }
+    }
