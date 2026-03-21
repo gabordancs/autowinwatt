@@ -1647,6 +1647,108 @@ def test_run_single_row_probe_detects_dialog_open(monkeypatch):
 
 
 
+def test_dispatch_single_row_probe_click_continues_on_strong_identity_exists_false(monkeypatch):
+    from winwatt_automation.live_ui import app_connector
+
+    row = RuntimeMenuRow(
+        state_id="probe",
+        top_menu="Jegyzékek",
+        row_index=0,
+        menu_path=["Jegyzékek", "Anyagok"],
+        text="Anyagok",
+        normalized_text=normalize_menu_title("Anyagok"),
+        rectangle={"left": 10, "top": 20, "right": 110, "bottom": 44},
+        center_x=60,
+        center_y=32,
+        is_separator=False,
+        source_scope="main_window",
+        fragments=[],
+        enabled_guess=True,
+        discovered_in_state="probe",
+        meta={"click_point": {"x": 62, "y": 30}, "source_scope": "global_process_scan"},
+    )
+    mouse_calls: list[tuple[str, object]] = []
+
+    class FakeMouse:
+        @staticmethod
+        def move(*, coords):
+            mouse_calls.append(("move", coords))
+
+        @staticmethod
+        def press(*, button, coords):
+            mouse_calls.append(("press", button, coords))
+
+        @staticmethod
+        def release(*, button, coords):
+            mouse_calls.append(("release", button, coords))
+
+    class FakeRect:
+        def __init__(self, left, top, right, bottom):
+            self.left = left
+            self.top = top
+            self.right = right
+            self.bottom = bottom
+
+        def width(self):
+            return self.right - self.left
+
+        def height(self):
+            return self.bottom - self.top
+
+    class FakeWindow:
+        def __init__(self):
+            self.element_info = type("EI", (), {"control_type": "Window"})()
+
+        def exists(self):
+            return False
+
+        def is_visible(self):
+            return True
+
+        def is_enabled(self):
+            return True
+
+        def rectangle(self):
+            return FakeRect(171, 96, 1170, 1151)
+
+        def process_id(self):
+            return 1048
+
+        def handle(self):
+            return 4328702
+
+        def window_text(self):
+            return "WinWatt gólya"
+
+        def class_name(self):
+            return "TMainForm"
+
+    import sys
+    import types
+
+    fake_window = FakeWindow()
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(mouse=FakeMouse))
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.time.sleep", lambda _: None)
+    monkeypatch.setattr(app_connector, "get_cached_main_window", lambda: fake_window)
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.ensure_main_window_foreground_before_click", app_connector.ensure_main_window_foreground_before_click)
+    monkeypatch.setattr(app_connector, "is_winwatt_foreground_context", lambda window, allow_dialog=False: window is fake_window)
+    monkeypatch.setattr(
+        app_connector,
+        "describe_foreground_window",
+        lambda: {"handle": 4328702, "title": "WinWatt gólya", "class_name": "TMainForm", "process_id": 1048},
+    )
+
+    result = _dispatch_single_row_probe_click(target=row, popup_rows=[{"text": "Anyagok"}], top_menu="Jegyzékek")
+
+    assert mouse_calls == [
+        ("move", (62, 30)),
+        ("press", "left", (62, 30)),
+        ("release", "left", (62, 30)),
+    ]
+    assert result["dispatched"] is True
+    assert result["click_method"] == "explicit_mouse_down_up_after_move"
+
+
 def test_dispatch_single_row_probe_click_uses_explicit_left_button_dispatch(monkeypatch):
     row = RuntimeMenuRow(
         state_id="probe",
