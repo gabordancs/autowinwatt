@@ -1,7 +1,13 @@
 from __future__ import annotations
 
 from winwatt_automation.runtime_mapping.models import RuntimeStateSnapshot
-from winwatt_automation.runtime_mapping.program_mapper import _build_menu_rows_from_popup_rows, classify_post_click_result, detect_dialog_or_window_transition
+from winwatt_automation.runtime_mapping.program_mapper import (
+    _build_menu_rows_from_popup_rows,
+    _derive_action_type,
+    _summarize_single_row_probe_diff,
+    classify_post_click_result,
+    detect_dialog_or_window_transition,
+)
 
 
 def _snapshot(*, title: str = "WinWatt", windows: int = 1) -> RuntimeStateSnapshot:
@@ -203,3 +209,91 @@ def test_classify_post_click_result_transient_hint_window_opened():
     assert result.result_type == "transient_hint_opened"
     assert result.event_details["dialog_detected"] is False
     assert result.event_details["transient_window_detected"] is True
+
+
+def test_single_row_probe_internal_child_window_detected_by_menu_expansion_and_subtree_growth():
+    before = {
+        "foreground_window": {"handle": 1, "title": "WinWatt", "class_name": "TMainForm"},
+        "top_level_windows": [{"handle": 1, "title": "WinWatt", "class_name": "TMainForm"}],
+        "top_level_window_count": 1,
+        "popup_visible": True,
+        "main_window_enabled": True,
+        "discovered_top_menus": ["Fájl", "Jegyzékek", "Ablak", "Súgó", "Nézet", "Segéd", "Projekt"],
+        "uia_subtree": {"child_count": 8, "descendant_count": 53},
+        "main_window_child_summary": {
+            "descendant_window_like_count": 0,
+            "title_bar_like_count": 0,
+            "close_button_like_count": 0,
+            "window_like_titles": [],
+        },
+    }
+    after = {
+        "foreground_window": {"handle": 1, "title": "WinWatt", "class_name": "TMainForm"},
+        "top_level_windows": [{"handle": 1, "title": "WinWatt", "class_name": "TMainForm"}],
+        "top_level_window_count": 1,
+        "popup_visible": False,
+        "main_window_enabled": True,
+        "discovered_top_menus": ["Fájl", "Jegyzékek", "Ablak", "Súgó", "Nézet", "Segéd", "Projekt", "Dokumentumablak", "Szerkesztés", "Csoport", "Elem"],
+        "uia_subtree": {"child_count": 11, "descendant_count": 274},
+        "main_window_child_summary": {
+            "descendant_window_like_count": 3,
+            "title_bar_like_count": 1,
+            "close_button_like_count": 1,
+            "window_like_titles": ["Anyagok"],
+        },
+    }
+
+    diff = _summarize_single_row_probe_diff(before=before, after=after)
+
+    assert diff["top_level_window_count_diff"] == 0
+    assert diff["top_menu_expansion"]["context_menu_expanded"] is True
+    assert diff["top_menu_expansion"]["context_menu_matches"] == ["csoport", "dokumentumablak", "elem", "szerkesztés"]
+    assert diff["uia_subtree_diff"]["descendant_count_diff"] == 221
+    assert diff["internal_child_window_detection"]["detected"] is True
+    assert diff["classification"] == "internal_child_window_opened"
+
+
+def test_single_row_probe_internal_child_window_classifies_as_functional_action_without_top_level_window():
+    action_type = _derive_action_type(
+        classification="internal_child_window_opened",
+        provable_change=True,
+        action_like=True,
+    )
+
+    assert action_type == "functional_action"
+
+
+def test_single_row_probe_large_subtree_growth_without_context_signal_stays_no_observable_effect():
+    before = {
+        "foreground_window": {"handle": 1, "title": "WinWatt", "class_name": "TMainForm"},
+        "top_level_windows": [{"handle": 1, "title": "WinWatt", "class_name": "TMainForm"}],
+        "top_level_window_count": 1,
+        "popup_visible": True,
+        "main_window_enabled": True,
+        "discovered_top_menus": ["Fájl", "Jegyzékek"],
+        "uia_subtree": {"child_count": 8, "descendant_count": 53},
+        "main_window_child_summary": {
+            "descendant_window_like_count": 0,
+            "title_bar_like_count": 0,
+            "close_button_like_count": 0,
+        },
+    }
+    after = {
+        "foreground_window": {"handle": 1, "title": "WinWatt", "class_name": "TMainForm"},
+        "top_level_windows": [{"handle": 1, "title": "WinWatt", "class_name": "TMainForm"}],
+        "top_level_window_count": 1,
+        "popup_visible": False,
+        "main_window_enabled": True,
+        "discovered_top_menus": ["Fájl", "Jegyzékek"],
+        "uia_subtree": {"child_count": 8, "descendant_count": 90},
+        "main_window_child_summary": {
+            "descendant_window_like_count": 0,
+            "title_bar_like_count": 0,
+            "close_button_like_count": 0,
+        },
+    }
+
+    diff = _summarize_single_row_probe_diff(before=before, after=after)
+
+    assert diff["internal_child_window_detection"]["detected"] is False
+    assert diff["classification"] == "popup_closed"
