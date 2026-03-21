@@ -635,7 +635,7 @@ def _build_menu_rows_from_popup_rows(
         logger.debug('RAW_MENU_TITLE="{}" NORMALIZED_MENU_TITLE="{}"', title, normalized_title)
         meta: dict[str, Any] = {}
         actionable = not bool(row.get("is_separator"))
-        action_type = "click"
+        dispatch_type = "click"
         recent_project_entry = bool(row.get("recent_project_entry"))
         stateful_menu_block = bool(row.get("stateful_menu_block"))
         if not normalized_title:
@@ -682,7 +682,7 @@ def _build_menu_rows_from_popup_rows(
                     "text_confidence": text_confidence,
                 }
                 actionable = True
-                action_type = "click"
+                dispatch_type = "click"
                 logger.info(
                     "REPLACED_EMPTY_POPUP_ROW_WITH_PLACEHOLDER row_index={:02d}",
                     index,
@@ -731,7 +731,8 @@ def _build_menu_rows_from_popup_rows(
                 raw_text_sources=raw_text_sources,
                 text_confidence=text_confidence,
                 actionable=actionable,
-                action_type=action_type,
+                dispatch_type=dispatch_type,
+                action_type="unknown",
                 recent_project_entry=recent_project_entry,
                 stateful_menu_block=stateful_menu_block,
                 meta=meta,
@@ -783,7 +784,7 @@ def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str
         row.menu_path,
         row.row_index,
         placeholder,
-        row.action_type,
+        row.dispatch_type,
         row.source_scope,
         meta,
         popup_visible_now,
@@ -793,13 +794,13 @@ def _activate_row_for_exploration(row: RuntimeMenuRow, popup_rows: list[dict[str
     decision = "click_structured_row"
     if placeholder and meta.get("click_point"):
         decision = "click_placeholder_point"
-    elif placeholder and row.action_type == "hover":
+    elif placeholder and row.dispatch_type == "hover":
         decision = "hover_placeholder"
     logger.info(
         "DBG_PLACEHOLDER_TRAVERSAL_DECISION path={} decision={} action_type={} source_scope={} popup_visible_count={} popup_rows_count={} meta_source={} click_strategy={}",
         row.menu_path,
         decision,
-        row.action_type,
+        row.dispatch_type,
         row.source_scope,
         popup_visible_now,
         popup_count,
@@ -1227,6 +1228,79 @@ def _safe_depth_decision(
     return False
 
 
+def _derive_action_type(*, classification: str | None, provable_change: bool, action_like: bool) -> str:
+    normalized = str(classification or "unknown")
+    if normalized in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened"}:
+        return "functional_action"
+    if normalized == "transient_hint_opened":
+        return "transient_ui_only"
+    if normalized in {"no_observable_effect", "target_unresolved"} and not provable_change:
+        return "no_effect"
+    if action_like and provable_change:
+        return "functional_action"
+    if provable_change:
+        return "unknown"
+    return "no_effect"
+
+
+def _classify_transition_action_type(*, transition: dict[str, Any], action_state_classification: str, opens_submenu: bool, opens_modal: bool) -> str:
+    result_type = str(transition.get("result_type") or "unknown")
+    functional_classifications = {
+        "dialog_opened",
+        "window_opened",
+        "main_window_disabled_modal_likely",
+        "modal_opened",
+        "child_popup_opened",
+    }
+    functional_states = {
+        "opens_submenu",
+        "opens_modal",
+        "changes_menu_state",
+        "opens_project_and_changes_runtime_state",
+        "recent_project_entry",
+    }
+    if opens_submenu or opens_modal or result_type in functional_classifications or action_state_classification in functional_states:
+        return "functional_action"
+    if result_type == "transient_hint_opened":
+        return "transient_ui_only"
+    if result_type == "no_observable_effect":
+        return "no_effect"
+    if result_type == "unknown" and action_state_classification == "unknown":
+        return "unknown"
+    return "unknown"
+
+
+def _action_discovery_policy(action_type: str) -> dict[str, bool]:
+    return {
+        "treat_as_navigation": action_type == "functional_action",
+        "expand_children": action_type == "functional_action",
+        "retry_on_next_pass": action_type not in {"transient_ui_only", "no_effect"},
+    }
+
+
+def build_action_discovery_report(probe_results: list[dict[str, Any]]) -> dict[str, Any]:
+    report: dict[str, list[dict[str, Any]]] = {}
+    for item in probe_results:
+        top_menu = str(item.get("top_menu") or "<unknown>")
+        summary = dict(item.get("summary") or {})
+        row_action_type = str(summary.get("action_type") or _derive_action_type(
+            classification=summary.get("final_classification") or item.get("final_classification"),
+            provable_change=bool(summary.get("provable_change")),
+            action_like=bool(summary.get("action_like")),
+        ))
+        row_entry = {
+            "row": {
+                "text": item.get("probe_row_text"),
+                "row_index": item.get("probe_row_index"),
+            },
+            "classification": summary.get("final_classification") or item.get("final_classification"),
+            "action_type": row_action_type,
+            "policy": _action_discovery_policy(row_action_type),
+        }
+        report.setdefault(top_menu, []).append(row_entry)
+    return {"top_menus": report}
+
+
 def _build_action_catalog_entry(
     *,
     path: list[str],
@@ -1239,6 +1313,7 @@ def _build_action_catalog_entry(
     traversal_depth: int,
     skip_reason: str | None = None,
 ) -> dict[str, Any]:
+    policy = _action_discovery_policy(action_type)
     entry = {
         "path": list(path),
         "action_type": action_type,
@@ -1248,6 +1323,9 @@ def _build_action_catalog_entry(
         "changes_menu_state": changes_menu_state,
         "opens_project_and_changes_runtime_state": opens_project_and_changes_runtime_state,
         "traversal_depth": traversal_depth,
+        "treat_as_navigation": policy["treat_as_navigation"],
+        "expand_children": policy["expand_children"],
+        "retry_on_next_pass": policy["retry_on_next_pass"],
     }
     if skip_reason:
         entry["skip_reason"] = skip_reason
@@ -1339,7 +1417,7 @@ def _evaluate_action_admission(
         )
         rejection_reason = "unknown_classification_suppressed"
     else:
-        admission_reason = f"validated_action:{action_state_classification or row.action_type}"
+        admission_reason = f"validated_action:{action_state_classification or row.action_type or row.dispatch_type}"
 
     if rejection_reason:
         logger.info(
@@ -1412,6 +1490,19 @@ def _build_state_atlas_entry(state_map: RuntimeStateMap) -> dict[str, Any]:
         "top_menu_rows": list(state_map.menu_rows),
         "action_catalog": list(state_map.action_catalog),
         "state_transitions": list(state_map.state_transitions),
+        "action_discovery_report": {
+            "top_menus": {
+                top_menu: [
+                    {
+                        "menu_path": row.get("menu_path", []),
+                        "action_type": row.get("action_type", "unknown"),
+                    }
+                    for row in state_map.menu_rows
+                    if row.get("top_menu") == top_menu
+                ]
+                for top_menu in sorted({str(row.get("top_menu") or "<unknown>") for row in state_map.menu_rows})
+            }
+        },
     }
     logger.info(
         "STATE_ATLAS_ENTRY_CREATED state_id={} top_menus={} rows={} actions={} transitions={} top_menu_texts={} action_sample={} ",
@@ -1662,6 +1753,7 @@ def _capture_fresh_root_popup_for_sibling(
         raw_text_sources=list(matching_row.get("raw_text_sources") or target_row.raw_text_sources),
         text_confidence=str(matching_row.get("text_confidence") or target_row.text_confidence),
         actionable=target_row.actionable,
+        dispatch_type=target_row.dispatch_type,
         action_type=target_row.action_type,
         recent_project_entry=target_row.recent_project_entry,
         stateful_menu_block=target_row.stateful_menu_block,
@@ -2020,9 +2112,9 @@ def _classify_placeholder_action_outcome(
     if child_rows:
         outcome = "child_popup_opened"
     elif modal_detected:
-        outcome = "dialog_opened"
+        outcome = "modal_opened"
     elif after_action.main_window_enabled is False:
-        outcome = "dialog_opened"
+        outcome = "modal_opened"
     elif popup_visible_count == 0:
         outcome = "popup_closed_without_dialog"
         if _window_title(before_action) != _window_title(after_action) or _window_class(before_action) != _window_class(after_action):
@@ -2895,6 +2987,13 @@ def explore_menu_tree(
                     admission_reason=admission_reason,
                     rejection_reason=rejection_reason,
                 )
+                row.action_type = _classify_transition_action_type(
+                    transition={"result_type": "unknown"},
+                    action_state_classification=action_state_classification,
+                    opens_submenu=False,
+                    opens_modal=False,
+                )
+                row.meta["action_discovery"] = {"classification": action_state_classification, "policy": _action_discovery_policy(row.action_type)}
                 if admitted:
                     action_catalog.append(
                         _build_action_catalog_entry(
@@ -2983,6 +3082,7 @@ def explore_menu_tree(
                         raw_text_sources=list(matching_row.get("raw_text_sources") or row.raw_text_sources),
                         text_confidence=str(matching_row.get("text_confidence") or row.text_confidence),
                         actionable=row.actionable,
+                        dispatch_type=row.dispatch_type,
                         action_type=row.action_type,
                         recent_project_entry=row.recent_project_entry,
                         stateful_menu_block=row.stateful_menu_block,
@@ -3023,19 +3123,19 @@ def explore_menu_tree(
                 )
             if child_rows or not is_fast_mode():
                 transition = detect_dialog_or_window_transition(before_action, after_action, child_rows=child_rows)
-            if placeholder_outcome and placeholder_outcome.get("outcome") == "dialog_opened":
+            if placeholder_outcome and placeholder_outcome.get("outcome") in {"dialog_opened", "modal_opened"}:
                 transition = {
-                    "result_type": "dialog_opened",
+                    "result_type": str(placeholder_outcome.get("outcome") or "dialog_opened"),
                     "dialog_detected": True,
                     "window_snapshot": dict(placeholder_outcome.get("foreground_window") or {}),
                     "foreground_window": dict(placeholder_outcome.get("foreground_window") or {}),
-                    "placeholder_outcome": "dialog_opened",
+                    "placeholder_outcome": str(placeholder_outcome.get("outcome") or "dialog_opened"),
                 }
             elif placeholder_outcome:
                 transition = dict(transition)
                 transition["placeholder_outcome"] = placeholder_outcome.get("outcome")
             if recent_candidate and (
-                transition.get("result_type") in {"dialog_opened"}
+                transition.get("result_type") in {"dialog_opened", "modal_opened"}
                 or after_action.main_window_enabled is False
             ):
                 transition["project_open_recovery"] = recover_after_project_open()
@@ -3077,9 +3177,9 @@ def explore_menu_tree(
                     dialogs.extend(child_dialogs)
                     windows.extend(child_windows)
                     action_catalog.extend(child_action_catalog)
-            elif transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+            elif transition.get("result_type") in {"dialog_opened", "modal_opened", "window_opened", "main_window_disabled_modal_likely"}:
                 candidate = transition.get("window_snapshot") or {}
-                if transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely"}:
+                if transition.get("result_type") in {"dialog_opened", "modal_opened", "main_window_disabled_modal_likely"}:
                     opens_modal = True
                     exploration = _explore_dialog_candidate(candidate, safe_mode=safe_mode)
                     dialogs.append(RuntimeDialogRecord(
@@ -3135,12 +3235,22 @@ def explore_menu_tree(
                 opens_submenu=opens_submenu,
                 opens_modal=opens_modal,
             )
+            row.action_type = _classify_transition_action_type(
+                transition=transition,
+                action_state_classification=action_state_classification,
+                opens_submenu=opens_submenu,
+                opens_modal=opens_modal,
+            )
+            row.meta["action_discovery"] = {
+                "classification": str(transition.get("result_type") or action_state_classification or "unknown"),
+                "policy": _action_discovery_policy(row.action_type),
+            }
             if recent_candidate:
                 logger.info("RECENT_PROJECT_ENTRY_CLASSIFIED state={} path={} classification={} skip_reason={}", state_id, path, action_state_classification, skip_reason)
             if focus_refresh_mode and not project_open_transition_detected:
                 restore_clean_menu_baseline(state_id=state_id, stage=f"post_action:{' > '.join(path)}")
                 logger.info("ACTION_BASELINE_RESTORED state={} top_menu={} path={}", state_id, top_menu, path)
-                if opens_modal or transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+                if opens_modal or transition.get("result_type") in {"dialog_opened", "modal_opened", "window_opened", "main_window_disabled_modal_likely"}:
                     action_snapshot = capture_state_snapshot(state_id)
                     if action_snapshot.main_window_enabled is False:
                         logger.error("ACTION_LEFT_MAIN_WINDOW_DISABLED state={} top_menu={} path={}", state_id, top_menu, path)
@@ -3176,7 +3286,7 @@ def explore_menu_tree(
             path=path,
             children=children_nodes,
             opens_submenu=opens_submenu,
-            opens_dialog=transition.get("result_type") in {"dialog_opened", "main_window_disabled_modal_likely", "window_opened", "project_open_state_transition"},
+            opens_dialog=transition.get("result_type") in {"dialog_opened", "modal_opened", "main_window_disabled_modal_likely", "window_opened", "project_open_state_transition"},
             opens_modal=opens_modal,
             skipped_by_safety=skipped,
             reused_from_previous_state=reused_from_previous_state,
@@ -3622,6 +3732,8 @@ def run_single_row_probe(
                     "probe_row_text": probe_row_text,
                     "probe_row_index": probe_row_index,
                     "final_classification": "target_unresolved",
+                    "action_type": _derive_action_type(classification="target_unresolved", provable_change=False, action_like=False),
+                    "policy": _action_discovery_policy(_derive_action_type(classification="target_unresolved", provable_change=False, action_like=False)),
                     "diagnostic_summary": diagnostic_summary,
                 },
             }
@@ -3692,6 +3804,11 @@ def run_single_row_probe(
         "focus_changed": "A probe kattintás fókuszváltást okozott.",
         "no_observable_effect": "A probe kattintás után nem látszott bizonyítható UI-változás.",
     }.get(final_classification, f"Probe outcome: {final_classification}")
+    action_type = _derive_action_type(
+        classification=final_classification,
+        provable_change=provable_change,
+        action_like=action_like,
+    )
     summary = {
         "provable_change": provable_change,
         "action_like": action_like,
@@ -3700,16 +3817,19 @@ def run_single_row_probe(
         "probe_row_text": probe_row_text,
         "probe_row_index": probe_row_index,
         "final_classification": final_classification,
+        "action_type": action_type,
+        "policy": _action_discovery_policy(action_type),
         "human_readable_outcome": human_readable_outcome,
         "transient_hint_only": final_classification == "transient_hint_opened",
     }
     logger.info(
-        "SINGLE_ROW_PROBE_FINAL_CLASSIFICATION top_menu={} probe_row_text={!r} probe_row_index={} repeat={} classification={} provable_change={} action_like={}",
+        "SINGLE_ROW_PROBE_FINAL_CLASSIFICATION top_menu={} probe_row_text={!r} probe_row_index={} repeat={} classification={} action_type={} provable_change={} action_like={}",
         canonical_name,
         probe_row_text,
         probe_row_index,
         repeat,
         final_classification,
+        action_type,
         provable_change,
         action_like,
     )

@@ -37,7 +37,8 @@ class RuntimeMenuRow:
     raw_text_sources: list[str] = field(default_factory=list)
     text_confidence: str = "none"
     actionable: bool = True
-    action_type: str = "click"
+    dispatch_type: str = "click"
+    action_type: str = "unknown"
     recent_project_entry: bool = False
     stateful_menu_block: bool = False
     retained_as_structure_only: bool = False
