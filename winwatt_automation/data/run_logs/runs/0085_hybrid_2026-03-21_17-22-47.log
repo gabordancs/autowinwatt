@@ -1,0 +1,11 @@
+run_id=0085_hybrid_2026-03-21_17-22-47
+started_at=2026-03-21T17:22:47.808775+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid
+
+2026-03-21 18:22:47.813 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:551 - DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh diagnostic_fast_mode=False
+2026-03-21 18:22:48.112 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:230 - DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates=[]
+2026-03-21 18:22:48.113 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:551 - DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh diagnostic_fast_mode=False
+2026-03-21 18:22:48.170 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:230 - DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates=[]
+[event] run_failed: {"error": "No WinWatt-like windows were found"}
+
+finished_at=2026-03-21T17:22:48.173128+00:00 success=False exit_code=1

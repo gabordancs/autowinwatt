@@ -1359,6 +1359,35 @@
       },
       "log_path": "data\\run_logs\\runs\\0084_hybrid_2026-03-21_17-00-30.log",
       "json_path": "data\\run_logs\\runs\\0084_hybrid_2026-03-21_17-00-30.json"
+    },
+    {
+      "sequence_number": 85,
+      "run_id": "0085_hybrid_2026-03-21_17-22-47",
+      "started_at": "2026-03-21T17:22:47.808775+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0085_hybrid_2026-03-21_17-22-47.log",
+      "json_path": "data\\run_logs\\runs\\0085_hybrid_2026-03-21_17-22-47.json"
+    },
+    {
+      "sequence_number": 86,
+      "run_id": "0086_hybrid_2026-03-21_17-22-52",
+      "started_at": "2026-03-21T17:22:52.132824+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --probe-top-menu Jegyzékek --probe-row-index 0 --probe-repeat 2 --safe-mode hybrid",
+      "success": true,
+      "short_summary": {
+        "no_project_top_menus": null,
+        "project_open_top_menus": null,
+        "diff_summary": {},
+        "skipped_by_safety": null,
+        "last_error": null,
+        "modal_detected": false,
+        "recovery_attempted": false,
+        "recovery_success": false
+      },
+      "log_path": "data\\run_logs\\runs\\0086_hybrid_2026-03-21_17-22-52.log",
+      "json_path": "data\\run_logs\\runs\\0086_hybrid_2026-03-21_17-22-52.json"
     }
   ]
 }
