@@ -3,24 +3,24 @@
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Adatbázis...",
+    "Eszközök",
     "Beállítások",
     "Ablak",
     "Súgó"
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 2296300,
-    "process_id": 34484,
-    "title": "WinWatt gólya"
+    "handle": 7409214,
+    "process_id": 13516,
+    "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
-  "main_window_title": "WinWatt gólya",
+  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "main_window_visible": true,
-  "mapping_partial": false,
-  "mapping_stop_reason": null,
-  "process_id": 34484,
+  "mapping_partial": true,
+  "mapping_stop_reason": "unrecoverable:Beállítások",
+  "process_id": 13516,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -28,23 +28,23 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 2296300,
-        "process_id": 34484,
-        "title": "WinWatt gólya"
+        "handle": 7409214,
+        "process_id": 13516,
+        "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
       },
       "main_window": {
         "class_name": "TMainForm",
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 34484,
+        "process_id": 13516,
         "rect": {
           "bottom": 1150,
           "left": -10,
           "right": 1930,
           "top": -10
         },
-        "title": "WinWatt gólya",
+        "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
         "visible": true
       }
     },
@@ -54,8 +54,14 @@
     "success": true
   },
   "state_id": "project_open",
-  "timestamp": "2026-03-20T21:34:18.892648+00:00",
+  "timestamp": "2026-03-21T21:03:54.109346+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 13516,
+      "title": ""
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -65,8 +71,8 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 34484,
-      "title": "WinWatt gólya"
+      "process_id": 13516,
+      "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -78,19 +84,19 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Codex - Google Chrome"
-    },
-    {
-      "class_name": "XamlWindow",
-      "handle": null,
-      "process_id": 34912,
-      "title": "Képmetsző"
+      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "XamlWindow",
+      "handle": null,
+      "process_id": 34912,
+      "title": "Képmetsző"
     },
     {
       "class_name": "Chrome_WidgetWin_1",

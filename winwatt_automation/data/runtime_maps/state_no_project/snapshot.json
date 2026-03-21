@@ -9,10 +9,10 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "Chrome_WidgetWin_1",
-    "handle": 328890,
-    "process_id": 35256,
-    "title": "gui_helpers.py - autowinwatt - Visual Studio Code"
+    "class_name": "TMainForm",
+    "handle": 7409214,
+    "process_id": 13516,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
@@ -20,9 +20,9 @@
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 34484,
+  "process_id": 13516,
   "state_id": "no_project",
-  "timestamp": "2026-03-20T21:31:10.044701+00:00",
+  "timestamp": "2026-03-21T20:35:59.566299+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -37,16 +37,16 @@
       "title": "gui_helpers.py - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 34484,
-      "title": "WinWatt gólya"
+      "process_id": 23032,
+      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 23032,
-      "title": "Codex - Google Chrome"
+      "process_id": 19884,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "XamlWindow",
@@ -55,10 +55,10 @@
       "title": "Képmetsző"
     },
     {
-      "class_name": "Chrome_WidgetWin_1",
+      "class_name": "TMainForm",
       "handle": null,
-      "process_id": 19884,
-      "title": "GitHub Desktop"
+      "process_id": 13516,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",

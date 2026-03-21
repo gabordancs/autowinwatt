@@ -1,8 +1,32 @@
 [
   {
     "state_id": "project_open",
+    "text": "Fájl",
+    "text_normalized": "fájl",
+    "text_raw": "Fájl"
+  },
+  {
+    "state_id": "project_open",
     "text": "Jegyzékek",
     "text_normalized": "jegyzékek",
     "text_raw": "Jegyzékek"
+  },
+  {
+    "state_id": "project_open",
+    "text": "Beállítások",
+    "text_normalized": "beállítások",
+    "text_raw": "Beállítások"
+  },
+  {
+    "state_id": "project_open",
+    "text": "Ablak",
+    "text_normalized": "ablak",
+    "text_raw": "Ablak"
+  },
+  {
+    "state_id": "project_open",
+    "text": "Súgó",
+    "text_normalized": "súgó",
+    "text_raw": "Súgó"
   }
 ]
