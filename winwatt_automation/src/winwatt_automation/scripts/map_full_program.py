@@ -256,28 +256,28 @@ def main() -> int:
             args.log_profile,
         )
 
-        record_event(
-            run_ctx,
-            "runtime_mapping_summary",
-            {
-                "no_project_top_menus": len(no_project.top_menus),
-                "project_open_top_menus": len(project_open.top_menus),
-                "diff_summary": diff.get("summary", {}),
-            },
-        )
+        project_open_result = result.get("project_open_result") or {}
+        runtime_summary = {
+            "no_project_top_menus": len(no_project.top_menus),
+            "project_open_top_menus": len(project_open.top_menus),
+            "diff_summary": diff.get("summary", {}),
+            "startup_project_detected": project_open_result.get("startup_project_detected"),
+            "already_open_before_mapping": project_open_result.get("already_open_before_mapping"),
+            "project_open_verdict": project_open_result.get("project_open_verdict"),
+            "expected_project_path": project_open_result.get("expected_project_path"),
+            "observed_project_path": project_open_result.get("observed_project_path"),
+            "path_match_normalized": project_open_result.get("path_match_normalized"),
+        }
+        record_event(run_ctx, "runtime_mapping_summary", runtime_summary)
         update_status(
             run_ctx,
             "running",
             "A runtime mapping összesítése elkészült.",
-            {
-                "no_project_top_menus": len(no_project.top_menus),
-                "project_open_top_menus": len(project_open.top_menus),
-                "diff_summary": diff.get("summary", {}),
-            },
+            runtime_summary,
         )
 
         skipped = sum(1 for action in no_project.actions + project_open.actions if not action.get("attempted", False))
-        recovery = ((result.get("project_open_result") or {}).get("recovery") or {}) if result.get("project_open_result") else {}
+        recovery = (project_open_result.get("recovery") or {}) if project_open_result else {}
         finalize_run(
             run_ctx,
             success=True,
@@ -287,10 +287,9 @@ def main() -> int:
                     "no_project top_menus": len(no_project.top_menus),
                     "project_open top_menus": len(project_open.top_menus),
                     "diff summary": diff.get("summary", {}),
+                    "project_open_verdict": project_open_result.get("project_open_verdict"),
                 },
-                "no_project_top_menus": len(no_project.top_menus),
-                "project_open_top_menus": len(project_open.top_menus),
-                "diff_summary": diff.get("summary", {}),
+                **runtime_summary,
                 "skipped_by_safety": skipped,
                 "modal_detected": len(no_project.dialogs) + len(project_open.dialogs) > 0,
                 "recovery_attempted": bool(recovery),
