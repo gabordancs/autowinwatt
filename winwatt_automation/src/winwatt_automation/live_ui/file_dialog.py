@@ -332,10 +332,10 @@ def trigger_open_project_dialog_from_default_state(*, process_id: int | None, di
         keyboard.send_keys("%")
         steps.append("ALT")
         time.sleep(0.05)
-        keyboard.send_keys("f")
+        keyboard.send_keys("F")
         steps.append("F")
         time.sleep(0.05)
-        keyboard.send_keys("m")
+        keyboard.send_keys("M")
         steps.append("M")
     except Exception as exc:
         return None, {
@@ -400,35 +400,7 @@ def open_project_file_via_dialog(
             logger.info("open_project_file_via_dialog accelerator success detect_info={}", detect_info)
         else:
             accelerator_error = detect_info.get("error")
-            logger.info("open_project_file_via_dialog accelerator fallback detect_info={}", detect_info)
-
-            popup_state = menu_helpers.open_file_menu_and_capture_popup_state()
-            rows = popup_state.get("rows", [])
-            row_index = _project_open_menu_row_index(rows)
-            if row_index is None:
-                return OpenProjectDialogResult(
-                    success=False,
-                    path=project_path,
-                    dialog_found=False,
-                    path_entered=False,
-                    confirm_clicked=False,
-                    dialog_closed=False,
-                    project_state_changed=False,
-                    detected_changes=[],
-                    error="Could not locate 'Projekt megnyitás' row in Fájl popup.",
-                )
-
-            process_id = popup_state.get("process_id")
-            handles_before_click = _top_level_handles()
-            clicked = menu_helpers.click_structured_popup_row(rows, row_index)
-            logger.info("open_project_file_via_dialog clicked popup_row={} text={}", row_index, clicked.get("text"))
-
-            dialog, detect_info = find_open_file_dialog(
-                process_id=process_id,
-                timeout=dialog_timeout,
-                previous_handles=handles_before_click,
-            )
-            dialog_found = bool(detect_info.get("dialog_found"))
+            logger.info("open_project_file_via_dialog accelerator did not open dialog detect_info={}", detect_info)
         if dialog is None:
             return OpenProjectDialogResult(
                 success=False,
@@ -439,7 +411,7 @@ def open_project_file_via_dialog(
                 dialog_closed=False,
                 project_state_changed=False,
                 detected_changes=[],
-                error=accelerator_error or "Open-file dialog not detected after menu click.",
+                error=accelerator_error or "Open-file dialog not detected after ALT+F, M accelerator.",
             )
 
         path_entered, path_info = set_file_dialog_path(dialog, project_path)

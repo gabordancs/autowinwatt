@@ -46,7 +46,7 @@ from winwatt_automation.live_ui.ui_cache import PopupState
 
 DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
 SYSTEM_TOP_MENUS = ["Rendszer"]
-DEFAULT_TEST_PROJECT_PATH = str(Path(__file__).resolve().parents[2] / "tests" / "testwwp.wwp")
+DEFAULT_TEST_PROJECT_PATH = r"C:\Users\dancsg\OneDrive - Futureal\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp"
 ENABLE_GEOMETRY_PLACEHOLDERS = True
 
 _TOP_MENU_CACHE: dict[str, Any] | None = None

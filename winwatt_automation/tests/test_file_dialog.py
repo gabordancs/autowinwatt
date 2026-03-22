@@ -38,7 +38,7 @@ def test_trigger_open_project_dialog_from_default_state_sends_alt_f_m(monkeypatc
     dialog, info = file_dialog.trigger_open_project_dialog_from_default_state(process_id=None)
 
     assert dialog == "dialog"
-    assert sent == ["%", "f", "m"]
+    assert sent == ["%", "F", "M"]
     assert info["dialog_found"] is True
     assert info["steps"] == ["ALT", "F", "M"]
 
@@ -139,7 +139,7 @@ def test_detect_project_state_changed_logic_reports_reasons():
 def test_open_test_project_returns_structured_result_shape(monkeypatch):
     expected = {
         "success": True,
-        "path": r"C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp",
+        "path": r"C:\Users\dancsg\OneDrive - Futureal\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp",
         "dialog_found": True,
         "path_entered": True,
         "confirm_clicked": True,
