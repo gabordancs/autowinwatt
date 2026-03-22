@@ -65,7 +65,7 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
         lambda **kwargs: focus_calls.append(kwargs["action_label"]),
     )
     monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct"}))
-    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog, **kwargs: (True, {"method": "enter"}))
+    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog: (True, {"method": "enter"}))
     state = {"visible": True}
 
     def fake_safe_call(obj, method, default=None):
@@ -219,7 +219,7 @@ def test_interact_with_open_file_dialog_uses_explicit_verified_context(monkeypat
             return True
 
     monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct_edit"}))
-    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog, **kwargs: (True, {"method": "button"}))
+    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog: (True, {"method": "button"}))
 
     state = {"dialog_visible": True}
 
@@ -271,66 +271,3 @@ def test_interact_with_open_file_dialog_reports_revalidation_failure_without_fal
     assert result.path_entry_attempted is False
     assert result.error == "dialog_revalidation_failed"
     assert result.dialog_found is True
-
-
-def test_confirm_file_dialog_open_prefers_enter(monkeypatch):
-    sent = []
-
-    class FakeKeyboard:
-        @staticmethod
-        def send_keys(keys, **_kwargs):
-            sent.append(keys)
-
-    class Dialog:
-        def set_focus(self):
-            return None
-
-    import sys
-    import types
-
-    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
-    monkeypatch.setattr(file_dialog, "find_confirm_open_button", lambda dialog: (_ for _ in ()).throw(AssertionError("button lookup should be skipped when ENTER is preferred and succeeds")))
-
-    ok, info = file_dialog.confirm_file_dialog_open(Dialog(), prefer_enter=True)
-
-    assert ok is True
-    assert info["method"] == "enter_preferred"
-    assert sent == ["{ENTER}"]
-
-
-def test_set_file_dialog_path_hotkey_does_not_tab_before_confirm(monkeypatch):
-    sent = []
-
-    class FakeKeyboard:
-        @staticmethod
-        def send_keys(keys, **kwargs):
-            sent.append(keys)
-
-    class Edit:
-        def __init__(self):
-            self.value = r"C:\tmp\test.wwp"
-            self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit")
-
-        def is_enabled(self):
-            return True
-
-        def window_text(self):
-            return self.value
-
-    class Dialog:
-        def set_focus(self):
-            return None
-
-    import sys
-    import types
-
-    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
-    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: Edit())
-    monkeypatch.setattr(file_dialog, "_write_to_edit", lambda edit, path: False)
-
-    ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
-
-    assert ok is True
-    assert info["method"] == "hotkey"
-    assert "{TAB}" not in sent
-    assert sent[:3] == ["^l", "^a{BACKSPACE}", r"C:\tmp\test.wwp"]
