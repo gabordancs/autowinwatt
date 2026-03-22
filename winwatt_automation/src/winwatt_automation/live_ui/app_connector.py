@@ -32,6 +32,14 @@ class WinWattMultipleWindowsError(WinWattNotRunningError):
         self.candidates = candidates
 
 
+class FocusGuardError(RuntimeError):
+    """Raised when focus guard validation fails with structured diagnostics."""
+
+    def __init__(self, message: str, *, diagnostic: dict[str, Any] | None = None):
+        super().__init__(message)
+        self.diagnostic = diagnostic or {}
+
+
 class WinWattSession:
     """Cached WinWatt attachment state for the current mapper run."""
 
@@ -708,6 +716,77 @@ def _is_single_row_probe_click_focus_action(action_label: str) -> bool:
     return normalized.startswith("single_row_probe_click[")
 
 
+def _rects_meaningfully_match(left: dict[str, int] | None, right: dict[str, int] | None, *, tolerance: int = 20) -> bool:
+    if left is None or right is None:
+        return False
+    keys = ("left", "top", "right", "bottom", "width", "height")
+    try:
+        return all(abs(int(left.get(key, 0)) - int(right.get(key, 0))) <= tolerance for key in keys)
+    except Exception:
+        return False
+
+
+def _should_allow_stale_wrapper_refresh(action_label: str, *, allow_stale_wrapper_refresh: bool) -> bool:
+    normalized = (action_label or "").strip().lower()
+    return allow_stale_wrapper_refresh and normalized == "open_project_accelerator_smoke"
+
+
+def _refresh_stale_main_window_if_identity_matches(
+    *,
+    action_label: str,
+    cached_identity: dict[str, Any],
+    cached_rect_payload: dict[str, int] | None,
+    visible: bool,
+    enabled: bool,
+    allow_stale_wrapper_refresh: bool,
+) -> tuple[Any | None, dict[str, Any]]:
+    diagnostic: dict[str, Any] = {
+        "action_label": action_label,
+        "cached_identity": cached_identity,
+        "cached_rect": cached_rect_payload,
+        "visible": visible,
+        "enabled": enabled,
+        "refresh_attempted": False,
+        "refresh_permitted": _should_allow_stale_wrapper_refresh(action_label, allow_stale_wrapper_refresh=allow_stale_wrapper_refresh),
+    }
+    if not diagnostic["refresh_permitted"]:
+        diagnostic["reason"] = "refresh_not_permitted"
+        return None, diagnostic
+    if not visible or not enabled:
+        diagnostic["reason"] = "cached_window_not_ready"
+        return None, diagnostic
+
+    diagnostic["refresh_attempted"] = True
+    refreshed_window = _resolve_uia_main_window()
+    refreshed_identity = _window_identity_payload(refreshed_window)
+    refreshed_rect = _rect_payload(_safe_call(refreshed_window, "rectangle", None))
+    refreshed_exists = bool(_safe_call(refreshed_window, "exists", False))
+    refreshed_visible = bool(_safe_call(refreshed_window, "is_visible", False))
+    refreshed_enabled = bool(_safe_call(refreshed_window, "is_enabled", False))
+    diagnostic.update({
+        "refreshed_identity": refreshed_identity,
+        "refreshed_rect": refreshed_rect,
+        "refreshed_exists": refreshed_exists,
+        "refreshed_visible": refreshed_visible,
+        "refreshed_enabled": refreshed_enabled,
+    })
+
+    identity_match = (
+        cached_identity.get("process_id") is not None
+        and cached_identity.get("process_id") == refreshed_identity.get("process_id")
+        and cached_identity.get("title") == refreshed_identity.get("title")
+        and cached_identity.get("class_name") == refreshed_identity.get("class_name")
+        and _rects_meaningfully_match(cached_rect_payload, refreshed_rect)
+    )
+    diagnostic["identity_match"] = identity_match
+    if refreshed_exists and refreshed_visible and refreshed_enabled and identity_match:
+        diagnostic["reason"] = "stale_wrapper_refreshed"
+        return refreshed_window, diagnostic
+
+    diagnostic["reason"] = "refresh_identity_mismatch" if not identity_match else "refresh_not_ready"
+    return None, diagnostic
+
+
 def _has_probationary_main_window_identity(identity: dict[str, Any], rect_payload: dict[str, int] | None, *, visible: bool, enabled: bool) -> tuple[bool, list[str]]:
     reasons: list[str] = []
     if identity.get("handle") is not None:
@@ -995,6 +1074,7 @@ def ensure_main_window_foreground_before_click(
     timeout: float = 2.0,
     poll_interval: float = 0.1,
     allow_dialog: bool = False,
+    allow_stale_wrapper_refresh: bool = False,
 ) -> Any:
     """Ensure main window is valid and foreground before click operations."""
 
@@ -1029,7 +1109,37 @@ def ensure_main_window_foreground_before_click(
         rect_payload,
     )
     if not exists:
-        if probationary_allowed and strong_identity:
+        refreshed_window, refresh_diagnostic = _refresh_stale_main_window_if_identity_matches(
+            action_label=action_label,
+            cached_identity=identity,
+            cached_rect_payload=rect_payload,
+            visible=visible,
+            enabled=enabled,
+            allow_stale_wrapper_refresh=allow_stale_wrapper_refresh,
+        )
+        if refreshed_window is not None:
+            logger.warning(
+                "DBG_WINWATT_FOCUS_GUARD_STALE_REFRESH_CONTINUE action_label={} reason={} cached_identity={} refreshed_identity={} cached_rect={} refreshed_rect={}",
+                action_label,
+                refresh_diagnostic.get("reason"),
+                identity,
+                refresh_diagnostic.get("refreshed_identity"),
+                rect_payload,
+                refresh_diagnostic.get("refreshed_rect"),
+            )
+            main_window = refreshed_window
+            exists = bool(_safe_call(main_window, "exists", False))
+            visible = bool(_safe_call(main_window, "is_visible", False))
+            enabled = bool(_safe_call(main_window, "is_enabled", False))
+            rect_payload = _rect_payload(_safe_call(main_window, "rectangle", None))
+            identity = _window_identity_payload(main_window)
+            strong_identity, identity_reasons = _has_probationary_main_window_identity(
+                identity,
+                rect_payload,
+                visible=visible,
+                enabled=enabled,
+            )
+        elif probationary_allowed and strong_identity:
             logger.warning(
                 "DBG_WINWATT_FOCUS_GUARD_SOFT_CONTINUE action_label={} reason=exists_false_but_identity_strong wrapper_type={} identity_reasons={} cached_identity={} rect={}",
                 action_label,
@@ -1068,20 +1178,32 @@ def ensure_main_window_foreground_before_click(
         else:
             if single_row_probe_click_override:
                 logger.error(
-                    "DBG_WINWATT_FOCUS_GUARD_PROBE_CLICK_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={}",
+                    "DBG_WINWATT_FOCUS_GUARD_PROBE_CLICK_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={} refresh_diagnostic={}",
                     action_label,
                     identity_reasons,
                     identity,
                     rect_payload,
+                    refresh_diagnostic,
                 )
             logger.error(
-                "DBG_WINWATT_FOCUS_GUARD_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={}",
+                "DBG_WINWATT_FOCUS_GUARD_HARD_FAIL action_label={} reason=exists_false identity_reasons={} cached_identity={} rect={} refresh_diagnostic={}",
                 action_label,
                 identity_reasons,
                 identity,
                 rect_payload,
+                refresh_diagnostic,
             )
-            raise RuntimeError(f"focus_not_restored: main window no longer exists before action={action_label}")
+            raise FocusGuardError(
+                f"focus_not_restored: main window no longer exists before action={action_label}",
+                diagnostic={
+                    "action_label": action_label,
+                    "reason": "exists_false",
+                    "cached_identity": identity,
+                    "cached_rect": rect_payload,
+                    "identity_reasons": identity_reasons,
+                    "refresh_diagnostic": refresh_diagnostic,
+                },
+            )
     if not visible or not enabled:
         logger.error(
             "DBG_WINWATT_FOCUS_GUARD_HARD_FAIL action_label={} reason=window_not_ready precheck_visible={} precheck_enabled={} cached_identity={} rect={}",
@@ -1091,8 +1213,16 @@ def ensure_main_window_foreground_before_click(
             identity,
             rect_payload,
         )
-        raise RuntimeError(
-            f"focus_not_restored: main window not ready before action={action_label} visible={visible} enabled={enabled}"
+        raise FocusGuardError(
+            f"focus_not_restored: main window not ready before action={action_label} visible={visible} enabled={enabled}",
+            diagnostic={
+                "action_label": action_label,
+                "reason": "window_not_ready",
+                "cached_identity": identity,
+                "cached_rect": rect_payload,
+                "precheck_visible": visible,
+                "precheck_enabled": enabled,
+            },
         )
 
     deadline = time.time() + max(timeout, poll_interval)
