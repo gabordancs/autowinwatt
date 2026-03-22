@@ -13,6 +13,12 @@
   },
   {
     "state_id": "no_project",
+    "text": "Adatbázis",
+    "text_normalized": "adatbázis",
+    "text_raw": "Adatbázis..."
+  },
+  {
+    "state_id": "no_project",
     "text": "Beállítások",
     "text_normalized": "beállítások",
     "text_raw": "Beállítások"

@@ -1,9 +1,10 @@
 {
+  "already_open_before_mapping": false,
   "discovered_top_menus": [
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Eszközök",
+    "Adatbázis...",
     "Beállítások",
     "Ablak",
     "Súgó"
@@ -16,13 +17,15 @@
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
-  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 13776,
+  "observed_startup_project_path": null,
+  "process_id": 28744,
+  "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-21T21:21:26.436162+00:00",
+  "timestamp": "2026-03-22T08:54:46.524775+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -37,22 +40,34 @@
       "title": "gui_helpers.py - autowinwatt - Visual Studio Code"
     },
     {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 28744,
+      "title": "WinWatt gólya"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
-    },
-    {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 13776,
-      "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "tests – Fájlkezelő"
+    },
+    {
+      "class_name": "rctrl_renwnd32",
+      "handle": null,
+      "process_id": 9340,
+      "title": "Elküldött elemek – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
       "class_name": "XamlWindow",
@@ -65,12 +80,6 @@
       "handle": null,
       "process_id": 29976,
       "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14600,
-      "title": "Languages – Fájlkezelő"
     },
     {
       "class_name": "OpusApp",
@@ -95,12 +104,6 @@
       "handle": null,
       "process_id": 5264,
       "title": "*antal áron – Jegyzettömb"
-    },
-    {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 9340,
-      "title": "Elküldött elemek – dancs.gabor@pedranogroup.com - Outlook"
     },
     {
       "class_name": "rctrl_renwnd32",
