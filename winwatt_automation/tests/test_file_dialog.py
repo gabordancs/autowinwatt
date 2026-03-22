@@ -65,18 +65,25 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
         lambda **kwargs: focus_calls.append(kwargs["action_label"]),
     )
     monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct"}))
-    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog: (True, {"method": "enter"}))
-    monkeypatch.setattr(
-        file_dialog,
-        "_safe_call",
-        lambda obj, method, default=None: False if method in {"exists", "is_visible"} else default,
-    )
+    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog, **kwargs: (True, {"method": "enter"}))
+    state = {"visible": True}
+
+    def fake_safe_call(obj, method, default=None):
+        if method == "exists":
+            return True
+        if method == "is_visible":
+            current = state["visible"]
+            state["visible"] = False
+            return current
+        return default
+
+    monkeypatch.setattr(file_dialog, "_safe_call", fake_safe_call)
     monkeypatch.setattr(file_dialog.menu_helpers, "open_file_menu_and_capture_popup_state", lambda: (_ for _ in ()).throw(AssertionError("popup fallback should not run")))
 
     result = file_dialog.open_project_file_via_dialog(
         r"C:\tmp\testwwp.wwp",
         before_snapshot={"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
-        after_snapshot_provider=lambda: {"discovered_top_menus": ["Fájl", "Projekt"], "visible_top_windows": [], "main_window_title": "WinWatt - testwwp.wwp"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": ["Fájl", "Projekt"], "visible_top_windows": [], "main_window_title": r"WinWatt - C:\tmp\testwwp.wwp"},
     )
 
     assert calls == ["accelerator"]
@@ -201,3 +208,129 @@ def test_open_test_project_safe_mode_blocks_non_test_path():
     assert result["dialog_found"] is False
     assert result["project_open_audit"]["project_open_attempt_started"] is False
     assert "Safe mode" in (result["error"] or "")
+
+
+def test_interact_with_open_file_dialog_uses_explicit_verified_context(monkeypatch):
+    class Dialog:
+        def exists(self):
+            return True
+
+        def is_visible(self):
+            return True
+
+    monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct_edit"}))
+    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog, **kwargs: (True, {"method": "button"}))
+
+    state = {"dialog_visible": True}
+
+    def fake_safe_call(obj, method, default=None):
+        if method == "exists":
+            return state["dialog_visible"]
+        if method == "is_visible":
+            current = state["dialog_visible"]
+            state["dialog_visible"] = False
+            return current
+        return default
+
+    monkeypatch.setattr(file_dialog, "_safe_call", fake_safe_call)
+
+    result = file_dialog.interact_with_open_file_dialog(
+        Dialog(),
+        r"C:\tmp\test.wwp",
+        before_snapshot={"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": ["Fájl", "Projekt"], "visible_top_windows": [], "main_window_title": r"WinWatt - C:\tmp\test.wwp"},
+        detected_dialog_snapshot={"title": "Projekt megnyitás", "class_name": "#32770", "handle": 123},
+        dialog_context={"dialog_already_verified": True, "dialog_handle": 123, "dialog_title": "Projekt megnyitás", "dialog_class": "#32770"},
+    )
+
+    assert result.path_entry_attempted is True
+    assert result.helper_dialog_revalidated is True
+    assert result.helper_dialog_ready_for_interaction is True
+    assert result.helper_received_dialog_context["dialog_already_verified"] is True
+
+
+def test_interact_with_open_file_dialog_reports_revalidation_failure_without_false_not_detected(monkeypatch):
+    class Dialog:
+        def exists(self):
+            return False
+
+        def is_visible(self):
+            return False
+
+    monkeypatch.setattr(file_dialog, "_safe_call", lambda obj, method, default=None: False if method in {"exists", "is_visible"} else default)
+
+    result = file_dialog.interact_with_open_file_dialog(
+        Dialog(),
+        r"C:\tmp\test.wwp",
+        before_snapshot={"discovered_top_menus": [], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": [], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        detected_dialog_snapshot={"title": "Projekt megnyitás", "class_name": "#32770", "handle": 123},
+        dialog_context={"dialog_already_verified": True, "dialog_handle": 123, "dialog_title": "Projekt megnyitás", "dialog_class": "#32770"},
+    )
+
+    assert result.path_entry_attempted is False
+    assert result.error == "dialog_revalidation_failed"
+    assert result.dialog_found is True
+
+
+def test_confirm_file_dialog_open_prefers_enter(monkeypatch):
+    sent = []
+
+    class FakeKeyboard:
+        @staticmethod
+        def send_keys(keys, **_kwargs):
+            sent.append(keys)
+
+    class Dialog:
+        def set_focus(self):
+            return None
+
+    import sys
+    import types
+
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
+    monkeypatch.setattr(file_dialog, "find_confirm_open_button", lambda dialog: (_ for _ in ()).throw(AssertionError("button lookup should be skipped when ENTER is preferred and succeeds")))
+
+    ok, info = file_dialog.confirm_file_dialog_open(Dialog(), prefer_enter=True)
+
+    assert ok is True
+    assert info["method"] == "enter_preferred"
+    assert sent == ["{ENTER}"]
+
+
+def test_set_file_dialog_path_hotkey_does_not_tab_before_confirm(monkeypatch):
+    sent = []
+
+    class FakeKeyboard:
+        @staticmethod
+        def send_keys(keys, **kwargs):
+            sent.append(keys)
+
+    class Edit:
+        def __init__(self):
+            self.value = r"C:\tmp\test.wwp"
+            self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit")
+
+        def is_enabled(self):
+            return True
+
+        def window_text(self):
+            return self.value
+
+    class Dialog:
+        def set_focus(self):
+            return None
+
+    import sys
+    import types
+
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
+    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: Edit())
+    monkeypatch.setattr(file_dialog, "_write_to_edit", lambda edit, path: False)
+
+    ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
+
+    assert ok is True
+    assert info["method"] == "hotkey"
+    assert "{TAB}" not in sent
+    assert sent[:3] == ["^l", "^a{BACKSPACE}", r"C:\tmp\test.wwp"]
