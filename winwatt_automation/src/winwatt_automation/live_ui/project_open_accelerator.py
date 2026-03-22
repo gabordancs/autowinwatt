@@ -3,7 +3,7 @@ from __future__ import annotations
 import time
 from typing import Any
 
-PROJECT_OPEN_ACCELERATOR_MODE = "alt_f_p"
+PROJECT_OPEN_ACCELERATOR_MODE = "ctrl_o"
 PROJECT_OPEN_ACCELERATOR_MODES: dict[str, tuple[tuple[str, str], ...]] = {
     "alt_f_p": (("%", "ALT"), ("F", "F"), ("P", "P")),
     "ctrl_o": (("^o", "CTRL+O"),),
