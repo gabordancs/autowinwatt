@@ -34,7 +34,7 @@ from winwatt_automation.live_ui.project_open_accelerator import (
     PROJECT_OPEN_ACCELERATOR_MODE,
     send_project_open_accelerator,
 )
-from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
+from winwatt_automation.live_ui.file_dialog import interact_with_open_file_dialog
 from winwatt_automation.runtime_mapping.program_mapper import capture_state_snapshot, recover_after_project_open
 
 DEFAULT_LOG_PATH = ROOT / "logs" / "winwatt_open_project_accelerator_smoke.json"
@@ -102,6 +102,15 @@ def _visible_top_level_windows() -> list[Any]:
 
     desktop = Desktop(backend="uia")
     return [window for window in desktop.windows(top_level_only=True) if bool(_safe_call(window, "is_visible", False))]
+
+
+def _find_visible_window_by_handle(handle: int | None) -> Any | None:
+    if handle is None:
+        return None
+    for window in _visible_top_level_windows():
+        if _safe_call(window, "handle", None) == handle:
+            return window
+    return None
 
 
 
@@ -194,28 +203,40 @@ def run_smoke(
         }
 
         foreground_before = describe_foreground_window()
+        accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
         key_send_attempted = True
+        detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
         if project_path:
             before_snapshot = asdict(capture_state_snapshot("open_project_accelerator_smoke_before"))
-            project_open_result = open_project_file_via_dialog_dict(
-                project_path,
-                before_snapshot=before_snapshot,
-                after_snapshot_provider=lambda: asdict(capture_state_snapshot("open_project_accelerator_smoke_after")),
-                dialog_timeout=timeout_s,
-            )
-            accelerator_info = {
-                "project_open_method": project_open_result.get("project_open_method", accelerator_mode),
-                "sequence": list(project_open_result.get("project_open_sequence") or []),
-            }
-            detection = {
-                "dialog_detected": bool(project_open_result.get("dialog_found")),
-                "dialog": None,
-                "candidate_count": 0,
-            }
+            dialog_wrapper = _find_visible_window_by_handle((detection.get("dialog") or {}).get("handle"))
+            if bool(detection.get("dialog_detected")) and dialog_wrapper is not None:
+                project_open_result = asdict(
+                    interact_with_open_file_dialog(
+                        dialog_wrapper,
+                        project_path,
+                        before_snapshot=before_snapshot,
+                        after_snapshot_provider=lambda: asdict(capture_state_snapshot("open_project_accelerator_smoke_after")),
+                        dialog_timeout=timeout_s,
+                        project_open_method=accelerator_info.get("project_open_method", accelerator_mode),
+                        project_open_sequence=list(accelerator_info.get("sequence") or []),
+                    )
+                )
+            else:
+                project_open_result = {
+                    "success": False,
+                    "path_entry_attempted": False,
+                    "path_entered": False,
+                    "confirm_attempted": False,
+                    "confirm_clicked": False,
+                    "dialog_closed": False,
+                    "project_state_changed": False,
+                    "detected_changes": [],
+                    "observed_main_window_title_after_open": "",
+                    "observed_project_path": None,
+                    "path_match_normalized": False,
+                    "error": "Open-file dialog was not detected by the smoke flow, so path entry was skipped.",
+                }
             recovery_result = recover_after_project_open(timeout_s=timeout_s, poll_interval_s=POLL_INTERVAL_S)
-        else:
-            accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
-            detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
         foreground_after = describe_foreground_window()
     except FocusGuardError as exc:
         elapsed_s = round(time.monotonic() - started_monotonic, 3)
@@ -253,6 +274,7 @@ def run_smoke(
         "refreshed_visible": refreshed_visible,
         "refreshed_enabled": refreshed_enabled,
         "key_send_attempted": key_send_attempted,
+        "accelerator_sent": key_send_attempted,
         "foreground_before": foreground_before,
         "foreground_after": foreground_after,
         "dialog_detected": bool(detection.get("dialog_detected")),
@@ -262,12 +284,17 @@ def run_smoke(
         "dialog_process_id": dialog.get("process_id"),
         "project_path": project_path,
         "project_open_success": bool((project_open_result or {}).get("success")),
+        "path_entry_attempted": bool((project_open_result or {}).get("path_entry_attempted")),
         "path_entered": bool((project_open_result or {}).get("path_entered")),
+        "confirm_attempted": bool((project_open_result or {}).get("confirm_attempted")),
         "confirm_clicked": bool((project_open_result or {}).get("confirm_clicked")),
         "dialog_closed": bool((project_open_result or {}).get("dialog_closed")),
         "project_state_changed": bool((project_open_result or {}).get("project_state_changed")),
         "project_open_error": (project_open_result or {}).get("error"),
         "project_open_detected_changes": list((project_open_result or {}).get("detected_changes") or []),
+        "observed_main_window_title_after_open": (project_open_result or {}).get("observed_main_window_title_after_open"),
+        "observed_project_path": (project_open_result or {}).get("observed_project_path"),
+        "path_match_normalized": bool((project_open_result or {}).get("path_match_normalized")),
         "recovery_success": bool((recovery_result or {}).get("success")),
         "recovery_close_attempts": list((recovery_result or {}).get("close_attempts") or []),
         "recovery_diagnostics": (recovery_result or {}).get("diagnostics"),
