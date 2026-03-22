@@ -22,10 +22,10 @@
   "mapping_partial": false,
   "mapping_stop_reason": null,
   "observed_startup_project_path": null,
-  "process_id": 37368,
+  "process_id": 18936,
   "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-22T13:36:23.390563+00:00",
+  "timestamp": "2026-03-22T14:12:12.844001+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -48,7 +48,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 37368,
+      "process_id": 18936,
       "title": "WinWatt gólya"
     },
     {

@@ -6,9 +6,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -33,10 +31,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -61,10 +56,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -84,23 +76,21 @@
   },
   {
     "action_key": "Fájl > [unlabeled row 5]",
-    "attempted": false,
+    "attempted": true,
     "dialog_class": null,
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "recent_project_entry",
-      "attempted": false,
-      "recent_project_candidate": true,
-      "result_type": "skipped_recent_project"
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
     },
     "menu_path": [
       "Fájl",
       "[unlabeled row 5]"
     ],
-    "notes": "skip_recent_projects",
+    "notes": "mapped_only",
     "process_id": null,
-    "result_type": "failed",
+    "result_type": "no_observable_effect",
     "row_index": 5,
     "safety_level": "caution",
     "state_id": "no_project",
@@ -111,23 +101,21 @@
   },
   {
     "action_key": "Fájl > [unlabeled row 19]",
-    "attempted": false,
+    "attempted": true,
     "dialog_class": null,
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "recent_project_entry",
-      "attempted": false,
-      "recent_project_candidate": true,
-      "result_type": "skipped_recent_project"
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
     },
     "menu_path": [
       "Fájl",
       "[unlabeled row 19]"
     ],
-    "notes": "skip_recent_projects",
+    "notes": "mapped_only",
     "process_id": null,
-    "result_type": "failed",
+    "result_type": "no_observable_effect",
     "row_index": 19,
     "safety_level": "caution",
     "state_id": "no_project",
@@ -138,23 +126,21 @@
   },
   {
     "action_key": "Fájl > [unlabeled row 20]",
-    "attempted": false,
+    "attempted": true,
     "dialog_class": null,
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "recent_project_entry",
-      "attempted": false,
-      "recent_project_candidate": true,
-      "result_type": "skipped_recent_project"
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
     },
     "menu_path": [
       "Fájl",
       "[unlabeled row 20]"
     ],
-    "notes": "skip_recent_projects",
+    "notes": "mapped_only",
     "process_id": null,
-    "result_type": "failed",
+    "result_type": "no_observable_effect",
     "row_index": 20,
     "safety_level": "caution",
     "state_id": "no_project",
@@ -165,23 +151,21 @@
   },
   {
     "action_key": "Fájl > [unlabeled row 22]",
-    "attempted": false,
+    "attempted": true,
     "dialog_class": null,
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "recent_project_entry",
-      "attempted": false,
-      "recent_project_candidate": true,
-      "result_type": "skipped_recent_project"
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
     },
     "menu_path": [
       "Fájl",
       "[unlabeled row 22]"
     ],
-    "notes": "skip_recent_projects",
+    "notes": "mapped_only",
     "process_id": null,
-    "result_type": "failed",
+    "result_type": "no_observable_effect",
     "row_index": 22,
     "safety_level": "caution",
     "state_id": "no_project",
@@ -197,9 +181,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -224,10 +206,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -252,10 +231,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -280,10 +256,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -308,10 +281,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -336,10 +306,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -364,10 +331,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -392,9 +356,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -419,10 +381,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -447,10 +406,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -475,10 +431,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -503,10 +456,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -531,10 +481,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -559,10 +506,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -587,9 +531,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -614,10 +556,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -642,10 +581,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -670,10 +606,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -698,10 +631,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -726,10 +656,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -754,10 +681,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -782,9 +706,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -809,10 +731,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -837,10 +756,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -865,10 +781,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -893,10 +806,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -921,10 +831,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -949,10 +856,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -977,9 +881,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -1004,10 +906,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -1032,10 +931,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -1060,10 +956,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -1088,10 +981,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -1116,10 +1006,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -1144,10 +1031,7 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "executes_command",
-      "attempted": true,
-      "placeholder_outcome": "no_observable_effect",
-      "recent_project_candidate": false,
+      "action_state_classification": "unknown",
       "result_type": "no_observable_effect"
     },
     "menu_path": [

@@ -1,8 +1,8 @@
 {
-  "run_id": "0093_1_2026-03-22_13-36-19",
+  "run_id": "0094_1_2026-03-22_14-12-09",
   "state": "finished",
   "message": "Mapping finished successfully.",
-  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1",
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
   "details": {
     "exit_code": 0,
     "summary": {
@@ -18,15 +18,15 @@
       "startup_project_detected": false,
       "already_open_before_mapping": false,
       "project_open_verdict": "open_attempt_failed",
-      "expected_project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
+      "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
       "observed_project_path": null,
       "path_match_normalized": false,
-      "skipped_by_safety": 8,
+      "skipped_by_safety": 0,
       "last_error": null,
       "modal_detected": false,
       "recovery_attempted": true,
       "recovery_success": true
     }
   },
-  "updated_at": "2026-03-22T13:53:09.518763+00:00"
+  "updated_at": "2026-03-22T14:30:27.074741+00:00"
 }

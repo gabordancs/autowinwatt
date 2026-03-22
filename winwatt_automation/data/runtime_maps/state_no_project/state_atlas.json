@@ -1,74 +1,5 @@
 {
-  "action_catalog": [
-    {
-      "action_state_classification": "recent_project_entry",
-      "action_type": "functional_action",
-      "changes_menu_state": false,
-      "expand_children": true,
-      "opens_modal": false,
-      "opens_project_and_changes_runtime_state": false,
-      "opens_submenu": false,
-      "path": [
-        "Fájl",
-        "[unlabeled row 5]"
-      ],
-      "retry_on_next_pass": true,
-      "skip_reason": "recent_project_blocked_by_policy",
-      "traversal_depth": 1,
-      "treat_as_navigation": true
-    },
-    {
-      "action_state_classification": "recent_project_entry",
-      "action_type": "functional_action",
-      "changes_menu_state": false,
-      "expand_children": true,
-      "opens_modal": false,
-      "opens_project_and_changes_runtime_state": false,
-      "opens_submenu": false,
-      "path": [
-        "Fájl",
-        "[unlabeled row 19]"
-      ],
-      "retry_on_next_pass": true,
-      "skip_reason": "recent_project_blocked_by_policy",
-      "traversal_depth": 1,
-      "treat_as_navigation": true
-    },
-    {
-      "action_state_classification": "recent_project_entry",
-      "action_type": "functional_action",
-      "changes_menu_state": false,
-      "expand_children": true,
-      "opens_modal": false,
-      "opens_project_and_changes_runtime_state": false,
-      "opens_submenu": false,
-      "path": [
-        "Fájl",
-        "[unlabeled row 20]"
-      ],
-      "retry_on_next_pass": true,
-      "skip_reason": "recent_project_blocked_by_policy",
-      "traversal_depth": 1,
-      "treat_as_navigation": true
-    },
-    {
-      "action_state_classification": "recent_project_entry",
-      "action_type": "functional_action",
-      "changes_menu_state": false,
-      "expand_children": true,
-      "opens_modal": false,
-      "opens_project_and_changes_runtime_state": false,
-      "opens_submenu": false,
-      "path": [
-        "Fájl",
-        "[unlabeled row 22]"
-      ],
-      "retry_on_next_pass": true,
-      "skip_reason": "recent_project_blocked_by_policy",
-      "traversal_depth": 1,
-      "treat_as_navigation": true
-    }
-  ],
+  "action_catalog": [],
   "action_discovery_report": {
     "top_menus": {
       "Ablak": [
@@ -828,7 +759,7 @@
           ]
         },
         {
-          "action_type": "functional_action",
+          "action_type": "unknown",
           "menu_path": [
             "Fájl",
             "[unlabeled row 5]"
@@ -926,14 +857,14 @@
           ]
         },
         {
-          "action_type": "functional_action",
+          "action_type": "unknown",
           "menu_path": [
             "Fájl",
             "[unlabeled row 19]"
           ]
         },
         {
-          "action_type": "functional_action",
+          "action_type": "unknown",
           "menu_path": [
             "Fájl",
             "[unlabeled row 20]"
@@ -947,7 +878,7 @@
           ]
         },
         {
-          "action_type": "functional_action",
+          "action_type": "unknown",
           "menu_path": [
             "Fájl",
             "[unlabeled row 22]"
@@ -1587,8 +1518,8 @@
         "right": 882,
         "top": 56
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "legacy_text_only_without_interaction_evidence",
+      "retained_as_structure_only": true,
       "row_index": 0,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -1690,8 +1621,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 2,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -1750,8 +1681,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 3,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -1804,10 +1735,10 @@
       "top_menu": "Fájl"
     },
     {
-      "action_type": "functional_action",
+      "action_type": "unknown",
       "actionable": true,
-      "admission_reason": "policy_cataloged:recent_project_blocked_by_policy",
-      "admitted_to_action_catalog": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
       "center_x": 443,
       "center_y": 215,
       "discovered_in_state": "no_project",
@@ -1820,14 +1751,6 @@
         "[unlabeled row 5]"
       ],
       "meta": {
-        "action_discovery": {
-          "classification": "recent_project_entry",
-          "policy": {
-            "expand_children": true,
-            "retry_on_next_pass": true,
-            "treat_as_navigation": true
-          }
-        },
         "click_point": {
           "x": 443,
           "y": 215
@@ -1861,8 +1784,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 5,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -2431,10 +2354,10 @@
       "top_menu": "Fájl"
     },
     {
-      "action_type": "functional_action",
+      "action_type": "unknown",
       "actionable": true,
-      "admission_reason": "policy_cataloged:recent_project_blocked_by_policy",
-      "admitted_to_action_catalog": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
       "center_x": 443,
       "center_y": 125,
       "discovered_in_state": "no_project",
@@ -2447,14 +2370,6 @@
         "[unlabeled row 19]"
       ],
       "meta": {
-        "action_discovery": {
-          "classification": "recent_project_entry",
-          "policy": {
-            "expand_children": true,
-            "retry_on_next_pass": true,
-            "treat_as_navigation": true
-          }
-        },
         "click_point": {
           "x": 443,
           "y": 125
@@ -2488,8 +2403,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 19,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -2499,10 +2414,10 @@
       "top_menu": "Fájl"
     },
     {
-      "action_type": "functional_action",
+      "action_type": "unknown",
       "actionable": true,
-      "admission_reason": "policy_cataloged:recent_project_blocked_by_policy",
-      "admitted_to_action_catalog": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
       "center_x": 443,
       "center_y": 153,
       "discovered_in_state": "no_project",
@@ -2515,14 +2430,6 @@
         "[unlabeled row 20]"
       ],
       "meta": {
-        "action_discovery": {
-          "classification": "recent_project_entry",
-          "policy": {
-            "expand_children": true,
-            "retry_on_next_pass": true,
-            "treat_as_navigation": true
-          }
-        },
         "click_point": {
           "x": 443,
           "y": 153
@@ -2556,8 +2463,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 20,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -2610,10 +2517,10 @@
       "top_menu": "Fájl"
     },
     {
-      "action_type": "functional_action",
+      "action_type": "unknown",
       "actionable": true,
-      "admission_reason": "policy_cataloged:recent_project_blocked_by_policy",
-      "admitted_to_action_catalog": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
       "center_x": 443,
       "center_y": 215,
       "discovered_in_state": "no_project",
@@ -2626,14 +2533,6 @@
         "[unlabeled row 22]"
       ],
       "meta": {
-        "action_discovery": {
-          "classification": "recent_project_entry",
-          "policy": {
-            "expand_children": true,
-            "retry_on_next_pass": true,
-            "treat_as_navigation": true
-          }
-        },
         "click_point": {
           "x": 443,
           "y": 215
@@ -2667,8 +2566,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 22,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -3183,8 +3082,8 @@
         "right": 882,
         "top": 56
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "legacy_text_only_without_interaction_evidence",
+      "retained_as_structure_only": true,
       "row_index": 0,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -3286,8 +3185,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 2,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -3346,8 +3245,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 3,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -3449,8 +3348,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 5,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -4068,8 +3967,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 19,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -4128,8 +4027,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 20,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -4231,8 +4130,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 22,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -4747,8 +4646,8 @@
         "right": 882,
         "top": 56
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "legacy_text_only_without_interaction_evidence",
+      "retained_as_structure_only": true,
       "row_index": 0,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -4850,8 +4749,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 2,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -4910,8 +4809,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 3,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -5013,8 +4912,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 5,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -5632,8 +5531,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 19,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -5692,8 +5591,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 20,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -5795,8 +5694,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 22,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -6311,8 +6210,8 @@
         "right": 882,
         "top": 56
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "legacy_text_only_without_interaction_evidence",
+      "retained_as_structure_only": true,
       "row_index": 0,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -6414,8 +6313,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 2,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -6474,8 +6373,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 3,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -6577,8 +6476,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 5,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -7196,8 +7095,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 19,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -7256,8 +7155,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 20,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -7359,8 +7258,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 22,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -7875,8 +7774,8 @@
         "right": 882,
         "top": 56
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "legacy_text_only_without_interaction_evidence",
+      "retained_as_structure_only": true,
       "row_index": 0,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -7978,8 +7877,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 2,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -8038,8 +7937,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 3,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -8141,8 +8040,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 5,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -8760,8 +8659,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 19,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -8820,8 +8719,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 20,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -8923,8 +8822,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 22,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -9439,8 +9338,8 @@
         "right": 882,
         "top": 56
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "legacy_text_only_without_interaction_evidence",
+      "retained_as_structure_only": true,
       "row_index": 0,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -9542,8 +9441,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 2,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -9602,8 +9501,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 3,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -9705,8 +9604,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 5,
       "source_scope": "main_window",
       "state_id": "no_project",
@@ -10324,8 +10223,8 @@
         "right": 882,
         "top": 111
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 19,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -10384,8 +10283,8 @@
         "right": 882,
         "top": 139
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 20,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
@@ -10487,8 +10386,8 @@
         "right": 882,
         "top": 201
       },
-      "rejection_reason": null,
-      "retained_as_structure_only": false,
+      "rejection_reason": "placeholder_without_state_change",
+      "retained_as_structure_only": true,
       "row_index": 22,
       "source_scope": "global_process_scan",
       "state_id": "no_project",
