@@ -25,6 +25,7 @@ from winwatt_automation.live_ui.app_connector import (
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
     get_cached_main_window,
+    get_last_focus_guard_diagnostic,
     prepare_main_window_for_menu_interaction,
 )
 from winwatt_automation.live_ui.project_open_accelerator import (
@@ -147,6 +148,12 @@ def run_smoke(
     focus_guard_reason = None
     focus_guard_cached_identity = None
     focus_guard_refreshed_identity = None
+    focus_guard_relaxed_pass = False
+    relaxed_pass_reason = None
+    identity_match = None
+    refreshed_exists = None
+    refreshed_visible = None
+    refreshed_enabled = None
     key_send_attempted = False
     accelerator_info = {"project_open_method": accelerator_mode, "sequence": []}
     detection = {"dialog_detected": False, "dialog": None, "candidate_count": 0}
@@ -161,6 +168,15 @@ def run_smoke(
             allow_dialog=True,
             allow_stale_wrapper_refresh=allow_stale_wrapper_refresh,
         )
+        focus_guard_diagnostic = get_last_focus_guard_diagnostic()
+        focus_guard_cached_identity = focus_guard_diagnostic.get("cached_identity")
+        focus_guard_refreshed_identity = focus_guard_diagnostic.get("refreshed_identity")
+        focus_guard_relaxed_pass = bool(focus_guard_diagnostic.get("focus_guard_relaxed_pass"))
+        relaxed_pass_reason = focus_guard_diagnostic.get("relaxed_pass_reason")
+        identity_match = focus_guard_diagnostic.get("identity_match")
+        refreshed_exists = focus_guard_diagnostic.get("refreshed_exists")
+        refreshed_visible = focus_guard_diagnostic.get("refreshed_visible")
+        refreshed_enabled = focus_guard_diagnostic.get("refreshed_enabled")
 
         main_window = get_cached_main_window()
         process_id = _safe_call(main_window, "process_id", None)
@@ -183,6 +199,12 @@ def run_smoke(
         focus_guard_reason = str(exc)
         focus_guard_cached_identity = diagnostic.get("cached_identity")
         focus_guard_refreshed_identity = refresh_diagnostic.get("refreshed_identity") or diagnostic.get("refreshed_identity")
+        focus_guard_relaxed_pass = bool(refresh_diagnostic.get("focus_guard_relaxed_pass"))
+        relaxed_pass_reason = refresh_diagnostic.get("relaxed_pass_reason")
+        identity_match = refresh_diagnostic.get("identity_match")
+        refreshed_exists = refresh_diagnostic.get("refreshed_exists")
+        refreshed_visible = refresh_diagnostic.get("refreshed_visible")
+        refreshed_enabled = refresh_diagnostic.get("refreshed_enabled")
         foreground_after = describe_foreground_window()
     else:
         elapsed_s = round(time.monotonic() - started_monotonic, 3)
@@ -198,6 +220,12 @@ def run_smoke(
         "focus_guard_reason": focus_guard_reason,
         "cached_identity": focus_guard_cached_identity,
         "refreshed_identity": focus_guard_refreshed_identity,
+        "focus_guard_relaxed_pass": focus_guard_relaxed_pass,
+        "relaxed_pass_reason": relaxed_pass_reason,
+        "identity_match": identity_match,
+        "refreshed_exists": refreshed_exists,
+        "refreshed_visible": refreshed_visible,
+        "refreshed_enabled": refreshed_enabled,
         "key_send_attempted": key_send_attempted,
         "foreground_before": foreground_before,
         "foreground_after": foreground_after,
@@ -225,7 +253,10 @@ def run_smoke(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Smoke diagnostic for the configured WinWatt project-open accelerator path")
+    parser = argparse.ArgumentParser(
+        description="Smoke diagnostic for the configured WinWatt project-open accelerator path",
+        allow_abbrev=False,
+    )
     parser.add_argument("--timeout", type=float, default=5.0, help="How long to wait for the dialog after sending the configured accelerator")
     parser.add_argument("--step-delay", type=float, default=0.15, help="Delay between accelerator key steps when the mode uses multiple keypresses")
     parser.add_argument("--accelerator-mode", default=PROJECT_OPEN_ACCELERATOR_MODE, choices=["alt_f_p", "ctrl_o"], help="Project-open accelerator mode to send")
