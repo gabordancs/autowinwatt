@@ -3,26 +3,26 @@
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Adatbázis...",
+    "Eszközök",
     "Beállítások",
     "Ablak",
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "TMainForm",
-    "handle": 7409214,
-    "process_id": 13516,
-    "title": "WinWatt gólya"
+    "class_name": "Chrome_WidgetWin_1",
+    "handle": 328890,
+    "process_id": 35256,
+    "title": "gui_helpers.py - autowinwatt - Visual Studio Code"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
-  "main_window_title": "WinWatt gólya",
+  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "process_id": 13516,
+  "process_id": 13776,
   "state_id": "no_project",
-  "timestamp": "2026-03-21T20:35:59.566299+00:00",
+  "timestamp": "2026-03-21T21:21:26.436162+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -43,6 +43,12 @@
       "title": "Winwatt - hekkelések - Menüfeltérképezés hiba - Google Chrome"
     },
     {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 13776,
+      "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
@@ -53,12 +59,6 @@
       "handle": null,
       "process_id": 34912,
       "title": "Képmetsző"
-    },
-    {
-      "class_name": "TMainForm",
-      "handle": null,
-      "process_id": 13516,
-      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",

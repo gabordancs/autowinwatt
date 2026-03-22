@@ -1,5 +1,37 @@
 [
   {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Fájl",
+      "Végrehajtás"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Fájl",
+      "[unlabeled row 2]"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
     "action_state_classification": "recent_project_entry",
     "action_type": "functional_action",
     "changes_menu_state": false,
@@ -9,63 +41,140 @@
     "opens_submenu": false,
     "path": [
       "Fájl",
+      "[unlabeled row 14]"
+    ],
+    "retry_on_next_pass": true,
+    "skip_reason": "recent_project_blocked_by_policy",
+    "traversal_depth": 1,
+    "treat_as_navigation": true
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Jegyzékek",
       "[unlabeled row 5]"
     ],
-    "retry_on_next_pass": true,
-    "skip_reason": "recent_project_blocked_by_policy",
+    "retry_on_next_pass": false,
     "traversal_depth": 1,
-    "treat_as_navigation": true
+    "treat_as_navigation": false
   },
   {
-    "action_state_classification": "recent_project_entry",
-    "action_type": "functional_action",
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
     "changes_menu_state": false,
-    "expand_children": true,
+    "expand_children": false,
     "opens_modal": false,
     "opens_project_and_changes_runtime_state": false,
     "opens_submenu": false,
     "path": [
-      "Fájl",
-      "[unlabeled row 19]"
-    ],
-    "retry_on_next_pass": true,
-    "skip_reason": "recent_project_blocked_by_policy",
-    "traversal_depth": 1,
-    "treat_as_navigation": true
-  },
-  {
-    "action_state_classification": "recent_project_entry",
-    "action_type": "functional_action",
-    "changes_menu_state": false,
-    "expand_children": true,
-    "opens_modal": false,
-    "opens_project_and_changes_runtime_state": false,
-    "opens_submenu": false,
-    "path": [
-      "Fájl",
+      "Jegyzékek",
       "[unlabeled row 20]"
     ],
-    "retry_on_next_pass": true,
-    "skip_reason": "recent_project_blocked_by_policy",
+    "retry_on_next_pass": false,
     "traversal_depth": 1,
-    "treat_as_navigation": true
+    "treat_as_navigation": false
   },
   {
-    "action_state_classification": "recent_project_entry",
-    "action_type": "functional_action",
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
     "changes_menu_state": false,
-    "expand_children": true,
+    "expand_children": false,
     "opens_modal": false,
     "opens_project_and_changes_runtime_state": false,
     "opens_submenu": false,
     "path": [
-      "Fájl",
-      "[unlabeled row 22]"
+      "Beállítások",
+      "Végrehajtás"
     ],
-    "retry_on_next_pass": true,
-    "skip_reason": "recent_project_blocked_by_policy",
+    "retry_on_next_pass": false,
     "traversal_depth": 1,
-    "treat_as_navigation": true
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Beállítások",
+      "[unlabeled row 2]"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Beállítások",
+      "[unlabeled row 14]"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Ablak",
+      "Végrehajtás"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Ablak",
+      "[unlabeled row 2]"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Ablak",
+      "[unlabeled row 14]"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
   },
   {
     "action_state_classification": "executes_command",
@@ -93,27 +202,26 @@
     "opens_submenu": false,
     "path": [
       "Súgó",
-      "[unlabeled row 2]",
-      "‎Pályázati dokumentumok 0319"
+      "[unlabeled row 2]"
     ],
     "retry_on_next_pass": false,
-    "traversal_depth": 2,
+    "traversal_depth": 1,
     "treat_as_navigation": false
   },
   {
-    "action_state_classification": "opens_submenu",
-    "action_type": "functional_action",
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
     "changes_menu_state": false,
-    "expand_children": true,
+    "expand_children": false,
     "opens_modal": false,
     "opens_project_and_changes_runtime_state": false,
-    "opens_submenu": true,
+    "opens_submenu": false,
     "path": [
       "Súgó",
-      "[unlabeled row 2]"
+      "[unlabeled row 14]"
     ],
-    "retry_on_next_pass": true,
+    "retry_on_next_pass": false,
     "traversal_depth": 1,
-    "treat_as_navigation": true
+    "treat_as_navigation": false
   }
 ]

@@ -80,10 +80,494 @@
       "retry_on_next_pass": false,
       "traversal_depth": 1,
       "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Beállítások",
+        "[unlabeled row 2]"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Beállítások",
+        "[unlabeled row 14]"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Ablak",
+        "[unlabeled row 2]"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Ablak",
+        "[unlabeled row 14]"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Súgó",
+        "[unlabeled row 2]"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
+    },
+    {
+      "action_state_classification": "executes_command",
+      "action_type": "no_effect",
+      "changes_menu_state": false,
+      "expand_children": false,
+      "opens_modal": false,
+      "opens_project_and_changes_runtime_state": false,
+      "opens_submenu": false,
+      "path": [
+        "Súgó",
+        "[unlabeled row 14]"
+      ],
+      "retry_on_next_pass": false,
+      "traversal_depth": 1,
+      "treat_as_navigation": false
     }
   ],
   "action_discovery_report": {
     "top_menus": {
+      "Ablak": [
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "[unlabeled row 2]"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Megnyitás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "[unlabeled row 14]"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Megnyitás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Ablak",
+            "Végrehajtás"
+          ]
+        }
+      ],
+      "Beállítások": [
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "[unlabeled row 2]"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Megnyitás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "[unlabeled row 14]"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Megnyitás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Beállítások",
+            "Végrehajtás"
+          ]
+        }
+      ],
       "Fájl": [
         {
           "action_type": "unknown",
@@ -462,6 +946,176 @@
           "action_type": "unknown",
           "menu_path": [
             "Jegyzékek",
+            "Végrehajtás"
+          ]
+        }
+      ],
+      "Súgó": [
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "[unlabeled row 2]"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Megnyitás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "[unlabeled row 14]"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Megnyitás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
+            "Végrehajtás"
+          ]
+        },
+        {
+          "action_type": "unknown",
+          "menu_path": [
+            "Súgó",
             "Végrehajtás"
           ]
         }
@@ -2900,6 +3554,3204 @@
       "text": "Végrehajtás",
       "text_confidence": "medium",
       "top_menu": "Jegyzékek"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 70,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 84,
+        "left": 4,
+        "right": 290,
+        "top": 56
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 0,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 98,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 112,
+        "left": 4,
+        "right": 290,
+        "top": 84
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 1,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 125,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "[unlabeled row 2]"
+      ],
+      "meta": {
+        "click_point": {
+          "x": 147,
+          "y": 125
+        },
+        "click_strategy": "center_point_fallback",
+        "id": "__geom_row_002",
+        "popup_block_classification": "normal_popup",
+        "popup_reason": "below_topbar_band",
+        "raw_text_sources": [],
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "rectangle": {
+          "bottom": 139,
+          "left": 4,
+          "right": 290,
+          "top": 111
+        },
+        "row_index": 2,
+        "source": "geometry_placeholder",
+        "source_scope": "main_window",
+        "stateful_menu_block": false,
+        "text_confidence": "none",
+        "text_was_empty": true
+      },
+      "normalized_text": "[unlabeled row 2]",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 290,
+        "top": 111
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 2,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "[unlabeled row 2]",
+      "text_confidence": "none",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 153,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 290,
+        "top": 139
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 3,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 180,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 4,
+        "right": 290,
+        "top": 166
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 4,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 208,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 222,
+        "left": 4,
+        "right": 290,
+        "top": 194
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 5,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 235,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 249,
+        "left": 4,
+        "right": 290,
+        "top": 221
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 6,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 263,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 277,
+        "left": 4,
+        "right": 290,
+        "top": 249
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 7,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 298,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Megnyitás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "megnyitás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 4,
+        "right": 290,
+        "top": 284
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 8,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Megnyitás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 325,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 339,
+        "left": 4,
+        "right": 290,
+        "top": 311
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 9,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 353,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 367,
+        "left": 4,
+        "right": 290,
+        "top": 339
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 10,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 388,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 4,
+        "right": 290,
+        "top": 374
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 11,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 70,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 84,
+        "left": 4,
+        "right": 290,
+        "top": 56
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 12,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 98,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 112,
+        "left": 4,
+        "right": 290,
+        "top": 84
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 13,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 125,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "[unlabeled row 14]"
+      ],
+      "meta": {
+        "click_point": {
+          "x": 147,
+          "y": 125
+        },
+        "click_strategy": "center_point_fallback",
+        "id": "__geom_row_014",
+        "popup_block_classification": "normal_popup",
+        "popup_reason": "below_topbar_band",
+        "raw_text_sources": [],
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "rectangle": {
+          "bottom": 139,
+          "left": 4,
+          "right": 290,
+          "top": 111
+        },
+        "row_index": 14,
+        "source": "geometry_placeholder",
+        "source_scope": "global_process_scan",
+        "stateful_menu_block": false,
+        "text_confidence": "none",
+        "text_was_empty": true
+      },
+      "normalized_text": "[unlabeled row 14]",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 290,
+        "top": 111
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 14,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "[unlabeled row 14]",
+      "text_confidence": "none",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 153,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 290,
+        "top": 139
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 15,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 180,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 4,
+        "right": 290,
+        "top": 166
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 16,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 208,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 222,
+        "left": 4,
+        "right": 290,
+        "top": 194
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 17,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 235,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 249,
+        "left": 4,
+        "right": 290,
+        "top": 221
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 18,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 263,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 277,
+        "left": 4,
+        "right": 290,
+        "top": 249
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 19,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 298,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Megnyitás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "megnyitás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 4,
+        "right": 290,
+        "top": 284
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 20,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Megnyitás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 325,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 339,
+        "left": 4,
+        "right": 290,
+        "top": 311
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 21,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 353,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 367,
+        "left": 4,
+        "right": 290,
+        "top": 339
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 22,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 388,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Beállítások",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 4,
+        "right": 290,
+        "top": 374
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 23,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Beállítások"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 70,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 84,
+        "left": 4,
+        "right": 290,
+        "top": 56
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 0,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 98,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 112,
+        "left": 4,
+        "right": 290,
+        "top": 84
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 1,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 125,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "[unlabeled row 2]"
+      ],
+      "meta": {
+        "click_point": {
+          "x": 147,
+          "y": 125
+        },
+        "click_strategy": "center_point_fallback",
+        "id": "__geom_row_002",
+        "popup_block_classification": "normal_popup",
+        "popup_reason": "below_topbar_band",
+        "raw_text_sources": [],
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "rectangle": {
+          "bottom": 139,
+          "left": 4,
+          "right": 290,
+          "top": 111
+        },
+        "row_index": 2,
+        "source": "geometry_placeholder",
+        "source_scope": "main_window",
+        "stateful_menu_block": false,
+        "text_confidence": "none",
+        "text_was_empty": true
+      },
+      "normalized_text": "[unlabeled row 2]",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 290,
+        "top": 111
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 2,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "[unlabeled row 2]",
+      "text_confidence": "none",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 153,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 290,
+        "top": 139
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 3,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 180,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 4,
+        "right": 290,
+        "top": 166
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 4,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 208,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 222,
+        "left": 4,
+        "right": 290,
+        "top": 194
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 5,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 235,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 249,
+        "left": 4,
+        "right": 290,
+        "top": 221
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 6,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 263,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 277,
+        "left": 4,
+        "right": 290,
+        "top": 249
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 7,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 298,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Megnyitás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "megnyitás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 4,
+        "right": 290,
+        "top": 284
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 8,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Megnyitás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 325,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 339,
+        "left": 4,
+        "right": 290,
+        "top": 311
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 9,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 353,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 367,
+        "left": 4,
+        "right": 290,
+        "top": 339
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 10,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 388,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 4,
+        "right": 290,
+        "top": 374
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 11,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 70,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 84,
+        "left": 4,
+        "right": 290,
+        "top": 56
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 12,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 98,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 112,
+        "left": 4,
+        "right": 290,
+        "top": 84
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 13,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 125,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "[unlabeled row 14]"
+      ],
+      "meta": {
+        "click_point": {
+          "x": 147,
+          "y": 125
+        },
+        "click_strategy": "center_point_fallback",
+        "id": "__geom_row_014",
+        "popup_block_classification": "normal_popup",
+        "popup_reason": "below_topbar_band",
+        "raw_text_sources": [],
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "rectangle": {
+          "bottom": 139,
+          "left": 4,
+          "right": 290,
+          "top": 111
+        },
+        "row_index": 14,
+        "source": "geometry_placeholder",
+        "source_scope": "global_process_scan",
+        "stateful_menu_block": false,
+        "text_confidence": "none",
+        "text_was_empty": true
+      },
+      "normalized_text": "[unlabeled row 14]",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 290,
+        "top": 111
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 14,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "[unlabeled row 14]",
+      "text_confidence": "none",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 153,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 290,
+        "top": 139
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 15,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 180,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 4,
+        "right": 290,
+        "top": 166
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 16,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 208,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 222,
+        "left": 4,
+        "right": 290,
+        "top": 194
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 17,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 235,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 249,
+        "left": 4,
+        "right": 290,
+        "top": 221
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 18,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 263,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 277,
+        "left": 4,
+        "right": 290,
+        "top": 249
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 19,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 298,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Megnyitás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "megnyitás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 4,
+        "right": 290,
+        "top": 284
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 20,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Megnyitás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 325,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 339,
+        "left": 4,
+        "right": 290,
+        "top": 311
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 21,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 353,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 367,
+        "left": 4,
+        "right": 290,
+        "top": 339
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 22,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 388,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Ablak",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 4,
+        "right": 290,
+        "top": 374
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 23,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Ablak"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 70,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 84,
+        "left": 4,
+        "right": 290,
+        "top": 56
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 0,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 98,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 112,
+        "left": 4,
+        "right": 290,
+        "top": 84
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 1,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 125,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "[unlabeled row 2]"
+      ],
+      "meta": {
+        "click_point": {
+          "x": 147,
+          "y": 125
+        },
+        "click_strategy": "center_point_fallback",
+        "id": "__geom_row_002",
+        "popup_block_classification": "normal_popup",
+        "popup_reason": "below_topbar_band",
+        "raw_text_sources": [],
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "rectangle": {
+          "bottom": 139,
+          "left": 4,
+          "right": 290,
+          "top": 111
+        },
+        "row_index": 2,
+        "source": "geometry_placeholder",
+        "source_scope": "main_window",
+        "stateful_menu_block": false,
+        "text_confidence": "none",
+        "text_was_empty": true
+      },
+      "normalized_text": "[unlabeled row 2]",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 290,
+        "top": 111
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 2,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "[unlabeled row 2]",
+      "text_confidence": "none",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 153,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 290,
+        "top": 139
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 3,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 180,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 4,
+        "right": 290,
+        "top": 166
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 4,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 208,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 222,
+        "left": 4,
+        "right": 290,
+        "top": 194
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 5,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 235,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 249,
+        "left": 4,
+        "right": 290,
+        "top": 221
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 6,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 263,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 277,
+        "left": 4,
+        "right": 290,
+        "top": 249
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 7,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 298,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Megnyitás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "megnyitás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 4,
+        "right": 290,
+        "top": 284
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 8,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Megnyitás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 325,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 339,
+        "left": 4,
+        "right": 290,
+        "top": 311
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 9,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 353,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 367,
+        "left": 4,
+        "right": 290,
+        "top": 339
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 10,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 388,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 4,
+        "right": 290,
+        "top": 374
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 11,
+      "source_scope": "main_window",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 70,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 84,
+        "left": 4,
+        "right": 290,
+        "top": 56
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 12,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 98,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 112,
+        "left": 4,
+        "right": 290,
+        "top": 84
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 13,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 125,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "[unlabeled row 14]"
+      ],
+      "meta": {
+        "click_point": {
+          "x": 147,
+          "y": 125
+        },
+        "click_strategy": "center_point_fallback",
+        "id": "__geom_row_014",
+        "popup_block_classification": "normal_popup",
+        "popup_reason": "below_topbar_band",
+        "raw_text_sources": [],
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "rectangle": {
+          "bottom": 139,
+          "left": 4,
+          "right": 290,
+          "top": 111
+        },
+        "row_index": 14,
+        "source": "geometry_placeholder",
+        "source_scope": "global_process_scan",
+        "stateful_menu_block": false,
+        "text_confidence": "none",
+        "text_was_empty": true
+      },
+      "normalized_text": "[unlabeled row 14]",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 290,
+        "top": 111
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 14,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "[unlabeled row 14]",
+      "text_confidence": "none",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 153,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 290,
+        "top": 139
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 15,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 180,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 194,
+        "left": 4,
+        "right": 290,
+        "top": 166
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 16,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 208,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 222,
+        "left": 4,
+        "right": 290,
+        "top": 194
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 17,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 235,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 249,
+        "left": 4,
+        "right": 290,
+        "top": 221
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 18,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 263,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 277,
+        "left": 4,
+        "right": 290,
+        "top": 249
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 19,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 298,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Megnyitás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "megnyitás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 312,
+        "left": 4,
+        "right": 290,
+        "top": 284
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 20,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Megnyitás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 325,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 339,
+        "left": 4,
+        "right": 290,
+        "top": 311
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 21,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 353,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 367,
+        "left": 4,
+        "right": 290,
+        "top": 339
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 22,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
+    },
+    {
+      "action_type": "unknown",
+      "actionable": true,
+      "admission_reason": null,
+      "admitted_to_action_catalog": false,
+      "center_x": 147,
+      "center_y": 388,
+      "discovered_in_state": "project_open",
+      "dispatch_type": "click",
+      "enabled_guess": true,
+      "fragments": [],
+      "is_separator": false,
+      "menu_path": [
+        "Súgó",
+        "Végrehajtás"
+      ],
+      "meta": {
+        "popup_block_classification": "normal_popup",
+        "recent_project_entry": false,
+        "recent_projects_block": false,
+        "stateful_menu_block": false
+      },
+      "normalized_text": "végrehajtás",
+      "raw_text_sources": [
+        "legacy_text"
+      ],
+      "recent_project_entry": false,
+      "rectangle": {
+        "bottom": 402,
+        "left": 4,
+        "right": 290,
+        "top": 374
+      },
+      "rejection_reason": null,
+      "retained_as_structure_only": false,
+      "row_index": 23,
+      "source_scope": "global_process_scan",
+      "state_id": "project_open",
+      "stateful_menu_block": false,
+      "text": "Végrehajtás",
+      "text_confidence": "medium",
+      "top_menu": "Súgó"
     }
   ]
 }

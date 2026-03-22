@@ -219,22 +219,331 @@
     "window_title": null
   },
   {
-    "action_key": "Beállítások",
-    "attempted": false,
+    "action_key": "Beállítások > Végrehajtás",
+    "attempted": true,
     "dialog_class": null,
     "dialog_title": null,
-    "error_text": "focus_not_restored: main window no longer exists before action=click_top_menu_item:Beállítások",
-    "event_details": {},
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
     "menu_path": [
-      "Beállítások"
+      "Beállítások",
+      "Végrehajtás"
     ],
-    "notes": null,
+    "notes": "mapped_only",
     "process_id": null,
-    "result_type": "failed_focus",
-    "row_index": -1,
-    "safety_level": "caution",
+    "result_type": "no_observable_effect",
+    "row_index": 0,
+    "safety_level": "safe",
     "state_id": "project_open",
     "top_menu": "Beállítások",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Beállítások > [unlabeled row 2]",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "placeholder_outcome": "no_observable_effect",
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Beállítások",
+      "[unlabeled row 2]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 2,
+    "safety_level": "safe",
+    "state_id": "project_open",
+    "top_menu": "Beállítások",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Beállítások > Megnyitás",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Beállítások",
+      "Megnyitás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 8,
+    "safety_level": "safe",
+    "state_id": "project_open",
+    "top_menu": "Beállítások",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Beállítások > [unlabeled row 14]",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "placeholder_outcome": "no_observable_effect",
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Beállítások",
+      "[unlabeled row 14]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 14,
+    "safety_level": "safe",
+    "state_id": "project_open",
+    "top_menu": "Beállítások",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Ablak > Végrehajtás",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Ablak",
+      "Végrehajtás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 0,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Ablak",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Ablak > [unlabeled row 2]",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "placeholder_outcome": "no_observable_effect",
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Ablak",
+      "[unlabeled row 2]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 2,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Ablak",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Ablak > Megnyitás",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Ablak",
+      "Megnyitás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 8,
+    "safety_level": "safe",
+    "state_id": "project_open",
+    "top_menu": "Ablak",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Ablak > [unlabeled row 14]",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "placeholder_outcome": "no_observable_effect",
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Ablak",
+      "[unlabeled row 14]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 14,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Ablak",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Súgó > Végrehajtás",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 0,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Súgó",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Súgó > [unlabeled row 2]",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "placeholder_outcome": "no_observable_effect",
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 2]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 2,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Súgó",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Súgó > Megnyitás",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Súgó",
+      "Megnyitás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 8,
+    "safety_level": "safe",
+    "state_id": "project_open",
+    "top_menu": "Súgó",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Súgó > [unlabeled row 14]",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "placeholder_outcome": "no_observable_effect",
+      "recent_project_candidate": false,
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 14]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 14,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Súgó",
     "top_menu_click_count": null,
     "window_class": null,
     "window_title": null

@@ -1,26 +1,26 @@
 {
-  "run_id": "0089_1_2026-03-21_20-35-52",
+  "run_id": "0090_1_2026-03-21_21-21-20",
   "state": "finished",
   "message": "Mapping finished successfully.",
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1",
   "details": {
     "exit_code": 0,
     "summary": {
-      "no_project_top_menus": 6,
+      "no_project_top_menus": 5,
       "project_open_top_menus": 5,
       "diff_summary": {
         "shared_top_menus": 5,
-        "actions_only_in_a": 38,
-        "actions_only_in_b": 4,
+        "actions_only_in_a": 0,
+        "actions_only_in_b": 0,
         "enabled_changes": 0,
-        "project_only_paths": 3
+        "project_only_paths": 0
       },
-      "skipped_by_safety": 6,
+      "skipped_by_safety": 2,
       "last_error": null,
       "modal_detected": false,
       "recovery_attempted": true,
       "recovery_success": true
     }
   },
-  "updated_at": "2026-03-21T21:09:10.710502+00:00"
+  "updated_at": "2026-03-21T21:54:09.093171+00:00"
 }

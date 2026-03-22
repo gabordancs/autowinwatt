@@ -10,7 +10,7 @@
           "geometry": {
             "bottom": 84,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 56
           },
           "reused_from_previous_state": false,
@@ -46,7 +46,7 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -80,70 +80,34 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 167,
+            "bottom": 312,
             "left": 4,
-            "right": 932,
-            "top": 139
+            "right": 290,
+            "top": 284
           },
           "reused_from_previous_state": false,
           "source_scope": "main_window",
           "top_menu": "Fájl"
         },
         "enabled": true,
-        "index": 3,
+        "index": 8,
         "level": 1,
         "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 3]",
+        "likely_state_changing": false,
+        "normalized_title": "megnyitás",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
-          "[unlabeled row 3]"
+          "Megnyitás"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 3]",
-        "title_raw": "[unlabeled row 3]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "recent_project_entry",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 5,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 5]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 5]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 5]",
-        "title_raw": "[unlabeled row 5]"
+        "title": "Megnyitás",
+        "title_raw": "Megnyitás"
       },
       {
         "action_classification": "leaf_action",
@@ -154,7 +118,7 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -162,96 +126,24 @@
           "top_menu": "Fájl"
         },
         "enabled": true,
-        "index": 19,
+        "index": 14,
         "level": 1,
         "likely_destructive": false,
         "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 19]",
+        "normalized_title": "[unlabeled row 14]",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Fájl",
-          "[unlabeled row 19]"
+          "[unlabeled row 14]"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "recent_project_entry",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 20,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 20]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 20]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 20]",
-        "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "recent_project_entry",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Fájl"
-        },
-        "enabled": true,
-        "index": 22,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Fájl",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
+        "title": "[unlabeled row 14]",
+        "title_raw": "[unlabeled row 14]"
       }
     ],
     "path": [
@@ -271,10 +163,10 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 84,
-            "left": 4,
-            "right": 932,
-            "top": 56
+            "bottom": 312,
+            "left": 290,
+            "right": 488,
+            "top": 284
           },
           "reused_from_previous_state": false,
           "source_scope": "main_window",
@@ -309,80 +201,8 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Jegyzékek"
-        },
-        "enabled": true,
-        "index": 2,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 2]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Jegyzékek",
-          "[unlabeled row 2]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 2]",
-        "title_raw": "[unlabeled row 2]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Jegyzékek"
-        },
-        "enabled": true,
-        "index": 3,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 3]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Jegyzékek",
-          "[unlabeled row 3]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 3]",
-        "title_raw": "[unlabeled row 3]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
           },
           "reused_from_previous_state": false,
           "source_scope": "main_window",
@@ -415,34 +235,34 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 139,
+            "bottom": 312,
             "left": 4,
-            "right": 932,
-            "top": 111
+            "right": 290,
+            "top": 284
           },
           "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
+          "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
         "enabled": true,
-        "index": 19,
+        "index": 11,
         "level": 1,
-        "likely_destructive": false,
+        "likely_destructive": true,
         "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 19]",
+        "normalized_title": "bezárás",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Jegyzékek",
-          "[unlabeled row 19]"
+          "Bezárás"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
+        "title": "Bezárás",
+        "title_raw": "Bezárás"
       },
       {
         "action_classification": "leaf_action",
@@ -451,10 +271,10 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 167,
+            "bottom": 139,
             "left": 4,
-            "right": 932,
-            "top": 139
+            "right": 290,
+            "top": 111
           },
           "reused_from_previous_state": false,
           "source_scope": "global_process_scan",
@@ -479,42 +299,6 @@
         "state_id": "no_project",
         "title": "[unlabeled row 20]",
         "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Jegyzékek"
-        },
-        "enabled": true,
-        "index": 22,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Jegyzékek",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
       }
     ],
     "path": [
@@ -536,270 +320,7 @@
           "geometry": {
             "bottom": 84,
             "left": 4,
-            "right": 932,
-            "top": 56
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 0,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "végrehajtás",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "Végrehajtás"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "Végrehajtás",
-        "title_raw": "Végrehajtás"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 139,
-            "left": 4,
-            "right": 932,
-            "top": 111
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 2,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 2]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "[unlabeled row 2]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 2]",
-        "title_raw": "[unlabeled row 2]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 3,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 3]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "[unlabeled row 3]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 3]",
-        "title_raw": "[unlabeled row 3]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 5,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 5]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "[unlabeled row 5]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 5]",
-        "title_raw": "[unlabeled row 5]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 139,
-            "left": 4,
-            "right": 932,
-            "top": 111
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 19,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 19]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "[unlabeled row 19]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 20,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 20]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "[unlabeled row 20]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 20]",
-        "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Adatbázis..."
-        },
-        "enabled": true,
-        "index": 22,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Adatbázis",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
-      }
-    ],
-    "path": [
-      "Adatbázis"
-    ],
-    "state_id": "no_project",
-    "title": "Adatbázis",
-    "title_normalized": "adatbázis",
-    "title_raw": "Adatbázis..."
-  },
-  {
-    "children": [
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 84,
-            "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 56
           },
           "reused_from_previous_state": false,
@@ -835,7 +356,7 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -869,70 +390,34 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 167,
+            "bottom": 312,
             "left": 4,
-            "right": 932,
-            "top": 139
+            "right": 290,
+            "top": 284
           },
           "reused_from_previous_state": false,
           "source_scope": "main_window",
           "top_menu": "Beállítások"
         },
         "enabled": true,
-        "index": 3,
+        "index": 8,
         "level": 1,
         "likely_destructive": false,
         "likely_state_changing": false,
-        "normalized_title": "[unlabeled row 3]",
+        "normalized_title": "megnyitás",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Beállítások",
-          "[unlabeled row 3]"
+          "Megnyitás"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 3]",
-        "title_raw": "[unlabeled row 3]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Beállítások"
-        },
-        "enabled": true,
-        "index": 5,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": false,
-        "normalized_title": "[unlabeled row 5]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Beállítások",
-          "[unlabeled row 5]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 5]",
-        "title_raw": "[unlabeled row 5]"
+        "title": "Megnyitás",
+        "title_raw": "Megnyitás"
       },
       {
         "action_classification": "leaf_action",
@@ -943,7 +428,7 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -951,96 +436,24 @@
           "top_menu": "Beállítások"
         },
         "enabled": true,
-        "index": 19,
+        "index": 14,
         "level": 1,
         "likely_destructive": false,
         "likely_state_changing": false,
-        "normalized_title": "[unlabeled row 19]",
+        "normalized_title": "[unlabeled row 14]",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Beállítások",
-          "[unlabeled row 19]"
+          "[unlabeled row 14]"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Beállítások"
-        },
-        "enabled": true,
-        "index": 20,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": false,
-        "normalized_title": "[unlabeled row 20]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Beállítások",
-          "[unlabeled row 20]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 20]",
-        "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Beállítások"
-        },
-        "enabled": true,
-        "index": 22,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": false,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Beállítások",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
+        "title": "[unlabeled row 14]",
+        "title_raw": "[unlabeled row 14]"
       }
     ],
     "path": [
@@ -1062,7 +475,7 @@
           "geometry": {
             "bottom": 84,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 56
           },
           "reused_from_previous_state": false,
@@ -1098,7 +511,7 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -1132,70 +545,34 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 167,
+            "bottom": 312,
             "left": 4,
-            "right": 932,
-            "top": 139
+            "right": 290,
+            "top": 284
           },
           "reused_from_previous_state": false,
           "source_scope": "main_window",
           "top_menu": "Ablak"
         },
         "enabled": true,
-        "index": 3,
+        "index": 8,
         "level": 1,
         "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 3]",
+        "likely_state_changing": false,
+        "normalized_title": "megnyitás",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Ablak",
-          "[unlabeled row 3]"
+          "Megnyitás"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 3]",
-        "title_raw": "[unlabeled row 3]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Ablak"
-        },
-        "enabled": true,
-        "index": 5,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 5]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Ablak",
-          "[unlabeled row 5]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 5]",
-        "title_raw": "[unlabeled row 5]"
+        "title": "Megnyitás",
+        "title_raw": "Megnyitás"
       },
       {
         "action_classification": "leaf_action",
@@ -1206,7 +583,7 @@
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -1214,96 +591,24 @@
           "top_menu": "Ablak"
         },
         "enabled": true,
-        "index": 19,
+        "index": 14,
         "level": 1,
         "likely_destructive": false,
         "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 19]",
+        "normalized_title": "[unlabeled row 14]",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Ablak",
-          "[unlabeled row 19]"
+          "[unlabeled row 14]"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 167,
-            "left": 4,
-            "right": 932,
-            "top": 139
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Ablak"
-        },
-        "enabled": true,
-        "index": 20,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 20]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Ablak",
-          "[unlabeled row 20]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 20]",
-        "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 229,
-            "left": 4,
-            "right": 932,
-            "top": 201
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Ablak"
-        },
-        "enabled": true,
-        "index": 22,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Ablak",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
+        "title": "[unlabeled row 14]",
+        "title_raw": "[unlabeled row 14]"
       }
     ],
     "path": [
@@ -1325,7 +630,7 @@
           "geometry": {
             "bottom": 84,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 56
           },
           "reused_from_previous_state": false,
@@ -1353,53 +658,15 @@
         "title_raw": "Végrehajtás"
       },
       {
-        "action_classification": "opens_submenu",
-        "action_state_classification": "opens_submenu",
-        "children": [
-          {
-            "action_classification": "leaf_action",
-            "action_state_classification": "executes_command",
-            "children": [],
-            "debug": {
-              "fragments": [],
-              "geometry": {
-                "bottom": 214,
-                "left": 1030,
-                "right": 1243,
-                "top": 173
-              },
-              "reused_from_previous_state": false,
-              "source_scope": "global_process_scan",
-              "top_menu": "Súgó"
-            },
-            "enabled": true,
-            "index": 0,
-            "level": 2,
-            "likely_destructive": false,
-            "likely_state_changing": true,
-            "normalized_title": "‎pályázati dokumentumok 0319",
-            "opens_dialog": false,
-            "opens_modal": false,
-            "opens_submenu": false,
-            "path": [
-              "Súgó",
-              "[unlabeled row 2]",
-              "‎Pályázati dokumentumok 0319"
-            ],
-            "separator": false,
-            "shortcut": null,
-            "skipped_by_safety": false,
-            "state_id": "no_project",
-            "title": "‎Pályázati dokumentumok 0319",
-            "title_raw": "‎Pályázati dokumentumok 0319"
-          }
-        ],
+        "action_classification": "leaf_action",
+        "action_state_classification": "executes_command",
+        "children": [],
         "debug": {
           "fragments": [],
           "geometry": {
             "bottom": 139,
             "left": 4,
-            "right": 932,
+            "right": 290,
             "top": 111
           },
           "reused_from_previous_state": false,
@@ -1414,7 +681,7 @@
         "normalized_title": "[unlabeled row 2]",
         "opens_dialog": false,
         "opens_modal": false,
-        "opens_submenu": true,
+        "opens_submenu": false,
         "path": [
           "Súgó",
           "[unlabeled row 2]"
@@ -1433,34 +700,34 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 112,
-            "left": 345,
-            "right": 475,
-            "top": 84
+            "bottom": 312,
+            "left": 4,
+            "right": 290,
+            "top": 284
           },
           "reused_from_previous_state": false,
           "source_scope": "main_window",
           "top_menu": "Súgó"
         },
         "enabled": true,
-        "index": 1,
+        "index": 8,
         "level": 1,
         "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 3]",
+        "likely_state_changing": false,
+        "normalized_title": "megnyitás",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Súgó",
-          "[unlabeled row 3]"
+          "Megnyitás"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 3]",
-        "title_raw": "[unlabeled row 3]"
+        "title": "Megnyitás",
+        "title_raw": "Megnyitás"
       },
       {
         "action_classification": "leaf_action",
@@ -1469,142 +736,34 @@
         "debug": {
           "fragments": [],
           "geometry": {
-            "bottom": 112,
-            "left": 345,
-            "right": 475,
-            "top": 84
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Súgó"
-        },
-        "enabled": true,
-        "index": 1,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 5]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Súgó",
-          "[unlabeled row 5]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 5]",
-        "title_raw": "[unlabeled row 5]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 112,
-            "left": 345,
-            "right": 475,
-            "top": 84
+            "bottom": 139,
+            "left": 4,
+            "right": 290,
+            "top": 111
           },
           "reused_from_previous_state": false,
           "source_scope": "global_process_scan",
           "top_menu": "Súgó"
         },
         "enabled": true,
-        "index": 3,
+        "index": 14,
         "level": 1,
         "likely_destructive": false,
         "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 19]",
+        "normalized_title": "[unlabeled row 14]",
         "opens_dialog": false,
         "opens_modal": false,
         "opens_submenu": false,
         "path": [
           "Súgó",
-          "[unlabeled row 19]"
+          "[unlabeled row 14]"
         ],
         "separator": false,
         "shortcut": null,
         "skipped_by_safety": false,
         "state_id": "no_project",
-        "title": "[unlabeled row 19]",
-        "title_raw": "[unlabeled row 19]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 112,
-            "left": 345,
-            "right": 475,
-            "top": 84
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Súgó"
-        },
-        "enabled": true,
-        "index": 3,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 20]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Súgó",
-          "[unlabeled row 20]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 20]",
-        "title_raw": "[unlabeled row 20]"
-      },
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "executes_command",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 112,
-            "left": 345,
-            "right": 475,
-            "top": 84
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "global_process_scan",
-          "top_menu": "Súgó"
-        },
-        "enabled": true,
-        "index": 3,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "[unlabeled row 22]",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Súgó",
-          "[unlabeled row 22]"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "no_project",
-        "title": "[unlabeled row 22]",
-        "title_raw": "[unlabeled row 22]"
+        "title": "[unlabeled row 14]",
+        "title_raw": "[unlabeled row 14]"
       }
     ],
     "path": [
