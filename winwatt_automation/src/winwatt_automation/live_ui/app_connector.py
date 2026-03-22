@@ -59,7 +59,15 @@ class MainWindowSession:
     last_resolve_attempt_monotonic: float = 0.0
     foreground_resolve_throttle_window_s: float = 12.0
     foreground_resolve_attempt_limit: int = 2
+    last_focus_guard_diagnostic: dict[str, Any] = {}
 
+
+
+
+def get_last_focus_guard_diagnostic() -> dict[str, Any]:
+    """Return the most recent structured focus-guard diagnostic."""
+
+    return dict(MainWindowSession.last_focus_guard_diagnostic)
 
 def _safe_call(obj: Any, method_name: str, default: Any = None) -> Any:
     method = getattr(obj, method_name, None)
@@ -779,10 +787,29 @@ def _refresh_stale_main_window_if_identity_matches(
         and _rects_meaningfully_match(cached_rect_payload, refreshed_rect)
     )
     diagnostic["identity_match"] = identity_match
+    foreground = describe_foreground_window()
+    foreground_reason, foreground_match = _foreground_context_alignment(refreshed_identity, foreground, allow_dialog=False)
+    diagnostic["foreground"] = foreground
+    diagnostic["foreground_match"] = foreground_match
+    diagnostic["foreground_reason"] = foreground_reason
+    relaxed_pass = bool(identity_match and refreshed_visible and refreshed_enabled and foreground_match)
+    diagnostic["focus_guard_relaxed_pass"] = relaxed_pass
     if refreshed_exists and refreshed_visible and refreshed_enabled and identity_match:
+        diagnostic["relaxed_pass_reason"] = None
         diagnostic["reason"] = "stale_wrapper_refreshed"
+        WinWattSession.main_window = refreshed_window
+        MainWindowSession.window = refreshed_window
+        MainWindowSession.process_id = refreshed_identity.get("process_id")
+        return refreshed_window, diagnostic
+    if relaxed_pass:
+        diagnostic["relaxed_pass_reason"] = "identity_foreground_visible_enabled_match"
+        diagnostic["reason"] = "stale_wrapper_relaxed_foreground_identity_pass"
+        WinWattSession.main_window = refreshed_window
+        MainWindowSession.window = refreshed_window
+        MainWindowSession.process_id = refreshed_identity.get("process_id")
         return refreshed_window, diagnostic
 
+    diagnostic["relaxed_pass_reason"] = None
     diagnostic["reason"] = "refresh_identity_mismatch" if not identity_match else "refresh_not_ready"
     return None, diagnostic
 
@@ -1078,6 +1105,18 @@ def ensure_main_window_foreground_before_click(
 ) -> Any:
     """Ensure main window is valid and foreground before click operations."""
 
+    MainWindowSession.last_focus_guard_diagnostic = {
+        "action_label": action_label,
+        "cached_identity": None,
+        "refreshed_identity": None,
+        "focus_guard_relaxed_pass": False,
+        "relaxed_pass_reason": None,
+        "identity_match": None,
+        "refreshed_exists": None,
+        "refreshed_visible": None,
+        "refreshed_enabled": None,
+    }
+
     main_window = get_cached_main_window()
     exists = bool(_safe_call(main_window, "exists", False))
     visible = bool(_safe_call(main_window, "is_visible", False))
@@ -1117,15 +1156,32 @@ def ensure_main_window_foreground_before_click(
             enabled=enabled,
             allow_stale_wrapper_refresh=allow_stale_wrapper_refresh,
         )
+        MainWindowSession.last_focus_guard_diagnostic = {
+            "action_label": action_label,
+            "cached_identity": refresh_diagnostic.get("cached_identity"),
+            "refreshed_identity": refresh_diagnostic.get("refreshed_identity"),
+            "focus_guard_relaxed_pass": bool(refresh_diagnostic.get("focus_guard_relaxed_pass")),
+            "relaxed_pass_reason": refresh_diagnostic.get("relaxed_pass_reason"),
+            "identity_match": refresh_diagnostic.get("identity_match"),
+            "refreshed_exists": refresh_diagnostic.get("refreshed_exists"),
+            "refreshed_visible": refresh_diagnostic.get("refreshed_visible"),
+            "refreshed_enabled": refresh_diagnostic.get("refreshed_enabled"),
+            "foreground": refresh_diagnostic.get("foreground"),
+            "foreground_reason": refresh_diagnostic.get("foreground_reason"),
+            "foreground_match": refresh_diagnostic.get("foreground_match"),
+        }
         if refreshed_window is not None:
             logger.warning(
-                "DBG_WINWATT_FOCUS_GUARD_STALE_REFRESH_CONTINUE action_label={} reason={} cached_identity={} refreshed_identity={} cached_rect={} refreshed_rect={}",
+                "DBG_WINWATT_FOCUS_GUARD_STALE_REFRESH_CONTINUE action_label={} reason={} relaxed_pass={} relaxed_pass_reason={} cached_identity={} refreshed_identity={} cached_rect={} refreshed_rect={} foreground={}",
                 action_label,
                 refresh_diagnostic.get("reason"),
+                refresh_diagnostic.get("focus_guard_relaxed_pass"),
+                refresh_diagnostic.get("relaxed_pass_reason"),
                 identity,
                 refresh_diagnostic.get("refreshed_identity"),
                 rect_payload,
                 refresh_diagnostic.get("refreshed_rect"),
+                refresh_diagnostic.get("foreground"),
             )
             main_window = refreshed_window
             exists = bool(_safe_call(main_window, "exists", False))
