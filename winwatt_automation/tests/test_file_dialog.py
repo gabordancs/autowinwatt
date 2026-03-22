@@ -20,7 +20,7 @@ class _FakeControl:
         return self._enabled
 
 
-def test_trigger_open_project_dialog_from_default_state_sends_alt_f_p(monkeypatch):
+def test_trigger_open_project_dialog_from_default_state_sends_ctrl_o(monkeypatch):
     sent: list[str] = []
     import sys
     import types
@@ -38,11 +38,11 @@ def test_trigger_open_project_dialog_from_default_state_sends_alt_f_p(monkeypatc
     dialog, info = file_dialog.trigger_open_project_dialog_from_default_state(process_id=None)
 
     assert dialog == "dialog"
-    assert sent == ["%", "F", "P"]
+    assert sent == ["^o"]
     assert info["dialog_found"] is True
-    assert info["steps"] == ["ALT", "F", "P"]
-    assert info["project_open_method"] == "alt_f_p"
-    assert info["sequence"] == ["ALT", "F", "P"]
+    assert info["steps"] == ["CTRL+O"]
+    assert info["project_open_method"] == "ctrl_o"
+    assert info["sequence"] == ["CTRL+O"]
 
 
 def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypatch):
@@ -53,7 +53,7 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
         "trigger_open_project_dialog_from_default_state",
         lambda **kwargs: (
             calls.append("accelerator") or "dialog",
-            {"dialog_found": True, "method": "accelerator", "steps": ["ALT", "F", "P"], "project_open_method": "alt_f_p", "sequence": ["ALT", "F", "P"]},
+            {"dialog_found": True, "method": "accelerator", "steps": ["CTRL+O"], "project_open_method": "ctrl_o", "sequence": ["CTRL+O"]},
         ),
     )
     monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct"}))
@@ -73,8 +73,8 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
 
     assert calls == ["accelerator"]
     assert result.success is True
-    assert result.project_open_method == "alt_f_p"
-    assert result.project_open_sequence == ["ALT", "F", "P"]
+    assert result.project_open_method == "ctrl_o"
+    assert result.project_open_sequence == ["CTRL+O"]
 
 
 def test_select_best_dialog_candidate_prefers_pid_and_new_handle():
@@ -150,8 +150,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "dialog_closed": True,
         "project_state_changed": True,
         "detected_changes": ["top_menus_changed"],
-        "project_open_method": "alt_f_p",
-        "project_open_sequence": ["ALT", "F", "P"],
+        "project_open_method": "ctrl_o",
+        "project_open_sequence": ["CTRL+O"],
         "error": None,
     }
 
@@ -179,8 +179,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
     }
     assert result["success"] is True
     assert result["project_open_audit"]["project_open_attempt_started"] is True
-    assert result["project_open_audit"]["project_open_method"] == "alt_f_p"
-    assert result["project_open_audit"]["project_open_sequence"] == ["ALT", "F", "P"]
+    assert result["project_open_audit"]["project_open_method"] == "ctrl_o"
+    assert result["project_open_audit"]["project_open_sequence"] == ["CTRL+O"]
     assert result["recovery"]["success"] is True
     assert result["recovery"]["main_window_ready_after_attempt"] is True
 
