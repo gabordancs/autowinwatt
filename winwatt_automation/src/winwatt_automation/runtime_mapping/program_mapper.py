@@ -124,6 +124,56 @@ def _project_open_verdict(*, already_open_before_mapping: bool, path_match_norma
     return "unproven"
 
 
+def _record_project_open_step_events(
+    event_recorder: Callable[[str, dict[str, Any]], None] | None,
+    *,
+    project_open_result: dict[str, Any] | None,
+    project_path_verification: dict[str, Any],
+    verification_snapshot: RuntimeStateSnapshot | None,
+) -> None:
+    if not event_recorder:
+        return
+
+    audit = dict((project_open_result or {}).get("project_open_audit") or {})
+    observed_title = verification_snapshot.main_window_title if verification_snapshot else ""
+    observed_project_path = project_path_verification.get("observed_project_path")
+    path_match_normalized = bool(project_path_verification.get("path_match_normalized"))
+
+    event_recorder(
+        "open_file_dialog_detected",
+        {
+            "value": bool(audit.get("open_file_dialog_detected")),
+            "project_open_method": audit.get("project_open_method"),
+            "project_open_sequence": list(audit.get("project_open_sequence") or []),
+        },
+    )
+    event_recorder("file_dialog_path_entered", {"value": bool(audit.get("file_dialog_path_entered"))})
+    event_recorder("file_dialog_confirm_clicked", {"value": bool(audit.get("file_dialog_confirm_clicked"))})
+    event_recorder("dialog_closed", {"value": bool((project_open_result or {}).get("dialog_closed"))})
+    event_recorder(
+        "observed_main_window_title_after_open",
+        {
+            "value": observed_title,
+            "is_empty": not bool(observed_title),
+        },
+    )
+    event_recorder(
+        "observed_project_path",
+        {
+            "value": observed_project_path,
+            "is_null": observed_project_path is None,
+        },
+    )
+    event_recorder(
+        "path_match_normalized",
+        {
+            "value": path_match_normalized,
+            "expected_project_path": project_path_verification.get("expected_project_path"),
+            "observed_project_path": observed_project_path,
+        },
+    )
+
+
 def _safe_capture_snapshot(state_id: str) -> RuntimeStateSnapshot | None:
     try:
         return capture_state_snapshot(state_id)
@@ -4351,6 +4401,13 @@ def build_full_runtime_program_map(
         project_open_result["observed_startup_project_path"] = startup_project_path
         project_open_result["already_open_before_mapping"] = already_open_before_mapping
         project_open_result["project_open_verdict"] = project_open_verdict
+        project_open_result["observed_main_window_title_after_open"] = verification_snapshot.main_window_title if verification_snapshot else ""
+    _record_project_open_step_events(
+        event_recorder,
+        project_open_result=project_open_result,
+        project_path_verification=project_path_verification,
+        verification_snapshot=verification_snapshot,
+    )
     if event_recorder and project_open_result:
         event_recorder(
             "project_open_result",

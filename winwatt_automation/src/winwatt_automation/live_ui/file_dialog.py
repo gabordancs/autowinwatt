@@ -6,6 +6,11 @@ from typing import Any
 
 from loguru import logger
 
+from winwatt_automation.live_ui.app_connector import (
+    ensure_main_window_foreground_before_click,
+    get_cached_main_window,
+    prepare_main_window_for_menu_interaction,
+)
 from winwatt_automation.live_ui import menu_helpers
 from winwatt_automation.live_ui.project_open_accelerator import (
     PROJECT_OPEN_ACCELERATOR_MODE,
@@ -399,7 +404,14 @@ def open_project_file_via_dialog(
     project_open_sequence = project_open_accelerator_sequence()
 
     try:
-        process_id = None
+        main_window = prepare_main_window_for_menu_interaction()
+        ensure_main_window_foreground_before_click(
+            action_label="open_project_file_via_dialog",
+            allow_dialog=True,
+            allow_stale_wrapper_refresh=True,
+        )
+        main_window = get_cached_main_window() if main_window is None else main_window
+        process_id = _safe_call(main_window, "process_id", None)
         dialog = None
         detect_info: dict[str, Any] = {}
         accelerator_error: str | None = None
@@ -411,6 +423,11 @@ def open_project_file_via_dialog(
         dialog_found = bool(detect_info.get("dialog_found"))
         project_open_method = str(detect_info.get("project_open_method") or project_open_method)
         project_open_sequence = list(detect_info.get("sequence") or project_open_sequence)
+        logger.info(
+            "project_open_step step=open_file_dialog_detected value={} detect_info={}",
+            dialog_found,
+            detect_info,
+        )
         if dialog_found:
             logger.info("open_project_file_via_dialog accelerator success detect_info={}", detect_info)
         else:
@@ -433,6 +450,7 @@ def open_project_file_via_dialog(
 
         path_entered, path_info = set_file_dialog_path(dialog, project_path)
         logger.info("open_project_file_via_dialog path set result={}", path_info)
+        logger.info("project_open_step step=file_dialog_path_entered value={} details={}", path_entered, path_info)
         if not path_entered:
             return OpenProjectDialogResult(
                 success=False,
@@ -450,6 +468,7 @@ def open_project_file_via_dialog(
 
         confirm_clicked, confirm_info = confirm_file_dialog_open(dialog)
         logger.info("open_project_file_via_dialog confirm result={}", confirm_info)
+        logger.info("project_open_step step=file_dialog_confirm_clicked value={} details={}", confirm_clicked, confirm_info)
         if not confirm_clicked:
             return OpenProjectDialogResult(
                 success=False,
@@ -471,6 +490,7 @@ def open_project_file_via_dialog(
                 dialog_closed = True
                 break
             time.sleep(0.1)
+        logger.info("project_open_step step=dialog_closed value={}", dialog_closed)
 
         after_snapshot = after_snapshot_provider()
         project_state_changed, detected_changes = detect_project_state_changed(before_snapshot, after_snapshot)
