@@ -12,8 +12,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 12454034,
-    "process_id": 19820,
+    "handle": 6619928,
+    "process_id": 10920,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -26,7 +26,7 @@
   "observed_project_path": null,
   "observed_startup_project_path": null,
   "path_match_normalized": false,
-  "process_id": 19820,
+  "process_id": 10920,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -34,8 +34,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 12454034,
-        "process_id": 19820,
+        "handle": 6619928,
+        "process_id": 10920,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -43,7 +43,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 19820,
+        "process_id": 10920,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -63,12 +63,12 @@
   "project_open_verdict": "open_attempt_failed",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-22T19:12:33.162766+00:00",
+  "timestamp": "2026-03-22T19:46:33.176006+00:00",
   "visible_top_windows": [
     {
       "class_name": "SysShadow",
       "handle": null,
-      "process_id": 19820,
+      "process_id": 10920,
       "title": ""
     },
     {
@@ -80,7 +80,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 19820,
+      "process_id": 10920,
       "title": "WinWatt gólya"
     },
     {
