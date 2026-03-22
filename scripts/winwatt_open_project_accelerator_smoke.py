@@ -208,7 +208,15 @@ def run_smoke(
         detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
         if project_path:
             before_snapshot = asdict(capture_state_snapshot("open_project_accelerator_smoke_before"))
-            dialog_wrapper = _find_visible_window_by_handle((detection.get("dialog") or {}).get("handle"))
+            detected_dialog_snapshot = detection.get("dialog") or None
+            helper_dialog_context = {
+                "dialog_already_verified": bool(detection.get("dialog_detected")),
+                "dialog_handle": (detected_dialog_snapshot or {}).get("handle"),
+                "dialog_title": (detected_dialog_snapshot or {}).get("title"),
+                "dialog_class": (detected_dialog_snapshot or {}).get("class_name"),
+                "dialog_process_id": (detected_dialog_snapshot or {}).get("process_id"),
+            }
+            dialog_wrapper = _find_visible_window_by_handle(helper_dialog_context.get("dialog_handle"))
             if bool(detection.get("dialog_detected")) and dialog_wrapper is not None:
                 project_open_result = asdict(
                     interact_with_open_file_dialog(
@@ -219,6 +227,8 @@ def run_smoke(
                         dialog_timeout=timeout_s,
                         project_open_method=accelerator_info.get("project_open_method", accelerator_mode),
                         project_open_sequence=list(accelerator_info.get("sequence") or []),
+                        detected_dialog_snapshot=detected_dialog_snapshot,
+                        dialog_context=helper_dialog_context,
                     )
                 )
             else:
@@ -234,7 +244,11 @@ def run_smoke(
                     "observed_main_window_title_after_open": "",
                     "observed_project_path": None,
                     "path_match_normalized": False,
-                    "error": "Open-file dialog was not detected by the smoke flow, so path entry was skipped.",
+                    "detected_dialog_snapshot": detected_dialog_snapshot,
+                    "helper_received_dialog_context": helper_dialog_context,
+                    "helper_dialog_revalidated": False,
+                    "helper_dialog_ready_for_interaction": False,
+                    "error": "dialog_detected_but_not_bound_for_interaction" if bool(detection.get("dialog_detected")) else "dialog_not_detected",
                 }
             recovery_result = recover_after_project_open(timeout_s=timeout_s, poll_interval_s=POLL_INTERVAL_S)
         foreground_after = describe_foreground_window()
@@ -282,6 +296,10 @@ def run_smoke(
         "dialog_class": dialog.get("class_name"),
         "dialog_handle": dialog.get("handle"),
         "dialog_process_id": dialog.get("process_id"),
+        "detected_dialog_snapshot": (project_open_result or {}).get("detected_dialog_snapshot") or (dialog if dialog else None),
+        "helper_received_dialog_context": (project_open_result or {}).get("helper_received_dialog_context"),
+        "helper_dialog_revalidated": bool((project_open_result or {}).get("helper_dialog_revalidated")),
+        "helper_dialog_ready_for_interaction": bool((project_open_result or {}).get("helper_dialog_ready_for_interaction")),
         "project_path": project_path,
         "project_open_success": bool((project_open_result or {}).get("success")),
         "path_entry_attempted": bool((project_open_result or {}).get("path_entry_attempted")),
