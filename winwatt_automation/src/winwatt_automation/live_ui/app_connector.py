@@ -234,8 +234,22 @@ def _resolve_main_window_candidate(backend: str = "win32") -> dict[str, Any]:
     return select_main_window(candidates, backend=backend)
 
 
+def _pywinauto_application_class() -> Any:
+    """Return the ``pywinauto`` Application class across package layouts."""
+
+    import pywinauto
+
+    application_class = getattr(pywinauto, "Application", None)
+    if application_class is not None:
+        return application_class
+
+    from pywinauto.application import Application
+
+    return Application
+
+
 def _connect_with_win32_handle() -> tuple[Any, dict[str, Any]]:
-    from pywinauto import Application
+    Application = _pywinauto_application_class()
 
     candidates = list_candidate_windows(backend="win32")
     ranked_candidates = sorted(
@@ -346,7 +360,7 @@ def connect_to_winwatt() -> Any:
 def _resolve_uia_main_window() -> Any:
     """Resolve a fresh UIA main window wrapper and update cached session metadata."""
 
-    from pywinauto import Application
+    Application = _pywinauto_application_class()
 
     _, selected = _connect_with_win32_handle()
     logger.info("DBG_WINWATT_RESOLVE_UIA_WIN32_SELECTED selected_payload={}", selected)
