@@ -67,6 +67,12 @@ def test_summary_json_is_created(tmp_path: Path, monkeypatch):
             "no_project_top_menus": 6,
             "project_open_top_menus": 6,
             "diff_summary": {"enabled_changes": 3},
+            "startup_project_detected": False,
+            "already_open_before_mapping": False,
+            "project_open_verdict": "opened_by_this_attempt",
+            "expected_project_path": r"C:\tmp\demo\testwwp.wwp",
+            "observed_project_path": r"C:\tmp\demo\testwwp.wwp",
+            "path_match_normalized": True,
         },
     )
 
@@ -74,6 +80,8 @@ def test_summary_json_is_created(tmp_path: Path, monkeypatch):
     assert payload["summary"]["no_project_top_menus"] == 6
     assert payload["summary"]["project_open_top_menus"] == 6
     assert payload["summary"]["diff_summary"]["enabled_changes"] == 3
+    assert payload["summary"]["project_open_verdict"] == "opened_by_this_attempt"
+    assert payload["summary"]["path_match_normalized"] is True
     assert payload["duration_seconds"] >= 0
 
 

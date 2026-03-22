@@ -307,6 +307,89 @@ def test_build_full_runtime_program_map_writes_knowledge_verification(monkeypatc
     assert (tmp_path / "knowledge_summary.md").exists()
 
 
+def test_project_path_helpers_and_verdicts():
+    title = r"WinWatt - C:\work\demo\testwwp.wwp"
+
+    verification = program_mapper._build_project_path_verification(
+        expected_project_path=r"C:/work/demo/testwwp.wwp",
+        observed_main_window_title=title,
+    )
+
+    assert verification["observed_project_path"] == r"C:\work\demo\testwwp.wwp"
+    assert verification["path_match_normalized"] is True
+    assert program_mapper._project_open_verdict(
+        already_open_before_mapping=True,
+        path_match_normalized=True,
+        open_attempt_success=True,
+    ) == "already_open_before_mapping"
+    assert program_mapper._project_open_verdict(
+        already_open_before_mapping=False,
+        path_match_normalized=True,
+        open_attempt_success=True,
+    ) == "opened_by_this_attempt"
+    assert program_mapper._project_open_verdict(
+        already_open_before_mapping=False,
+        path_match_normalized=False,
+        open_attempt_success=False,
+    ) == "open_attempt_failed"
+    assert program_mapper._project_open_verdict(
+        already_open_before_mapping=False,
+        path_match_normalized=False,
+        open_attempt_success=True,
+    ) == "unproven"
+
+
+def test_build_full_runtime_program_map_records_project_open_verification(monkeypatch, tmp_path):
+    no_project = RuntimeStateMap("no_project", {"state_id": "no_project"}, [{"text": "Fájl"}], [], [], [], [], [])
+    project_open = RuntimeStateMap("project_open", {"state_id": "project_open"}, [{"text": "Fájl"}], [], [], [], [], [])
+
+    monkeypatch.setattr(program_mapper, "ensure_output_dirs", lambda _path: {
+        "base": tmp_path,
+        "state_no_project": tmp_path / "state_no_project",
+        "state_project_open": tmp_path / "state_project_open",
+        "diff": tmp_path / "diff",
+    })
+    for sub in ("state_no_project", "state_project_open", "diff"):
+        (tmp_path / sub).mkdir(parents=True, exist_ok=True)
+
+    snapshots = iter([
+        RuntimeStateSnapshot("startup", 1, "WinWatt", "TMainForm", [], ["Fájl"], "t"),
+        RuntimeStateSnapshot("verify", 1, r"WinWatt - C:\tmp\demo\testwwp.wwp", "TMainForm", [], ["Fájl"], "t"),
+    ])
+    monkeypatch.setattr(program_mapper, "capture_state_snapshot", lambda _state_id: next(snapshots))
+    monkeypatch.setattr(program_mapper, "map_runtime_state", lambda **kwargs: no_project if kwargs["state_id"] == "no_project" else project_open)
+    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {
+        "success": True,
+        "dialog_found": True,
+        "path_entered": True,
+        "confirm_clicked": True,
+        "project_open_audit": {
+            "project_open_attempt_started": True,
+            "project_open_menu_item_clicked": True,
+            "open_file_dialog_detected": True,
+            "file_dialog_path_entered": True,
+            "file_dialog_confirm_clicked": True,
+        },
+        "recovery": {"success": True, "diagnostics": {}, "close_attempts": [], "main_window_ready_after_attempt": True},
+    })
+
+    events: list[tuple[str, dict[str, object]]] = []
+    result = program_mapper.build_full_runtime_program_map(
+        project_path=r"C:\tmp\demo\testwwp.wwp",
+        output_dir=tmp_path,
+        event_recorder=lambda event_type, payload: events.append((event_type, payload)),
+    )
+
+    assert result["project_open_result"]["project_open_verdict"] == "opened_by_this_attempt"
+    assert result["project_open_result"]["path_match_normalized"] is True
+    assert result["state_no_project"].snapshot["startup_project_detected"] is False
+    assert result["state_project_open"].snapshot["project_open_verdict"] == "opened_by_this_attempt"
+    project_open_payload = dict(next(payload for event_type, payload in events if event_type == "project_open_result"))
+    assert project_open_payload["project_open_attempt_started"] is True
+    assert project_open_payload["project_open_menu_item_clicked"] is True
+    assert project_open_payload["path_match_normalized"] is True
+
+
 class _FakeComError(Exception):
     __module__ = "pythoncom"
 

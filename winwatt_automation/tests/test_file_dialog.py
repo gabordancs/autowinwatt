@@ -113,10 +113,13 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "project_state_changed",
         "detected_changes",
         "error",
+        "project_open_audit",
         "recovery",
     }
     assert result["success"] is True
+    assert result["project_open_audit"]["project_open_attempt_started"] is True
     assert result["recovery"]["success"] is True
+    assert result["recovery"]["main_window_ready_after_attempt"] is True
 
 
 def test_open_test_project_safe_mode_blocks_non_test_path():
@@ -124,4 +127,5 @@ def test_open_test_project_safe_mode_blocks_non_test_path():
 
     assert result["success"] is False
     assert result["dialog_found"] is False
+    assert result["project_open_audit"]["project_open_attempt_started"] is False
     assert "Safe mode" in (result["error"] or "")
