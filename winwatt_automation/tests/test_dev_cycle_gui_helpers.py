@@ -18,6 +18,24 @@ def test_build_map_command_matches_manual_style():
     ]
 
 
+def test_build_map_command_includes_project_path_when_provided():
+    command = build_map_command(
+        python_executable="python",
+        safe_mode="off",
+        project_path=r"C:\\projects\\mintaprojekt.wwp",
+    )
+
+    assert command == [
+        "python",
+        "-m",
+        "winwatt_automation.scripts.map_full_program",
+        "--safe-mode",
+        "off",
+        "--project-path",
+        r"C:\\projects\\mintaprojekt.wwp",
+    ]
+
+
 def test_preview_contains_module_name():
     preview = command_preview(build_map_command("python", "caution", "--max-submenu-depth 2"))
     assert "winwatt_automation.scripts.map_full_program" in preview
