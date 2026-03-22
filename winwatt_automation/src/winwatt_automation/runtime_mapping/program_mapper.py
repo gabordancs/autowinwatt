@@ -83,6 +83,55 @@ INTERNAL_CHILD_DESCENDANT_GROWTH_MIN = 25
 
 
 
+def _extract_project_path_from_title(title: str | None) -> str | None:
+    value = str(title or "").strip()
+    if not value:
+        return None
+    match = re.search(r'([A-Za-z]:\\[^"\r\n\t]*\.[Ww][Ww][Pp])', value)
+    if match:
+        return match.group(1)
+    return None
+
+
+def _normalize_project_path(project_path: str | None) -> str | None:
+    value = str(project_path or "").strip()
+    if not value:
+        return None
+    return value.replace('/', '\\').lower()
+
+
+def _build_project_path_verification(*, expected_project_path: str | None, observed_main_window_title: str | None) -> dict[str, Any]:
+    observed_project_path = _extract_project_path_from_title(observed_main_window_title)
+    normalized_expected = _normalize_project_path(expected_project_path)
+    normalized_observed = _normalize_project_path(observed_project_path)
+    return {
+        "expected_project_path": expected_project_path,
+        "observed_main_window_title": str(observed_main_window_title or ""),
+        "observed_project_path": observed_project_path,
+        "path_match_normalized": bool(normalized_expected and normalized_expected == normalized_observed),
+    }
+
+
+def _project_open_verdict(*, already_open_before_mapping: bool, path_match_normalized: bool, open_attempt_success: bool) -> str:
+    if already_open_before_mapping:
+        return "already_open_before_mapping"
+    if open_attempt_success and path_match_normalized:
+        return "opened_by_this_attempt"
+    if open_attempt_success and not path_match_normalized:
+        return "unproven"
+    if not open_attempt_success:
+        return "open_attempt_failed"
+    return "unproven"
+
+
+def _safe_capture_snapshot(state_id: str) -> RuntimeStateSnapshot | None:
+    try:
+        return capture_state_snapshot(state_id)
+    except Exception as exc:
+        logger.warning("snapshot_capture_failed state_id={} error={}", state_id, exc)
+        return None
+
+
 def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
     details = " ".join(f"{key}={value}" for key, value in payload.items())
     suffix = f" {details}" if details else ""
@@ -4084,6 +4133,13 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
             "project_state_changed": False,
             "detected_changes": [],
             "error": "Safe mode only allows explicitly approved test project path.",
+            "project_open_audit": {
+                "project_open_attempt_started": False,
+                "project_open_menu_item_clicked": False,
+                "open_file_dialog_detected": False,
+                "file_dialog_path_entered": False,
+                "file_dialog_confirm_clicked": False,
+            },
         }
 
     before = asdict(capture_state_snapshot("project_open_before"))
@@ -4092,7 +4148,17 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         before_snapshot=before,
         after_snapshot_provider=lambda: asdict(capture_state_snapshot("project_open_after")),
     )
-    result["recovery"] = recover_after_project_open()
+    audit = {
+        "project_open_attempt_started": True,
+        "project_open_menu_item_clicked": bool(result.get("dialog_found") or result.get("path_entered") or result.get("confirm_clicked") or result.get("dialog_closed") or result.get("project_state_changed")),
+        "open_file_dialog_detected": bool(result.get("dialog_found")),
+        "file_dialog_path_entered": bool(result.get("path_entered")),
+        "file_dialog_confirm_clicked": bool(result.get("confirm_clicked")),
+    }
+    result["project_open_audit"] = audit
+    recovery = recover_after_project_open()
+    recovery["main_window_ready_after_attempt"] = bool(recovery.get("success"))
+    result["recovery"] = recovery
     return result
 
 
@@ -4237,6 +4303,11 @@ def build_full_runtime_program_map(
     no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
     project_id = "project_open" if state_id_prefix == "state" else f"{state_id_prefix}_project_open"
 
+    startup_snapshot = _safe_capture_snapshot("startup_before_no_project_mapping")
+    startup_project_path = _extract_project_path_from_title(startup_snapshot.main_window_title if startup_snapshot else "")
+    startup_project_detected = bool(startup_project_path)
+    already_open_before_mapping = startup_project_detected
+
     state_no_project = map_runtime_state(
         state_id=no_project_id,
         safe_mode=safe_mode,
@@ -4244,6 +4315,9 @@ def build_full_runtime_program_map(
         max_submenu_depth=max_submenu_depth,
         include_disabled=include_disabled,
     )
+    state_no_project.snapshot["startup_project_detected"] = startup_project_detected
+    state_no_project.snapshot["observed_startup_project_path"] = startup_project_path
+    state_no_project.snapshot["already_open_before_mapping"] = already_open_before_mapping
     if event_recorder:
         event_recorder(
             "state_mapped",
@@ -4259,6 +4333,22 @@ def build_full_runtime_program_map(
     effective_project_path = project_path or DEFAULT_TEST_PROJECT_PATH
     project_open_result = open_test_project(effective_project_path, safe_mode=safe_mode)
     recovery = (project_open_result or {}).get("recovery") if project_open_result else None
+    verification_snapshot = _safe_capture_snapshot("project_open_verification")
+    project_path_verification = _build_project_path_verification(
+        expected_project_path=effective_project_path,
+        observed_main_window_title=verification_snapshot.main_window_title if verification_snapshot else "",
+    )
+    project_open_verdict = _project_open_verdict(
+        already_open_before_mapping=already_open_before_mapping,
+        path_match_normalized=bool(project_path_verification.get("path_match_normalized")),
+        open_attempt_success=bool((project_open_result or {}).get("success")),
+    )
+    if project_open_result is not None:
+        project_open_result.update(project_path_verification)
+        project_open_result["startup_project_detected"] = startup_project_detected
+        project_open_result["observed_startup_project_path"] = startup_project_path
+        project_open_result["already_open_before_mapping"] = already_open_before_mapping
+        project_open_result["project_open_verdict"] = project_open_verdict
     if event_recorder and project_open_result:
         event_recorder(
             "project_open_result",
@@ -4266,6 +4356,13 @@ def build_full_runtime_program_map(
                 "success": bool(project_open_result.get("success")),
                 "error": project_open_result.get("error"),
                 "dialog_found": bool(project_open_result.get("dialog_found")),
+                "startup_project_detected": startup_project_detected,
+                "already_open_before_mapping": already_open_before_mapping,
+                "project_open_verdict": project_open_verdict,
+                "expected_project_path": project_path_verification.get("expected_project_path"),
+                "observed_project_path": project_path_verification.get("observed_project_path"),
+                "path_match_normalized": project_path_verification.get("path_match_normalized"),
+                **dict(project_open_result.get("project_open_audit") or {}),
             },
         )
     if event_recorder and recovery:
@@ -4275,6 +4372,7 @@ def build_full_runtime_program_map(
                 "success": bool(recovery.get("success")),
                 "reason": recovery.get("reason"),
                 "modal_detected": bool(recovery.get("modal_pending")),
+                "main_window_ready_after_attempt": bool(recovery.get("main_window_ready_after_attempt")),
             },
         )
 
@@ -4307,6 +4405,11 @@ def build_full_runtime_program_map(
         )
         if recovery:
             state_project_open.snapshot["project_open_recovery"] = recovery
+    state_project_open.snapshot["startup_project_detected"] = startup_project_detected
+    state_project_open.snapshot["observed_startup_project_path"] = startup_project_path
+    state_project_open.snapshot["already_open_before_mapping"] = already_open_before_mapping
+    state_project_open.snapshot.update(project_path_verification)
+    state_project_open.snapshot["project_open_verdict"] = project_open_verdict
     if event_recorder:
         event_recorder(
             "state_mapped",
@@ -4362,6 +4465,12 @@ def build_full_runtime_program_map(
     print(f"project_open menük száma: {len(state_project_open.top_menus)}")
     print(f"diff változások: {len(diff.enabled_state_changes) + len(diff.project_only_paths)}")
     print(f"skipped_by_safety: {skipped}")
+    print(f"startup_project_detected: {startup_project_detected}")
+    print(f"already_open_before_mapping: {already_open_before_mapping}")
+    print(f"project_open_verdict: {project_open_verdict}")
+    print(f"expected_project_path: {project_path_verification.get('expected_project_path')}")
+    print(f"observed_project_path: {project_path_verification.get('observed_project_path')}")
+    print(f"path_match_normalized: {project_path_verification.get('path_match_normalized')}")
     print(
         "knowledge verification: "
         f"missing={len(knowledge_verification['missing_menu_paths'])}, "
@@ -4375,6 +4484,8 @@ def build_full_runtime_program_map(
         "state_project_open": state_project_open,
         "diff": diff,
         "project_open_result": project_open_result,
+        "project_open_verdict": project_open_verdict,
+        "project_path_verification": project_path_verification,
         "knowledge_verification": knowledge_verification,
         "runtime_state_atlas": runtime_state_atlas,
         "output_dir": str(paths["base"]),
