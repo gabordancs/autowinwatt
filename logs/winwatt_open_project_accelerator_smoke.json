@@ -1,42 +1,55 @@
 {
-  "timestamp_utc": "2026-03-22T18:27:34.663479+00:00",
+  "timestamp_utc": "2026-03-22T18:43:52.043124+00:00",
   "script": "scripts\\winwatt_open_project_accelerator_smoke.py",
   "project_open_method": "ctrl_o",
-  "sequence": [],
+  "sequence": [
+    "CTRL+O"
+  ],
   "allow_stale_wrapper_refresh": true,
-  "focus_guard_failed": true,
-  "focus_guard_reason": "focus_not_restored: main window no longer exists before action=open_project_accelerator_smoke",
+  "focus_guard_failed": false,
+  "focus_guard_reason": null,
   "cached_identity": {
     "wrapper_type": "UIAWrapper",
-    "handle": 6033466,
-    "process_id": 19944,
+    "handle": 12454034,
+    "process_id": 19820,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
     "control_type": "Window"
   },
   "refreshed_identity": {
     "wrapper_type": "UIAWrapper",
-    "handle": 6033466,
-    "process_id": 19944,
+    "handle": 12454034,
+    "process_id": 19820,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
     "control_type": "Window"
   },
-  "key_send_attempted": false,
-  "foreground_before": {},
-  "foreground_after": {
-    "handle": 6033466,
+  "focus_guard_relaxed_pass": true,
+  "relaxed_pass_reason": "identity_foreground_visible_enabled_match",
+  "identity_match": true,
+  "refreshed_exists": false,
+  "refreshed_visible": true,
+  "refreshed_enabled": true,
+  "key_send_attempted": true,
+  "foreground_before": {
+    "handle": 12454034,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
-    "process_id": 19944
+    "process_id": 19820
   },
-  "dialog_detected": false,
-  "dialog_title": null,
-  "dialog_class": null,
+  "foreground_after": {
+    "handle": 1707938,
+    "title": "Projekt megnyitás",
+    "class_name": "#32770",
+    "process_id": 19820
+  },
+  "dialog_detected": true,
+  "dialog_title": "Projekt megnyitás",
+  "dialog_class": "#32770",
   "dialog_handle": null,
-  "dialog_process_id": null,
-  "elapsed_time_s": 1.873,
-  "timeout_s": 5.0,
-  "step_delay_s": 10.15,
-  "candidate_count": 0
+  "dialog_process_id": 19820,
+  "elapsed_time_s": 4.393,
+  "timeout_s": 10.0,
+  "step_delay_s": 0.15,
+  "candidate_count": 11
 }
