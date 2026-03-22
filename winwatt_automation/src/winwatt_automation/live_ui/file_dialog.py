@@ -7,6 +7,11 @@ from typing import Any
 from loguru import logger
 
 from winwatt_automation.live_ui import menu_helpers
+from winwatt_automation.live_ui.project_open_accelerator import (
+    PROJECT_OPEN_ACCELERATOR_MODE,
+    project_open_accelerator_sequence,
+    send_project_open_accelerator,
+)
 
 DIALOG_CLASS_NAME = "#32770"
 DIALOG_TITLE_HINTS = ("projekt megnyitás", "megnyitás", "open")
@@ -24,6 +29,8 @@ class OpenProjectDialogResult:
     dialog_closed: bool
     project_state_changed: bool
     detected_changes: list[str]
+    project_open_method: str = PROJECT_OPEN_ACCELERATOR_MODE
+    project_open_sequence: list[str] | None = None
     error: str | None = None
 
 
@@ -323,25 +330,27 @@ def _top_level_handles() -> set[int]:
     return handles
 
 
-def trigger_open_project_dialog_from_default_state(*, process_id: int | None, dialog_timeout: float = 3.0) -> tuple[Any | None, dict[str, Any]]:
-    from pywinauto import keyboard
-
+def trigger_open_project_dialog_from_default_state(
+    *,
+    process_id: int | None,
+    dialog_timeout: float = 3.0,
+    accelerator_mode: str = PROJECT_OPEN_ACCELERATOR_MODE,
+    step_delay_s: float = 0.05,
+) -> tuple[Any | None, dict[str, Any]]:
     handles_before_shortcut = _top_level_handles()
-    steps: list[str] = []
+    send_info = {
+        "project_open_method": accelerator_mode,
+        "sequence": [],
+    }
     try:
-        keyboard.send_keys("%")
-        steps.append("ALT")
-        time.sleep(0.05)
-        keyboard.send_keys("F")
-        steps.append("F")
-        time.sleep(0.05)
-        keyboard.send_keys("M")
-        steps.append("M")
+        send_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
     except Exception as exc:
         return None, {
             "dialog_found": False,
             "method": "accelerator",
-            "steps": steps,
+            "steps": list(send_info.get("sequence") or []),
+            "project_open_method": accelerator_mode,
+            "sequence": list(send_info.get("sequence") or []),
             "error": str(exc),
         }
 
@@ -353,7 +362,9 @@ def trigger_open_project_dialog_from_default_state(*, process_id: int | None, di
     detect_info = {
         **detect_info,
         "method": "accelerator",
-        "steps": steps,
+        "steps": list(send_info.get("sequence") or []),
+        "project_open_method": send_info.get("project_open_method", accelerator_mode),
+        "sequence": list(send_info.get("sequence") or []),
     }
     return dialog, detect_info
 
@@ -384,6 +395,8 @@ def open_project_file_via_dialog(
     dialog_closed = False
     project_state_changed = False
     detected_changes: list[str] = []
+    project_open_method = PROJECT_OPEN_ACCELERATOR_MODE
+    project_open_sequence = project_open_accelerator_sequence()
 
     try:
         process_id = None
@@ -396,6 +409,8 @@ def open_project_file_via_dialog(
             dialog_timeout=min(dialog_timeout, 3.0),
         )
         dialog_found = bool(detect_info.get("dialog_found"))
+        project_open_method = str(detect_info.get("project_open_method") or project_open_method)
+        project_open_sequence = list(detect_info.get("sequence") or project_open_sequence)
         if dialog_found:
             logger.info("open_project_file_via_dialog accelerator success detect_info={}", detect_info)
         else:
@@ -411,7 +426,9 @@ def open_project_file_via_dialog(
                 dialog_closed=False,
                 project_state_changed=False,
                 detected_changes=[],
-                error=accelerator_error or "Open-file dialog not detected after ALT+F, M accelerator.",
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
+                error=accelerator_error or f"Open-file dialog not detected after {'+'.join(project_open_sequence)} accelerator.",
             )
 
         path_entered, path_info = set_file_dialog_path(dialog, project_path)
@@ -426,6 +443,8 @@ def open_project_file_via_dialog(
                 dialog_closed=False,
                 project_state_changed=False,
                 detected_changes=[],
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
                 error="Failed to enter project path into dialog.",
             )
 
@@ -441,6 +460,8 @@ def open_project_file_via_dialog(
                 dialog_closed=False,
                 project_state_changed=False,
                 detected_changes=[],
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
                 error="Failed to trigger dialog confirmation action.",
             )
 
@@ -482,6 +503,8 @@ def open_project_file_via_dialog(
             dialog_closed=dialog_closed,
             project_state_changed=project_state_changed,
             detected_changes=detected_changes,
+            project_open_method=project_open_method,
+            project_open_sequence=project_open_sequence,
             error=error,
         )
     except Exception as exc:
@@ -495,6 +518,8 @@ def open_project_file_via_dialog(
             dialog_closed=dialog_closed,
             project_state_changed=project_state_changed,
             detected_changes=detected_changes,
+            project_open_method=project_open_method,
+            project_open_sequence=project_open_sequence,
             error=str(exc),
         )
 
