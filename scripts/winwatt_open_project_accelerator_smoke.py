@@ -1,6 +1,6 @@
 """Manual smoke diagnostic for the WinWatt project-open accelerator path.
 
-Focuses only on whether the ``Alt``, ``F``, ``M`` accelerator sequence triggers
+Focuses only on whether the configured project-open accelerator sequence triggers
 an Open File dialog in a real UI session.
 """
 
@@ -25,6 +25,10 @@ from winwatt_automation.live_ui.app_connector import (
     ensure_main_window_foreground_before_click,
     get_cached_main_window,
     prepare_main_window_for_menu_interaction,
+)
+from winwatt_automation.live_ui.project_open_accelerator import (
+    PROJECT_OPEN_ACCELERATOR_MODE,
+    send_project_open_accelerator,
 )
 
 DEFAULT_LOG_PATH = ROOT / "logs" / "winwatt_open_project_accelerator_smoke.json"
@@ -127,18 +131,13 @@ def _detect_dialog(process_id: int | None, baseline_handles: set[int], timeout_s
 
 
 
-def _send_alt_f_m_sequence(step_delay_s: float) -> None:
-    from pywinauto import keyboard
-
-    keyboard.send_keys("%")
-    time.sleep(step_delay_s)
-    keyboard.send_keys("f")
-    time.sleep(step_delay_s)
-    keyboard.send_keys("m")
-
-
-
-def run_smoke(*, timeout_s: float, step_delay_s: float, log_path: Path) -> int:
+def run_smoke(
+    *,
+    timeout_s: float,
+    step_delay_s: float,
+    log_path: Path,
+    accelerator_mode: str = PROJECT_OPEN_ACCELERATOR_MODE,
+) -> int:
     started_monotonic = time.monotonic()
     started_at = datetime.now(timezone.utc).isoformat()
 
@@ -155,7 +154,7 @@ def run_smoke(*, timeout_s: float, step_delay_s: float, log_path: Path) -> int:
     }
 
     foreground_before = describe_foreground_window()
-    _send_alt_f_m_sequence(step_delay_s)
+    accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
     detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
     foreground_after = describe_foreground_window()
     elapsed_s = round(time.monotonic() - started_monotonic, 3)
@@ -164,7 +163,8 @@ def run_smoke(*, timeout_s: float, step_delay_s: float, log_path: Path) -> int:
     payload = {
         "timestamp_utc": started_at,
         "script": str(Path(__file__).relative_to(ROOT)),
-        "sequence": ["ALT", "F", "M"],
+        "project_open_method": accelerator_info["project_open_method"],
+        "sequence": accelerator_info["sequence"],
         "foreground_before": foreground_before,
         "foreground_after": foreground_after,
         "dialog_detected": bool(detection.get("dialog_detected")),
@@ -187,13 +187,14 @@ def run_smoke(*, timeout_s: float, step_delay_s: float, log_path: Path) -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Smoke diagnostic for WinWatt Alt,F,M project-open accelerator path")
-    parser.add_argument("--timeout", type=float, default=5.0, help="How long to wait for the dialog after sending Alt,F,M")
-    parser.add_argument("--step-delay", type=float, default=0.15, help="Delay between ALT, F, and M key steps")
+    parser = argparse.ArgumentParser(description="Smoke diagnostic for the configured WinWatt project-open accelerator path")
+    parser.add_argument("--timeout", type=float, default=5.0, help="How long to wait for the dialog after sending the configured accelerator")
+    parser.add_argument("--step-delay", type=float, default=0.15, help="Delay between accelerator key steps when the mode uses multiple keypresses")
+    parser.add_argument("--accelerator-mode", default=PROJECT_OPEN_ACCELERATOR_MODE, choices=["alt_f_p", "ctrl_o"], help="Project-open accelerator mode to send")
     parser.add_argument("--log-path", type=Path, default=DEFAULT_LOG_PATH, help="Path of the JSON result log file")
     args = parser.parse_args()
 
-    raise SystemExit(run_smoke(timeout_s=args.timeout, step_delay_s=args.step_delay, log_path=args.log_path))
+    raise SystemExit(run_smoke(timeout_s=args.timeout, step_delay_s=args.step_delay, log_path=args.log_path, accelerator_mode=args.accelerator_mode))
 
 
 if __name__ == "__main__":
