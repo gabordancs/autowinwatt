@@ -1,10 +1,10 @@
 # Runtime tudás verifikáció
 
 - baseline loaded: True
-- known menu paths: 20
-- covered known paths: 11
-- missing menu paths: 9
-- new menu paths: 31
+- known menu paths: 42
+- covered known paths: 42
+- missing menu paths: 0
+- new menu paths: 0
 - missing dialogs: 0
 - missing windows: 0
-- coverage: 55.0%
+- coverage: 100.0%

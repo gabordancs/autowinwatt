@@ -12,8 +12,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 6555106,
-    "process_id": 28744,
+    "handle": 10290640,
+    "process_id": 37368,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -26,7 +26,7 @@
   "observed_project_path": null,
   "observed_startup_project_path": null,
   "path_match_normalized": false,
-  "process_id": 28744,
+  "process_id": 37368,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -34,8 +34,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 6555106,
-        "process_id": 28744,
+        "handle": 10290640,
+        "process_id": 37368,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -43,7 +43,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 28744,
+        "process_id": 37368,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -63,8 +63,14 @@
   "project_open_verdict": "open_attempt_failed",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-22T09:03:02.675651+00:00",
+  "timestamp": "2026-03-22T13:45:08.206384+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 37368,
+      "title": ""
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -74,7 +80,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 28744,
+      "process_id": 37368,
       "title": "WinWatt gólya"
     },
     {
@@ -87,7 +93,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "ChatGPT - Winwatt - hekkelések - Google Chrome"
+      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -100,6 +106,12 @@
       "handle": null,
       "process_id": 14600,
       "title": "tests – Fájlkezelő"
+    },
+    {
+      "class_name": "#32770",
+      "handle": null,
+      "process_id": 9340,
+      "title": "12 emlékeztető"
     },
     {
       "class_name": "rctrl_renwnd32",
