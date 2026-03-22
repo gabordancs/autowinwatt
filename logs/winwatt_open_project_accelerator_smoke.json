@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-03-22T18:43:52.043124+00:00",
+  "timestamp_utc": "2026-03-22T20:53:53.115349+00:00",
   "script": "scripts\\winwatt_open_project_accelerator_smoke.py",
   "project_open_method": "ctrl_o",
   "sequence": [
@@ -10,16 +10,16 @@
   "focus_guard_reason": null,
   "cached_identity": {
     "wrapper_type": "UIAWrapper",
-    "handle": 12454034,
-    "process_id": 19820,
+    "handle": 3344554,
+    "process_id": 13912,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
     "control_type": "Window"
   },
   "refreshed_identity": {
     "wrapper_type": "UIAWrapper",
-    "handle": 12454034,
-    "process_id": 19820,
+    "handle": 3344554,
+    "process_id": 13912,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
     "control_type": "Window"
@@ -32,23 +32,23 @@
   "refreshed_enabled": true,
   "key_send_attempted": true,
   "foreground_before": {
-    "handle": 12454034,
+    "handle": 3344554,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
-    "process_id": 19820
+    "process_id": 13912
   },
   "foreground_after": {
-    "handle": 1707938,
+    "handle": 1315012,
     "title": "Projekt megnyitás",
     "class_name": "#32770",
-    "process_id": 19820
+    "process_id": 13912
   },
   "dialog_detected": true,
   "dialog_title": "Projekt megnyitás",
   "dialog_class": "#32770",
   "dialog_handle": null,
-  "dialog_process_id": 19820,
-  "elapsed_time_s": 4.393,
+  "dialog_process_id": 13912,
+  "elapsed_time_s": 6.173,
   "timeout_s": 10.0,
   "step_delay_s": 0.15,
   "candidate_count": 11
