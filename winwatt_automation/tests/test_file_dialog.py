@@ -20,7 +20,7 @@ class _FakeControl:
         return self._enabled
 
 
-def test_trigger_open_project_dialog_from_default_state_sends_alt_f_m(monkeypatch):
+def test_trigger_open_project_dialog_from_default_state_sends_alt_f_p(monkeypatch):
     sent: list[str] = []
     import sys
     import types
@@ -38,9 +38,11 @@ def test_trigger_open_project_dialog_from_default_state_sends_alt_f_m(monkeypatc
     dialog, info = file_dialog.trigger_open_project_dialog_from_default_state(process_id=None)
 
     assert dialog == "dialog"
-    assert sent == ["%", "F", "M"]
+    assert sent == ["%", "F", "P"]
     assert info["dialog_found"] is True
-    assert info["steps"] == ["ALT", "F", "M"]
+    assert info["steps"] == ["ALT", "F", "P"]
+    assert info["project_open_method"] == "alt_f_p"
+    assert info["sequence"] == ["ALT", "F", "P"]
 
 
 def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypatch):
@@ -51,7 +53,7 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
         "trigger_open_project_dialog_from_default_state",
         lambda **kwargs: (
             calls.append("accelerator") or "dialog",
-            {"dialog_found": True, "method": "accelerator", "steps": ["ALT", "F", "M"]},
+            {"dialog_found": True, "method": "accelerator", "steps": ["ALT", "F", "P"], "project_open_method": "alt_f_p", "sequence": ["ALT", "F", "P"]},
         ),
     )
     monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct"}))
@@ -71,6 +73,8 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
 
     assert calls == ["accelerator"]
     assert result.success is True
+    assert result.project_open_method == "alt_f_p"
+    assert result.project_open_sequence == ["ALT", "F", "P"]
 
 
 def test_select_best_dialog_candidate_prefers_pid_and_new_handle():
@@ -146,6 +150,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "dialog_closed": True,
         "project_state_changed": True,
         "detected_changes": ["top_menus_changed"],
+        "project_open_method": "alt_f_p",
+        "project_open_sequence": ["ALT", "F", "P"],
         "error": None,
     }
 
@@ -165,12 +171,16 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "dialog_closed",
         "project_state_changed",
         "detected_changes",
+        "project_open_method",
+        "project_open_sequence",
         "error",
         "project_open_audit",
         "recovery",
     }
     assert result["success"] is True
     assert result["project_open_audit"]["project_open_attempt_started"] is True
+    assert result["project_open_audit"]["project_open_method"] == "alt_f_p"
+    assert result["project_open_audit"]["project_open_sequence"] == ["ALT", "F", "P"]
     assert result["recovery"]["success"] is True
     assert result["recovery"]["main_window_ready_after_attempt"] is True
 
