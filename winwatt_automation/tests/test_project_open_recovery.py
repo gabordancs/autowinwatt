@@ -388,6 +388,14 @@ def test_build_full_runtime_program_map_records_project_open_verification(monkey
     assert project_open_payload["project_open_attempt_started"] is True
     assert project_open_payload["project_open_menu_item_clicked"] is True
     assert project_open_payload["path_match_normalized"] is True
+    step_events = {event_type: payload for event_type, payload in events}
+    assert step_events["open_file_dialog_detected"]["value"] is True
+    assert step_events["file_dialog_path_entered"]["value"] is True
+    assert step_events["file_dialog_confirm_clicked"]["value"] is True
+    assert step_events["dialog_closed"]["value"] is False
+    assert step_events["observed_main_window_title_after_open"]["value"] == r"WinWatt - C:\tmp\demo\testwwp.wwp"
+    assert step_events["observed_project_path"]["value"] == r"C:\tmp\demo\testwwp.wwp"
+    assert step_events["path_match_normalized"]["value"] is True
 
 
 class _FakeComError(Exception):

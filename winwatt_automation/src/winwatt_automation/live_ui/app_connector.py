@@ -736,7 +736,10 @@ def _rects_meaningfully_match(left: dict[str, int] | None, right: dict[str, int]
 
 def _should_allow_stale_wrapper_refresh(action_label: str, *, allow_stale_wrapper_refresh: bool) -> bool:
     normalized = (action_label or "").strip().lower()
-    return allow_stale_wrapper_refresh and normalized == "open_project_accelerator_smoke"
+    return allow_stale_wrapper_refresh and normalized in {
+        "open_project_accelerator_smoke",
+        "open_project_file_via_dialog",
+    }
 
 
 def _refresh_stale_main_window_if_identity_matches(
