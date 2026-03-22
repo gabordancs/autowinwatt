@@ -47,6 +47,7 @@ def test_trigger_open_project_dialog_from_default_state_sends_ctrl_o(monkeypatch
 
 def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypatch):
     calls: list[str] = []
+    focus_calls: list[str] = []
 
     monkeypatch.setattr(
         file_dialog,
@@ -55,6 +56,13 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
             calls.append("accelerator") or "dialog",
             {"dialog_found": True, "method": "accelerator", "steps": ["CTRL+O"], "project_open_method": "ctrl_o", "sequence": ["CTRL+O"]},
         ),
+    )
+    monkeypatch.setattr(file_dialog, "prepare_main_window_for_menu_interaction", lambda: type("MainWindow", (), {"process_id": lambda self: 22})())
+    monkeypatch.setattr(file_dialog, "get_cached_main_window", lambda: type("MainWindow", (), {"process_id": lambda self: 22})())
+    monkeypatch.setattr(
+        file_dialog,
+        "ensure_main_window_foreground_before_click",
+        lambda **kwargs: focus_calls.append(kwargs["action_label"]),
     )
     monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct"}))
     monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog: (True, {"method": "enter"}))
@@ -72,6 +80,7 @@ def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypat
     )
 
     assert calls == ["accelerator"]
+    assert focus_calls == ["open_project_file_via_dialog"]
     assert result.success is True
     assert result.project_open_method == "ctrl_o"
     assert result.project_open_sequence == ["CTRL+O"]
