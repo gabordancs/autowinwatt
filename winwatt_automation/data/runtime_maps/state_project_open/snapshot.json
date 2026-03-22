@@ -12,8 +12,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 4915992,
-    "process_id": 18936,
+    "handle": 12454034,
+    "process_id": 19820,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -26,7 +26,7 @@
   "observed_project_path": null,
   "observed_startup_project_path": null,
   "path_match_normalized": false,
-  "process_id": 18936,
+  "process_id": 19820,
   "project_open_recovery": {
     "close_attempted": false,
     "close_attempts": [],
@@ -34,8 +34,8 @@
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 4915992,
-        "process_id": 18936,
+        "handle": 12454034,
+        "process_id": 19820,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -43,7 +43,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 18936,
+        "process_id": 19820,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -63,8 +63,14 @@
   "project_open_verdict": "open_attempt_failed",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-22T14:21:22.472113+00:00",
+  "timestamp": "2026-03-22T19:12:33.162766+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 19820,
+      "title": ""
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -74,14 +80,14 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 18936,
+      "process_id": 19820,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 35256,
-      "title": "gui_helpers.py - autowinwatt - Visual Studio Code"
+      "title": "winwatt_open_project_accelerator_smoke.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -96,10 +102,10 @@
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "CabinetWClass",
+      "class_name": "Notepad",
       "handle": null,
-      "process_id": 14600,
-      "title": "tests – Fájlkezelő"
+      "process_id": 5264,
+      "title": "*antal áron – Jegyzettömb"
     },
     {
       "class_name": "#32770",
@@ -108,58 +114,10 @@
       "title": "12 emlékeztető"
     },
     {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 9340,
-      "title": "Elküldött elemek – dancs.gabor@pedranogroup.com - Outlook"
-    },
-    {
-      "class_name": "XamlWindow",
-      "handle": null,
-      "process_id": 34912,
-      "title": "Képmetsző"
-    },
-    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 29976,
       "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "OpusApp",
-      "handle": null,
-      "process_id": 25136,
-      "title": "TENDERZÁRÓ JEGYZŐKÖNYV_Sasad_Resort_09_lemez alatti munkák  -  Védett nézet  -  Legutóbb a felhasználó mentette - Word"
-    },
-    {
-      "class_name": "OpusApp",
-      "handle": null,
-      "process_id": 25136,
-      "title": "Dokumentum1 - Word"
-    },
-    {
-      "class_name": "OpusApp",
-      "handle": null,
-      "process_id": 25136,
-      "title": "Pedrano_Hazepito_Nyilatkozat baleset vagy egyéb rendkívüli esemény esetén értesíthető személyről  -  Védett nézet  -  Legutóbb a felhasználó mentette - Word"
-    },
-    {
-      "class_name": "Notepad",
-      "handle": null,
-      "process_id": 5264,
-      "title": "*antal áron – Jegyzettömb"
-    },
-    {
-      "class_name": "rctrl_renwnd32",
-      "handle": null,
-      "process_id": 9340,
-      "title": "FW: MR2,3 tanulmány megküldése - Üzenet (HTML) "
-    },
-    {
-      "class_name": "TeamsWebView",
-      "handle": null,
-      "process_id": 16952,
-      "title": "Calendar | Calendar | Futureal | dancs.gabor@pedranogroup.com | Microsoft Teams"
     },
     {
       "class_name": "Progman",

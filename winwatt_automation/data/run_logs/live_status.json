@@ -1,5 +1,5 @@
 {
-  "run_id": "0094_1_2026-03-22_14-12-09",
+  "run_id": "0095_1_2026-03-22_19-02-37",
   "state": "finished",
   "message": "Mapping finished successfully.",
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
@@ -28,5 +28,5 @@
       "recovery_success": true
     }
   },
-  "updated_at": "2026-03-22T14:30:27.074741+00:00"
+  "updated_at": "2026-03-22T19:22:02.383894+00:00"
 }
