@@ -38,6 +38,10 @@ class OpenProjectDialogResult:
     detected_changes: list[str]
     project_open_method: str = PROJECT_OPEN_ACCELERATOR_MODE
     project_open_sequence: list[str] | None = None
+    detected_dialog_snapshot: dict[str, Any] | None = None
+    helper_received_dialog_context: dict[str, Any] | None = None
+    helper_dialog_revalidated: bool = False
+    helper_dialog_ready_for_interaction: bool = False
     observed_main_window_title_after_open: str | None = None
     observed_project_path: str | None = None
     path_match_normalized: bool = False
@@ -309,8 +313,21 @@ def find_confirm_open_button(dialog: Any) -> Any | None:
     return best
 
 
-def confirm_file_dialog_open(dialog: Any) -> tuple[bool, dict[str, Any]]:
+def confirm_file_dialog_open(dialog: Any, *, prefer_enter: bool = False) -> tuple[bool, dict[str, Any]]:
     from pywinauto import keyboard
+
+    try:
+        dialog.set_focus()
+    except Exception:
+        pass
+
+    if prefer_enter:
+        try:
+            keyboard.send_keys("{ENTER}")
+            logger.info("confirm_file_dialog_open used ENTER preferred path")
+            return True, {"method": "enter_preferred"}
+        except Exception as exc:
+            logger.info("confirm_file_dialog_open ENTER preferred path failed error={}", exc)
 
     button = find_confirm_open_button(dialog)
     if button is not None:
@@ -328,10 +345,6 @@ def confirm_file_dialog_open(dialog: Any) -> tuple[bool, dict[str, Any]]:
                 except Exception:
                     pass
 
-    try:
-        dialog.set_focus()
-    except Exception:
-        pass
     try:
         keyboard.send_keys("{ENTER}")
         logger.info("confirm_file_dialog_open used ENTER fallback")
@@ -419,6 +432,8 @@ def interact_with_open_file_dialog(
     dialog_timeout: float = 8.0,
     project_open_method: str = PROJECT_OPEN_ACCELERATOR_MODE,
     project_open_sequence: list[str] | None = None,
+    detected_dialog_snapshot: dict[str, Any] | None = None,
+    dialog_context: dict[str, Any] | None = None,
 ) -> OpenProjectDialogResult:
     start = time.monotonic()
     path_entry_attempted = False
@@ -431,8 +446,49 @@ def interact_with_open_file_dialog(
     observed_main_window_title_after_open = ""
     observed_project_path = None
     path_match_normalized = False
+    helper_dialog_revalidated = False
+    helper_dialog_ready_for_interaction = False
+    received_context = {
+        "dialog_already_verified": bool((dialog_context or {}).get("dialog_already_verified")),
+        "dialog_handle": (dialog_context or {}).get("dialog_handle"),
+        "dialog_title": (dialog_context or {}).get("dialog_title"),
+        "dialog_class": (dialog_context or {}).get("dialog_class"),
+        "dialog_process_id": (dialog_context or {}).get("dialog_process_id"),
+    }
 
     try:
+        logger.info("interact_with_open_file_dialog detected_dialog_snapshot={}", detected_dialog_snapshot)
+        logger.info("interact_with_open_file_dialog helper_received_dialog_context={}", received_context)
+
+        helper_dialog_revalidated = bool(
+            dialog is not None
+            and bool(_safe_call(dialog, "exists", True))
+            and bool(_safe_call(dialog, "is_visible", True))
+        )
+        logger.info("interact_with_open_file_dialog helper_dialog_revalidated={}", helper_dialog_revalidated)
+        helper_dialog_ready_for_interaction = helper_dialog_revalidated and bool(received_context.get("dialog_already_verified"))
+        logger.info("interact_with_open_file_dialog helper_dialog_ready_for_interaction={}", helper_dialog_ready_for_interaction)
+        if not helper_dialog_revalidated:
+            return OpenProjectDialogResult(
+                success=False,
+                path=project_path,
+                dialog_found=bool(received_context.get("dialog_already_verified")),
+                path_entry_attempted=False,
+                path_entered=False,
+                confirm_attempted=False,
+                confirm_clicked=False,
+                dialog_closed=False,
+                project_state_changed=False,
+                detected_changes=[],
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
+                detected_dialog_snapshot=detected_dialog_snapshot,
+                helper_received_dialog_context=received_context,
+                helper_dialog_revalidated=False,
+                helper_dialog_ready_for_interaction=False,
+                error="dialog_revalidation_failed",
+            )
+
         path_entry_attempted = True
         path_entered, path_info = set_file_dialog_path(dialog, project_path)
         logger.info("interact_with_open_file_dialog path set result={}", path_info)
@@ -451,11 +507,15 @@ def interact_with_open_file_dialog(
                 detected_changes=[],
                 project_open_method=project_open_method,
                 project_open_sequence=project_open_sequence,
-                error="Failed to enter project path into dialog.",
+                error="file_name_control_not_found" if str(path_info.get("method") or "") == "failed" else "path_entry_failed",
+                detected_dialog_snapshot=detected_dialog_snapshot,
+                helper_received_dialog_context=received_context,
+                helper_dialog_revalidated=helper_dialog_revalidated,
+                helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
             )
 
         confirm_attempted = True
-        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog)
+        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog, prefer_enter=True)
         logger.info("interact_with_open_file_dialog confirm result={}", confirm_info)
         logger.info("project_open_step step=file_dialog_confirm_clicked value={} details={}", confirm_clicked, confirm_info)
         if not confirm_clicked:
@@ -472,7 +532,11 @@ def interact_with_open_file_dialog(
                 detected_changes=[],
                 project_open_method=project_open_method,
                 project_open_sequence=project_open_sequence,
-                error="Failed to trigger dialog confirmation action.",
+                error="confirm_action_failed",
+                detected_dialog_snapshot=detected_dialog_snapshot,
+                helper_received_dialog_context=received_context,
+                helper_dialog_revalidated=helper_dialog_revalidated,
+                helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
             )
 
         close_deadline = time.monotonic() + max(1.0, dialog_timeout)
@@ -528,6 +592,10 @@ def interact_with_open_file_dialog(
             detected_changes=detected_changes,
             project_open_method=project_open_method,
             project_open_sequence=project_open_sequence,
+            detected_dialog_snapshot=detected_dialog_snapshot,
+            helper_received_dialog_context=received_context,
+            helper_dialog_revalidated=helper_dialog_revalidated,
+            helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
             observed_main_window_title_after_open=observed_main_window_title_after_open,
             observed_project_path=observed_project_path,
             path_match_normalized=path_match_normalized,
@@ -548,6 +616,10 @@ def interact_with_open_file_dialog(
             detected_changes=detected_changes,
             project_open_method=project_open_method,
             project_open_sequence=project_open_sequence,
+            detected_dialog_snapshot=detected_dialog_snapshot,
+            helper_received_dialog_context=received_context,
+            helper_dialog_revalidated=helper_dialog_revalidated,
+            helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
             observed_main_window_title_after_open=observed_main_window_title_after_open,
             observed_project_path=observed_project_path,
             path_match_normalized=path_match_normalized,
@@ -625,6 +697,7 @@ def open_project_file_via_dialog(
                 project_open_sequence=project_open_sequence,
                 error=accelerator_error or f"Open-file dialog not detected after {'+'.join(project_open_sequence)} accelerator.",
             )
+        detected_dialog_snapshot = detect_info.get("selected_candidate")
         result = interact_with_open_file_dialog(
             dialog,
             project_path,
@@ -633,6 +706,14 @@ def open_project_file_via_dialog(
             dialog_timeout=dialog_timeout,
             project_open_method=project_open_method,
             project_open_sequence=project_open_sequence,
+            detected_dialog_snapshot=detected_dialog_snapshot,
+            dialog_context={
+                "dialog_already_verified": dialog_found,
+                "dialog_handle": (detected_dialog_snapshot or {}).get("handle"),
+                "dialog_title": (detected_dialog_snapshot or {}).get("title"),
+                "dialog_class": (detected_dialog_snapshot or {}).get("class_name"),
+                "dialog_process_id": (detected_dialog_snapshot or {}).get("process_id"),
+            },
         )
         logger.info(
             "open_project_file_via_dialog completed success={} dialog_found={} path_entered={} confirm_clicked={} dialog_closed={} path_match_normalized={} elapsed_s={}",
