@@ -20,6 +20,7 @@ if str(SRC_DIR) not in sys.path:
     sys.path.insert(0, str(SRC_DIR))
 
 from winwatt_automation.live_ui.app_connector import (
+    FocusGuardError,
     connect_to_winwatt,
     describe_foreground_window,
     ensure_main_window_foreground_before_click,
@@ -137,34 +138,67 @@ def run_smoke(
     step_delay_s: float,
     log_path: Path,
     accelerator_mode: str = PROJECT_OPEN_ACCELERATOR_MODE,
+    allow_stale_wrapper_refresh: bool = False,
 ) -> int:
     started_monotonic = time.monotonic()
     started_at = datetime.now(timezone.utc).isoformat()
 
-    connect_to_winwatt()
-    prepare_main_window_for_menu_interaction()
-    ensure_main_window_foreground_before_click(action_label="open_project_accelerator_smoke", allow_dialog=True)
+    focus_guard_failed = False
+    focus_guard_reason = None
+    focus_guard_cached_identity = None
+    focus_guard_refreshed_identity = None
+    key_send_attempted = False
+    accelerator_info = {"project_open_method": accelerator_mode, "sequence": []}
+    detection = {"dialog_detected": False, "dialog": None, "candidate_count": 0}
+    foreground_before = {}
+    foreground_after = {}
 
-    main_window = get_cached_main_window()
-    process_id = _safe_call(main_window, "process_id", None)
-    baseline_handles = {
-        snapshot.get("handle")
-        for snapshot in (_window_snapshot(window) for window in _visible_top_level_windows())
-        if snapshot.get("handle") is not None
-    }
+    try:
+        connect_to_winwatt()
+        prepare_main_window_for_menu_interaction()
+        ensure_main_window_foreground_before_click(
+            action_label="open_project_accelerator_smoke",
+            allow_dialog=True,
+            allow_stale_wrapper_refresh=allow_stale_wrapper_refresh,
+        )
 
-    foreground_before = describe_foreground_window()
-    accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
-    detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
-    foreground_after = describe_foreground_window()
-    elapsed_s = round(time.monotonic() - started_monotonic, 3)
+        main_window = get_cached_main_window()
+        process_id = _safe_call(main_window, "process_id", None)
+        baseline_handles = {
+            snapshot.get("handle")
+            for snapshot in (_window_snapshot(window) for window in _visible_top_level_windows())
+            if snapshot.get("handle") is not None
+        }
+
+        foreground_before = describe_foreground_window()
+        key_send_attempted = True
+        accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
+        detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
+        foreground_after = describe_foreground_window()
+    except FocusGuardError as exc:
+        elapsed_s = round(time.monotonic() - started_monotonic, 3)
+        diagnostic = getattr(exc, "diagnostic", {}) or {}
+        refresh_diagnostic = diagnostic.get("refresh_diagnostic") or {}
+        focus_guard_failed = True
+        focus_guard_reason = str(exc)
+        focus_guard_cached_identity = diagnostic.get("cached_identity")
+        focus_guard_refreshed_identity = refresh_diagnostic.get("refreshed_identity") or diagnostic.get("refreshed_identity")
+        foreground_after = describe_foreground_window()
+    else:
+        elapsed_s = round(time.monotonic() - started_monotonic, 3)
 
     dialog = detection.get("dialog") or {}
     payload = {
         "timestamp_utc": started_at,
         "script": str(Path(__file__).relative_to(ROOT)),
-        "project_open_method": accelerator_info["project_open_method"],
-        "sequence": accelerator_info["sequence"],
+        "project_open_method": accelerator_info.get("project_open_method"),
+        "sequence": accelerator_info.get("sequence"),
+        "allow_stale_wrapper_refresh": allow_stale_wrapper_refresh,
+        "focus_guard_failed": focus_guard_failed,
+        "focus_guard_reason": focus_guard_reason,
+        "cached_identity": focus_guard_cached_identity,
+        "refreshed_identity": focus_guard_refreshed_identity,
+        "key_send_attempted": key_send_attempted,
         "foreground_before": foreground_before,
         "foreground_after": foreground_after,
         "dialog_detected": bool(detection.get("dialog_detected")),
@@ -182,7 +216,11 @@ def run_smoke(
     log_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(json.dumps(payload, ensure_ascii=False, indent=2))
-    return 0 if payload["dialog_detected"] else 1
+    if payload["dialog_detected"]:
+        return 0
+    if payload["focus_guard_failed"]:
+        return 2
+    return 1
 
 
 
@@ -192,9 +230,10 @@ def main() -> None:
     parser.add_argument("--step-delay", type=float, default=0.15, help="Delay between accelerator key steps when the mode uses multiple keypresses")
     parser.add_argument("--accelerator-mode", default=PROJECT_OPEN_ACCELERATOR_MODE, choices=["alt_f_p", "ctrl_o"], help="Project-open accelerator mode to send")
     parser.add_argument("--log-path", type=Path, default=DEFAULT_LOG_PATH, help="Path of the JSON result log file")
+    parser.add_argument("--allow-stale-wrapper-refresh", action="store_true", help="Allow one diagnostic refresh/retry when the cached UIA wrapper reports exists() == False before the accelerator is sent")
     args = parser.parse_args()
 
-    raise SystemExit(run_smoke(timeout_s=args.timeout, step_delay_s=args.step_delay, log_path=args.log_path, accelerator_mode=args.accelerator_mode))
+    raise SystemExit(run_smoke(timeout_s=args.timeout, step_delay_s=args.step_delay, log_path=args.log_path, accelerator_mode=args.accelerator_mode, allow_stale_wrapper_refresh=args.allow_stale_wrapper_refresh))
 
 
 if __name__ == "__main__":
