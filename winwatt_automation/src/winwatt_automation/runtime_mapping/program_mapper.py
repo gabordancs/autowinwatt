@@ -4154,6 +4154,8 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         "open_file_dialog_detected": bool(result.get("dialog_found")),
         "file_dialog_path_entered": bool(result.get("path_entered")),
         "file_dialog_confirm_clicked": bool(result.get("confirm_clicked")),
+        "project_open_method": result.get("project_open_method"),
+        "project_open_sequence": list(result.get("project_open_sequence") or []),
     }
     result["project_open_audit"] = audit
     recovery = recover_after_project_open()
