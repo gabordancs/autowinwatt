@@ -313,8 +313,21 @@ def find_confirm_open_button(dialog: Any) -> Any | None:
     return best
 
 
-def confirm_file_dialog_open(dialog: Any) -> tuple[bool, dict[str, Any]]:
+def confirm_file_dialog_open(dialog: Any, *, prefer_enter: bool = False) -> tuple[bool, dict[str, Any]]:
     from pywinauto import keyboard
+
+    try:
+        dialog.set_focus()
+    except Exception:
+        pass
+
+    if prefer_enter:
+        try:
+            keyboard.send_keys("{ENTER}")
+            logger.info("confirm_file_dialog_open used ENTER preferred path")
+            return True, {"method": "enter_preferred"}
+        except Exception as exc:
+            logger.info("confirm_file_dialog_open ENTER preferred path failed error={}", exc)
 
     button = find_confirm_open_button(dialog)
     if button is not None:
@@ -332,10 +345,6 @@ def confirm_file_dialog_open(dialog: Any) -> tuple[bool, dict[str, Any]]:
                 except Exception:
                     pass
 
-    try:
-        dialog.set_focus()
-    except Exception:
-        pass
     try:
         keyboard.send_keys("{ENTER}")
         logger.info("confirm_file_dialog_open used ENTER fallback")
@@ -506,7 +515,7 @@ def interact_with_open_file_dialog(
             )
 
         confirm_attempted = True
-        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog)
+        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog, prefer_enter=True)
         logger.info("interact_with_open_file_dialog confirm result={}", confirm_info)
         logger.info("project_open_step step=file_dialog_confirm_clicked value={} details={}", confirm_clicked, confirm_info)
         if not confirm_clicked:
