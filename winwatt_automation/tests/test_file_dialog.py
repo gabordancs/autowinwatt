@@ -20,6 +20,59 @@ class _FakeControl:
         return self._enabled
 
 
+def test_trigger_open_project_dialog_from_default_state_sends_alt_f_m(monkeypatch):
+    sent: list[str] = []
+    import sys
+    import types
+
+    class _FakeKeyboard:
+        @staticmethod
+        def send_keys(keys, **_kwargs):
+            sent.append(keys)
+
+    monkeypatch.setattr(file_dialog, "_top_level_handles", lambda: {1})
+    monkeypatch.setattr(file_dialog, "find_open_file_dialog", lambda **kwargs: ("dialog", {"dialog_found": True, "process_id": kwargs["process_id"]}))
+    pywinauto_module = types.SimpleNamespace(keyboard=_FakeKeyboard)
+    monkeypatch.setitem(sys.modules, "pywinauto", pywinauto_module)
+
+    dialog, info = file_dialog.trigger_open_project_dialog_from_default_state(process_id=None)
+
+    assert dialog == "dialog"
+    assert sent == ["%", "f", "m"]
+    assert info["dialog_found"] is True
+    assert info["steps"] == ["ALT", "F", "M"]
+
+
+def test_open_project_file_via_dialog_prefers_accelerator_before_popup(monkeypatch):
+    calls: list[str] = []
+
+    monkeypatch.setattr(
+        file_dialog,
+        "trigger_open_project_dialog_from_default_state",
+        lambda **kwargs: (
+            calls.append("accelerator") or "dialog",
+            {"dialog_found": True, "method": "accelerator", "steps": ["ALT", "F", "M"]},
+        ),
+    )
+    monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct"}))
+    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog: (True, {"method": "enter"}))
+    monkeypatch.setattr(
+        file_dialog,
+        "_safe_call",
+        lambda obj, method, default=None: False if method in {"exists", "is_visible"} else default,
+    )
+    monkeypatch.setattr(file_dialog.menu_helpers, "open_file_menu_and_capture_popup_state", lambda: (_ for _ in ()).throw(AssertionError("popup fallback should not run")))
+
+    result = file_dialog.open_project_file_via_dialog(
+        r"C:\tmp\testwwp.wwp",
+        before_snapshot={"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": ["Fájl", "Projekt"], "visible_top_windows": [], "main_window_title": "WinWatt - testwwp.wwp"},
+    )
+
+    assert calls == ["accelerator"]
+    assert result.success is True
+
+
 def test_select_best_dialog_candidate_prefers_pid_and_new_handle():
     candidates = [
         {"title": "Megnyitás", "class_name": "#32770", "process_id": 11, "handle": 100},
