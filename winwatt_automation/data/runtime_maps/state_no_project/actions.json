@@ -875,173 +875,19 @@
     "window_title": null
   },
   {
-    "action_key": "Súgó > Végrehajtás",
-    "attempted": true,
+    "action_key": "Súgó",
+    "attempted": false,
     "dialog_class": null,
     "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
+    "error_text": "No WinWatt-like windows were found",
+    "event_details": {},
     "menu_path": [
-      "Súgó",
-      "Végrehajtás"
+      "Súgó"
     ],
-    "notes": "mapped_only",
+    "notes": null,
     "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 0,
-    "safety_level": "caution",
-    "state_id": "no_project",
-    "top_menu": "Súgó",
-    "top_menu_click_count": null,
-    "window_class": null,
-    "window_title": null
-  },
-  {
-    "action_key": "Súgó > [unlabeled row 2]",
-    "attempted": true,
-    "dialog_class": null,
-    "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
-    "menu_path": [
-      "Súgó",
-      "[unlabeled row 2]"
-    ],
-    "notes": "mapped_only",
-    "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 2,
-    "safety_level": "caution",
-    "state_id": "no_project",
-    "top_menu": "Súgó",
-    "top_menu_click_count": null,
-    "window_class": null,
-    "window_title": null
-  },
-  {
-    "action_key": "Súgó > [unlabeled row 3]",
-    "attempted": true,
-    "dialog_class": null,
-    "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
-    "menu_path": [
-      "Súgó",
-      "[unlabeled row 3]"
-    ],
-    "notes": "mapped_only",
-    "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 3,
-    "safety_level": "caution",
-    "state_id": "no_project",
-    "top_menu": "Súgó",
-    "top_menu_click_count": null,
-    "window_class": null,
-    "window_title": null
-  },
-  {
-    "action_key": "Súgó > [unlabeled row 5]",
-    "attempted": true,
-    "dialog_class": null,
-    "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
-    "menu_path": [
-      "Súgó",
-      "[unlabeled row 5]"
-    ],
-    "notes": "mapped_only",
-    "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 5,
-    "safety_level": "caution",
-    "state_id": "no_project",
-    "top_menu": "Súgó",
-    "top_menu_click_count": null,
-    "window_class": null,
-    "window_title": null
-  },
-  {
-    "action_key": "Súgó > [unlabeled row 19]",
-    "attempted": true,
-    "dialog_class": null,
-    "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
-    "menu_path": [
-      "Súgó",
-      "[unlabeled row 19]"
-    ],
-    "notes": "mapped_only",
-    "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 19,
-    "safety_level": "caution",
-    "state_id": "no_project",
-    "top_menu": "Súgó",
-    "top_menu_click_count": null,
-    "window_class": null,
-    "window_title": null
-  },
-  {
-    "action_key": "Súgó > [unlabeled row 20]",
-    "attempted": true,
-    "dialog_class": null,
-    "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
-    "menu_path": [
-      "Súgó",
-      "[unlabeled row 20]"
-    ],
-    "notes": "mapped_only",
-    "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 20,
-    "safety_level": "caution",
-    "state_id": "no_project",
-    "top_menu": "Súgó",
-    "top_menu_click_count": null,
-    "window_class": null,
-    "window_title": null
-  },
-  {
-    "action_key": "Súgó > [unlabeled row 22]",
-    "attempted": true,
-    "dialog_class": null,
-    "dialog_title": null,
-    "error_text": null,
-    "event_details": {
-      "action_state_classification": "unknown",
-      "result_type": "no_observable_effect"
-    },
-    "menu_path": [
-      "Súgó",
-      "[unlabeled row 22]"
-    ],
-    "notes": "mapped_only",
-    "process_id": null,
-    "result_type": "no_observable_effect",
-    "row_index": 22,
+    "result_type": "failed_focus",
+    "row_index": -1,
     "safety_level": "caution",
     "state_id": "no_project",
     "top_menu": "Súgó",

@@ -1,0 +1,12 @@
+run_id=0097_1_2026-03-22_20-25-48
+started_at=2026-03-22T20:25:48.977915+00:00
+command=python C:\Users\dancsg\Documents\GitHub\autowinwatt\winwatt_automation\src\winwatt_automation\scripts\map_full_program.py --safe-mode off --max-submenu-depth 1
+
+2026-03-22 21:25:48.993 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:581 - DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh diagnostic_fast_mode=False
+2026-03-22 21:25:49.694 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:260 - DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates=[]
+2026-03-22 21:25:49.695 | WARNING  | winwatt_automation.runtime_mapping.program_mapper:_safe_capture_snapshot:181 - snapshot_capture_failed state_id=startup_before_no_project_mapping error=No WinWatt-like windows were found
+2026-03-22 21:25:49.695 | INFO     | winwatt_automation.live_ui.app_connector:get_cached_main_window:581 - DBG_WINWATT_CACHE_GET reason_code=cache_missing_resolving_fresh diagnostic_fast_mode=False
+2026-03-22 21:25:49.790 | INFO     | winwatt_automation.live_ui.app_connector:_connect_with_win32_handle:260 - DBG_WINWATT_CONNECT_WIN32_CANDIDATES locator=backend=win32 ranked_candidates=[]
+[event] run_failed: {"error": "No WinWatt-like windows were found"}
+
+finished_at=2026-03-22T20:25:49.792860+00:00 success=False exit_code=1

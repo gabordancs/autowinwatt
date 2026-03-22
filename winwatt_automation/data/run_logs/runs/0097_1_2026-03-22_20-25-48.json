@@ -1,9 +1,9 @@
 {
-  "run_id": "0098_1_2026-03-22_20-26-00",
-  "sequence_number": 98,
-  "started_at": "2026-03-22T20:26:00.291370+00:00",
-  "finished_at": "2026-03-22T20:51:03.952198+00:00",
-  "duration_seconds": 1503.661,
+  "run_id": "0097_1_2026-03-22_20-25-48",
+  "sequence_number": 97,
+  "started_at": "2026-03-22T20:25:48.977915+00:00",
+  "finished_at": "2026-03-22T20:25:49.792860+00:00",
+  "duration_seconds": 0.815,
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
   "safe_mode": "off",
@@ -28,17 +28,7 @@
   },
   "important_events": [
     {
-      "timestamp": "2026-03-22T20:50:51.439565+00:00",
-      "event_type": "state_mapped",
-      "payload": {
-        "state_id": "no_project",
-        "top_menus": 6,
-        "actions": 36,
-        "dialogs": 0
-      }
-    },
-    {
-      "timestamp": "2026-03-22T20:51:03.950847+00:00",
+      "timestamp": "2026-03-22T20:25:49.791415+00:00",
       "event_type": "run_failed",
       "payload": {
         "error": "No WinWatt-like windows were found"
@@ -46,8 +36,8 @@
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0098_1_2026-03-22_20-26-00.log",
-    "json_path": "data\\run_logs\\runs\\0098_1_2026-03-22_20-26-00.json"
+    "log_path": "data\\run_logs\\runs\\0097_1_2026-03-22_20-25-48.log",
+    "json_path": "data\\run_logs\\runs\\0097_1_2026-03-22_20-25-48.json"
   },
   "tags": [
     "map_full_program",

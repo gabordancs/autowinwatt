@@ -1581,6 +1581,26 @@
       },
       "log_path": "data\\run_logs\\runs\\0096_1_2026-03-22_19-35-56.log",
       "json_path": "data\\run_logs\\runs\\0096_1_2026-03-22_19-35-56.json"
+    },
+    {
+      "sequence_number": 97,
+      "run_id": "0097_1_2026-03-22_20-25-48",
+      "started_at": "2026-03-22T20:25:48.977915+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0097_1_2026-03-22_20-25-48.log",
+      "json_path": "data\\run_logs\\runs\\0097_1_2026-03-22_20-25-48.json"
+    },
+    {
+      "sequence_number": 98,
+      "run_id": "0098_1_2026-03-22_20-26-00",
+      "started_at": "2026-03-22T20:26:00.291370+00:00",
+      "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
+      "success": false,
+      "short_summary": "runtime_mapping_failed",
+      "log_path": "data\\run_logs\\runs\\0098_1_2026-03-22_20-26-00.log",
+      "json_path": "data\\run_logs\\runs\\0098_1_2026-03-22_20-26-00.json"
     }
   ]
 }

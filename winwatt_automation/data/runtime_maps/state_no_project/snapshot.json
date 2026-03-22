@@ -19,13 +19,13 @@
   "main_window_enabled": true,
   "main_window_title": "WinWatt gólya",
   "main_window_visible": true,
-  "mapping_partial": false,
-  "mapping_stop_reason": null,
+  "mapping_partial": true,
+  "mapping_stop_reason": "unrecoverable:Súgó",
   "observed_startup_project_path": null,
-  "process_id": 10920,
+  "process_id": 37392,
   "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-22T19:36:00.399634+00:00",
+  "timestamp": "2026-03-22T20:26:07.441525+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -42,20 +42,20 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 10920,
+      "process_id": 37392,
       "title": "WinWatt gólya"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 23032,
-      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
       "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23032,
+      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
       "class_name": "Notepad",

@@ -1,8 +1,8 @@
 # Runtime summary (no_project)
 
 - top menük száma: 6
-- összes menüpont: 204
-- enabled: 204
+- összes menüpont: 170
+- enabled: 170
 - disabled: 0
 - submenu count: 0
 - dialog candidates: 0
