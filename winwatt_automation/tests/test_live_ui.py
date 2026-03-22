@@ -173,6 +173,24 @@ def test_connect_to_winwatt_raises_if_all_backends_fail(monkeypatch):
         app_connector.connect_to_winwatt()
 
 
+def test_pywinauto_application_class_falls_back_to_application_module(monkeypatch):
+    class SentinelApplication:
+        pass
+
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "pywinauto",
+        types.SimpleNamespace(Desktop=object()),
+    )
+    monkeypatch.setitem(
+        __import__("sys").modules,
+        "pywinauto.application",
+        types.SimpleNamespace(Application=SentinelApplication),
+    )
+
+    assert app_connector._pywinauto_application_class() is SentinelApplication
+
+
 def test_list_candidate_windows_collects_expected_fields(monkeypatch):
     class FakeDesktop:
         def __init__(self, backend: str):
