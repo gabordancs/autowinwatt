@@ -270,7 +270,7 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
             time.sleep(0.05)
             keyboard.send_keys("^a{BACKSPACE}")
             keyboard.send_keys(project_path, with_spaces=True)
-            keyboard.send_keys("{TAB}")
+            time.sleep(0.05)
             refreshed_edit = _find_filename_edit_control(dialog)
             if refreshed_edit is not None and project_path.lower() in _read_edit_value(refreshed_edit).lower():
                 logger.info("set_file_dialog_path hotkey success hotkey={}", hotkey)
