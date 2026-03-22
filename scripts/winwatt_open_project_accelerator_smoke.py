@@ -1,12 +1,14 @@
 """Manual smoke diagnostic for the WinWatt project-open accelerator path.
 
-Focuses only on whether the configured project-open accelerator sequence triggers
-an Open File dialog in a real UI session.
+By default it verifies that the configured accelerator opens the file dialog.
+When ``--project-path`` is provided it continues through path entry and dialog
+confirmation so the smoke reaches actual project opening as well.
 """
 
 from __future__ import annotations
 
 import argparse
+from dataclasses import asdict
 import json
 import sys
 import time
@@ -32,6 +34,8 @@ from winwatt_automation.live_ui.project_open_accelerator import (
     PROJECT_OPEN_ACCELERATOR_MODE,
     send_project_open_accelerator,
 )
+from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
+from winwatt_automation.runtime_mapping.program_mapper import capture_state_snapshot, recover_after_project_open
 
 DEFAULT_LOG_PATH = ROOT / "logs" / "winwatt_open_project_accelerator_smoke.json"
 POLL_INTERVAL_S = 0.1
@@ -138,6 +142,7 @@ def run_smoke(
     timeout_s: float,
     step_delay_s: float,
     log_path: Path,
+    project_path: str | None = None,
     accelerator_mode: str = PROJECT_OPEN_ACCELERATOR_MODE,
     allow_stale_wrapper_refresh: bool = False,
 ) -> int:
@@ -157,6 +162,8 @@ def run_smoke(
     key_send_attempted = False
     accelerator_info = {"project_open_method": accelerator_mode, "sequence": []}
     detection = {"dialog_detected": False, "dialog": None, "candidate_count": 0}
+    project_open_result: dict[str, Any] | None = None
+    recovery_result: dict[str, Any] | None = None
     foreground_before = {}
     foreground_after = {}
 
@@ -188,8 +195,27 @@ def run_smoke(
 
         foreground_before = describe_foreground_window()
         key_send_attempted = True
-        accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
-        detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
+        if project_path:
+            before_snapshot = asdict(capture_state_snapshot("open_project_accelerator_smoke_before"))
+            project_open_result = open_project_file_via_dialog_dict(
+                project_path,
+                before_snapshot=before_snapshot,
+                after_snapshot_provider=lambda: asdict(capture_state_snapshot("open_project_accelerator_smoke_after")),
+                dialog_timeout=timeout_s,
+            )
+            accelerator_info = {
+                "project_open_method": project_open_result.get("project_open_method", accelerator_mode),
+                "sequence": list(project_open_result.get("project_open_sequence") or []),
+            }
+            detection = {
+                "dialog_detected": bool(project_open_result.get("dialog_found")),
+                "dialog": None,
+                "candidate_count": 0,
+            }
+            recovery_result = recover_after_project_open(timeout_s=timeout_s, poll_interval_s=POLL_INTERVAL_S)
+        else:
+            accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
+            detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
         foreground_after = describe_foreground_window()
     except FocusGuardError as exc:
         elapsed_s = round(time.monotonic() - started_monotonic, 3)
@@ -234,6 +260,17 @@ def run_smoke(
         "dialog_class": dialog.get("class_name"),
         "dialog_handle": dialog.get("handle"),
         "dialog_process_id": dialog.get("process_id"),
+        "project_path": project_path,
+        "project_open_success": bool((project_open_result or {}).get("success")),
+        "path_entered": bool((project_open_result or {}).get("path_entered")),
+        "confirm_clicked": bool((project_open_result or {}).get("confirm_clicked")),
+        "dialog_closed": bool((project_open_result or {}).get("dialog_closed")),
+        "project_state_changed": bool((project_open_result or {}).get("project_state_changed")),
+        "project_open_error": (project_open_result or {}).get("error"),
+        "project_open_detected_changes": list((project_open_result or {}).get("detected_changes") or []),
+        "recovery_success": bool((recovery_result or {}).get("success")),
+        "recovery_close_attempts": list((recovery_result or {}).get("close_attempts") or []),
+        "recovery_diagnostics": (recovery_result or {}).get("diagnostics"),
         "elapsed_time_s": elapsed_s,
         "timeout_s": timeout_s,
         "step_delay_s": step_delay_s,
@@ -244,6 +281,12 @@ def run_smoke(
     log_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     print(json.dumps(payload, ensure_ascii=False, indent=2))
+    if project_path:
+        if payload["project_open_success"] and payload["recovery_success"]:
+            return 0
+        if payload["focus_guard_failed"]:
+            return 2
+        return 1
     if payload["dialog_detected"]:
         return 0
     if payload["focus_guard_failed"]:
@@ -260,11 +303,21 @@ def main() -> None:
     parser.add_argument("--timeout", type=float, default=5.0, help="How long to wait for the dialog after sending the configured accelerator")
     parser.add_argument("--step-delay", type=float, default=0.15, help="Delay between accelerator key steps when the mode uses multiple keypresses")
     parser.add_argument("--accelerator-mode", default=PROJECT_OPEN_ACCELERATOR_MODE, choices=["alt_f_p", "ctrl_o"], help="Project-open accelerator mode to send")
+    parser.add_argument("--project-path", default=None, help="Optional project path. When provided the smoke continues through actual project opening.")
     parser.add_argument("--log-path", type=Path, default=DEFAULT_LOG_PATH, help="Path of the JSON result log file")
     parser.add_argument("--allow-stale-wrapper-refresh", action="store_true", help="Allow one diagnostic refresh/retry when the cached UIA wrapper reports exists() == False before the accelerator is sent")
     args = parser.parse_args()
 
-    raise SystemExit(run_smoke(timeout_s=args.timeout, step_delay_s=args.step_delay, log_path=args.log_path, accelerator_mode=args.accelerator_mode, allow_stale_wrapper_refresh=args.allow_stale_wrapper_refresh))
+    raise SystemExit(
+        run_smoke(
+            timeout_s=args.timeout,
+            step_delay_s=args.step_delay,
+            log_path=args.log_path,
+            project_path=args.project_path,
+            accelerator_mode=args.accelerator_mode,
+            allow_stale_wrapper_refresh=args.allow_stale_wrapper_refresh,
+        )
+    )
 
 
 if __name__ == "__main__":

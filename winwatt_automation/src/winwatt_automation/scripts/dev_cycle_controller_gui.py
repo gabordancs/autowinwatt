@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import threading
 import tkinter as tk
+from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import scrolledtext
 
@@ -22,6 +23,7 @@ class DevCycleGui:
         self.timeout_var = tk.StringVar(value=str(self.controller.config.default_timeout_seconds))
         self.goal_var = tk.StringVar(value="Stabilizálni a következő tesztkört")
         self.request_var = tk.StringVar(value="Adj következő minimális fejlesztői lépést")
+        self.project_path_var = tk.StringVar(value="")
         self.extra_args_var = tk.StringVar(value="")
 
         self._build_ui()
@@ -36,6 +38,7 @@ class DevCycleGui:
         self._add_row(form, "Timeout sec", self.timeout_var)
         self._add_row(form, "Goal", self.goal_var)
         self._add_row(form, "Request", self.request_var)
+        self._add_row(form, "Project path", self.project_path_var, browse=True)
         self._add_row(form, "Extra args", self.extra_args_var)
 
         preview_frame = tk.Frame(self.root)
@@ -53,6 +56,7 @@ class DevCycleGui:
         tk.Button(actions, text="Start WinWatt", command=lambda: self._run_bg(self._start_winwatt)).pack(side="left", padx=4)
         tk.Button(actions, text="Stop WinWatt", command=lambda: self._run_bg(self._stop_winwatt)).pack(side="left", padx=4)
         tk.Button(actions, text="Run map_full_program", command=lambda: self._run_bg(self._run_map)).pack(side="left", padx=4)
+        tk.Button(actions, text="Open project + run", command=lambda: self._run_bg(self._open_project_and_run_map)).pack(side="left", padx=4)
         tk.Button(actions, text="Cycle map_full_program", command=lambda: self._run_bg(self._cycle_map)).pack(side="left", padx=4)
 
         log_frame = tk.Frame(self.root)
@@ -60,19 +64,27 @@ class DevCycleGui:
         self.log_text = scrolledtext.ScrolledText(log_frame, wrap="word")
         self.log_text.pack(fill="both", expand=True)
 
-        for var in (self.python_var, self.safe_mode_var, self.timeout_var, self.extra_args_var):
+        for var in (self.python_var, self.safe_mode_var, self.timeout_var, self.project_path_var, self.extra_args_var):
             var.trace_add("write", lambda *_: self._refresh_preview())
 
-    def _add_row(self, parent: tk.Widget, label: str, variable: tk.StringVar) -> None:
+    def _add_row(self, parent: tk.Widget, label: str, variable: tk.StringVar, *, browse: bool = False) -> None:
         row = tk.Frame(parent)
         row.pack(fill="x", pady=2)
         tk.Label(row, text=label, width=14, anchor="w").pack(side="left")
         tk.Entry(row, textvariable=variable).pack(side="left", fill="x", expand=True)
+        if browse:
+            tk.Button(row, text="Browse…", command=lambda: self._browse_project_path(variable)).pack(side="left", padx=(6, 0))
+
+    def _browse_project_path(self, variable: tk.StringVar) -> None:
+        selected = filedialog.askopenfilename(title="Select WinWatt project")
+        if selected:
+            variable.set(selected)
 
     def _refresh_preview(self) -> None:
         command = build_map_command(
             python_executable=self.python_var.get().strip() or self.controller.config.python_executable,
             safe_mode=self.safe_mode_var.get().strip() or self.controller.config.default_safe_mode,
+            project_path=self.project_path_var.get().strip() or None,
             extra_args=self.extra_args_var.get().strip() or None,
         )
         self.preview_label.config(text=command_preview(command))
@@ -130,11 +142,27 @@ class DevCycleGui:
             "map_full_program",
             timeout_seconds=self._timeout(),
             safe_mode=self.safe_mode_var.get().strip() or self.controller.config.default_safe_mode,
-            passthrough_args=self.extra_args_var.get().split() if self.extra_args_var.get().strip() else None,
+            passthrough_args=self._map_passthrough_args(),
         )
         self._append_threadsafe(
             f"run status={result.status} elapsed={result.elapsed_seconds:.2f}s timed_out={result.timed_out} exit_code={result.exit_code}"
         )
+
+    def _map_passthrough_args(self) -> list[str] | None:
+        args: list[str] = []
+        project_path = self.project_path_var.get().strip()
+        if project_path:
+            args.extend(["--project-path", project_path])
+        if self.extra_args_var.get().strip():
+            args.extend(self.extra_args_var.get().split())
+        return args or None
+
+    def _open_project_and_run_map(self) -> None:
+        if not self.project_path_var.get().strip():
+            self.root.after(0, lambda: messagebox.showwarning("Dev cycle GUI", "Adj meg egy project path értéket az automatikus projektnyitáshoz."))
+            return
+        self._append_threadsafe(f"Auto-run armed for project: {self.project_path_var.get().strip()}")
+        self._run_map()
 
     def _cycle_map(self) -> None:
         self.controller.runner.python_executable = self.python_var.get().strip() or self.controller.config.python_executable
