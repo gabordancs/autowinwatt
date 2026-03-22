@@ -29,13 +29,18 @@ class OpenProjectDialogResult:
     success: bool
     path: str
     dialog_found: bool
+    path_entry_attempted: bool
     path_entered: bool
+    confirm_attempted: bool
     confirm_clicked: bool
     dialog_closed: bool
     project_state_changed: bool
     detected_changes: list[str]
     project_open_method: str = PROJECT_OPEN_ACCELERATOR_MODE
     project_open_sequence: list[str] | None = None
+    observed_main_window_title_after_open: str | None = None
+    observed_project_path: str | None = None
+    path_match_normalized: bool = False
     error: str | None = None
 
 
@@ -47,6 +52,37 @@ def _safe_call(obj: Any, method: str, default: Any = None) -> Any:
         return attr()
     except Exception:
         return default
+
+
+def _extract_project_path_from_title(title: str | None) -> str | None:
+    import re
+
+    value = str(title or "").strip()
+    if not value:
+        return None
+    match = re.search(r'([A-Za-z]:\\[^"\r\n\t]*\.[Ww][Ww][Pp])', value)
+    if match:
+        return match.group(1)
+    return None
+
+
+def _normalize_project_path(project_path: str | None) -> str | None:
+    value = str(project_path or "").strip()
+    if not value:
+        return None
+    return value.replace("/", "\\").lower()
+
+
+def _build_project_path_verification(*, expected_project_path: str | None, observed_main_window_title: str | None) -> dict[str, Any]:
+    observed_project_path = _extract_project_path_from_title(observed_main_window_title)
+    normalized_expected = _normalize_project_path(expected_project_path)
+    normalized_observed = _normalize_project_path(observed_project_path)
+    return {
+        "expected_project_path": expected_project_path,
+        "observed_main_window_title": str(observed_main_window_title or ""),
+        "observed_project_path": observed_project_path,
+        "path_match_normalized": bool(normalized_expected and normalized_expected == normalized_observed),
+    }
 
 
 def _window_snapshot(window: Any) -> dict[str, Any]:
@@ -374,6 +410,151 @@ def trigger_open_project_dialog_from_default_state(
     return dialog, detect_info
 
 
+def interact_with_open_file_dialog(
+    dialog: Any,
+    project_path: str,
+    *,
+    before_snapshot: dict[str, Any],
+    after_snapshot_provider: Any,
+    dialog_timeout: float = 8.0,
+    project_open_method: str = PROJECT_OPEN_ACCELERATOR_MODE,
+    project_open_sequence: list[str] | None = None,
+) -> OpenProjectDialogResult:
+    start = time.monotonic()
+    path_entry_attempted = False
+    path_entered = False
+    confirm_attempted = False
+    confirm_clicked = False
+    dialog_closed = False
+    project_state_changed = False
+    detected_changes: list[str] = []
+    observed_main_window_title_after_open = ""
+    observed_project_path = None
+    path_match_normalized = False
+
+    try:
+        path_entry_attempted = True
+        path_entered, path_info = set_file_dialog_path(dialog, project_path)
+        logger.info("interact_with_open_file_dialog path set result={}", path_info)
+        logger.info("project_open_step step=file_dialog_path_entered value={} details={}", path_entered, path_info)
+        if not path_entered:
+            return OpenProjectDialogResult(
+                success=False,
+                path=project_path,
+                dialog_found=True,
+                path_entry_attempted=path_entry_attempted,
+                path_entered=False,
+                confirm_attempted=False,
+                confirm_clicked=False,
+                dialog_closed=False,
+                project_state_changed=False,
+                detected_changes=[],
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
+                error="Failed to enter project path into dialog.",
+            )
+
+        confirm_attempted = True
+        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog)
+        logger.info("interact_with_open_file_dialog confirm result={}", confirm_info)
+        logger.info("project_open_step step=file_dialog_confirm_clicked value={} details={}", confirm_clicked, confirm_info)
+        if not confirm_clicked:
+            return OpenProjectDialogResult(
+                success=False,
+                path=project_path,
+                dialog_found=True,
+                path_entry_attempted=path_entry_attempted,
+                path_entered=True,
+                confirm_attempted=confirm_attempted,
+                confirm_clicked=False,
+                dialog_closed=False,
+                project_state_changed=False,
+                detected_changes=[],
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
+                error="Failed to trigger dialog confirmation action.",
+            )
+
+        close_deadline = time.monotonic() + max(1.0, dialog_timeout)
+        while time.monotonic() < close_deadline:
+            if not bool(_safe_call(dialog, "exists", True)) or not bool(_safe_call(dialog, "is_visible", True)):
+                dialog_closed = True
+                break
+            time.sleep(0.1)
+        logger.info("project_open_step step=dialog_closed value={}", dialog_closed)
+
+        after_snapshot = after_snapshot_provider()
+        project_state_changed, detected_changes = detect_project_state_changed(before_snapshot, after_snapshot)
+        observed_main_window_title_after_open = str(after_snapshot.get("main_window_title") or "")
+        verification = _build_project_path_verification(
+            expected_project_path=project_path,
+            observed_main_window_title=observed_main_window_title_after_open,
+        )
+        observed_project_path = verification.get("observed_project_path")
+        path_match_normalized = bool(verification.get("path_match_normalized"))
+
+        success = dialog_closed and project_state_changed and path_match_normalized
+        elapsed = round(time.monotonic() - start, 3)
+        logger.info(
+            "interact_with_open_file_dialog completed success={} dialog_found={} path_entered={} confirm_clicked={} dialog_closed={} state_changed={} path_match_normalized={} changes={} elapsed_s={}",
+            success,
+            True,
+            path_entered,
+            confirm_clicked,
+            dialog_closed,
+            project_state_changed,
+            path_match_normalized,
+            detected_changes,
+            elapsed,
+        )
+        error = None
+        if not dialog_closed:
+            error = "Dialog did not close after confirmation."
+        elif not project_state_changed:
+            error = "Dialog closed but runtime state did not change."
+        elif not path_match_normalized:
+            error = "Dialog closed and state changed, but the observed project path did not match the expected path."
+
+        return OpenProjectDialogResult(
+            success=success,
+            path=project_path,
+            dialog_found=True,
+            path_entry_attempted=path_entry_attempted,
+            path_entered=path_entered,
+            confirm_attempted=confirm_attempted,
+            confirm_clicked=confirm_clicked,
+            dialog_closed=dialog_closed,
+            project_state_changed=project_state_changed,
+            detected_changes=detected_changes,
+            project_open_method=project_open_method,
+            project_open_sequence=project_open_sequence,
+            observed_main_window_title_after_open=observed_main_window_title_after_open,
+            observed_project_path=observed_project_path,
+            path_match_normalized=path_match_normalized,
+            error=error,
+        )
+    except Exception as exc:
+        logger.exception("interact_with_open_file_dialog failed")
+        return OpenProjectDialogResult(
+            success=False,
+            path=project_path,
+            dialog_found=True,
+            path_entry_attempted=path_entry_attempted,
+            path_entered=path_entered,
+            confirm_attempted=confirm_attempted,
+            confirm_clicked=confirm_clicked,
+            dialog_closed=dialog_closed,
+            project_state_changed=project_state_changed,
+            detected_changes=detected_changes,
+            project_open_method=project_open_method,
+            project_open_sequence=project_open_sequence,
+            observed_main_window_title_after_open=observed_main_window_title_after_open,
+            observed_project_path=observed_project_path,
+            path_match_normalized=path_match_normalized,
+            error=str(exc),
+        )
+
+
 def _project_open_menu_row_index(rows: list[dict[str, Any]]) -> int | None:
     for index, row in enumerate(rows):
         text = str(row.get("text") or "").strip().lower()
@@ -395,11 +576,6 @@ def open_project_file_via_dialog(
 ) -> OpenProjectDialogResult:
     start = time.monotonic()
     dialog_found = False
-    path_entered = False
-    confirm_clicked = False
-    dialog_closed = False
-    project_state_changed = False
-    detected_changes: list[str] = []
     project_open_method = PROJECT_OPEN_ACCELERATOR_MODE
     project_open_sequence = project_open_accelerator_sequence()
 
@@ -438,7 +614,9 @@ def open_project_file_via_dialog(
                 success=False,
                 path=project_path,
                 dialog_found=dialog_found,
+                path_entry_attempted=False,
                 path_entered=False,
+                confirm_attempted=False,
                 confirm_clicked=False,
                 dialog_closed=False,
                 project_state_changed=False,
@@ -447,97 +625,39 @@ def open_project_file_via_dialog(
                 project_open_sequence=project_open_sequence,
                 error=accelerator_error or f"Open-file dialog not detected after {'+'.join(project_open_sequence)} accelerator.",
             )
-
-        path_entered, path_info = set_file_dialog_path(dialog, project_path)
-        logger.info("open_project_file_via_dialog path set result={}", path_info)
-        logger.info("project_open_step step=file_dialog_path_entered value={} details={}", path_entered, path_info)
-        if not path_entered:
-            return OpenProjectDialogResult(
-                success=False,
-                path=project_path,
-                dialog_found=True,
-                path_entered=False,
-                confirm_clicked=False,
-                dialog_closed=False,
-                project_state_changed=False,
-                detected_changes=[],
-                project_open_method=project_open_method,
-                project_open_sequence=project_open_sequence,
-                error="Failed to enter project path into dialog.",
-            )
-
-        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog)
-        logger.info("open_project_file_via_dialog confirm result={}", confirm_info)
-        logger.info("project_open_step step=file_dialog_confirm_clicked value={} details={}", confirm_clicked, confirm_info)
-        if not confirm_clicked:
-            return OpenProjectDialogResult(
-                success=False,
-                path=project_path,
-                dialog_found=True,
-                path_entered=True,
-                confirm_clicked=False,
-                dialog_closed=False,
-                project_state_changed=False,
-                detected_changes=[],
-                project_open_method=project_open_method,
-                project_open_sequence=project_open_sequence,
-                error="Failed to trigger dialog confirmation action.",
-            )
-
-        close_deadline = time.monotonic() + max(1.0, dialog_timeout)
-        while time.monotonic() < close_deadline:
-            if not bool(_safe_call(dialog, "exists", True)) or not bool(_safe_call(dialog, "is_visible", True)):
-                dialog_closed = True
-                break
-            time.sleep(0.1)
-        logger.info("project_open_step step=dialog_closed value={}", dialog_closed)
-
-        after_snapshot = after_snapshot_provider()
-        project_state_changed, detected_changes = detect_project_state_changed(before_snapshot, after_snapshot)
-
-        success = dialog_closed and project_state_changed
-        elapsed = round(time.monotonic() - start, 3)
-        logger.info(
-            "open_project_file_via_dialog completed success={} dialog_found={} path_entered={} confirm_clicked={} dialog_closed={} state_changed={} changes={} elapsed_s={}",
-            success,
-            dialog_found,
-            path_entered,
-            confirm_clicked,
-            dialog_closed,
-            project_state_changed,
-            detected_changes,
-            elapsed,
-        )
-        error = None
-        if not dialog_closed:
-            error = "Dialog did not close after confirmation."
-        elif not project_state_changed:
-            error = "Dialog closed but runtime state did not change."
-
-        return OpenProjectDialogResult(
-            success=success,
-            path=project_path,
-            dialog_found=dialog_found,
-            path_entered=path_entered,
-            confirm_clicked=confirm_clicked,
-            dialog_closed=dialog_closed,
-            project_state_changed=project_state_changed,
-            detected_changes=detected_changes,
+        result = interact_with_open_file_dialog(
+            dialog,
+            project_path,
+            before_snapshot=before_snapshot,
+            after_snapshot_provider=after_snapshot_provider,
+            dialog_timeout=dialog_timeout,
             project_open_method=project_open_method,
             project_open_sequence=project_open_sequence,
-            error=error,
         )
+        logger.info(
+            "open_project_file_via_dialog completed success={} dialog_found={} path_entered={} confirm_clicked={} dialog_closed={} path_match_normalized={} elapsed_s={}",
+            result.success,
+            result.dialog_found,
+            result.path_entered,
+            result.confirm_clicked,
+            result.dialog_closed,
+            result.path_match_normalized,
+            round(time.monotonic() - start, 3),
+        )
+        return result
     except Exception as exc:
         logger.exception("open_project_file_via_dialog failed")
         return OpenProjectDialogResult(
             success=False,
             path=project_path,
             dialog_found=dialog_found,
-            path_entered=path_entered,
-            confirm_clicked=confirm_clicked,
-            dialog_closed=dialog_closed,
-            project_state_changed=project_state_changed,
-            detected_changes=detected_changes,
+            path_entry_attempted=False,
+            path_entered=False,
+            confirm_attempted=False,
+            confirm_clicked=False,
+            dialog_closed=False,
+            project_state_changed=False,
+            detected_changes=[],
             project_open_method=project_open_method,
             project_open_sequence=project_open_sequence,
             error=str(exc),
