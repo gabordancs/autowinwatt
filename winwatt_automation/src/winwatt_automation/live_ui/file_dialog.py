@@ -43,20 +43,31 @@ class OpenProjectDialogResult:
     helper_received_dialog_context: dict[str, Any] | None = None
     helper_dialog_revalidated: bool = False
     helper_dialog_ready_for_interaction: bool = False
+    binding_strategy_used: str | None = None
+    dialog_handle_available: bool = False
+    dialog_binding_candidates_count: int = 0
+    binding_failed_reason: str | None = None
     observed_main_window_title_after_open: str | None = None
     observed_project_path: str | None = None
     path_match_normalized: bool = False
     error: str | None = None
 
 
+def _safe_member(obj: Any, name: str, default: Any = None) -> Any:
+    attr = getattr(obj, name, None)
+    if attr is None:
+        return default
+    if callable(attr):
+        try:
+            return attr()
+        except Exception:
+            return default
+    return attr
+
+
 def _safe_call(obj: Any, method: str, default: Any = None) -> Any:
-    attr = getattr(obj, method, None)
-    if not callable(attr):
-        return default
-    try:
-        return attr()
-    except Exception:
-        return default
+    value = _safe_member(obj, method, default)
+    return default if callable(value) else value
 
 
 def _extract_project_path_from_title(title: str | None) -> str | None:
@@ -91,19 +102,117 @@ def _build_project_path_verification(*, expected_project_path: str | None, obser
 
 
 def _window_snapshot(window: Any) -> dict[str, Any]:
-    title = str(_safe_call(window, "window_text", "") or "").strip()
-    class_name = str(_safe_call(window, "class_name", "") or "").strip()
-    process_id = _safe_call(window, "process_id", None)
-    handle = _safe_call(window, "handle", None)
+    title = str(_safe_member(window, "window_text", "") or "").strip()
+    class_name = str(_safe_member(window, "class_name", "") or "").strip()
+    process_id = _safe_member(window, "process_id", None)
+    handle = _safe_member(window, "handle", None)
+    rectangle = _safe_member(window, "rectangle", None)
+    rect_payload = None
+    if rectangle is not None:
+        try:
+            rect_payload = {
+                "left": int(rectangle.left),
+                "top": int(rectangle.top),
+                "right": int(rectangle.right),
+                "bottom": int(rectangle.bottom),
+            }
+        except Exception:
+            rect_payload = None
     return {
         "title": title,
         "title_lower": title.lower(),
         "class_name": class_name,
         "class_lower": class_name.lower(),
-        "process_id": process_id,
-        "handle": handle,
+        "process_id": int(process_id) if process_id is not None else None,
+        "handle": int(handle) if handle is not None else None,
+        "rectangle": rect_payload,
     }
 
+
+
+
+def _rectangles_roughly_match(first: dict[str, Any] | None, second: dict[str, Any] | None, *, tolerance: int = 25) -> bool:
+    if not first or not second:
+        return False
+    for key in ("left", "top", "right", "bottom"):
+        if key not in first or key not in second:
+            return False
+        if abs(int(first[key]) - int(second[key])) > tolerance:
+            return False
+    return True
+
+
+def _dialog_snapshot_matches_context(candidate: dict[str, Any], expected: dict[str, Any] | None, context: dict[str, Any]) -> bool:
+    expected = expected or {}
+    expected_pid = context.get("dialog_process_id") or expected.get("process_id")
+    expected_title = context.get("dialog_title") or expected.get("title")
+    expected_class = context.get("dialog_class") or expected.get("class_name")
+    expected_rect = expected.get("rectangle")
+    if expected_pid is not None and candidate.get("process_id") != expected_pid:
+        return False
+    if expected_title and str(candidate.get("title") or "").strip() != str(expected_title).strip():
+        return False
+    if expected_class and str(candidate.get("class_name") or "").strip() != str(expected_class).strip():
+        return False
+    if expected_rect and not _rectangles_roughly_match(candidate.get("rectangle"), expected_rect):
+        return False
+    return True
+
+
+def _resolve_dialog_wrapper_for_interaction(dialog: Any, *, detected_dialog_snapshot: dict[str, Any] | None, dialog_context: dict[str, Any] | None) -> tuple[Any | None, dict[str, Any]]:
+    context = dialog_context or {}
+    handle = context.get("dialog_handle") or (detected_dialog_snapshot or {}).get("handle")
+    diagnostics = {
+        "binding_strategy_used": None,
+        "dialog_handle_available": handle is not None,
+        "dialog_binding_candidates_count": 0,
+        "binding_failed_reason": None,
+        "wrapper_ready": False,
+    }
+
+    if dialog is not None and bool(_safe_call(dialog, "exists", True)) and bool(_safe_call(dialog, "is_visible", True)):
+        diagnostics["binding_strategy_used"] = "provided_wrapper"
+        diagnostics["wrapper_ready"] = True
+        return dialog, diagnostics
+
+    try:
+        from pywinauto import Desktop
+    except Exception:
+        diagnostics["binding_failed_reason"] = "desktop_api_unavailable"
+        return None, diagnostics
+
+    windows = [window for window in Desktop(backend="uia").windows(top_level_only=True) if bool(_safe_call(window, "is_visible", False))]
+    snapshots = [(window, _window_snapshot(window)) for window in windows]
+
+    if handle is not None:
+        for window, snapshot in snapshots:
+            if snapshot.get("handle") == handle:
+                diagnostics["binding_strategy_used"] = "handle"
+                diagnostics["dialog_binding_candidates_count"] = 1
+                diagnostics["wrapper_ready"] = True
+                return window, diagnostics
+
+    locator_matches = [(window, snapshot) for window, snapshot in snapshots if _dialog_snapshot_matches_context(snapshot, detected_dialog_snapshot, context)]
+    diagnostics["dialog_binding_candidates_count"] = len(locator_matches)
+    if locator_matches:
+        diagnostics["binding_strategy_used"] = "pid_class_title_rect"
+        diagnostics["wrapper_ready"] = True
+        return locator_matches[0][0], diagnostics
+
+    try:
+        foreground = Desktop(backend="uia").get_active()
+    except Exception:
+        foreground = None
+    if foreground is not None:
+        foreground_snapshot = _window_snapshot(foreground)
+        if _dialog_snapshot_matches_context(foreground_snapshot, detected_dialog_snapshot, context):
+            diagnostics["binding_strategy_used"] = "foreground_top_level_dialog"
+            diagnostics["dialog_binding_candidates_count"] = max(diagnostics["dialog_binding_candidates_count"], 1)
+            diagnostics["wrapper_ready"] = True
+            return foreground, diagnostics
+
+    diagnostics["binding_failed_reason"] = "no_matching_dialog_wrapper_found"
+    return None, diagnostics
 
 def _is_open_dialog_title(title: str) -> bool:
     lowered = (title or "").strip().lower()
@@ -521,6 +630,10 @@ def interact_with_open_file_dialog(
     path_match_normalized = False
     helper_dialog_revalidated = False
     helper_dialog_ready_for_interaction = False
+    binding_strategy_used = None
+    dialog_handle_available = False
+    dialog_binding_candidates_count = 0
+    binding_failed_reason = None
     received_context = {
         "dialog_already_verified": bool((dialog_context or {}).get("dialog_already_verified")),
         "dialog_handle": (dialog_context or {}).get("dialog_handle"),
@@ -533,10 +646,27 @@ def interact_with_open_file_dialog(
         logger.info("interact_with_open_file_dialog detected_dialog_snapshot={}", detected_dialog_snapshot)
         logger.info("interact_with_open_file_dialog helper_received_dialog_context={}", received_context)
 
+        dialog, binding_diagnostics = _resolve_dialog_wrapper_for_interaction(
+            dialog,
+            detected_dialog_snapshot=detected_dialog_snapshot,
+            dialog_context=received_context,
+        )
+        binding_strategy_used = binding_diagnostics.get("binding_strategy_used")
+        dialog_handle_available = bool(binding_diagnostics.get("dialog_handle_available"))
+        dialog_binding_candidates_count = int(binding_diagnostics.get("dialog_binding_candidates_count") or 0)
+        binding_failed_reason = binding_diagnostics.get("binding_failed_reason")
+        logger.info("interact_with_open_file_dialog binding_strategy_used={}", binding_strategy_used)
+        logger.info("interact_with_open_file_dialog dialog_handle_available={}", dialog_handle_available)
+        logger.info("interact_with_open_file_dialog dialog_binding_candidates_count={}", dialog_binding_candidates_count)
+        logger.info("interact_with_open_file_dialog binding_failed_reason={}", binding_failed_reason)
+
         helper_dialog_revalidated = bool(
-            dialog is not None
-            and bool(_safe_call(dialog, "exists", True))
-            and bool(_safe_call(dialog, "is_visible", True))
+            binding_diagnostics.get("wrapper_ready")
+            or (
+                dialog is not None
+                and bool(_safe_call(dialog, "exists", True))
+                and bool(_safe_call(dialog, "is_visible", True))
+            )
         )
         logger.info("interact_with_open_file_dialog helper_dialog_revalidated={}", helper_dialog_revalidated)
         helper_dialog_ready_for_interaction = helper_dialog_revalidated and bool(received_context.get("dialog_already_verified"))
@@ -559,6 +689,10 @@ def interact_with_open_file_dialog(
                 helper_received_dialog_context=received_context,
                 helper_dialog_revalidated=False,
                 helper_dialog_ready_for_interaction=False,
+                binding_strategy_used=binding_strategy_used,
+                dialog_handle_available=dialog_handle_available,
+                dialog_binding_candidates_count=dialog_binding_candidates_count,
+                binding_failed_reason=binding_failed_reason,
                 error="dialog_revalidation_failed",
             )
 
@@ -585,6 +719,10 @@ def interact_with_open_file_dialog(
                 helper_received_dialog_context=received_context,
                 helper_dialog_revalidated=helper_dialog_revalidated,
                 helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
+                binding_strategy_used=binding_strategy_used,
+                dialog_handle_available=dialog_handle_available,
+                dialog_binding_candidates_count=dialog_binding_candidates_count,
+                binding_failed_reason=binding_failed_reason,
             )
 
         confirm_attempted = True
@@ -610,6 +748,10 @@ def interact_with_open_file_dialog(
                 helper_received_dialog_context=received_context,
                 helper_dialog_revalidated=helper_dialog_revalidated,
                 helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
+                binding_strategy_used=binding_strategy_used,
+                dialog_handle_available=dialog_handle_available,
+                dialog_binding_candidates_count=dialog_binding_candidates_count,
+                binding_failed_reason=binding_failed_reason,
             )
 
         close_deadline = time.monotonic() + max(1.0, dialog_timeout)
@@ -669,6 +811,10 @@ def interact_with_open_file_dialog(
             helper_received_dialog_context=received_context,
             helper_dialog_revalidated=helper_dialog_revalidated,
             helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
+            binding_strategy_used=binding_strategy_used,
+            dialog_handle_available=dialog_handle_available,
+            dialog_binding_candidates_count=dialog_binding_candidates_count,
+            binding_failed_reason=binding_failed_reason,
             observed_main_window_title_after_open=observed_main_window_title_after_open,
             observed_project_path=observed_project_path,
             path_match_normalized=path_match_normalized,
@@ -693,6 +839,10 @@ def interact_with_open_file_dialog(
             helper_received_dialog_context=received_context,
             helper_dialog_revalidated=helper_dialog_revalidated,
             helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
+            binding_strategy_used=binding_strategy_used,
+            dialog_handle_available=dialog_handle_available,
+            dialog_binding_candidates_count=dialog_binding_candidates_count,
+            binding_failed_reason=binding_failed_reason,
             observed_main_window_title_after_open=observed_main_window_title_after_open,
             observed_project_path=observed_project_path,
             path_match_normalized=path_match_normalized,
