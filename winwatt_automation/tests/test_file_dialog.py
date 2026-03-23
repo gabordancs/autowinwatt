@@ -249,6 +249,76 @@ def test_interact_with_open_file_dialog_uses_explicit_verified_context(monkeypat
     assert result.helper_received_dialog_context["dialog_already_verified"] is True
 
 
+
+
+def test_interact_with_open_file_dialog_rebinds_without_handle_using_locator(monkeypatch):
+    class DeadDialog:
+        def exists(self):
+            return False
+
+        def is_visible(self):
+            return False
+
+    class LiveDialog:
+        def exists(self):
+            return True
+
+        def is_visible(self):
+            return True
+
+    live_dialog = LiveDialog()
+
+    monkeypatch.setattr(file_dialog, "set_file_dialog_path", lambda dialog, path: (True, {"method": "direct_edit"}))
+    monkeypatch.setattr(file_dialog, "confirm_file_dialog_open", lambda dialog, **kwargs: (True, {"method": "button"}))
+
+    visibility = {"count": 0}
+
+    def fake_safe_call(obj, method, default=None):
+        if obj is live_dialog and method == "exists":
+            return True
+        if obj is live_dialog and method == "is_visible":
+            visibility["count"] += 1
+            return visibility["count"] == 1
+        if method in {"exists", "is_visible"}:
+            return False
+        return default
+
+    class FakeDesktop:
+        def __init__(self, backend=None):
+            pass
+
+        def windows(self, top_level_only=True):
+            return [live_dialog]
+
+        def get_active(self):
+            return live_dialog
+
+    live_dialog.window_text = "Projekt megnyitás"
+    live_dialog.class_name = "#32770"
+    live_dialog.process_id = 55
+    live_dialog.handle = None
+    live_dialog.rectangle = type("Rect", (), {"left": 10, "top": 20, "right": 410, "bottom": 320})()
+
+    import sys, types
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(Desktop=FakeDesktop))
+    monkeypatch.setattr(file_dialog, "_safe_call", fake_safe_call)
+
+    result = file_dialog.interact_with_open_file_dialog(
+        DeadDialog(),
+        r"C:\tmp\test.wwp",
+        before_snapshot={"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": ["Fájl", "Projekt"], "visible_top_windows": [], "main_window_title": r"WinWatt - C:\tmp\test.wwp"},
+        detected_dialog_snapshot={"title": "Projekt megnyitás", "class_name": "#32770", "handle": None, "process_id": 55, "rectangle": {"left": 10, "top": 20, "right": 410, "bottom": 320}},
+        dialog_context={"dialog_already_verified": True, "dialog_handle": None, "dialog_title": "Projekt megnyitás", "dialog_class": "#32770", "dialog_process_id": 55},
+    )
+
+    assert result.path_entry_attempted is True
+    assert result.helper_dialog_revalidated is True
+    assert result.binding_strategy_used == "pid_class_title_rect"
+    assert result.dialog_handle_available is False
+    assert result.dialog_binding_candidates_count == 1
+
+
 def test_interact_with_open_file_dialog_reports_revalidation_failure_without_false_not_detected(monkeypatch):
     class Dialog:
         def exists(self):
