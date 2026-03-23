@@ -21,16 +21,11 @@ class _Snapshot:
 
 def test_run_smoke_passes_detected_dialog_context_into_helper(monkeypatch, tmp_path):
     monkeypatch.setattr(smoke, "connect_to_winwatt", lambda: None)
-    monkeypatch.setattr(smoke, "prepare_main_window_for_menu_interaction", lambda: None)
-    monkeypatch.setattr(smoke, "ensure_main_window_foreground_before_click", lambda **kwargs: None)
     monkeypatch.setattr(smoke, "get_last_focus_guard_diagnostic", lambda: {})
-    monkeypatch.setattr(smoke, "get_cached_main_window", lambda: type("MainWindow", (), {"process_id": lambda self: 55})())
-    monkeypatch.setattr(smoke, "_visible_top_level_windows", lambda: [])
     monkeypatch.setattr(smoke, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm"})
-    monkeypatch.setattr(smoke, "send_project_open_accelerator", lambda **kwargs: {"project_open_method": "ctrl_o", "sequence": ["CTRL+O"]})
-    monkeypatch.setattr(smoke, "_detect_dialog", lambda **kwargs: {"dialog_detected": True, "dialog": {"title": "Projekt megnyitás", "class_name": "#32770", "handle": 101, "process_id": 55}, "candidate_count": 1})
 
     dialog_wrapper = object()
+    monkeypatch.setattr(smoke, "prepare_and_trigger_project_open_dialog", lambda **kwargs: (dialog_wrapper, {"dialog_found": True, "project_open_method": "ctrl_o", "sequence": ["CTRL+O"], "selected_candidate": {"title": "Projekt megnyitás", "class_name": "#32770", "handle": 101, "process_id": 55}, "candidate_count": 1}))
     monkeypatch.setattr(smoke, "_find_visible_window_by_handle", lambda handle: dialog_wrapper if handle == 101 else None)
     monkeypatch.setattr(smoke, "capture_state_snapshot", lambda state_id: _Snapshot(state_id=state_id))
     def fake_asdict(obj):
@@ -93,14 +88,9 @@ def test_run_smoke_passes_detected_dialog_context_into_helper(monkeypatch, tmp_p
 
 def test_run_smoke_passes_none_wrapper_to_helper_when_detected_dialog_has_no_handle(monkeypatch, tmp_path):
     monkeypatch.setattr(smoke, "connect_to_winwatt", lambda: None)
-    monkeypatch.setattr(smoke, "prepare_main_window_for_menu_interaction", lambda: None)
-    monkeypatch.setattr(smoke, "ensure_main_window_foreground_before_click", lambda **kwargs: None)
     monkeypatch.setattr(smoke, "get_last_focus_guard_diagnostic", lambda: {})
-    monkeypatch.setattr(smoke, "get_cached_main_window", lambda: type("MainWindow", (), {"process_id": lambda self: 55})())
-    monkeypatch.setattr(smoke, "_visible_top_level_windows", lambda: [])
     monkeypatch.setattr(smoke, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm"})
-    monkeypatch.setattr(smoke, "send_project_open_accelerator", lambda **kwargs: {"project_open_method": "ctrl_o", "sequence": ["CTRL+O"]})
-    monkeypatch.setattr(smoke, "_detect_dialog", lambda **kwargs: {"dialog_detected": True, "dialog": {"title": "Projekt megnyitás", "class_name": "#32770", "handle": None, "process_id": 55, "rectangle": {"left": 1, "top": 2, "right": 3, "bottom": 4}}, "candidate_count": 1})
+    monkeypatch.setattr(smoke, "prepare_and_trigger_project_open_dialog", lambda **kwargs: (None, {"dialog_found": True, "project_open_method": "ctrl_o", "sequence": ["CTRL+O"], "selected_candidate": {"title": "Projekt megnyitás", "class_name": "#32770", "handle": None, "process_id": 55, "rectangle": {"left": 1, "top": 2, "right": 3, "bottom": 4}}, "candidate_count": 1}))
     monkeypatch.setattr(smoke, "_find_visible_window_by_handle", lambda handle: (_ for _ in ()).throw(AssertionError("handle lookup should be skipped when handle is missing")))
     monkeypatch.setattr(smoke, "capture_state_snapshot", lambda state_id: _Snapshot(state_id=state_id))
     monkeypatch.setattr(smoke, "asdict", lambda obj: {"state_id": obj.state_id} if hasattr(obj, "state_id") else obj.__dict__.copy())
