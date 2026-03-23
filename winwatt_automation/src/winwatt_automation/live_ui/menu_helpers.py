@@ -71,6 +71,7 @@ VERTICAL_POPUP_CLUSTER_HEIGHT_TOLERANCE = 10
 VERTICAL_POPUP_CLUSTER_MIN_X_OVERLAP_RATIO = 0.8
 REPEATED_LEGACY_TEXT_MIN_ROWS = 2
 REPEATED_LEGACY_TEXT_MIN_RATIO = 0.4
+POPUP_NOISE_RECT_TOLERANCE = 6
 _MENU_ITEMS_REENTRANCY_DEPTH = 0
 _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
 RECENT_PROJECT_ENTRY_PATTERN = re.compile(r"^\s*\d+\s*:")
@@ -1409,6 +1410,95 @@ def _reject_repeated_popup_legacy_texts(logical_rows: list[dict[str, Any]]) -> N
         row["rejected_text_recovery_reason"] = "repeated_legacy_text"
 
 
+def _popup_noise_rect_band(row: dict[str, Any]) -> tuple[int, int, int, int]:
+    rect = dict(row.get("rectangle") or {})
+    left = int(rect.get("left") or 0)
+    right = int(rect.get("right") or 0)
+    width = max(0, right - left)
+    height = max(0, int(rect.get("bottom") or 0) - int(rect.get("top") or 0))
+    tolerance = max(1, POPUP_NOISE_RECT_TOLERANCE)
+    return (
+        round(left / tolerance),
+        round(right / tolerance),
+        round(width / tolerance),
+        round(height / tolerance),
+    )
+
+
+def _popup_row_raw_source_pattern(row: dict[str, Any]) -> tuple[str, ...]:
+    return tuple(str(source) for source in list(row.get("raw_text_sources") or []) if str(source))
+
+
+def _popup_row_has_interaction_evidence(row: dict[str, Any]) -> bool:
+    evidence = dict(row.get("interaction_evidence") or {})
+    evidence_result = str(evidence.get("result_type") or row.get("interaction_result_type") or "")
+    return bool(
+        evidence_result
+        or row.get("invoked")
+        or row.get("activated")
+        or row.get("probe_result_type")
+        or row.get("child_popup_opened")
+        or row.get("dialog_opened")
+    )
+
+
+def _suppress_popup_text_noise_duplicates(logical_rows: list[dict[str, Any]]) -> None:
+    popup_rows = [row for row in logical_rows if bool(row.get("popup_candidate") or row.get("popup_priority_candidate"))]
+    if len(popup_rows) < REPEATED_LEGACY_TEXT_MIN_ROWS:
+        return
+
+    duplicate_groups: dict[tuple[str, tuple[str, ...], tuple[int, int, int, int]], list[tuple[int, dict[str, Any]]]] = {}
+    text_counts = Counter()
+    for row_index, row in enumerate(logical_rows):
+        normalized_text = _normalize(str(row.get("text") or ""))
+        raw_source_pattern = _popup_row_raw_source_pattern(row)
+        if (
+            not normalized_text
+            or raw_source_pattern != ("legacy_text",)
+            or _popup_row_has_reliable_local_text(row)
+            or _popup_row_has_interaction_evidence(row)
+        ):
+            continue
+        if not bool(row.get("popup_candidate") or row.get("popup_priority_candidate")):
+            continue
+        text_counts[normalized_text] += 1
+        group_key = (normalized_text, raw_source_pattern, _popup_noise_rect_band(row))
+        duplicate_groups.setdefault(group_key, []).append((row_index, row))
+
+    for (normalized_text, raw_source_pattern, rect_band), group in duplicate_groups.items():
+        if len(group) < REPEATED_LEGACY_TEXT_MIN_ROWS or text_counts[normalized_text] < REPEATED_LEGACY_TEXT_MIN_ROWS:
+            continue
+        ranked_group = sorted(
+            group,
+            key=lambda item: (
+                1 if str(item[1].get("text_confidence") or "none") == "medium" else 0,
+                len(list(item[1].get("fragments") or [])),
+                -item[0],
+            ),
+            reverse=True,
+        )
+        kept_row_index, _kept_row = ranked_group[0]
+        for row_index, row in ranked_group[1:]:
+            row["popup_noise_suppressed"] = True
+            row["suppressed_as_duplicate_of"] = kept_row_index
+            row["rejected_text_recovery_reason"] = "legacy_text_duplicate_noise"
+            logger.info(
+                "LEGACY_TEXT_DUPLICATE_SUPPRESSED row_index={} kept_row_index={} repeated_text={!r} raw_sources={} rect_band={} rectangle={}",
+                row_index,
+                kept_row_index,
+                row.get("text"),
+                list(raw_source_pattern),
+                rect_band,
+                row.get("rectangle"),
+            )
+            logger.info(
+                "POPUP_TEXT_NOISE_REJECTED row_index={} reason=repeated_legacy_text_duplicate normalized_text={} source_pattern={} interaction_evidence=false",
+                row_index,
+                normalized_text,
+                list(raw_source_pattern),
+            )
+
+
 def _extract_text_with_fallbacks(wrapper: Any, *, row_rect: dict[str, Any]) -> tuple[str, list[str], str, list[dict[str, Any]]]:
     source_values = [
         ("uia_name", _clean_text_candidate(_name(wrapper)), "high"),
@@ -2002,6 +2092,7 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
             popup_reason,
         )
     _reject_repeated_popup_legacy_texts(logical_rows)
+    _suppress_popup_text_noise_duplicates(logical_rows)
     logical_rows.sort(key=lambda item: (item["rectangle"]["top"], item["rectangle"]["left"]))
     return logical_rows
 
