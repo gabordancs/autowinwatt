@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-03-23T06:45:40.463135+00:00",
+  "timestamp_utc": "2026-03-23T08:00:36.738380+00:00",
   "script": "scripts\\winwatt_open_project_accelerator_smoke.py",
   "project_open_method": "ctrl_o",
   "sequence": [
@@ -10,16 +10,16 @@
   "focus_guard_reason": null,
   "cached_identity": {
     "wrapper_type": "UIAWrapper",
-    "handle": 13436386,
-    "process_id": 16244,
+    "handle": 8589044,
+    "process_id": 35048,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
     "control_type": "Window"
   },
   "refreshed_identity": {
     "wrapper_type": "UIAWrapper",
-    "handle": 13436386,
-    "process_id": 16244,
+    "handle": 8589044,
+    "process_id": 35048,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
     "control_type": "Window"
@@ -33,27 +33,27 @@
   "key_send_attempted": true,
   "accelerator_sent": true,
   "foreground_before": {
-    "handle": 13436386,
+    "handle": 8589044,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
-    "process_id": 16244
+    "process_id": 35048
   },
   "foreground_after": {
-    "handle": 13436386,
+    "handle": 8589044,
     "title": "WinWatt gólya",
     "class_name": "TMainForm",
-    "process_id": 16244
+    "process_id": 35048
   },
   "dialog_detected": true,
   "dialog_title": "Projekt megnyitás",
   "dialog_class": "#32770",
-  "dialog_handle": null,
-  "dialog_process_id": 16244,
+  "dialog_handle": 21696098,
+  "dialog_process_id": 35048,
   "detected_dialog_snapshot": {
     "title": "Projekt megnyitás",
     "class_name": "#32770",
-    "handle": null,
-    "process_id": 16244,
+    "handle": 21696098,
+    "process_id": 35048,
     "is_visible": true,
     "is_enabled": true,
     "rectangle": {
@@ -65,41 +65,38 @@
   },
   "helper_received_dialog_context": {
     "dialog_already_verified": true,
-    "dialog_handle": null,
+    "dialog_handle": 21696098,
     "dialog_title": "Projekt megnyitás",
     "dialog_class": "#32770",
-    "dialog_process_id": 16244
+    "dialog_process_id": 35048
   },
-  "helper_dialog_revalidated": false,
-  "helper_dialog_ready_for_interaction": false,
+  "helper_dialog_revalidated": true,
+  "helper_dialog_ready_for_interaction": true,
+  "binding_strategy_used": "provided_wrapper",
+  "dialog_handle_available": true,
+  "dialog_binding_candidates_count": 0,
+  "binding_failed_reason": null,
   "project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "project_open_success": false,
-  "path_entry_attempted": false,
+  "path_entry_attempted": true,
   "path_entered": false,
   "confirm_attempted": false,
   "confirm_clicked": false,
   "dialog_closed": false,
   "project_state_changed": false,
-  "project_open_error": "dialog_detected_but_not_bound_for_interaction",
+  "project_open_error": "path_entry_failed",
   "project_open_detected_changes": [],
-  "observed_main_window_title_after_open": "",
+  "observed_main_window_title_after_open": null,
   "observed_project_path": null,
   "path_match_normalized": false,
   "recovery_success": true,
-  "recovery_close_attempts": [
-    {
-      "method": "key",
-      "name": "Esc",
-      "key_sequence": "{ESC}",
-      "sent": true
-    }
-  ],
+  "recovery_close_attempts": [],
   "recovery_diagnostics": {
     "foreground_window": {
-      "handle": 13436386,
+      "handle": 8589044,
       "title": "WinWatt gólya",
       "class_name": "TMainForm",
-      "process_id": 16244
+      "process_id": 35048
     },
     "dialog_candidates": [],
     "main_window": {
@@ -113,12 +110,12 @@
       },
       "title": "WinWatt gólya",
       "class_name": "TMainForm",
-      "process_id": 16244,
+      "process_id": 35048,
       "handle": null,
       "exists": true
     }
   },
-  "elapsed_time_s": 6.421,
+  "elapsed_time_s": 22.348,
   "timeout_s": 10.0,
   "step_delay_s": 0.15,
   "candidate_count": 14
