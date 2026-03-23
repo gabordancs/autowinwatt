@@ -301,6 +301,85 @@ def _control_type(wrapper: Any) -> str:
     return str(getattr(info, "control_type", "") or "").strip().lower()
 
 
+def _control_class_name(wrapper: Any) -> str:
+    info = getattr(wrapper, "element_info", wrapper)
+    return str(getattr(info, "class_name", "") or "").strip()
+
+
+def _normalized_label_text(value: str | None) -> str:
+    text = str(value or "").strip().lower().replace("_", " ")
+    return " ".join(text.replace(":", " ").split())
+
+
+def _is_label_like_text(value: str | None) -> bool:
+    normalized = _normalized_label_text(value)
+    return normalized in {"fájlnév", "fajlnev", "file name", "filename"}
+
+
+def _is_control_editable(control: Any) -> bool:
+    control_type = _control_type(control)
+    if control_type not in {"edit", "combobox"}:
+        return False
+    if not bool(_safe_call(control, "is_enabled", False)):
+        return False
+    if bool(_safe_call(control, "is_read_only", False)):
+        return False
+    for attr in ("is_editable", "is_keyboard_focusable", "has_keyboard_focus", "is_focusable"):
+        value = _safe_call(control, attr, None)
+        if value is not None:
+            return bool(value)
+    iface_value = getattr(control, "iface_value", None)
+    if iface_value is not None:
+        return True
+    legacy_props = getattr(control, "legacy_properties", None)
+    if callable(legacy_props):
+        try:
+            props = legacy_props()
+        except Exception:
+            props = None
+        if isinstance(props, dict):
+            state = str(props.get("State") or "").lower()
+            if "readonly" in state:
+                return False
+            if state:
+                return True
+    class_name = _control_class_name(control).lower()
+    return control_type == "edit" and class_name != "static"
+
+
+def _describe_filename_control(control: Any, reason: str | None) -> dict[str, Any]:
+    return {
+        "file_name_control_class_name": _control_class_name(control) if control is not None else "",
+        "file_name_control_control_type": _control_type(control) if control is not None else "",
+        "file_name_control_is_editable": _is_control_editable(control) if control is not None else False,
+        "file_name_control_is_label_like": _is_label_like_text(_control_name(control) if control is not None else ""),
+        "file_name_control_locator_reason": reason,
+    }
+
+
+def _iter_candidate_edits(control: Any) -> list[Any]:
+    candidates: list[Any] = []
+    if _control_type(control) == "edit":
+        candidates.append(control)
+    if _control_type(control) == "combobox":
+        children = getattr(control, "children", None)
+        if callable(children):
+            candidates.extend(item for item in children() if _control_type(item) == "edit")
+    return candidates
+
+
+def _pick_viable_filename_control(candidates: list[tuple[Any, str]]) -> tuple[Any | None, str | None]:
+    for control, reason in candidates:
+        if control is None:
+            continue
+        if _is_label_like_text(_control_name(control)) or _is_label_like_text(_read_edit_value(control)):
+            continue
+        if not _is_control_editable(control):
+            continue
+        return control, reason
+    return None, None
+
+
 def _find_filename_edit_control(dialog: Any) -> tuple[Any | None, str | None]:
     descendants = getattr(dialog, "descendants", None)
     if not callable(descendants):
@@ -309,37 +388,58 @@ def _find_filename_edit_control(dialog: Any) -> tuple[Any | None, str | None]:
     controls = list(descendants())
     edits = [item for item in controls if _control_type(item) == "edit"]
     if not edits:
-        return None, None
+        edits = []
+
+    filename_rows: list[tuple[Any, str]] = []
+    for item in controls:
+        item_name = _control_name(item)
+        if not any(hint in item_name.lower() for hint in FILENAME_EDIT_HINTS):
+            continue
+        if _control_type(item) in {"edit", "combobox"}:
+            reason = "combo_named_like_file_name_child_edit" if _control_type(item) == "combobox" else "edit_named_like_file_name"
+            for candidate in _iter_candidate_edits(item):
+                filename_rows.append((candidate, reason))
+            continue
+        if _is_label_like_text(item_name):
+            parent = _safe_call(item, "parent", None)
+            siblings: list[Any] = []
+            if parent is not None:
+                children = getattr(parent, "children", None)
+                if callable(children):
+                    siblings = list(children())
+            for sibling in siblings:
+                if sibling is item:
+                    continue
+                for candidate in _iter_candidate_edits(sibling):
+                    filename_rows.append((candidate, "label_neighbor_edit"))
+
+    chosen, strategy = _pick_viable_filename_control(filename_rows)
+    if chosen is not None:
+        return chosen, strategy
 
     named_edits = [
         item for item in edits
         if any(hint in _control_name(item).lower() for hint in FILENAME_EDIT_HINTS)
     ]
-    enabled_named_edits = [item for item in named_edits if bool(_safe_call(item, "is_enabled", False))]
-    if enabled_named_edits:
-        return enabled_named_edits[0], "edit_named_like_file_name"
-    if named_edits:
-        return named_edits[0], "edit_named_like_file_name_disabled"
+    chosen, strategy = _pick_viable_filename_control([(item, "edit_named_like_file_name") for item in named_edits])
+    if chosen is not None:
+        return chosen, strategy
 
     combo_named = [
         item for item in controls
         if _control_type(item) == "combobox"
         and any(hint in _control_name(item).lower() for hint in FILENAME_EDIT_HINTS)
     ]
-    for combo in combo_named:
-        children = getattr(combo, "children", None)
-        if callable(children):
-            combo_edits = [item for item in children() if _control_type(item) == "edit"]
-            enabled_combo_edits = [item for item in combo_edits if bool(_safe_call(item, "is_enabled", False))]
-            if enabled_combo_edits:
-                return enabled_combo_edits[0], "combo_named_like_file_name_child_edit"
-            if combo_edits:
-                return combo_edits[0], "combo_named_like_file_name_child_edit_disabled"
+    chosen, strategy = _pick_viable_filename_control(
+        [(candidate, "combo_named_like_file_name_child_edit") for combo in combo_named for candidate in _iter_candidate_edits(combo)]
+    )
+    if chosen is not None:
+        return chosen, strategy
 
-    enabled_edits = [item for item in edits if bool(_safe_call(item, "is_enabled", False))]
-    if enabled_edits:
-        return enabled_edits[-1], "last_enabled_edit_fallback"
-    return edits[-1], "last_edit_fallback"
+    chosen, strategy = _pick_viable_filename_control([(item, "last_enabled_edit_fallback") for item in edits])
+    if chosen is not None:
+        return chosen, strategy
+    return None, None
 
 
 def _read_edit_value(edit: Any) -> str:
@@ -484,6 +584,7 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
         "location_bar_touched": False,
         "confirm_skipped_reason": None,
     }
+    info.update(_describe_filename_control(edit, strategy))
 
     if edit is None:
         info["confirm_skipped_reason"] = "file_name_control_not_found"
@@ -501,9 +602,14 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
         info["file_name_value_matches_expected"] = _normalize_project_path(info["file_name_control_value_after"]) == _normalize_project_path(project_path)
         if info["file_name_value_matches_expected"]:
             logger.info(
-                "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
+                "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_class_name={} file_name_control_control_type={} file_name_control_is_editable={} file_name_control_is_label_like={} file_name_control_locator_reason={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
                 info["file_name_control_strategy"],
                 info["file_name_control_found"],
+                info["file_name_control_class_name"],
+                info["file_name_control_control_type"],
+                info["file_name_control_is_editable"],
+                info["file_name_control_is_label_like"],
+                info["file_name_control_locator_reason"],
                 info["file_name_control_value_before"],
                 info["file_name_control_value_after"],
                 info["file_name_value_matches_expected"],
@@ -530,9 +636,14 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
     if not info["file_name_value_matches_expected"]:
         info["confirm_skipped_reason"] = "file_name_value_mismatch"
     logger.info(
-        "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
+        "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_class_name={} file_name_control_control_type={} file_name_control_is_editable={} file_name_control_is_label_like={} file_name_control_locator_reason={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
         info["file_name_control_strategy"],
         info["file_name_control_found"],
+        info["file_name_control_class_name"],
+        info["file_name_control_control_type"],
+        info["file_name_control_is_editable"],
+        info["file_name_control_is_label_like"],
+        info["file_name_control_locator_reason"],
         info["file_name_control_value_before"],
         info["file_name_control_value_after"],
         info["file_name_value_matches_expected"],

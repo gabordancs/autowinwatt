@@ -12,12 +12,30 @@ class _FakeElementInfo:
 
 
 class _FakeControl:
-    def __init__(self, name: str, control_type: str = "", enabled: bool = True):
-        self.element_info = _FakeElementInfo(name=name, control_type=control_type)
+    def __init__(self, name: str, control_type: str = "", enabled: bool = True, *, class_name: str = "", editable: bool = True):
+        self.element_info = _FakeElementInfo(name=name, control_type=control_type, class_name=class_name)
         self._enabled = enabled
+        self._editable = editable
+        self._parent = None
 
     def is_enabled(self):
         return self._enabled
+
+    def is_editable(self):
+        return self._editable
+
+    def parent(self):
+        return self._parent
+
+
+class _FakeParent:
+    def __init__(self, children):
+        self._children = children
+        for child in children:
+            child._parent = self
+
+    def children(self):
+        return self._children
 
 
 def test_trigger_open_project_dialog_from_default_state_sends_ctrl_o(monkeypatch):
@@ -110,18 +128,19 @@ def test_select_best_dialog_candidate_prefers_pid_and_new_handle():
     assert best["handle"] == 101
 
 
-def test_find_filename_edit_control_prefers_filename_hint():
+def test_find_filename_edit_control_prefers_label_neighbor_edit_over_label_like_edit():
     dialog = type("FakeDialog", (), {})()
-    controls = [
-        _FakeControl(name="Search", control_type="Edit"),
-        _FakeControl(name="Fájlnév:", control_type="Edit"),
-    ]
-    dialog.descendants = lambda: controls
+    search = _FakeControl(name="Search", control_type="Edit")
+    label = _FakeControl(name="Fájlnév:", control_type="Text", editable=False, class_name="Static")
+    real_edit = _FakeControl(name="", control_type="Edit")
+    _FakeParent([label, real_edit])
+    misleading = _FakeControl(name="Fájlnév:", control_type="Edit", class_name="Static")
+    dialog.descendants = lambda: [search, label, real_edit, misleading]
 
     selected = file_dialog._find_filename_edit_control(dialog)
 
-    assert selected[0] is controls[1]
-    assert selected[1] == "edit_named_like_file_name"
+    assert selected[0] is real_edit
+    assert selected[1] == "label_neighbor_edit"
 
 
 def test_find_confirm_open_button_by_hungarian_or_english_label():
@@ -389,6 +408,25 @@ def test_find_filename_edit_control_supports_combobox_child_edit():
     assert strategy == "combo_named_like_file_name_child_edit"
 
 
+def test_find_filename_edit_control_rejects_label_like_value_fallback():
+    dialog = type("FakeDialog", (), {})()
+
+    class LabelLikeEdit(_FakeControl):
+        def __init__(self):
+            super().__init__(name="Fájlnév:", control_type="Edit", class_name="Static")
+
+        def window_text(self):
+            return "Fájlnév:"
+
+    real_edit = _FakeControl(name="", control_type="Edit")
+    dialog.descendants = lambda: [LabelLikeEdit(), real_edit]
+
+    selected, strategy = file_dialog._find_filename_edit_control(dialog)
+
+    assert selected is real_edit
+    assert strategy == "last_enabled_edit_fallback"
+
+
 def test_set_file_dialog_path_targets_file_name_edit_without_location_hotkeys(monkeypatch):
     sent = []
 
@@ -434,8 +472,40 @@ def test_set_file_dialog_path_targets_file_name_edit_without_location_hotkeys(mo
     assert info["method"] == "direct_edit"
     assert info["file_name_control_value_after"] == r"C:\tmp\test.wwp"
     assert info["file_name_value_matches_expected"] is True
+    assert info["file_name_control_control_type"] == "edit"
+    assert info["file_name_control_is_editable"] is True
+    assert info["file_name_control_is_label_like"] is True
     assert info["location_bar_touched"] is False
     assert sent == []
+
+
+def test_set_file_dialog_path_reports_not_found_when_only_label_like_edit_exists(monkeypatch):
+    class LabelEdit:
+        def __init__(self):
+            self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit", class_name="Static")
+
+        def is_enabled(self):
+            return True
+
+        def is_editable(self):
+            return True
+
+        def window_text(self):
+            return "Fájlnév:"
+
+    class Dialog:
+        def set_focus(self):
+            return None
+
+        def descendants(self):
+            return [LabelEdit()]
+
+    ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
+
+    assert ok is False
+    assert info["file_name_control_found"] is False
+    assert info["file_name_control_value_before"] == ""
+    assert info["confirm_skipped_reason"] == "file_name_control_not_found"
 
 
 def test_interact_with_open_file_dialog_skips_confirm_when_path_not_validated(monkeypatch):
