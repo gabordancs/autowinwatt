@@ -67,6 +67,10 @@ ACTION_PROBE_REJECTION_REASONS = {
 ACTION_PROBE_ADMISSION_RESULT_TYPES = {
     "child_popup_opened",
     "dialog_opened",
+    "child_window_opened",
+    "mdi_child_opened",
+    "internal_window_opened",
+    "internal_child_window_opened",
     "popup_closed_with_foreground_change",
 }
 ACTION_PROBE_STRONG_RESULT_TYPES = ACTION_PROBE_ADMISSION_RESULT_TYPES | {
@@ -567,16 +571,24 @@ def _classify_popup_block(
     popup_rows = [row for row in filtered_rows if _row_popup_like(row)]
     empty_popup_rows = [row for row in popup_rows if not str(row.get("text") or "").strip()]
     empty_ratio = (len(empty_popup_rows) / len(popup_rows)) if popup_rows else 0.0
+    explicit_recent_entries = [
+        row for row in popup_rows if menu_helpers._is_recent_project_entry_text(str(row.get("text") or ""))
+    ]
     recent_candidate = (
         normalize_menu_title(top_menu) == normalize_menu_title("Fájl")
-        and popup_like_count > 0
-        and bool(popup_rows)
-        and empty_ratio >= 0.8
-        and all(str(row.get("popup_reason") or "") == "empty_text_vertical_cluster_below_topbar" for row in empty_popup_rows)
-        and snapshot is not None
-        and snapshot.main_window_enabled is not False
-        and _foreground_matches_main_window(snapshot)
-        and _is_stable_vertical_popup_list(popup_rows)
+        and (
+            (
+                popup_like_count > 0
+                and bool(popup_rows)
+                and empty_ratio >= 0.8
+                and all(str(row.get("popup_reason") or "") == "empty_text_vertical_cluster_below_topbar" for row in empty_popup_rows)
+                and snapshot is not None
+                and snapshot.main_window_enabled is not False
+                and _foreground_matches_main_window(snapshot)
+                and _is_stable_vertical_popup_list(popup_rows)
+            )
+            or bool(explicit_recent_entries)
+        )
     )
     classification = "recent_projects_block" if recent_candidate else "normal_popup"
     accepted_rows = filtered_rows
@@ -594,7 +606,10 @@ def _classify_popup_block(
             row["popup_block_classification"] = classification
             row["recent_projects_block"] = True
             row["stateful_menu_block"] = True
-            row["recent_project_entry"] = _row_popup_like(row) and not str(row.get("text") or "").strip()
+            row["recent_project_entry"] = (
+                menu_helpers._is_recent_project_entry_text(str(row.get("text") or ""))
+                or (_row_popup_like(row) and not str(row.get("text") or "").strip())
+            )
     return classification, accepted_rows, {
         "popup_like_count": popup_like_count,
         "topbar_like_count": topbar_like_count,
@@ -634,10 +649,14 @@ def _row_to_node(
     action_state_classification = "unknown"
     if row.get("is_separator"):
         action_classification = "separator"
+        action_state_classification = "separator"
     elif reused_from_previous_state:
         action_classification = "reused_from_previous_state"
     elif skipped_by_safety:
         action_classification = "skipped_by_safety"
+    elif bool(row.get("recent_project_entry")):
+        action_classification = "recent_project_entry"
+        action_state_classification = "recent_project_entry"
     elif opens_submenu:
         action_classification = "opens_submenu"
         action_state_classification = "opens_submenu"
@@ -649,6 +668,7 @@ def _row_to_node(
         action_state_classification = "changes_menu_state"
     elif enabled is False:
         action_classification = "disabled"
+        action_state_classification = "disabled"
     elif enabled is True:
         action_classification = "leaf_action"
         action_state_classification = "executes_command"
@@ -872,6 +892,12 @@ def _build_menu_rows_from_popup_rows(
         dispatch_type = "click"
         recent_project_entry = bool(row.get("recent_project_entry"))
         stateful_menu_block = bool(row.get("stateful_menu_block"))
+        enabled_guess = _guess_enabled(row)
+        if menu_helpers._is_recent_project_entry_text(text):
+            recent_project_entry = True
+            stateful_menu_block = True
+        if bool(row.get("is_separator")):
+            actionable = False
         if not normalized_title:
             logger.info(
                 "DBG_WINWATT_EMPTY_NORMALIZED_MENU_TITLE row_index={} raw_text={} normalized_text={} is_separator={} source_scope={} control_type={} class_name={} rectangle={} fragment_count={} fragment_texts={} ",
@@ -889,6 +915,7 @@ def _build_menu_rows_from_popup_rows(
             placeholder_eligible = (
                 ENABLE_GEOMETRY_PLACEHOLDERS
                 and not bool(row.get("is_separator"))
+                and not (recent_project_entry and text.strip())
                 and popup_like
                 and not topbar_like
                 and not text.strip()
@@ -960,7 +987,7 @@ def _build_menu_rows_from_popup_rows(
                 is_separator=bool(row.get("is_separator")),
                 source_scope=str(row.get("source_scope") or ""),
                 fragments=list(row.get("fragments") or []),
-                enabled_guess=_guess_enabled(row),
+                enabled_guess=enabled_guess,
                 discovered_in_state=state_id,
                 raw_text_sources=raw_text_sources,
                 text_confidence=text_confidence,
@@ -1406,7 +1433,15 @@ def _action_state_classification(
         return "opens_modal"
     if transition.get("menu_state_changed"):
         return "changes_menu_state"
-    if transition.get("result_type") in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely"}:
+    if transition.get("result_type") in {
+        "dialog_opened",
+        "window_opened",
+        "child_window_opened",
+        "mdi_child_opened",
+        "internal_window_opened",
+        "internal_child_window_opened",
+        "main_window_disabled_modal_likely",
+    }:
         return "changes_menu_state"
     if transition.get("attempted"):
         return "executes_command"
@@ -1464,7 +1499,16 @@ def _safe_depth_decision(
 
 def _derive_action_type(*, classification: str | None, provable_change: bool, action_like: bool) -> str:
     normalized = str(classification or "unknown")
-    if normalized in {"dialog_opened", "window_opened", "internal_child_window_opened", "main_window_disabled_modal_likely", "modal_opened"}:
+    if normalized in {
+        "dialog_opened",
+        "window_opened",
+        "child_window_opened",
+        "mdi_child_opened",
+        "internal_window_opened",
+        "internal_child_window_opened",
+        "main_window_disabled_modal_likely",
+        "modal_opened",
+    }:
         return "functional_action"
     if normalized == "transient_hint_opened":
         return "transient_ui_only"
@@ -1482,6 +1526,10 @@ def _classify_transition_action_type(*, transition: dict[str, Any], action_state
     functional_classifications = {
         "dialog_opened",
         "window_opened",
+        "child_window_opened",
+        "mdi_child_opened",
+        "internal_window_opened",
+        "internal_child_window_opened",
         "main_window_disabled_modal_likely",
         "modal_opened",
         "child_popup_opened",
@@ -1612,7 +1660,20 @@ def _evaluate_action_admission(
         or transition.get("menu_state_changed")
         or transition.get("project_open_state_transition")
         or transition.get("dialog_detected")
-        or result_type in {"dialog_opened", "window_opened", "main_window_disabled_modal_likely", "modal_opened", "main_window_disabled", "project_open_state_transition", "child_popup_opened", "popup_closed_with_foreground_change"}
+        or result_type in {
+            "dialog_opened",
+            "window_opened",
+            "child_window_opened",
+            "mdi_child_opened",
+            "internal_window_opened",
+            "internal_child_window_opened",
+            "main_window_disabled_modal_likely",
+            "modal_opened",
+            "main_window_disabled",
+            "project_open_state_transition",
+            "child_popup_opened",
+            "popup_closed_with_foreground_change",
+        }
         or action_state_classification in {
             "opens_submenu",
             "opens_modal",
@@ -1627,7 +1688,13 @@ def _evaluate_action_admission(
     rejection_reason: str | None = None
     admission_reason: str | None = None
 
-    if placeholder and not separate_interaction_evidence:
+    if row.is_separator:
+        rejection_reason = "separator_row"
+    elif row.enabled_guess is False:
+        rejection_reason = "disabled_menu_item"
+    elif row.recent_project_entry and not skip_reason:
+        rejection_reason = "recent_project_entry"
+    elif placeholder and not separate_interaction_evidence:
         rejection_reason = "placeholder_without_state_change"
     elif text_confidence in {"none", "low"} and not separate_interaction_evidence:
         rejection_reason = f"text_confidence_{text_confidence}_without_interaction_evidence"
@@ -1765,6 +1832,8 @@ def _build_runtime_state_atlas(*, states: list[RuntimeStateMap]) -> dict[str, An
 def _is_recent_projects_candidate(*, top_menu: str, path: list[str], row: RuntimeMenuRow) -> bool:
     if normalize_menu_title(top_menu) != normalize_menu_title("Fájl"):
         return False
+    if row.recent_project_entry or bool(row.meta.get("recent_project_entry")):
+        return True
     normalized_path = [normalize_menu_title(part) for part in path]
     if any(token in {"korábbiprojektek", "recentprojects"} for token in normalized_path):
         return True
@@ -2076,6 +2145,7 @@ def _main_window_child_summary(window: Any) -> dict[str, Any]:
         "title_bar_like_count": 0,
         "close_button_like_count": 0,
         "window_like_titles": [],
+        "window_signatures": [],
     }
     if window is None:
         return summary
@@ -2092,6 +2162,8 @@ def _main_window_child_summary(window: Any) -> dict[str, Any]:
     descendant_types = Counter()
     window_like_titles: list[str] = []
     window_like_title_keys: set[str] = set()
+    window_signatures: list[tuple[str, str, int, int, int, int]] = []
+    window_signature_keys: set[tuple[str, str, int, int, int, int]] = set()
     title_bar_like_count = 0
     close_button_like_count = 0
 
@@ -2105,6 +2177,19 @@ def _main_window_child_summary(window: Any) -> dict[str, Any]:
             if title and title_key not in window_like_title_keys:
                 window_like_titles.append(title)
                 window_like_title_keys.add(title_key)
+            rect_obj = _safe_call(control, "rectangle", None)
+            rect = dict(rect_obj.__dict__) if rect_obj is not None and hasattr(rect_obj, "__dict__") else {}
+            signature = (
+                control_type,
+                title_key,
+                int(getattr(getattr(control, "element_info", control), "handle", 0) or 0),
+                int(rect.get("left", 0)),
+                int(rect.get("top", 0)),
+                int(rect.get("right", 0) - rect.get("left", 0)),
+            )
+            if signature not in window_signature_keys:
+                window_signature_keys.add(signature)
+                window_signatures.append(signature)
     for control in descendants:
         control_type = _control_type_name(control)
         if control_type:
@@ -2128,6 +2213,7 @@ def _main_window_child_summary(window: Any) -> dict[str, Any]:
             "title_bar_like_count": title_bar_like_count,
             "close_button_like_count": close_button_like_count,
             "window_like_titles": window_like_titles[:10],
+            "window_signatures": window_signatures[:20],
         }
     )
     return summary
@@ -2161,20 +2247,32 @@ def _detect_internal_child_window_opened(*, subtree_diff: dict[str, Any], child_
         "context_menu_expanded": bool(top_menu_expansion.get("context_menu_expanded")),
         "chrome_detected": title_bar_growth > 0 or close_button_growth > 0,
     }
+    before_signatures = {
+        tuple(item) if isinstance(item, list) else item
+        for item in list(child_summary_before.get("window_signatures") or [])
+    }
+    after_signatures = {
+        tuple(item) if isinstance(item, list) else item
+        for item in list(child_summary_after.get("window_signatures") or [])
+    }
+    new_child_signatures = sorted(after_signatures - before_signatures)
     detected = signals["descendant_growth"] and (
         signals["window_like_growth"]
         or signals["context_menu_expanded"]
         or signals["chrome_detected"]
         or signals["child_growth"]
     )
+    result_type = "mdi_child_opened" if new_child_signatures else "internal_child_window_opened"
     return {
         "detected": detected,
+        "result_type": result_type,
         "signals": signals,
         "descendant_growth": descendant_growth,
         "child_growth": child_growth,
         "window_like_growth": window_like_growth,
         "title_bar_growth": title_bar_growth,
         "close_button_growth": close_button_growth,
+        "new_child_signatures": [list(item) for item in new_child_signatures[:10]],
     }
 
 
@@ -2204,7 +2302,7 @@ def _classify_single_row_probe_diff(diff: dict[str, Any]) -> str:
     if diff.get("new_window"):
         return "window_opened"
     if (diff.get("internal_child_window_detection") or {}).get("detected"):
-        return "internal_child_window_opened"
+        return str((diff.get("internal_child_window_detection") or {}).get("result_type") or "internal_child_window_opened")
     if diff.get("transient_hint_window"):
         return "transient_hint_opened"
     if diff.get("popup_closed"):
@@ -4090,6 +4188,9 @@ def run_single_row_probe(
     classification_priority = {
         "dialog_opened": 7,
         "window_opened": 6,
+        "child_window_opened": 5,
+        "mdi_child_opened": 5,
+        "internal_window_opened": 5,
         "internal_child_window_opened": 5,
         "transient_hint_opened": 4,
         "popup_closed": 3,
@@ -4215,10 +4316,22 @@ def run_single_row_probe(
         key=lambda value: classification_priority.get(str(value), 0),
     )
     provable_change = final_classification != "no_observable_effect"
-    action_like = final_classification in {"dialog_opened", "window_opened", "internal_child_window_opened", "popup_closed", "focus_changed"}
+    action_like = final_classification in {
+        "dialog_opened",
+        "window_opened",
+        "child_window_opened",
+        "mdi_child_opened",
+        "internal_window_opened",
+        "internal_child_window_opened",
+        "popup_closed",
+        "focus_changed",
+    }
     human_readable_outcome = {
         "dialog_opened": "A probe kattintás valódi dialogot nyitott.",
         "window_opened": "A probe kattintás valódi új ablakot nyitott.",
+        "child_window_opened": "A probe kattintás a fő ablakon belül új belső child windowt nyitott.",
+        "mdi_child_opened": "A probe kattintás a fő ablakon belül új MDI child ablakot nyitott.",
+        "internal_window_opened": "A probe kattintás belső alkalmazásablakot nyitott a főablakon belül.",
         "internal_child_window_opened": "A probe kattintás a fő WinWatt ablakon belül valódi belső dokumentum/MDI gyerekablakot nyitott.",
         "transient_hint_opened": "A probe kattintás után csak transient hint/tooltip jelent meg, nem valódi dialog vagy funkcionális ablak.",
         "popup_closed": "A probe kattintás bezárta a popupot.",
