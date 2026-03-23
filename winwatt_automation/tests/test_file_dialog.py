@@ -327,11 +327,47 @@ def test_set_file_dialog_path_hotkey_does_not_tab_before_confirm(monkeypatch):
 
     monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
     monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: Edit())
-    monkeypatch.setattr(file_dialog, "_write_to_edit", lambda edit, path: False)
+    monkeypatch.setattr(file_dialog, "_set_clipboard_text", lambda value: True)
 
     ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
 
     assert ok is True
     assert info["method"] == "hotkey"
+    assert info["entry_method"] == "clipboard_paste"
     assert "{TAB}" not in sent
+    assert sent[:3] == ["^l", "^a{BACKSPACE}", "^v"]
+
+
+def test_set_file_dialog_path_falls_back_to_direct_edit_if_hotkeys_fail(monkeypatch):
+    sent = []
+
+    class FakeKeyboard:
+        @staticmethod
+        def send_keys(keys, **kwargs):
+            sent.append(keys)
+
+    class Edit:
+        def __init__(self):
+            self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit")
+
+        def is_enabled(self):
+            return True
+
+    class Dialog:
+        def set_focus(self):
+            return None
+
+    import sys
+    import types
+
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
+    monkeypatch.setattr(file_dialog, "_set_clipboard_text", lambda value: False)
+    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: Edit())
+    monkeypatch.setattr(file_dialog, "_read_edit_value", lambda edit: "")
+    monkeypatch.setattr(file_dialog, "_write_to_edit", lambda edit, path: True)
+
+    ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
+
+    assert ok is True
+    assert info["method"] == "direct_edit_fallback"
     assert sent[:3] == ["^l", "^a{BACKSPACE}", r"C:\tmp\test.wwp"]
