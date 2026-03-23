@@ -1,5 +1,20 @@
 {
   "already_open_before_mapping": false,
+  "bootstrap": {
+    "close_result": {
+      "message": "SUCCESS: The process with PID 29404 (child process of PID 14600) has been terminated.",
+      "ok": true,
+      "returncode": 0
+    },
+    "launch_result": {
+      "method": "subprocess.Popen",
+      "ok": true,
+      "target": "C:\\Program Files (x86)\\Bausoft\\WinWatt gólya\\WinWatt32.exe"
+    },
+    "snapshot_project_path": null,
+    "snapshot_ready": true,
+    "snapshot_title": "WinWatt gólya"
+  },
   "discovered_top_menus": [
     "Rendszer",
     "Fájl",
@@ -10,10 +25,10 @@
     "Súgó"
   ],
   "foreground_window": {
-    "class_name": "Chrome_WidgetWin_1",
-    "handle": 8130468,
-    "process_id": 34748,
-    "title": "Welcome - autowinwatt - Visual Studio Code"
+    "class_name": "TMainForm",
+    "handle": 21234598,
+    "process_id": 25668,
+    "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
@@ -22,11 +37,17 @@
   "mapping_partial": false,
   "mapping_stop_reason": null,
   "observed_startup_project_path": null,
-  "process_id": 16712,
+  "process_id": 25668,
   "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-23T14:03:02.116974+00:00",
+  "timestamp": "2026-03-23T14:53:50.134352+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "Shell_TrayWnd",
+      "handle": null,
+      "process_id": 14600,
+      "title": "Tálca"
+    },
     {
       "class_name": "Shell_SecondaryTrayWnd",
       "handle": null,
@@ -34,10 +55,10 @@
       "title": ""
     },
     {
-      "class_name": "Shell_TrayWnd",
+      "class_name": "TMainForm",
       "handle": null,
-      "process_id": 14600,
-      "title": "Tálca"
+      "process_id": 25668,
+      "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -46,22 +67,16 @@
       "title": "Welcome - autowinwatt - Visual Studio Code"
     },
     {
-      "class_name": "TMainForm",
+      "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 16712,
-      "title": "WinWatt gólya"
+      "process_id": 23032,
+      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
       "title": "GitHub Desktop"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 23032,
-      "title": "Project-open: rebind detected dialog, unify interaction helper and add audit diagnostics by gabordancs · Pull Request #113 · gabordancs/autowinwatt - Google Chrome"
     },
     {
       "class_name": "CabinetWClass",

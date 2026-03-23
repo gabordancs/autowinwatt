@@ -1,10 +1,25 @@
 {
   "already_open_before_mapping": false,
+  "bootstrap": {
+    "close_result": {
+      "message": "SUCCESS: The process with PID 25668 (child process of PID 34676) has been terminated.",
+      "ok": true,
+      "returncode": 0
+    },
+    "launch_result": {
+      "method": "os.startfile",
+      "ok": true,
+      "target": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+    },
+    "snapshot_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+    "snapshot_ready": true,
+    "snapshot_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+  },
   "discovered_top_menus": [
     "Rendszer",
     "Fájl",
     "Jegyzékek",
-    "Adatbázis...",
+    "Eszközök",
     "Beállítások",
     "Ablak",
     "Súgó"
@@ -12,65 +27,55 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 7081944,
-    "process_id": 16712,
-    "title": "WinWatt gólya"
+    "handle": 2035934,
+    "process_id": 35732,
+    "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
   },
   "main_window_class": "TMainForm",
   "main_window_enabled": true,
-  "main_window_title": "WinWatt gólya",
+  "main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "main_window_visible": true,
   "mapping_partial": false,
   "mapping_stop_reason": null,
-  "observed_main_window_title": "WinWatt gólya",
-  "observed_project_path": null,
+  "observed_main_window_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "observed_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "observed_startup_project_path": null,
-  "path_match_normalized": false,
-  "process_id": 16712,
+  "path_match_normalized": true,
+  "process_id": 35732,
   "project_open_recovery": {
-    "attempted": true,
-    "close_attempted": false,
     "close_attempts": [],
     "diagnostics": {
-      "dialog_candidates": [],
-      "foreground_window": {
-        "class_name": "TMainForm",
-        "handle": 7081944,
-        "process_id": 16712,
-        "title": "WinWatt gólya"
-      },
-      "main_window": {
-        "class_name": "TMainForm",
-        "enabled": true,
-        "exists": true,
-        "handle": null,
-        "process_id": 16712,
-        "rect": {
-          "bottom": 1150,
-          "left": -10,
-          "right": 1930,
-          "top": -10
+      "bootstrap": {
+        "close_result": {
+          "message": "SUCCESS: The process with PID 25668 (child process of PID 34676) has been terminated.",
+          "ok": true,
+          "returncode": 0
         },
-        "title": "WinWatt gólya",
-        "visible": true
+        "launch_result": {
+          "method": "os.startfile",
+          "ok": true,
+          "target": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+        },
+        "snapshot_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "snapshot_ready": true,
+        "snapshot_title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
       }
     },
     "main_window_ready_after_attempt": true,
-    "main_window_reenabled": true,
     "modal_pending": false,
-    "reason": "main_window_ready",
+    "reason": "fresh_process_launch",
     "success": true
   },
-  "project_open_verdict": "open_attempt_failed",
+  "project_open_verdict": "opened_by_this_attempt",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-23T14:11:09.682112+00:00",
+  "timestamp": "2026-03-23T15:02:01.048301+00:00",
   "visible_top_windows": [
     {
-      "class_name": "SysShadow",
+      "class_name": "Shell_TrayWnd",
       "handle": null,
-      "process_id": 16712,
-      "title": ""
+      "process_id": 14600,
+      "title": "Tálca"
     },
     {
       "class_name": "Shell_SecondaryTrayWnd",
@@ -79,16 +84,10 @@
       "title": ""
     },
     {
-      "class_name": "Shell_TrayWnd",
-      "handle": null,
-      "process_id": 14600,
-      "title": "Tálca"
-    },
-    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 16712,
-      "title": "WinWatt gólya"
+      "process_id": 35732,
+      "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -99,14 +98,14 @@
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 19884,
-      "title": "GitHub Desktop"
+      "process_id": 23032,
+      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 23032,
-      "title": "Project-open: rebind detected dialog, unify interaction helper and add audit diagnostics by gabordancs · Pull Request #113 · gabordancs/autowinwatt - Google Chrome"
+      "process_id": 19884,
+      "title": "GitHub Desktop"
     },
     {
       "class_name": "CabinetWClass",

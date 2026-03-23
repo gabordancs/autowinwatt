@@ -4,6 +4,10 @@
     "menu_paths": [
       [
         "ablak",
+        "[unlabeled row 14]"
+      ],
+      [
+        "ablak",
         "[unlabeled row 19]"
       ],
       [
@@ -25,6 +29,10 @@
       [
         "ablak",
         "[unlabeled row 5]"
+      ],
+      [
+        "ablak",
+        "megnyitás"
       ],
       [
         "ablak",
@@ -60,6 +68,10 @@
       ],
       [
         "beállítások",
+        "[unlabeled row 14]"
+      ],
+      [
+        "beállítások",
         "[unlabeled row 19]"
       ],
       [
@@ -81,6 +93,10 @@
       [
         "beállítások",
         "[unlabeled row 5]"
+      ],
+      [
+        "beállítások",
+        "megnyitás"
       ],
       [
         "beállítások",
@@ -88,6 +104,10 @@
       ],
       [
         "fájl",
+        "[unlabeled row 14]"
+      ],
+      [
+        "fájl",
         "[unlabeled row 19]"
       ],
       [
@@ -109,6 +129,10 @@
       [
         "fájl",
         "[unlabeled row 5]"
+      ],
+      [
+        "fájl",
+        "megnyitás"
       ],
       [
         "fájl",
@@ -116,6 +140,10 @@
       ],
       [
         "jegyzékek",
+        "[unlabeled row 14]"
+      ],
+      [
+        "jegyzékek",
         "[unlabeled row 19]"
       ],
       [
@@ -137,6 +165,10 @@
       [
         "jegyzékek",
         "[unlabeled row 5]"
+      ],
+      [
+        "jegyzékek",
+        "megnyitás"
       ],
       [
         "jegyzékek",
@@ -144,6 +176,10 @@
       ],
       [
         "súgó",
+        "[unlabeled row 14]"
+      ],
+      [
+        "súgó",
         "[unlabeled row 19]"
       ],
       [
@@ -165,6 +201,10 @@
       [
         "súgó",
         "[unlabeled row 5]"
+      ],
+      [
+        "súgó",
+        "megnyitás"
       ],
       [
         "súgó",
@@ -353,7 +393,31 @@
       "menu_paths": [
         [
           "ablak",
+          "[unlabeled row 14]"
+        ],
+        [
+          "ablak",
+          "[unlabeled row 2]"
+        ],
+        [
+          "ablak",
+          "megnyitás"
+        ],
+        [
+          "ablak",
           "végrehajtás"
+        ],
+        [
+          "beállítások",
+          "[unlabeled row 14]"
+        ],
+        [
+          "beállítások",
+          "[unlabeled row 2]"
+        ],
+        [
+          "beállítások",
+          "megnyitás"
         ],
         [
           "beállítások",
@@ -361,15 +425,7 @@
         ],
         [
           "fájl",
-          "[unlabeled row 19]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 20]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 22]"
+          "[unlabeled row 14]"
         ],
         [
           "fájl",
@@ -377,11 +433,7 @@
         ],
         [
           "fájl",
-          "[unlabeled row 3]"
-        ],
-        [
-          "fájl",
-          "[unlabeled row 5]"
+          "megnyitás"
         ],
         [
           "fájl",
@@ -389,15 +441,7 @@
         ],
         [
           "jegyzékek",
-          "[unlabeled row 19]"
-        ],
-        [
-          "jegyzékek",
-          "[unlabeled row 20]"
-        ],
-        [
-          "jegyzékek",
-          "[unlabeled row 22]"
+          "[unlabeled row 14]"
         ],
         [
           "jegyzékek",
@@ -405,15 +449,23 @@
         ],
         [
           "jegyzékek",
-          "[unlabeled row 3]"
-        ],
-        [
-          "jegyzékek",
-          "[unlabeled row 5]"
+          "megnyitás"
         ],
         [
           "jegyzékek",
           "végrehajtás"
+        ],
+        [
+          "súgó",
+          "[unlabeled row 14]"
+        ],
+        [
+          "súgó",
+          "[unlabeled row 2]"
+        ],
+        [
+          "súgó",
+          "megnyitás"
         ],
         [
           "súgó",
@@ -423,18 +475,59 @@
       "window_signatures": []
     }
   },
-  "updated_at": "2026-03-23T14:13:43.847036+00:00",
+  "updated_at": "2026-03-23T15:05:25.098366+00:00",
   "verification": {
     "baseline_loaded": true,
     "coverage_pct": 100.0,
     "covered_known_menu_paths": 42,
-    "current_menu_paths": 42,
+    "current_menu_paths": 52,
     "known_menu_paths": 42,
     "missing_dialogs": [],
     "missing_menu_paths": [],
     "missing_windows": [],
     "new_dialogs": [],
-    "new_menu_paths": [],
+    "new_menu_paths": [
+      [
+        "ablak",
+        "[unlabeled row 14]"
+      ],
+      [
+        "ablak",
+        "megnyitás"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 14]"
+      ],
+      [
+        "beállítások",
+        "megnyitás"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 14]"
+      ],
+      [
+        "fájl",
+        "megnyitás"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 14]"
+      ],
+      [
+        "jegyzékek",
+        "megnyitás"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 14]"
+      ],
+      [
+        "súgó",
+        "megnyitás"
+      ]
+    ],
     "new_windows": []
   }
 }
