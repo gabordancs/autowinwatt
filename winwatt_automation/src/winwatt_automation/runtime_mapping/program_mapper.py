@@ -302,6 +302,48 @@ def _row_text_confidence(row: RuntimeMenuRow | dict[str, Any]) -> str:
     return str(row.get("text_confidence") or "none")
 
 
+def _placeholder_geometry_signature(row: RuntimeMenuRow | dict[str, Any]) -> tuple[int, int, int, int] | None:
+    source = asdict(row) if isinstance(row, RuntimeMenuRow) else dict(row)
+    rect = dict(source.get("rectangle") or {})
+    if not rect:
+        meta = dict(source.get("meta") or {})
+        rect = dict(meta.get("rectangle") or {})
+    keys = ("left", "top", "right", "bottom")
+    try:
+        values = tuple(int(rect.get(key)) for key in keys)
+    except Exception:
+        return None
+    return values if all(value >= 0 for value in values) else None
+
+
+def _placeholder_textual_child_rows(child_rows: list[dict[str, Any]] | None) -> bool:
+    for child_row in child_rows or []:
+        if normalize_menu_title(str(child_row.get("text") or "")):
+            return True
+    return False
+
+
+def _placeholder_has_finalizable_probe_evidence(row: RuntimeMenuRow, probe_evidence: dict[str, Any] | None = None) -> bool:
+    if not _is_placeholder_row(row):
+        return True
+    probe_evidence = dict(probe_evidence or {})
+    if str(probe_evidence.get("result_type") or "") != "child_popup_opened":
+        return False
+    return bool(probe_evidence.get("placeholder_geometry_stable") or probe_evidence.get("textual_child_rows_detected"))
+
+
+def _should_include_placeholder_in_final_outputs(row: RuntimeMenuRow | dict[str, Any]) -> bool:
+    if not _is_placeholder_row(row):
+        return True
+    source = row if isinstance(row, RuntimeMenuRow) else None
+    meta = _placeholder_meta(row)
+    if bool(meta.get("placeholder_finalized")):
+        return True
+    if source is not None:
+        return bool(source.admitted_to_action_catalog and _placeholder_has_finalizable_probe_evidence(source, meta.get("interaction_evidence_probe")))
+    return False
+
+
 def _update_row_admission_flags(
     row: RuntimeMenuRow,
     *,
@@ -313,6 +355,9 @@ def _update_row_admission_flags(
     row.retained_as_structure_only = not admitted
     row.admission_reason = admission_reason
     row.rejection_reason = rejection_reason
+    meta = dict(row.meta)
+    meta["placeholder_finalized"] = bool(admitted and _placeholder_has_finalizable_probe_evidence(row, meta.get("interaction_evidence_probe")))
+    row.meta = meta
     return row
 
 
@@ -1555,8 +1600,11 @@ def _evaluate_action_admission(
     probe_evidence = dict(probe_evidence or {})
     probe_result_type = str(probe_evidence.get("result_type") or "")
     probe_evidence_supports_admission = bool(
-        probe_result_type in ACTION_PROBE_ADMISSION_RESULT_TYPES
-        or probe_evidence.get("evidence_strength") == "strong"
+        (
+            probe_result_type in ACTION_PROBE_ADMISSION_RESULT_TYPES
+            or probe_evidence.get("evidence_strength") == "strong"
+        )
+        and _placeholder_has_finalizable_probe_evidence(row, probe_evidence)
     )
     separate_interaction_evidence = bool(
         opens_submenu
@@ -2550,6 +2598,7 @@ def _should_run_action_evidence_probe(*, row: RuntimeMenuRow, rejection_reason: 
 def _run_action_evidence_probe(*, state_id: str, top_menu: str, path: list[str], row: RuntimeMenuRow, popup_rows: list[dict[str, Any]], current_rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     before_rows = list(current_rows if current_rows is not None else menu_helpers.capture_menu_popup_snapshot())
     before_action = capture_state_snapshot(state_id)
+    placeholder_geometry_signature = _placeholder_geometry_signature(row) if _is_placeholder_row(row) else None
     evidence: dict[str, Any] = {
         "popup_row_count_before": len(before_rows),
         "visible_item_count_before": sum(1 for item in before_rows if not item.get("is_separator")),
@@ -2567,6 +2616,9 @@ def _run_action_evidence_probe(*, state_id: str, top_menu: str, path: list[str],
         "menu_selection_highlight_changed": False,
         "click_exception": None,
         "evidence_strength": "none",
+        "placeholder_geometry_signature": placeholder_geometry_signature,
+        "placeholder_geometry_stable": False,
+        "textual_child_rows_detected": False,
     }
     logger.info("ACTION_EVIDENCE_PROBE_START state={} top_menu={} path={} row_index={} rejection_reason={}", state_id, top_menu, path, row.row_index, row.rejection_reason)
     try:
@@ -2586,6 +2638,11 @@ def _run_action_evidence_probe(*, state_id: str, top_menu: str, path: list[str],
         child_rows=child_rows,
         click_exception=evidence["click_exception"],
     )
+    after_placeholder_signatures = {
+        _placeholder_geometry_signature(candidate)
+        for candidate in after_rows
+        if _placeholder_geometry_signature(candidate) is not None
+    }
     evidence.update(
         {
             "popup_row_count_after": len(after_rows),
@@ -2597,6 +2654,11 @@ def _run_action_evidence_probe(*, state_id: str, top_menu: str, path: list[str],
             "popup_closed": popup_closed,
             "child_popup_opened": bool(child_rows),
             "menu_selection_highlight_changed": bool(not child_rows and not popup_closed and menu_helpers._snapshot_keys(before_rows) != menu_helpers._snapshot_keys(after_rows)),
+            "placeholder_geometry_stable": bool(
+                placeholder_geometry_signature is not None
+                and placeholder_geometry_signature in after_placeholder_signatures
+            ),
+            "textual_child_rows_detected": _placeholder_textual_child_rows(child_rows),
         }
     )
     evidence["popup_closed_without_dialog"] = result_type == "popup_closed_without_dialog"
@@ -3689,6 +3751,8 @@ def explore_menu_tree(
             transition = dict(transition)
             transition["interaction_evidence_probe"] = probe_evidence
             transition["result_type"] = probe_evidence.get("result_type") or transition.get("result_type")
+            row.meta = dict(row.meta)
+            row.meta["interaction_evidence_probe"] = dict(probe_evidence)
             admitted, admission_reason, rejection_reason = _evaluate_action_admission(
                 row=row,
                 path=path,
@@ -4209,6 +4273,8 @@ def _normalized_path(path: list[str] | tuple[str, ...]) -> tuple[str, ...]:
 def _enabled_map(state: RuntimeStateMap) -> dict[tuple[str, ...], bool | None]:
     result: dict[tuple[str, ...], bool | None] = {}
     for row in state.menu_rows:
+        if not _should_include_placeholder_in_final_outputs(row):
+            continue
         path = _normalized_path(tuple(row.get("menu_path", [])))
         result[path] = row.get("enabled_guess")
     return result
