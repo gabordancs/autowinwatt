@@ -161,6 +161,32 @@ def test_build_menu_rows_geometry_placeholder_uses_rect_center_for_empty_popup_r
     assert rows[0].menu_path == ["Fájl", "[unlabeled row 0]"]
 
 
+def test_build_menu_rows_marks_recent_project_entries_without_placeholder():
+    rows = _build_menu_rows_from_popup_rows(
+        "state_no_project",
+        "Fájl",
+        [
+            {
+                "text": r"1: C:\work\demo\test.wwp",
+                "rectangle": {"left": 10, "top": 20, "right": 220, "bottom": 38},
+                "center_x": 115,
+                "center_y": 29,
+                "is_separator": False,
+                "source_scope": "main_window",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+                "recent_project_entry": True,
+                "fragments": [],
+            },
+        ],
+    )
+
+    assert rows[0].text == r"1: C:\work\demo\test.wwp"
+    assert rows[0].recent_project_entry is True
+    assert rows[0].stateful_menu_block is True
+    assert rows[0].meta["recent_project_entry"] is True
+
+
 def test_classify_post_click_result_transient_hint_window_opened():
     before = RuntimeStateSnapshot(
         state_id="state_no_project",
@@ -225,6 +251,7 @@ def test_single_row_probe_internal_child_window_detected_by_menu_expansion_and_s
             "title_bar_like_count": 0,
             "close_button_like_count": 0,
             "window_like_titles": [],
+            "window_signatures": [],
         },
     }
     after = {
@@ -240,6 +267,7 @@ def test_single_row_probe_internal_child_window_detected_by_menu_expansion_and_s
             "title_bar_like_count": 1,
             "close_button_like_count": 1,
             "window_like_titles": ["Anyagok"],
+            "window_signatures": [["window", "anyagok", 111, 10, 10, 240]],
         },
     }
 
@@ -250,7 +278,7 @@ def test_single_row_probe_internal_child_window_detected_by_menu_expansion_and_s
     assert diff["top_menu_expansion"]["context_menu_matches"] == ["csoport", "dokumentumablak", "elem", "szerkesztés"]
     assert diff["uia_subtree_diff"]["descendant_count_diff"] == 221
     assert diff["internal_child_window_detection"]["detected"] is True
-    assert diff["classification"] == "internal_child_window_opened"
+    assert diff["classification"] == "mdi_child_opened"
 
 
 def test_single_row_probe_internal_child_window_classifies_as_functional_action_without_top_level_window():

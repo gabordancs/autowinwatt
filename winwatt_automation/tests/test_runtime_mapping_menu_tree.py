@@ -127,6 +127,31 @@ def test_build_menu_rows_replaces_empty_text_popup_rows_with_geometry_placeholde
     assert rows[0].recent_project_entry is False
 
 
+def test_separator_row_is_not_turned_into_placeholder():
+    rows = _build_menu_rows_from_popup_rows(
+        "no_project",
+        "Fájl",
+        [
+            {
+                "text": "",
+                "center_x": 1,
+                "center_y": 1,
+                "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 12},
+                "is_separator": True,
+                "source_scope": "main",
+                "popup_reason": "empty_text_vertical_cluster_below_topbar",
+                "popup_candidate": True,
+                "topbar_candidate": False,
+            },
+        ],
+    )
+
+    assert rows[0].is_separator is True
+    assert rows[0].text == ""
+    assert rows[0].actionable is False
+    assert rows[0].meta["recent_project_entry"] is False
+
+
 def test_classify_popup_block_accepts_empty_file_recent_projects_block():
     snapshot = RuntimeStateSnapshot(
         state_id="s",
@@ -162,6 +187,41 @@ def test_classify_popup_block_accepts_empty_file_recent_projects_block():
     assert meta["empty_popup_row_count"] == 17
     assert all(row["recent_project_entry"] is True for row in accepted_rows)
     assert all(row["stateful_menu_block"] is True for row in accepted_rows)
+
+
+def test_classify_popup_block_accepts_explicit_recent_project_paths():
+    snapshot = RuntimeStateSnapshot(
+        state_id="s",
+        process_id=1,
+        main_window_title="WinWatt",
+        main_window_class="TMainForm",
+        visible_top_windows=[],
+        discovered_top_menus=["Fájl", "Súgó"],
+        timestamp="t",
+        main_window_enabled=True,
+        main_window_visible=True,
+        foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+    )
+    rows = [
+        {
+            "text": rf"{idx}: C:\\repo\\sample{idx}.wwp",
+            "center_x": 20,
+            "center_y": 50 + (idx * 18),
+            "rectangle": {"left": 10, "top": 40 + (idx * 18), "right": 250, "bottom": 56 + (idx * 18)},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_reason": "explicit_recent_project_path",
+        }
+        for idx in range(1, 4)
+    ]
+
+    classification, accepted_rows, _meta = _classify_popup_block(top_menu="Fájl", rows=rows, snapshot=snapshot)
+
+    assert classification == "recent_projects_block"
+    assert len(accepted_rows) == 3
+    assert all(row["recent_project_entry"] is True for row in accepted_rows)
 
 def test_popup_top_level_name_is_filtered_from_children():
     rows = _build_menu_rows_from_popup_rows(
@@ -235,6 +295,42 @@ def test_mapping_continues_when_focus_loss_is_recovered(monkeypatch):
     assert state.snapshot["mapping_stop_reason"] is None
     assert any(root.get("title") == "Súgó" for root in state.menu_tree)
     assert "recover_after_exception:Fájl" in restore_calls
+
+
+def test_evaluate_action_admission_rejects_disabled_menu_item():
+    row = RuntimeMenuRow(
+        state_id="s",
+        top_menu="Jegyzékek",
+        row_index=0,
+        menu_path=["Jegyzékek", "Globális szerkezetek adatbázis"],
+        text="Globális szerkezetek adatbázis",
+        normalized_text=normalize_menu_title("Globális szerkezetek adatbázis"),
+        rectangle={"left": 0, "top": 0, "right": 10, "bottom": 10},
+        center_x=5,
+        center_y=5,
+        is_separator=False,
+        source_scope="main",
+        fragments=[],
+        enabled_guess=False,
+        discovered_in_state="s",
+        raw_text_sources=["uia_name"],
+        text_confidence="high",
+    )
+
+    admitted, admission_reason, rejection_reason = _evaluate_action_admission(
+        row=row,
+        path=row.menu_path,
+        action_state_classification="unknown",
+        transition={"result_type": "no_observable_effect"},
+        opens_submenu=False,
+        opens_modal=False,
+        skip_reason=None,
+        traversal_depth=0,
+    )
+
+    assert admitted is False
+    assert admission_reason is None
+    assert rejection_reason == "disabled_menu_item"
 def test_mapping_stops_as_partial_when_main_window_is_lost(monkeypatch):
     snapshot = RuntimeStateSnapshot(state_id="s", process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Súgó"], timestamp="t")
     monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot", lambda state_id: snapshot)
