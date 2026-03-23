@@ -23,6 +23,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     reset_top_menu_cache,
     run_single_row_probe,
 )
+from winwatt_automation.live_ui import menu_helpers
 from winwatt_automation.live_ui.ui_cache import PopupState
 
 
@@ -237,6 +238,86 @@ def test_popup_top_level_name_is_filtered_from_children():
     )
     assert [row.text for row in rows] == ["Megnyitás"]
     assert is_top_menu_like_popup_row({"text": "Ablak"}, {"ablak"})
+
+
+def test_popup_duplicate_legacy_text_noise_is_suppressed_before_row_build():
+    popup_rows = [
+        {
+            "text": "Végrehajtás",
+            "normalized_text": normalize_menu_title("Végrehajtás"),
+            "raw_text_sources": ["legacy_text"],
+            "text_confidence": "medium",
+            "center_x": 50,
+            "center_y": 20 + (idx * 18),
+            "rectangle": {"left": 10, "top": 10 + (idx * 18), "right": 130, "bottom": 26 + (idx * 18)},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_priority_candidate": True,
+            "fragments": [],
+        }
+        for idx in range(3)
+    ]
+    popup_rows.append(
+        {
+            "text": "Megnyitás",
+            "normalized_text": normalize_menu_title("Megnyitás"),
+            "raw_text_sources": ["uia_name"],
+            "text_confidence": "high",
+            "center_x": 50,
+            "center_y": 90,
+            "rectangle": {"left": 10, "top": 82, "right": 130, "bottom": 98},
+            "is_separator": False,
+            "source_scope": "main_window",
+            "popup_candidate": True,
+            "topbar_candidate": False,
+            "popup_priority_candidate": True,
+            "fragments": [],
+        }
+    )
+
+    menu_helpers._suppress_popup_text_noise_duplicates(popup_rows)
+    rows = _build_menu_rows_from_popup_rows("project_open", "Fájl", popup_rows)
+
+    assert [row.text for row in rows] == ["Végrehajtás", "Megnyitás"]
+    assert sum(1 for row in popup_rows if row.get("popup_noise_suppressed")) == 2
+
+
+def test_evaluate_action_admission_rejects_unknown_medium_legacy_popup_noise_without_probe():
+    row = RuntimeMenuRow(
+        state_id="project_open",
+        top_menu="Jegyzékek",
+        row_index=1,
+        menu_path=["Jegyzékek", "Végrehajtás"],
+        text="Végrehajtás",
+        normalized_text=normalize_menu_title("Végrehajtás"),
+        rectangle={"left": 0, "top": 0, "right": 10, "bottom": 10},
+        center_x=5,
+        center_y=5,
+        is_separator=False,
+        source_scope="main",
+        fragments=[],
+        enabled_guess=True,
+        discovered_in_state="project_open",
+        raw_text_sources=["legacy_text"],
+        text_confidence="medium",
+        action_type="unknown",
+    )
+
+    admitted, _admission_reason, rejection_reason = _evaluate_action_admission(
+        row=row,
+        path=["Jegyzékek", "Végrehajtás"],
+        action_state_classification="unknown",
+        transition={"result_type": "unknown"},
+        opens_submenu=False,
+        opens_modal=False,
+        skip_reason=None,
+        traversal_depth=1,
+    )
+
+    assert admitted is False
+    assert rejection_reason == "unknown_legacy_popup_noise_suppressed"
 
 
 def test_visited_paths_skips_duplicate_submenu_traversal(monkeypatch):
