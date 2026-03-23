@@ -306,6 +306,23 @@ def _row_text_confidence(row: RuntimeMenuRow | dict[str, Any]) -> str:
     return str(row.get("text_confidence") or "none")
 
 
+def _row_has_strong_interaction_evidence(row: RuntimeMenuRow | dict[str, Any], probe_evidence: dict[str, Any] | None = None) -> bool:
+    probe_evidence = dict(probe_evidence or {})
+    source = asdict(row) if isinstance(row, RuntimeMenuRow) else dict(row)
+    meta = dict(source.get("meta") or {})
+    evidence = dict(meta.get("interaction_evidence_probe") or {})
+    if probe_evidence:
+        evidence.update(probe_evidence)
+    result_type = str(evidence.get("result_type") or "")
+    return bool(
+        result_type in ACTION_PROBE_ADMISSION_RESULT_TYPES
+        or evidence.get("evidence_strength") == "strong"
+        or evidence.get("dialog_opened")
+        or evidence.get("child_popup_opened")
+        or evidence.get("mdi_child_opened")
+    )
+
+
 def _placeholder_geometry_signature(row: RuntimeMenuRow | dict[str, Any]) -> tuple[int, int, int, int] | None:
     source = asdict(row) if isinstance(row, RuntimeMenuRow) else dict(row)
     rect = dict(source.get("rectangle") or {})
@@ -1004,6 +1021,18 @@ def _build_menu_rows_from_popup_rows(
     placeholder_count = 0
     rejected_foreign_rows = 0
     for index, row in enumerate(rows):
+        if bool(row.get("popup_noise_suppressed")):
+            logger.info(
+                "DBG_MENU_BUILD_FILTER_REASON state={} top_menu={} row_index={} reason=popup_noise_suppressed row_text={!r} rectangle={} suppression_reason={} duplicate_of={}",
+                state_id,
+                top_menu,
+                index,
+                row.get("text"),
+                row.get("rectangle"),
+                row.get("rejected_text_recovery_reason"),
+                row.get("suppressed_as_duplicate_of"),
+            )
+            continue
         popup_like = _row_popup_like(row)
         topbar_like = _row_topbar_like(row)
         rect = dict(row.get("rectangle") or {})
@@ -1856,6 +1885,14 @@ def _evaluate_action_admission(
         )
         and _placeholder_has_finalizable_probe_evidence(row, probe_evidence)
     )
+    strong_interaction_evidence = _row_has_strong_interaction_evidence(row, probe_evidence)
+    noisy_unknown_legacy_row = bool(
+        row.action_type == "unknown"
+        and action_state_classification == "unknown"
+        and text_confidence == "medium"
+        and legacy_text_only
+        and not strong_interaction_evidence
+    )
     separate_interaction_evidence = bool(
         opens_submenu
         or opens_modal
@@ -1900,6 +1937,8 @@ def _evaluate_action_admission(
         rejection_reason = "placeholder_without_state_change"
     elif text_confidence in {"none", "low"} and not separate_interaction_evidence:
         rejection_reason = f"text_confidence_{text_confidence}_without_interaction_evidence"
+    elif noisy_unknown_legacy_row:
+        rejection_reason = "unknown_legacy_popup_noise_suppressed"
     elif legacy_text_only and not separate_interaction_evidence:
         rejection_reason = "legacy_text_only_without_interaction_evidence"
     elif result_type in {"no_visible_change", "no_observable_effect"} and not separate_interaction_evidence:
