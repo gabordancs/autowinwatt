@@ -4198,6 +4198,7 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         before_snapshot=before,
         after_snapshot_provider=lambda: asdict(capture_state_snapshot("project_open_after")),
     )
+    path_entry_diagnostics = dict(result.get("path_entry_diagnostics") or {})
     audit = {
         "project_open_attempt_started": True,
         "project_open_menu_item_clicked": bool(result.get("dialog_found") or result.get("path_entered") or result.get("confirm_clicked") or result.get("dialog_closed") or result.get("project_state_changed")),
@@ -4206,10 +4207,32 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         "file_dialog_confirm_clicked": bool(result.get("confirm_clicked")),
         "project_open_method": result.get("project_open_method"),
         "project_open_sequence": list(result.get("project_open_sequence") or []),
+        "path_entry_strategy_selected": path_entry_diagnostics.get("path_entry_strategy_selected"),
+        "focused_input_entry_attempted": bool(path_entry_diagnostics.get("focused_input_entry_attempted")),
+        "focused_input_entry_sent": bool(path_entry_diagnostics.get("focused_input_entry_sent")),
+        "enter_confirm_sent": bool(path_entry_diagnostics.get("enter_confirm_sent")),
+        "post_confirm_dialog_closed": bool(path_entry_diagnostics.get("post_confirm_dialog_closed", result.get("dialog_closed"))),
+        "post_confirm_title": path_entry_diagnostics.get("post_confirm_title") or result.get("observed_main_window_title_after_open"),
+        "post_confirm_path_match": bool(path_entry_diagnostics.get("post_confirm_path_match", result.get("path_match_normalized"))),
+        "observed_project_path": result.get("observed_project_path"),
+        "path_match_normalized": bool(result.get("path_match_normalized")),
     }
     result["project_open_audit"] = audit
-    recovery = recover_after_project_open()
-    recovery["main_window_ready_after_attempt"] = bool(recovery.get("success"))
+    needs_recovery = bool(not result.get("dialog_closed") or not result.get("path_match_normalized"))
+    if needs_recovery:
+        recovery = recover_after_project_open()
+        recovery["main_window_ready_after_attempt"] = bool(recovery.get("success"))
+        recovery["attempted"] = True
+    else:
+        recovery = {
+            "success": True,
+            "main_window_ready_after_attempt": True,
+            "attempted": False,
+            "reason": "not_needed",
+            "close_attempts": [],
+            "diagnostics": {},
+            "modal_pending": False,
+        }
     result["recovery"] = recovery
     return result
 
@@ -4409,21 +4432,21 @@ def build_full_runtime_program_map(
         verification_snapshot=verification_snapshot,
     )
     if event_recorder and project_open_result:
-        event_recorder(
-            "project_open_result",
-            {
-                "success": bool(project_open_result.get("success")),
-                "error": project_open_result.get("error"),
-                "dialog_found": bool(project_open_result.get("dialog_found")),
-                "startup_project_detected": startup_project_detected,
-                "already_open_before_mapping": already_open_before_mapping,
-                "project_open_verdict": project_open_verdict,
-                "expected_project_path": project_path_verification.get("expected_project_path"),
-                "observed_project_path": project_path_verification.get("observed_project_path"),
-                "path_match_normalized": project_path_verification.get("path_match_normalized"),
-                **dict(project_open_result.get("project_open_audit") or {}),
-            },
-        )
+        project_open_payload = {
+            "success": bool(project_open_result.get("success")),
+            "error": project_open_result.get("error"),
+            "dialog_found": bool(project_open_result.get("dialog_found")),
+            "startup_project_detected": startup_project_detected,
+            "already_open_before_mapping": already_open_before_mapping,
+            "project_open_verdict": project_open_verdict,
+            "expected_project_path": project_path_verification.get("expected_project_path"),
+            "observed_project_path": project_path_verification.get("observed_project_path"),
+            "path_match_normalized": project_path_verification.get("path_match_normalized"),
+            **dict(project_open_result.get("project_open_audit") or {}),
+        }
+        project_open_payload.setdefault("project_open_method", project_open_result.get("project_open_method"))
+        project_open_payload.setdefault("project_open_sequence", list(project_open_result.get("project_open_sequence") or []))
+        event_recorder("project_open_result", project_open_payload)
     if event_recorder and recovery:
         event_recorder(
             "project_open_recovery",

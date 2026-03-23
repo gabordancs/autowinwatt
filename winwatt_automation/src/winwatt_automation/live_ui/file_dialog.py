@@ -1288,6 +1288,30 @@ def _project_open_menu_row_index(rows: list[dict[str, Any]]) -> int | None:
     return None
 
 
+def prepare_and_trigger_project_open_dialog(
+    *,
+    action_label: str = "open_project_file_via_dialog",
+    dialog_timeout: float = 3.0,
+    accelerator_mode: str = PROJECT_OPEN_ACCELERATOR_MODE,
+    step_delay_s: float = 0.05,
+    allow_stale_wrapper_refresh: bool = True,
+) -> tuple[Any | None, dict[str, Any]]:
+    main_window = prepare_main_window_for_menu_interaction()
+    ensure_main_window_foreground_before_click(
+        action_label=action_label,
+        allow_dialog=True,
+        allow_stale_wrapper_refresh=allow_stale_wrapper_refresh,
+    )
+    main_window = get_cached_main_window() if main_window is None else main_window
+    process_id = _safe_call(main_window, "process_id", None)
+    return trigger_open_project_dialog_from_default_state(
+        process_id=process_id,
+        dialog_timeout=dialog_timeout,
+        accelerator_mode=accelerator_mode,
+        step_delay_s=step_delay_s,
+    )
+
+
 def open_project_file_via_dialog(
     project_path: str,
     *,
@@ -1301,21 +1325,16 @@ def open_project_file_via_dialog(
     project_open_sequence = project_open_accelerator_sequence()
 
     try:
-        main_window = prepare_main_window_for_menu_interaction()
-        ensure_main_window_foreground_before_click(
-            action_label="open_project_file_via_dialog",
-            allow_dialog=True,
-            allow_stale_wrapper_refresh=True,
-        )
-        main_window = get_cached_main_window() if main_window is None else main_window
-        process_id = _safe_call(main_window, "process_id", None)
         dialog = None
         detect_info: dict[str, Any] = {}
         accelerator_error: str | None = None
 
-        dialog, detect_info = trigger_open_project_dialog_from_default_state(
-            process_id=process_id,
+        dialog, detect_info = prepare_and_trigger_project_open_dialog(
+            action_label="open_project_file_via_dialog",
             dialog_timeout=min(dialog_timeout, 3.0),
+            accelerator_mode=PROJECT_OPEN_ACCELERATOR_MODE,
+            step_delay_s=0.05,
+            allow_stale_wrapper_refresh=True,
         )
         dialog_found = bool(detect_info.get("dialog_found"))
         project_open_method = str(detect_info.get("project_open_method") or project_open_method)
