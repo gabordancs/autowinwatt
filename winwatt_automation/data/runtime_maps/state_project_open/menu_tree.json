@@ -38,7 +38,7 @@
         "title_raw": "Végrehajtás"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -53,7 +53,7 @@
           "source_scope": "main_window",
           "top_menu": "Fájl"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 2,
         "level": 1,
         "likely_destructive": false,
@@ -110,7 +110,7 @@
         "title_raw": "Megnyitás"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -125,7 +125,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Fájl"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 14,
         "level": 1,
         "likely_destructive": false,
@@ -193,7 +193,7 @@
         "title_raw": "Végrehajtás"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -208,7 +208,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 2,
         "level": 1,
         "likely_destructive": false,
@@ -229,7 +229,7 @@
         "title_raw": "[unlabeled row 2]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -244,7 +244,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 3,
         "level": 1,
         "likely_destructive": false,
@@ -265,7 +265,7 @@
         "title_raw": "[unlabeled row 3]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -280,7 +280,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 4,
         "level": 1,
         "likely_destructive": false,
@@ -301,7 +301,7 @@
         "title_raw": "[unlabeled row 4]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -316,7 +316,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 5,
         "level": 1,
         "likely_destructive": false,
@@ -337,7 +337,7 @@
         "title_raw": "[unlabeled row 5]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -352,7 +352,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 6,
         "level": 1,
         "likely_destructive": false,
@@ -373,7 +373,7 @@
         "title_raw": "[unlabeled row 6]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -388,7 +388,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 7,
         "level": 1,
         "likely_destructive": false,
@@ -409,7 +409,7 @@
         "title_raw": "[unlabeled row 7]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -424,7 +424,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 8,
         "level": 1,
         "likely_destructive": false,
@@ -445,7 +445,7 @@
         "title_raw": "[unlabeled row 8]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -460,7 +460,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 9,
         "level": 1,
         "likely_destructive": false,
@@ -481,7 +481,7 @@
         "title_raw": "[unlabeled row 9]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -496,7 +496,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 10,
         "level": 1,
         "likely_destructive": false,
@@ -517,7 +517,7 @@
         "title_raw": "[unlabeled row 10]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -532,7 +532,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 11,
         "level": 1,
         "likely_destructive": false,
@@ -553,7 +553,7 @@
         "title_raw": "[unlabeled row 11]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -568,7 +568,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 12,
         "level": 1,
         "likely_destructive": false,
@@ -589,7 +589,7 @@
         "title_raw": "[unlabeled row 12]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -604,7 +604,7 @@
           "source_scope": "main_window",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 13,
         "level": 1,
         "likely_destructive": false,
@@ -625,7 +625,7 @@
         "title_raw": "[unlabeled row 13]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -640,7 +640,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 16,
         "level": 1,
         "likely_destructive": false,
@@ -661,7 +661,7 @@
         "title_raw": "[unlabeled row 16]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -676,7 +676,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 17,
         "level": 1,
         "likely_destructive": false,
@@ -697,7 +697,7 @@
         "title_raw": "[unlabeled row 17]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -712,7 +712,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 18,
         "level": 1,
         "likely_destructive": false,
@@ -733,7 +733,7 @@
         "title_raw": "[unlabeled row 18]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -748,7 +748,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 19,
         "level": 1,
         "likely_destructive": false,
@@ -769,7 +769,7 @@
         "title_raw": "[unlabeled row 19]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -784,7 +784,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 20,
         "level": 1,
         "likely_destructive": false,
@@ -805,7 +805,7 @@
         "title_raw": "[unlabeled row 20]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -820,7 +820,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 21,
         "level": 1,
         "likely_destructive": false,
@@ -841,7 +841,7 @@
         "title_raw": "[unlabeled row 21]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -856,7 +856,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 22,
         "level": 1,
         "likely_destructive": false,
@@ -877,7 +877,7 @@
         "title_raw": "[unlabeled row 22]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -892,7 +892,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 23,
         "level": 1,
         "likely_destructive": false,
@@ -913,7 +913,7 @@
         "title_raw": "[unlabeled row 23]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -928,7 +928,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 24,
         "level": 1,
         "likely_destructive": false,
@@ -949,7 +949,7 @@
         "title_raw": "[unlabeled row 24]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -964,7 +964,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 25,
         "level": 1,
         "likely_destructive": false,
@@ -985,7 +985,7 @@
         "title_raw": "[unlabeled row 25]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -1000,7 +1000,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 26,
         "level": 1,
         "likely_destructive": false,
@@ -1021,7 +1021,7 @@
         "title_raw": "[unlabeled row 26]"
       },
       {
-        "action_classification": "leaf_action",
+        "action_classification": "disabled",
         "action_state_classification": "unknown",
         "children": [],
         "debug": {
@@ -1036,7 +1036,7 @@
           "source_scope": "global_process_scan",
           "top_menu": "Jegyzékek"
         },
-        "enabled": true,
+        "enabled": false,
         "index": 27,
         "level": 1,
         "likely_destructive": false,

@@ -2,7 +2,7 @@
 
 - top menük száma: 5
 - összes menüpont: 58
-- enabled: 58
-- disabled: 0
+- enabled: 32
+- disabled: 26
 - submenu count: 0
 - dialog candidates: 0

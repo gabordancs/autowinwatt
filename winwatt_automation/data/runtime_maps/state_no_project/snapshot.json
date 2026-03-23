@@ -26,8 +26,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 3477372,
-    "process_id": 13112,
+    "handle": 30020196,
+    "process_id": 26308,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -37,10 +37,10 @@
   "mapping_partial": false,
   "mapping_stop_reason": null,
   "observed_startup_project_path": null,
-  "process_id": 13112,
+  "process_id": 26308,
   "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-23T18:51:49.843333+00:00",
+  "timestamp": "2026-03-23T20:11:11.141820+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -57,7 +57,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 13112,
+      "process_id": 26308,
       "title": "WinWatt gólya"
     },
     {
@@ -76,7 +76,7 @@
       "class_name": "CabinetWClass",
       "handle": null,
       "process_id": 14600,
-      "title": "WinWatt gólya – Fájlkezelő"
+      "title": "Személyes – Fájlkezelő"
     },
     {
       "class_name": "HH Parent",
@@ -107,6 +107,12 @@
       "handle": null,
       "process_id": 29976,
       "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
+    },
+    {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 26536,
+      "title": "budagy - PDF-XChange Editor"
     },
     {
       "class_name": "Progman",

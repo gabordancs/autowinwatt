@@ -2,7 +2,7 @@
   "already_open_before_mapping": false,
   "bootstrap": {
     "close_result": {
-      "message": "SUCCESS: The process with PID 13112 (child process of PID 27956) has been terminated.",
+      "message": "SUCCESS: The process with PID 26308 (child process of PID 30608) has been terminated.",
       "ok": true,
       "returncode": 0
     },
@@ -27,8 +27,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 1051032,
-    "process_id": 20164,
+    "handle": 10292844,
+    "process_id": 14896,
     "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
   },
   "main_window_class": "TMainForm",
@@ -41,13 +41,13 @@
   "observed_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "observed_startup_project_path": null,
   "path_match_normalized": true,
-  "process_id": 20164,
+  "process_id": 14896,
   "project_open_recovery": {
     "close_attempts": [],
     "diagnostics": {
       "bootstrap": {
         "close_result": {
-          "message": "SUCCESS: The process with PID 13112 (child process of PID 27956) has been terminated.",
+          "message": "SUCCESS: The process with PID 26308 (child process of PID 30608) has been terminated.",
           "ok": true,
           "returncode": 0
         },
@@ -69,8 +69,20 @@
   "project_open_verdict": "opened_by_this_attempt",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-23T18:58:35.539886+00:00",
+  "timestamp": "2026-03-23T20:12:41.091270+00:00",
   "visible_top_windows": [
+    {
+      "class_name": "THintWindow",
+      "handle": null,
+      "process_id": 14896,
+      "title": "Szerkezetek"
+    },
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 14896,
+      "title": ""
+    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -86,7 +98,7 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 20164,
+      "process_id": 14896,
       "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
@@ -105,7 +117,7 @@
       "class_name": "CabinetWClass",
       "handle": null,
       "process_id": 14600,
-      "title": "WinWatt gólya – Fájlkezelő"
+      "title": "Személyes – Fájlkezelő"
     },
     {
       "class_name": "HH Parent",
@@ -136,6 +148,12 @@
       "handle": null,
       "process_id": 29976,
       "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
+    },
+    {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 26536,
+      "title": "budagy - PDF-XChange Editor"
     },
     {
       "class_name": "Progman",
