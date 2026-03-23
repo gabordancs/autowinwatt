@@ -12,8 +12,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 6619928,
-    "process_id": 10920,
+    "handle": 7081944,
+    "process_id": 16712,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -26,16 +26,17 @@
   "observed_project_path": null,
   "observed_startup_project_path": null,
   "path_match_normalized": false,
-  "process_id": 10920,
+  "process_id": 16712,
   "project_open_recovery": {
+    "attempted": true,
     "close_attempted": false,
     "close_attempts": [],
     "diagnostics": {
       "dialog_candidates": [],
       "foreground_window": {
         "class_name": "TMainForm",
-        "handle": 6619928,
-        "process_id": 10920,
+        "handle": 7081944,
+        "process_id": 16712,
         "title": "WinWatt gólya"
       },
       "main_window": {
@@ -43,7 +44,7 @@
         "enabled": true,
         "exists": true,
         "handle": null,
-        "process_id": 10920,
+        "process_id": 16712,
         "rect": {
           "bottom": 1150,
           "left": -10,
@@ -63,12 +64,18 @@
   "project_open_verdict": "open_attempt_failed",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-22T19:46:33.176006+00:00",
+  "timestamp": "2026-03-23T14:11:09.682112+00:00",
   "visible_top_windows": [
     {
       "class_name": "SysShadow",
       "handle": null,
-      "process_id": 10920,
+      "process_id": 16712,
+      "title": ""
+    },
+    {
+      "class_name": "Shell_SecondaryTrayWnd",
+      "handle": null,
+      "process_id": 14600,
       "title": ""
     },
     {
@@ -80,20 +87,14 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 10920,
+      "process_id": 16712,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
-      "process_id": 35256,
-      "title": "winwatt_open_project_accelerator_smoke.py - autowinwatt - Visual Studio Code"
-    },
-    {
-      "class_name": "Chrome_WidgetWin_1",
-      "handle": null,
-      "process_id": 23032,
-      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
+      "process_id": 34748,
+      "title": "Welcome - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -102,16 +103,34 @@
       "title": "GitHub Desktop"
     },
     {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23032,
+      "title": "Project-open: rebind detected dialog, unify interaction helper and add audit diagnostics by gabordancs · Pull Request #113 · gabordancs/autowinwatt - Google Chrome"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "Pályázati dokumentumok 0319 – Fájlkezelő"
+    },
+    {
+      "class_name": "rctrl_renwnd32",
+      "handle": null,
+      "process_id": 2932,
+      "title": "Naptár – dancs.gabor@pedranogroup.com - Outlook"
+    },
+    {
+      "class_name": "XLMAIN",
+      "handle": null,
+      "process_id": 23120,
+      "title": "Cordia_Alap_Szaniter_kínálat_2026.03.12 - Excel"
+    },
+    {
       "class_name": "Notepad",
       "handle": null,
       "process_id": 5264,
       "title": "*antal áron – Jegyzettömb"
-    },
-    {
-      "class_name": "#32770",
-      "handle": null,
-      "process_id": 9340,
-      "title": "12 emlékeztető"
     },
     {
       "class_name": "Chrome_WidgetWin_1",

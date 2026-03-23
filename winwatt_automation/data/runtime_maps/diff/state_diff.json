@@ -6,88 +6,117 @@
   },
   "enabled_state_changes": [],
   "menu_action_diff": {
-    "only_in_a": [],
-    "only_in_b": [],
+    "only_in_a": [
+      [
+        "ablak",
+        "[unlabeled row 19]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 20]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 22]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 2]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 3]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 5]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 19]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 20]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 22]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 2]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 3]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 5]"
+      ],
+      [
+        "adatbázis",
+        "végrehajtás"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 19]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 20]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 22]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 2]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 3]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 5]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 19]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 20]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 22]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 2]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 3]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 5]"
+      ]
+    ],
+    "only_in_b": [
+      [
+        "adatbázis"
+      ]
+    ],
     "shared": [
       [
         "ablak",
-        "[unlabeled row 19]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 20]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 22]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 2]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 3]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 5]"
-      ],
-      [
-        "ablak",
         "végrehajtás"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 19]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 20]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 22]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 2]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 3]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 5]"
-      ],
-      [
-        "adatbázis",
-        "végrehajtás"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 19]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 20]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 22]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 2]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 3]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 5]"
       ],
       [
         "beállítások",
@@ -148,30 +177,6 @@
       [
         "jegyzékek",
         "végrehajtás"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 19]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 20]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 22]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 2]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 3]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 5]"
       ],
       [
         "súgó",
@@ -183,8 +188,8 @@
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 0,
-    "actions_only_in_b": 0,
+    "actions_only_in_a": 25,
+    "actions_only_in_b": 1,
     "enabled_changes": 0,
     "project_only_paths": 0,
     "shared_top_menus": 6

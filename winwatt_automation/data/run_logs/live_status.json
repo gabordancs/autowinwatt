@@ -1,26 +1,32 @@
 {
-  "run_id": "0098_1_2026-03-22_20-26-00",
-  "state": "failed",
-  "message": "Mapping failed.",
+  "run_id": "0100_1_2026-03-23_14-02-58",
+  "state": "finished",
+  "message": "Mapping finished successfully.",
   "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
   "details": {
-    "exit_code": 1,
+    "exit_code": 0,
     "summary": {
-      "no_project_top_menus": null,
-      "project_open_top_menus": null,
-      "diff_summary": {},
-      "startup_project_detected": null,
-      "already_open_before_mapping": null,
-      "project_open_verdict": null,
-      "expected_project_path": null,
+      "no_project_top_menus": 6,
+      "project_open_top_menus": 6,
+      "diff_summary": {
+        "shared_top_menus": 6,
+        "actions_only_in_a": 25,
+        "actions_only_in_b": 1,
+        "enabled_changes": 0,
+        "project_only_paths": 0
+      },
+      "startup_project_detected": false,
+      "already_open_before_mapping": false,
+      "project_open_verdict": "open_attempt_failed",
+      "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
       "observed_project_path": null,
-      "path_match_normalized": null,
-      "skipped_by_safety": null,
-      "last_error": "No WinWatt-like windows were found",
+      "path_match_normalized": false,
+      "skipped_by_safety": 1,
+      "last_error": null,
       "modal_detected": false,
-      "recovery_attempted": false,
-      "recovery_success": false
+      "recovery_attempted": true,
+      "recovery_success": true
     }
   },
-  "updated_at": "2026-03-22T20:51:03.977006+00:00"
+  "updated_at": "2026-03-23T14:13:43.908051+00:00"
 }

@@ -4,7 +4,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -29,7 +29,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": "legacy_text_only_without_interaction_evidence",
@@ -47,7 +47,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -72,7 +72,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -90,7 +90,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -103,7 +103,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -116,7 +116,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 2,
@@ -132,7 +132,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -150,7 +150,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -163,7 +163,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -176,7 +176,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 3,
@@ -192,7 +192,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -210,7 +210,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -235,7 +235,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -253,7 +253,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -266,7 +266,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -279,7 +279,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 5,
@@ -295,7 +295,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -313,7 +313,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -338,7 +338,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -356,7 +356,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -381,7 +381,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -399,7 +399,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -424,7 +424,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -442,7 +442,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -467,7 +467,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -485,7 +485,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -510,7 +510,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -528,7 +528,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -553,7 +553,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -571,7 +571,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -596,7 +596,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -614,7 +614,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -639,7 +639,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -657,7 +657,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -682,7 +682,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -700,7 +700,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -725,7 +725,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -743,7 +743,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -768,7 +768,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -786,7 +786,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -811,7 +811,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": null,
@@ -829,7 +829,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -854,7 +854,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -872,7 +872,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -885,7 +885,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -898,7 +898,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 19,
@@ -914,7 +914,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -932,7 +932,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -945,7 +945,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -958,7 +958,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 20,
@@ -974,7 +974,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -992,7 +992,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1017,7 +1017,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -1035,7 +1035,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1048,7 +1048,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -1061,7 +1061,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 22,
@@ -1077,7 +1077,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -1095,7 +1095,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1120,7 +1120,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -1138,7 +1138,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1163,7 +1163,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -1181,7 +1181,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1206,7 +1206,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -1224,7 +1224,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1249,7 +1249,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -1267,7 +1267,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1292,7 +1292,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -1310,7 +1310,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1335,7 +1335,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -1353,7 +1353,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1378,7 +1378,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -1396,7 +1396,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1421,7 +1421,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -1439,7 +1439,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1464,7 +1464,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -1482,7 +1482,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1507,7 +1507,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -1525,7 +1525,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1550,7 +1550,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -1568,7 +1568,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1593,7 +1593,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": "legacy_text_only_without_interaction_evidence",
@@ -1611,7 +1611,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1636,7 +1636,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -1654,7 +1654,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1667,7 +1667,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -1680,7 +1680,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 2,
@@ -1696,7 +1696,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -1714,7 +1714,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1727,7 +1727,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -1740,7 +1740,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 3,
@@ -1756,7 +1756,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -1774,7 +1774,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1799,7 +1799,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -1817,7 +1817,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1830,7 +1830,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -1843,7 +1843,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 5,
@@ -1859,7 +1859,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -1877,7 +1877,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1902,7 +1902,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -1920,7 +1920,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1945,7 +1945,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -1963,7 +1963,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -1988,7 +1988,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -2006,7 +2006,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2031,7 +2031,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -2049,7 +2049,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2074,7 +2074,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -2092,7 +2092,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2117,7 +2117,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -2135,7 +2135,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2160,7 +2160,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -2178,7 +2178,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2203,7 +2203,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -2221,7 +2221,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2246,7 +2246,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -2264,7 +2264,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2289,7 +2289,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -2307,7 +2307,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2332,7 +2332,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -2350,7 +2350,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2375,7 +2375,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": null,
@@ -2393,7 +2393,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2418,7 +2418,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -2436,7 +2436,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2449,7 +2449,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -2462,7 +2462,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 19,
@@ -2478,7 +2478,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -2496,7 +2496,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2509,7 +2509,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -2522,7 +2522,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 20,
@@ -2538,7 +2538,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -2556,7 +2556,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2581,7 +2581,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -2599,7 +2599,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2612,7 +2612,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -2625,7 +2625,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 22,
@@ -2641,7 +2641,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -2659,7 +2659,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2684,7 +2684,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -2702,7 +2702,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2727,7 +2727,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -2745,7 +2745,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2770,7 +2770,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -2788,7 +2788,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2813,7 +2813,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -2831,7 +2831,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2856,7 +2856,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -2874,7 +2874,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2899,7 +2899,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -2917,7 +2917,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2942,7 +2942,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -2960,7 +2960,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -2985,7 +2985,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -3003,7 +3003,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3028,7 +3028,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -3046,7 +3046,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3071,7 +3071,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -3089,7 +3089,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3114,7 +3114,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -3132,7 +3132,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3157,7 +3157,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": "legacy_text_only_without_interaction_evidence",
@@ -3175,7 +3175,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3200,7 +3200,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -3218,7 +3218,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3231,7 +3231,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -3244,7 +3244,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 2,
@@ -3260,7 +3260,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -3278,7 +3278,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3291,7 +3291,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -3304,7 +3304,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 3,
@@ -3320,7 +3320,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -3338,7 +3338,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3363,7 +3363,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -3381,7 +3381,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3394,7 +3394,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -3407,7 +3407,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 5,
@@ -3423,7 +3423,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -3441,7 +3441,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3466,7 +3466,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -3484,7 +3484,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3509,7 +3509,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -3527,7 +3527,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3552,7 +3552,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -3570,7 +3570,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3595,7 +3595,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -3613,7 +3613,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3638,7 +3638,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -3656,7 +3656,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3681,7 +3681,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -3699,7 +3699,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3724,7 +3724,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -3742,7 +3742,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3767,7 +3767,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -3785,7 +3785,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3810,7 +3810,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -3828,7 +3828,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3853,7 +3853,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -3871,7 +3871,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3896,7 +3896,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -3914,7 +3914,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3939,7 +3939,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": null,
@@ -3957,7 +3957,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -3982,7 +3982,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -4000,7 +4000,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4013,7 +4013,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -4026,7 +4026,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 19,
@@ -4042,7 +4042,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -4060,7 +4060,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4073,7 +4073,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -4086,7 +4086,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 20,
@@ -4102,7 +4102,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -4120,7 +4120,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4145,7 +4145,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -4163,7 +4163,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4176,7 +4176,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -4189,7 +4189,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 22,
@@ -4205,7 +4205,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -4223,7 +4223,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4248,7 +4248,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -4266,7 +4266,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4291,7 +4291,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -4309,7 +4309,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4334,7 +4334,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -4352,7 +4352,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4377,7 +4377,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -4395,7 +4395,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4420,7 +4420,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -4438,7 +4438,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4463,7 +4463,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -4481,7 +4481,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4506,7 +4506,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -4524,7 +4524,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4549,7 +4549,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -4567,7 +4567,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4592,7 +4592,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -4610,7 +4610,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4635,7 +4635,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -4653,7 +4653,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4678,7 +4678,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -4696,7 +4696,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4721,7 +4721,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": "legacy_text_only_without_interaction_evidence",
@@ -4739,7 +4739,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4764,7 +4764,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -4782,7 +4782,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4795,7 +4795,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -4808,7 +4808,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 2,
@@ -4824,7 +4824,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -4842,7 +4842,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4855,7 +4855,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -4868,7 +4868,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 3,
@@ -4884,7 +4884,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -4902,7 +4902,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4927,7 +4927,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -4945,7 +4945,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -4958,7 +4958,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -4971,7 +4971,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 5,
@@ -4987,7 +4987,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -5005,7 +5005,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5030,7 +5030,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -5048,7 +5048,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5073,7 +5073,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -5091,7 +5091,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5116,7 +5116,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -5134,7 +5134,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5159,7 +5159,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -5177,7 +5177,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5202,7 +5202,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -5220,7 +5220,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5245,7 +5245,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -5263,7 +5263,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5288,7 +5288,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -5306,7 +5306,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5331,7 +5331,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -5349,7 +5349,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5374,7 +5374,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -5392,7 +5392,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5417,7 +5417,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -5435,7 +5435,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5460,7 +5460,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -5478,7 +5478,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5503,7 +5503,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": null,
@@ -5521,7 +5521,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5546,7 +5546,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -5564,7 +5564,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5577,7 +5577,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -5590,7 +5590,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 19,
@@ -5606,7 +5606,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -5624,7 +5624,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5637,7 +5637,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -5650,7 +5650,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 20,
@@ -5666,7 +5666,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -5684,7 +5684,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5709,7 +5709,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -5727,7 +5727,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5740,7 +5740,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -5753,7 +5753,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 22,
@@ -5769,7 +5769,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -5787,7 +5787,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5812,7 +5812,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -5830,7 +5830,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5855,7 +5855,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -5873,7 +5873,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5898,7 +5898,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -5916,7 +5916,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5941,7 +5941,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -5959,7 +5959,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -5984,7 +5984,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -6002,7 +6002,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6027,7 +6027,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -6045,7 +6045,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6070,7 +6070,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -6088,7 +6088,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6113,7 +6113,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -6131,7 +6131,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6156,7 +6156,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -6174,7 +6174,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6199,7 +6199,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -6217,7 +6217,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6242,7 +6242,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -6260,7 +6260,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6285,7 +6285,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": "legacy_text_only_without_interaction_evidence",
@@ -6303,7 +6303,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6328,7 +6328,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -6346,7 +6346,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6359,7 +6359,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -6372,7 +6372,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 2,
@@ -6388,7 +6388,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -6406,7 +6406,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6419,7 +6419,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -6432,7 +6432,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 3,
@@ -6448,7 +6448,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -6466,7 +6466,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6491,7 +6491,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -6509,7 +6509,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6522,7 +6522,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -6535,7 +6535,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 5,
@@ -6551,7 +6551,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -6569,7 +6569,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6594,7 +6594,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -6612,7 +6612,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6637,7 +6637,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -6655,7 +6655,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6680,7 +6680,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -6698,7 +6698,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6723,7 +6723,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -6741,7 +6741,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6766,7 +6766,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -6784,7 +6784,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6809,7 +6809,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -6827,7 +6827,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6852,7 +6852,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -6870,7 +6870,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6895,7 +6895,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -6913,7 +6913,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6938,7 +6938,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -6956,7 +6956,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -6981,7 +6981,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -6999,7 +6999,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7024,7 +7024,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -7042,7 +7042,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 70,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7067,7 +7067,7 @@
     "rectangle": {
       "bottom": 84,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 56
     },
     "rejection_reason": null,
@@ -7085,7 +7085,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 98,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7110,7 +7110,7 @@
     "rectangle": {
       "bottom": 112,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 84
     },
     "rejection_reason": null,
@@ -7128,7 +7128,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 125,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7141,7 +7141,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 125
       },
       "click_strategy": "center_point_fallback",
@@ -7154,7 +7154,7 @@
       "rectangle": {
         "bottom": 139,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 111
       },
       "row_index": 19,
@@ -7170,7 +7170,7 @@
     "rectangle": {
       "bottom": 139,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 111
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -7188,7 +7188,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 153,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7201,7 +7201,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 153
       },
       "click_strategy": "center_point_fallback",
@@ -7214,7 +7214,7 @@
       "rectangle": {
         "bottom": 167,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 139
       },
       "row_index": 20,
@@ -7230,7 +7230,7 @@
     "rectangle": {
       "bottom": 167,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 139
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -7248,7 +7248,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 180,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7273,7 +7273,7 @@
     "rectangle": {
       "bottom": 194,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 166
     },
     "rejection_reason": null,
@@ -7291,7 +7291,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 215,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7304,7 +7304,7 @@
     ],
     "meta": {
       "click_point": {
-        "x": 443,
+        "x": 483,
         "y": 215
       },
       "click_strategy": "center_point_fallback",
@@ -7317,7 +7317,7 @@
       "rectangle": {
         "bottom": 229,
         "left": 4,
-        "right": 882,
+        "right": 962,
         "top": 201
       },
       "row_index": 22,
@@ -7333,7 +7333,7 @@
     "rectangle": {
       "bottom": 229,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 201
     },
     "rejection_reason": "placeholder_without_state_change",
@@ -7351,7 +7351,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 243,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7376,7 +7376,7 @@
     "rectangle": {
       "bottom": 257,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 229
     },
     "rejection_reason": null,
@@ -7394,7 +7394,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 278,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7419,7 +7419,7 @@
     "rectangle": {
       "bottom": 292,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 264
     },
     "rejection_reason": null,
@@ -7437,7 +7437,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 305,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7462,7 +7462,7 @@
     "rectangle": {
       "bottom": 319,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 291
     },
     "rejection_reason": null,
@@ -7480,7 +7480,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 333,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7505,7 +7505,7 @@
     "rectangle": {
       "bottom": 347,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 319
     },
     "rejection_reason": null,
@@ -7523,7 +7523,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 360,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7548,7 +7548,7 @@
     "rectangle": {
       "bottom": 374,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 346
     },
     "rejection_reason": null,
@@ -7566,7 +7566,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 388,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7591,7 +7591,7 @@
     "rectangle": {
       "bottom": 402,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 374
     },
     "rejection_reason": null,
@@ -7609,7 +7609,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 415,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7634,7 +7634,7 @@
     "rectangle": {
       "bottom": 429,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 401
     },
     "rejection_reason": null,
@@ -7652,7 +7652,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 443,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7677,7 +7677,7 @@
     "rectangle": {
       "bottom": 457,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 429
     },
     "rejection_reason": null,
@@ -7695,7 +7695,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 470,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7720,7 +7720,7 @@
     "rectangle": {
       "bottom": 484,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 456
     },
     "rejection_reason": null,
@@ -7738,7 +7738,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 498,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7763,7 +7763,7 @@
     "rectangle": {
       "bottom": 512,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 484
     },
     "rejection_reason": null,
@@ -7781,7 +7781,7 @@
     "actionable": true,
     "admission_reason": null,
     "admitted_to_action_catalog": false,
-    "center_x": 443,
+    "center_x": 483,
     "center_y": 533,
     "discovered_in_state": "no_project",
     "dispatch_type": "click",
@@ -7806,7 +7806,7 @@
     "rectangle": {
       "bottom": 547,
       "left": 4,
-      "right": 882,
+      "right": 962,
       "top": 519
     },
     "rejection_reason": null,
@@ -7818,5 +7818,1569 @@
     "text": "Végrehajtás",
     "text_confidence": "medium",
     "top_menu": "Ablak"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 70,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 84,
+      "left": 4,
+      "right": 962,
+      "top": 56
+    },
+    "rejection_reason": "legacy_text_only_without_interaction_evidence",
+    "retained_as_structure_only": true,
+    "row_index": 0,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 98,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 112,
+      "left": 4,
+      "right": 962,
+      "top": 84
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 1,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 125,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 2]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 483,
+        "y": 125
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_002",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 962,
+        "top": 111
+      },
+      "row_index": 2,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 2]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 139,
+      "left": 4,
+      "right": 962,
+      "top": 111
+    },
+    "rejection_reason": "placeholder_without_state_change",
+    "retained_as_structure_only": true,
+    "row_index": 2,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 2]",
+    "text_confidence": "none",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 153,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 3]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 483,
+        "y": 153
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_003",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 962,
+        "top": 139
+      },
+      "row_index": 3,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 3]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 167,
+      "left": 4,
+      "right": 962,
+      "top": 139
+    },
+    "rejection_reason": "placeholder_without_state_change",
+    "retained_as_structure_only": true,
+    "row_index": 3,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 3]",
+    "text_confidence": "none",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 180,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 194,
+      "left": 4,
+      "right": 962,
+      "top": 166
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 4,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 215,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 5]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 483,
+        "y": 215
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_005",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 229,
+        "left": 4,
+        "right": 962,
+        "top": 201
+      },
+      "row_index": 5,
+      "source": "geometry_placeholder",
+      "source_scope": "main_window",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 5]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 229,
+      "left": 4,
+      "right": 962,
+      "top": 201
+    },
+    "rejection_reason": "placeholder_without_state_change",
+    "retained_as_structure_only": true,
+    "row_index": 5,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 5]",
+    "text_confidence": "none",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 243,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 257,
+      "left": 4,
+      "right": 962,
+      "top": 229
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 6,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 278,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 292,
+      "left": 4,
+      "right": 962,
+      "top": 264
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 7,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 305,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 319,
+      "left": 4,
+      "right": 962,
+      "top": 291
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 8,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 333,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 347,
+      "left": 4,
+      "right": 962,
+      "top": 319
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 9,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 360,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 374,
+      "left": 4,
+      "right": 962,
+      "top": 346
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 10,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 388,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 402,
+      "left": 4,
+      "right": 962,
+      "top": 374
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 11,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 415,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 429,
+      "left": 4,
+      "right": 962,
+      "top": 401
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 12,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 443,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 457,
+      "left": 4,
+      "right": 962,
+      "top": 429
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 13,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 470,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 484,
+      "left": 4,
+      "right": 962,
+      "top": 456
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 14,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 498,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 512,
+      "left": 4,
+      "right": 962,
+      "top": 484
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 15,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 533,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 547,
+      "left": 4,
+      "right": 962,
+      "top": 519
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 16,
+    "source_scope": "main_window",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 70,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 84,
+      "left": 4,
+      "right": 962,
+      "top": 56
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 17,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 98,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 112,
+      "left": 4,
+      "right": 962,
+      "top": 84
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 18,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 125,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 19]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 483,
+        "y": 125
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_019",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 139,
+        "left": 4,
+        "right": 962,
+        "top": 111
+      },
+      "row_index": 19,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 19]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 139,
+      "left": 4,
+      "right": 962,
+      "top": 111
+    },
+    "rejection_reason": "placeholder_without_state_change",
+    "retained_as_structure_only": true,
+    "row_index": 19,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 19]",
+    "text_confidence": "none",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 153,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 20]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 483,
+        "y": 153
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_020",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 167,
+        "left": 4,
+        "right": 962,
+        "top": 139
+      },
+      "row_index": 20,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 20]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 167,
+      "left": 4,
+      "right": 962,
+      "top": 139
+    },
+    "rejection_reason": "placeholder_without_state_change",
+    "retained_as_structure_only": true,
+    "row_index": 20,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 20]",
+    "text_confidence": "none",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 180,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 194,
+      "left": 4,
+      "right": 962,
+      "top": 166
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 21,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 215,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "[unlabeled row 22]"
+    ],
+    "meta": {
+      "click_point": {
+        "x": 483,
+        "y": 215
+      },
+      "click_strategy": "center_point_fallback",
+      "id": "__geom_row_022",
+      "popup_block_classification": "normal_popup",
+      "popup_reason": "below_topbar_band",
+      "raw_text_sources": [],
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "rectangle": {
+        "bottom": 229,
+        "left": 4,
+        "right": 962,
+        "top": 201
+      },
+      "row_index": 22,
+      "source": "geometry_placeholder",
+      "source_scope": "global_process_scan",
+      "stateful_menu_block": false,
+      "text_confidence": "none",
+      "text_was_empty": true
+    },
+    "normalized_text": "[unlabeled row 22]",
+    "raw_text_sources": [],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 229,
+      "left": 4,
+      "right": 962,
+      "top": 201
+    },
+    "rejection_reason": "placeholder_without_state_change",
+    "retained_as_structure_only": true,
+    "row_index": 22,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "[unlabeled row 22]",
+    "text_confidence": "none",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 243,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 257,
+      "left": 4,
+      "right": 962,
+      "top": 229
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 23,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 278,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 292,
+      "left": 4,
+      "right": 962,
+      "top": 264
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 24,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 305,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 319,
+      "left": 4,
+      "right": 962,
+      "top": 291
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 25,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 333,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 347,
+      "left": 4,
+      "right": 962,
+      "top": 319
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 26,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 360,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 374,
+      "left": 4,
+      "right": 962,
+      "top": 346
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 27,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 388,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 402,
+      "left": 4,
+      "right": 962,
+      "top": 374
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 28,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 415,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 429,
+      "left": 4,
+      "right": 962,
+      "top": 401
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 29,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 443,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 457,
+      "left": 4,
+      "right": 962,
+      "top": 429
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 30,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 470,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 484,
+      "left": 4,
+      "right": 962,
+      "top": 456
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 31,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 498,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 512,
+      "left": 4,
+      "right": 962,
+      "top": 484
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 32,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
+  },
+  {
+    "action_type": "unknown",
+    "actionable": true,
+    "admission_reason": null,
+    "admitted_to_action_catalog": false,
+    "center_x": 483,
+    "center_y": 533,
+    "discovered_in_state": "no_project",
+    "dispatch_type": "click",
+    "enabled_guess": true,
+    "fragments": [],
+    "is_separator": false,
+    "menu_path": [
+      "Súgó",
+      "Végrehajtás"
+    ],
+    "meta": {
+      "popup_block_classification": "normal_popup",
+      "recent_project_entry": false,
+      "recent_projects_block": false,
+      "stateful_menu_block": false
+    },
+    "normalized_text": "végrehajtás",
+    "raw_text_sources": [
+      "legacy_text"
+    ],
+    "recent_project_entry": false,
+    "rectangle": {
+      "bottom": 547,
+      "left": 4,
+      "right": 962,
+      "top": 519
+    },
+    "rejection_reason": null,
+    "retained_as_structure_only": false,
+    "row_index": 33,
+    "source_scope": "global_process_scan",
+    "state_id": "no_project",
+    "stateful_menu_block": false,
+    "text": "Végrehajtás",
+    "text_confidence": "medium",
+    "top_menu": "Súgó"
   }
 ]
