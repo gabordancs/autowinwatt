@@ -3,8 +3,10 @@ from __future__ import annotations
 from collections import Counter, defaultdict
 from dataclasses import asdict
 from datetime import datetime, timezone
+import os
 from pathlib import Path
 import re
+import subprocess
 import time
 from typing import Any, Callable
 
@@ -16,6 +18,7 @@ from winwatt_automation.live_ui.app_connector import (
     ensure_main_window_foreground_before_click,
     get_cached_main_window,
     is_winwatt_foreground_context,
+    reset_winwatt_connection_cache,
 )
 from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
 from winwatt_automation.runtime_mapping.models import (
@@ -47,6 +50,8 @@ from winwatt_automation.live_ui.ui_cache import PopupState
 DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
 SYSTEM_TOP_MENUS = ["Rendszer"]
 DEFAULT_TEST_PROJECT_PATH = r"C:\Users\dancsg\OneDrive - Futureal\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp"
+DEFAULT_WINWATT_EXE_PATH = r"C:\Program Files (x86)\Bausoft\WinWatt gólya\WinWatt32.exe"
+DEFAULT_WINWATT_PROCESS_NAME = "WinWatt32.exe"
 ENABLE_GEOMETRY_PLACEHOLDERS = True
 
 _TOP_MENU_CACHE: dict[str, Any] | None = None
@@ -180,6 +185,85 @@ def _safe_capture_snapshot(state_id: str) -> RuntimeStateSnapshot | None:
     except Exception as exc:
         logger.warning("snapshot_capture_failed state_id={} error={}", state_id, exc)
         return None
+
+
+def _taskkill_process_image(image_name: str) -> dict[str, Any]:
+    completed = subprocess.run(
+        ["taskkill", "/F", "/IM", image_name, "/T"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    ok = completed.returncode in {0, 128}
+    message = completed.stderr.strip() or completed.stdout.strip() or ""
+    return {"ok": ok, "message": message, "returncode": completed.returncode}
+
+
+def _launch_winwatt_target(*, target_path: str | None, exe_path: str) -> dict[str, Any]:
+    launch_target = str(target_path or exe_path)
+    try:
+        if os.name == "nt" and target_path and target_path.lower().endswith(".wwp"):
+            os.startfile(target_path)
+            return {"method": "os.startfile", "target": launch_target, "ok": True}
+        subprocess.Popen([launch_target], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return {"method": "subprocess.Popen", "target": launch_target, "ok": True}
+    except Exception as exc:
+        logger.warning("winwatt_launch_failed target={} error={}", launch_target, exc)
+        return {"method": "launch_failed", "target": launch_target, "ok": False, "error": str(exc)}
+
+
+def _wait_for_startup_snapshot(
+    state_id: str,
+    *,
+    expected_project_path: str | None = None,
+    timeout_s: float = 20.0,
+    poll_interval_s: float = 0.5,
+) -> RuntimeStateSnapshot | None:
+    deadline = time.monotonic() + max(timeout_s, poll_interval_s)
+    normalized_expected = _normalize_project_path(expected_project_path)
+    last_snapshot: RuntimeStateSnapshot | None = None
+    while time.monotonic() < deadline:
+        snapshot = _safe_capture_snapshot(state_id)
+        if snapshot is not None:
+            last_snapshot = snapshot
+            title = str(snapshot.main_window_title or "")
+            observed = _normalize_project_path(_extract_project_path_from_title(title))
+            if normalized_expected is None:
+                if title:
+                    return snapshot
+            elif observed == normalized_expected:
+                return snapshot
+        time.sleep(poll_interval_s)
+    return last_snapshot
+
+
+def prepare_fresh_winwatt_session(
+    *,
+    project_path: str | None = None,
+    exe_path: str = DEFAULT_WINWATT_EXE_PATH,
+    process_image_name: str = DEFAULT_WINWATT_PROCESS_NAME,
+    timeout_s: float = 20.0,
+) -> dict[str, Any]:
+    reset_winwatt_connection_cache()
+    close_result = {"ok": True, "message": "not_attempted", "returncode": None}
+    if os.name == "nt":
+        close_result = _taskkill_process_image(process_image_name)
+        time.sleep(1.0)
+        reset_winwatt_connection_cache()
+
+    launch_result = _launch_winwatt_target(target_path=project_path, exe_path=exe_path)
+    snapshot = _wait_for_startup_snapshot(
+        "startup_after_relaunch",
+        expected_project_path=project_path if project_path else None,
+        timeout_s=timeout_s,
+    )
+    return {
+        "close_result": close_result,
+        "launch_result": launch_result,
+        "snapshot_ready": snapshot is not None,
+        "snapshot_title": snapshot.main_window_title if snapshot is not None else "",
+        "snapshot_project_path": _extract_project_path_from_title(snapshot.main_window_title if snapshot is not None else ""),
+    }
 
 
 def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
@@ -4402,6 +4486,9 @@ def build_full_runtime_program_map(
     previous_knowledge = _load_previous_knowledge(knowledge_path)
     no_project_id = "no_project" if state_id_prefix == "state" else f"{state_id_prefix}_no_project"
     project_id = "project_open" if state_id_prefix == "state" else f"{state_id_prefix}_project_open"
+    effective_project_path = project_path or DEFAULT_TEST_PROJECT_PATH
+
+    no_project_bootstrap = prepare_fresh_winwatt_session()
 
     startup_snapshot = _safe_capture_snapshot("startup_before_no_project_mapping")
     startup_project_path = _extract_project_path_from_title(startup_snapshot.main_window_title if startup_snapshot else "")
@@ -4418,6 +4505,7 @@ def build_full_runtime_program_map(
     state_no_project.snapshot["startup_project_detected"] = startup_project_detected
     state_no_project.snapshot["observed_startup_project_path"] = startup_project_path
     state_no_project.snapshot["already_open_before_mapping"] = already_open_before_mapping
+    state_no_project.snapshot["bootstrap"] = no_project_bootstrap
     if event_recorder:
         event_recorder(
             "state_mapped",
@@ -4430,8 +4518,51 @@ def build_full_runtime_program_map(
         )
     _write_state_outputs(paths["state_no_project"], state_no_project)
 
-    effective_project_path = project_path or DEFAULT_TEST_PROJECT_PATH
-    project_open_result = open_test_project(effective_project_path, safe_mode=safe_mode)
+    project_open_bootstrap = prepare_fresh_winwatt_session(project_path=effective_project_path)
+    project_open_result = {
+        "success": bool(project_open_bootstrap.get("snapshot_ready")),
+        "dialog_found": False,
+        "path_entry_attempted": False,
+        "path_entered": False,
+        "confirm_attempted": False,
+        "confirm_clicked": False,
+        "dialog_closed": False,
+        "project_state_changed": bool(project_open_bootstrap.get("snapshot_ready")),
+        "detected_changes": ["fresh_process_launch"] if project_open_bootstrap.get("snapshot_ready") else [],
+        "project_open_method": "direct_launch",
+        "project_open_sequence": [effective_project_path],
+        "recovery": {
+            "success": bool(project_open_bootstrap.get("snapshot_ready")),
+            "reason": "fresh_process_launch",
+            "modal_pending": False,
+            "main_window_ready_after_attempt": bool(project_open_bootstrap.get("snapshot_ready")),
+            "diagnostics": {"bootstrap": project_open_bootstrap},
+            "close_attempts": [],
+        },
+        "project_open_audit": {
+            "project_open_attempt_started": True,
+            "project_open_method": "direct_launch",
+            "project_open_sequence": [effective_project_path],
+            "project_open_menu_item_clicked": False,
+            "open_file_dialog_detected": False,
+            "file_dialog_path_entered": False,
+            "file_dialog_confirm_clicked": False,
+            "interaction_helper_called": False,
+            "interaction_helper_result_present": False,
+            "path_entry_strategy_selected": None,
+            "path_entry_strategy_null_reason": "direct_project_launch_bootstrap",
+            "focused_input_entry_attempted": False,
+            "focused_input_entry_sent": False,
+            "enter_confirm_sent": False,
+            "post_confirm_dialog_closed": False,
+            "post_confirm_title": project_open_bootstrap.get("snapshot_title"),
+            "post_confirm_path_match": bool(
+                _normalize_project_path(project_open_bootstrap.get("snapshot_project_path")) == _normalize_project_path(effective_project_path)
+            ),
+        },
+        "bootstrap": project_open_bootstrap,
+        "error": None if project_open_bootstrap.get("snapshot_ready") else "fresh_process_launch_failed",
+    }
     recovery = (project_open_result or {}).get("recovery") if project_open_result else None
     verification_snapshot = _safe_capture_snapshot("project_open_verification")
     project_path_verification = _build_project_path_verification(
@@ -4515,6 +4646,7 @@ def build_full_runtime_program_map(
     state_project_open.snapshot["startup_project_detected"] = startup_project_detected
     state_project_open.snapshot["observed_startup_project_path"] = startup_project_path
     state_project_open.snapshot["already_open_before_mapping"] = already_open_before_mapping
+    state_project_open.snapshot["bootstrap"] = project_open_bootstrap
     state_project_open.snapshot.update(project_path_verification)
     state_project_open.snapshot["project_open_verdict"] = project_open_verdict
     if event_recorder:

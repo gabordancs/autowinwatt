@@ -64,6 +64,22 @@ class MainWindowSession:
 
 
 
+def reset_winwatt_connection_cache() -> None:
+    """Clear cached WinWatt connection/session metadata."""
+
+    WinWattSession.app = None
+    WinWattSession.main_window = None
+    WinWattSession.process_id = None
+    WinWattSession.handle = None
+    MainWindowSession.window = None
+    MainWindowSession.process_id = None
+    MainWindowSession.last_validation_monotonic = 0.0
+    MainWindowSession.foreground_failure_count = 0
+    MainWindowSession.last_foreground_failure_monotonic = 0.0
+    MainWindowSession.last_resolve_attempt_monotonic = 0.0
+    MainWindowSession.last_focus_guard_diagnostic = {}
+
+
 def get_last_focus_guard_diagnostic() -> dict[str, Any]:
     """Return the most recent structured focus-guard diagnostic."""
 
