@@ -301,22 +301,45 @@ def _control_type(wrapper: Any) -> str:
     return str(getattr(info, "control_type", "") or "").strip().lower()
 
 
-def _find_filename_edit_control(dialog: Any) -> Any | None:
+def _find_filename_edit_control(dialog: Any) -> tuple[Any | None, str | None]:
     descendants = getattr(dialog, "descendants", None)
     if not callable(descendants):
-        return None
+        return None, None
 
-    edits = [item for item in descendants() if _control_type(item) == "edit"]
+    controls = list(descendants())
+    edits = [item for item in controls if _control_type(item) == "edit"]
     if not edits:
-        return None
+        return None, None
 
-    def score(edit: Any) -> tuple[int, int]:
-        name = _control_name(edit).lower()
-        name_hint = int(any(hint in name for hint in FILENAME_EDIT_HINTS))
-        enabled = int(bool(_safe_call(edit, "is_enabled", False)))
-        return (name_hint, enabled)
+    named_edits = [
+        item for item in edits
+        if any(hint in _control_name(item).lower() for hint in FILENAME_EDIT_HINTS)
+    ]
+    enabled_named_edits = [item for item in named_edits if bool(_safe_call(item, "is_enabled", False))]
+    if enabled_named_edits:
+        return enabled_named_edits[0], "edit_named_like_file_name"
+    if named_edits:
+        return named_edits[0], "edit_named_like_file_name_disabled"
 
-    return sorted(edits, key=score, reverse=True)[0]
+    combo_named = [
+        item for item in controls
+        if _control_type(item) == "combobox"
+        and any(hint in _control_name(item).lower() for hint in FILENAME_EDIT_HINTS)
+    ]
+    for combo in combo_named:
+        children = getattr(combo, "children", None)
+        if callable(children):
+            combo_edits = [item for item in children() if _control_type(item) == "edit"]
+            enabled_combo_edits = [item for item in combo_edits if bool(_safe_call(item, "is_enabled", False))]
+            if enabled_combo_edits:
+                return enabled_combo_edits[0], "combo_named_like_file_name_child_edit"
+            if combo_edits:
+                return combo_edits[0], "combo_named_like_file_name_child_edit_disabled"
+
+    enabled_edits = [item for item in edits if bool(_safe_call(item, "is_enabled", False))]
+    if enabled_edits:
+        return enabled_edits[-1], "last_enabled_edit_fallback"
+    return edits[-1], "last_edit_fallback"
 
 
 def _read_edit_value(edit: Any) -> str:
@@ -420,7 +443,7 @@ def _paste_path_with_hotkey(dialog: Any, project_path: str, *, hotkey: str) -> t
         else:
             keyboard.send_keys(project_path, with_spaces=True)
         time.sleep(0.05)
-        refreshed_edit = _find_filename_edit_control(dialog)
+        refreshed_edit, refreshed_strategy = _find_filename_edit_control(dialog)
         if refreshed_edit is not None and project_path.lower() in _read_edit_value(refreshed_edit).lower():
             logger.info(
                 "set_file_dialog_path hotkey success hotkey={} entry_method={}",
@@ -432,6 +455,7 @@ def _paste_path_with_hotkey(dialog: Any, project_path: str, *, hotkey: str) -> t
                 "hotkey": hotkey,
                 "entry_method": "clipboard_paste" if clipboard_ready else "typed_fallback",
                 "edit_name": _control_name(refreshed_edit),
+                "file_name_control_strategy": refreshed_strategy,
             }
     except Exception:
         pass
@@ -449,29 +473,73 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
     except Exception:
         pass
 
-    for hotkey in ("^l", "%d"):
-        ok, info = _paste_path_with_hotkey(dialog, project_path, hotkey=hotkey)
-        if ok:
-            return ok, info
+    edit, strategy = _find_filename_edit_control(dialog)
+    info: dict[str, Any] = {
+        "method": "failed",
+        "file_name_control_strategy": strategy,
+        "file_name_control_found": edit is not None,
+        "file_name_control_value_before": _read_edit_value(edit) if edit is not None else "",
+        "file_name_control_value_after": "",
+        "file_name_value_matches_expected": False,
+        "location_bar_touched": False,
+        "confirm_skipped_reason": None,
+    }
 
-    edit = _find_filename_edit_control(dialog)
-    if edit is not None and _write_to_edit(edit, project_path):
-        logger.info("set_file_dialog_path direct-edit fallback success edit_name={}", _control_name(edit))
-        return True, {"method": "direct_edit_fallback", "edit_name": _control_name(edit)}
+    if edit is None:
+        info["confirm_skipped_reason"] = "file_name_control_not_found"
+        logger.info("set_file_dialog_path file_name_control_found=false strategy={} confirm_skipped_reason={}", strategy, info["confirm_skipped_reason"])
+        return False, info
+
+    try:
+        edit.set_focus()
+    except Exception:
+        pass
+
+    if _write_to_edit(edit, project_path):
+        info["method"] = "direct_edit"
+        info["file_name_control_value_after"] = _read_edit_value(edit)
+        info["file_name_value_matches_expected"] = _normalize_project_path(info["file_name_control_value_after"]) == _normalize_project_path(project_path)
+        if info["file_name_value_matches_expected"]:
+            logger.info(
+                "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
+                info["file_name_control_strategy"],
+                info["file_name_control_found"],
+                info["file_name_control_value_before"],
+                info["file_name_control_value_after"],
+                info["file_name_value_matches_expected"],
+                info["location_bar_touched"],
+                info["confirm_skipped_reason"],
+            )
+            return True, info
 
     from pywinauto import keyboard
-    if edit is not None:
-        try:
-            edit.set_focus()
-            keyboard.send_keys("^a{BACKSPACE}")
-            keyboard.send_keys(project_path, with_spaces=True)
-            if project_path.lower() in _read_edit_value(edit).lower():
-                logger.info("set_file_dialog_path final edit fallback success")
-                return True, {"method": "final_edit_fallback", "edit_name": _control_name(edit)}
-        except Exception:
-            pass
+    try:
+        edit.set_focus()
+    except Exception:
+        pass
+    try:
+        keyboard.send_keys("^a{BACKSPACE}")
+        keyboard.send_keys(project_path, with_spaces=True)
+    except Exception:
+        info["confirm_skipped_reason"] = "file_name_write_failed"
+        return False, info
 
-    return False, {"method": "failed"}
+    info["method"] = "typed_edit_fallback"
+    info["file_name_control_value_after"] = _read_edit_value(edit)
+    info["file_name_value_matches_expected"] = _normalize_project_path(info["file_name_control_value_after"]) == _normalize_project_path(project_path)
+    if not info["file_name_value_matches_expected"]:
+        info["confirm_skipped_reason"] = "file_name_value_mismatch"
+    logger.info(
+        "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
+        info["file_name_control_strategy"],
+        info["file_name_control_found"],
+        info["file_name_control_value_before"],
+        info["file_name_control_value_after"],
+        info["file_name_value_matches_expected"],
+        info["location_bar_touched"],
+        info["confirm_skipped_reason"],
+    )
+    return bool(info["file_name_value_matches_expected"]), info
 
 
 def find_confirm_open_button(dialog: Any) -> Any | None:
@@ -715,6 +783,33 @@ def interact_with_open_file_dialog(
                 project_open_method=project_open_method,
                 project_open_sequence=project_open_sequence,
                 error="file_name_control_not_found" if str(path_info.get("method") or "") == "failed" else "path_entry_failed",
+                detected_dialog_snapshot=detected_dialog_snapshot,
+                helper_received_dialog_context=received_context,
+                helper_dialog_revalidated=helper_dialog_revalidated,
+                helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
+                binding_strategy_used=binding_strategy_used,
+                dialog_handle_available=dialog_handle_available,
+                dialog_binding_candidates_count=dialog_binding_candidates_count,
+                binding_failed_reason=binding_failed_reason,
+            )
+
+        if not bool(path_info.get("file_name_value_matches_expected", path_entered)):
+            confirm_info = {"method": "skipped", "reason": path_info.get("confirm_skipped_reason") or "file_name_value_not_validated"}
+            logger.info("interact_with_open_file_dialog confirm skipped reason={}", confirm_info["reason"])
+            return OpenProjectDialogResult(
+                success=False,
+                path=project_path,
+                dialog_found=True,
+                path_entry_attempted=path_entry_attempted,
+                path_entered=False,
+                confirm_attempted=False,
+                confirm_clicked=False,
+                dialog_closed=False,
+                project_state_changed=False,
+                detected_changes=[],
+                project_open_method=project_open_method,
+                project_open_sequence=project_open_sequence,
+                error="path_entry_validation_failed",
                 detected_dialog_snapshot=detected_dialog_snapshot,
                 helper_received_dialog_context=received_context,
                 helper_dialog_revalidated=helper_dialog_revalidated,
