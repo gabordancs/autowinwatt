@@ -120,7 +120,8 @@ def test_find_filename_edit_control_prefers_filename_hint():
 
     selected = file_dialog._find_filename_edit_control(dialog)
 
-    assert selected is controls[1]
+    assert selected[0] is controls[1]
+    assert selected[1] == "edit_named_like_file_name"
 
 
 def test_find_confirm_open_button_by_hungarian_or_english_label():
@@ -369,21 +370,49 @@ def test_confirm_file_dialog_open_prefers_enter(monkeypatch):
     assert sent == ["{ENTER}"]
 
 
-def test_set_file_dialog_path_hotkey_does_not_tab_before_confirm(monkeypatch):
+def test_find_filename_edit_control_supports_combobox_child_edit():
+    class Combo:
+        def __init__(self, child):
+            self.element_info = _FakeElementInfo(name="File name", control_type="ComboBox")
+            self._child = child
+
+        def children(self):
+            return [self._child]
+
+    child_edit = _FakeControl(name="", control_type="Edit")
+    dialog = type("FakeDialog", (), {})()
+    dialog.descendants = lambda: [_FakeControl(name="Search", control_type="Edit"), Combo(child_edit)]
+
+    selected, strategy = file_dialog._find_filename_edit_control(dialog)
+
+    assert selected is child_edit
+    assert strategy == "combo_named_like_file_name_child_edit"
+
+
+def test_set_file_dialog_path_targets_file_name_edit_without_location_hotkeys(monkeypatch):
     sent = []
 
     class FakeKeyboard:
         @staticmethod
-        def send_keys(keys, **kwargs):
+        def send_keys(keys, **_kwargs):
             sent.append(keys)
 
     class Edit:
         def __init__(self):
-            self.value = r"C:\tmp\test.wwp"
+            self.value = ""
             self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit")
 
         def is_enabled(self):
             return True
+
+        def set_focus(self):
+            return None
+
+        def type_keys(self, keys, **_kwargs):
+            if keys == "^a{BACKSPACE}":
+                self.value = ""
+            else:
+                self.value = keys
 
         def window_text(self):
             return self.value
@@ -395,49 +424,50 @@ def test_set_file_dialog_path_hotkey_does_not_tab_before_confirm(monkeypatch):
     import sys
     import types
 
+    edit = Edit()
     monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
-    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: Edit())
-    monkeypatch.setattr(file_dialog, "_set_clipboard_text", lambda value: True)
+    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: (edit, "edit_named_like_file_name"))
 
     ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
 
     assert ok is True
-    assert info["method"] == "hotkey"
-    assert info["entry_method"] == "clipboard_paste"
-    assert "{TAB}" not in sent
-    assert sent[:3] == ["^l", "^a{BACKSPACE}", "^v"]
+    assert info["method"] == "direct_edit"
+    assert info["file_name_control_value_after"] == r"C:\tmp\test.wwp"
+    assert info["file_name_value_matches_expected"] is True
+    assert info["location_bar_touched"] is False
+    assert sent == []
 
 
-def test_set_file_dialog_path_falls_back_to_direct_edit_if_hotkeys_fail(monkeypatch):
-    sent = []
-
-    class FakeKeyboard:
-        @staticmethod
-        def send_keys(keys, **kwargs):
-            sent.append(keys)
-
-    class Edit:
-        def __init__(self):
-            self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit")
-
-        def is_enabled(self):
+def test_interact_with_open_file_dialog_skips_confirm_when_path_not_validated(monkeypatch):
+    class Dialog:
+        def exists(self):
             return True
 
-    class Dialog:
-        def set_focus(self):
-            return None
+        def is_visible(self):
+            return True
 
-    import sys
-    import types
+    monkeypatch.setattr(
+        file_dialog,
+        "set_file_dialog_path",
+        lambda dialog, path: (False, {"method": "typed_edit_fallback", "file_name_value_matches_expected": False, "confirm_skipped_reason": "file_name_value_mismatch"}),
+    )
+    monkeypatch.setattr(
+        file_dialog,
+        "confirm_file_dialog_open",
+        lambda dialog, **kwargs: (_ for _ in ()).throw(AssertionError("confirm should not run when file name value was not validated")),
+    )
 
-    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
-    monkeypatch.setattr(file_dialog, "_set_clipboard_text", lambda value: False)
-    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: Edit())
-    monkeypatch.setattr(file_dialog, "_read_edit_value", lambda edit: "")
-    monkeypatch.setattr(file_dialog, "_write_to_edit", lambda edit, path: True)
+    result = file_dialog.interact_with_open_file_dialog(
+        Dialog(),
+        r"C:\tmp\test.wwp",
+        before_snapshot={"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        detected_dialog_snapshot={"title": "Projekt megnyitás", "class_name": "#32770", "handle": 123},
+        dialog_context={"dialog_already_verified": True, "dialog_handle": 123, "dialog_title": "Projekt megnyitás", "dialog_class": "#32770"},
+    )
 
-    ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
-
-    assert ok is True
-    assert info["method"] == "direct_edit_fallback"
-    assert sent[:3] == ["^l", "^a{BACKSPACE}", r"C:\tmp\test.wwp"]
+    assert result.path_entry_attempted is True
+    assert result.path_entered is False
+    assert result.confirm_attempted is False
+    assert result.confirm_clicked is False
+    assert result.error == "path_entry_failed"
