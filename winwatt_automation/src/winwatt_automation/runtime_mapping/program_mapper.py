@@ -4198,7 +4198,27 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         before_snapshot=before,
         after_snapshot_provider=lambda: asdict(capture_state_snapshot("project_open_after")),
     )
-    path_entry_diagnostics = dict(result.get("path_entry_diagnostics") or {})
+    raw_path_entry_diagnostics = result.get("path_entry_diagnostics")
+    path_entry_diagnostics = dict(raw_path_entry_diagnostics or {})
+    interaction_helper_called = raw_path_entry_diagnostics is not None
+    dialog_context_passed = dict(result.get("helper_received_dialog_context") or {})
+    dialog_detected_before_interaction = bool(
+        result.get("dialog_found")
+        or dialog_context_passed.get("dialog_already_verified")
+        or result.get("detected_dialog_snapshot")
+    )
+    path_entry_strategy_selected = path_entry_diagnostics.get("path_entry_strategy_selected")
+    if path_entry_strategy_selected is None:
+        if not interaction_helper_called:
+            path_entry_strategy_null_reason = "interaction_helper_not_called"
+        elif not dialog_context_passed:
+            path_entry_strategy_null_reason = "dialog_context_missing"
+        elif not dialog_context_passed.get("dialog_already_verified"):
+            path_entry_strategy_null_reason = "precondition_failed"
+        else:
+            path_entry_strategy_null_reason = path_entry_diagnostics.get("path_entry_strategy_null_reason") or "interaction_aborted_before_strategy_selection"
+    else:
+        path_entry_strategy_null_reason = None
     audit = {
         "project_open_attempt_started": True,
         "project_open_menu_item_clicked": bool(result.get("dialog_found") or result.get("path_entered") or result.get("confirm_clicked") or result.get("dialog_closed") or result.get("project_state_changed")),
@@ -4207,7 +4227,12 @@ def open_test_project(project_path: str, *, safe_mode: str = "safe") -> dict[str
         "file_dialog_confirm_clicked": bool(result.get("confirm_clicked")),
         "project_open_method": result.get("project_open_method"),
         "project_open_sequence": list(result.get("project_open_sequence") or []),
-        "path_entry_strategy_selected": path_entry_diagnostics.get("path_entry_strategy_selected"),
+        "dialog_detected_before_interaction": dialog_detected_before_interaction,
+        "dialog_context_passed_to_interaction": dialog_context_passed,
+        "interaction_helper_called": interaction_helper_called,
+        "interaction_helper_result_present": interaction_helper_called,
+        "path_entry_strategy_selected": path_entry_strategy_selected,
+        "path_entry_strategy_null_reason": path_entry_strategy_null_reason,
         "focused_input_entry_attempted": bool(path_entry_diagnostics.get("focused_input_entry_attempted")),
         "focused_input_entry_sent": bool(path_entry_diagnostics.get("focused_input_entry_sent")),
         "enter_confirm_sent": bool(path_entry_diagnostics.get("enter_confirm_sent")),
