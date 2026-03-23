@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import asdict, dataclass
+import os
 from typing import Any
 
 from loguru import logger
@@ -251,33 +252,105 @@ def _write_to_edit(edit: Any, project_path: str) -> bool:
     return False
 
 
-def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str, Any]]:
+def _set_clipboard_text(value: str) -> bool:
+    if os.name != "nt":
+        return False
+
+    try:
+        import ctypes
+
+        user32 = ctypes.windll.user32
+        kernel32 = ctypes.windll.kernel32
+
+        GMEM_MOVEABLE = 0x0002
+        CF_UNICODETEXT = 13
+
+        if not user32.OpenClipboard(None):
+            return False
+        try:
+            if not user32.EmptyClipboard():
+                return False
+
+            text = str(value)
+            buffer = ctypes.create_unicode_buffer(text)
+            size_bytes = ctypes.sizeof(buffer)
+            handle = kernel32.GlobalAlloc(GMEM_MOVEABLE, size_bytes)
+            if not handle:
+                return False
+
+            locked = kernel32.GlobalLock(handle)
+            if not locked:
+                kernel32.GlobalFree(handle)
+                return False
+            try:
+                ctypes.memmove(locked, ctypes.addressof(buffer), size_bytes)
+            finally:
+                kernel32.GlobalUnlock(handle)
+
+            if not user32.SetClipboardData(CF_UNICODETEXT, handle):
+                kernel32.GlobalFree(handle)
+                return False
+            return True
+        finally:
+            user32.CloseClipboard()
+    except Exception:
+        return False
+
+
+def _paste_path_with_hotkey(dialog: Any, project_path: str, *, hotkey: str) -> tuple[bool, dict[str, Any]]:
     from pywinauto import keyboard
 
-    edit = _find_filename_edit_control(dialog)
-    if edit is not None and _write_to_edit(edit, project_path):
-        logger.info("set_file_dialog_path direct-edit success edit_name={}", _control_name(edit))
-        return True, {"method": "direct_edit", "edit_name": _control_name(edit)}
+    clipboard_ready = _set_clipboard_text(project_path)
 
+    try:
+        keyboard.send_keys(hotkey)
+        time.sleep(0.05)
+        keyboard.send_keys("^a{BACKSPACE}")
+        if clipboard_ready:
+            keyboard.send_keys("^v")
+        else:
+            keyboard.send_keys(project_path, with_spaces=True)
+        time.sleep(0.05)
+        refreshed_edit = _find_filename_edit_control(dialog)
+        if refreshed_edit is not None and project_path.lower() in _read_edit_value(refreshed_edit).lower():
+            logger.info(
+                "set_file_dialog_path hotkey success hotkey={} entry_method={}",
+                hotkey,
+                "clipboard_paste" if clipboard_ready else "typed_fallback",
+            )
+            return True, {
+                "method": "hotkey",
+                "hotkey": hotkey,
+                "entry_method": "clipboard_paste" if clipboard_ready else "typed_fallback",
+                "edit_name": _control_name(refreshed_edit),
+            }
+    except Exception:
+        pass
+
+    return False, {
+        "method": "hotkey_failed",
+        "hotkey": hotkey,
+        "entry_method": "clipboard_paste" if clipboard_ready else "typed_fallback",
+    }
+
+
+def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str, Any]]:
     try:
         dialog.set_focus()
     except Exception:
         pass
 
     for hotkey in ("^l", "%d"):
-        try:
-            keyboard.send_keys(hotkey)
-            time.sleep(0.05)
-            keyboard.send_keys("^a{BACKSPACE}")
-            keyboard.send_keys(project_path, with_spaces=True)
-            time.sleep(0.05)
-            refreshed_edit = _find_filename_edit_control(dialog)
-            if refreshed_edit is not None and project_path.lower() in _read_edit_value(refreshed_edit).lower():
-                logger.info("set_file_dialog_path hotkey success hotkey={}", hotkey)
-                return True, {"method": "hotkey", "hotkey": hotkey, "edit_name": _control_name(refreshed_edit)}
-        except Exception:
-            continue
+        ok, info = _paste_path_with_hotkey(dialog, project_path, hotkey=hotkey)
+        if ok:
+            return ok, info
 
+    edit = _find_filename_edit_control(dialog)
+    if edit is not None and _write_to_edit(edit, project_path):
+        logger.info("set_file_dialog_path direct-edit fallback success edit_name={}", _control_name(edit))
+        return True, {"method": "direct_edit_fallback", "edit_name": _control_name(edit)}
+
+    from pywinauto import keyboard
     if edit is not None:
         try:
             edit.set_focus()
