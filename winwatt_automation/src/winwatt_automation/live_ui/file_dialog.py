@@ -690,28 +690,28 @@ def confirm_file_dialog_open(dialog: Any, *, prefer_enter: bool = False) -> tupl
         except Exception as exc:
             logger.info("confirm_file_dialog_open ENTER preferred path failed error={}", exc)
 
+    try:
+        keyboard.send_keys("{ENTER}")
+        logger.info("confirm_file_dialog_open used ENTER default path")
+        return True, {"method": "enter_default"}
+    except Exception as exc:
+        logger.info("confirm_file_dialog_open ENTER default path failed error={}", exc)
+
     button = find_confirm_open_button(dialog)
     if button is not None:
         try:
-            button.click_input()
-            logger.info("confirm_file_dialog_open clicked button={}", _control_name(button))
-            return True, {"method": "button", "button": _control_name(button)}
-        except Exception:
             invoke = getattr(button, "invoke", None)
             if callable(invoke):
-                try:
-                    invoke()
-                    logger.info("confirm_file_dialog_open invoked button={}", _control_name(button))
-                    return True, {"method": "button_invoke", "button": _control_name(button)}
-                except Exception:
-                    pass
+                invoke()
+                logger.info("confirm_file_dialog_open invoked button after ENTER failures button={}", _control_name(button))
+                return True, {"method": "button_invoke_fallback", "button": _control_name(button)}
+            button.click_input()
+            logger.info("confirm_file_dialog_open clicked button after ENTER failures button={}", _control_name(button))
+            return True, {"method": "button_fallback", "button": _control_name(button)}
+        except Exception as button_exc:
+            return False, {"method": "failed", "error": str(button_exc)}
 
-    try:
-        keyboard.send_keys("{ENTER}")
-        logger.info("confirm_file_dialog_open used ENTER fallback")
-        return True, {"method": "enter_fallback"}
-    except Exception as exc:
-        return False, {"method": "failed", "error": str(exc)}
+    return False, {"method": "failed", "error": "enter_and_button_confirm_failed"}
 
 
 def detect_project_state_changed(before_snapshot: dict[str, Any], after_snapshot: dict[str, Any]) -> tuple[bool, list[str]]:

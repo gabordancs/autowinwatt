@@ -389,6 +389,31 @@ def test_confirm_file_dialog_open_prefers_enter(monkeypatch):
     assert sent == ["{ENTER}"]
 
 
+def test_confirm_file_dialog_open_uses_enter_before_any_button_click(monkeypatch):
+    sent = []
+
+    class FakeKeyboard:
+        @staticmethod
+        def send_keys(keys, **_kwargs):
+            sent.append(keys)
+
+    class Dialog:
+        def set_focus(self):
+            return None
+
+    import sys
+    import types
+
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
+    monkeypatch.setattr(file_dialog, "find_confirm_open_button", lambda dialog: (_ for _ in ()).throw(AssertionError("button lookup should not run when ENTER succeeds")))
+
+    ok, info = file_dialog.confirm_file_dialog_open(Dialog(), prefer_enter=False)
+
+    assert ok is True
+    assert info["method"] == "enter_default"
+    assert sent == ["{ENTER}"]
+
+
 def test_find_filename_edit_control_supports_combobox_child_edit():
     class Combo:
         def __init__(self, child):
