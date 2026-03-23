@@ -71,6 +71,23 @@ def _safe_call(obj: Any, method: str, default: Any = None) -> Any:
     return default if callable(value) else value
 
 
+
+
+def _visible_top_level_windows() -> list[Any]:
+    from pywinauto import Desktop
+
+    desktop = Desktop(backend="uia")
+    return [window for window in desktop.windows(top_level_only=True) if bool(_safe_call(window, "is_visible", False))]
+
+
+def _find_visible_window_by_handle(handle: int | None) -> Any | None:
+    if handle is None:
+        return None
+    for window in _visible_top_level_windows():
+        if _safe_call(window, "handle", None) == handle:
+            return window
+    return None
+
 def _extract_project_path_from_title(title: str | None) -> str | None:
     import re
 
@@ -1349,6 +1366,23 @@ def open_project_file_via_dialog(
         else:
             accelerator_error = detect_info.get("error")
             logger.info("open_project_file_via_dialog accelerator did not open dialog detect_info={}", detect_info)
+        detected_dialog_snapshot = detect_info.get("selected_candidate")
+        dialog_context = {
+            "dialog_already_verified": dialog_found,
+            "dialog_handle": (detected_dialog_snapshot or {}).get("handle"),
+            "dialog_title": (detected_dialog_snapshot or {}).get("title"),
+            "dialog_class": (detected_dialog_snapshot or {}).get("class_name"),
+            "dialog_process_id": (detected_dialog_snapshot or {}).get("process_id"),
+        }
+        logger.info("project_open_step step=dialog_detected_before_interaction value={} details={}", dialog_found, detect_info)
+        logger.info("project_open_step step=dialog_context_passed_to_interaction value={}", dialog_context)
+        if dialog is None and dialog_context.get("dialog_handle") is not None:
+            dialog = _find_visible_window_by_handle(dialog_context.get("dialog_handle"))
+            logger.info(
+                "project_open_step step=dialog_wrapper_rebound_from_handle value={} handle={} ",
+                dialog is not None,
+                dialog_context.get("dialog_handle"),
+            )
         if dialog is None:
             return OpenProjectDialogResult(
                 success=False,
@@ -1363,9 +1397,15 @@ def open_project_file_via_dialog(
                 detected_changes=[],
                 project_open_method=project_open_method,
                 project_open_sequence=project_open_sequence,
+                detected_dialog_snapshot=detected_dialog_snapshot,
+                helper_received_dialog_context=dialog_context,
+                path_entry_diagnostics={
+                    "path_entry_strategy_selected": None,
+                    "path_entry_strategy_null_reason": "dialog_context_missing" if detected_dialog_snapshot is None else "interaction_helper_not_called",
+                },
                 error=accelerator_error or f"Open-file dialog not detected after {'+'.join(project_open_sequence)} accelerator.",
             )
-        detected_dialog_snapshot = detect_info.get("selected_candidate")
+        logger.info("project_open_step step=interaction_helper_called value=true")
         result = interact_with_open_file_dialog(
             dialog,
             project_path,
@@ -1375,14 +1415,17 @@ def open_project_file_via_dialog(
             project_open_method=project_open_method,
             project_open_sequence=project_open_sequence,
             detected_dialog_snapshot=detected_dialog_snapshot,
-            dialog_context={
-                "dialog_already_verified": dialog_found,
-                "dialog_handle": (detected_dialog_snapshot or {}).get("handle"),
-                "dialog_title": (detected_dialog_snapshot or {}).get("title"),
-                "dialog_class": (detected_dialog_snapshot or {}).get("class_name"),
-                "dialog_process_id": (detected_dialog_snapshot or {}).get("process_id"),
-            },
+            dialog_context=dialog_context,
         )
+        logger.info("project_open_step step=interaction_helper_result_present value={}", result is not None)
+        logger.info(
+            "project_open_step step=path_entry_strategy_selected value={} details={} ",
+            (result.path_entry_diagnostics or {}).get("path_entry_strategy_selected"),
+            result.path_entry_diagnostics,
+        )
+        logger.info("project_open_step step=focused_input_entry_attempted value={}", bool((result.path_entry_diagnostics or {}).get("focused_input_entry_attempted")))
+        logger.info("project_open_step step=focused_input_entry_sent value={}", bool((result.path_entry_diagnostics or {}).get("focused_input_entry_sent")))
+        logger.info("project_open_step step=enter_confirm_sent value={}", bool((result.path_entry_diagnostics or {}).get("enter_confirm_sent")))
         logger.info(
             "open_project_file_via_dialog completed success={} dialog_found={} path_entered={} confirm_clicked={} dialog_closed={} path_match_normalized={} elapsed_s={}",
             result.success,

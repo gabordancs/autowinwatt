@@ -225,6 +225,99 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
     assert result["recovery"]["main_window_ready_after_attempt"] is True
     assert result["recovery"]["attempted"] is False
     assert result["project_open_audit"]["path_entry_strategy_selected"] is None
+    assert result["project_open_audit"]["interaction_helper_called"] is False
+    assert result["project_open_audit"]["path_entry_strategy_null_reason"] == "interaction_helper_not_called"
+
+
+def test_open_project_file_via_dialog_rebinds_detected_dialog_before_interaction(monkeypatch):
+    dialog_wrapper = object()
+    interact_calls: list[dict[str, object]] = []
+
+    monkeypatch.setattr(
+        file_dialog,
+        "prepare_and_trigger_project_open_dialog",
+        lambda **kwargs: (
+            None,
+            {
+                "dialog_found": True,
+                "project_open_method": "ctrl_o",
+                "sequence": ["CTRL+O"],
+                "selected_candidate": {
+                    "handle": 101,
+                    "title": "Projekt megnyitás",
+                    "class_name": "#32770",
+                    "process_id": 55,
+                },
+            },
+        ),
+    )
+    monkeypatch.setattr(file_dialog, "_find_visible_window_by_handle", lambda handle: dialog_wrapper if handle == 101 else None)
+
+    def fake_interact(dialog, project_path, **kwargs):
+        interact_calls.append({"dialog": dialog, **kwargs})
+        return file_dialog.OpenProjectDialogResult(
+            success=False,
+            path=project_path,
+            dialog_found=True,
+            path_entry_attempted=True,
+            path_entered=True,
+            confirm_attempted=True,
+            confirm_clicked=True,
+            dialog_closed=False,
+            project_state_changed=False,
+            detected_changes=[],
+            project_open_method="ctrl_o",
+            project_open_sequence=["CTRL+O"],
+            path_entry_diagnostics={
+                "path_entry_strategy_selected": "focused_input_replace_then_enter",
+                "focused_input_entry_attempted": True,
+                "focused_input_entry_sent": True,
+                "enter_confirm_sent": True,
+            },
+        )
+
+    monkeypatch.setattr(file_dialog, "interact_with_open_file_dialog", fake_interact)
+
+    result = file_dialog.open_project_file_via_dialog(
+        r"C:\tmp\testwwp.wwp",
+        before_snapshot={"discovered_top_menus": [], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {"discovered_top_menus": [], "visible_top_windows": [], "main_window_title": "WinWatt"},
+    )
+
+    assert interact_calls and interact_calls[0]["dialog"] is dialog_wrapper
+    assert interact_calls[0]["dialog_context"]["dialog_handle"] == 101
+    assert result.path_entry_diagnostics["path_entry_strategy_selected"] == "focused_input_replace_then_enter"
+
+
+def test_open_test_project_reports_precondition_failed_null_reason(monkeypatch):
+    expected = {
+        "success": False,
+        "path": r"C:\Users\dancsg\OneDrive - Futureal\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp",
+        "dialog_found": False,
+        "path_entered": False,
+        "confirm_clicked": False,
+        "dialog_closed": False,
+        "project_state_changed": False,
+        "detected_changes": [],
+        "project_open_method": "ctrl_o",
+        "project_open_sequence": ["CTRL+O"],
+        "helper_received_dialog_context": {"dialog_already_verified": False},
+        "path_entry_diagnostics": {},
+        "observed_project_path": None,
+        "path_match_normalized": False,
+        "error": "dialog_revalidation_failed",
+    }
+
+    monkeypatch.setattr(program_mapper, "capture_state_snapshot", lambda _state_id: type("S", (), {"__dict__": {}})())
+    monkeypatch.setattr(program_mapper, "asdict", lambda _obj: {"discovered_top_menus": ["Fájl"]})
+    monkeypatch.setattr(program_mapper, "open_project_file_via_dialog_dict", lambda *args, **kwargs: expected.copy())
+    monkeypatch.setattr(program_mapper, "recover_after_project_open", lambda **kwargs: {"success": True, "diagnostics": {}, "close_attempts": []})
+
+    result = program_mapper.open_test_project(expected["path"], safe_mode="safe")
+
+    assert result["project_open_audit"]["interaction_helper_called"] is True
+    assert result["project_open_audit"]["path_entry_strategy_selected"] is None
+    assert result["project_open_audit"]["path_entry_strategy_null_reason"] == "precondition_failed"
 
 
 def test_open_test_project_safe_mode_blocks_non_test_path():
