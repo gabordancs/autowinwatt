@@ -25,16 +25,10 @@ from winwatt_automation.live_ui.app_connector import (
     FocusGuardError,
     connect_to_winwatt,
     describe_foreground_window,
-    ensure_main_window_foreground_before_click,
-    get_cached_main_window,
     get_last_focus_guard_diagnostic,
-    prepare_main_window_for_menu_interaction,
 )
-from winwatt_automation.live_ui.project_open_accelerator import (
-    PROJECT_OPEN_ACCELERATOR_MODE,
-    send_project_open_accelerator,
-)
-from winwatt_automation.live_ui.file_dialog import interact_with_open_file_dialog
+from winwatt_automation.live_ui.project_open_accelerator import PROJECT_OPEN_ACCELERATOR_MODE
+from winwatt_automation.live_ui.file_dialog import interact_with_open_file_dialog, prepare_and_trigger_project_open_dialog
 from winwatt_automation.runtime_mapping.program_mapper import capture_state_snapshot, recover_after_project_open
 
 DEFAULT_LOG_PATH = ROOT / "logs" / "winwatt_open_project_accelerator_smoke.json"
@@ -185,10 +179,12 @@ def run_smoke(
 
     try:
         connect_to_winwatt()
-        prepare_main_window_for_menu_interaction()
-        ensure_main_window_foreground_before_click(
+        foreground_before = describe_foreground_window()
+        dialog_wrapper, detect_info = prepare_and_trigger_project_open_dialog(
             action_label="open_project_accelerator_smoke",
-            allow_dialog=True,
+            dialog_timeout=timeout_s,
+            accelerator_mode=accelerator_mode,
+            step_delay_s=step_delay_s,
             allow_stale_wrapper_refresh=allow_stale_wrapper_refresh,
         )
         focus_guard_diagnostic = get_last_focus_guard_diagnostic()
@@ -201,18 +197,16 @@ def run_smoke(
         refreshed_visible = focus_guard_diagnostic.get("refreshed_visible")
         refreshed_enabled = focus_guard_diagnostic.get("refreshed_enabled")
 
-        main_window = get_cached_main_window()
-        process_id = _safe_call(main_window, "process_id", None)
-        baseline_handles = {
-            snapshot.get("handle")
-            for snapshot in (_window_snapshot(window) for window in _visible_top_level_windows())
-            if snapshot.get("handle") is not None
+        accelerator_info = {
+            "project_open_method": detect_info.get("project_open_method", accelerator_mode),
+            "sequence": list(detect_info.get("sequence") or []),
         }
-
-        foreground_before = describe_foreground_window()
-        accelerator_info = send_project_open_accelerator(mode=accelerator_mode, step_delay_s=step_delay_s)
         key_send_attempted = True
-        detection = _detect_dialog(process_id=process_id, baseline_handles=baseline_handles, timeout_s=timeout_s)
+        detection = {
+            "dialog_detected": bool(detect_info.get("dialog_found")),
+            "dialog": detect_info.get("selected_candidate"),
+            "candidate_count": detect_info.get("candidate_count", 0),
+        }
         if project_path:
             before_snapshot = asdict(capture_state_snapshot("open_project_accelerator_smoke_before"))
             detected_dialog_snapshot = detection.get("dialog") or None
@@ -223,8 +217,7 @@ def run_smoke(
                 "dialog_class": (detected_dialog_snapshot or {}).get("class_name"),
                 "dialog_process_id": (detected_dialog_snapshot or {}).get("process_id"),
             }
-            dialog_wrapper = None
-            if helper_dialog_context.get("dialog_handle") is not None:
+            if dialog_wrapper is None and helper_dialog_context.get("dialog_handle") is not None:
                 dialog_wrapper = _find_visible_window_by_handle(helper_dialog_context.get("dialog_handle"))
             if bool(detection.get("dialog_detected")):
                 project_open_result = asdict(

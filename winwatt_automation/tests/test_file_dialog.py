@@ -188,6 +188,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "detected_changes": ["top_menus_changed"],
         "project_open_method": "ctrl_o",
         "project_open_sequence": ["CTRL+O"],
+        "observed_project_path": r"C:\Users\dancsg\OneDrive - Futureal\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp",
+        "path_match_normalized": True,
         "error": None,
     }
 
@@ -209,6 +211,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
         "detected_changes",
         "project_open_method",
         "project_open_sequence",
+        "observed_project_path",
+        "path_match_normalized",
         "error",
         "project_open_audit",
         "recovery",
@@ -219,6 +223,8 @@ def test_open_test_project_returns_structured_result_shape(monkeypatch):
     assert result["project_open_audit"]["project_open_sequence"] == ["CTRL+O"]
     assert result["recovery"]["success"] is True
     assert result["recovery"]["main_window_ready_after_attempt"] is True
+    assert result["recovery"]["attempted"] is False
+    assert result["project_open_audit"]["path_entry_strategy_selected"] is None
 
 
 def test_open_test_project_safe_mode_blocks_non_test_path():
