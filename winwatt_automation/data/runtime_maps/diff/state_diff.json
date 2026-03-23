@@ -8,72 +8,8 @@
   "menu_action_diff": {
     "only_in_a": [
       [
-        "ablak",
-        "[unlabeled row 19]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 20]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 22]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 3]"
-      ],
-      [
-        "ablak",
-        "[unlabeled row 5]"
-      ],
-      [
         "adatbázis",
-        "[unlabeled row 19]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 20]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 22]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 2]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 3]"
-      ],
-      [
-        "adatbázis",
-        "[unlabeled row 5]"
-      ],
-      [
-        "adatbázis",
-        "végrehajtás"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 19]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 20]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 22]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 3]"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 5]"
+        "dokumentumablak"
       ],
       [
         "fájl",
@@ -93,107 +29,27 @@
       ],
       [
         "fájl",
-        "[unlabeled row 5]"
-      ],
-      [
-        "jegyzékek",
-        "[unlabeled row 19]"
-      ],
-      [
-        "jegyzékek",
-        "[unlabeled row 20]"
-      ],
-      [
-        "jegyzékek",
-        "[unlabeled row 22]"
-      ],
-      [
-        "jegyzékek",
-        "[unlabeled row 3]"
-      ],
-      [
-        "jegyzékek",
-        "[unlabeled row 5]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 19]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 20]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 22]"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 3]"
-      ],
-      [
-        "súgó",
         "[unlabeled row 5]"
       ]
     ],
     "only_in_b": [
       [
-        "ablak",
-        "[unlabeled row 14]"
-      ],
-      [
-        "ablak",
-        "megnyitás"
-      ],
-      [
-        "beállítások",
-        "[unlabeled row 14]"
-      ],
-      [
-        "beállítások",
-        "megnyitás"
-      ],
-      [
         "fájl",
         "[unlabeled row 14]"
       ],
       [
         "fájl",
-        "megnyitás"
-      ],
-      [
-        "jegyzékek",
-        "[unlabeled row 14]"
-      ],
-      [
-        "jegyzékek",
-        "megnyitás"
-      ],
-      [
-        "súgó",
-        "[unlabeled row 14]"
-      ],
-      [
-        "súgó",
         "megnyitás"
       ]
     ],
     "shared": [
       [
         "ablak",
-        "[unlabeled row 2]"
-      ],
-      [
-        "ablak",
-        "végrehajtás"
+        "dokumentumablak"
       ],
       [
         "beállítások",
-        "[unlabeled row 2]"
-      ],
-      [
-        "beállítások",
-        "végrehajtás"
+        "dokumentumablak"
       ],
       [
         "fájl",
@@ -205,7 +61,99 @@
       ],
       [
         "jegyzékek",
+        "[unlabeled row 10]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 11]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 12]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 13]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 16]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 17]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 18]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 19]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 20]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 21]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 22]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 23]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 24]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 25]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 26]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 27]"
+      ],
+      [
+        "jegyzékek",
         "[unlabeled row 2]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 3]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 4]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 5]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 6]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 7]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 8]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 9]"
       ],
       [
         "jegyzékek",
@@ -213,63 +161,31 @@
       ],
       [
         "súgó",
-        "[unlabeled row 2]"
-      ],
-      [
-        "súgó",
-        "végrehajtás"
+        "dokumentumablak"
       ]
     ]
   },
   "project_only_paths": [
     [
-      "ablak",
-      "[unlabeled row 14]"
-    ],
-    [
-      "ablak",
-      "megnyitás"
-    ],
-    [
-      "beállítások",
-      "[unlabeled row 14]"
-    ],
-    [
-      "beállítások",
-      "megnyitás"
-    ],
-    [
       "fájl",
       "[unlabeled row 14]"
     ],
     [
       "fájl",
-      "megnyitás"
+      "[unlabeled row 2]"
     ],
     [
-      "jegyzékek",
-      "[unlabeled row 14]"
-    ],
-    [
-      "jegyzékek",
-      "megnyitás"
-    ],
-    [
-      "súgó",
-      "[unlabeled row 14]"
-    ],
-    [
-      "súgó",
+      "fájl",
       "megnyitás"
     ]
   ],
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 32,
-    "actions_only_in_b": 10,
+    "actions_only_in_a": 6,
+    "actions_only_in_b": 2,
     "enabled_changes": 0,
-    "project_only_paths": 10,
+    "project_only_paths": 3,
     "shared_top_menus": 5
   },
   "top_menu_diff": {

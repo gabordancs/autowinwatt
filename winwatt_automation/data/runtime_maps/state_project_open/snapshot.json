@@ -2,7 +2,7 @@
   "already_open_before_mapping": false,
   "bootstrap": {
     "close_result": {
-      "message": "SUCCESS: The process with PID 25668 (child process of PID 34676) has been terminated.",
+      "message": "SUCCESS: The process with PID 13112 (child process of PID 27956) has been terminated.",
       "ok": true,
       "returncode": 0
     },
@@ -27,8 +27,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 2035934,
-    "process_id": 35732,
+    "handle": 1051032,
+    "process_id": 20164,
     "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
   },
   "main_window_class": "TMainForm",
@@ -41,13 +41,13 @@
   "observed_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "observed_startup_project_path": null,
   "path_match_normalized": true,
-  "process_id": 35732,
+  "process_id": 20164,
   "project_open_recovery": {
     "close_attempts": [],
     "diagnostics": {
       "bootstrap": {
         "close_result": {
-          "message": "SUCCESS: The process with PID 25668 (child process of PID 34676) has been terminated.",
+          "message": "SUCCESS: The process with PID 13112 (child process of PID 27956) has been terminated.",
           "ok": true,
           "returncode": 0
         },
@@ -69,7 +69,7 @@
   "project_open_verdict": "opened_by_this_attempt",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-23T15:02:01.048301+00:00",
+  "timestamp": "2026-03-23T18:58:35.539886+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -86,14 +86,14 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 35732,
+      "process_id": 20164,
       "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 34748,
-      "title": "Welcome - autowinwatt - Visual Studio Code"
+      "title": "excel_xml_worker.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -102,28 +102,28 @@
       "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "WinWatt gólya – Fájlkezelő"
+    },
+    {
+      "class_name": "HH Parent",
+      "handle": null,
+      "process_id": 4488,
+      "title": "Súgó"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14600,
-      "title": "Pályázati dokumentumok 0319 – Fájlkezelő"
-    },
-    {
       "class_name": "rctrl_renwnd32",
       "handle": null,
       "process_id": 2932,
       "title": "Naptár – dancs.gabor@pedranogroup.com - Outlook"
-    },
-    {
-      "class_name": "XLMAIN",
-      "handle": null,
-      "process_id": 23120,
-      "title": "Cordia_Alap_Szaniter_kínálat_2026.03.12 - Excel"
     },
     {
       "class_name": "Notepad",

@@ -2,9 +2,9 @@
   "already_open_before_mapping": false,
   "bootstrap": {
     "close_result": {
-      "message": "SUCCESS: The process with PID 29404 (child process of PID 14600) has been terminated.",
+      "message": "ERROR: The process \"WinWatt32.exe\" not found.",
       "ok": true,
-      "returncode": 0
+      "returncode": 128
     },
     "launch_result": {
       "method": "subprocess.Popen",
@@ -26,8 +26,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 21234598,
-    "process_id": 25668,
+    "handle": 3477372,
+    "process_id": 13112,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -37,10 +37,10 @@
   "mapping_partial": false,
   "mapping_stop_reason": null,
   "observed_startup_project_path": null,
-  "process_id": 25668,
+  "process_id": 13112,
   "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-23T14:53:50.134352+00:00",
+  "timestamp": "2026-03-23T18:51:49.843333+00:00",
   "visible_top_windows": [
     {
       "class_name": "Shell_TrayWnd",
@@ -57,14 +57,14 @@
     {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 25668,
+      "process_id": 13112,
       "title": "WinWatt gólya"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 34748,
-      "title": "Welcome - autowinwatt - Visual Studio Code"
+      "title": "excel_xml_worker.py - autowinwatt - Visual Studio Code"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -73,28 +73,28 @@
       "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
     },
     {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "WinWatt gólya – Fájlkezelő"
+    },
+    {
+      "class_name": "HH Parent",
+      "handle": null,
+      "process_id": 4488,
+      "title": "Súgó"
+    },
+    {
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 19884,
       "title": "GitHub Desktop"
     },
     {
-      "class_name": "CabinetWClass",
-      "handle": null,
-      "process_id": 14600,
-      "title": "Pályázati dokumentumok 0319 – Fájlkezelő"
-    },
-    {
       "class_name": "rctrl_renwnd32",
       "handle": null,
       "process_id": 2932,
       "title": "Naptár – dancs.gabor@pedranogroup.com - Outlook"
-    },
-    {
-      "class_name": "XLMAIN",
-      "handle": null,
-      "process_id": 23120,
-      "title": "Cordia_Alap_Szaniter_kínálat_2026.03.12 - Excel"
     },
     {
       "class_name": "Notepad",
