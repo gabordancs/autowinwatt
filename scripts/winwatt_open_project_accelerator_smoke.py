@@ -41,14 +41,21 @@ DEFAULT_LOG_PATH = ROOT / "logs" / "winwatt_open_project_accelerator_smoke.json"
 POLL_INTERVAL_S = 0.1
 
 
+def _safe_member(obj: Any, name: str, default: Any = None) -> Any:
+    attr = getattr(obj, name, None)
+    if attr is None:
+        return default
+    if callable(attr):
+        try:
+            return attr()
+        except Exception:
+            return default
+    return attr
+
+
 def _safe_call(obj: Any, method_name: str, default: Any = None) -> Any:
-    method = getattr(obj, method_name, None)
-    if not callable(method):
-        return default
-    try:
-        return method()
-    except Exception:
-        return default
+    value = _safe_member(obj, method_name, default)
+    return default if callable(value) else value
 
 
 
@@ -66,8 +73,8 @@ def _window_snapshot(window: Any) -> dict[str, Any]:
         except Exception:
             rect_payload = None
 
-    handle = _safe_call(window, "handle", None)
-    process_id = _safe_call(window, "process_id", None)
+    handle = _safe_member(window, "handle", None)
+    process_id = _safe_member(window, "process_id", None)
     return {
         "title": (_safe_call(window, "window_text", "") or "").strip(),
         "class_name": (_safe_call(window, "class_name", "") or "").strip(),
@@ -216,8 +223,10 @@ def run_smoke(
                 "dialog_class": (detected_dialog_snapshot or {}).get("class_name"),
                 "dialog_process_id": (detected_dialog_snapshot or {}).get("process_id"),
             }
-            dialog_wrapper = _find_visible_window_by_handle(helper_dialog_context.get("dialog_handle"))
-            if bool(detection.get("dialog_detected")) and dialog_wrapper is not None:
+            dialog_wrapper = None
+            if helper_dialog_context.get("dialog_handle") is not None:
+                dialog_wrapper = _find_visible_window_by_handle(helper_dialog_context.get("dialog_handle"))
+            if bool(detection.get("dialog_detected")):
                 project_open_result = asdict(
                     interact_with_open_file_dialog(
                         dialog_wrapper,
@@ -248,6 +257,10 @@ def run_smoke(
                     "helper_received_dialog_context": helper_dialog_context,
                     "helper_dialog_revalidated": False,
                     "helper_dialog_ready_for_interaction": False,
+                    "binding_strategy_used": None,
+                    "dialog_handle_available": bool(helper_dialog_context.get("dialog_handle") is not None),
+                    "dialog_binding_candidates_count": 0,
+                    "binding_failed_reason": "dialog_not_detected" if not bool(detection.get("dialog_detected")) else "helper_not_invoked",
                     "error": "dialog_detected_but_not_bound_for_interaction" if bool(detection.get("dialog_detected")) else "dialog_not_detected",
                 }
             recovery_result = recover_after_project_open(timeout_s=timeout_s, poll_interval_s=POLL_INTERVAL_S)
@@ -300,6 +313,10 @@ def run_smoke(
         "helper_received_dialog_context": (project_open_result or {}).get("helper_received_dialog_context"),
         "helper_dialog_revalidated": bool((project_open_result or {}).get("helper_dialog_revalidated")),
         "helper_dialog_ready_for_interaction": bool((project_open_result or {}).get("helper_dialog_ready_for_interaction")),
+        "binding_strategy_used": (project_open_result or {}).get("binding_strategy_used"),
+        "dialog_handle_available": bool((project_open_result or {}).get("dialog_handle_available")),
+        "dialog_binding_candidates_count": int((project_open_result or {}).get("dialog_binding_candidates_count") or 0),
+        "binding_failed_reason": (project_open_result or {}).get("binding_failed_reason"),
         "project_path": project_path,
         "project_open_success": bool((project_open_result or {}).get("success")),
         "path_entry_attempted": bool((project_open_result or {}).get("path_entry_attempted")),

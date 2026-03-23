@@ -90,7 +90,7 @@ def test_run_smoke_passes_detected_dialog_context_into_helper(monkeypatch, tmp_p
     assert captured["kwargs"]["dialog_context"]["dialog_class"] == "#32770"
 
 
-def test_run_smoke_uses_specific_error_when_dialog_detected_but_wrapper_missing(monkeypatch, tmp_path):
+def test_run_smoke_passes_none_wrapper_to_helper_when_detected_dialog_has_no_handle(monkeypatch, tmp_path):
     monkeypatch.setattr(smoke, "connect_to_winwatt", lambda: None)
     monkeypatch.setattr(smoke, "prepare_main_window_for_menu_interaction", lambda: None)
     monkeypatch.setattr(smoke, "ensure_main_window_foreground_before_click", lambda **kwargs: None)
@@ -99,11 +99,46 @@ def test_run_smoke_uses_specific_error_when_dialog_detected_but_wrapper_missing(
     monkeypatch.setattr(smoke, "_visible_top_level_windows", lambda: [])
     monkeypatch.setattr(smoke, "describe_foreground_window", lambda: {"title": "WinWatt", "class_name": "TMainForm"})
     monkeypatch.setattr(smoke, "send_project_open_accelerator", lambda **kwargs: {"project_open_method": "ctrl_o", "sequence": ["CTRL+O"]})
-    monkeypatch.setattr(smoke, "_detect_dialog", lambda **kwargs: {"dialog_detected": True, "dialog": {"title": "Projekt megnyitás", "class_name": "#32770", "handle": 101, "process_id": 55}, "candidate_count": 1})
-    monkeypatch.setattr(smoke, "_find_visible_window_by_handle", lambda handle: None)
+    monkeypatch.setattr(smoke, "_detect_dialog", lambda **kwargs: {"dialog_detected": True, "dialog": {"title": "Projekt megnyitás", "class_name": "#32770", "handle": None, "process_id": 55, "rectangle": {"left": 1, "top": 2, "right": 3, "bottom": 4}}, "candidate_count": 1})
+    monkeypatch.setattr(smoke, "_find_visible_window_by_handle", lambda handle: (_ for _ in ()).throw(AssertionError("handle lookup should be skipped when handle is missing")))
     monkeypatch.setattr(smoke, "capture_state_snapshot", lambda state_id: _Snapshot(state_id=state_id))
     monkeypatch.setattr(smoke, "asdict", lambda obj: {"state_id": obj.state_id} if hasattr(obj, "state_id") else obj.__dict__.copy())
     monkeypatch.setattr(smoke, "recover_after_project_open", lambda **kwargs: {"success": True, "close_attempts": [], "diagnostics": {}})
+
+    captured = {}
+
+    def fake_interact(dialog, project_path, **kwargs):
+        captured["dialog"] = dialog
+        captured["kwargs"] = kwargs
+        from types import SimpleNamespace
+        return SimpleNamespace(
+            success=False,
+            path=project_path,
+            dialog_found=True,
+            path_entry_attempted=False,
+            path_entered=False,
+            confirm_attempted=False,
+            confirm_clicked=False,
+            dialog_closed=False,
+            project_state_changed=False,
+            detected_changes=[],
+            project_open_method="ctrl_o",
+            project_open_sequence=["CTRL+O"],
+            detected_dialog_snapshot=kwargs.get("detected_dialog_snapshot"),
+            helper_received_dialog_context=kwargs.get("dialog_context"),
+            helper_dialog_revalidated=False,
+            helper_dialog_ready_for_interaction=False,
+            binding_strategy_used="pid_class_title_rect",
+            dialog_handle_available=False,
+            dialog_binding_candidates_count=1,
+            binding_failed_reason=None,
+            observed_main_window_title_after_open="",
+            observed_project_path=None,
+            path_match_normalized=False,
+            error="dialog_revalidation_failed",
+        )
+
+    monkeypatch.setattr(smoke, "interact_with_open_file_dialog", fake_interact)
 
     log_path = tmp_path / "smoke.json"
     exit_code = smoke.run_smoke(
@@ -116,7 +151,9 @@ def test_run_smoke_uses_specific_error_when_dialog_detected_but_wrapper_missing(
 
     payload = __import__("json").loads(log_path.read_text(encoding="utf-8"))
     assert exit_code == 1
+    assert captured["dialog"] is None
+    assert captured["kwargs"]["dialog_context"]["dialog_handle"] is None
     assert payload["dialog_detected"] is True
-    assert payload["path_entry_attempted"] is False
-    assert payload["project_open_error"] == "dialog_detected_but_not_bound_for_interaction"
-    assert payload["helper_received_dialog_context"]["dialog_already_verified"] is True
+    assert payload["dialog_handle_available"] is False
+    assert payload["binding_strategy_used"] == "pid_class_title_rect"
+    assert payload["project_open_error"] == "dialog_revalidation_failed"
