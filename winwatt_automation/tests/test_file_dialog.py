@@ -489,31 +489,32 @@ def test_set_file_dialog_path_targets_file_name_edit_without_location_hotkeys(mo
 
     edit = Edit()
     monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
-    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: (edit, "edit_named_like_file_name"))
+    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: (_ for _ in ()).throw(AssertionError("fallback locator should not run")))
 
     ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
 
     assert ok is True
-    assert info["method"] == "direct_edit"
-    assert info["file_name_control_value_after"] == r"C:\tmp\test.wwp"
-    assert info["file_name_value_matches_expected"] is True
-    assert info["file_name_control_control_type"] == "edit"
-    assert info["file_name_control_is_editable"] is True
-    assert info["file_name_control_is_label_like"] is True
-    assert info["selected_control_control_type"] == "edit"
-    assert info["raw_value_before"]["window_text"] == ""
-    assert info["raw_value_after_immediate"]["window_text"] == r"C:\tmp\test.wwp"
-    assert info["raw_value_after_1000ms"]["window_text"] == r"C:\tmp\test.wwp"
-    assert info["expected_path_normalized"] == r"c:\tmp\test.wwp"
-    assert info["actual_path_normalized"] == r"c:\tmp\test.wwp"
-    assert info["mismatch_reason"] == ""
-    assert info["path_entry_strategy_attempted"] == ["direct_edit"]
-    assert info["path_entry_strategy_succeeded"] == "direct_edit"
+    assert info["method"] == "focused_input_replace_then_enter"
+    assert info["focused_input_entry_attempted"] is True
+    assert info["focused_input_entry_sent"] is True
+    assert info["enter_confirm_sent"] is True
+    assert info["confirm_embedded_in_path_entry"] is True
+    assert info["path_entry_strategy_selected"] == "focused_input_replace_then_enter"
+    assert info["path_entry_strategy_attempted"] == ["focused_input_replace_then_enter"]
+    assert info["path_entry_strategy_succeeded"] == "focused_input_replace_then_enter"
     assert info["location_bar_touched"] is False
-    assert sent == []
+    assert sent == ["^a", r"C:\tmp\test.wwp", "{ENTER}"]
 
 
 def test_set_file_dialog_path_reports_not_found_when_only_label_like_edit_exists(monkeypatch):
+    import sys
+    import types
+
+    class FakeKeyboard:
+        @staticmethod
+        def send_keys(keys, **_kwargs):
+            raise RuntimeError("focused input path failed")
+
     class LabelEdit:
         def __init__(self):
             self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit", class_name="Static")
@@ -534,12 +535,70 @@ def test_set_file_dialog_path_reports_not_found_when_only_label_like_edit_exists
         def descendants(self):
             return [LabelEdit()]
 
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
+
     ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
 
     assert ok is False
     assert info["file_name_control_found"] is False
     assert info["file_name_control_value_before"] == ""
     assert info["confirm_skipped_reason"] == "file_name_control_not_found"
+
+
+def test_set_file_dialog_path_falls_back_to_locator_when_focused_input_send_fails(monkeypatch):
+    sent = []
+
+    class FakeKeyboard:
+        call_count = 0
+
+        @staticmethod
+        def send_keys(keys, **_kwargs):
+            FakeKeyboard.call_count += 1
+            if FakeKeyboard.call_count == 1:
+                raise RuntimeError("focused path failed")
+            sent.append(keys)
+
+    class Edit:
+        def __init__(self):
+            self.value = ""
+            self.element_info = _FakeElementInfo(name="Fájlnév:", control_type="Edit")
+
+        def is_enabled(self):
+            return True
+
+        def set_focus(self):
+            return None
+
+        def type_keys(self, keys, **_kwargs):
+            if keys == "^a{BACKSPACE}":
+                self.value = ""
+            else:
+                self.value = keys
+
+        def window_text(self):
+            return self.value
+
+    class Dialog:
+        def set_focus(self):
+            return None
+
+    import sys
+    import types
+
+    edit = Edit()
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(keyboard=FakeKeyboard))
+    monkeypatch.setattr(file_dialog, "_find_filename_edit_control", lambda dialog: (edit, "edit_named_like_file_name"))
+
+    ok, info = file_dialog.set_file_dialog_path(Dialog(), r"C:\tmp\test.wwp")
+
+    assert ok is True
+    assert info["focused_input_entry_attempted"] is True
+    assert info["focused_input_entry_sent"] is False
+    assert info["path_entry_strategy_selected"] == "focused_input_replace_then_enter"
+    assert info["path_entry_strategy_attempted"] == ["focused_input_replace_then_enter", "direct_edit"]
+    assert info["path_entry_strategy_succeeded"] == "direct_edit"
+    assert info["typed_fallback_skipped_reason"] == "focused_input_send_failed"
+    assert info["file_name_value_matches_expected"] is True
 
 
 def test_interact_with_open_file_dialog_skips_confirm_when_path_not_validated(monkeypatch):
@@ -575,3 +634,60 @@ def test_interact_with_open_file_dialog_skips_confirm_when_path_not_validated(mo
     assert result.confirm_attempted is False
     assert result.confirm_clicked is False
     assert result.error == "path_entry_failed"
+
+
+def test_interact_with_open_file_dialog_accepts_embedded_enter_strategy(monkeypatch):
+    class Dialog:
+        def __init__(self):
+            self.visible = True
+
+        def exists(self):
+            return self.visible
+
+        def is_visible(self):
+            if self.visible:
+                self.visible = False
+                return True
+            return False
+
+    monkeypatch.setattr(
+        file_dialog,
+        "set_file_dialog_path",
+        lambda dialog, path: (
+            True,
+            {
+                "method": "focused_input_replace_then_enter",
+                "confirm_embedded_in_path_entry": True,
+                "enter_confirm_sent": True,
+                "path_entry_strategy_selected": "focused_input_replace_then_enter",
+            },
+        ),
+    )
+    monkeypatch.setattr(
+        file_dialog,
+        "confirm_file_dialog_open",
+        lambda dialog, **kwargs: (_ for _ in ()).throw(AssertionError("explicit confirm should not run")),
+    )
+
+    result = file_dialog.interact_with_open_file_dialog(
+        Dialog(),
+        r"C:\tmp\test.wwp",
+        before_snapshot={"discovered_top_menus": ["Fájl"], "visible_top_windows": [], "main_window_title": "WinWatt"},
+        after_snapshot_provider=lambda: {
+            "discovered_top_menus": ["Fájl", "Szerkesztés"],
+            "visible_top_windows": [],
+            "main_window_title": r"WinWatt - C:\tmp\test.wwp",
+        },
+        detected_dialog_snapshot={"title": "Projekt megnyitás", "class_name": "#32770", "handle": 123},
+        dialog_context={"dialog_already_verified": True, "dialog_handle": 123, "dialog_title": "Projekt megnyitás", "dialog_class": "#32770"},
+    )
+
+    assert result.success is True
+    assert result.path_entered is True
+    assert result.confirm_attempted is True
+    assert result.confirm_clicked is True
+    assert result.dialog_closed is True
+    assert result.path_match_normalized is True
+    assert result.path_entry_diagnostics["post_confirm_dialog_closed"] is True
+    assert result.path_entry_diagnostics["post_confirm_title"] == r"WinWatt - C:\tmp\test.wwp"
+    assert result.path_entry_diagnostics["post_confirm_path_match"] is True
