@@ -9,6 +9,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     _dispatch_single_row_probe_click,
     _evaluate_action_admission,
     _run_action_evidence_probe,
+    _reopen_parent_popup_rows,
     _filter_normal_popup_rows,
     _select_probe_target_row,
     _safe_depth_decision,
@@ -22,6 +23,7 @@ from winwatt_automation.runtime_mapping.program_mapper import (
     reset_top_menu_cache,
     run_single_row_probe,
 )
+from winwatt_automation.live_ui.ui_cache import PopupState
 
 
 def test_hierarchical_menu_tree_building(monkeypatch):
@@ -631,6 +633,97 @@ def test_explore_menu_tree_recurses_when_real_popup_rows_exist(monkeypatch):
     assert [node["title"] for node in nodes] == ["Export"]
     assert nodes[0]["opens_submenu"] is True
     assert [child["title"] for child in nodes[0]["children"]] == ["CSV"]
+
+
+def test_explore_menu_tree_rejects_stale_popup_snapshot_from_other_top_menu(monkeypatch):
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.capture_state_snapshot",
+        lambda state_id: RuntimeStateSnapshot(state_id=state_id, process_id=1, main_window_title="W", main_window_class="C", visible_top_windows=[], discovered_top_menus=["Fájl", "Jegyzékek"], timestamp="t"),
+    )
+    click_calls: list[str] = []
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item",
+        lambda title: click_calls.append(title),
+    )
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot",
+        lambda: [{"text": "Valódi sor", "center_x": 10, "center_y": 10, "rectangle": {"left": 120, "top": 40, "right": 220, "bottom": 60}, "is_separator": False, "source_scope": "main", "popup_candidate": True, "topbar_candidate": False}],
+    )
+
+    popup_state = PopupState(
+        current_menu_path=(normalize_menu_title("Fájl"),),
+        popup_rows=[{"text": "Jegyzékek", "rectangle": {"left": 220, "top": 0, "right": 290, "bottom": 24}, "topbar_candidate": True, "popup_candidate": False}],
+    )
+
+    nodes, rows, *_ = explore_menu_tree(
+        state_id="s",
+        top_menu="Jegyzékek",
+        safe_mode="safe",
+        max_depth=1,
+        include_disabled=True,
+        visited_paths={("jegyzékek",)},
+        canonical_top_menu_names={normalize_menu_title("Fájl"), normalize_menu_title("Jegyzékek")},
+        popup_state=popup_state,
+    )
+
+    assert click_calls == []
+    assert [node["title"] for node in nodes] == ["Valódi sor"]
+    assert rows[0].text == "Valódi sor"
+    assert popup_state.current_menu_path == (normalize_menu_title("Jegyzékek"),)
+
+
+def test_build_menu_rows_dedupes_same_text_and_rectangle_duplicates():
+    rows = _build_menu_rows_from_popup_rows(
+        "s",
+        "Fájl",
+        [
+            {"text": "Végrehajtás", "center_x": 20, "center_y": 20, "rectangle": {"left": 0, "top": 10, "right": 120, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "raw_text_sources": ["legacy_text"]},
+            {"text": "Végrehajtás", "center_x": 20, "center_y": 20, "rectangle": {"left": 0, "top": 10, "right": 120, "bottom": 30}, "is_separator": False, "source_scope": "global_process_scan", "popup_candidate": True, "topbar_candidate": False, "raw_text_sources": ["legacy_text"]},
+            {"text": "Másik", "center_x": 20, "center_y": 50, "rectangle": {"left": 0, "top": 40, "right": 120, "bottom": 60}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False, "raw_text_sources": ["uia_name"]},
+        ],
+    )
+
+    assert [row.text for row in rows] == ["Végrehajtás", "Másik"]
+
+
+def test_build_menu_rows_rejects_document_window_bleedthrough():
+    rows = _build_menu_rows_from_popup_rows(
+        "s",
+        "Súgó",
+        [
+            {"text": "Dokumentumablak", "center_x": 25, "center_y": 25, "rectangle": {"left": 13, "top": 105, "right": 41, "bottom": 133}, "is_separator": False, "source_scope": "global_process_scan", "popup_candidate": True, "topbar_candidate": False},
+            {"text": "Névjegy", "center_x": 80, "center_y": 80, "rectangle": {"left": 60, "top": 60, "right": 180, "bottom": 90}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False},
+        ],
+    )
+
+    assert [row.text for row in rows] == ["Névjegy"]
+
+
+def test_popup_reuse_requires_exact_parent_path_match(monkeypatch):
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.restore_clean_menu_baseline", lambda **kwargs: True)
+    click_calls: list[str] = []
+    monkeypatch.setattr("winwatt_automation.runtime_mapping.program_mapper.menu_helpers.click_top_menu_item", lambda title: click_calls.append(title))
+    monkeypatch.setattr(
+        "winwatt_automation.runtime_mapping.program_mapper.menu_helpers.capture_menu_popup_snapshot",
+        lambda: [{"text": "Új", "center_x": 10, "center_y": 10, "rectangle": {"left": 0, "top": 10, "right": 100, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False}],
+    )
+
+    popup_state = PopupState(
+        current_menu_path=(normalize_menu_title("Fájl"), normalize_menu_title("Export")),
+        popup_rows=[{"text": "CSV", "center_x": 150, "center_y": 15, "rectangle": {"left": 140, "top": 10, "right": 220, "bottom": 30}, "is_separator": False, "source_scope": "main_window", "popup_candidate": True, "topbar_candidate": False}],
+    )
+    rows = _reopen_parent_popup_rows(
+        state_id="s",
+        top_menu="Fájl",
+        parent_path=["Fájl"],
+        canonical_top_menu_names={normalize_menu_title("Fájl")},
+        popup_state=popup_state,
+        force_ui_reopen=False,
+    )
+
+    assert click_calls == ["Fájl"]
+    assert rows[0]["text"] == "Új"
 
 
 def test_map_runtime_state_prioritizes_normal_top_menus_by_default(monkeypatch):
