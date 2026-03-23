@@ -700,12 +700,11 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
     except Exception:
         pass
 
-    edit, strategy = _find_filename_edit_control(dialog)
     info: dict[str, Any] = {
         "method": "failed",
-        "file_name_control_strategy": strategy,
-        "file_name_control_found": edit is not None,
-        "file_name_control_value_before": _read_edit_value(edit) if edit is not None else "",
+        "file_name_control_strategy": None,
+        "file_name_control_found": False,
+        "file_name_control_value_before": "",
         "file_name_control_value_after": "",
         "file_name_value_matches_expected": False,
         "location_bar_touched": False,
@@ -716,7 +715,7 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
         "actual_path_normalized": None,
         "path_match_normalized": False,
         "mismatch_reason": "unknown",
-        "path_entry_strategy_selected": "direct_edit_then_type_keys_fallback",
+        "path_entry_strategy_selected": "focused_input_replace_then_enter",
         "path_entry_strategy_attempted": [],
         "path_entry_strategy_succeeded": None,
         "paste_attempted": False,
@@ -731,18 +730,25 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
         "raw_value_after_immediate": {},
         "raw_value_after_300ms": {},
         "raw_value_after_1000ms": {},
+        "focused_input_entry_attempted": False,
+        "focused_input_entry_sent": False,
+        "enter_confirm_sent": False,
+        "post_confirm_dialog_closed": False,
+        "post_confirm_title": "",
+        "post_confirm_path_match": False,
+        "confirm_embedded_in_path_entry": False,
     }
-    info.update(_describe_filename_control(edit, strategy))
-    info.update(_selected_control_telemetry(edit))
 
-    if edit is None:
-        info["confirm_skipped_reason"] = "file_name_control_not_found"
-        logger.info("set_file_dialog_path file_name_control_found=false strategy={} confirm_skipped_reason={}", strategy, info["confirm_skipped_reason"])
-        return False, info
+    def finalize_current_control(edit: Any, strategy: str | None) -> None:
+        info["file_name_control_strategy"] = strategy
+        info["file_name_control_found"] = edit is not None
+        info["file_name_control_value_before"] = _read_edit_value(edit) if edit is not None else ""
+        info.update(_describe_filename_control(edit, strategy))
+        info.update(_selected_control_telemetry(edit))
 
-    info["raw_value_before"] = _read_edit_value_variants(edit)
-
-    def refresh_validation(*, delay_s: float, target_key: str) -> None:
+    def refresh_validation(edit: Any, *, delay_s: float, target_key: str) -> None:
+        if edit is None:
+            return
         if delay_s > 0:
             time.sleep(delay_s)
         variants = _read_edit_value_variants(edit)
@@ -774,6 +780,35 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
                 path_match_normalized=info["path_match_normalized"],
             )
 
+    from pywinauto import keyboard
+
+    info["focused_input_entry_attempted"] = True
+    info["path_entry_strategy_attempted"].append("focused_input_replace_then_enter")
+    try:
+        keyboard.send_keys("^a", with_spaces=True)
+        keyboard.send_keys(project_path, with_spaces=True)
+        info["focused_input_entry_sent"] = True
+        info["typed_sent"] = True
+        keyboard.send_keys("{ENTER}")
+        info["enter_confirm_sent"] = True
+        info["confirm_embedded_in_path_entry"] = True
+        info["method"] = "focused_input_replace_then_enter"
+        info["path_entry_strategy_succeeded"] = "focused_input_replace_then_enter"
+        logger.info("set_file_dialog_path telemetry={}", info)
+        return True, info
+    except Exception:
+        info["typed_fallback_skipped_reason"] = "focused_input_send_failed"
+
+    edit, strategy = _find_filename_edit_control(dialog)
+    finalize_current_control(edit, strategy)
+
+    if edit is None:
+        info["confirm_skipped_reason"] = "file_name_control_not_found"
+        logger.info("set_file_dialog_path file_name_control_found=false strategy={} confirm_skipped_reason={}", strategy, info["confirm_skipped_reason"])
+        return False, info
+
+    info["raw_value_before"] = _read_edit_value_variants(edit)
+
     try:
         edit.set_focus()
     except Exception:
@@ -785,19 +820,15 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
         info["method"] = "direct_edit"
         info["direct_edit_sent"] = True
         info["path_entry_strategy_succeeded"] = "direct_edit"
-        refresh_validation(delay_s=0.0, target_key="raw_value_after_immediate")
-        refresh_validation(delay_s=0.3, target_key="raw_value_after_300ms")
-        refresh_validation(delay_s=0.7, target_key="raw_value_after_1000ms")
+        refresh_validation(edit, delay_s=0.0, target_key="raw_value_after_immediate")
+        refresh_validation(edit, delay_s=0.3, target_key="raw_value_after_300ms")
+        refresh_validation(edit, delay_s=0.7, target_key="raw_value_after_1000ms")
         if info["file_name_value_matches_expected"]:
-            logger.info(
-                "set_file_dialog_path telemetry={}",
-                info,
-            )
+            logger.info("set_file_dialog_path telemetry={}", info)
             return True, info
     else:
         info["direct_edit_fallback_skipped_reason"] = "direct_edit_write_failed"
 
-    from pywinauto import keyboard
     try:
         edit.set_focus()
     except Exception:
@@ -815,17 +846,14 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
     info["method"] = "typed_edit_fallback"
     if info["path_entry_strategy_succeeded"] is None:
         info["path_entry_strategy_succeeded"] = "typed_edit_fallback"
-    refresh_validation(delay_s=0.0, target_key="raw_value_after_immediate")
-    refresh_validation(delay_s=0.3, target_key="raw_value_after_300ms")
-    refresh_validation(delay_s=0.7, target_key="raw_value_after_1000ms")
+    refresh_validation(edit, delay_s=0.0, target_key="raw_value_after_immediate")
+    refresh_validation(edit, delay_s=0.3, target_key="raw_value_after_300ms")
+    refresh_validation(edit, delay_s=0.7, target_key="raw_value_after_1000ms")
     if not info["file_name_value_matches_expected"]:
         info["confirm_skipped_reason"] = "file_name_value_mismatch"
     if info["direct_edit_sent"]:
         info["mismatch_reason"] = "value_changed_after_delay" if not info["path_match_normalized"] else info["mismatch_reason"]
-    logger.info(
-        "set_file_dialog_path telemetry={}",
-        info,
-    )
+    logger.info("set_file_dialog_path telemetry={}", info)
     return bool(info["file_name_value_matches_expected"]), info
 
 
@@ -1082,36 +1110,42 @@ def interact_with_open_file_dialog(
                 path_entry_diagnostics=path_info,
             )
 
-        if not bool(path_info.get("file_name_value_matches_expected", path_entered)):
-            confirm_info = {"method": "skipped", "reason": path_info.get("confirm_skipped_reason") or "file_name_value_not_validated"}
-            logger.info("interact_with_open_file_dialog confirm skipped reason={}", confirm_info["reason"])
-            return OpenProjectDialogResult(
-                success=False,
-                path=project_path,
-                dialog_found=True,
-                path_entry_attempted=path_entry_attempted,
-                path_entered=False,
-                confirm_attempted=False,
-                confirm_clicked=False,
-                dialog_closed=False,
-                project_state_changed=False,
-                detected_changes=[],
-                project_open_method=project_open_method,
-                project_open_sequence=project_open_sequence,
-                error="path_entry_validation_failed",
-                detected_dialog_snapshot=detected_dialog_snapshot,
-                helper_received_dialog_context=received_context,
-                helper_dialog_revalidated=helper_dialog_revalidated,
-                helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
-                binding_strategy_used=binding_strategy_used,
-                dialog_handle_available=dialog_handle_available,
-                dialog_binding_candidates_count=dialog_binding_candidates_count,
-                binding_failed_reason=binding_failed_reason,
-                path_entry_diagnostics=path_info,
-            )
+        if bool(path_info.get("confirm_embedded_in_path_entry")):
+            confirm_attempted = True
+            confirm_clicked = bool(path_info.get("enter_confirm_sent"))
+            confirm_info = {"method": "embedded_enter", "enter_confirm_sent": confirm_clicked}
+            logger.info("interact_with_open_file_dialog confirm embedded in path entry confirm_info={}", confirm_info)
+        else:
+            if not bool(path_info.get("file_name_value_matches_expected", path_entered)):
+                confirm_info = {"method": "skipped", "reason": path_info.get("confirm_skipped_reason") or "file_name_value_not_validated"}
+                logger.info("interact_with_open_file_dialog confirm skipped reason={}", confirm_info["reason"])
+                return OpenProjectDialogResult(
+                    success=False,
+                    path=project_path,
+                    dialog_found=True,
+                    path_entry_attempted=path_entry_attempted,
+                    path_entered=False,
+                    confirm_attempted=False,
+                    confirm_clicked=False,
+                    dialog_closed=False,
+                    project_state_changed=False,
+                    detected_changes=[],
+                    project_open_method=project_open_method,
+                    project_open_sequence=project_open_sequence,
+                    error="path_entry_validation_failed",
+                    detected_dialog_snapshot=detected_dialog_snapshot,
+                    helper_received_dialog_context=received_context,
+                    helper_dialog_revalidated=helper_dialog_revalidated,
+                    helper_dialog_ready_for_interaction=helper_dialog_ready_for_interaction,
+                    binding_strategy_used=binding_strategy_used,
+                    dialog_handle_available=dialog_handle_available,
+                    dialog_binding_candidates_count=dialog_binding_candidates_count,
+                    binding_failed_reason=binding_failed_reason,
+                    path_entry_diagnostics=path_info,
+                )
 
-        confirm_attempted = True
-        confirm_clicked, confirm_info = confirm_file_dialog_open(dialog, prefer_enter=True)
+            confirm_attempted = True
+            confirm_clicked, confirm_info = confirm_file_dialog_open(dialog, prefer_enter=True)
         logger.info("interact_with_open_file_dialog confirm result={}", confirm_info)
         logger.info("project_open_step step=file_dialog_confirm_clicked value={} details={}", confirm_clicked, confirm_info)
         if not confirm_clicked:
@@ -1157,8 +1191,14 @@ def interact_with_open_file_dialog(
         )
         observed_project_path = verification.get("observed_project_path")
         path_match_normalized = bool(verification.get("path_match_normalized"))
+        path_info["post_confirm_dialog_closed"] = dialog_closed
+        path_info["post_confirm_title"] = observed_main_window_title_after_open
+        path_info["post_confirm_path_match"] = path_match_normalized
+        logger.info("project_open_step step=post_confirm_dialog_closed value={}", dialog_closed)
+        logger.info("project_open_step step=post_confirm_title value={}", observed_main_window_title_after_open)
+        logger.info("project_open_step step=post_confirm_path_match value={}", path_match_normalized)
 
-        success = dialog_closed and project_state_changed and path_match_normalized
+        success = dialog_closed and path_match_normalized
         elapsed = round(time.monotonic() - start, 3)
         logger.info(
             "interact_with_open_file_dialog completed success={} dialog_found={} path_entered={} confirm_clicked={} dialog_closed={} state_changed={} path_match_normalized={} changes={} elapsed_s={}",
@@ -1175,10 +1215,8 @@ def interact_with_open_file_dialog(
         error = None
         if not dialog_closed:
             error = "Dialog did not close after confirmation."
-        elif not project_state_changed:
-            error = "Dialog closed but runtime state did not change."
         elif not path_match_normalized:
-            error = "Dialog closed and state changed, but the observed project path did not match the expected path."
+            error = "Dialog closed, but the observed project path did not match the expected path."
 
         return OpenProjectDialogResult(
             success=success,
