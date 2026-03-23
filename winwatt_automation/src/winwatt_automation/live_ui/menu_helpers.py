@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
+import re
 import time
 from contextlib import contextmanager
 from typing import Any
@@ -72,6 +73,7 @@ REPEATED_LEGACY_TEXT_MIN_ROWS = 2
 REPEATED_LEGACY_TEXT_MIN_RATIO = 0.4
 _MENU_ITEMS_REENTRANCY_DEPTH = 0
 _TOPBAR_BAND_CACHE: dict[str, Any] = {"handle": None, "captured_at": 0.0, "band": None}
+RECENT_PROJECT_ENTRY_PATTERN = re.compile(r"^\s*\d+\s*:")
 
 
 def _log_phase_timing(phase: str, started_at: float, **payload: Any) -> None:
@@ -136,6 +138,30 @@ def _is_com_error(exc: Exception) -> bool:
     name = type(exc).__name__.lower()
     module = str(getattr(type(exc), "__module__", "")).lower()
     return "comerror" in name or "com_error" in name or "pythoncom" in module or "pywintypes" in module or "comtypes" in module
+
+
+def _is_recent_project_entry_text(text: str) -> bool:
+    value = str(text or "").strip()
+    if not value:
+        return False
+    return bool(RECENT_PROJECT_ENTRY_PATTERN.match(value) and re.search(r"\.wwp\b", value, flags=re.IGNORECASE))
+
+
+def _is_separator_row(*, text: str, rect: dict[str, int] | None = None, fragments: list[dict[str, Any]] | None = None) -> bool:
+    value = str(text or "").strip()
+    rect = dict(rect or {})
+    if not value:
+        if rect:
+            return _is_separator_by_geometry({
+                "width": max(0, int(rect.get("right", 0)) - int(rect.get("left", 0))),
+                "height": max(0, int(rect.get("bottom", 0)) - int(rect.get("top", 0))),
+            })
+        return True
+    if value in {"-", "—", "–", "_"} and len(value) <= 3:
+        return True
+    if fragments and all(not str(fragment.get("text") or "").strip() for fragment in fragments):
+        return _is_separator_row(text="", rect=rect, fragments=None)
+    return False
 
 
 def _remember_topbar_parent_comerror(context: str, wrapper: Any, exc: Exception) -> None:
@@ -1429,6 +1455,14 @@ def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[st
         logger.info("TEXT_EXTRACTION_FALLBACK_USED source={} confidence={} rect={}", raw_text_sources[0], text_confidence, row_rect)
     elif not extracted_text:
         logger.warning("TEXT_EXTRACTION_FAILED source_scope={} rect={}", source_scope, row_rect)
+    enabled_value = getattr(info, "enabled", None)
+    if enabled_value is None:
+        is_enabled = getattr(item, "is_enabled", None)
+        if callable(is_enabled):
+            try:
+                enabled_value = is_enabled()
+            except Exception:
+                enabled_value = None
     row = {
         "text": extracted_text,
         "normalized_text": _normalize(extracted_text),
@@ -1446,12 +1480,14 @@ def _menu_row_from_wrapper(item: Any, *, source_scope: str, topbar_band: dict[st
         "height": rect["height"],
         "center_x": rect["center_x"],
         "center_y": rect["center_y"],
-        "is_separator": _is_separator_by_geometry(rect),
+        "is_separator": _is_separator_row(text=extracted_text, rect=row_rect, fragments=child_fragments),
         "source_scope": source_scope,
         "process_id": getattr(info, "process_id", None),
         "native_handle": getattr(info, "handle", None),
         "fragments": child_fragments,
+        "enabled": enabled_value,
     }
+    row["recent_project_entry"] = _is_recent_project_entry_text(extracted_text)
     topbar_candidate, popup_candidate, popup_reason = _classify_row_geometry(row, topbar_band)
     row["topbar_candidate"] = topbar_candidate
     row["popup_candidate"] = popup_candidate
@@ -1929,6 +1965,14 @@ def _group_popup_fragments_into_logical_rows(fragments: list[dict[str, Any]]) ->
                 "fragment_texts": texts,
                 "fragments": cluster_fragments,
                 "child_fragments": cluster_fragments,
+                "enabled": (
+                    False
+                    if any(item.get("enabled") is False for item in cluster)
+                    else True
+                    if any(item.get("enabled") is True for item in cluster)
+                    else None
+                ),
+                "recent_project_entry": _is_recent_project_entry_text(representative_text),
             }
         )
 
