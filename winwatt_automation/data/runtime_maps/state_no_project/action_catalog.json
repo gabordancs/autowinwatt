@@ -8,7 +8,7 @@
     "opens_project_and_changes_runtime_state": false,
     "opens_submenu": false,
     "path": [
-      "Jegyzékek",
+      "Fájl",
       "Végrehajtás"
     ],
     "retry_on_next_pass": true,
@@ -24,56 +24,8 @@
     "opens_project_and_changes_runtime_state": false,
     "opens_submenu": false,
     "path": [
-      "Adatbázis",
-      "Dokumentumablak"
-    ],
-    "retry_on_next_pass": true,
-    "traversal_depth": 1,
-    "treat_as_navigation": false
-  },
-  {
-    "action_state_classification": "unknown",
-    "action_type": "unknown",
-    "changes_menu_state": false,
-    "expand_children": false,
-    "opens_modal": false,
-    "opens_project_and_changes_runtime_state": false,
-    "opens_submenu": false,
-    "path": [
-      "Beállítások",
-      "Dokumentumablak"
-    ],
-    "retry_on_next_pass": true,
-    "traversal_depth": 1,
-    "treat_as_navigation": false
-  },
-  {
-    "action_state_classification": "unknown",
-    "action_type": "unknown",
-    "changes_menu_state": false,
-    "expand_children": false,
-    "opens_modal": false,
-    "opens_project_and_changes_runtime_state": false,
-    "opens_submenu": false,
-    "path": [
-      "Ablak",
-      "Dokumentumablak"
-    ],
-    "retry_on_next_pass": true,
-    "traversal_depth": 1,
-    "treat_as_navigation": false
-  },
-  {
-    "action_state_classification": "unknown",
-    "action_type": "unknown",
-    "changes_menu_state": false,
-    "expand_children": false,
-    "opens_modal": false,
-    "opens_project_and_changes_runtime_state": false,
-    "opens_submenu": false,
-    "path": [
-      "Súgó",
-      "Dokumentumablak"
+      "Jegyzékek",
+      "Végrehajtás"
     ],
     "retry_on_next_pass": true,
     "traversal_depth": 1,

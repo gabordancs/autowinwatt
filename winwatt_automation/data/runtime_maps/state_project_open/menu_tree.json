@@ -1066,44 +1066,7 @@
     "title_raw": "Jegyzékek"
   },
   {
-    "children": [
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "unknown",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 133,
-            "left": 13,
-            "right": 41,
-            "top": 105
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Beállítások"
-        },
-        "enabled": true,
-        "index": 0,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": false,
-        "normalized_title": "dokumentumablak",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Beállítások",
-          "Dokumentumablak"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "project_open",
-        "title": "Dokumentumablak",
-        "title_raw": "Dokumentumablak"
-      }
-    ],
+    "children": [],
     "path": [
       "Beállítások"
     ],
@@ -1113,44 +1076,7 @@
     "title_raw": "Beállítások"
   },
   {
-    "children": [
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "unknown",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 133,
-            "left": 13,
-            "right": 41,
-            "top": 105
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Ablak"
-        },
-        "enabled": true,
-        "index": 0,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "dokumentumablak",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Ablak",
-          "Dokumentumablak"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "project_open",
-        "title": "Dokumentumablak",
-        "title_raw": "Dokumentumablak"
-      }
-    ],
+    "children": [],
     "path": [
       "Ablak"
     ],
@@ -1160,44 +1086,7 @@
     "title_raw": "Ablak"
   },
   {
-    "children": [
-      {
-        "action_classification": "leaf_action",
-        "action_state_classification": "unknown",
-        "children": [],
-        "debug": {
-          "fragments": [],
-          "geometry": {
-            "bottom": 133,
-            "left": 13,
-            "right": 41,
-            "top": 105
-          },
-          "reused_from_previous_state": false,
-          "source_scope": "main_window",
-          "top_menu": "Súgó"
-        },
-        "enabled": true,
-        "index": 0,
-        "level": 1,
-        "likely_destructive": false,
-        "likely_state_changing": true,
-        "normalized_title": "dokumentumablak",
-        "opens_dialog": false,
-        "opens_modal": false,
-        "opens_submenu": false,
-        "path": [
-          "Súgó",
-          "Dokumentumablak"
-        ],
-        "separator": false,
-        "shortcut": null,
-        "skipped_by_safety": false,
-        "state_id": "project_open",
-        "title": "Dokumentumablak",
-        "title_raw": "Dokumentumablak"
-      }
-    ],
+    "children": [],
     "path": [
       "Súgó"
     ],

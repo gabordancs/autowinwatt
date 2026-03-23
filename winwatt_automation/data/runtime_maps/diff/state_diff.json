@@ -8,10 +8,6 @@
   "menu_action_diff": {
     "only_in_a": [
       [
-        "adatbázis",
-        "dokumentumablak"
-      ],
-      [
         "fájl",
         "[unlabeled row 19]"
       ],
@@ -43,14 +39,6 @@
       ]
     ],
     "shared": [
-      [
-        "ablak",
-        "dokumentumablak"
-      ],
-      [
-        "beállítások",
-        "dokumentumablak"
-      ],
       [
         "fájl",
         "[unlabeled row 2]"
@@ -158,10 +146,6 @@
       [
         "jegyzékek",
         "végrehajtás"
-      ],
-      [
-        "súgó",
-        "dokumentumablak"
       ]
     ]
   },
@@ -174,7 +158,7 @@
   "state_a": "no_project",
   "state_b": "project_open",
   "summary": {
-    "actions_only_in_a": 6,
+    "actions_only_in_a": 5,
     "actions_only_in_b": 2,
     "enabled_changes": 0,
     "project_only_paths": 1,
