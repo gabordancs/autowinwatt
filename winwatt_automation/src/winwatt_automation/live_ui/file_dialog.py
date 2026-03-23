@@ -50,6 +50,7 @@ class OpenProjectDialogResult:
     observed_main_window_title_after_open: str | None = None
     observed_project_path: str | None = None
     path_match_normalized: bool = False
+    path_entry_diagnostics: dict[str, Any] | None = None
     error: str | None = None
 
 
@@ -357,6 +358,66 @@ def _describe_filename_control(control: Any, reason: str | None) -> dict[str, An
     }
 
 
+def _rectangle_payload(control: Any) -> dict[str, int] | None:
+    rectangle = _safe_call(control, "rectangle", None)
+    if rectangle is None:
+        return None
+    try:
+        return {
+            "left": int(rectangle.left),
+            "top": int(rectangle.top),
+            "right": int(rectangle.right),
+            "bottom": int(rectangle.bottom),
+        }
+    except Exception:
+        return None
+
+
+def _control_summary(control: Any) -> dict[str, Any] | None:
+    if control is None:
+        return None
+    info = getattr(control, "element_info", control)
+    return {
+        "control_type": _control_type(control),
+        "class_name": _control_class_name(control),
+        "friendly_class_name": str(_safe_member(control, "friendly_class_name", "") or "").strip(),
+        "automation_id": str(getattr(info, "automation_id", "") or "").strip(),
+        "name": _control_name(control),
+        "handle": _safe_call(control, "handle", None),
+        "rectangle": _rectangle_payload(control),
+    }
+
+
+def _selected_control_telemetry(control: Any) -> dict[str, Any]:
+    summary = _control_summary(control) or {}
+    parent = _safe_call(control, "parent", None) if control is not None else None
+    parent_summary = _control_summary(parent)
+    sibling_summaries: list[dict[str, Any]] = []
+    if parent is not None:
+        children = getattr(parent, "children", None)
+        if callable(children):
+            for sibling in children():
+                if sibling is control:
+                    continue
+                sibling_summary = _control_summary(sibling) or {}
+                if not any(sibling_summary.get(key) for key in ("name", "automation_id", "class_name", "control_type")):
+                    continue
+                sibling_summaries.append(sibling_summary)
+                if len(sibling_summaries) >= 5:
+                    break
+    return {
+        "selected_control_control_type": summary.get("control_type", ""),
+        "selected_control_class_name": summary.get("class_name", ""),
+        "selected_control_friendly_class_name": summary.get("friendly_class_name", ""),
+        "selected_control_automation_id": summary.get("automation_id", ""),
+        "selected_control_name": summary.get("name", ""),
+        "selected_control_handle": summary.get("handle"),
+        "selected_control_rectangle": summary.get("rectangle"),
+        "selected_control_parent_summary": parent_summary,
+        "selected_control_sibling_summaries": sibling_summaries,
+    }
+
+
 def _iter_candidate_edits(control: Any) -> list[Any]:
     candidates: list[Any] = []
     if _control_type(control) == "edit":
@@ -453,6 +514,72 @@ def _read_edit_value(edit: Any) -> str:
         except Exception:
             return ""
     return ""
+
+
+def _read_edit_value_variants(edit: Any) -> dict[str, str]:
+    info = getattr(edit, "element_info", edit)
+    window_text = str(_safe_call(edit, "window_text", "") or "")
+
+    value_pattern = ""
+    iface_value = getattr(edit, "iface_value", None)
+    if iface_value is not None:
+        try:
+            value_pattern = str(getattr(iface_value, "CurrentValue", "") or "")
+        except Exception:
+            value_pattern = ""
+
+    legacy_text = ""
+    legacy_value = _safe_call(edit, "legacy_properties", None)
+    if isinstance(legacy_value, dict):
+        legacy_text = str(legacy_value.get("Value") or legacy_value.get("Name") or "")
+    elif callable(getattr(edit, "legacy_properties", None)):
+        try:
+            legacy_props = edit.legacy_properties()
+        except Exception:
+            legacy_props = None
+        if isinstance(legacy_props, dict):
+            legacy_text = str(legacy_props.get("Value") or legacy_props.get("Name") or "")
+
+    if not legacy_text:
+        legacy_text = str(getattr(info, "rich_text", "") or "")
+
+    return {
+        "window_text": window_text,
+        "get_value": value_pattern,
+        "legacy": legacy_text,
+    }
+
+
+def _preferred_actual_path(value_variants: dict[str, str]) -> str:
+    for key in ("get_value", "window_text", "legacy"):
+        value = str(value_variants.get(key) or "")
+        if value:
+            return value
+    return ""
+
+
+def _classify_path_mismatch(*, expected_raw: str, actual_raw: str, actual_variants: dict[str, str], path_match_normalized: bool) -> str:
+    if path_match_normalized:
+        return ""
+    normalized_expected = _normalize_project_path(expected_raw) or ""
+    normalized_actual = _normalize_project_path(actual_raw) or ""
+    if not normalized_actual:
+        return "empty_after_write"
+    if _is_label_like_text(actual_raw):
+        return "label_text_detected"
+    expected_ext = os.path.splitext(normalized_expected)[1]
+    actual_ext = os.path.splitext(normalized_actual)[1]
+    if expected_ext and not actual_ext:
+        if normalized_actual.endswith("\\") or "\\" in normalized_actual:
+            return "directory_only"
+        return "extension_missing"
+    if expected_ext and actual_ext != expected_ext:
+        return "extension_missing"
+    if normalized_expected and normalized_actual and normalized_actual in normalized_expected and normalized_actual != normalized_expected:
+        return "partial_path_only"
+    if any((_normalize_project_path(value) or "") != normalized_actual for value in actual_variants.values() if str(value or "").strip()):
+        return "value_changed_after_delay"
+    return "unknown"
 
 
 def _write_to_edit(edit: Any, project_path: str) -> bool:
@@ -583,72 +710,121 @@ def set_file_dialog_path(dialog: Any, project_path: str) -> tuple[bool, dict[str
         "file_name_value_matches_expected": False,
         "location_bar_touched": False,
         "confirm_skipped_reason": None,
+        "expected_path_raw": project_path,
+        "expected_path_normalized": _normalize_project_path(project_path),
+        "actual_path_raw": "",
+        "actual_path_normalized": None,
+        "path_match_normalized": False,
+        "mismatch_reason": "unknown",
+        "path_entry_strategy_selected": "direct_edit_then_type_keys_fallback",
+        "path_entry_strategy_attempted": [],
+        "path_entry_strategy_succeeded": None,
+        "paste_attempted": False,
+        "paste_sent": False,
+        "typed_attempted": False,
+        "typed_sent": False,
+        "direct_edit_attempted": False,
+        "direct_edit_sent": False,
+        "typed_fallback_skipped_reason": None,
+        "direct_edit_fallback_skipped_reason": None,
+        "raw_value_before": {},
+        "raw_value_after_immediate": {},
+        "raw_value_after_300ms": {},
+        "raw_value_after_1000ms": {},
     }
     info.update(_describe_filename_control(edit, strategy))
+    info.update(_selected_control_telemetry(edit))
 
     if edit is None:
         info["confirm_skipped_reason"] = "file_name_control_not_found"
         logger.info("set_file_dialog_path file_name_control_found=false strategy={} confirm_skipped_reason={}", strategy, info["confirm_skipped_reason"])
         return False, info
 
+    info["raw_value_before"] = _read_edit_value_variants(edit)
+
+    def refresh_validation(*, delay_s: float, target_key: str) -> None:
+        if delay_s > 0:
+            time.sleep(delay_s)
+        variants = _read_edit_value_variants(edit)
+        info[target_key] = variants
+        if target_key == "raw_value_after_immediate":
+            info["file_name_control_value_after"] = _preferred_actual_path(variants)
+            info["actual_path_raw"] = info["file_name_control_value_after"]
+            info["actual_path_normalized"] = _normalize_project_path(info["actual_path_raw"])
+            info["path_match_normalized"] = bool(
+                info["expected_path_normalized"] and info["expected_path_normalized"] == info["actual_path_normalized"]
+            )
+            info["file_name_value_matches_expected"] = info["path_match_normalized"]
+        elif target_key == "raw_value_after_1000ms":
+            final_actual = _preferred_actual_path(variants)
+            info["actual_path_raw"] = final_actual
+            info["actual_path_normalized"] = _normalize_project_path(final_actual)
+            info["path_match_normalized"] = bool(
+                info["expected_path_normalized"] and info["expected_path_normalized"] == info["actual_path_normalized"]
+            )
+            info["file_name_value_matches_expected"] = info["path_match_normalized"]
+            info["mismatch_reason"] = _classify_path_mismatch(
+                expected_raw=project_path,
+                actual_raw=final_actual,
+                actual_variants={
+                    "immediate": _preferred_actual_path(info["raw_value_after_immediate"]),
+                    "after_300ms": _preferred_actual_path(info["raw_value_after_300ms"]),
+                    "after_1000ms": final_actual,
+                },
+                path_match_normalized=info["path_match_normalized"],
+            )
+
     try:
         edit.set_focus()
     except Exception:
         pass
 
+    info["direct_edit_attempted"] = True
+    info["path_entry_strategy_attempted"].append("direct_edit")
     if _write_to_edit(edit, project_path):
         info["method"] = "direct_edit"
-        info["file_name_control_value_after"] = _read_edit_value(edit)
-        info["file_name_value_matches_expected"] = _normalize_project_path(info["file_name_control_value_after"]) == _normalize_project_path(project_path)
+        info["direct_edit_sent"] = True
+        info["path_entry_strategy_succeeded"] = "direct_edit"
+        refresh_validation(delay_s=0.0, target_key="raw_value_after_immediate")
+        refresh_validation(delay_s=0.3, target_key="raw_value_after_300ms")
+        refresh_validation(delay_s=0.7, target_key="raw_value_after_1000ms")
         if info["file_name_value_matches_expected"]:
             logger.info(
-                "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_class_name={} file_name_control_control_type={} file_name_control_is_editable={} file_name_control_is_label_like={} file_name_control_locator_reason={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
-                info["file_name_control_strategy"],
-                info["file_name_control_found"],
-                info["file_name_control_class_name"],
-                info["file_name_control_control_type"],
-                info["file_name_control_is_editable"],
-                info["file_name_control_is_label_like"],
-                info["file_name_control_locator_reason"],
-                info["file_name_control_value_before"],
-                info["file_name_control_value_after"],
-                info["file_name_value_matches_expected"],
-                info["location_bar_touched"],
-                info["confirm_skipped_reason"],
+                "set_file_dialog_path telemetry={}",
+                info,
             )
             return True, info
+    else:
+        info["direct_edit_fallback_skipped_reason"] = "direct_edit_write_failed"
 
     from pywinauto import keyboard
     try:
         edit.set_focus()
     except Exception:
         pass
+    info["typed_attempted"] = True
+    info["path_entry_strategy_attempted"].append("typed_edit_fallback")
     try:
         keyboard.send_keys("^a{BACKSPACE}")
         keyboard.send_keys(project_path, with_spaces=True)
+        info["typed_sent"] = True
     except Exception:
         info["confirm_skipped_reason"] = "file_name_write_failed"
         return False, info
 
     info["method"] = "typed_edit_fallback"
-    info["file_name_control_value_after"] = _read_edit_value(edit)
-    info["file_name_value_matches_expected"] = _normalize_project_path(info["file_name_control_value_after"]) == _normalize_project_path(project_path)
+    if info["path_entry_strategy_succeeded"] is None:
+        info["path_entry_strategy_succeeded"] = "typed_edit_fallback"
+    refresh_validation(delay_s=0.0, target_key="raw_value_after_immediate")
+    refresh_validation(delay_s=0.3, target_key="raw_value_after_300ms")
+    refresh_validation(delay_s=0.7, target_key="raw_value_after_1000ms")
     if not info["file_name_value_matches_expected"]:
         info["confirm_skipped_reason"] = "file_name_value_mismatch"
+    if info["direct_edit_sent"]:
+        info["mismatch_reason"] = "value_changed_after_delay" if not info["path_match_normalized"] else info["mismatch_reason"]
     logger.info(
-        "set_file_dialog_path file_name_control_strategy={} file_name_control_found={} file_name_control_class_name={} file_name_control_control_type={} file_name_control_is_editable={} file_name_control_is_label_like={} file_name_control_locator_reason={} file_name_control_value_before={} file_name_control_value_after={} file_name_value_matches_expected={} location_bar_touched={} confirm_skipped_reason={}",
-        info["file_name_control_strategy"],
-        info["file_name_control_found"],
-        info["file_name_control_class_name"],
-        info["file_name_control_control_type"],
-        info["file_name_control_is_editable"],
-        info["file_name_control_is_label_like"],
-        info["file_name_control_locator_reason"],
-        info["file_name_control_value_before"],
-        info["file_name_control_value_after"],
-        info["file_name_value_matches_expected"],
-        info["location_bar_touched"],
-        info["confirm_skipped_reason"],
+        "set_file_dialog_path telemetry={}",
+        info,
     )
     return bool(info["file_name_value_matches_expected"]), info
 
@@ -872,6 +1048,7 @@ def interact_with_open_file_dialog(
                 dialog_handle_available=dialog_handle_available,
                 dialog_binding_candidates_count=dialog_binding_candidates_count,
                 binding_failed_reason=binding_failed_reason,
+                path_entry_diagnostics=None,
                 error="dialog_revalidation_failed",
             )
 
@@ -902,6 +1079,7 @@ def interact_with_open_file_dialog(
                 dialog_handle_available=dialog_handle_available,
                 dialog_binding_candidates_count=dialog_binding_candidates_count,
                 binding_failed_reason=binding_failed_reason,
+                path_entry_diagnostics=path_info,
             )
 
         if not bool(path_info.get("file_name_value_matches_expected", path_entered)):
@@ -929,6 +1107,7 @@ def interact_with_open_file_dialog(
                 dialog_handle_available=dialog_handle_available,
                 dialog_binding_candidates_count=dialog_binding_candidates_count,
                 binding_failed_reason=binding_failed_reason,
+                path_entry_diagnostics=path_info,
             )
 
         confirm_attempted = True
@@ -958,6 +1137,7 @@ def interact_with_open_file_dialog(
                 dialog_handle_available=dialog_handle_available,
                 dialog_binding_candidates_count=dialog_binding_candidates_count,
                 binding_failed_reason=binding_failed_reason,
+                path_entry_diagnostics=path_info,
             )
 
         close_deadline = time.monotonic() + max(1.0, dialog_timeout)
@@ -1024,6 +1204,7 @@ def interact_with_open_file_dialog(
             observed_main_window_title_after_open=observed_main_window_title_after_open,
             observed_project_path=observed_project_path,
             path_match_normalized=path_match_normalized,
+            path_entry_diagnostics=path_info,
             error=error,
         )
     except Exception as exc:
@@ -1052,6 +1233,7 @@ def interact_with_open_file_dialog(
             observed_main_window_title_after_open=observed_main_window_title_after_open,
             observed_project_path=observed_project_path,
             path_match_normalized=path_match_normalized,
+            path_entry_diagnostics=path_info if 'path_info' in locals() else None,
             error=str(exc),
         )
 

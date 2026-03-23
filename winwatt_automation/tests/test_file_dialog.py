@@ -500,6 +500,15 @@ def test_set_file_dialog_path_targets_file_name_edit_without_location_hotkeys(mo
     assert info["file_name_control_control_type"] == "edit"
     assert info["file_name_control_is_editable"] is True
     assert info["file_name_control_is_label_like"] is True
+    assert info["selected_control_control_type"] == "edit"
+    assert info["raw_value_before"]["window_text"] == ""
+    assert info["raw_value_after_immediate"]["window_text"] == r"C:\tmp\test.wwp"
+    assert info["raw_value_after_1000ms"]["window_text"] == r"C:\tmp\test.wwp"
+    assert info["expected_path_normalized"] == r"c:\tmp\test.wwp"
+    assert info["actual_path_normalized"] == r"c:\tmp\test.wwp"
+    assert info["mismatch_reason"] == ""
+    assert info["path_entry_strategy_attempted"] == ["direct_edit"]
+    assert info["path_entry_strategy_succeeded"] == "direct_edit"
     assert info["location_bar_touched"] is False
     assert sent == []
 
