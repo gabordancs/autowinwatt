@@ -2092,7 +2092,11 @@ def click_structured_popup_row(rows: list[dict[str, Any]], index: int) -> dict[s
     if selected.get("is_separator"):
         raise ValueError(f"Requested popup index {index} is a separator and cannot be clicked")
 
-    ensure_main_window_foreground_before_click(action_label=f"click_structured_popup_row[{index}]", allow_dialog=True)
+    ensure_main_window_foreground_before_click(
+        action_label=f"click_structured_popup_row[{index}]",
+        allow_dialog=True,
+        allow_stale_wrapper_refresh=True,
+    )
     x = int(selected["center_x"])
     y = int(selected["center_y"])
     _mouse_click((x, y))
