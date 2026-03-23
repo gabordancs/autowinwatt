@@ -76,13 +76,38 @@ def test_build_full_runtime_program_map_stops_on_recovery_failure(monkeypatch, t
         raise AssertionError("project_open mapping should not run when recovery fails")
 
     monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
-    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": False, "diagnostics": {"x": 1}, "close_attempts": []}})
+    bootstrap_calls: list[str | None] = []
+
+    def _prepare_fresh_winwatt_session(*, project_path=None, **_kwargs):
+        bootstrap_calls.append(project_path)
+        if project_path is None:
+            return {"snapshot_ready": True, "snapshot_title": "WinWatt gólya", "snapshot_project_path": None}
+        return {"snapshot_ready": False, "snapshot_title": "", "snapshot_project_path": None}
+
+    monkeypatch.setattr(program_mapper, "prepare_fresh_winwatt_session", _prepare_fresh_winwatt_session)
+    monkeypatch.setattr(
+        program_mapper,
+        "_safe_capture_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=1,
+            main_window_title="WinWatt gólya",
+            main_window_class="TMainForm",
+            visible_top_windows=[],
+            discovered_top_menus=["Fájl"],
+            timestamp="t",
+            main_window_enabled=True,
+            main_window_visible=True,
+            foreground_window={"title": "WinWatt gólya", "class_name": "TMainForm"},
+        ),
+    )
 
     result = program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
 
+    assert bootstrap_calls == [None, "x"]
     assert result["state_project_open"].snapshot["mapping_partial"] is True
     assert result["state_project_open"].snapshot["mapping_stop_reason"] == "project_open_recovery_failed"
-    assert result["state_project_open"].snapshot["recovery_diagnostics"] == {"x": 1}
+    assert result["state_project_open"].snapshot["recovery_diagnostics"]["bootstrap"]["snapshot_ready"] is False
 
 
 def test_restore_clean_menu_baseline_modal_pending_uses_recovery(monkeypatch):
@@ -163,7 +188,31 @@ def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeyp
         return no_project if kwargs["state_id"].endswith("no_project") else project_open
 
     monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
-    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": True, "diagnostics": {}, "close_attempts": []}})
+    monkeypatch.setattr(
+        program_mapper,
+        "prepare_fresh_winwatt_session",
+        lambda *, project_path=None, **_kwargs: {
+            "snapshot_ready": True,
+            "snapshot_title": "WinWatt - x" if project_path else "WinWatt gólya",
+            "snapshot_project_path": project_path,
+        },
+    )
+    monkeypatch.setattr(
+        program_mapper,
+        "_safe_capture_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=1,
+            main_window_title="WinWatt - x",
+            main_window_class="TMainForm",
+            visible_top_windows=[],
+            discovered_top_menus=["Fájl"],
+            timestamp="t",
+            main_window_enabled=True,
+            main_window_visible=True,
+            foreground_window={"title": "WinWatt - x", "class_name": "TMainForm"},
+        ),
+    )
 
     result = program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
 
@@ -174,6 +223,40 @@ def test_build_full_runtime_program_map_continues_when_recovery_succeeds(monkeyp
     assert result["runtime_state_atlas"]["states"]["project_open"]["state_transitions"][0]["trigger"] == "opens_project_and_changes_runtime_state"
     atlas_json = json.loads((tmp_path / "runtime_state_atlas.json").read_text(encoding="utf-8"))
     assert set(atlas_json["states"].keys()) == {"no_project", "project_open"}
+
+
+def test_prepare_fresh_winwatt_session_project_bootstrap_metadata(monkeypatch):
+    launches: list[tuple[str | None, str]] = []
+    monkeypatch.setattr(program_mapper, "reset_winwatt_connection_cache", lambda: launches.append(("reset", "")))
+    monkeypatch.setattr(program_mapper, "_taskkill_process_image", lambda image_name: {"ok": True, "message": image_name, "returncode": 0})
+    monkeypatch.setattr(program_mapper.time, "sleep", lambda _seconds: None)
+    monkeypatch.setattr(
+        program_mapper,
+        "_launch_winwatt_target",
+        lambda *, target_path, exe_path: launches.append((target_path, exe_path)) or {"method": "stub", "target": target_path or exe_path},
+    )
+    monkeypatch.setattr(
+        program_mapper,
+        "_wait_for_startup_snapshot",
+        lambda state_id, **_kwargs: RuntimeStateSnapshot(
+            state_id=state_id,
+            process_id=1,
+            main_window_title=r"WinWatt - C:\tmp\demo\testwwp.wwp",
+            main_window_class="TMainForm",
+            visible_top_windows=[],
+            discovered_top_menus=["Fájl"],
+            timestamp="t",
+            main_window_enabled=True,
+            main_window_visible=True,
+            foreground_window={"title": "WinWatt", "class_name": "TMainForm"},
+        ),
+    )
+
+    result = program_mapper.prepare_fresh_winwatt_session(project_path=r"C:\tmp\demo\testwwp.wwp")
+
+    assert launches[1] == (r"C:\tmp\demo\testwwp.wwp", program_mapper.DEFAULT_WINWATT_EXE_PATH)
+    assert result["snapshot_ready"] is True
+    assert result["snapshot_project_path"] == r"C:\tmp\demo\testwwp.wwp"
 
 
 def test_recent_project_probe_policy_keeps_recent_project_classification(monkeypatch):
@@ -252,7 +335,24 @@ def test_build_full_runtime_program_map_rechecks_paths_in_project_state(monkeypa
         return no_project if kwargs["state_id"] == "no_project" else project_open
 
     monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
-    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": True, "diagnostics": {}, "close_attempts": []}})
+    monkeypatch.setattr(
+        program_mapper,
+        "prepare_fresh_winwatt_session",
+        lambda *, project_path=None, **_kwargs: {"snapshot_ready": True, "snapshot_title": "WinWatt - x" if project_path else "WinWatt", "snapshot_project_path": project_path},
+    )
+    monkeypatch.setattr(
+        program_mapper,
+        "_safe_capture_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id,
+            1,
+            "WinWatt - x" if "project_open" in state_id else "WinWatt",
+            "TMainForm",
+            [],
+            ["Fájl"],
+            "t",
+        ),
+    )
 
     program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
 
@@ -298,7 +398,24 @@ def test_build_full_runtime_program_map_writes_knowledge_verification(monkeypatc
         return no_project if call_idx["i"] == 1 else project_open
 
     monkeypatch.setattr(program_mapper, "map_runtime_state", _map_runtime_state)
-    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {"success": True, "recovery": {"success": True, "diagnostics": {}, "close_attempts": []}})
+    monkeypatch.setattr(
+        program_mapper,
+        "prepare_fresh_winwatt_session",
+        lambda *, project_path=None, **_kwargs: {"snapshot_ready": True, "snapshot_title": "WinWatt - x" if project_path else "WinWatt", "snapshot_project_path": project_path},
+    )
+    monkeypatch.setattr(
+        program_mapper,
+        "_safe_capture_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id,
+            1,
+            "WinWatt - x" if "project_open" in state_id else "WinWatt",
+            "TMainForm",
+            [],
+            ["Fájl"],
+            "t",
+        ),
+    )
 
     result = program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
 
@@ -352,26 +469,29 @@ def test_build_full_runtime_program_map_records_project_open_verification(monkey
     for sub in ("state_no_project", "state_project_open", "diff"):
         (tmp_path / sub).mkdir(parents=True, exist_ok=True)
 
-    snapshots = iter([
-        RuntimeStateSnapshot("startup", 1, "WinWatt", "TMainForm", [], ["Fájl"], "t"),
-        RuntimeStateSnapshot("verify", 1, r"WinWatt - C:\tmp\demo\testwwp.wwp", "TMainForm", [], ["Fájl"], "t"),
-    ])
-    monkeypatch.setattr(program_mapper, "capture_state_snapshot", lambda _state_id: next(snapshots))
-    monkeypatch.setattr(program_mapper, "map_runtime_state", lambda **kwargs: no_project if kwargs["state_id"] == "no_project" else project_open)
-    monkeypatch.setattr(program_mapper, "open_test_project", lambda *args, **kwargs: {
-        "success": True,
-        "dialog_found": True,
-        "path_entered": True,
-        "confirm_clicked": True,
-        "project_open_audit": {
-            "project_open_attempt_started": True,
-            "project_open_menu_item_clicked": True,
-            "open_file_dialog_detected": True,
-            "file_dialog_path_entered": True,
-            "file_dialog_confirm_clicked": True,
+    monkeypatch.setattr(
+        program_mapper,
+        "prepare_fresh_winwatt_session",
+        lambda *, project_path=None, **_kwargs: {
+            "snapshot_ready": True,
+            "snapshot_title": r"WinWatt - C:\tmp\demo\testwwp.wwp" if project_path else "WinWatt",
+            "snapshot_project_path": project_path,
         },
-        "recovery": {"success": True, "diagnostics": {}, "close_attempts": [], "main_window_ready_after_attempt": True},
-    })
+    )
+    monkeypatch.setattr(
+        program_mapper,
+        "_safe_capture_snapshot",
+        lambda state_id: RuntimeStateSnapshot(
+            state_id,
+            1,
+            r"WinWatt - C:\tmp\demo\testwwp.wwp" if "project_open" in state_id else "WinWatt",
+            "TMainForm",
+            [],
+            ["Fájl"],
+            "t",
+        ),
+    )
+    monkeypatch.setattr(program_mapper, "map_runtime_state", lambda **kwargs: no_project if kwargs["state_id"] == "no_project" else project_open)
 
     events: list[tuple[str, dict[str, object]]] = []
     result = program_mapper.build_full_runtime_program_map(
@@ -386,12 +506,12 @@ def test_build_full_runtime_program_map_records_project_open_verification(monkey
     assert result["state_project_open"].snapshot["project_open_verdict"] == "opened_by_this_attempt"
     project_open_payload = dict(next(payload for event_type, payload in events if event_type == "project_open_result"))
     assert project_open_payload["project_open_attempt_started"] is True
-    assert project_open_payload["project_open_menu_item_clicked"] is True
+    assert project_open_payload["project_open_menu_item_clicked"] is False
     assert project_open_payload["path_match_normalized"] is True
     step_events = {event_type: payload for event_type, payload in events}
-    assert step_events["open_file_dialog_detected"]["value"] is True
-    assert step_events["file_dialog_path_entered"]["value"] is True
-    assert step_events["file_dialog_confirm_clicked"]["value"] is True
+    assert step_events["open_file_dialog_detected"]["value"] is False
+    assert step_events["file_dialog_path_entered"]["value"] is False
+    assert step_events["file_dialog_confirm_clicked"]["value"] is False
     assert step_events["dialog_closed"]["value"] is False
     assert step_events["observed_main_window_title_after_open"]["value"] == r"WinWatt - C:\tmp\demo\testwwp.wwp"
     assert step_events["observed_project_path"]["value"] == r"C:\tmp\demo\testwwp.wwp"
