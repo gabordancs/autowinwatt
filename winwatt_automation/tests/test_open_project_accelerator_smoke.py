@@ -66,6 +66,7 @@ def test_run_smoke_passes_detected_dialog_context_into_helper(monkeypatch, tmp_p
                 "helper_received_dialog_context": kwargs.get("dialog_context"),
                 "helper_dialog_revalidated": True,
                 "helper_dialog_ready_for_interaction": True,
+                "path_entry_diagnostics": {"selected_control_control_type": "edit", "mismatch_reason": "unknown"},
                 "observed_main_window_title_after_open": "",
                 "observed_project_path": None,
                 "path_match_normalized": False,
@@ -132,6 +133,7 @@ def test_run_smoke_passes_none_wrapper_to_helper_when_detected_dialog_has_no_han
             dialog_handle_available=False,
             dialog_binding_candidates_count=1,
             binding_failed_reason=None,
+            path_entry_diagnostics={"selected_control_control_type": "edit", "mismatch_reason": "empty_after_write"},
             observed_main_window_title_after_open="",
             observed_project_path=None,
             path_match_normalized=False,
@@ -157,3 +159,5 @@ def test_run_smoke_passes_none_wrapper_to_helper_when_detected_dialog_has_no_han
     assert payload["dialog_handle_available"] is False
     assert payload["binding_strategy_used"] == "pid_class_title_rect"
     assert payload["project_open_error"] == "dialog_revalidation_failed"
+    assert payload["selected_control_control_type"] == "edit"
+    assert payload["mismatch_reason"] == "empty_after_write"
