@@ -463,6 +463,157 @@ def _rect_center(rect: dict[str, Any]) -> dict[str, int]:
     return {"x": left + ((right - left) // 2), "y": top + ((bottom - top) // 2)}
 
 
+def _rect_signature(rect: dict[str, Any] | None) -> tuple[int, int, int, int] | None:
+    rect = dict(rect or {})
+    try:
+        return (
+            int(rect.get("left") or 0),
+            int(rect.get("top") or 0),
+            int(rect.get("right") or 0),
+            int(rect.get("bottom") or 0),
+        )
+    except Exception:
+        return None
+
+
+def _rectangles_overlap(rect_a: dict[str, Any] | None, rect_b: dict[str, Any] | None, *, padding: int = 0) -> bool:
+    sig_a = _rect_signature(rect_a)
+    sig_b = _rect_signature(rect_b)
+    if sig_a is None or sig_b is None:
+        return False
+    left_a, top_a, right_a, bottom_a = sig_a
+    left_b, top_b, right_b, bottom_b = sig_b
+    return not (
+        right_a + padding <= left_b
+        or right_b + padding <= left_a
+        or bottom_a + padding <= top_b
+        or bottom_b + padding <= top_a
+    )
+
+
+def _rectangles_nearly_equal(rect_a: dict[str, Any] | None, rect_b: dict[str, Any] | None, *, tolerance: int = 3) -> bool:
+    sig_a = _rect_signature(rect_a)
+    sig_b = _rect_signature(rect_b)
+    if sig_a is None or sig_b is None:
+        return False
+    return all(abs(a - b) <= tolerance for a, b in zip(sig_a, sig_b, strict=False))
+
+
+def _popup_row_geometry_band(rows: list[dict[str, Any]] | None) -> tuple[int, int, int, int] | None:
+    popup_rects = [
+        _rect_signature(row.get("rectangle"))
+        for row in list(rows or [])
+        if _row_popup_like(row) or ("topbar_candidate" not in row and not _row_topbar_like(row))
+    ]
+    popup_rects = [rect for rect in popup_rects if rect is not None]
+    if not popup_rects:
+        return None
+    return (
+        min(rect[0] for rect in popup_rects),
+        min(rect[1] for rect in popup_rects),
+        max(rect[2] for rect in popup_rects),
+        max(rect[3] for rect in popup_rects),
+    )
+
+
+def _popup_state_path_is_compatible(
+    *,
+    current_menu_path: tuple[str, ...] | None,
+    normalized_parent: tuple[str, ...],
+) -> bool:
+    if current_menu_path is None:
+        return False
+    return tuple(current_menu_path) == tuple(normalized_parent)
+
+
+def _infer_foreground_top_menu_from_snapshot_rows(
+    rows: list[dict[str, Any]],
+    *,
+    canonical_top_menu_names: set[str] | None,
+) -> str | None:
+    if not canonical_top_menu_names:
+        return None
+    popup_band = _popup_row_geometry_band(rows)
+    if popup_band is None:
+        return None
+    popup_left, _popup_top, popup_right, _popup_bottom = popup_band
+    for row in rows:
+        if not _row_topbar_like(row):
+            continue
+        normalized = normalize_menu_title(str(row.get("text") or ""))
+        if not normalized or normalized not in canonical_top_menu_names:
+            continue
+        rect = dict(row.get("rectangle") or {})
+        if _rectangles_overlap(
+            rect,
+            {"left": popup_left, "top": -1, "right": popup_right, "bottom": 10_000},
+            padding=12,
+        ):
+            return normalized
+    return None
+
+
+def _popup_snapshot_belongs_to_current_parent(
+    *,
+    top_menu: str,
+    parent_path: list[str],
+    normalized_parent: tuple[str, ...],
+    snapshot_rows: list[dict[str, Any]] | None,
+    popup_state: PopupState | None,
+    canonical_top_menu_names: set[str] | None,
+) -> tuple[bool, str | None]:
+    if not snapshot_rows:
+        return False, "empty_snapshot"
+    current_menu_path = getattr(popup_state, "current_menu_path", None) if popup_state is not None else None
+    if tuple(normalized_parent) != tuple(normalize_menu_title(part) for part in parent_path):
+        return False, "parent_mismatch"
+    if not _popup_state_path_is_compatible(current_menu_path=current_menu_path, normalized_parent=normalized_parent):
+        return False, "state_path_mismatch"
+    foreground_top_menu = _infer_foreground_top_menu_from_snapshot_rows(
+        snapshot_rows,
+        canonical_top_menu_names=canonical_top_menu_names,
+    )
+    normalized_top_menu = normalize_menu_title(top_menu)
+    if foreground_top_menu and foreground_top_menu != normalized_top_menu:
+        return False, "foreground_context_mismatch"
+    popup_band = _popup_row_geometry_band(snapshot_rows)
+    if popup_band is None:
+        return False, "geometry_mismatch"
+    if canonical_top_menu_names:
+        foreign_topbar_overlap = False
+        for row in snapshot_rows:
+            if not _row_topbar_like(row):
+                continue
+            normalized = normalize_menu_title(str(row.get("text") or ""))
+            if not normalized or normalized == normalized_top_menu or normalized not in canonical_top_menu_names:
+                continue
+            if _rectangles_overlap(
+                row.get("rectangle"),
+                {"left": popup_band[0], "top": -1, "right": popup_band[2], "bottom": 10_000},
+                padding=12,
+            ):
+                foreign_topbar_overlap = True
+                break
+        if foreign_topbar_overlap:
+            return False, "geometry_mismatch"
+    return True, None
+
+
+def _is_foreign_popup_row(
+    row: dict[str, Any],
+    *,
+    source_top_menu: str,
+) -> tuple[bool, str | None]:
+    normalized_text = normalize_menu_title(str(row.get("text") or ""))
+    rect = dict(row.get("rectangle") or {})
+    width, height = _rect_dimensions(rect)
+    if normalized_text == normalize_menu_title("Dokumentumablak") and width <= 40 and height <= 40:
+        normalized_top_menu = normalize_menu_title(source_top_menu)
+        if normalized_top_menu != normalize_menu_title("Dokumentumablak"):
+            return True, "mdi_window_bleedthrough"
+    return False, None
+
+
 def _row_popup_like(row: dict[str, Any]) -> bool:
     return bool(row.get("popup_like", row.get("popup_candidate")))
 
@@ -851,6 +1002,7 @@ def _build_menu_rows_from_popup_rows(
     mapped: list[RuntimeMenuRow] = []
     filtered_counts = {"top_level_overlap": 0, "empty_popup_text_non_actionable": 0}
     placeholder_count = 0
+    rejected_foreign_rows = 0
     for index, row in enumerate(rows):
         popup_like = _row_popup_like(row)
         topbar_like = _row_topbar_like(row)
@@ -867,6 +1019,22 @@ def _build_menu_rows_from_popup_rows(
             row.get("source_scope"),
             len(list(row.get("fragments") or [])),
         )
+        reject_foreign, foreign_reason = _is_foreign_popup_row(row, source_top_menu=top_menu)
+        if reject_foreign:
+            log_name = "MDI_BLEEDTHROUGH_REJECTED" if foreign_reason == "mdi_window_bleedthrough" else "FOREIGN_POPUP_ROW_REJECTED"
+            logger.info(
+                "{} state={} top_menu={} row_index={} reason={} row_text={!r} rectangle={} source_scope={}",
+                log_name,
+                state_id,
+                top_menu,
+                index,
+                foreign_reason or "foreign_popup_row",
+                row.get("text"),
+                rect,
+                row.get("source_scope"),
+            )
+            rejected_foreign_rows += 1
+            continue
         if canonical_top_menu_names and is_top_menu_like_popup_row(row, canonical_top_menu_names):
             logger.info(
                 "DBG_MENU_BUILD_FILTER_REASON state={} top_menu={} row_index={} reason=top-level overlap row_text={!r} rectangle={} topbar_like={} popup_like={} normalized_text={} canonical_match=True",
@@ -1011,8 +1179,40 @@ def _build_menu_rows_from_popup_rows(
             _guess_enabled(row),
             row.get("rectangle"),
         )
+    deduped: list[RuntimeMenuRow] = []
+    dedupe_groups: dict[tuple[str, tuple[int, int, int, int] | None, str, str], RuntimeMenuRow] = {}
+    deduped_rows = 0
+    for mapped_row in mapped:
+        raw_sources = tuple(str(source) for source in mapped_row.raw_text_sources if str(source))
+        source_scope_pattern = f"{mapped_row.source_scope}|{','.join(raw_sources) or 'none'}"
+        dedupe_key = (
+            mapped_row.normalized_text,
+            _rect_signature(mapped_row.rectangle),
+            ",".join(raw_sources) or "none",
+            mapped_row.meta.get("source", ""),
+        )
+        existing = dedupe_groups.get(dedupe_key)
+        if existing is None:
+            dedupe_groups[dedupe_key] = mapped_row
+            deduped.append(mapped_row)
+            continue
+        deduped_rows += 1
+        existing_sources = list(dict.fromkeys([*existing.raw_text_sources, *mapped_row.raw_text_sources]))
+        existing.raw_text_sources = existing_sources
+        existing.meta["deduped_row_indices"] = list(dict.fromkeys([*list(existing.meta.get("deduped_row_indices") or [existing.row_index]), mapped_row.row_index]))
+        logger.info(
+            "MENU_ROW_DEDUP_APPLIED state={} top_menu={} normalized_text={} kept_row_index={} dropped_row_index={} rectangle={} source_scope_pattern={}",
+            state_id,
+            top_menu,
+            mapped_row.normalized_text,
+            existing.row_index,
+            mapped_row.row_index,
+            mapped_row.rectangle,
+            source_scope_pattern,
+        )
+    mapped = deduped
     logger.info(
-        "MENU_ROW_BUILD_SUMMARY state={} top_menu={} input_rows={} mapped_rows={} placeholders={} filtered_overlap={} filtered_empty_non_actionable={}",
+        "MENU_ROW_BUILD_SUMMARY state={} top_menu={} input_rows={} mapped_rows={} placeholders={} filtered_overlap={} filtered_empty_non_actionable={} rejected_foreign_rows={} deduped_rows={}",
         state_id,
         top_menu,
         len(rows),
@@ -1020,6 +1220,8 @@ def _build_menu_rows_from_popup_rows(
         placeholder_count,
         filtered_counts["top_level_overlap"],
         filtered_counts["empty_popup_text_non_actionable"],
+        rejected_foreign_rows,
+        deduped_rows,
     )
     _log_phase_timing("_build_menu_rows_from_popup_rows", started_at, state_id=state_id, top_menu=top_menu, input_rows=len(rows), mapped_rows=len(mapped))
     return mapped
@@ -1931,15 +2133,35 @@ def _reopen_parent_popup_rows(
         diagnostic_options().suppress_placeholder_top_menu_relist,
     )
     normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
-    if (
-        not force_ui_reopen
-        and popup_state is not None
-        and popup_state.current_menu_path == normalized_parent
-        and popup_state.popup_rows
-    ):
-        cached = list(popup_state.popup_rows)
-        _log_phase_timing("reopen_parent_popup_rows", started_at, strategy="popup_state_reuse", row_count=len(cached), parent_path=" > ".join(parent_path))
-        return cached
+    if not force_ui_reopen and popup_state is not None and popup_state.popup_rows:
+        reuse_allowed, reuse_rejection_reason = _popup_snapshot_belongs_to_current_parent(
+            top_menu=top_menu,
+            parent_path=parent_path,
+            normalized_parent=normalized_parent,
+            snapshot_rows=list(popup_state.popup_rows),
+            popup_state=popup_state,
+            canonical_top_menu_names=canonical_top_menu_names,
+        )
+        if reuse_allowed:
+            cached = list(popup_state.popup_rows)
+            logger.info(
+                "POPUP_OWNERSHIP_CONFIRMED state={} top_menu={} normalized_parent={} popup_state_path={} row_count={}",
+                state_id,
+                top_menu,
+                normalized_parent,
+                getattr(popup_state, "current_menu_path", None),
+                len(cached),
+            )
+            _log_phase_timing("reopen_parent_popup_rows", started_at, strategy="popup_state_reuse", row_count=len(cached), parent_path=" > ".join(parent_path))
+            return cached
+        logger.info(
+            "POPUP_REUSE_REJECTED state={} top_menu={} normalized_parent={} popup_state_path={} reason={}",
+            state_id,
+            top_menu,
+            normalized_parent,
+            getattr(popup_state, "current_menu_path", None),
+            reuse_rejection_reason,
+        )
 
     if not restore_clean_menu_baseline(state_id=state_id, stage=f"reopen_parent:{' > '.join(parent_path)}"):
         return []
@@ -3254,9 +3476,35 @@ def explore_menu_tree(
     if popup_rows is None:
         normalized_parent = tuple(normalize_menu_title(part) for part in parent_path)
         reusable_popup_rows: list[dict[str, Any]] = []
-        if popup_state is not None and popup_state.current_menu_path == normalized_parent and popup_state.popup_rows:
-            reusable_popup_rows = list(popup_state.popup_rows)
-        else:
+        if popup_state is not None and popup_state.popup_rows:
+            reuse_allowed, reuse_rejection_reason = _popup_snapshot_belongs_to_current_parent(
+                top_menu=top_menu,
+                parent_path=parent_path,
+                normalized_parent=normalized_parent,
+                snapshot_rows=list(popup_state.popup_rows),
+                popup_state=popup_state,
+                canonical_top_menu_names=canonical_top_menu_names,
+            )
+            if reuse_allowed:
+                reusable_popup_rows = list(popup_state.popup_rows)
+                logger.info(
+                    "POPUP_OWNERSHIP_CONFIRMED state={} top_menu={} normalized_parent={} popup_state_path={} row_count={}",
+                    state_id,
+                    top_menu,
+                    normalized_parent,
+                    getattr(popup_state, "current_menu_path", None),
+                    len(reusable_popup_rows),
+                )
+            elif reuse_rejection_reason != "empty_snapshot":
+                logger.info(
+                    "POPUP_REUSE_REJECTED state={} top_menu={} normalized_parent={} popup_state_path={} reason={}",
+                    state_id,
+                    top_menu,
+                    normalized_parent,
+                    getattr(popup_state, "current_menu_path", None),
+                    reuse_rejection_reason,
+                )
+        if not reusable_popup_rows:
             reusable_popup_rows = menu_helpers.capture_system_menu_popup() if _is_system_menu(top_menu) else menu_helpers.capture_menu_popup_snapshot()
         if reusable_popup_rows:
             if _is_primary_normal_top_menu(top_menu):
