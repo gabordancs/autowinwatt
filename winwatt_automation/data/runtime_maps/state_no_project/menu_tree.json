@@ -3,7 +3,7 @@
     "children": [
       {
         "action_classification": "leaf_action",
-        "action_state_classification": "unknown",
+        "action_state_classification": "executes_command",
         "children": [],
         "debug": {
           "fragments": [],
@@ -266,7 +266,7 @@
     "children": [
       {
         "action_classification": "leaf_action",
-        "action_state_classification": "unknown",
+        "action_state_classification": "executes_command",
         "children": [],
         "debug": {
           "fragments": [],

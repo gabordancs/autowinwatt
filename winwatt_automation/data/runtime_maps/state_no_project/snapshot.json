@@ -26,8 +26,8 @@
   ],
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 2754834,
-    "process_id": 28284,
+    "handle": 4852122,
+    "process_id": 3728,
     "title": "WinWatt gólya"
   },
   "main_window_class": "TMainForm",
@@ -37,17 +37,11 @@
   "mapping_partial": false,
   "mapping_stop_reason": null,
   "observed_startup_project_path": null,
-  "process_id": 28284,
+  "process_id": 3728,
   "startup_project_detected": false,
   "state_id": "no_project",
-  "timestamp": "2026-03-23T20:47:00.301286+00:00",
+  "timestamp": "2026-03-23T22:00:34.368288+00:00",
   "visible_top_windows": [
-    {
-      "class_name": "Shell_SecondaryTrayWnd",
-      "handle": null,
-      "process_id": 14600,
-      "title": ""
-    },
     {
       "class_name": "Shell_TrayWnd",
       "handle": null,
@@ -55,9 +49,15 @@
       "title": "Tálca"
     },
     {
+      "class_name": "Shell_SecondaryTrayWnd",
+      "handle": null,
+      "process_id": 14600,
+      "title": ""
+    },
+    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 28284,
+      "process_id": 3728,
       "title": "WinWatt gólya"
     },
     {
@@ -70,7 +70,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
+      "title": "Codex - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -79,10 +79,46 @@
       "title": "GitHub Desktop"
     },
     {
+      "class_name": "XamlWindow",
+      "handle": null,
+      "process_id": 34912,
+      "title": "Képmetsző"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "Pályázati dokumentumok 0319 – Fájlkezelő"
+    },
+    {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 32708,
+      "title": "budagy - PDF-XChange Editor"
+    },
+    {
       "class_name": "CabinetWClass",
       "handle": null,
       "process_id": 14600,
       "title": "Személyes – Fájlkezelő"
+    },
+    {
+      "class_name": "ApplicationFrameWindow",
+      "handle": null,
+      "process_id": 2992,
+      "title": "Számológép"
+    },
+    {
+      "class_name": "ApplicationFrameWindow",
+      "handle": null,
+      "process_id": 2992,
+      "title": "Számológép"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23032,
+      "title": "Energetikai tanúsítás és pályázathoz szükséges nyilatkozatok - dancs.gabor@catumina.hu - Catumina Stúdió Bt. Mail - Google Chrome"
     },
     {
       "class_name": "HH Parent",
@@ -107,12 +143,6 @@
       "handle": null,
       "process_id": 29976,
       "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 26536,
-      "title": "budagy - PDF-XChange Editor"
     },
     {
       "class_name": "Progman",

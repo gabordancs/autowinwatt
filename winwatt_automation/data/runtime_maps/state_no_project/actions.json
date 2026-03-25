@@ -6,7 +6,9 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "unknown",
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
       "result_type": "no_observable_effect"
     },
     "menu_path": [
@@ -181,7 +183,9 @@
     "dialog_title": null,
     "error_text": null,
     "event_details": {
-      "action_state_classification": "unknown",
+      "action_state_classification": "executes_command",
+      "attempted": true,
+      "recent_project_candidate": false,
       "result_type": "no_observable_effect"
     },
     "menu_path": [

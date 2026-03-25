@@ -399,35 +399,236 @@
       "window_signatures": []
     }
   },
-  "updated_at": "2026-03-23T20:49:45.560994+00:00",
+  "updated_at": "2026-03-23T22:03:17.210605+00:00",
   "verification": {
     "baseline_loaded": true,
-    "coverage_pct": 89.47,
-    "covered_known_menu_paths": 34,
+    "coverage_pct": 30.77,
+    "covered_known_menu_paths": 16,
     "current_menu_paths": 34,
-    "known_menu_paths": 38,
+    "known_menu_paths": 52,
     "missing_dialogs": [],
     "missing_menu_paths": [
       [
         "ablak",
-        "dokumentumablak"
+        "[unlabeled row 14]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 19]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 20]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 22]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 2]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 3]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 5]"
+      ],
+      [
+        "ablak",
+        "megnyitás"
+      ],
+      [
+        "ablak",
+        "végrehajtás"
       ],
       [
         "adatbázis",
-        "dokumentumablak"
+        "[unlabeled row 19]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 20]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 22]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 2]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 3]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 5]"
+      ],
+      [
+        "adatbázis",
+        "végrehajtás"
       ],
       [
         "beállítások",
-        "dokumentumablak"
+        "[unlabeled row 14]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 19]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 20]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 22]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 2]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 3]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 5]"
+      ],
+      [
+        "beállítások",
+        "megnyitás"
+      ],
+      [
+        "beállítások",
+        "végrehajtás"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 14]"
+      ],
+      [
+        "jegyzékek",
+        "megnyitás"
       ],
       [
         "súgó",
-        "dokumentumablak"
+        "[unlabeled row 14]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 19]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 20]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 22]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 2]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 3]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 5]"
+      ],
+      [
+        "súgó",
+        "megnyitás"
+      ],
+      [
+        "súgó",
+        "végrehajtás"
       ]
     ],
     "missing_windows": [],
     "new_dialogs": [],
-    "new_menu_paths": [],
+    "new_menu_paths": [
+      [
+        "jegyzékek",
+        "[unlabeled row 10]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 11]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 12]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 13]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 16]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 17]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 18]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 21]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 23]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 24]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 25]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 26]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 27]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 4]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 6]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 7]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 8]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 9]"
+      ]
+    ],
     "new_windows": []
   }
 }

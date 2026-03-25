@@ -1,10 +1,10 @@
 {
-  "run_id": "0107_1_2026-03-23_22-00-26",
-  "sequence_number": 107,
-  "started_at": "2026-03-23T22:00:26.111347+00:00",
-  "finished_at": "2026-03-23T22:03:17.217548+00:00",
-  "duration_seconds": 171.106,
-  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth -1",
+  "run_id": "0106_1_2026-03-23_21-52-37",
+  "sequence_number": 106,
+  "started_at": "2026-03-23T21:52:37.313426+00:00",
+  "finished_at": "2026-03-23T21:54:37.021347+00:00",
+  "duration_seconds": 119.708,
+  "command": "python C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode off --max-submenu-depth 1",
   "cwd": "C:\\Users\\dancsg\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
   "safe_mode": "off",
   "project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
@@ -15,10 +15,10 @@
     "project_open_top_menus": 5,
     "diff_summary": {
       "shared_top_menus": 5,
-      "actions_only_in_a": 5,
-      "actions_only_in_b": 2,
+      "actions_only_in_a": 32,
+      "actions_only_in_b": 10,
       "enabled_changes": 0,
-      "project_only_paths": 1
+      "project_only_paths": 5
     },
     "startup_project_detected": false,
     "already_open_before_mapping": false,
@@ -34,17 +34,17 @@
   },
   "important_events": [
     {
-      "timestamp": "2026-03-23T22:01:53.489296+00:00",
+      "timestamp": "2026-03-23T21:53:52.620361+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "no_project",
         "top_menus": 6,
-        "actions": 32,
+        "actions": 42,
         "dialogs": 0
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471625+00:00",
+      "timestamp": "2026-03-23T21:54:00.787857+00:00",
       "event_type": "open_file_dialog_detected",
       "payload": {
         "value": false,
@@ -55,28 +55,28 @@
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471730+00:00",
+      "timestamp": "2026-03-23T21:54:00.787952+00:00",
       "event_type": "file_dialog_path_entered",
       "payload": {
         "value": false
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471753+00:00",
+      "timestamp": "2026-03-23T21:54:00.788004+00:00",
       "event_type": "file_dialog_confirm_clicked",
       "payload": {
         "value": false
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471768+00:00",
+      "timestamp": "2026-03-23T21:54:00.788049+00:00",
       "event_type": "dialog_closed",
       "payload": {
         "value": false
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471782+00:00",
+      "timestamp": "2026-03-23T21:54:00.788089+00:00",
       "event_type": "observed_main_window_title_after_open",
       "payload": {
         "value": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
@@ -84,7 +84,7 @@
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471799+00:00",
+      "timestamp": "2026-03-23T21:54:00.788134+00:00",
       "event_type": "observed_project_path",
       "payload": {
         "value": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
@@ -92,7 +92,7 @@
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471814+00:00",
+      "timestamp": "2026-03-23T21:54:00.788175+00:00",
       "event_type": "path_match_normalized",
       "payload": {
         "value": true,
@@ -101,7 +101,7 @@
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.471834+00:00",
+      "timestamp": "2026-03-23T21:54:00.788344+00:00",
       "event_type": "project_open_result",
       "payload": {
         "success": true,
@@ -135,7 +135,7 @@
       }
     },
     {
-      "timestamp": "2026-03-23T22:02:01.472966+00:00",
+      "timestamp": "2026-03-23T21:54:00.790375+00:00",
       "event_type": "project_open_recovery",
       "payload": {
         "success": true,
@@ -145,182 +145,36 @@
       }
     },
     {
-      "timestamp": "2026-03-23T22:03:17.179660+00:00",
+      "timestamp": "2026-03-23T21:54:36.958874+00:00",
       "event_type": "state_mapped",
       "payload": {
         "state_id": "project_open",
         "top_menus": 5,
-        "actions": 29,
+        "actions": 20,
         "dialogs": 0
       }
     },
     {
-      "timestamp": "2026-03-23T22:03:17.206772+00:00",
+      "timestamp": "2026-03-23T21:54:37.004959+00:00",
       "event_type": "runtime_diff",
       "payload": {
         "summary": {
           "shared_top_menus": 5,
-          "actions_only_in_a": 5,
-          "actions_only_in_b": 2,
+          "actions_only_in_a": 32,
+          "actions_only_in_b": 10,
           "enabled_changes": 0,
-          "project_only_paths": 1
+          "project_only_paths": 5
         },
         "enabled_changes": 0,
-        "project_only_paths": 1
+        "project_only_paths": 5
       }
     },
     {
-      "timestamp": "2026-03-23T22:03:17.212477+00:00",
+      "timestamp": "2026-03-23T21:54:37.013306+00:00",
       "event_type": "knowledge_verification",
       "payload": {
         "baseline_loaded": true,
         "missing_menu_paths": [
-          [
-            "ablak",
-            "[unlabeled row 14]"
-          ],
-          [
-            "ablak",
-            "[unlabeled row 19]"
-          ],
-          [
-            "ablak",
-            "[unlabeled row 20]"
-          ],
-          [
-            "ablak",
-            "[unlabeled row 22]"
-          ],
-          [
-            "ablak",
-            "[unlabeled row 2]"
-          ],
-          [
-            "ablak",
-            "[unlabeled row 3]"
-          ],
-          [
-            "ablak",
-            "[unlabeled row 5]"
-          ],
-          [
-            "ablak",
-            "megnyitás"
-          ],
-          [
-            "ablak",
-            "végrehajtás"
-          ],
-          [
-            "adatbázis",
-            "[unlabeled row 19]"
-          ],
-          [
-            "adatbázis",
-            "[unlabeled row 20]"
-          ],
-          [
-            "adatbázis",
-            "[unlabeled row 22]"
-          ],
-          [
-            "adatbázis",
-            "[unlabeled row 2]"
-          ],
-          [
-            "adatbázis",
-            "[unlabeled row 3]"
-          ],
-          [
-            "adatbázis",
-            "[unlabeled row 5]"
-          ],
-          [
-            "adatbázis",
-            "végrehajtás"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 14]"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 19]"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 20]"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 22]"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 2]"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 3]"
-          ],
-          [
-            "beállítások",
-            "[unlabeled row 5]"
-          ],
-          [
-            "beállítások",
-            "megnyitás"
-          ],
-          [
-            "beállítások",
-            "végrehajtás"
-          ],
-          [
-            "jegyzékek",
-            "[unlabeled row 14]"
-          ],
-          [
-            "jegyzékek",
-            "megnyitás"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 14]"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 19]"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 20]"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 22]"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 2]"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 3]"
-          ],
-          [
-            "súgó",
-            "[unlabeled row 5]"
-          ],
-          [
-            "súgó",
-            "megnyitás"
-          ],
-          [
-            "súgó",
-            "végrehajtás"
-          ]
-        ],
-        "new_menu_paths": [
           [
             "jegyzékek",
             "[unlabeled row 10]"
@@ -394,28 +248,174 @@
             "[unlabeled row 9]"
           ]
         ],
+        "new_menu_paths": [
+          [
+            "ablak",
+            "[unlabeled row 14]"
+          ],
+          [
+            "ablak",
+            "[unlabeled row 19]"
+          ],
+          [
+            "ablak",
+            "[unlabeled row 20]"
+          ],
+          [
+            "ablak",
+            "[unlabeled row 22]"
+          ],
+          [
+            "ablak",
+            "[unlabeled row 2]"
+          ],
+          [
+            "ablak",
+            "[unlabeled row 3]"
+          ],
+          [
+            "ablak",
+            "[unlabeled row 5]"
+          ],
+          [
+            "ablak",
+            "megnyitás"
+          ],
+          [
+            "ablak",
+            "végrehajtás"
+          ],
+          [
+            "adatbázis",
+            "[unlabeled row 19]"
+          ],
+          [
+            "adatbázis",
+            "[unlabeled row 20]"
+          ],
+          [
+            "adatbázis",
+            "[unlabeled row 22]"
+          ],
+          [
+            "adatbázis",
+            "[unlabeled row 2]"
+          ],
+          [
+            "adatbázis",
+            "[unlabeled row 3]"
+          ],
+          [
+            "adatbázis",
+            "[unlabeled row 5]"
+          ],
+          [
+            "adatbázis",
+            "végrehajtás"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 14]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 19]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 20]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 22]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 2]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 3]"
+          ],
+          [
+            "beállítások",
+            "[unlabeled row 5]"
+          ],
+          [
+            "beállítások",
+            "megnyitás"
+          ],
+          [
+            "beállítások",
+            "végrehajtás"
+          ],
+          [
+            "jegyzékek",
+            "[unlabeled row 14]"
+          ],
+          [
+            "jegyzékek",
+            "megnyitás"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 14]"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 19]"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 20]"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 22]"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 2]"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 3]"
+          ],
+          [
+            "súgó",
+            "[unlabeled row 5]"
+          ],
+          [
+            "súgó",
+            "megnyitás"
+          ],
+          [
+            "súgó",
+            "végrehajtás"
+          ]
+        ],
         "missing_dialogs": [],
         "new_dialogs": [],
         "missing_windows": [],
         "new_windows": [],
-        "known_menu_paths": 52,
-        "current_menu_paths": 34,
+        "known_menu_paths": 34,
+        "current_menu_paths": 52,
         "covered_known_menu_paths": 16,
-        "coverage_pct": 30.77
+        "coverage_pct": 47.06
       }
     },
     {
-      "timestamp": "2026-03-23T22:03:17.216588+00:00",
+      "timestamp": "2026-03-23T21:54:37.019759+00:00",
       "event_type": "runtime_mapping_summary",
       "payload": {
         "no_project_top_menus": 6,
         "project_open_top_menus": 5,
         "diff_summary": {
           "shared_top_menus": 5,
-          "actions_only_in_a": 5,
-          "actions_only_in_b": 2,
+          "actions_only_in_a": 32,
+          "actions_only_in_b": 10,
           "enabled_changes": 0,
-          "project_only_paths": 1
+          "project_only_paths": 5
         },
         "startup_project_detected": false,
         "already_open_before_mapping": false,
@@ -427,8 +427,8 @@
     }
   ],
   "output_paths": {
-    "log_path": "data\\run_logs\\runs\\0107_1_2026-03-23_22-00-26.log",
-    "json_path": "data\\run_logs\\runs\\0107_1_2026-03-23_22-00-26.json"
+    "log_path": "data\\run_logs\\runs\\0106_1_2026-03-23_21-52-37.log",
+    "json_path": "data\\run_logs\\runs\\0106_1_2026-03-23_21-52-37.json"
   },
   "tags": [
     "map_full_program",

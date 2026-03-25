@@ -2,7 +2,7 @@
   "already_open_before_mapping": false,
   "bootstrap": {
     "close_result": {
-      "message": "SUCCESS: The process with PID 28284 (child process of PID 36720) has been terminated.",
+      "message": "SUCCESS: The process with PID 3728 (child process of PID 19780) has been terminated.",
       "ok": true,
       "returncode": 0
     },
@@ -27,8 +27,8 @@
   "expected_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "foreground_window": {
     "class_name": "TMainForm",
-    "handle": 3475824,
-    "process_id": 36772,
+    "handle": 5245908,
+    "process_id": 35832,
     "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
   },
   "main_window_class": "TMainForm",
@@ -41,13 +41,13 @@
   "observed_project_path": "C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "observed_startup_project_path": null,
   "path_match_normalized": true,
-  "process_id": 36772,
+  "process_id": 35832,
   "project_open_recovery": {
     "close_attempts": [],
     "diagnostics": {
       "bootstrap": {
         "close_result": {
-          "message": "SUCCESS: The process with PID 28284 (child process of PID 36720) has been terminated.",
+          "message": "SUCCESS: The process with PID 3728 (child process of PID 19780) has been terminated.",
           "ok": true,
           "returncode": 0
         },
@@ -69,24 +69,18 @@
   "project_open_verdict": "opened_by_this_attempt",
   "startup_project_detected": false,
   "state_id": "project_open",
-  "timestamp": "2026-03-23T20:48:34.813850+00:00",
+  "timestamp": "2026-03-23T22:02:02.093903+00:00",
   "visible_top_windows": [
     {
       "class_name": "THintWindow",
       "handle": null,
-      "process_id": 36772,
+      "process_id": 35832,
       "title": "Szerkezetek"
     },
     {
       "class_name": "SysShadow",
       "handle": null,
-      "process_id": 36772,
-      "title": ""
-    },
-    {
-      "class_name": "Shell_SecondaryTrayWnd",
-      "handle": null,
-      "process_id": 14600,
+      "process_id": 35832,
       "title": ""
     },
     {
@@ -96,9 +90,15 @@
       "title": "Tálca"
     },
     {
+      "class_name": "Shell_SecondaryTrayWnd",
+      "handle": null,
+      "process_id": 14600,
+      "title": ""
+    },
+    {
       "class_name": "TMainForm",
       "handle": null,
-      "process_id": 36772,
+      "process_id": 35832,
       "title": "WinWatt gólya - C:\\Users\\dancsg\\OneDrive - Futureal\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
     },
     {
@@ -111,7 +111,7 @@
       "class_name": "Chrome_WidgetWin_1",
       "handle": null,
       "process_id": 23032,
-      "title": "Winwatt - hekkelések - Focus és diff fontossága - Google Chrome"
+      "title": "Codex - Google Chrome"
     },
     {
       "class_name": "Chrome_WidgetWin_1",
@@ -120,10 +120,46 @@
       "title": "GitHub Desktop"
     },
     {
+      "class_name": "XamlWindow",
+      "handle": null,
+      "process_id": 34912,
+      "title": "Képmetsző"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 14600,
+      "title": "Pályázati dokumentumok 0319 – Fájlkezelő"
+    },
+    {
+      "class_name": "Window",
+      "handle": null,
+      "process_id": 32708,
+      "title": "budagy - PDF-XChange Editor"
+    },
+    {
       "class_name": "CabinetWClass",
       "handle": null,
       "process_id": 14600,
       "title": "Személyes – Fájlkezelő"
+    },
+    {
+      "class_name": "ApplicationFrameWindow",
+      "handle": null,
+      "process_id": 2992,
+      "title": "Számológép"
+    },
+    {
+      "class_name": "ApplicationFrameWindow",
+      "handle": null,
+      "process_id": 2992,
+      "title": "Számológép"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23032,
+      "title": "Energetikai tanúsítás és pályázathoz szükséges nyilatkozatok - dancs.gabor@catumina.hu - Catumina Stúdió Bt. Mail - Google Chrome"
     },
     {
       "class_name": "HH Parent",
@@ -148,12 +184,6 @@
       "handle": null,
       "process_id": 29976,
       "title": "Hungarian.xml – 1. profil – Microsoft​ Edge"
-    },
-    {
-      "class_name": "Window",
-      "handle": null,
-      "process_id": 26536,
-      "title": "budagy - PDF-XChange Editor"
     },
     {
       "class_name": "Progman",
