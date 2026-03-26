@@ -176,3 +176,26 @@ python -m winwatt_automation.scripts.dev_cycle_controller mapping-cycle --result
 - A WinWatt "normál bezárás" folyamat-szinten kezelt; UI-s graceful close nem teljes.
 - A script runner timeout esetén `terminate` jelet küld, nem végez veszélyes cleanup-ot automatikusan.
 - A `cycle` parancs első körben egyszerű, bővíthető workflow.
+
+## EXE/DLL weak signal extractor
+
+Új modul: `winwatt_automation.exe`, amely heurisztikusan stringeket gyűjt EXE/DLL fájlokból, majd összeveti ezeket WWP és UI snapshot outputokkal.
+
+### CLI példa
+
+```bash
+python -m winwatt_automation.scripts.extract_exe_signals \
+  /path/to/WinWatt.exe \
+  --json-out data/parsed/exe_signals.json \
+  --wwp-json data/parsed/wwp_signals.json \
+  --ui-snapshot data/snapshots/ui_tree.json
+```
+
+### JSON kimenet fő blokkok
+
+- `strings`
+- `clusters`
+- `inferred_entities`
+- `comparisons` (`wwp`, `ui`)
+
+Célzott felhasználás: UI mapping validáció, WWP értelmezés támogatás, hidden feature jelöltek gyors azonosítása.
