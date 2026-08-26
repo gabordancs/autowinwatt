@@ -1,0 +1,494 @@
+{
+  "workflow": "safe_new_project_probe",
+  "command": "MainForm.NewProjekt",
+  "command_id": 2,
+  "dialog_found": true,
+  "dialog_title": "Projekt létrehozása",
+  "dialog_dismissed": true,
+  "main_window_enabled_after": true,
+  "success": true,
+  "dialog_controls": [
+    {
+      "title": "",
+      "class_name": "DUIViewWndClassName",
+      "friendly_class_name": "DUIViewWndClassName",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 970,
+        "top": 485,
+        "right": 1910,
+        "bottom": 866
+      }
+    },
+    {
+      "title": "",
+      "class_name": "DirectUIHWND",
+      "friendly_class_name": "DirectUIHWND",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 970,
+        "top": 485,
+        "right": 1910,
+        "bottom": 866
+      }
+    },
+    {
+      "title": "",
+      "class_name": "CtrlNotifySink",
+      "friendly_class_name": "CtrlNotifySink",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 973,
+        "top": 524,
+        "right": 1166,
+        "bottom": 867
+      }
+    },
+    {
+      "title": "Névtérfastruktúra vezérlő",
+      "class_name": "NamespaceTreeControl",
+      "friendly_class_name": "NamespaceTreeControl",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 973,
+        "top": 524,
+        "right": 1166,
+        "bottom": 867
+      }
+    },
+    {
+      "title": "Navigációs ablak",
+      "class_name": "SysTreeView32",
+      "friendly_class_name": "TreeView",
+      "control_id": 100,
+      "enabled": true,
+      "rectangle": {
+        "left": 973,
+        "top": 524,
+        "right": 1166,
+        "bottom": 867
+      }
+    },
+    {
+      "title": "",
+      "class_name": "CtrlNotifySink",
+      "friendly_class_name": "CtrlNotifySink",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1170,
+        "top": 524,
+        "right": 1910,
+        "bottom": 867
+      }
+    },
+    {
+      "title": "ShellView",
+      "class_name": "SHELLDLL_DefView",
+      "friendly_class_name": "SHELLDLL_DefView",
+      "control_id": 1121,
+      "enabled": true,
+      "rectangle": {
+        "left": 1170,
+        "top": 524,
+        "right": 1910,
+        "bottom": 867
+      }
+    },
+    {
+      "title": "",
+      "class_name": "DirectUIHWND",
+      "friendly_class_name": "DirectUIHWND",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1170,
+        "top": 524,
+        "right": 1910,
+        "bottom": 867
+      }
+    },
+    {
+      "title": "",
+      "class_name": "CtrlNotifySink",
+      "friendly_class_name": "CtrlNotifySink",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1170,
+        "top": 845,
+        "right": 1910,
+        "bottom": 866
+      }
+    },
+    {
+      "title": "",
+      "class_name": "ScrollBar",
+      "friendly_class_name": "ScrollBar",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1170,
+        "top": 845,
+        "right": 1910,
+        "bottom": 866
+      }
+    },
+    {
+      "title": "Fáj&lnév:",
+      "class_name": "Static",
+      "friendly_class_name": "Static",
+      "control_id": 1090,
+      "enabled": true,
+      "rectangle": {
+        "left": 1133,
+        "top": 883,
+        "right": 1183,
+        "bottom": 902
+      }
+    },
+    {
+      "title": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp",
+      "class_name": "ComboBoxEx32",
+      "friendly_class_name": "ComboBoxEx",
+      "control_id": 1148,
+      "enabled": true,
+      "rectangle": {
+        "left": 1189,
+        "top": 878,
+        "right": 1630,
+        "bottom": 908
+      }
+    },
+    {
+      "title": "",
+      "class_name": "ComboBox",
+      "friendly_class_name": "ComboBox",
+      "control_id": 1148,
+      "enabled": true,
+      "rectangle": {
+        "left": 1189,
+        "top": 878,
+        "right": 1630,
+        "bottom": 908
+      }
+    },
+    {
+      "title": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp",
+      "class_name": "Edit",
+      "friendly_class_name": "Edit",
+      "control_id": 1148,
+      "enabled": true,
+      "rectangle": {
+        "left": 1194,
+        "top": 884,
+        "right": 1605,
+        "bottom": 903
+      }
+    },
+    {
+      "title": "Fájl&típus:",
+      "class_name": "Static",
+      "friendly_class_name": "Static",
+      "control_id": 1089,
+      "enabled": true,
+      "rectangle": {
+        "left": 970,
+        "top": 416,
+        "right": 970,
+        "bottom": 416
+      }
+    },
+    {
+      "title": "WinWatt projekt (*.wwp)",
+      "class_name": "ComboBox",
+      "friendly_class_name": "ComboBox",
+      "control_id": 1136,
+      "enabled": true,
+      "rectangle": {
+        "left": 1645,
+        "top": 878,
+        "right": 1889,
+        "bottom": 907
+      }
+    },
+    {
+      "title": "&Megnyitás",
+      "class_name": "Button",
+      "friendly_class_name": "Button",
+      "control_id": 1,
+      "enabled": true,
+      "rectangle": {
+        "left": 1645,
+        "top": 914,
+        "right": 1764,
+        "bottom": 947
+      }
+    },
+    {
+      "title": "Mégse",
+      "class_name": "Button",
+      "friendly_class_name": "Button",
+      "control_id": 2,
+      "enabled": true,
+      "rectangle": {
+        "left": 1779,
+        "top": 914,
+        "right": 1889,
+        "bottom": 947
+      }
+    },
+    {
+      "title": "",
+      "class_name": "ScrollBar",
+      "friendly_class_name": "ScrollBar",
+      "control_id": -1,
+      "enabled": true,
+      "rectangle": {
+        "left": 1889,
+        "top": 946,
+        "right": 1910,
+        "bottom": 967
+      }
+    },
+    {
+      "title": "",
+      "class_name": "WorkerW",
+      "friendly_class_name": "WorkerW",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 970,
+        "top": 416,
+        "right": 1910,
+        "bottom": 485
+      }
+    },
+    {
+      "title": "",
+      "class_name": "ReBarWindow32",
+      "friendly_class_name": "ReBar",
+      "control_id": 40965,
+      "enabled": true,
+      "rectangle": {
+        "left": 970,
+        "top": 416,
+        "right": 1910,
+        "bottom": 485
+      }
+    },
+    {
+      "title": "",
+      "class_name": "TravelBand",
+      "friendly_class_name": "TravelBand",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 970,
+        "top": 428,
+        "right": 1095,
+        "bottom": 471
+      }
+    },
+    {
+      "title": "Navigációs gombok",
+      "class_name": "ToolbarWindow32",
+      "friendly_class_name": "Toolbar",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 975,
+        "top": 430,
+        "right": 1095,
+        "bottom": 470
+      }
+    },
+    {
+      "title": "",
+      "class_name": "UpBand",
+      "friendly_class_name": "UpBand",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1095,
+        "top": 426,
+        "right": 1140,
+        "bottom": 471
+      }
+    },
+    {
+      "title": "Fel sáv",
+      "class_name": "ToolbarWindow32",
+      "friendly_class_name": "Toolbar",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1095,
+        "top": 430,
+        "right": 1140,
+        "bottom": 475
+      }
+    },
+    {
+      "title": "",
+      "class_name": "Address Band Root",
+      "friendly_class_name": "Address Band Root",
+      "control_id": 41477,
+      "enabled": true,
+      "rectangle": {
+        "left": 1140,
+        "top": 416,
+        "right": 1629,
+        "bottom": 481
+      }
+    },
+    {
+      "title": "",
+      "class_name": "msctls_progress32",
+      "friendly_class_name": "Progress",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1143,
+        "top": 429,
+        "right": 1627,
+        "bottom": 472
+      }
+    },
+    {
+      "title": "",
+      "class_name": "Breadcrumb Parent",
+      "friendly_class_name": "Breadcrumb Parent",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1143,
+        "top": 429,
+        "right": 1542,
+        "bottom": 472
+      }
+    },
+    {
+      "title": "Cím: Letöltések",
+      "class_name": "ToolbarWindow32",
+      "friendly_class_name": "Toolbar",
+      "control_id": 1001,
+      "enabled": true,
+      "rectangle": {
+        "left": 1150,
+        "top": 429,
+        "right": 1541,
+        "bottom": 472
+      }
+    },
+    {
+      "title": "Címsáv",
+      "class_name": "ToolbarWindow32",
+      "friendly_class_name": "Toolbar",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1541,
+        "top": 429,
+        "right": 1626,
+        "bottom": 472
+      }
+    },
+    {
+      "title": "",
+      "class_name": "SeparatorBand",
+      "friendly_class_name": "SeparatorBand",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1634,
+        "top": 448,
+        "right": 1642,
+        "bottom": 449
+      }
+    },
+    {
+      "title": "",
+      "class_name": "UniversalSearchBand",
+      "friendly_class_name": "UniversalSearchBand",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1641,
+        "top": 424,
+        "right": 1896,
+        "bottom": 474
+      }
+    },
+    {
+      "title": "",
+      "class_name": "Search Box",
+      "friendly_class_name": "Search Box",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1641,
+        "top": 428,
+        "right": 1896,
+        "bottom": 473
+      }
+    },
+    {
+      "title": "",
+      "class_name": "SearchEditBoxWrapperClass",
+      "friendly_class_name": "Edit",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1648,
+        "top": 428,
+        "right": 1891,
+        "bottom": 473
+      }
+    },
+    {
+      "title": "",
+      "class_name": "DirectUIHWND",
+      "friendly_class_name": "DirectUIHWND",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1648,
+        "top": 428,
+        "right": 1891,
+        "bottom": 473
+      }
+    },
+    {
+      "title": "",
+      "class_name": "SeparatorBand",
+      "friendly_class_name": "SeparatorBand",
+      "control_id": 0,
+      "enabled": true,
+      "rectangle": {
+        "left": 1901,
+        "top": 448,
+        "right": 1910,
+        "bottom": 449
+      }
+    }
+  ],
+  "detection": {
+    "dialog_found": true,
+    "selected_candidate": {
+      "title": "Projekt létrehozása",
+      "class_name": "#32770",
+      "process_id": 13928,
+      "handle": 592296
+    },
+    "method": "file_menu_mnemonic",
+    "sequence": [
+      "ALT+F",
+      "ENTER"
+    ]
+  }
+}

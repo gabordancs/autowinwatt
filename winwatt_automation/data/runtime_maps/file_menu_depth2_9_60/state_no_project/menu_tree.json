@@ -1,0 +1,157 @@
+[
+  {
+    "children": [
+      {
+        "action_classification": "skipped_by_safety",
+        "action_state_classification": "executes_command",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 84,
+            "left": 4,
+            "right": 687,
+            "top": 56
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": true,
+        "index": 0,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "végrehajtás",
+        "opens_dialog": false,
+        "opens_modal": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          "Végrehajtás"
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "no_project",
+        "title": "Végrehajtás",
+        "title_raw": "Végrehajtás"
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "action_state_classification": "unknown",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 139,
+            "left": 4,
+            "right": 687,
+            "top": 111
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": false,
+        "index": 2,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "[unlabeled row 2]",
+        "opens_dialog": false,
+        "opens_modal": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          "[unlabeled row 2]"
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "no_project",
+        "title": "[unlabeled row 2]",
+        "title_raw": "[unlabeled row 2]"
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "action_state_classification": "unknown",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 167,
+            "left": 4,
+            "right": 687,
+            "top": 139
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": false,
+        "index": 3,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "[unlabeled row 3]",
+        "opens_dialog": false,
+        "opens_modal": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          "[unlabeled row 3]"
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "no_project",
+        "title": "[unlabeled row 3]",
+        "title_raw": "[unlabeled row 3]"
+      },
+      {
+        "action_classification": "skipped_by_safety",
+        "action_state_classification": "unknown",
+        "children": [],
+        "debug": {
+          "fragments": [],
+          "geometry": {
+            "bottom": 229,
+            "left": 4,
+            "right": 687,
+            "top": 201
+          },
+          "reused_from_previous_state": false,
+          "source_scope": "main_window",
+          "top_menu": "Fájl"
+        },
+        "enabled": false,
+        "index": 5,
+        "level": 1,
+        "likely_destructive": false,
+        "likely_state_changing": true,
+        "normalized_title": "[unlabeled row 5]",
+        "opens_dialog": false,
+        "opens_modal": false,
+        "opens_submenu": false,
+        "path": [
+          "Fájl",
+          "[unlabeled row 5]"
+        ],
+        "separator": false,
+        "shortcut": null,
+        "skipped_by_safety": true,
+        "state_id": "no_project",
+        "title": "[unlabeled row 5]",
+        "title_raw": "[unlabeled row 5]"
+      }
+    ],
+    "path": [
+      "Fájl"
+    ],
+    "state_id": "no_project",
+    "title": "Fájl",
+    "title_normalized": "fájl",
+    "title_raw": "Fájl"
+  }
+]

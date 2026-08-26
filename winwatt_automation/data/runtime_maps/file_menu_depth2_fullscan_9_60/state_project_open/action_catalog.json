@@ -1,0 +1,34 @@
+[
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Fájl",
+      "Végrehajtás"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  },
+  {
+    "action_state_classification": "executes_command",
+    "action_type": "no_effect",
+    "changes_menu_state": false,
+    "expand_children": false,
+    "opens_modal": false,
+    "opens_project_and_changes_runtime_state": false,
+    "opens_submenu": false,
+    "path": [
+      "Fájl",
+      "Megnyitás"
+    ],
+    "retry_on_next_pass": false,
+    "traversal_depth": 1,
+    "treat_as_navigation": false
+  }
+]

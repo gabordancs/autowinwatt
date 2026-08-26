@@ -1,0 +1,8 @@
+run_id=0116_mainform_xmlimportaction_2026-08-26_05-43-45
+started_at=2026-08-26T05:43:45.450363+00:00
+command=safe_runtime_command MainForm.XMLImportAction
+
+[event] command_accepted: {"input": "xml import ellenorzese", "stable_key": "MainForm.XMLImportAction"}
+[event] workflow_result: {"command": "MainForm.XMLImportAction", "dialog_class": "#32770", "dialog_dismissed": true, "dialog_found": true, "dialog_handle": 1377708, "dialog_title": "Megnyitás", "forbidden_effect": "select_file_or_confirm_xml_import", "main_window_enabled_after": true, "native_menu_path": [{"menu_command_id": 1}, {"command_id": 10}], "success": true, "workflow": "safe_xml_import_probe"}
+
+finished_at=2026-08-26T05:43:47.881204+00:00 success=True exit_code=0

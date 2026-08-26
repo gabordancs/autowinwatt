@@ -1,0 +1,386 @@
+[
+  {
+    "title": "Nyomtatandó",
+    "class_name": "TCheckBox",
+    "control_id": 985070,
+    "enabled": true
+  },
+  {
+    "title": "Import a vágólapról",
+    "class_name": "TButton",
+    "control_id": 2230660,
+    "enabled": true
+  },
+  {
+    "title": "Export a vágólapra",
+    "class_name": "TButton",
+    "control_id": 657170,
+    "enabled": true
+  },
+  {
+    "title": "Az építmény adataiból",
+    "class_name": "TButton",
+    "control_id": 460844,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TPageControl",
+    "control_id": 1902678,
+    "enabled": true
+  },
+  {
+    "title": "Részletezve",
+    "class_name": "TTabSheet",
+    "control_id": 1116218,
+    "enabled": true
+  },
+  {
+    "title": "...",
+    "class_name": "TButton",
+    "control_id": 591632,
+    "enabled": true
+  },
+  {
+    "title": "...",
+    "class_name": "TButton",
+    "control_id": 1181708,
+    "enabled": true
+  },
+  {
+    "title": "+36305120611",
+    "class_name": "TEdit",
+    "control_id": 526480,
+    "enabled": true
+  },
+  {
+    "title": "Kapy",
+    "class_name": "TEdit",
+    "control_id": 460882,
+    "enabled": true
+  },
+  {
+    "title": "3",
+    "class_name": "TEdit",
+    "control_id": 460880,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 1247258,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 4327358,
+    "enabled": true
+  },
+  {
+    "title": "FE",
+    "class_name": "TEdit",
+    "control_id": 1705960,
+    "enabled": true
+  },
+  {
+    "title": "2",
+    "class_name": "TEdit",
+    "control_id": 1443876,
+    "enabled": true
+  },
+  {
+    "title": "utca",
+    "class_name": "TComboBox",
+    "control_id": 1837040,
+    "enabled": true
+  },
+  {
+    "title": "dancs.gabor@catumina.hu",
+    "class_name": "TEdit",
+    "control_id": 1050528,
+    "enabled": true
+  },
+  {
+    "title": "TÉ 01-67843",
+    "class_name": "TEdit",
+    "control_id": 919636,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 722900,
+    "enabled": true
+  },
+  {
+    "title": "Budapest",
+    "class_name": "TEdit",
+    "control_id": 3541952,
+    "enabled": true
+  },
+  {
+    "title": "1025",
+    "class_name": "TEdit",
+    "control_id": 8063862,
+    "enabled": true
+  },
+  {
+    "title": "Dancs Gábor",
+    "class_name": "TEdit",
+    "control_id": 3672924,
+    "enabled": true
+  },
+  {
+    "title": "Egyszerűen",
+    "class_name": "TTabSheet",
+    "control_id": 919714,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TMemo",
+    "control_id": 1116114,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TPageControl",
+    "control_id": 1181670,
+    "enabled": true
+  },
+  {
+    "title": "Részletezve",
+    "class_name": "TTabSheet",
+    "control_id": 1116328,
+    "enabled": true
+  },
+  {
+    "title": "...",
+    "class_name": "TButton",
+    "control_id": 1116082,
+    "enabled": true
+  },
+  {
+    "title": "...",
+    "class_name": "TButton",
+    "control_id": 1116174,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 1050656,
+    "enabled": true
+  },
+  {
+    "title": "Damjanich utca 30.",
+    "class_name": "TEdit",
+    "control_id": 460610,
+    "enabled": true
+  },
+  {
+    "title": "Isaszeg",
+    "class_name": "TEdit",
+    "control_id": 1247176,
+    "enabled": true
+  },
+  {
+    "title": "2117",
+    "class_name": "TEdit",
+    "control_id": 2164950,
+    "enabled": true
+  },
+  {
+    "title": "Apágyi Szandra",
+    "class_name": "TEdit",
+    "control_id": 723116,
+    "enabled": true
+  },
+  {
+    "title": "Egyszerűen",
+    "class_name": "TTabSheet",
+    "control_id": 1115966,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TMemo",
+    "control_id": 919576,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TPageControl",
+    "control_id": 1443904,
+    "enabled": true
+  },
+  {
+    "title": "Részletezve",
+    "class_name": "TTabSheet",
+    "control_id": 1312828,
+    "enabled": true
+  },
+  {
+    "title": "...",
+    "class_name": "TButton",
+    "control_id": 1902490,
+    "enabled": true
+  },
+  {
+    "title": "...",
+    "class_name": "TButton",
+    "control_id": 1247346,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 2690294,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 2755638,
+    "enabled": true
+  },
+  {
+    "title": "2768/1",
+    "class_name": "TEdit",
+    "control_id": 3083314,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 1247170,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 1772236,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 3738208,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 2492998,
+    "enabled": true
+  },
+  {
+    "title": "30",
+    "class_name": "TEdit",
+    "control_id": 2099256,
+    "enabled": true
+  },
+  {
+    "title": "utca",
+    "class_name": "TComboBox",
+    "control_id": 4917800,
+    "enabled": true
+  },
+  {
+    "title": "Damjanich",
+    "class_name": "TEdit",
+    "control_id": 919440,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TEdit",
+    "control_id": 2362406,
+    "enabled": true
+  },
+  {
+    "title": "Isaszeg",
+    "class_name": "TEdit",
+    "control_id": 4066332,
+    "enabled": true
+  },
+  {
+    "title": "2117",
+    "class_name": "TEdit",
+    "control_id": 854150,
+    "enabled": true
+  },
+  {
+    "title": "Családi ház",
+    "class_name": "TEdit",
+    "control_id": 1116178,
+    "enabled": true
+  },
+  {
+    "title": "GPS",
+    "class_name": "TTabSheet",
+    "control_id": 1050698,
+    "enabled": true
+  },
+  {
+    "title": "északi",
+    "class_name": "TComboBox",
+    "control_id": 1116182,
+    "enabled": true
+  },
+  {
+    "title": "keleti",
+    "class_name": "TComboBox",
+    "control_id": 919642,
+    "enabled": true
+  },
+  {
+    "title": "Egyszerűen",
+    "class_name": "TTabSheet",
+    "control_id": 657208,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TMemo",
+    "control_id": 1050776,
+    "enabled": true
+  },
+  {
+    "title": "Mai dátum...",
+    "class_name": "TButton",
+    "control_id": 7341888,
+    "enabled": true
+  },
+  {
+    "title": "Súgó",
+    "class_name": "TButton",
+    "control_id": 788646,
+    "enabled": true
+  },
+  {
+    "title": "Elvet",
+    "class_name": "TButton",
+    "control_id": 1771696,
+    "enabled": true
+  },
+  {
+    "title": "OK",
+    "class_name": "TButton",
+    "control_id": 1378310,
+    "enabled": true
+  },
+  {
+    "title": "2025. 11. 10.",
+    "class_name": "TEdit",
+    "control_id": 1967926,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TMemo",
+    "control_id": 2623580,
+    "enabled": true
+  }
+]\n

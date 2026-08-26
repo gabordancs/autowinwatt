@@ -1790,6 +1790,233 @@
       },
       "log_path": "data\\run_logs\\runs\\0107_1_2026-03-23_22-00-26.log",
       "json_path": "data\\run_logs\\runs\\0107_1_2026-03-23_22-00-26.json"
+    },
+    {
+      "sequence_number": 108,
+      "run_id": "0108_data_runtime_maps_first_live_9_60_2026-08-25_20-14-19",
+      "started_at": "2026-08-25T20:14:19.897977+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --max-submenu-depth 1 --output-dir data\\runtime_maps\\first_live_9_60",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 0,
+        "diff summary": {
+          "shared_top_menus": 0,
+          "actions_only_in_a": 24,
+          "actions_only_in_b": 0,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        },
+        "project_open_verdict": "open_attempt_failed"
+      },
+      "log_path": "data\\run_logs\\runs\\0108_data_runtime_maps_first_live_9_60_2026-08-25_20-14-19.log",
+      "json_path": "data\\run_logs\\runs\\0108_data_runtime_maps_first_live_9_60_2026-08-25_20-14-19.json"
+    },
+    {
+      "sequence_number": 109,
+      "run_id": "0109_data_runtime_maps_first_live_9_60_retry_2026-08-25_20-16-39",
+      "started_at": "2026-08-25T20:16:39.877888+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --max-submenu-depth 1 --output-dir data\\runtime_maps\\first_live_9_60_retry",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 5,
+        "diff summary": {
+          "shared_top_menus": 5,
+          "actions_only_in_a": 14,
+          "actions_only_in_b": 5,
+          "enabled_changes": 0,
+          "project_only_paths": 5
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0109_data_runtime_maps_first_live_9_60_retry_2026-08-25_20-16-39.log",
+      "json_path": "data\\run_logs\\runs\\0109_data_runtime_maps_first_live_9_60_retry_2026-08-25_20-16-39.json"
+    },
+    {
+      "sequence_number": 110,
+      "run_id": "0110_diagnostic_2026-08-25_20-18-59",
+      "started_at": "2026-08-25T20:18:59.262382+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --top-menus Fájl --max-submenu-depth 2 --output-dir data\\runtime_maps\\file_menu_depth2_9_60 --log-profile diagnostic",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 2,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 1
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0110_diagnostic_2026-08-25_20-18-59.log",
+      "json_path": "data\\run_logs\\runs\\0110_diagnostic_2026-08-25_20-18-59.json"
+    },
+    {
+      "sequence_number": 111,
+      "run_id": "0111_diagnostic_2026-08-25_20-20-21",
+      "started_at": "2026-08-25T20:20:21.874150+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --top-menus Fájl --max-submenu-depth 2 --output-dir data\\runtime_maps\\file_menu_depth2_fullscan_9_60 --log-profile diagnostic",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 1,
+        "project_open top_menus": 1,
+        "diff summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 4,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 1
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0111_diagnostic_2026-08-25_20-20-21.log",
+      "json_path": "data\\run_logs\\runs\\0111_diagnostic_2026-08-25_20-20-21.json"
+    },
+    {
+      "sequence_number": 112,
+      "run_id": "0112_mainform_helpabout_2026-08-25_20-44-06",
+      "started_at": "2026-08-25T20:44:06.773546+00:00",
+      "command": "safe_runtime_command MainForm.HelpAbout",
+      "success": true,
+      "short_summary": {
+        "workflow": "safe_about_probe",
+        "command": "MainForm.HelpAbout",
+        "native_menu_path": [
+          {
+            "menu_command_id": 97,
+            "index": 5
+          },
+          {
+            "command_id": 99,
+            "index": 1
+          }
+        ],
+        "dialog_found": true,
+        "dialog_title": "Névjegy",
+        "dialog_class": "TAboutForm",
+        "dialog_handle": 788804,
+        "dialog_dismissed": true,
+        "main_window_enabled_after": true,
+        "success": true
+      },
+      "log_path": "data\\run_logs\\runs\\0112_mainform_helpabout_2026-08-25_20-44-06.log",
+      "json_path": "data\\run_logs\\runs\\0112_mainform_helpabout_2026-08-25_20-44-06.json"
+    },
+    {
+      "sequence_number": 113,
+      "run_id": "0113_data_runtime_maps_refreshed_live_9_60_2026-08-25_20-50-48",
+      "started_at": "2026-08-25T20:50:48.861192+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --max-submenu-depth 1 --recent-projects-policy skip_recent_projects --log-profile concise --output-dir data/runtime_maps/refreshed_live_9_60",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 5,
+        "diff summary": {
+          "shared_top_menus": 5,
+          "actions_only_in_a": 22,
+          "actions_only_in_b": 2,
+          "enabled_changes": 0,
+          "project_only_paths": 1
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0113_data_runtime_maps_refreshed_live_9_60_2026-08-25_20-50-48.log",
+      "json_path": "data\\run_logs\\runs\\0113_data_runtime_maps_refreshed_live_9_60_2026-08-25_20-50-48.json"
+    },
+    {
+      "sequence_number": 113,
+      "run_id": "0113_data_runtime_maps_refreshed_live_9_60_full_2026-08-25_20-52-17",
+      "started_at": "2026-08-25T20:52:17.468931+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --max-submenu-depth 1 --recent-projects-policy skip_recent_projects --log-profile concise --output-dir data/runtime_maps/refreshed_live_9_60_full",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 5,
+        "diff summary": {
+          "shared_top_menus": 5,
+          "actions_only_in_a": 14,
+          "actions_only_in_b": 5,
+          "enabled_changes": 0,
+          "project_only_paths": 5
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0113_data_runtime_maps_refreshed_live_9_60_full_2026-08-25_20-52-17.log",
+      "json_path": "data\\run_logs\\runs\\0113_data_runtime_maps_refreshed_live_9_60_full_2026-08-25_20-52-17.json"
+    },
+    {
+      "sequence_number": 114,
+      "run_id": "0114_data_runtime_maps_refreshed_live_9_60_full_2026-08-25_20-56-05",
+      "started_at": "2026-08-25T20:56:05.213546+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --max-submenu-depth 1 --recent-projects-policy skip_recent_projects --log-profile concise --output-dir data/runtime_maps/refreshed_live_9_60_full",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 5,
+        "diff summary": {
+          "shared_top_menus": 5,
+          "actions_only_in_a": 14,
+          "actions_only_in_b": 5,
+          "enabled_changes": 0,
+          "project_only_paths": 5
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0114_data_runtime_maps_refreshed_live_9_60_full_2026-08-25_20-56-05.log",
+      "json_path": "data\\run_logs\\runs\\0114_data_runtime_maps_refreshed_live_9_60_full_2026-08-25_20-56-05.json"
+    },
+    {
+      "sequence_number": 115,
+      "run_id": "0115_data_runtime_maps_deep_live_9_60_20260825_230201_2026-08-25_21-02-01",
+      "started_at": "2026-08-25T21:02:01.813827+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --max-submenu-depth -1 --placeholder-traversal-focus --placeholder-modal-policy allow_modal_probe --recent-projects-policy skip_recent_projects --log-profile diagnostic --output-dir data\\runtime_maps\\deep_live_9_60_20260825_230201",
+      "success": true,
+      "short_summary": {
+        "no_project top_menus": 6,
+        "project_open top_menus": 5,
+        "diff summary": {
+          "shared_top_menus": 5,
+          "actions_only_in_a": 57,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 0
+        },
+        "project_open_verdict": "opened_by_this_attempt"
+      },
+      "log_path": "data\\run_logs\\runs\\0115_data_runtime_maps_deep_live_9_60_20260825_230201_2026-08-25_21-02-01.log",
+      "json_path": "data\\run_logs\\runs\\0115_data_runtime_maps_deep_live_9_60_20260825_230201_2026-08-25_21-02-01.json"
+    },
+    {
+      "sequence_number": 116,
+      "run_id": "0116_mainform_xmlimportaction_2026-08-26_05-43-45",
+      "started_at": "2026-08-26T05:43:45.450363+00:00",
+      "command": "safe_runtime_command MainForm.XMLImportAction",
+      "success": true,
+      "short_summary": {
+        "workflow": "safe_xml_import_probe",
+        "command": "MainForm.XMLImportAction",
+        "native_menu_path": [
+          {
+            "menu_command_id": 1
+          },
+          {
+            "command_id": 10
+          }
+        ],
+        "dialog_found": true,
+        "dialog_title": "Megnyitás",
+        "dialog_class": "#32770",
+        "dialog_handle": 1377708,
+        "dialog_dismissed": true,
+        "main_window_enabled_after": true,
+        "forbidden_effect": "select_file_or_confirm_xml_import",
+        "success": true
+      },
+      "log_path": "data\\run_logs\\runs\\0116_mainform_xmlimportaction_2026-08-26_05-43-45.log",
+      "json_path": "data\\run_logs\\runs\\0116_mainform_xmlimportaction_2026-08-26_05-43-45.json"
     }
   ]
 }

@@ -1,0 +1,105 @@
+{
+  "current": {
+    "dialog_signatures": [],
+    "menu_paths": [
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ],
+      [
+        "fájl",
+        "megnyitás"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ]
+    ],
+    "window_signatures": []
+  },
+  "states": {
+    "state_no_project": {
+      "dialog_signatures": [],
+      "menu_paths": [
+        [
+          "fájl",
+          "[unlabeled row 2]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 3]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 5]"
+        ],
+        [
+          "fájl",
+          "végrehajtás"
+        ]
+      ],
+      "window_signatures": []
+    },
+    "state_project_open": {
+      "dialog_signatures": [],
+      "menu_paths": [
+        [
+          "fájl",
+          "[unlabeled row 2]"
+        ],
+        [
+          "fájl",
+          "megnyitás"
+        ],
+        [
+          "fájl",
+          "végrehajtás"
+        ]
+      ],
+      "window_signatures": []
+    }
+  },
+  "updated_at": "2026-08-25T20:20:04.852446+00:00",
+  "verification": {
+    "baseline_loaded": false,
+    "coverage_pct": 100.0,
+    "covered_known_menu_paths": 0,
+    "current_menu_paths": 5,
+    "known_menu_paths": 0,
+    "missing_dialogs": [],
+    "missing_menu_paths": [],
+    "missing_windows": [],
+    "new_dialogs": [],
+    "new_menu_paths": [
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ],
+      [
+        "fájl",
+        "megnyitás"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ]
+    ],
+    "new_windows": []
+  }
+}

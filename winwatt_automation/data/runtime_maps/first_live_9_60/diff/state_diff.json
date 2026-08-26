@@ -1,0 +1,137 @@
+{
+  "dialog_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": []
+  },
+  "enabled_state_changes": [],
+  "menu_action_diff": {
+    "only_in_a": [
+      [
+        "ablak",
+        "[unlabeled row 2]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 3]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 5]"
+      ],
+      [
+        "ablak",
+        "végrehajtás"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 2]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 3]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 5]"
+      ],
+      [
+        "adatbázis",
+        "végrehajtás"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 2]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 3]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 5]"
+      ],
+      [
+        "beállítások",
+        "végrehajtás"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 2]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 3]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 5]"
+      ],
+      [
+        "jegyzékek",
+        "végrehajtás"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 2]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 3]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 5]"
+      ],
+      [
+        "súgó",
+        "végrehajtás"
+      ]
+    ],
+    "only_in_b": [],
+    "shared": []
+  },
+  "project_only_paths": [],
+  "state_a": "no_project",
+  "state_b": "project_open",
+  "summary": {
+    "actions_only_in_a": 24,
+    "actions_only_in_b": 0,
+    "enabled_changes": 0,
+    "project_only_paths": 0,
+    "shared_top_menus": 0
+  },
+  "top_menu_diff": {
+    "only_in_a": [
+      "ablak",
+      "adatbázis",
+      "beállítások",
+      "fájl",
+      "jegyzékek",
+      "súgó"
+    ],
+    "only_in_b": [],
+    "shared": []
+  },
+  "window_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": []
+  }
+}

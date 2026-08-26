@@ -1,0 +1,199 @@
+{
+  "command_id": 57,
+  "result": "opened_mapped_and_cancelled",
+  "dialog": {
+    "friendly_class": "TChangeTempForm",
+    "title": "Hőmérsékletek cseréje"
+  },
+  "control_count": 25,
+  "controls": [
+    {
+      "index": 0,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 1,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 2,
+      "friendly_class": "TreeView",
+      "class_name": "TTreeView",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 3,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 4,
+      "friendly_class": "RadioButton",
+      "class_name": "TRadioButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Csak a kijelöltek"
+    },
+    {
+      "index": 5,
+      "friendly_class": "RadioButton",
+      "class_name": "TRadioButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Mind"
+    },
+    {
+      "index": 6,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 7,
+      "friendly_class": "TGroupBox",
+      "class_name": "TGroupBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Nyári hőterhelés számításnál"
+    },
+    {
+      "index": 8,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Nyári hőterhelés nem számítandó"
+    },
+    {
+      "index": 9,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Nyári hőterhelés számítandó"
+    },
+    {
+      "index": 10,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 11,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 12,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 13,
+      "friendly_class": "TGroupBox",
+      "class_name": "TGroupBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Téli hőszükséglet számításnál"
+    },
+    {
+      "index": 14,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Téli hőszükséglet nem számítandó"
+    },
+    {
+      "index": 15,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Téli hőszükséglet számítandó"
+    },
+    {
+      "index": 16,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 17,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 18,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 19,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 20,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 21,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 22,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Súgó"
+    },
+    {
+      "index": 23,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Bezár"
+    },
+    {
+      "index": 24,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "OK"
+    }
+  ],
+  "screenshot": "data/snapshots/high_risk_dialogs_9_60/57_TChangeTempForm.png",
+  "main_enabled_after": true
+}

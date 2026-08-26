@@ -1,0 +1,324 @@
+{
+  "current": {
+    "dialog_signatures": [],
+    "menu_paths": [
+      [
+        "ablak",
+        "[unlabeled row 2]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 3]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 5]"
+      ],
+      [
+        "ablak",
+        "végrehajtás"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 2]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 3]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 5]"
+      ],
+      [
+        "adatbázis",
+        "végrehajtás"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 2]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 3]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 5]"
+      ],
+      [
+        "beállítások",
+        "végrehajtás"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 2]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 3]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 5]"
+      ],
+      [
+        "jegyzékek",
+        "végrehajtás"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 2]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 3]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 5]"
+      ],
+      [
+        "súgó",
+        "végrehajtás"
+      ]
+    ],
+    "window_signatures": []
+  },
+  "states": {
+    "state_no_project": {
+      "dialog_signatures": [],
+      "menu_paths": [
+        [
+          "ablak",
+          "[unlabeled row 2]"
+        ],
+        [
+          "ablak",
+          "[unlabeled row 3]"
+        ],
+        [
+          "ablak",
+          "[unlabeled row 5]"
+        ],
+        [
+          "ablak",
+          "végrehajtás"
+        ],
+        [
+          "adatbázis",
+          "[unlabeled row 2]"
+        ],
+        [
+          "adatbázis",
+          "[unlabeled row 3]"
+        ],
+        [
+          "adatbázis",
+          "[unlabeled row 5]"
+        ],
+        [
+          "adatbázis",
+          "végrehajtás"
+        ],
+        [
+          "beállítások",
+          "[unlabeled row 2]"
+        ],
+        [
+          "beállítások",
+          "[unlabeled row 3]"
+        ],
+        [
+          "beállítások",
+          "[unlabeled row 5]"
+        ],
+        [
+          "beállítások",
+          "végrehajtás"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 2]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 3]"
+        ],
+        [
+          "fájl",
+          "[unlabeled row 5]"
+        ],
+        [
+          "fájl",
+          "végrehajtás"
+        ],
+        [
+          "jegyzékek",
+          "[unlabeled row 2]"
+        ],
+        [
+          "jegyzékek",
+          "[unlabeled row 3]"
+        ],
+        [
+          "jegyzékek",
+          "[unlabeled row 5]"
+        ],
+        [
+          "jegyzékek",
+          "végrehajtás"
+        ],
+        [
+          "súgó",
+          "[unlabeled row 2]"
+        ],
+        [
+          "súgó",
+          "[unlabeled row 3]"
+        ],
+        [
+          "súgó",
+          "[unlabeled row 5]"
+        ],
+        [
+          "súgó",
+          "végrehajtás"
+        ]
+      ],
+      "window_signatures": []
+    },
+    "state_project_open": {
+      "dialog_signatures": [],
+      "menu_paths": [],
+      "window_signatures": []
+    }
+  },
+  "updated_at": "2026-08-25T20:15:40.708312+00:00",
+  "verification": {
+    "baseline_loaded": false,
+    "coverage_pct": 100.0,
+    "covered_known_menu_paths": 0,
+    "current_menu_paths": 24,
+    "known_menu_paths": 0,
+    "missing_dialogs": [],
+    "missing_menu_paths": [],
+    "missing_windows": [],
+    "new_dialogs": [],
+    "new_menu_paths": [
+      [
+        "ablak",
+        "[unlabeled row 2]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 3]"
+      ],
+      [
+        "ablak",
+        "[unlabeled row 5]"
+      ],
+      [
+        "ablak",
+        "végrehajtás"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 2]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 3]"
+      ],
+      [
+        "adatbázis",
+        "[unlabeled row 5]"
+      ],
+      [
+        "adatbázis",
+        "végrehajtás"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 2]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 3]"
+      ],
+      [
+        "beállítások",
+        "[unlabeled row 5]"
+      ],
+      [
+        "beállítások",
+        "végrehajtás"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 2]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 3]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 5]"
+      ],
+      [
+        "jegyzékek",
+        "végrehajtás"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 2]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 3]"
+      ],
+      [
+        "súgó",
+        "[unlabeled row 5]"
+      ],
+      [
+        "súgó",
+        "végrehajtás"
+      ]
+    ],
+    "new_windows": []
+  }
+}

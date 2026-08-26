@@ -1,0 +1,602 @@
+[
+  {
+    "title": "",
+    "class_name": "DUIViewWndClassName",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Parancsmodul",
+    "class_name": "FolderBandModuleInner",
+    "type": "ToolBar",
+    "enabled": true
+  },
+  {
+    "title": "Sú&gó",
+    "class_name": "Button3d",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Részletek",
+    "class_name": "ViewControl",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Nézet csúszka",
+    "class_name": "Button3d",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Rendezés",
+    "class_name": "AJOSplitButton",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Új mappa",
+    "class_name": "AJOSplitButton",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Vezérlőállomás",
+    "class_name": "ProperTreeHost",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Navigációs ablak",
+    "class_name": "SysTreeView32",
+    "type": "Tree",
+    "enabled": true
+  },
+  {
+    "title": "Függőleges",
+    "class_name": "",
+    "type": "ScrollBar",
+    "enabled": true
+  },
+  {
+    "title": "Egy sorral fel",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Egy oldallal fel",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Elhelyezés",
+    "class_name": "",
+    "type": "Thumb",
+    "enabled": true
+  },
+  {
+    "title": "Egy oldallal le",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Egy sorral le",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Asztal",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Dancs – Személyes (OneDrive)",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Gyors elérés indítása – Asztal (kitűzve)",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Letöltések (kitűzve)",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Dokumentumok (kitűzve)",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Képek (kitűzve)",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Zene (kitűzve)",
+    "class_name": "",
+    "type": "TreeItem",
+    "enabled": true
+  },
+  {
+    "title": "Felület mappanézete",
+    "class_name": "DUIListView",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Elemek nézete",
+    "class_name": "UIItemsView",
+    "type": "List",
+    "enabled": true
+  },
+  {
+    "title": "Vízszintes",
+    "class_name": "LineHScrollBar",
+    "type": "ScrollBar",
+    "enabled": true
+  },
+  {
+    "title": "Egy oszloppal balra",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Elhelyezés",
+    "class_name": "",
+    "type": "Thumb",
+    "enabled": true
+  },
+  {
+    "title": "Egy oldallal jobbra",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Egy oszloppal jobbra",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Fejléc",
+    "class_name": "UIViewHeader",
+    "type": "Header",
+    "enabled": true
+  },
+  {
+    "title": "Név",
+    "class_name": "UIColumnHeader",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Szűrőlista",
+    "class_name": "Button",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Módosítás dátuma",
+    "class_name": "UIColumnHeader",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Szűrőlista",
+    "class_name": "Button",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Típus",
+    "class_name": "UIColumnHeader",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Szűrőlista",
+    "class_name": "Button",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Méret",
+    "class_name": "UIColumnHeader",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Tegnap",
+    "class_name": "UIGroupItem",
+    "type": "Group",
+    "enabled": true
+  },
+  {
+    "title": "Tegnap",
+    "class_name": "UIGroupHeader",
+    "type": "Group",
+    "enabled": true
+  },
+  {
+    "title": "Csoport összecsukása",
+    "class_name": "UIExpandoButton",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Név",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "userinfo (1)",
+    "class_name": "UIItem",
+    "type": "ListItem",
+    "enabled": true
+  },
+  {
+    "title": "Név",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Módosítás dátuma",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Típus",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Méret",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "userinfo",
+    "class_name": "UIItem",
+    "type": "ListItem",
+    "enabled": true
+  },
+  {
+    "title": "Név",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Módosítás dátuma",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Típus",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Méret",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Ebben az évben korábban",
+    "class_name": "UIGroupItem",
+    "type": "Group",
+    "enabled": true
+  },
+  {
+    "title": "Ebben az évben korábban",
+    "class_name": "UIGroupHeader",
+    "type": "Group",
+    "enabled": true
+  },
+  {
+    "title": "Csoport összecsukása",
+    "class_name": "UIExpandoButton",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Név",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "User",
+    "class_name": "UIItem",
+    "type": "ListItem",
+    "enabled": true
+  },
+  {
+    "title": "Név",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Módosítás dátuma",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Típus",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Méret",
+    "class_name": "UIProperty",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Fájlnév:",
+    "class_name": "CIDLabel",
+    "type": "Text",
+    "enabled": true
+  },
+  {
+    "title": "Fájlnév:",
+    "class_name": "AppControlHost",
+    "type": "ComboBox",
+    "enabled": true
+  },
+  {
+    "title": "Fájlnév:",
+    "class_name": "Edit",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Megnyitás",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Fájl típusa:",
+    "class_name": "CIDLabel",
+    "type": "Text",
+    "enabled": true
+  },
+  {
+    "title": "Fájl típusa:",
+    "class_name": "AppControlHost",
+    "type": "ComboBox",
+    "enabled": true
+  },
+  {
+    "title": "Megnyitás",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Mezők mentése",
+    "class_name": "SaveDialogPreviewMetadataInner",
+    "type": "Tree",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "ToolbarWindow32",
+    "type": "ToolBar",
+    "enabled": true
+  },
+  {
+    "title": "Mappák elrejtése",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Mentés",
+    "class_name": "Button",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "Mégse",
+    "class_name": "Button",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "ScrollBar",
+    "type": "Thumb",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "ReBarWindow32",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TravelBand",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Navigációs gombok",
+    "class_name": "ToolbarWindow32",
+    "type": "ToolBar",
+    "enabled": true
+  },
+  {
+    "title": "Vissza (ALT + BALRA)",
+    "class_name": "",
+    "type": "Button",
+    "enabled": false
+  },
+  {
+    "title": "Előre (ALT + JOBBRA)",
+    "class_name": "",
+    "type": "Button",
+    "enabled": false
+  },
+  {
+    "title": "Legutóbbi helyek",
+    "class_name": "",
+    "type": "Button",
+    "enabled": false
+  },
+  {
+    "title": "",
+    "class_name": "UpBand",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Fel sáv",
+    "class_name": "ToolbarWindow32",
+    "type": "ToolBar",
+    "enabled": true
+  },
+  {
+    "title": "Fel a(z) Asztal mappára (ALT + FEL)",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Address Band Root",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Betöltés",
+    "class_name": "msctls_progress32",
+    "type": "ProgressBar",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Breadcrumb Parent",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "Cím: Letöltések",
+    "class_name": "ToolbarWindow32",
+    "type": "ToolBar",
+    "enabled": true
+  },
+  {
+    "title": "Az összes hely",
+    "class_name": "",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Letöltések",
+    "class_name": "",
+    "type": "SplitButton",
+    "enabled": true
+  },
+  {
+    "title": "Címsáv",
+    "class_name": "ToolbarWindow32",
+    "type": "ToolBar",
+    "enabled": true
+  },
+  {
+    "title": "Előző helyek",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "A(z) Letöltések frissítése (F5)",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "UniversalSearchBand",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Search Box",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "SearchEditBoxWrapperClass",
+    "type": "Pane",
+    "enabled": true
+  },
+  {
+    "title": "\r",
+    "class_name": "SearchEditBox",
+    "type": "Edit",
+    "enabled": true
+  },
+  {
+    "title": "Keresés",
+    "class_name": "Button",
+    "type": "Button",
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "",
+    "type": "TitleBar",
+    "enabled": true
+  },
+  {
+    "title": "Rendszer",
+    "class_name": "",
+    "type": "MenuBar",
+    "enabled": true
+  },
+  {
+    "title": "Rendszer",
+    "class_name": "",
+    "type": "MenuItem",
+    "enabled": true
+  },
+  {
+    "title": "Bezárás",
+    "class_name": "",
+    "type": "Button",
+    "enabled": true
+  }
+]\n

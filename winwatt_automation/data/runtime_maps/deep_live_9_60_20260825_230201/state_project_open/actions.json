@@ -1,0 +1,23 @@
+[
+  {
+    "action_key": "Fájl",
+    "attempted": false,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": "fresh root popup reopen failed for Fájl > Megnyitás",
+    "event_details": {},
+    "menu_path": [
+      "Fájl"
+    ],
+    "notes": null,
+    "process_id": null,
+    "result_type": "failed_focus",
+    "row_index": -1,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Fájl",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  }
+]

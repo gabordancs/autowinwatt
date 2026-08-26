@@ -1,0 +1,240 @@
+{
+  "run_id": "0110_diagnostic_2026-08-25_20-18-59",
+  "sequence_number": 110,
+  "started_at": "2026-08-25T20:18:59.262382+00:00",
+  "finished_at": "2026-08-25T20:20:04.862229+00:00",
+  "duration_seconds": 65.6,
+  "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --safe-mode safe --allow-process-restart --diagnostic-fast-mode --top-menus Fájl --max-submenu-depth 2 --output-dir data\\runtime_maps\\file_menu_depth2_9_60 --log-profile diagnostic",
+  "cwd": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "safe",
+  "project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "exit_code": 0,
+  "success": true,
+  "summary": {
+    "no_project_top_menus": 1,
+    "project_open_top_menus": 1,
+    "diff_summary": {
+      "shared_top_menus": 1,
+      "actions_only_in_a": 2,
+      "actions_only_in_b": 1,
+      "enabled_changes": 0,
+      "project_only_paths": 1
+    },
+    "startup_project_detected": false,
+    "already_open_before_mapping": false,
+    "project_open_verdict": "opened_by_this_attempt",
+    "expected_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+    "observed_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+    "path_match_normalized": true,
+    "skipped_by_safety": 6,
+    "last_error": null,
+    "modal_detected": false,
+    "recovery_attempted": true,
+    "recovery_success": true
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-08-25T20:19:31.588288+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "no_project",
+        "top_menus": 1,
+        "actions": 4,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "open_file_dialog_detected",
+      "payload": {
+        "value": false,
+        "project_open_method": "direct_launch",
+        "project_open_sequence": [
+          "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "file_dialog_path_entered",
+      "payload": {
+        "value": false
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "file_dialog_confirm_clicked",
+      "payload": {
+        "value": false
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "dialog_closed",
+      "payload": {
+        "value": false
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "observed_main_window_title_after_open",
+      "payload": {
+        "value": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "is_empty": false
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "observed_project_path",
+      "payload": {
+        "value": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "is_null": false
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "path_match_normalized",
+      "payload": {
+        "value": true,
+        "expected_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "observed_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.562998+00:00",
+      "event_type": "project_open_result",
+      "payload": {
+        "success": true,
+        "error": null,
+        "dialog_found": false,
+        "startup_project_detected": false,
+        "already_open_before_mapping": false,
+        "project_open_verdict": "opened_by_this_attempt",
+        "expected_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "observed_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "path_match_normalized": true,
+        "project_open_attempt_started": true,
+        "project_open_method": "direct_launch",
+        "project_open_sequence": [
+          "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+        ],
+        "project_open_menu_item_clicked": false,
+        "open_file_dialog_detected": false,
+        "file_dialog_path_entered": false,
+        "file_dialog_confirm_clicked": false,
+        "interaction_helper_called": false,
+        "interaction_helper_result_present": false,
+        "path_entry_strategy_selected": null,
+        "path_entry_strategy_null_reason": "direct_project_launch_bootstrap",
+        "focused_input_entry_attempted": false,
+        "focused_input_entry_sent": false,
+        "enter_confirm_sent": false,
+        "post_confirm_dialog_closed": false,
+        "post_confirm_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "post_confirm_path_match": true
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:19:46.579642+00:00",
+      "event_type": "project_open_recovery",
+      "payload": {
+        "success": true,
+        "reason": "fresh_process_launch",
+        "modal_detected": false,
+        "main_window_ready_after_attempt": true
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:20:04.815348+00:00",
+      "event_type": "state_mapped",
+      "payload": {
+        "state_id": "project_open",
+        "top_menus": 1,
+        "actions": 3,
+        "dialogs": 0
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:20:04.852446+00:00",
+      "event_type": "runtime_diff",
+      "payload": {
+        "summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 2,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 1
+        },
+        "enabled_changes": 0,
+        "project_only_paths": 1
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:20:04.857530+00:00",
+      "event_type": "knowledge_verification",
+      "payload": {
+        "baseline_loaded": false,
+        "missing_menu_paths": [],
+        "new_menu_paths": [
+          [
+            "fájl",
+            "[unlabeled row 2]"
+          ],
+          [
+            "fájl",
+            "[unlabeled row 3]"
+          ],
+          [
+            "fájl",
+            "[unlabeled row 5]"
+          ],
+          [
+            "fájl",
+            "megnyitás"
+          ],
+          [
+            "fájl",
+            "végrehajtás"
+          ]
+        ],
+        "missing_dialogs": [],
+        "new_dialogs": [],
+        "missing_windows": [],
+        "new_windows": [],
+        "known_menu_paths": 0,
+        "current_menu_paths": 5,
+        "covered_known_menu_paths": 0,
+        "coverage_pct": 100.0
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:20:04.859856+00:00",
+      "event_type": "runtime_mapping_summary",
+      "payload": {
+        "no_project_top_menus": 1,
+        "project_open_top_menus": 1,
+        "diff_summary": {
+          "shared_top_menus": 1,
+          "actions_only_in_a": 2,
+          "actions_only_in_b": 1,
+          "enabled_changes": 0,
+          "project_only_paths": 1
+        },
+        "startup_project_detected": false,
+        "already_open_before_mapping": false,
+        "project_open_verdict": "opened_by_this_attempt",
+        "expected_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "observed_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+        "path_match_normalized": true
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0110_diagnostic_2026-08-25_20-18-59.log",
+    "json_path": "data\\run_logs\\runs\\0110_diagnostic_2026-08-25_20-18-59.json"
+  },
+  "tags": [
+    "map_full_program",
+    "runtime_mapping"
+  ]
+}

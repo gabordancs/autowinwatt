@@ -1,0 +1,375 @@
+{
+  "schema_version": 1,
+  "root": {
+    "caption": "Eszközök",
+    "command_id": 54
+  },
+  "policy": "not_exposed_until_each_child_has_separate_runtime_evidence_and_explicit_effect_policy",
+  "reason": "The visible Tools menu contains project transformations, external project interchange, and optimization operations; owner-drawn child captions are not reliable in native enumeration.",
+  "visual_evidence": "data/snapshots/deep_project_top_menus_9_60/02_Eszközök.png",
+  "children": [
+    {
+      "index": 0,
+      "command_id": 55,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeBoundarisForm",
+        "dialog_title": "Szerkezetek cseréje",
+        "forbidden_effects": [
+          "change_structures",
+          "create_or_delete_boundaries",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/55_TChangeBoundarisForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 58,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/55_TChangeBoundarisForm.png"
+      }
+    },
+    {
+      "index": 1,
+      "command_id": 56,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeCeilingForm",
+        "dialog_title": "Födémek törlése, létrehozása",
+        "forbidden_effects": [
+          "create_ceiling",
+          "delete_ceiling",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/56_TChangeCeilingForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 25,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/56_TChangeCeilingForm.png"
+      }
+    },
+    {
+      "index": 2,
+      "command_id": 57,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeTempForm",
+        "dialog_title": "Hőmérsékletek cseréje",
+        "forbidden_effects": [
+          "change_temperature",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/57_TChangeTempForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 25,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/57_TChangeTempForm.png"
+      }
+    },
+    {
+      "index": 3,
+      "command_id": 58,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeFiltrationForm",
+        "dialog_title": "Téli filtráció számítás cseréje",
+        "forbidden_effects": [
+          "change_filtration_calculation",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/58_TChangeFiltrationForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 28,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/58_TChangeFiltrationForm.png"
+      }
+    },
+    {
+      "index": 4,
+      "command_id": 59,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeRoomByMakroForm",
+        "dialog_title": "Helyiségek kitöltése makróval",
+        "forbidden_effects": [
+          "run_macro",
+          "fill_rooms",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/59_TChangeRoomByMakroForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 18,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/59_TChangeRoomByMakroForm.png"
+      }
+    },
+    {
+      "index": 5,
+      "command_id": 60,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TRotateRoomsForm",
+        "dialog_title": "Helyiségek forgatása, tükrözése",
+        "forbidden_effects": [
+          "rotate_rooms",
+          "mirror_rooms",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/60_TRotateRoomsForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 15,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/60_TRotateRoomsForm.png"
+      }
+    },
+    {
+      "index": 6,
+      "command_id": 61,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeBuildingReferenceForm",
+        "dialog_title": "Helyiségek átsorolása más épületbe, légtechnikai rendszerbe",
+        "forbidden_effects": [
+          "reassign_rooms",
+          "change_building_reference",
+          "change_ventilation_system",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/61_TChangeBuildingReferenceForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 12,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/61_TChangeBuildingReferenceForm.png"
+      }
+    },
+    {
+      "index": 7,
+      "command_id": 62,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeRadiatorForm",
+        "dialog_title": "Kétcsöves radiátorok módosítása",
+        "forbidden_effects": [
+          "change_two_pipe_radiators",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/62_TChangeRadiatorForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 27,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/62_TChangeRadiatorForm.png"
+      }
+    },
+    {
+      "index": 8,
+      "command_id": 71,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TChangeHydraulicsForm",
+        "dialog_title": "Típusmódosítások, méretek",
+        "forbidden_effects": [
+          "change_hydraulic_types",
+          "change_dimensions",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/71_TChangeHydraulicsForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 26,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/71_TChangeHydraulicsForm.png"
+      }
+    },
+    {
+      "index": 9,
+      "command_id": 72,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "TGeneraleChangeForm",
+        "dialog_title": "Általános adatcsere",
+        "forbidden_effects": [
+          "bulk_change_project_data",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/72_TGeneraleChangeForm.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 14,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/72_TGeneraleChangeForm.png"
+      }
+    },
+    {
+      "index": 10,
+      "command_id": 73,
+      "enabled": false,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "disabled_in_current_project",
+        "dialog_class": null,
+        "dialog_title": null,
+        "forbidden_effects": [
+          "unknown_until_enabled_runtime_evidence"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/73_disabled.json",
+        "result": "disabled_in_current_project",
+        "control_count": 0,
+        "screenshot": null
+      }
+    },
+    {
+      "index": 11,
+      "command_id": 74,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "Dialog",
+        "dialog_title": "Megnyitás",
+        "forbidden_effects": [
+          "select_external_file",
+          "import_unknown_format",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/74_Dialog.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 50,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/74_Dialog.png"
+      }
+    },
+    {
+      "index": 12,
+      "command_id": 75,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "Dialog",
+        "dialog_title": "Megnyitás",
+        "forbidden_effects": [
+          "select_external_file",
+          "import_unknown_format",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/75_Dialog.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 50,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/75_Dialog.png"
+      }
+    },
+    {
+      "index": 13,
+      "command_id": 76,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "Dialog",
+        "dialog_title": "Mentés másként",
+        "forbidden_effects": [
+          "select_external_destination",
+          "export_unknown_format",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/76_Dialog.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 50,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/76_Dialog.png"
+      }
+    },
+    {
+      "index": 14,
+      "command_id": 77,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "Dialog",
+        "dialog_title": "Megnyitás",
+        "forbidden_effects": [
+          "select_external_file",
+          "import_unknown_format",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/77_Dialog.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 50,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/77_Dialog.png"
+      }
+    },
+    {
+      "index": 15,
+      "command_id": 79,
+      "enabled": true,
+      "caption_reliable": false,
+      "admission": "not_exposed",
+      "runtime_probe": {
+        "result": "opened_and_cancelled",
+        "dialog_class": "Dialog",
+        "dialog_title": "Megnyitás",
+        "forbidden_effects": [
+          "select_external_file",
+          "import_unknown_format",
+          "confirm_dialog"
+        ]
+      },
+      "dialog_mapping": {
+        "path": "data/runtime_maps/high_risk_dialogs_9_60/79_Dialog.json",
+        "result": "opened_mapped_and_cancelled",
+        "control_count": 50,
+        "screenshot": "data/snapshots/high_risk_dialogs_9_60/79_Dialog.png"
+      }
+    }
+  ]
+}

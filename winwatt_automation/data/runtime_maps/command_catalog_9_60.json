@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "application": "WinWatt gólya",
+  "version": "9.60",
+  "catalog_policy": "Only entries with a verified native binding and an explicitly constrained safe workflow are exposed.",
+  "commands": [
+    {
+      "stable_key": "MainForm.NewProjekt",
+      "item_name": "NewProjekt",
+      "native_menu": {
+        "parent_command_id": 1,
+        "command_id": 2
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "new_project_dialog_detected_and_cancelled",
+      "workflow": "safe_new_project_probe",
+      "callable": "winwatt_automation.workflows.safe_new_project_probe.run_safe_new_project_probe",
+      "safety_level": "probe_only",
+      "allowed_effect": "open_and_cancel_file_dialog",
+      "forbidden_effects": [
+        "confirm_file_name",
+        "create_project",
+        "save_project"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.OpenProjekt",
+      "item_name": "OpenProjekt",
+      "native_menu": {
+        "parent_command_id": 1,
+        "command_id": 3
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "project_open_dialog_detected_and_cancelled",
+      "workflow": "safe_project_open_probe",
+      "callable": "winwatt_automation.workflows.safe_project_open_probe.run_safe_project_open_probe",
+      "safety_level": "probe_only",
+      "allowed_effect": "open_and_cancel_project_open_dialog",
+      "forbidden_effects": [
+        "select_project",
+        "confirm_file_name",
+        "modify_project"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.ProjektData",
+      "item_name": "ProjektData",
+      "native_menu": {
+        "parent_command_id": 1,
+        "command_id": 7
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "project_data_dialog_detected_and_closed",
+      "workflow": "safe_project_data_probe",
+      "callable": "winwatt_automation.workflows.safe_project_data_probe.run_safe_project_data_probe",
+      "safety_level": "read_only_dialog_privacy_preserving",
+      "allowed_effect": "open_inspect_structural_metadata_and_close_project_data",
+      "forbidden_effects": [
+        "read_or_emit_field_values",
+        "change_control_value",
+        "press_ok",
+        "clipboard_import",
+        "clipboard_export"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.XMLExportAction",
+      "item_name": "XMLExportAction",
+      "native_menu": {
+        "parent_command_id": 1,
+        "command_id": 9
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "xml_export_save_dialog_detected_and_cancelled",
+      "workflow": "safe_xml_export_probe",
+      "callable": "winwatt_automation.workflows.safe_xml_export_probe.run_safe_xml_export_probe",
+      "safety_level": "probe_only",
+      "allowed_effect": "open_and_cancel_xml_export_save_dialog",
+      "forbidden_effects": [
+        "confirm_file_name",
+        "write_export_file",
+        "overwrite_existing_file"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.XMLImportAction",
+      "item_name": "XMLImportAction",
+      "native_menu": {
+        "parent_command_id": 1,
+        "command_id": 10
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "xml_import_open_dialog_detected_and_cancelled",
+      "workflow": "safe_xml_import_probe",
+      "callable": "winwatt_automation.workflows.safe_xml_import_probe.run_safe_xml_import_probe",
+      "safety_level": "probe_only",
+      "allowed_effect": "open_and_cancel_xml_import_file_dialog",
+      "forbidden_effects": [
+        "select_file",
+        "confirm_import",
+        "modify_project"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.CreateReportAction",
+      "item_name": "CreateReportAction",
+      "native_menu": {
+        "parent_command_id": 1,
+        "command_id": 19
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "custom_reports_template_picker_detected_and_cancelled",
+      "workflow": "safe_custom_reports_probe",
+      "callable": "winwatt_automation.workflows.safe_custom_reports_probe.run_safe_custom_reports_probe",
+      "safety_level": "probe_only",
+      "allowed_effect": "open_and_cancel_custom_report_template_picker",
+      "forbidden_effects": [
+        "select_report_template",
+        "create_report",
+        "write_report_file"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.ProgramOptions",
+      "item_name": "ProgramOptions",
+      "native_menu": {
+        "parent_command_id": 88,
+        "command_id": 89
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "program_options_dialog_detected_and_closed",
+      "workflow": "safe_program_options_probe",
+      "callable": "winwatt_automation.workflows.safe_program_options_probe.run_safe_program_options_probe",
+      "safety_level": "read_only_dialog",
+      "allowed_effect": "open_inspect_and_close_program_options",
+      "forbidden_effects": [
+        "change_control_value",
+        "press_ok",
+        "save_settings"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.ProjektOptions",
+      "item_name": "ProjektOptions",
+      "native_menu": {
+        "parent_command_id": 88,
+        "command_id": 90
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "project_options_dialog_detected_and_closed",
+      "workflow": "safe_project_options_probe",
+      "callable": "winwatt_automation.workflows.safe_project_options_probe.run_safe_project_options_probe",
+      "safety_level": "read_only_dialog",
+      "allowed_effect": "open_inspect_and_close_project_options",
+      "forbidden_effects": [
+        "change_control_value",
+        "press_ok",
+        "load_settings",
+        "save_settings"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.HelpContent",
+      "item_name": "HelpContent",
+      "native_menu": {
+        "parent_command_id": 97,
+        "command_id": 98
+      },
+      "binding_verification": "visual_static_xml_and_runtime_window_probe",
+      "runtime_evidence": "winwatt_chm_help_window_detected_and_closed",
+      "workflow": "safe_help_content_probe",
+      "callable": "winwatt_automation.workflows.safe_help_content_probe.run_safe_help_content_probe",
+      "safety_level": "read_only_external_window",
+      "allowed_effect": "open_inspect_and_close_new_winwatt_chm_help_window",
+      "forbidden_effects": [
+        "interact_with_preexisting_help_window",
+        "modify_project",
+        "modify_settings"
+      ],
+      "postconditions": [
+        "help_dismissed",
+        "main_window_enabled_after"
+      ]
+    },
+    {
+      "stable_key": "MainForm.HelpAbout",
+      "item_name": "HelpAbout",
+      "native_menu": {
+        "parent_command_id": 97,
+        "command_id": 99
+      },
+      "binding_verification": "visual_static_xml_and_runtime_dialog_probe",
+      "runtime_evidence": "about_dialog_detected_and_closed",
+      "workflow": "safe_about_probe",
+      "callable": "winwatt_automation.workflows.safe_about_probe.run_safe_about_probe",
+      "safety_level": "read_only_dialog",
+      "allowed_effect": "open_and_close_about_dialog",
+      "forbidden_effects": [
+        "modify_project",
+        "modify_settings"
+      ],
+      "postconditions": [
+        "dialog_dismissed",
+        "main_window_enabled_after"
+      ]
+    }
+  ],
+  "unexposed_observations": [
+    {
+      "stable_key": "MainForm.DatabaseAction",
+      "item_name": "DatabaseAction",
+      "native_menu": {
+        "parent_command_id": null,
+        "command_id": 87
+      },
+      "static_caption": "Adatbázis...",
+      "runtime_observation": "native invocation produced no modal or separate top-level window within 0.8 seconds; main window remained enabled",
+      "admission": "not_exposed",
+      "reason": "possible internal MDI transition is not yet identified or reversible"
+    }
+  ]
+}

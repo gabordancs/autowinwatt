@@ -254,9 +254,28 @@ def test_prepare_fresh_winwatt_session_project_bootstrap_metadata(monkeypatch):
 
     result = program_mapper.prepare_fresh_winwatt_session(project_path=r"C:\tmp\demo\testwwp.wwp")
 
-    assert launches[1] == (r"C:\tmp\demo\testwwp.wwp", program_mapper.DEFAULT_WINWATT_EXE_PATH)
+    assert launches[-1] == (r"C:\tmp\demo\testwwp.wwp", program_mapper.DEFAULT_WINWATT_EXE_PATH)
     assert result["snapshot_ready"] is True
     assert result["snapshot_project_path"] == r"C:\tmp\demo\testwwp.wwp"
+
+
+def test_launch_project_uses_explicit_winwatt_executable(monkeypatch):
+    launches: list[list[str]] = []
+
+    monkeypatch.setattr(
+        program_mapper.subprocess,
+        "Popen",
+        lambda command, **_kwargs: launches.append(command),
+    )
+
+    result = program_mapper._launch_winwatt_target(
+        target_path=r"C:\tmp\demo\testwwp.wwp",
+        exe_path=r"C:\Program Files (x86)\Bausoft\WinWatt gólya\WinWatt32.exe",
+    )
+
+    assert launches == [[r"C:\Program Files (x86)\Bausoft\WinWatt gólya\WinWatt32.exe", r"C:\tmp\demo\testwwp.wwp"]]
+    assert result["method"] == "explicit_exe_with_project"
+    assert result["ok"] is True
 
 
 def test_recent_project_probe_policy_keeps_recent_project_classification(monkeypatch):
@@ -420,6 +439,7 @@ def test_build_full_runtime_program_map_writes_knowledge_verification(monkeypatc
     result = program_mapper.build_full_runtime_program_map(project_path="x", output_dir=tmp_path)
 
     assert result["knowledge_verification"]["baseline_loaded"] is False
+    assert result["knowledge_verification"]["coverage_pct"] is None
     assert (tmp_path / "knowledge.json").exists()
     assert (tmp_path / "knowledge_summary.md").exists()
 
@@ -592,3 +612,44 @@ def test_capture_menu_popup_snapshot_recovers_from_parent_comerror(monkeypatch):
     assert any("TOPBAR_PARENT_COMERROR_FALLBACK" in event for event in events)
     assert any("TOPBAR_GEOMETRY_FALLBACK_USED" in event for event in events)
     assert any("POPUP_SNAPSHOT_COMSAFE_RECOVERY" in event for event in events)
+
+
+def test_recovery_target_enumeration_excludes_process_owner_and_other_processes(monkeypatch):
+    import sys
+    import types
+
+    from winwatt_automation.runtime_mapping import program_mapper
+
+    class Window:
+        def __init__(self, *, handle, process_id, class_name):
+            self.handle = handle
+            self._process_id = process_id
+            self._class_name = class_name
+
+        def is_visible(self):
+            return True
+
+        def process_id(self):
+            return self._process_id
+
+        def class_name(self):
+            return self._class_name
+
+        def window_text(self):
+            return self._class_name
+
+    dialog = Window(handle=3, process_id=12, class_name="#32770")
+    owner = Window(handle=2, process_id=12, class_name="TApplication")
+    foreign = Window(handle=4, process_id=99, class_name="#32770")
+
+    class Desktop:
+        def __init__(self, backend):
+            assert backend == "uia"
+
+        def windows(self, top_level_only=True):
+            assert top_level_only is True
+            return [owner, foreign, dialog]
+
+    monkeypatch.setitem(sys.modules, "pywinauto", types.SimpleNamespace(Desktop=Desktop))
+
+    assert program_mapper._list_recovery_target_windows(main_window_handle=1, main_process_id=12) == [dialog]

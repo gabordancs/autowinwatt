@@ -1,0 +1,147 @@
+{
+  "command_id": 59,
+  "result": "opened_mapped_and_cancelled",
+  "dialog": {
+    "friendly_class": "TChangeRoomByMakroForm",
+    "title": "Helyiségek kitöltése makróval"
+  },
+  "control_count": 18,
+  "controls": [
+    {
+      "index": 0,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 1,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 2,
+      "friendly_class": "TreeView",
+      "class_name": "TTreeView",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 3,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 4,
+      "friendly_class": "RadioButton",
+      "class_name": "TRadioButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Csak a kijelöltek"
+    },
+    {
+      "index": 5,
+      "friendly_class": "RadioButton",
+      "class_name": "TRadioButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Mind"
+    },
+    {
+      "index": 6,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 7,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 8,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": false,
+      "is_visible": true,
+      "text": "Alkalmaz"
+    },
+    {
+      "index": 9,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Bezár"
+    },
+    {
+      "index": 10,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Súgó"
+    },
+    {
+      "index": 11,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 12,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Téli hőmérséklet"
+    },
+    {
+      "index": 13,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Téli filtráció"
+    },
+    {
+      "index": 14,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Nyári hőmérséklet"
+    },
+    {
+      "index": 15,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 16,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 17,
+      "friendly_class": "TStringGrid",
+      "class_name": "TStringGrid",
+      "is_enabled": true,
+      "is_visible": true
+    }
+  ],
+  "screenshot": "data/snapshots/high_risk_dialogs_9_60/59_TChangeRoomByMakroForm.png",
+  "main_enabled_after": true
+}
