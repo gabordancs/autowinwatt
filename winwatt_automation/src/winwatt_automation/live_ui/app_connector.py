@@ -731,7 +731,43 @@ def _foreground_context_alignment(expected: dict[str, Any], actual: dict[str, An
 
 def _is_probationary_focus_action(action_label: str) -> bool:
     normalized = (action_label or "").strip().lower()
-    return normalized == "open_system_menu" or normalized.startswith("baseline_restore:")
+    # These paths only establish or dismiss UI context; they do not confirm a
+    # project operation.  WinWatt 9.60's 32-bit UIA wrapper can report
+    # ``exists() == False`` for its still-visible, foreground main window, so
+    # permit the separately verified identity check for this narrow probe too.
+    return (
+        normalized == "open_system_menu"
+        or normalized == "safe_project_open_probe"
+        or normalized == "safe_new_project_probe"
+        or normalized == "safe_about_probe"
+        or normalized == "safe_program_options_probe"
+        or normalized == "safe_project_options_probe"
+        or normalized == "safe_help_content_probe"
+        or normalized == "safe_project_data_probe"
+        or normalized == "safe_xml_export_probe"
+        or normalized == "safe_xml_import_probe"
+        or normalized == "safe_used_materials_print_probe"
+        or normalized == "safe_used_materials_file_export_probe"
+        or normalized == "safe_energy_certificate_probe"
+        or normalized == "safe_custom_reports_probe"
+        or normalized == "safe_tools_change_ceiling_probe"
+        or normalized == "safe_tools_temperature_change_probe"
+        or normalized == "safe_tools_filtration_probe"
+         or normalized == "safe_tools_next_probe"
+         or normalized == "safe_tools_next_probe_2"
+         or normalized == "safe_tools_next_probe_3"
+         or normalized == "safe_tools_next_probe_4"
+         or normalized == "safe_tools_next_probe_5"
+         or normalized == "safe_tools_next_probe_6"
+         or normalized == "safe_tools_next_probe_7"
+         or normalized == "safe_tools_next_probe_8"
+         or normalized == "safe_tools_next_probe_9"
+         or normalized == "safe_tools_next_probe_10"
+         or normalized == "safe_tools_next_probe_11"
+         or normalized == "safe_tools_next_probe_12"
+         or normalized == "safe_tools_next_probe_13"
+         or normalized.startswith("baseline_restore:")
+    )
 
 
 def _is_normal_top_menu_click_focus_action(action_label: str) -> bool:

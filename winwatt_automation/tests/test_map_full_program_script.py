@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import sys
+from pathlib import Path
+
+import pytest
 
 from winwatt_automation.scripts import map_full_program
 
@@ -25,7 +28,17 @@ def test_close_winwatt_after_mapping_prefers_window_close(monkeypatch):
     assert result["closed"] is True
     assert result["method"] == "window.close"
 
-from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TOP_MENUS
+from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TEST_PROJECT_PATH, DEFAULT_TOP_MENUS
+
+
+def test_default_test_project_path_is_repo_relative_and_exists():
+    assert Path(DEFAULT_TEST_PROJECT_PATH).is_file()
+    assert Path(DEFAULT_TEST_PROJECT_PATH).name == "testwwp.wwp"
+
+
+def test_full_mapping_requires_explicit_process_restart_permission():
+    with pytest.raises(RuntimeError, match="allow-process-restart"):
+        map_full_program.build_full_runtime_program_map(allow_process_restart=False)
 
 
 def test_default_top_menu_targets_include_all_discovered_menus_from_logs():
@@ -36,6 +49,20 @@ def test_parser_placeholder_modal_policy_default():
     parser = map_full_program.build_parser()
     args = parser.parse_args([])
     assert args.placeholder_modal_policy == "submenu_only"
+    assert args.close_winwatt_after_mapping is False
+    assert args.allow_process_restart is False
+
+
+def test_parser_allows_explicit_winwatt_close_after_mapping():
+    parser = map_full_program.build_parser()
+    args = parser.parse_args(["--close-winwatt-after-mapping"])
+    assert args.close_winwatt_after_mapping is True
+
+
+def test_parser_allows_explicit_process_restart():
+    parser = map_full_program.build_parser()
+    args = parser.parse_args(["--allow-process-restart"])
+    assert args.allow_process_restart is True
 
 
 def test_parser_recent_projects_policy_default():
