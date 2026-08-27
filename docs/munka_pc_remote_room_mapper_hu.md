@@ -36,12 +36,7 @@ New-Item -ItemType Directory -Force -Path (Split-Path $project) | Out-Null
 Copy-Item .\tests\testwwp.wwp $project -Force
 & .\.venv-win32\Scripts\python.exe -m winwatt_automation.scripts.explore_rooms_deep `
   --project $project --output-dir $out --status-popup --session-islands `
-  --exclude-tab 'Radiátorok' `
-  --exclude-tab 'Felületfűtés-hűtés' `
-  --exclude-tab 'Fan-coilok' `
-  --exclude-tab 'Radiátor választék' `
-  --exclude-tab 'Felületfűtés-hűtés választék' `
-  --exclude-tab 'Fan-coil választék'
+  --room-core-only
 ```
 
 A futtató a `progress.json`, checkpointok és screenshotok alapján bármikor
