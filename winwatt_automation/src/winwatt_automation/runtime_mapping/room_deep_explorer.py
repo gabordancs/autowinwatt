@@ -373,6 +373,13 @@ def _room_list_item(main: Any, room_name: str) -> Any | None:
 
 
 def _create_sandbox_room(main: Any, room_name: str) -> None:
+    """Create and commit the dedicated room, waiting for Delphi form swaps.
+
+    On slower/remote desktops the first ``OK`` opens ``TRoomModifyForm``
+    after more than the old fixed 0.5 seconds.  Clicking the stale creation
+    dialog a second time leaves the workflow waiting for a manual room-save
+    confirmation.  Bind the second confirmation to the actual detail form.
+    """
     native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
     element_menu = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Elem")
     element_menu.click()
@@ -383,10 +390,31 @@ def _create_sandbox_room(main: Any, room_name: str) -> None:
     edit = next(item for item in dialog.descendants(control_type="Edit") if item.is_visible())
     edit.set_edit_text(room_name)
     next(item for item in dialog.descendants(control_type="Button") if item.window_text() == "OK").click_input()
-    time.sleep(0.5)
-    detail = _active_window(int(main.process_id()))
-    next(item for item in detail.descendants(control_type="Button") if item.window_text() == "OK").click_input()
-    time.sleep(0.5)
+    process_id = int(main.process_id())
+    deadline = time.monotonic() + 8.0
+    detail = None
+    while time.monotonic() < deadline:
+        candidate = _active_window(process_id)
+        if candidate.class_name() == "TRoomModifyForm":
+            detail = candidate
+            break
+        time.sleep(0.15)
+    if detail is None:
+        observed = _active_window(process_id)
+        raise RuntimeError(
+            "Room creation did not open TRoomModifyForm for automatic save; "
+            f"observed {observed.class_name()!r} ({observed.window_text()!r})"
+        )
+    ok = next(item for item in detail.descendants(control_type="Button") if item.window_text().strip() == "OK")
+    ok.click_input()
+    # Saving the detail form is asynchronous too.  Wait until the newly
+    # created row is observable instead of requiring an operator to confirm.
+    deadline = time.monotonic() + 8.0
+    while time.monotonic() < deadline:
+        if _room_list_item(get_main_window(), room_name) is not None:
+            return
+        time.sleep(0.15)
+    raise RuntimeError("Room detail OK was sent, but the created room did not appear in the Helyiségek list")
 
 
 def _project_session_is_ready(project_path: str) -> bool:
