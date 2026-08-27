@@ -408,7 +408,10 @@ def _create_sandbox_room(main: Any, room_name: str) -> None:
     dialog = _active_window(int(main.process_id()))
     edit = next(item for item in dialog.descendants(control_type="Edit") if item.is_visible())
     edit.set_edit_text(room_name)
-    next(item for item in dialog.descendants(control_type="Button") if item.window_text() == "OK").click_input()
+    # TNewGroupForm occasionally ignores UIA mouse clicks in an RDP or
+    # maximized desktop, while its default-button Enter accelerator is stable.
+    dialog.set_focus()
+    keyboard.send_keys("{ENTER}")
     process_id = int(main.process_id())
     deadline = time.monotonic() + 8.0
     detail = None
@@ -424,8 +427,8 @@ def _create_sandbox_room(main: Any, room_name: str) -> None:
             "Room creation did not open TRoomModifyForm for automatic save; "
             f"observed {observed.class_name()!r} ({observed.window_text()!r})"
         )
-    ok = next(item for item in detail.descendants(control_type="Button") if item.window_text().strip() == "OK")
-    ok.click_input()
+    detail.set_focus()
+    keyboard.send_keys("{ENTER}")
     # Saving the detail form is asynchronous too.  Wait until the newly
     # created row is observable instead of requiring an operator to confirm.
     deadline = time.monotonic() + 8.0
