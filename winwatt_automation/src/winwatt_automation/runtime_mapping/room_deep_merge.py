@@ -8,6 +8,8 @@ import shutil
 from pathlib import Path
 from typing import Any
 
+from winwatt_automation.runtime_mapping.room_deep_explorer import logical_state_hash
+
 
 def _graph_path(run_dir: Path) -> Path:
     complete = run_dir / "graph.json"
@@ -24,11 +26,14 @@ def merge_room_runs(*, base_run: Path, additional_run: Path, output_run: Path) -
     base = json.loads(graph_path.read_text(encoding="utf-8"))
     extra = json.loads(_graph_path(additional_run).read_text(encoding="utf-8"))
     states: list[dict[str, Any]] = list(base.get("states") or [])
-    known = {str(state["signature_hash"]): state["state_id"] for state in states}
+    def portable_hash(state: dict[str, Any]) -> str:
+        return str(state.get("logical_signature_hash") or logical_state_hash(state["signature"]))
+
+    known = {portable_hash(state): state["state_id"] for state in states}
     state_ids: dict[str, str] = {}
     for state in extra.get("states") or []:
         old_id = str(state["state_id"])
-        digest = str(state["signature_hash"])
+        digest = portable_hash(state)
         if digest in known:
             state_ids[old_id] = known[digest]
             continue
