@@ -112,6 +112,25 @@ def state_hash(signature: dict[str, Any]) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
+def logical_state_hash(signature: dict[str, Any]) -> str:
+    """Cross-machine state identity, intentionally independent of screen size.
+
+    The regular hash remains useful during one live run because control
+    rectangles distinguish transient UI layouts.  A remote worker can have a
+    different RDP resolution, so run merging uses this portable companion
+    identity instead.
+    """
+    normalized_controls = [
+        {key: value for key, value in control.items() if key not in {"automation_id", "rect"}}
+        for control in signature["controls"]
+    ]
+    encoded = json.dumps(
+        {"title": signature["title"], "class_name": signature["class_name"], "controls": normalized_controls},
+        ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
 def state_diff(previous: dict[str, Any] | None, current: dict[str, Any]) -> dict[str, Any]:
     """Compact structural and value diff used as evidence for each transition."""
     if previous is None:
@@ -499,13 +518,27 @@ def _write_state(*, output_dir: Path, state_id: str, window: Any, parent_state: 
         "state_id": state_id, "parent_state": parent_state,
         "captured_at": datetime.now(timezone.utc).isoformat(),
         "window": {"title": window.window_text(), "class_name": window.class_name(), "handle": int(window.handle)},
-        "signature": signature, "signature_hash": state_hash(signature), "diff_from_parent": state_diff(parent_signature, signature),
+        "signature": signature, "signature_hash": state_hash(signature),
+        "logical_signature_hash": logical_state_hash(signature),
+        "diff_from_parent": state_diff(parent_signature, signature),
         "path": [asdict(item) for item in path], "controls": signature["controls"],
         "actions": [asdict(item) for item in actions], "native_menu": menu,
-        "screenshot": str(image.relative_to(PROJECT_ROOT)).replace("\\", "/"),
+        "screenshot": _artifact_path(image),
     }
     (state_dir / "state.json").write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return record, actions
+
+
+def _artifact_path(path: Path) -> str:
+    """Store a portable project-relative path when possible, else an absolute one.
+
+    A remote RDP worker may write evidence straight to the coordinator's
+    redirected drive, which is intentionally outside its local checkout.
+    """
+    try:
+        return str(path.relative_to(PROJECT_ROOT)).replace("\\", "/")
+    except ValueError:
+        return str(path)
 
 
 def _atomic_json_write(path: Path, payload: Any) -> None:
