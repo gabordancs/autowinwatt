@@ -766,6 +766,8 @@ def _is_probationary_focus_action(action_label: str) -> bool:
          or normalized == "safe_tools_next_probe_11"
          or normalized == "safe_tools_next_probe_12"
          or normalized == "safe_tools_next_probe_13"
+         or normalized == "safe_rooms_element_route_probe"
+         or normalized == "create_room_probe"
          or normalized.startswith("baseline_restore:")
     )
 
