@@ -16,6 +16,20 @@ NON_CORE_ROOM_TABS = {
     "Felületfűtés-hűtés választék",
     "Fan-coil választék",
 }
+CLIMATE_ROOM_TABS = {"Általános adatok", "Téli hőszükséglet", "Nyári hőterhelés"}
+BOUNDARIES_ROOM_TABS = {"Határoló szerkezetek"}
+ALL_ROOM_TABS = NON_CORE_ROOM_TABS | CLIMATE_ROOM_TABS | BOUNDARIES_ROOM_TABS
+
+
+def excluded_tabs_for_scope(scope: str) -> set[str]:
+    """Return source-defined tab exclusions for a non-overlapping worker role."""
+    if scope == "core":
+        return set(NON_CORE_ROOM_TABS)
+    if scope == "climate":
+        return ALL_ROOM_TABS - CLIMATE_ROOM_TABS
+    if scope == "boundaries":
+        return ALL_ROOM_TABS - BOUNDARIES_ROOM_TABS
+    raise ValueError(f"Unknown room scope: {scope}")
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -36,6 +50,10 @@ def main() -> int:
         "--room-core-only", action="store_true",
         help="Skip the six radiator, surface-heating/cooling and fan-coil tabs without shell Unicode arguments.",
     )
+    parser.add_argument(
+        "--room-scope", choices=("core", "climate", "boundaries"),
+        help="Run a non-overlapping room-worker role; uses source-defined tab names.",
+    )
     parser.add_argument("--status-popup", action="store_true", help="Show a non-activating progress card every five minutes.")
     parser.add_argument("--status-interval", type=int, default=300)
     parser.add_argument("--status-visible-seconds", type=int, default=10)
@@ -54,6 +72,8 @@ def main() -> int:
         excluded_tabs = set(args.exclude_tab)
         if args.room_core_only:
             excluded_tabs.update(NON_CORE_ROOM_TABS)
+        if args.room_scope:
+            excluded_tabs.update(excluded_tabs_for_scope(args.room_scope))
         graph = explore_room_state_graph(
             project_path=args.project, output_dir=output_dir, room_name=args.room_name,
             resume=args.resume, retry_failures=args.retry_failures,

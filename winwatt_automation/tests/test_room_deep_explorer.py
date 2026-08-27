@@ -1,6 +1,7 @@
 from collections import deque
 
 from winwatt_automation.runtime_mapping.room_deep_explorer import ControlAction, _prune_queue, action_identity, logical_state_hash, state_diff, state_hash
+from winwatt_automation.scripts.explore_rooms_deep import excluded_tabs_for_scope
 
 
 def test_state_hash_is_deterministic_for_equal_structures() -> None:
@@ -25,6 +26,13 @@ def test_logical_state_hash_ignores_screen_coordinates() -> None:
     first = {"title": "x", "class_name": "y", "controls": [{"name": "a", "rect": (0, 0, 20, 20)}]}
     second = {"title": "x", "class_name": "y", "controls": [{"name": "a", "rect": (100, 100, 200, 200)}]}
     assert logical_state_hash(first) == logical_state_hash(second)
+
+
+def test_worker_scopes_do_not_overlap() -> None:
+    assert "Határoló szerkezetek" in excluded_tabs_for_scope("climate")
+    assert "Általános adatok" in excluded_tabs_for_scope("boundaries")
+    assert not (excluded_tabs_for_scope("climate") & {"Általános adatok", "Téli hőszükséglet", "Nyári hőterhelés"})
+    assert not (excluded_tabs_for_scope("boundaries") & {"Határoló szerkezetek"})
 
 
 def test_control_action_is_serializable_for_replay() -> None:
