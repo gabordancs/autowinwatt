@@ -33,6 +33,8 @@ def test_worker_scopes_do_not_overlap() -> None:
     assert "Általános adatok" in excluded_tabs_for_scope("boundaries")
     assert not (excluded_tabs_for_scope("climate") & {"Általános adatok", "Téli hőszükséglet", "Nyári hőterhelés"})
     assert not (excluded_tabs_for_scope("boundaries") & {"Határoló szerkezetek"})
+    assert "Nyári hőterhelés" in excluded_tabs_for_scope("general-winter")
+    assert "Téli hőszükséglet" in excluded_tabs_for_scope("summer")
 
 
 def test_control_action_is_serializable_for_replay() -> None:
