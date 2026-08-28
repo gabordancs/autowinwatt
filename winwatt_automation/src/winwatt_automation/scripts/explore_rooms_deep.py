@@ -27,6 +27,10 @@ def excluded_tabs_for_scope(scope: str) -> set[str]:
         return set(NON_CORE_ROOM_TABS)
     if scope == "climate":
         return ALL_ROOM_TABS - CLIMATE_ROOM_TABS
+    if scope == "general-winter":
+        return ALL_ROOM_TABS - {"Általános adatok", "Téli hőszükséglet"}
+    if scope == "summer":
+        return ALL_ROOM_TABS - {"Nyári hőterhelés"}
     if scope == "boundaries":
         return ALL_ROOM_TABS - BOUNDARIES_ROOM_TABS
     raise ValueError(f"Unknown room scope: {scope}")
@@ -51,7 +55,7 @@ def main() -> int:
         help="Skip the six radiator, surface-heating/cooling and fan-coil tabs without shell Unicode arguments.",
     )
     parser.add_argument(
-        "--room-scope", choices=("core", "climate", "boundaries"),
+        "--room-scope", choices=("core", "climate", "general-winter", "summer", "boundaries"),
         help="Run a non-overlapping room-worker role; uses source-defined tab names.",
     )
     parser.add_argument("--status-popup", action="store_true", help="Show a non-activating progress card every five minutes.")
