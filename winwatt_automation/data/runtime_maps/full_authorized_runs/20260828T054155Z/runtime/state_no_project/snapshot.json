@@ -1,0 +1,112 @@
+{
+  "already_open_before_mapping": false,
+  "bootstrap": {
+    "close_result": {
+      "message": "SUCCESS: The process with PID 19720 (child process of PID 24108) has been terminated.",
+      "ok": true,
+      "returncode": 0
+    },
+    "launch_result": {
+      "method": "subprocess.Popen",
+      "ok": true,
+      "target": "C:\\Program Files (x86)\\Bausoft\\WinWatt gólya\\WinWatt32.exe"
+    },
+    "snapshot_project_path": null,
+    "snapshot_ready": true,
+    "snapshot_title": "WinWatt gólya"
+  },
+  "discovered_top_menus": [
+    "Rendszer",
+    "Fájl",
+    "Jegyzékek",
+    "Adatbázis...",
+    "Beállítások",
+    "Ablak",
+    "Súgó"
+  ],
+  "foreground_window": {
+    "class_name": "TMainForm",
+    "handle": 13436288,
+    "process_id": 15236,
+    "title": "WinWatt gólya"
+  },
+  "main_window_class": "TMainForm",
+  "main_window_enabled": true,
+  "main_window_title": "WinWatt gólya",
+  "main_window_visible": true,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "observed_startup_project_path": null,
+  "process_id": 15236,
+  "startup_project_detected": false,
+  "state_id": "full_no_project",
+  "timestamp": "2026-08-28T05:42:45.057806+00:00",
+  "visible_top_windows": [
+    {
+      "class_name": "Shell_TrayWnd",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Tálca"
+    },
+    {
+      "class_name": "Shell_SecondaryTrayWnd",
+      "handle": null,
+      "process_id": 16532,
+      "title": ""
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 15236,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "CASCADIA_HOSTING_WINDOW_CLASS",
+      "handle": null,
+      "process_id": 19080,
+      "title": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\.venv-win32\\Scripts\\python.exe"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 9196,
+      "title": "Untitled-1 - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 15020,
+      "title": "VirtualHere USB Client | VirtualHere - Google Chrome"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Letöltések – Fájlkezelő"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Letöltések – Fájlkezelő"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 9196,
+      "title": "ETAI Agent Platform (localhost:5173) - ETAI_Agents - Visual Studio Code"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23408,
+      "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "Progman",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Program Manager"
+    }
+  ]
+}

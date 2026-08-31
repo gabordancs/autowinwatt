@@ -1,0 +1,13 @@
+no_project menük száma: 6
+project_open menük száma: 5
+diff változások: 1
+skipped_by_safety: 0
+startup_project_detected: False
+already_open_before_mapping: False
+project_open_verdict: opened_by_this_attempt
+expected_project_path: C:\Users\Admin\Documents\GitHub\autowinwatt\winwatt_automation\data\runtime_maps\full_authorized_sandbox\20260826T123933Z\testwwp.wwp
+observed_project_path: C:\Users\Admin\Documents\GitHub\autowinwatt\winwatt_automation\data\runtime_maps\full_authorized_sandbox\20260826T123933Z\testwwp.wwp
+path_match_normalized: True
+knowledge verification: missing=0, new=34, coverage=n/a (no baseline)
+output: C:\Users\Admin\Documents\GitHub\autowinwatt\winwatt_automation\data\runtime_maps\full_authorized_runs\20260826T123933Z\runtime
+{"run_id": "20260826T123933Z", "sandbox": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"}

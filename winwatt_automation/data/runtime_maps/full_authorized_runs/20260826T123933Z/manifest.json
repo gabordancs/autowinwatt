@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "run_id": "20260826T123933Z",
+  "authorization": "unrestricted_menu_execution_on_disposable_sandbox_only",
+  "sandbox": {
+    "source_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+    "source_sha256": "9376944262d23d5bc60184752ac17237aa30aed19be79bdab9c81e84d0ef1e32",
+    "sandbox_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+    "sandbox_sha256_before_execution": "9376944262d23d5bc60184752ac17237aa30aed19be79bdab9c81e84d0ef1e32",
+    "sandbox_sha256_after_execution": "9376944262d23d5bc60184752ac17237aa30aed19be79bdab9c81e84d0ef1e32"
+  },
+  "rooms_seed": {
+    "state_id": "project_open__mdi__helyisegek",
+    "active_mdi_title": "Helyiségek"
+  },
+  "full_runtime_result": {
+    "no_project_state": "full_no_project",
+    "project_open_state": "full_project_open",
+    "no_project_actions": 32,
+    "project_open_actions": 29
+  }
+}

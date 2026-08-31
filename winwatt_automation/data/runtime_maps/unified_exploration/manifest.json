@@ -1,0 +1,36 @@
+{
+  "updated_at": "2026-08-27T13:42:35.454148+00:00",
+  "selected_scopes": [
+    "general",
+    "winter",
+    "summer",
+    "boundaries",
+    "external_wall"
+  ],
+  "active_run": "data/runtime_maps/unified_exploration/scoped_runs/20260827T134152Z",
+  "sources": [
+    {
+      "path": "data/runtime_maps/room_deep_runs/20260826T154506_merged",
+      "exists": true,
+      "states": 139,
+      "edges": 4330
+    },
+    {
+      "path": "data/runtime_maps/external_wall_targeted_20260827",
+      "exists": true
+    },
+    {
+      "path": "data/runtime_maps/room_core_tabs_20260827",
+      "exists": true
+    },
+    {
+      "path": "data/runtime_maps/mdi_runtime_states_9_60",
+      "exists": true
+    },
+    {
+      "path": "data/runtime_maps/catalog_contexts_9_60",
+      "exists": true
+    }
+  ],
+  "merge_policy": "references_only; previous state screenshots and graphs are immutable evidence"
+}

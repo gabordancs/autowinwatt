@@ -1,0 +1,19 @@
+{
+  "selected_scopes": [
+    "general",
+    "winter",
+    "summer",
+    "boundaries",
+    "external_wall"
+  ],
+  "failures": [
+    {
+      "scope": "summer",
+      "error": ""
+    },
+    {
+      "scope": "external_wall",
+      "error": ""
+    }
+  ]
+}

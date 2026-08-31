@@ -1,0 +1,59 @@
+{
+  "active_mdi_title": "Helyiségek",
+  "route": [
+    "Elem",
+    {
+      "new_element_candidate": {
+        "index": 0,
+        "command_id": 607,
+        "caption_raw": "",
+        "enabled": true
+      }
+    }
+  ],
+  "all_rows": [
+    {
+      "index": 0,
+      "command_id": 607,
+      "caption_raw": "",
+      "enabled": true
+    },
+    {
+      "index": 1,
+      "command_id": 608,
+      "caption_raw": "",
+      "enabled": false
+    },
+    {
+      "index": 2,
+      "command_id": 609,
+      "caption_raw": "",
+      "enabled": false
+    },
+    {
+      "index": 3,
+      "command_id": 610,
+      "caption_raw": "",
+      "enabled": false
+    },
+    {
+      "index": 4,
+      "command_id": 611,
+      "caption_raw": "",
+      "enabled": false
+    },
+    {
+      "index": 5,
+      "command_id": 612,
+      "caption_raw": "",
+      "enabled": false
+    },
+    {
+      "index": 6,
+      "command_id": 613,
+      "caption_raw": "",
+      "enabled": true
+    }
+  ],
+  "screenshot": "data\\runtime_maps\\mdi_runtime_states_9_60\\project_open__mdi__helyisegek\\elem_menu_native.png"
+}

@@ -1,0 +1,4 @@
+usage: create_building_with_rooms.py [-h] --project PROJECT --output OUTPUT
+                                     [--building-name BUILDING_NAME]
+                                     [--room-prefix ROOM_PREFIX]
+create_building_with_rooms.py: error: unrecognized arguments: demo building demo room

@@ -1,0 +1,141 @@
+{
+  "already_open_before_mapping": false,
+  "bootstrap": {
+    "close_result": {
+      "message": "SUCCESS: The process with PID 20716 (child process of PID 1928) has been terminated.",
+      "ok": true,
+      "returncode": 0
+    },
+    "launch_result": {
+      "method": "explicit_exe_with_project",
+      "ok": true,
+      "target": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"
+    },
+    "snapshot_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+    "snapshot_ready": true,
+    "snapshot_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"
+  },
+  "discovered_top_menus": [
+    "Rendszer",
+    "Fájl",
+    "Jegyzékek",
+    "Eszközök",
+    "Beállítások",
+    "Ablak",
+    "Súgó"
+  ],
+  "expected_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+  "foreground_window": {
+    "class_name": "TMainForm",
+    "handle": 2032458,
+    "process_id": 20316,
+    "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"
+  },
+  "main_window_class": "TMainForm",
+  "main_window_enabled": true,
+  "main_window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+  "main_window_visible": true,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "observed_main_window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+  "observed_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+  "observed_startup_project_path": null,
+  "path_match_normalized": true,
+  "process_id": 20316,
+  "project_open_recovery": {
+    "close_attempts": [],
+    "diagnostics": {
+      "bootstrap": {
+        "close_result": {
+          "message": "SUCCESS: The process with PID 20716 (child process of PID 1928) has been terminated.",
+          "ok": true,
+          "returncode": 0
+        },
+        "launch_result": {
+          "method": "explicit_exe_with_project",
+          "ok": true,
+          "target": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"
+        },
+        "snapshot_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp",
+        "snapshot_ready": true,
+        "snapshot_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"
+      }
+    },
+    "main_window_ready_after_attempt": true,
+    "modal_pending": false,
+    "reason": "fresh_process_launch",
+    "success": true
+  },
+  "project_open_verdict": "opened_by_this_attempt",
+  "startup_project_detected": false,
+  "state_id": "full_project_open",
+  "timestamp": "2026-08-26T12:42:42.550978+00:00",
+  "visible_top_windows": [
+    {
+      "class_name": "THintWindow",
+      "handle": null,
+      "process_id": 20316,
+      "title": "Szerkezetek"
+    },
+    {
+      "class_name": "SysShadow",
+      "handle": null,
+      "process_id": 20316,
+      "title": ""
+    },
+    {
+      "class_name": "Shell_TrayWnd",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Tálca"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 20316,
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\20260826T123933Z\\testwwp.wwp"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 9196,
+      "title": "Welcome - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 9196,
+      "title": "ETAI Agent Platform (localhost:5173) - ETAI_Agents - Visual Studio Code"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 15020,
+      "title": "Videóból prezentáció készítése - Google Chrome"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23408,
+      "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Letöltések – Fájlkezelő"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Elso_projekt – Fájlkezelő"
+    },
+    {
+      "class_name": "Progman",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Program Manager"
+    }
+  ]
+}

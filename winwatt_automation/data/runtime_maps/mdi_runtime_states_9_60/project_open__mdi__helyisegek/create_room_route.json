@@ -1,0 +1,70 @@
+{
+  "state_id": "project_open__mdi__helyisegek",
+  "precondition": {
+    "active_mdi_title": "Helyiségek",
+    "dynamic_context_recognized": true
+  },
+  "route": [
+    {
+      "top_menu": "Elem"
+    },
+    {
+      "semantic_alias": "new_element",
+      "visible_caption": "Létrehoz...",
+      "row_index": 0,
+      "native_candidate": {
+        "row_index": 0,
+        "command_id": 607,
+        "enabled": true,
+        "caption_reliable": false
+      }
+    }
+  ],
+  "row_found": true,
+  "rows": [
+    {
+      "row_index": 0,
+      "command_id": 607,
+      "enabled": true,
+      "caption_reliable": false
+    },
+    {
+      "row_index": 1,
+      "command_id": 608,
+      "enabled": false,
+      "caption_reliable": false
+    },
+    {
+      "row_index": 2,
+      "command_id": 609,
+      "enabled": false,
+      "caption_reliable": false
+    },
+    {
+      "row_index": 3,
+      "command_id": 610,
+      "enabled": false,
+      "caption_reliable": false
+    },
+    {
+      "row_index": 4,
+      "command_id": 611,
+      "enabled": false,
+      "caption_reliable": false
+    },
+    {
+      "row_index": 5,
+      "command_id": 612,
+      "enabled": false,
+      "caption_reliable": false
+    },
+    {
+      "row_index": 6,
+      "command_id": 613,
+      "enabled": true,
+      "caption_reliable": false
+    }
+  ],
+  "visual_evidence": "data/runtime_maps/mdi_runtime_states_9_60/project_open__mdi__helyisegek/elem_menu.png",
+  "policy": "mapping_only_do_not_click_new_element_until_create_room_has_explicit_effect_and_recovery_policy"
+}

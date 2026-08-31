@@ -1,0 +1,79 @@
+{
+  "dialog": {
+    "title": "Új elem létrehozása",
+    "class": "TNewGroupForm",
+    "handle": 2557132
+  },
+  "controls": [
+    {
+      "index": 0,
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Súgó",
+      "automation_id": "4261974",
+      "text": "Súgó",
+      "rect": {
+        "left": 254,
+        "top": 113,
+        "right": 348,
+        "bottom": 144
+      }
+    },
+    {
+      "index": 1,
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Elvet",
+      "automation_id": "4065286",
+      "text": "Elvet",
+      "rect": {
+        "left": 144,
+        "top": 113,
+        "right": 238,
+        "bottom": 144
+      }
+    },
+    {
+      "index": 2,
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "OK",
+      "automation_id": "3672232",
+      "text": "OK",
+      "rect": {
+        "left": 34,
+        "top": 113,
+        "right": 128,
+        "bottom": 144
+      }
+    },
+    {
+      "index": 3,
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "5442396",
+      "text": "",
+      "rect": {
+        "left": 74,
+        "top": 63,
+        "right": 345,
+        "bottom": 89
+      }
+    },
+    {
+      "index": 5,
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Bezárás",
+      "automation_id": "",
+      "text": "Bezárás",
+      "rect": {
+        "left": 334,
+        "top": 1,
+        "right": 378,
+        "bottom": 34
+      }
+    }
+  ]
+}

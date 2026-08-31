@@ -1,0 +1,7302 @@
+{
+  "room_title": "Helyiségek - AutoWinWatt teszt helyiség",
+  "room_class": "TRoomModifyForm",
+  "tabs": [
+    {
+      "group": "outer",
+      "ordinal": 0,
+      "tab_name": "Általános adatok",
+      "screenshot": "data/runtime_maps/room_detail_9_60/outer_00.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "15074756",
+          "rect": {
+            "left": 938,
+            "top": 755,
+            "right": 1032,
+            "bottom": 786
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "1902474",
+          "rect": {
+            "left": 938,
+            "top": 798,
+            "right": 1032,
+            "bottom": 829
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Másol",
+          "automation_id": "2689924",
+          "rect": {
+            "left": 938,
+            "top": 714,
+            "right": 1032,
+            "bottom": 745
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Lefelé",
+          "automation_id": "919582",
+          "rect": {
+            "left": 938,
+            "top": 671,
+            "right": 1032,
+            "bottom": 702
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felfelé",
+          "automation_id": "4392144",
+          "rect": {
+            "left": 938,
+            "top": 630,
+            "right": 1032,
+            "bottom": 661
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "722708",
+          "rect": {
+            "left": 938,
+            "top": 588,
+            "right": 1032,
+            "bottom": 619
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Szerkezetek...",
+          "automation_id": "8194090",
+          "rect": {
+            "left": 938,
+            "top": 548,
+            "right": 1032,
+            "bottom": 579
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "918878",
+          "rect": {
+            "left": 114,
+            "top": 584,
+            "right": 927,
+            "bottom": 864
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 840,
+            "right": 137,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 306,
+            "top": 840,
+            "right": 903,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 903,
+            "top": 840,
+            "right": 924,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1114738",
+          "rect": {
+            "left": 433,
+            "top": 206,
+            "right": 493,
+            "bottom": 232
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "918744",
+          "rect": {
+            "left": 676,
+            "top": 463,
+            "right": 737,
+            "bottom": 489
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "2427620",
+          "rect": {
+            "left": 676,
+            "top": 429,
+            "right": 737,
+            "bottom": 455
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "2033512",
+          "rect": {
+            "left": 676,
+            "top": 395,
+            "right": 737,
+            "bottom": 421
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Nyári hőterhelés",
+          "automation_id": "1312092",
+          "rect": {
+            "left": 136,
+            "top": 365,
+            "right": 327,
+            "bottom": 386
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Téli hőszükséglet",
+          "automation_id": "3081644",
+          "rect": {
+            "left": 136,
+            "top": 336,
+            "right": 327,
+            "bottom": 357
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "1968116",
+          "rect": {
+            "left": 673,
+            "top": 208,
+            "right": 914,
+            "bottom": 234
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 676,
+            "top": 211,
+            "right": 889,
+            "bottom": 230
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 894,
+            "top": 209,
+            "right": 913,
+            "bottom": 233
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "5704754",
+          "rect": {
+            "left": 433,
+            "top": 284,
+            "right": 494,
+            "bottom": 310
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "591586",
+          "rect": {
+            "left": 433,
+            "top": 254,
+            "right": 494,
+            "bottom": 280
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "6883716",
+          "rect": {
+            "left": 673,
+            "top": 240,
+            "right": 914,
+            "bottom": 266
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 676,
+            "top": 244,
+            "right": 889,
+            "bottom": 263
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 894,
+            "top": 241,
+            "right": 913,
+            "bottom": 265
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "7801586",
+          "rect": {
+            "left": 233,
+            "top": 284,
+            "right": 294,
+            "bottom": 310
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "3344432",
+          "rect": {
+            "left": 233,
+            "top": 254,
+            "right": 294,
+            "bottom": 280
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "3540950",
+          "rect": {
+            "left": 233,
+            "top": 206,
+            "right": 294,
+            "bottom": 232
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "4261894",
+          "rect": {
+            "left": 673,
+            "top": 176,
+            "right": 914,
+            "bottom": 202
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 676,
+            "top": 180,
+            "right": 889,
+            "bottom": 199
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 894,
+            "top": 178,
+            "right": 913,
+            "bottom": 202
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "7014326",
+          "rect": {
+            "left": 233,
+            "top": 176,
+            "right": 493,
+            "bottom": 202
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 473,
+            "top": 178,
+            "right": 492,
+            "bottom": 202
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "outer",
+      "ordinal": 1,
+      "tab_name": "Téli hőszükséglet",
+      "screenshot": "data/runtime_maps/room_detail_9_60/outer_01.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "15074756",
+          "rect": {
+            "left": 938,
+            "top": 755,
+            "right": 1032,
+            "bottom": 786
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "1902474",
+          "rect": {
+            "left": 938,
+            "top": 798,
+            "right": 1032,
+            "bottom": 829
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Másol",
+          "automation_id": "2689924",
+          "rect": {
+            "left": 938,
+            "top": 714,
+            "right": 1032,
+            "bottom": 745
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Lefelé",
+          "automation_id": "919582",
+          "rect": {
+            "left": 938,
+            "top": 671,
+            "right": 1032,
+            "bottom": 702
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felfelé",
+          "automation_id": "4392144",
+          "rect": {
+            "left": 938,
+            "top": 630,
+            "right": 1032,
+            "bottom": 661
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "722708",
+          "rect": {
+            "left": 938,
+            "top": 588,
+            "right": 1032,
+            "bottom": 619
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Szerkezetek...",
+          "automation_id": "8194090",
+          "rect": {
+            "left": 938,
+            "top": 548,
+            "right": 1032,
+            "bottom": 579
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "918878",
+          "rect": {
+            "left": 114,
+            "top": 584,
+            "right": 927,
+            "bottom": 864
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 840,
+            "right": 137,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 306,
+            "top": 840,
+            "right": 903,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 903,
+            "top": 840,
+            "right": 924,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "722712",
+          "rect": {
+            "left": 323,
+            "top": 221,
+            "right": 414,
+            "bottom": 247
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 326,
+            "top": 225,
+            "right": 389,
+            "bottom": 244
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 394,
+            "top": 223,
+            "right": 413,
+            "bottom": 247
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1443804",
+          "rect": {
+            "left": 776,
+            "top": 338,
+            "right": 847,
+            "bottom": 364
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "További infiltráció",
+          "automation_id": "1771410",
+          "rect": {
+            "left": 466,
+            "top": 339,
+            "right": 610,
+            "bottom": 360
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "4655086",
+          "rect": {
+            "left": 778,
+            "top": 281,
+            "right": 869,
+            "bottom": 307
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 781,
+            "top": 285,
+            "right": 844,
+            "bottom": 304
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 849,
+            "top": 283,
+            "right": 868,
+            "bottom": 307
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "2951312",
+          "rect": {
+            "left": 461,
+            "top": 280,
+            "right": 770,
+            "bottom": 306
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 750,
+            "top": 281,
+            "right": 769,
+            "bottom": 305
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1312836",
+          "rect": {
+            "left": 778,
+            "top": 218,
+            "right": 849,
+            "bottom": 244
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "3017096",
+          "rect": {
+            "left": 460,
+            "top": 186,
+            "right": 918,
+            "bottom": 212
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 898,
+            "top": 188,
+            "right": 917,
+            "bottom": 212
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1967890",
+          "rect": {
+            "left": 323,
+            "top": 381,
+            "right": 384,
+            "bottom": 407
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Napsugárzási hőnyereség",
+          "automation_id": "3278622",
+          "rect": {
+            "left": 133,
+            "top": 349,
+            "right": 334,
+            "bottom": 370
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1836232",
+          "rect": {
+            "left": 323,
+            "top": 256,
+            "right": 384,
+            "bottom": 282
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1639608",
+          "rect": {
+            "left": 323,
+            "top": 186,
+            "right": 384,
+            "bottom": 212
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "outer",
+      "ordinal": 2,
+      "tab_name": "Nyári hőterhelés",
+      "screenshot": "data/runtime_maps/room_detail_9_60/outer_02.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "15074756",
+          "rect": {
+            "left": 938,
+            "top": 755,
+            "right": 1032,
+            "bottom": 786
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "1902474",
+          "rect": {
+            "left": 938,
+            "top": 798,
+            "right": 1032,
+            "bottom": 829
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Másol",
+          "automation_id": "2689924",
+          "rect": {
+            "left": 938,
+            "top": 714,
+            "right": 1032,
+            "bottom": 745
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Lefelé",
+          "automation_id": "919582",
+          "rect": {
+            "left": 938,
+            "top": 671,
+            "right": 1032,
+            "bottom": 702
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felfelé",
+          "automation_id": "4392144",
+          "rect": {
+            "left": 938,
+            "top": 630,
+            "right": 1032,
+            "bottom": 661
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "722708",
+          "rect": {
+            "left": 938,
+            "top": 588,
+            "right": 1032,
+            "bottom": 619
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Szerkezetek...",
+          "automation_id": "8194090",
+          "rect": {
+            "left": 938,
+            "top": 548,
+            "right": 1032,
+            "bottom": 579
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "918878",
+          "rect": {
+            "left": 114,
+            "top": 584,
+            "right": 927,
+            "bottom": 864
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 840,
+            "right": 137,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 306,
+            "top": 840,
+            "right": 903,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 903,
+            "top": 840,
+            "right": 924,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Filtráció...",
+          "automation_id": "1509316",
+          "rect": {
+            "left": 648,
+            "top": 394,
+            "right": 779,
+            "bottom": 425
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Emberi hőleadás...",
+          "automation_id": "1771524",
+          "rect": {
+            "left": 648,
+            "top": 326,
+            "right": 779,
+            "bottom": 357
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Világítás...",
+          "automation_id": "1312728",
+          "rect": {
+            "left": 648,
+            "top": 360,
+            "right": 779,
+            "bottom": 391
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Anyagmozgás...",
+          "automation_id": "2230288",
+          "rect": {
+            "left": 648,
+            "top": 428,
+            "right": 779,
+            "bottom": 459
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Egyéb hőterhelés...",
+          "automation_id": "1312676",
+          "rect": {
+            "left": 648,
+            "top": 461,
+            "right": 779,
+            "bottom": 492
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "722132",
+          "rect": {
+            "left": 828,
+            "top": 170,
+            "right": 899,
+            "bottom": 196
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "outer",
+      "ordinal": 3,
+      "tab_name": "Radiátorok",
+      "screenshot": "data/runtime_maps/room_detail_9_60/outer_03.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "329868",
+          "rect": {
+            "left": 810,
+            "top": 541,
+            "right": 921,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 901,
+            "top": 543,
+            "right": 920,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Adatlap",
+          "automation_id": "3148326",
+          "rect": {
+            "left": 724,
+            "top": 544,
+            "right": 805,
+            "bottom": 565
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Pótlékkal",
+          "automation_id": "1116106",
+          "rect": {
+            "left": 935,
+            "top": 728,
+            "right": 1031,
+            "bottom": 749
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Választék...",
+          "automation_id": "1968512",
+          "rect": {
+            "left": 938,
+            "top": 833,
+            "right": 1032,
+            "bottom": 864
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Cserél",
+          "automation_id": "1837960",
+          "rect": {
+            "left": 938,
+            "top": 793,
+            "right": 1032,
+            "bottom": 824
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "2755494",
+          "rect": {
+            "left": 958,
+            "top": 698,
+            "right": 1009,
+            "bottom": 724
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "852462",
+          "rect": {
+            "left": 958,
+            "top": 668,
+            "right": 1009,
+            "bottom": 694
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1443890",
+          "rect": {
+            "left": 958,
+            "top": 638,
+            "right": 1009,
+            "bottom": 664
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "919444",
+          "rect": {
+            "left": 958,
+            "top": 578,
+            "right": 1009,
+            "bottom": 604
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "788410",
+          "rect": {
+            "left": 958,
+            "top": 548,
+            "right": 1009,
+            "bottom": 574
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felvesz",
+          "automation_id": "7407618",
+          "rect": {
+            "left": 938,
+            "top": 753,
+            "right": 1032,
+            "bottom": 784
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Tree",
+          "class_name": "TTreeView",
+          "name": "",
+          "automation_id": "526102",
+          "rect": {
+            "left": 113,
+            "top": 538,
+            "right": 344,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral fel",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 320,
+            "top": 540,
+            "right": 346,
+            "bottom": 561
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal le",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 320,
+            "top": 623,
+            "right": 346,
+            "bottom": 842
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral le",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 320,
+            "top": 842,
+            "right": 346,
+            "bottom": 863
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 143,
+            "top": 540,
+            "right": 213,
+            "bottom": 560
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Általános",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 560,
+            "right": 225,
+            "bottom": 580
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ALURAD",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 580,
+            "right": 226,
+            "bottom": 600
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "APOLLO",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 600,
+            "right": 224,
+            "bottom": 620
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BEST",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 620,
+            "right": 206,
+            "bottom": 640
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Betatherm",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 640,
+            "right": 231,
+            "bottom": 660
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BOKI",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 660,
+            "right": 202,
+            "bottom": 680
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BOKI 2020",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 680,
+            "right": 236,
+            "bottom": 700
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BUDERUS",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 700,
+            "right": 237,
+            "bottom": 720
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Calidor",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 720,
+            "right": 211,
+            "bottom": 740
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "CLASSIC",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 740,
+            "right": 226,
+            "bottom": 760
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Darázs",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 760,
+            "right": 212,
+            "bottom": 780
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "DeLonghi",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 780,
+            "right": 229,
+            "bottom": 800
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "DUNAFERR",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 800,
+            "right": 246,
+            "bottom": 820
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ELBA",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 820,
+            "right": 205,
+            "bottom": 840
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ENERGO-TREND",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 840,
+            "right": 280,
+            "bottom": 860
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ENIX",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 860,
+            "right": 202,
+            "bottom": 880
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "461194",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 247,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "1181706",
+          "rect": {
+            "left": 828,
+            "top": 326,
+            "right": 922,
+            "bottom": 357
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "1050414",
+          "rect": {
+            "left": 828,
+            "top": 366,
+            "right": 922,
+            "bottom": 397
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Csökkent",
+          "automation_id": "918716",
+          "rect": {
+            "left": 828,
+            "top": 286,
+            "right": 922,
+            "bottom": 317
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Növel",
+          "automation_id": "2100344",
+          "rect": {
+            "left": 828,
+            "top": 246,
+            "right": 922,
+            "bottom": 277
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "853194",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "outer",
+      "ordinal": 4,
+      "tab_name": "Felületfűtés-hűtés",
+      "screenshot": "data/runtime_maps/room_detail_9_60/outer_04.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1116014",
+          "rect": {
+            "left": 288,
+            "top": 599,
+            "right": 788,
+            "bottom": 865
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Optimum",
+          "automation_id": "132922",
+          "rect": {
+            "left": 643,
+            "top": 819,
+            "right": 737,
+            "bottom": 850
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "198520",
+          "rect": {
+            "left": 294,
+            "top": 653,
+            "right": 782,
+            "bottom": 808
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 296,
+            "top": 784,
+            "right": 317,
+            "bottom": 810
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 642,
+            "top": 784,
+            "right": 758,
+            "bottom": 810
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 758,
+            "top": 784,
+            "right": 779,
+            "bottom": 810
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "198516",
+          "rect": {
+            "left": 608,
+            "top": 570,
+            "right": 669,
+            "bottom": 596
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "198624",
+          "rect": {
+            "left": 408,
+            "top": 570,
+            "right": 579,
+            "bottom": 596
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 411,
+            "top": 574,
+            "right": 554,
+            "bottom": 593
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 559,
+            "top": 571,
+            "right": 578,
+            "bottom": 595
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "198518",
+          "rect": {
+            "left": 948,
+            "top": 648,
+            "right": 1009,
+            "bottom": 674
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "264124",
+          "rect": {
+            "left": 878,
+            "top": 648,
+            "right": 939,
+            "bottom": 674
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "tf limit",
+          "automation_id": "459266",
+          "rect": {
+            "left": 795,
+            "top": 650,
+            "right": 870,
+            "bottom": 671
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "hűtés",
+          "automation_id": "919530",
+          "rect": {
+            "left": 948,
+            "top": 538,
+            "right": 1009,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "fűtés",
+          "automation_id": "4459574",
+          "rect": {
+            "left": 878,
+            "top": 538,
+            "right": 939,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Hőszükséglet korrekció",
+          "automation_id": "393290",
+          "rect": {
+            "left": 858,
+            "top": 828,
+            "right": 1049,
+            "bottom": 849
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "526106",
+          "rect": {
+            "left": 948,
+            "top": 768,
+            "right": 1009,
+            "bottom": 794
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "526160",
+          "rect": {
+            "left": 948,
+            "top": 708,
+            "right": 1009,
+            "bottom": 734
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "919630",
+          "rect": {
+            "left": 948,
+            "top": 588,
+            "right": 1009,
+            "bottom": 614
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "526094",
+          "rect": {
+            "left": 948,
+            "top": 558,
+            "right": 1009,
+            "bottom": 584
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "460604",
+          "rect": {
+            "left": 878,
+            "top": 708,
+            "right": 939,
+            "bottom": 734
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Választék...",
+          "automation_id": "853882",
+          "rect": {
+            "left": 928,
+            "top": 853,
+            "right": 1022,
+            "bottom": 884
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felvesz",
+          "automation_id": "262208",
+          "rect": {
+            "left": 808,
+            "top": 853,
+            "right": 902,
+            "bottom": 884
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "393242",
+          "rect": {
+            "left": 878,
+            "top": 798,
+            "right": 939,
+            "bottom": 824
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "19270344",
+          "rect": {
+            "left": 878,
+            "top": 768,
+            "right": 939,
+            "bottom": 794
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "853184",
+          "rect": {
+            "left": 878,
+            "top": 738,
+            "right": 939,
+            "bottom": 764
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "1050466",
+          "rect": {
+            "left": 878,
+            "top": 678,
+            "right": 1029,
+            "bottom": 704
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 1009,
+            "top": 679,
+            "right": 1028,
+            "bottom": 703
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "722130",
+          "rect": {
+            "left": 878,
+            "top": 588,
+            "right": 939,
+            "bottom": 614
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1772172",
+          "rect": {
+            "left": 878,
+            "top": 558,
+            "right": 939,
+            "bottom": 584
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tree",
+          "class_name": "TTreeView",
+          "name": "",
+          "automation_id": "4392720",
+          "rect": {
+            "left": 113,
+            "top": 538,
+            "right": 284,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral fel",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 260,
+            "top": 540,
+            "right": 286,
+            "bottom": 561
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal le",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 260,
+            "top": 642,
+            "right": 286,
+            "bottom": 820
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral le",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 260,
+            "top": 820,
+            "right": 286,
+            "bottom": 841
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 115,
+            "top": 841,
+            "right": 136,
+            "bottom": 867
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 201,
+            "top": 841,
+            "right": 239,
+            "bottom": 867
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 239,
+            "top": 841,
+            "right": 260,
+            "bottom": 867
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Felületfűtések-hűtések",
+          "automation_id": "",
+          "rect": {
+            "left": 143,
+            "top": 540,
+            "right": 282,
+            "bottom": 560
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Apparat",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 560,
+            "right": 217,
+            "bottom": 580
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "AQUATHERM",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 580,
+            "right": 257,
+            "bottom": 600
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BEKA",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 600,
+            "right": 206,
+            "bottom": 620
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "COMAP",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 620,
+            "right": 219,
+            "bottom": 640
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "GEOWALL",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 640,
+            "right": 237,
+            "bottom": 660
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "HAKA",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 660,
+            "right": 207,
+            "bottom": 680
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "HENCO",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 680,
+            "right": 219,
+            "bottom": 700
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Hepworth",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 700,
+            "right": 229,
+            "bottom": 720
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "KAN",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 720,
+            "right": 199,
+            "bottom": 740
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "KELIT",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 740,
+            "right": 209,
+            "bottom": 760
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "KME",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 760,
+            "right": 200,
+            "bottom": 780
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "LAING",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 780,
+            "right": 211,
+            "bottom": 800
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "MAINCOR",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 800,
+            "right": 234,
+            "bottom": 820
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "MEDITHERM",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 820,
+            "right": 254,
+            "bottom": 840
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Pipelife",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 840,
+            "right": 214,
+            "bottom": 860
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "458780",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 384,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "393232",
+          "rect": {
+            "left": 828,
+            "top": 326,
+            "right": 922,
+            "bottom": 357
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Ritkít",
+          "automation_id": "4393812",
+          "rect": {
+            "left": 828,
+            "top": 286,
+            "right": 922,
+            "bottom": 317
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Sűrít",
+          "automation_id": "460712",
+          "rect": {
+            "left": 828,
+            "top": 246,
+            "right": 922,
+            "bottom": 277
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "1311502",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "outer",
+      "ordinal": 5,
+      "tab_name": "Fan-coilok",
+      "screenshot": "data/runtime_maps/room_detail_9_60/outer_05.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "23462474",
+          "rect": {
+            "left": 646,
+            "top": 541,
+            "right": 784,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 764,
+            "top": 543,
+            "right": 783,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tree",
+          "class_name": "TTreeView",
+          "name": "",
+          "automation_id": "7408162",
+          "rect": {
+            "left": 113,
+            "top": 538,
+            "right": 284,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 143,
+            "top": 540,
+            "right": 209,
+            "bottom": 560
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Vaillant",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 560,
+            "right": 214,
+            "bottom": 580
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "919304",
+          "rect": {
+            "left": 846,
+            "top": 721,
+            "right": 1037,
+            "bottom": 747
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 1018,
+            "top": 723,
+            "right": 1037,
+            "bottom": 747
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "265022",
+          "rect": {
+            "left": 878,
+            "top": 690,
+            "right": 941,
+            "bottom": 716
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "2164678",
+          "rect": {
+            "left": 795,
+            "top": 598,
+            "right": 940,
+            "bottom": 624
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 799,
+            "top": 601,
+            "right": 915,
+            "bottom": 620
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 920,
+            "top": 599,
+            "right": 939,
+            "bottom": 623
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "199942",
+          "rect": {
+            "left": 948,
+            "top": 596,
+            "right": 1009,
+            "bottom": 622
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "199944",
+          "rect": {
+            "left": 878,
+            "top": 836,
+            "right": 939,
+            "bottom": 862
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "265482",
+          "rect": {
+            "left": 948,
+            "top": 836,
+            "right": 1009,
+            "bottom": 862
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1245302",
+          "rect": {
+            "left": 878,
+            "top": 806,
+            "right": 939,
+            "bottom": 832
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1507938",
+          "rect": {
+            "left": 948,
+            "top": 806,
+            "right": 1009,
+            "bottom": 832
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "787846",
+          "rect": {
+            "left": 948,
+            "top": 776,
+            "right": 1009,
+            "bottom": 802
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1245676",
+          "rect": {
+            "left": 878,
+            "top": 776,
+            "right": 939,
+            "bottom": 802
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "hűtés",
+          "automation_id": "394616",
+          "rect": {
+            "left": 948,
+            "top": 538,
+            "right": 1009,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "fűtés",
+          "automation_id": "132904",
+          "rect": {
+            "left": 878,
+            "top": 538,
+            "right": 939,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "132906",
+          "rect": {
+            "left": 948,
+            "top": 659,
+            "right": 1009,
+            "bottom": 685
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "132908",
+          "rect": {
+            "left": 948,
+            "top": 564,
+            "right": 1009,
+            "bottom": 590
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "132912",
+          "rect": {
+            "left": 878,
+            "top": 659,
+            "right": 939,
+            "bottom": 685
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1182452",
+          "rect": {
+            "left": 878,
+            "top": 563,
+            "right": 939,
+            "bottom": 589
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "198434",
+          "rect": {
+            "left": 828,
+            "top": 245,
+            "right": 922,
+            "bottom": 276
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "198432",
+          "rect": {
+            "left": 828,
+            "top": 285,
+            "right": 922,
+            "bottom": 316
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "198428",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "460482",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 222,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "inner",
+      "ordinal": 0,
+      "tab_name": "Határoló szerkezetek",
+      "screenshot": "data/runtime_maps/room_detail_9_60/inner_00.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "15074756",
+          "rect": {
+            "left": 938,
+            "top": 755,
+            "right": 1032,
+            "bottom": 786
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "1902474",
+          "rect": {
+            "left": 938,
+            "top": 798,
+            "right": 1032,
+            "bottom": 829
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Másol",
+          "automation_id": "2689924",
+          "rect": {
+            "left": 938,
+            "top": 714,
+            "right": 1032,
+            "bottom": 745
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Lefelé",
+          "automation_id": "919582",
+          "rect": {
+            "left": 938,
+            "top": 671,
+            "right": 1032,
+            "bottom": 702
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felfelé",
+          "automation_id": "4392144",
+          "rect": {
+            "left": 938,
+            "top": 630,
+            "right": 1032,
+            "bottom": 661
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "722708",
+          "rect": {
+            "left": 938,
+            "top": 588,
+            "right": 1032,
+            "bottom": 619
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Szerkezetek...",
+          "automation_id": "8194090",
+          "rect": {
+            "left": 938,
+            "top": 548,
+            "right": 1032,
+            "bottom": 579
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "918878",
+          "rect": {
+            "left": 114,
+            "top": 584,
+            "right": 927,
+            "bottom": 864
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 840,
+            "right": 137,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 306,
+            "top": 840,
+            "right": 903,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 903,
+            "top": 840,
+            "right": 924,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "198434",
+          "rect": {
+            "left": 828,
+            "top": 245,
+            "right": 922,
+            "bottom": 276
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "198432",
+          "rect": {
+            "left": 828,
+            "top": 285,
+            "right": 922,
+            "bottom": 316
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "198428",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "460482",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 222,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "inner",
+      "ordinal": 1,
+      "tab_name": "Radiátor választék",
+      "screenshot": "data/runtime_maps/room_detail_9_60/inner_01.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "329868",
+          "rect": {
+            "left": 810,
+            "top": 541,
+            "right": 921,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 901,
+            "top": 543,
+            "right": 920,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Adatlap",
+          "automation_id": "3148326",
+          "rect": {
+            "left": 724,
+            "top": 544,
+            "right": 805,
+            "bottom": 565
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Pótlékkal",
+          "automation_id": "1116106",
+          "rect": {
+            "left": 935,
+            "top": 728,
+            "right": 1031,
+            "bottom": 749
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Választék...",
+          "automation_id": "1968512",
+          "rect": {
+            "left": 938,
+            "top": 833,
+            "right": 1032,
+            "bottom": 864
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Cserél",
+          "automation_id": "1837960",
+          "rect": {
+            "left": 938,
+            "top": 793,
+            "right": 1032,
+            "bottom": 824
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "2755494",
+          "rect": {
+            "left": 958,
+            "top": 698,
+            "right": 1009,
+            "bottom": 724
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "852462",
+          "rect": {
+            "left": 958,
+            "top": 668,
+            "right": 1009,
+            "bottom": 694
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1443890",
+          "rect": {
+            "left": 958,
+            "top": 638,
+            "right": 1009,
+            "bottom": 664
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "919444",
+          "rect": {
+            "left": 958,
+            "top": 578,
+            "right": 1009,
+            "bottom": 604
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "788410",
+          "rect": {
+            "left": 958,
+            "top": 548,
+            "right": 1009,
+            "bottom": 574
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felvesz",
+          "automation_id": "7407618",
+          "rect": {
+            "left": 938,
+            "top": 753,
+            "right": 1032,
+            "bottom": 784
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Tree",
+          "class_name": "TTreeView",
+          "name": "",
+          "automation_id": "526102",
+          "rect": {
+            "left": 113,
+            "top": 538,
+            "right": 344,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral fel",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 320,
+            "top": 540,
+            "right": 346,
+            "bottom": 561
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal le",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 320,
+            "top": 623,
+            "right": 346,
+            "bottom": 842
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral le",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 320,
+            "top": 842,
+            "right": 346,
+            "bottom": 863
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 143,
+            "top": 540,
+            "right": 213,
+            "bottom": 560
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Általános",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 560,
+            "right": 225,
+            "bottom": 580
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ALURAD",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 580,
+            "right": 226,
+            "bottom": 600
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "APOLLO",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 600,
+            "right": 224,
+            "bottom": 620
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BEST",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 620,
+            "right": 206,
+            "bottom": 640
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Betatherm",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 640,
+            "right": 231,
+            "bottom": 660
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BOKI",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 660,
+            "right": 202,
+            "bottom": 680
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BOKI 2020",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 680,
+            "right": 236,
+            "bottom": 700
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BUDERUS",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 700,
+            "right": 237,
+            "bottom": 720
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Calidor",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 720,
+            "right": 211,
+            "bottom": 740
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "CLASSIC",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 740,
+            "right": 226,
+            "bottom": 760
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Darázs",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 760,
+            "right": 212,
+            "bottom": 780
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "DeLonghi",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 780,
+            "right": 229,
+            "bottom": 800
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "DUNAFERR",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 800,
+            "right": 246,
+            "bottom": 820
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ELBA",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 820,
+            "right": 205,
+            "bottom": 840
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ENERGO-TREND",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 840,
+            "right": 280,
+            "bottom": 860
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "ENIX",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 860,
+            "right": 202,
+            "bottom": 880
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "461194",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 247,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "1181706",
+          "rect": {
+            "left": 828,
+            "top": 326,
+            "right": 922,
+            "bottom": 357
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "1050414",
+          "rect": {
+            "left": 828,
+            "top": 366,
+            "right": 922,
+            "bottom": 397
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Csökkent",
+          "automation_id": "918716",
+          "rect": {
+            "left": 828,
+            "top": 286,
+            "right": 922,
+            "bottom": 317
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Növel",
+          "automation_id": "2100344",
+          "rect": {
+            "left": 828,
+            "top": 246,
+            "right": 922,
+            "bottom": 277
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "853194",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "inner",
+      "ordinal": 2,
+      "tab_name": "Felületfűtés-hűtés választék",
+      "screenshot": "data/runtime_maps/room_detail_9_60/inner_02.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1116014",
+          "rect": {
+            "left": 288,
+            "top": 599,
+            "right": 788,
+            "bottom": 865
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Optimum",
+          "automation_id": "132922",
+          "rect": {
+            "left": 643,
+            "top": 819,
+            "right": 737,
+            "bottom": 850
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "198520",
+          "rect": {
+            "left": 294,
+            "top": 653,
+            "right": 782,
+            "bottom": 808
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 296,
+            "top": 784,
+            "right": 317,
+            "bottom": 810
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 642,
+            "top": 784,
+            "right": 758,
+            "bottom": 810
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 758,
+            "top": 784,
+            "right": 779,
+            "bottom": 810
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "198516",
+          "rect": {
+            "left": 608,
+            "top": 570,
+            "right": 669,
+            "bottom": 596
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "198624",
+          "rect": {
+            "left": 408,
+            "top": 570,
+            "right": 579,
+            "bottom": 596
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 411,
+            "top": 574,
+            "right": 554,
+            "bottom": 593
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 559,
+            "top": 571,
+            "right": 578,
+            "bottom": 595
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "198518",
+          "rect": {
+            "left": 948,
+            "top": 648,
+            "right": 1009,
+            "bottom": 674
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "264124",
+          "rect": {
+            "left": 878,
+            "top": 648,
+            "right": 939,
+            "bottom": 674
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "tf limit",
+          "automation_id": "459266",
+          "rect": {
+            "left": 795,
+            "top": 650,
+            "right": 870,
+            "bottom": 671
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "hűtés",
+          "automation_id": "919530",
+          "rect": {
+            "left": 948,
+            "top": 538,
+            "right": 1009,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "fűtés",
+          "automation_id": "4459574",
+          "rect": {
+            "left": 878,
+            "top": 538,
+            "right": 939,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "Hőszükséglet korrekció",
+          "automation_id": "393290",
+          "rect": {
+            "left": 858,
+            "top": 828,
+            "right": 1049,
+            "bottom": 849
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "526106",
+          "rect": {
+            "left": 948,
+            "top": 768,
+            "right": 1009,
+            "bottom": 794
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "526160",
+          "rect": {
+            "left": 948,
+            "top": 708,
+            "right": 1009,
+            "bottom": 734
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "919630",
+          "rect": {
+            "left": 948,
+            "top": 588,
+            "right": 1009,
+            "bottom": 614
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "526094",
+          "rect": {
+            "left": 948,
+            "top": 558,
+            "right": 1009,
+            "bottom": 584
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "460604",
+          "rect": {
+            "left": 878,
+            "top": 708,
+            "right": 939,
+            "bottom": 734
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Választék...",
+          "automation_id": "853882",
+          "rect": {
+            "left": 928,
+            "top": 853,
+            "right": 1022,
+            "bottom": 884
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Felvesz",
+          "automation_id": "262208",
+          "rect": {
+            "left": 808,
+            "top": 853,
+            "right": 902,
+            "bottom": 884
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "393242",
+          "rect": {
+            "left": 878,
+            "top": 798,
+            "right": 939,
+            "bottom": 824
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "19270344",
+          "rect": {
+            "left": 878,
+            "top": 768,
+            "right": 939,
+            "bottom": 794
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "853184",
+          "rect": {
+            "left": 878,
+            "top": 738,
+            "right": 939,
+            "bottom": 764
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "1050466",
+          "rect": {
+            "left": 878,
+            "top": 678,
+            "right": 1029,
+            "bottom": 704
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 1009,
+            "top": 679,
+            "right": 1028,
+            "bottom": 703
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "722130",
+          "rect": {
+            "left": 878,
+            "top": 588,
+            "right": 939,
+            "bottom": 614
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1772172",
+          "rect": {
+            "left": 878,
+            "top": 558,
+            "right": 939,
+            "bottom": 584
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tree",
+          "class_name": "TTreeView",
+          "name": "",
+          "automation_id": "4392720",
+          "rect": {
+            "left": 113,
+            "top": 538,
+            "right": 284,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral fel",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 260,
+            "top": 540,
+            "right": 286,
+            "bottom": 561
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal le",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 260,
+            "top": 642,
+            "right": 286,
+            "bottom": 820
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy sorral le",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 260,
+            "top": 820,
+            "right": 286,
+            "bottom": 841
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 115,
+            "top": 841,
+            "right": 136,
+            "bottom": 867
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 201,
+            "top": 841,
+            "right": 239,
+            "bottom": 867
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 239,
+            "top": 841,
+            "right": 260,
+            "bottom": 867
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Felületfűtések-hűtések",
+          "automation_id": "",
+          "rect": {
+            "left": 143,
+            "top": 540,
+            "right": 282,
+            "bottom": 560
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Apparat",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 560,
+            "right": 217,
+            "bottom": 580
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "AQUATHERM",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 580,
+            "right": 257,
+            "bottom": 600
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "BEKA",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 600,
+            "right": 206,
+            "bottom": 620
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "COMAP",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 620,
+            "right": 219,
+            "bottom": 640
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "GEOWALL",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 640,
+            "right": 237,
+            "bottom": 660
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "HAKA",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 660,
+            "right": 207,
+            "bottom": 680
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "HENCO",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 680,
+            "right": 219,
+            "bottom": 700
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Hepworth",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 700,
+            "right": 229,
+            "bottom": 720
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "KAN",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 720,
+            "right": 199,
+            "bottom": 740
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "KELIT",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 740,
+            "right": 209,
+            "bottom": 760
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "KME",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 760,
+            "right": 200,
+            "bottom": 780
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "LAING",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 780,
+            "right": 211,
+            "bottom": 800
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "MAINCOR",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 800,
+            "right": 234,
+            "bottom": 820
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "MEDITHERM",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 820,
+            "right": 254,
+            "bottom": 840
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Pipelife",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 840,
+            "right": 214,
+            "bottom": 860
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "458780",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 384,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "393232",
+          "rect": {
+            "left": 828,
+            "top": 326,
+            "right": 922,
+            "bottom": 357
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Ritkít",
+          "automation_id": "4393812",
+          "rect": {
+            "left": 828,
+            "top": 286,
+            "right": 922,
+            "bottom": 317
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Sűrít",
+          "automation_id": "460712",
+          "rect": {
+            "left": 828,
+            "top": 246,
+            "right": 922,
+            "bottom": 277
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "1311502",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "group": "inner",
+      "ordinal": 3,
+      "tab_name": "Fan-coil választék",
+      "screenshot": "data/runtime_maps/room_detail_9_60/inner_03.png",
+      "controls": [
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "2885712",
+          "rect": {
+            "left": 108,
+            "top": 508,
+            "right": 1043,
+            "bottom": 871
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "23462474",
+          "rect": {
+            "left": 646,
+            "top": 541,
+            "right": 784,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 764,
+            "top": 543,
+            "right": 783,
+            "bottom": 567
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tree",
+          "class_name": "TTreeView",
+          "name": "",
+          "automation_id": "7408162",
+          "rect": {
+            "left": 113,
+            "top": 538,
+            "right": 284,
+            "bottom": 866
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 143,
+            "top": 540,
+            "right": 209,
+            "bottom": 560
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TreeItem",
+          "class_name": "",
+          "name": "Vaillant",
+          "automation_id": "",
+          "rect": {
+            "left": 166,
+            "top": 560,
+            "right": 214,
+            "bottom": 580
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "919304",
+          "rect": {
+            "left": 846,
+            "top": 721,
+            "right": 1037,
+            "bottom": 747
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 1018,
+            "top": 723,
+            "right": 1037,
+            "bottom": 747
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "265022",
+          "rect": {
+            "left": 878,
+            "top": 690,
+            "right": 941,
+            "bottom": 716
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "ComboBox",
+          "class_name": "TComboBox",
+          "name": "",
+          "automation_id": "2164678",
+          "rect": {
+            "left": 795,
+            "top": 598,
+            "right": 940,
+            "bottom": 624
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "Edit",
+          "name": "",
+          "automation_id": "1001",
+          "rect": {
+            "left": 799,
+            "top": 601,
+            "right": 915,
+            "bottom": 620
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Megnyitás",
+          "automation_id": "DropDown",
+          "rect": {
+            "left": 920,
+            "top": 599,
+            "right": 939,
+            "bottom": 623
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "199942",
+          "rect": {
+            "left": 948,
+            "top": 596,
+            "right": 1009,
+            "bottom": 622
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "199944",
+          "rect": {
+            "left": 878,
+            "top": 836,
+            "right": 939,
+            "bottom": 862
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "265482",
+          "rect": {
+            "left": 948,
+            "top": 836,
+            "right": 1009,
+            "bottom": 862
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1245302",
+          "rect": {
+            "left": 878,
+            "top": 806,
+            "right": 939,
+            "bottom": 832
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1507938",
+          "rect": {
+            "left": 948,
+            "top": 806,
+            "right": 1009,
+            "bottom": 832
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "787846",
+          "rect": {
+            "left": 948,
+            "top": 776,
+            "right": 1009,
+            "bottom": 802
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1245676",
+          "rect": {
+            "left": 878,
+            "top": 776,
+            "right": 939,
+            "bottom": 802
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "hűtés",
+          "automation_id": "394616",
+          "rect": {
+            "left": 948,
+            "top": 538,
+            "right": 1009,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "CheckBox",
+          "class_name": "TCheckBox",
+          "name": "fűtés",
+          "automation_id": "132904",
+          "rect": {
+            "left": 878,
+            "top": 538,
+            "right": 939,
+            "bottom": 559
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "132906",
+          "rect": {
+            "left": 948,
+            "top": 659,
+            "right": 1009,
+            "bottom": 685
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "132908",
+          "rect": {
+            "left": 948,
+            "top": 564,
+            "right": 1009,
+            "bottom": 590
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "132912",
+          "rect": {
+            "left": 878,
+            "top": 659,
+            "right": 939,
+            "bottom": 685
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Edit",
+          "class_name": "TEdit",
+          "name": "",
+          "automation_id": "1182452",
+          "rect": {
+            "left": 878,
+            "top": 563,
+            "right": 939,
+            "bottom": 589
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Határoló szerkezetek",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 510,
+            "right": 250,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátor választék",
+          "automation_id": "",
+          "rect": {
+            "left": 250,
+            "top": 510,
+            "right": 375,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés választék",
+          "automation_id": "",
+          "rect": {
+            "left": 375,
+            "top": 510,
+            "right": 554,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coil választék",
+          "automation_id": "",
+          "rect": {
+            "left": 554,
+            "top": 510,
+            "right": 675,
+            "bottom": 533
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Tab",
+          "class_name": "TPageControl",
+          "name": "",
+          "automation_id": "1508762",
+          "rect": {
+            "left": 108,
+            "top": 136,
+            "right": 933,
+            "bottom": 507
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Átnevez",
+          "automation_id": "198434",
+          "rect": {
+            "left": 828,
+            "top": 245,
+            "right": 922,
+            "bottom": 276
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Töröl",
+          "automation_id": "198432",
+          "rect": {
+            "left": 828,
+            "top": 285,
+            "right": 922,
+            "bottom": 316
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Módosít...",
+          "automation_id": "198428",
+          "rect": {
+            "left": 828,
+            "top": 206,
+            "right": 922,
+            "bottom": 237
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "List",
+          "class_name": "TListViewWithHeader",
+          "name": "",
+          "automation_id": "460482",
+          "rect": {
+            "left": 114,
+            "top": 213,
+            "right": 817,
+            "bottom": 502
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal balra",
+          "automation_id": "UpButton",
+          "rect": {
+            "left": 116,
+            "top": 478,
+            "right": 137,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oldallal jobbra",
+          "automation_id": "DownPageButton",
+          "rect": {
+            "left": 222,
+            "top": 478,
+            "right": 793,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Egy oszloppal jobbra",
+          "automation_id": "DownButton",
+          "rect": {
+            "left": 793,
+            "top": 478,
+            "right": 814,
+            "bottom": 504
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Általános adatok",
+          "automation_id": "",
+          "rect": {
+            "left": 110,
+            "top": 139,
+            "right": 224,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Téli hőszükséglet",
+          "automation_id": "",
+          "rect": {
+            "left": 224,
+            "top": 139,
+            "right": 342,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Nyári hőterhelés",
+          "automation_id": "",
+          "rect": {
+            "left": 341,
+            "top": 139,
+            "right": 451,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Radiátorok",
+          "automation_id": "",
+          "rect": {
+            "left": 451,
+            "top": 139,
+            "right": 531,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Felületfűtés-hűtés",
+          "automation_id": "",
+          "rect": {
+            "left": 531,
+            "top": 139,
+            "right": 650,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "TabItem",
+          "class_name": "",
+          "name": "Fan-coilok",
+          "automation_id": "",
+          "rect": {
+            "left": 650,
+            "top": 139,
+            "right": 726,
+            "bottom": 162
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Makró...",
+          "automation_id": "1116236",
+          "rect": {
+            "left": 943,
+            "top": 306,
+            "right": 1037,
+            "bottom": 337
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Súgó",
+          "automation_id": "3934376",
+          "rect": {
+            "left": 943,
+            "top": 236,
+            "right": 1037,
+            "bottom": 267
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "Elvet",
+          "automation_id": "1180454",
+          "rect": {
+            "left": 943,
+            "top": 196,
+            "right": 1037,
+            "bottom": 227
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "TButton",
+          "name": "OK",
+          "automation_id": "852808",
+          "rect": {
+            "left": 943,
+            "top": 156,
+            "right": 1037,
+            "bottom": 187
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Kis méret",
+          "automation_id": "",
+          "rect": {
+            "left": 865,
+            "top": 99,
+            "right": 925,
+            "bottom": 137
+          },
+          "enabled": false
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Teljes méret",
+          "automation_id": "",
+          "rect": {
+            "left": 925,
+            "top": 99,
+            "right": 984,
+            "bottom": 137
+          },
+          "enabled": true
+        },
+        {
+          "control_type": "Button",
+          "class_name": "",
+          "name": "Bezárás",
+          "automation_id": "",
+          "rect": {
+            "left": 984,
+            "top": 99,
+            "right": 1044,
+            "bottom": 137
+          },
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "structure_button": {
+    "name": "Szerkezetek...",
+    "control_type": "Button",
+    "class_name": "TButton",
+    "automation_id": "8194090",
+    "enabled": true,
+    "rect": {
+      "left": 938,
+      "top": 548,
+      "right": 1032,
+      "bottom": 579
+    },
+    "policy": "identified_only_not_invoked"
+  }
+}
