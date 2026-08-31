@@ -13,11 +13,13 @@ import hashlib
 import json
 import os
 import time
+import ctypes
+import shutil
 from collections import deque
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from pywinauto import Application, Desktop, keyboard
 
@@ -29,11 +31,16 @@ from winwatt_automation.runtime_mapping.program_mapper import prepare_fresh_winw
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SANDBOX_ROOM = "Room graph explorer"
+BUILDINGS_CATALOG_INDEX = 4
+BUILDINGS_TITLE = "Épületek"
+DEFAULT_SANDBOX_BUILDING = "Building graph explorer"
 ACTION_TYPES = {"Button", "TabItem", "ComboBox", "TreeItem", "ListItem", "CheckBox", "RadioButton"}
 MAX_FAILURE_RETRIES = 3
 CHECKPOINT_COMPACTION_INTERVAL = 50
 EVENT_LOG_NAME = "exploration.events.jsonl"
 PROGRESS_NAME = "progress.json"
+PAUSE_REQUEST_NAME = "pause.request"
+MAX_DROPDOWN_REPRESENTATIVES = 3
 
 
 @dataclass(frozen=True)
@@ -70,8 +77,20 @@ def _control_payload(control: Any) -> dict[str, Any]:
             get_value = getattr(control, "get_value", None)
             value = get_value() if callable(get_value) else control.window_text()
         elif control_type in {"CheckBox", "RadioButton"}:
-            get_toggle_state = getattr(control, "get_toggle_state", None)
-            value = get_toggle_state() if callable(get_toggle_state) else None
+            # Delphi radio groups are exposed differently by UIA and win32.
+            # ``get_toggle_state`` is not available on every provider, while
+            # selection-state is.  The selected member is a genuine runtime
+            # state: after choosing a material type, the same OK button opens
+            # a different editor.  Keeping it in the signature makes the
+            # explorer enqueue that follow-up path instead of treating the
+            # click as a no-op/revisit.
+            for method_name in ("get_toggle_state", "get_selection_state", "is_checked", "is_selected"):
+                method = getattr(control, method_name, None)
+                if callable(method):
+                    candidate = method()
+                    if candidate is not None:
+                        value = bool(candidate)
+                        break
     except Exception:
         value = None
     return {
@@ -154,11 +173,31 @@ def state_diff(previous: dict[str, Any] | None, current: dict[str, Any]) -> dict
 
 
 def actionable_controls(window: Any) -> list[ControlAction]:
+    """Return useful transition controls, not UI chrome or list cross-products.
+
+    Runtime evidence from the completed room runs shows that pager/scrollbar
+    buttons and every individual member of a large dropdown account for the
+    overwhelming majority of failed replay paths.  They reveal data values,
+    but almost never a new dialog schema.  The complete visible list remains
+    in the UI snapshot; we traverse deterministic representatives only and
+    keep every structurally different resulting state.
+    """
+    chrome_prefixes = ("egy sorral", "egy oldallal", "egy oszloppal")
+    chrome_labels = {"kis méret", "teljes méret", "előző méret", "következő méret"}
     actions: list[ControlAction] = []
     seen: set[tuple[str, str, tuple[int, int, int, int], str]] = set()
     for control in window.descendants():
         payload = _control_payload(control)
         if not payload["visible"] or not payload["enabled"] or payload["control_type"] not in ACTION_TYPES:
+            continue
+        label = payload["name"].casefold()
+        if payload["control_type"] == "Button" and (
+            label.startswith(chrome_prefixes)
+            or label in chrome_labels
+            # The arrow next to a ComboBox merely recreates the same popup;
+            # the ComboBox action itself is the durable entry point.
+            or payload["automation_id"] == "DropDown"
+        ):
             continue
         operation = "expand" if payload["control_type"] == "ComboBox" else "activate"
         key = (payload["control_type"], payload["name"], payload["rect"], operation)
@@ -169,6 +208,16 @@ def actionable_controls(window: Any) -> list[ControlAction]:
             control_type=payload["control_type"], name=payload["name"],
             automation_id=payload["automation_id"], rect=payload["rect"], operation=operation,
         ))
+    list_items = [item for item in actions if item.control_type == "ListItem"]
+    # A dense ListItem set accompanied by a visible combobox is an expanded
+    # value list, not a catalog/tree level.  Keep first/middle/last choices:
+    # this detects schema changes at the two boundaries and in the centre
+    # without generating a Cartesian product of material/fluid values.
+    has_combo = any(item.control_type == "ComboBox" for item in actions)
+    if has_combo and len(list_items) > MAX_DROPDOWN_REPRESENTATIVES:
+        keep_indices = {0, len(list_items) // 2, len(list_items) - 1}
+        keep = {id(list_items[index]) for index in keep_indices}
+        actions = [item for item in actions if item.control_type != "ListItem" or id(item) in keep]
     return actions
 
 
@@ -199,13 +248,36 @@ def action_priority(action: ControlAction) -> tuple[int, str, str]:
     return rank, action.control_type, label
 
 
+def dependent_confirmation_paths(actions: list[ControlAction]) -> list[list[ControlAction]]:
+    """Return selector-plus-confirm routes for controls with hidden state.
+
+    A few legacy Delphi radio groups do not expose their checked value through
+    UI Automation.  Selecting one therefore leaves an identical structural
+    signature, although the following OK/Next button opens a different form.
+    Probe that meaningful two-step transition explicitly.  This is generic to
+    radio/checkbox based wizard and type-selector dialogs, not tied to a
+    WinWatt catalog caption.
+    """
+    selectors = [item for item in actions if item.control_type in {"RadioButton", "CheckBox"}]
+    confirmations = [
+        item for item in actions
+        if item.control_type == "Button"
+        and item.name.casefold() in {"ok", "tovább", "next", "felvesz", "módosít"}
+    ]
+    return [[selector, confirmation] for selector in selectors for confirmation in confirmations]
+
+
 def action_identity(action: ControlAction | dict[str, Any]) -> tuple[str, str, tuple[int, int, int, int], str]:
     """Stable action identity that deliberately excludes recreated handles."""
     if isinstance(action, ControlAction):
-        return action.control_type, action.name, action.rect, action.operation
+        # Tree and dropdown list items move while their container scrolls.
+        # Their screen position is presentation, not a distinct logical edge.
+        rect = (0, 0, 0, 0) if action.control_type in {"TreeItem", "ListItem"} else action.rect
+        return action.control_type, action.name, rect, action.operation
     return (
         str(action["control_type"]), str(action["name"]),
-        tuple(int(value) for value in action["rect"]), str(action.get("operation", "activate")),
+        (0, 0, 0, 0) if str(action["control_type"]) in {"TreeItem", "ListItem"}
+        else tuple(int(value) for value in action["rect"]), str(action.get("operation", "activate")),
     )
 
 
@@ -231,6 +303,14 @@ def _write_progress(output_dir: Path, states: list[dict[str, Any]], edges: list[
         "queue": len(queue), "complete": not queue,
         "updated_at": datetime.now(timezone.utc).isoformat(),
     })
+
+
+def _wait_while_paused(output_dir: Path, states: list[dict[str, Any]], edges: list[dict[str, Any]], failures: list[dict[str, Any]], queue: deque[tuple[list[ControlAction], str | None]]) -> None:
+    """Honor the status-card pause request at safe path boundaries only."""
+    marker = output_dir / PAUSE_REQUEST_NAME
+    while marker.exists():
+        _write_progress(output_dir, states, edges, failures, queue)
+        time.sleep(0.25)
 
 
 def _append_event(output_dir: Path, payload: dict[str, Any]) -> None:
@@ -505,6 +585,127 @@ def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
     return window
 
 
+def open_sandbox_buildings(*, project_path: str) -> Any:
+    """Restart into a sandbox and return only the Buildings MDI child.
+
+    The MDI child is intentionally the exploration root.  Its descendants do
+    not include the unrelated main-window toolbar, while modal dialogs opened
+    from it are still discovered by ``active_buildings_window``.
+    """
+    project = Path(project_path).resolve()
+    # Buildings are grouped by a tree selection.  To make a replay independent
+    # of whichever group a previous branch created, reset only this disposable
+    # Buildings-run project before each root replay.
+    if "buildings_runs" in {part.casefold() for part in project.parts} and project.name.casefold() == "testwwp.wwp":
+        source = PROJECT_ROOT / "tests" / "testwwp.wwp"
+        if source.resolve() != project:
+            shutil.copy2(source, project)
+    # Building creation/edit dialogs can be nested (and temporarily disable
+    # one another), so each replay deliberately starts a fresh application
+    # session after the sandbox reset.
+    prepare_fresh_winwatt_session(project_path=project_path)
+    main = get_main_window()
+    native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
+    catalog_menu = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Jegyzékek")
+    catalog_menu.click()
+    time.sleep(0.15)
+    catalog_menu.sub_menu().items()[BUILDINGS_CATALOG_INDEX].click()
+    time.sleep(0.45)
+    return active_buildings_window(int(main.process_id()))
+
+
+def active_buildings_window(process_id: int) -> Any:
+    """Return a modal descendant when present, else the Buildings MDI child."""
+    top_level = [
+        window for window in Desktop(backend="uia").windows(top_level_only=True)
+        if window.process_id() == process_id and window.is_visible() and window.is_enabled()
+        and window.class_name() != "TMainForm"
+    ]
+    if top_level:
+        top_level.sort(key=lambda item: item.rectangle().width() * item.rectangle().height(), reverse=True)
+        return top_level[0]
+    main = get_main_window()
+    candidates = [
+        item for item in main.descendants()
+        if item.class_name() == "TChildWinForm" and item.window_text().strip() == BUILDINGS_TITLE
+        and item.is_visible() and item.is_enabled()
+    ]
+    if not candidates:
+        raise RuntimeError("Buildings MDI child is not active")
+    return candidates[0]
+
+
+def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SANDBOX_BUILDING) -> Any:
+    """Open the dedicated sandbox Building detail form, creating it once.
+
+    This mirrors ``open_sandbox_room``: every graph path starts from a known
+    editable record, so a child dialog can safely be replayed after restart.
+    """
+    # First activate the Buildings catalog without relying on any prior MDI
+    # history.  A fresh sandbox contains no records; its first list row is the
+    # deliberately named explorer record once creation has completed.
+    open_sandbox_buildings(project_path=project_path)
+    main = get_main_window()
+    process_id = int(main.process_id())
+    native_main = Application(backend="win32").connect(process=process_id).window(handle=int(main.handle))
+    child = active_buildings_window(process_id)
+    native_child = Application(backend="win32").connect(process=process_id).window(handle=int(child.handle))
+    list_view = next(item for item in native_child.children() if item.class_name() == "TListViewWithHeader")
+    if ctypes.windll.user32.SendMessageW(int(list_view.handle), 0x1004, 0, 0) == 0:
+        element_menu = next(item for item in native_main.menu().items() if item.text().replace("&", "").strip() == "Elem")
+        element_menu.click()
+        time.sleep(0.15)
+        element_menu.sub_menu().items()[0].click()
+        time.sleep(0.35)
+        creation = _active_window(process_id)
+        edit = next(item for item in creation.descendants(control_type="Edit") if item.is_visible())
+        edit.set_edit_text(building_name)
+        creation.set_focus()
+        keyboard.send_keys("{ENTER}")
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline:
+            try:
+                candidate = _active_window(process_id)
+            except RuntimeError:
+                # Delphi disables the old form before it exposes the editor.
+                time.sleep(0.15)
+                continue
+            if candidate.class_name() == "TBuildingModifyForm":
+                candidate.set_focus()
+                keyboard.send_keys("{ENTER}")
+                break
+            time.sleep(0.15)
+        else:
+            raise RuntimeError("Building creation did not open TBuildingModifyForm")
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline:
+            child = active_buildings_window(process_id)
+            native_child = Application(backend="win32").connect(process=process_id).window(handle=int(child.handle))
+            list_view = next(item for item in native_child.children() if item.class_name() == "TListViewWithHeader")
+            if ctypes.windll.user32.SendMessageW(int(list_view.handle), 0x1004, 0, 0) > 0:
+                break
+            time.sleep(0.15)
+        else:
+            raise RuntimeError("Created Building did not appear in its catalog list")
+    list_view.click_input(coords=(30, 24))
+    time.sleep(0.15)
+    element_menu = next(item for item in native_main.menu().items() if item.text().replace("&", "").strip() == "Elem")
+    element_menu.click()
+    time.sleep(0.15)
+    element_menu.sub_menu().items()[1].click()
+    deadline = time.monotonic() + 8.0
+    while time.monotonic() < deadline:
+        try:
+            detail = _active_window(process_id)
+        except RuntimeError:
+            time.sleep(0.15)
+            continue
+        if detail.class_name() == "TBuildingModifyForm":
+            return detail
+        time.sleep(0.15)
+    raise RuntimeError("Expected TBuildingModifyForm after opening the sandbox building")
+
+
 def _write_state(*, output_dir: Path, state_id: str, window: Any, parent_state: str | None, parent_signature: dict[str, Any] | None, path: list[ControlAction]) -> tuple[dict[str, Any], list[ControlAction]]:
     state_dir = output_dir / "states" / state_id
     state_dir.mkdir(parents=True, exist_ok=True)
@@ -586,12 +787,18 @@ def _path_uses_excluded_tab(path: list[ControlAction], excluded_tab_names: set[s
     )
 
 
-def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, exclude_tab_names: set[str] | None = None, session_islands: bool = False) -> dict[str, Any]:
+def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, exclude_tab_names: set[str] | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
     """Explore until no action replay yields a new structural state."""
     project = Path(project_path).resolve()
+    root_opener = root_opener or (lambda value: open_sandbox_room(project_path=value, room_name=room_name))
+    active_resolver = active_resolver or _active_window
     excluded_tab_names = {name.casefold() for name in (exclude_tab_names or set())}
-    if "full_authorized_sandbox" not in {part.casefold() for part in project.parts}:
-        raise ValueError("Deep room exploration requires a project under full_authorized_sandbox")
+    project_parts = {part.casefold() for part in project.parts}
+    is_authorized_sandbox = "full_authorized_sandbox" in project_parts or (
+        project.name.casefold() == "testwwp.wwp" and "buildings_runs" in project_parts and "sandbox" in project_parts
+    )
+    if not is_authorized_sandbox:
+        raise ValueError("Deep exploration requires an explicitly created disposable sandbox project")
     output_dir = output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     queue: deque[tuple[list[ControlAction], str | None]] = deque([([], None)])
@@ -646,6 +853,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
     # fresh root replay.
     island: dict[str, Any] | None = None
     while queue:
+        _wait_while_paused(output_dir, states, edges, failures, queue)
         # Depth-first traversal reaches nested selectors and their creation/
         # modification dialogs before the large number of superficial sibling
         # controls.  Every queued path is still processed; the order only
@@ -660,7 +868,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 and island["state_id"] == parent_state and island["path"] == path_identity(path[:-1])
             )
             if use_island:
-                window = _active_window(int(island["process_id"]))
+                window = active_resolver(int(island["process_id"]))
                 if state_hash(state_signature(window)) != parent_record["signature_hash"]:
                     island = None
                     use_island = False
@@ -668,12 +876,19 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 _invoke(_find_replay_control(window, path[-1], int(window.process_id())), path[-1])
                 time.sleep(0.25)
             else:
-                window = open_sandbox_room(project_path=str(project), room_name=room_name)
+                window = root_opener(str(project))
+                # A close/cancel action can destroy the wrapper object that
+                # was used to open the root.  The process id remains valid
+                # for resolving its newly active top-level window, so retain
+                # it before replay begins.
+                process_id = int(window.process_id())
                 for action in path:
-                    current = _active_window(int(window.process_id()))
-                    _invoke(_find_replay_control(current, action, int(window.process_id())), action)
+                    current = active_resolver(process_id)
+                    _invoke(_find_replay_control(current, action, process_id), action)
                     time.sleep(0.25)
-            window = _active_window(int(window.process_id()))
+            if use_island:
+                process_id = int(window.process_id())
+            window = active_resolver(process_id)
             signature = state_signature(window)
             digest = state_hash(signature)
             if digest in visited:
@@ -698,8 +913,12 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                     actions = [item for item in actions if action_identity(item) not in parent_action_ids]
                 queued_actions: list[list[dict[str, Any]]] = []
                 new_edges: list[dict[str, Any]] = []
-                for action in sorted(actions, key=action_priority):
-                    candidate = [*path, action]
+                candidates = [[*path, action] for action in sorted(actions, key=action_priority)]
+                # Queue hidden-state transitions after ordinary actions so the
+                # LIFO traversal takes them first and reaches real editors
+                # early, rather than exhausting visually inert selectors.
+                candidates.extend([*path, *suffix] for suffix in dependent_confirmation_paths(actions))
+                for candidate in candidates:
                     if _path_uses_excluded_tab(candidate, excluded_tab_names):
                         continue
                     candidate_id = path_identity(candidate)
@@ -708,7 +927,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                     scheduled_paths.add(candidate_id)
                     queue.append((candidate, state_id))
                     queued_actions.append([asdict(item) for item in candidate])
-                    edge = {"from": state_id, "action": asdict(action), "to": "pending", "status": "pending"}
+                    edge = {"from": state_id, "action": asdict(candidate[-1]), "to": "pending", "status": "pending"}
                     edges.append(edge)
                     new_edges.append(edge)
                 _append_event(output_dir, {
@@ -730,7 +949,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 try:
                     keyboard.send_keys("{ESC}")
                     time.sleep(0.3)
-                    restored = _active_window(int(window.process_id()))
+                    restored = active_resolver(int(window.process_id()))
                     if state_hash(state_signature(restored)) == parent_record["signature_hash"]:
                         island = {
                             "state_id": parent_state,
