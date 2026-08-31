@@ -1,7 +1,7 @@
 {
   "backend": "win32_native_menu",
-  "process_id": 24488,
-  "window_handle": 657294,
+  "process_id": 7004,
+  "window_handle": 395014,
   "items": [
     {
       "index": 0,
@@ -48,7 +48,7 @@
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
-          "enabled": true,
+          "enabled": false,
           "verified_static_binding": {
             "item_name": "SaveProjekt",
             "stable_key": "MainForm.SaveProjekt",
@@ -243,7 +243,7 @@
     },
     {
       "index": 1,
-      "command_id": 244,
+      "command_id": 643,
       "caption_raw": "&Szerkesztés",
       "caption": "Szerkesztés",
       "caption_reliable": true,
@@ -252,7 +252,7 @@
       "children": [
         {
           "index": 0,
-          "command_id": 245,
+          "command_id": 644,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -262,7 +262,7 @@
         },
         {
           "index": 1,
-          "command_id": 246,
+          "command_id": 645,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -272,7 +272,7 @@
         },
         {
           "index": 2,
-          "command_id": 247,
+          "command_id": 646,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -282,7 +282,7 @@
         },
         {
           "index": 3,
-          "command_id": 248,
+          "command_id": 647,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -292,7 +292,7 @@
         },
         {
           "index": 4,
-          "command_id": 249,
+          "command_id": 648,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -302,7 +302,7 @@
         },
         {
           "index": 5,
-          "command_id": 250,
+          "command_id": 649,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -312,7 +312,7 @@
         },
         {
           "index": 6,
-          "command_id": 251,
+          "command_id": 650,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -322,7 +322,7 @@
         },
         {
           "index": 7,
-          "command_id": 252,
+          "command_id": 651,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -332,7 +332,7 @@
         },
         {
           "index": 8,
-          "command_id": 253,
+          "command_id": 652,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -342,7 +342,7 @@
         },
         {
           "index": 9,
-          "command_id": 254,
+          "command_id": 653,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -352,7 +352,7 @@
         },
         {
           "index": 10,
-          "command_id": 258,
+          "command_id": 657,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -362,7 +362,7 @@
         },
         {
           "index": 11,
-          "command_id": 259,
+          "command_id": 658,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -555,7 +555,7 @@
     },
     {
       "index": 3,
-      "command_id": 260,
+      "command_id": 659,
       "caption_raw": "&Csoport",
       "caption": "Csoport",
       "caption_reliable": true,
@@ -564,7 +564,7 @@
       "children": [
         {
           "index": 0,
-          "command_id": 261,
+          "command_id": 660,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -574,7 +574,7 @@
         },
         {
           "index": 1,
-          "command_id": 262,
+          "command_id": 661,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -584,7 +584,7 @@
         },
         {
           "index": 2,
-          "command_id": 263,
+          "command_id": 662,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -596,7 +596,7 @@
     },
     {
       "index": 4,
-      "command_id": 264,
+      "command_id": 663,
       "caption_raw": "&Elem",
       "caption": "Elem",
       "caption_reliable": true,
@@ -605,7 +605,7 @@
       "children": [
         {
           "index": 0,
-          "command_id": 265,
+          "command_id": 664,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -615,7 +615,7 @@
         },
         {
           "index": 1,
-          "command_id": 266,
+          "command_id": 665,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -625,7 +625,7 @@
         },
         {
           "index": 2,
-          "command_id": 267,
+          "command_id": 666,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -635,7 +635,7 @@
         },
         {
           "index": 3,
-          "command_id": 268,
+          "command_id": 667,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -645,7 +645,7 @@
         },
         {
           "index": 4,
-          "command_id": 269,
+          "command_id": 668,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -655,7 +655,7 @@
         },
         {
           "index": 5,
-          "command_id": 270,
+          "command_id": 669,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -665,7 +665,7 @@
         },
         {
           "index": 6,
-          "command_id": 271,
+          "command_id": 670,
           "caption_raw": "",
           "caption": "",
           "caption_reliable": false,
@@ -959,8 +959,8 @@
         {
           "index": 6,
           "command_id": 65280,
-          "caption_raw": "&1 Szerkezetek",
-          "caption": "1 Szerkezetek",
+          "caption_raw": "&1 Egycsöves körök",
+          "caption": "1 Egycsöves körök",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -969,8 +969,8 @@
         {
           "index": 7,
           "command_id": 65281,
-          "caption_raw": "&2 Helyiségek",
-          "caption": "2 Helyiségek",
+          "caption_raw": "&2 Felületfűtés-hűtés körök",
+          "caption": "2 Felületfűtés-hűtés körök",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -979,8 +979,8 @@
         {
           "index": 8,
           "command_id": 65282,
-          "caption_raw": "&3 Épületek",
-          "caption": "3 Épületek",
+          "caption_raw": "&3 Ismert teljesítményű fogyasztók",
+          "caption": "3 Ismert teljesítményű fogyasztók",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -989,8 +989,8 @@
         {
           "index": 9,
           "command_id": 65283,
-          "caption_raw": "&4 Egycsöves körök",
-          "caption": "4 Egycsöves körök",
+          "caption_raw": "&4 Hőcserélők, keverőszelepek",
+          "caption": "4 Hőcserélők, keverőszelepek",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -999,8 +999,8 @@
         {
           "index": 10,
           "command_id": 65284,
-          "caption_raw": "&5 Felületfűtés-hűtés körök",
-          "caption": "5 Felületfűtés-hűtés körök",
+          "caption_raw": "&5 Szakaszok",
+          "caption": "5 Szakaszok",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -1009,8 +1009,8 @@
         {
           "index": 11,
           "command_id": 65285,
-          "caption_raw": "&6 Ismert teljesítményű fogyasztók",
-          "caption": "6 Ismert teljesítményű fogyasztók",
+          "caption_raw": "&6 Túláramszelepek",
+          "caption": "6 Túláramszelepek",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -1019,8 +1019,8 @@
         {
           "index": 12,
           "command_id": 65286,
-          "caption_raw": "&7 Hőcserélők, keverőszelepek",
-          "caption": "7 Hőcserélők, keverőszelepek",
+          "caption_raw": "&7 Nyomáskülönbség szabályozók",
+          "caption": "7 Nyomáskülönbség szabályozók",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -1029,8 +1029,8 @@
         {
           "index": 13,
           "command_id": 65287,
-          "caption_raw": "&8 Szakaszok",
-          "caption": "8 Szakaszok",
+          "caption_raw": "&8 Csomópontok",
+          "caption": "8 Csomópontok",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,
@@ -1039,8 +1039,8 @@
         {
           "index": 14,
           "command_id": 65288,
-          "caption_raw": "&9 Globális szerkezetek adatbázis",
-          "caption": "9 Globális szerkezetek adatbázis",
+          "caption_raw": "&9 Épületek",
+          "caption": "9 Épületek",
           "caption_reliable": true,
           "enabled": true,
           "verified_static_binding": null,

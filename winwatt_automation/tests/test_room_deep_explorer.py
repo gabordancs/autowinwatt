@@ -48,6 +48,15 @@ def test_action_identity_ignores_recreated_automation_id() -> None:
     assert action_identity(first) == action_identity(second)
 
 
+def test_tree_and_list_action_identity_ignores_scroll_position() -> None:
+    first = ControlAction("TreeItem", "Anyagok", "", (10, 100, 140, 120))
+    second = ControlAction("TreeItem", "Anyagok", "", (10, 500, 140, 520))
+    list_first = ControlAction("ListItem", "víz", "", (10, 100, 140, 120))
+    list_second = ControlAction("ListItem", "víz", "", (10, 500, 140, 520))
+    assert action_identity(first) == action_identity(second)
+    assert action_identity(list_first) == action_identity(list_second)
+
+
 def test_state_diff_records_added_and_removed_controls() -> None:
     old = {"title": "x", "class_name": "Form", "controls": [{"control_type": "Button", "class_name": "TButton", "name": "A", "rect": (0, 0, 1, 1), "enabled": True, "visible": True}]}
     new = {"title": "x", "class_name": "Form", "controls": [{"control_type": "Button", "class_name": "TButton", "name": "B", "rect": (0, 0, 1, 1), "enabled": True, "visible": True}]}
