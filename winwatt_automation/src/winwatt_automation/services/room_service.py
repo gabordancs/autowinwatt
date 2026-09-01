@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import time
+import hashlib
 
 from winwatt_automation.domain.results import EvidenceItem, OperationResult
 from winwatt_automation.domain.room import RoomInput
@@ -92,7 +93,8 @@ class RoomService:
             persisted_project = self._winwatt.save_project_as(project_path.with_name("prepared.wwp"))
             self._winwatt.close_project_gracefully()
             verified, verification_evidence = self.verify_rooms(rooms, persisted_project)
-            evidence.append(EvidenceItem(kind="project_saved", message="Saved through WinWatt Save-As", data={"project": str(persisted_project)}))
+            digest = hashlib.sha256(persisted_project.read_bytes()).hexdigest()
+            evidence.append(EvidenceItem(kind="project_saved", message="Saved through WinWatt Save-As", data={"project": str(persisted_project), "sha256": digest}))
             evidence.extend(verification_evidence)
             return OperationResult(success=verified, requested=len(rooms), completed=completed, verified=verified, warnings=warnings, evidence=evidence)
         except Exception as exc:
