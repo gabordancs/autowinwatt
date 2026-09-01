@@ -595,12 +595,33 @@ def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
         item = _room_list_item(main, room_name)
     if item is None:
         raise RuntimeError("Sandbox room could not be created or located")
-    item.click_input()
+    # UIA exposes rows with a virtual right edge beyond the actual Delphi
+    # list-view.  A mouse click on such a row can therefore leave the native
+    # selection unchanged, keeping Elem / Módosítás disabled after a restart.
+    # Keyboard selection on the concrete list control is stable both locally
+    # and through RDP.
+    list_view = next(control for control in main.descendants() if control.class_name() == "TListViewWithHeader")
+    room_rows = [
+        control for control in list_view.children()
+        if control.window_text().strip() and control.window_text().strip() != "Vízszintes"
+    ]
+    selected_index = next(
+        index for index, control in enumerate(room_rows)
+        if control.window_text().strip().casefold() == room_name.casefold()
+    )
+    list_view.set_focus()
+    keyboard.send_keys("{HOME}")
+    if selected_index:
+        keyboard.send_keys(f"{{DOWN {selected_index}}}")
+    time.sleep(0.12)
     native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
     element_menu = next(menu for menu in native.menu().items() if menu.text().replace("&", "").strip() == "Elem")
     element_menu.click()
     time.sleep(0.15)
-    element_menu.sub_menu().items()[1].click()
+    edit_item = element_menu.sub_menu().items()[1]
+    if not edit_item.is_enabled():
+        raise RuntimeError(f"Room {room_name!r} was not selected in the native list view")
+    edit_item.click()
     time.sleep(0.5)
     window = _active_window(int(main.process_id()))
     if window.class_name() != "TRoomModifyForm":

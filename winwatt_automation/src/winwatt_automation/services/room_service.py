@@ -4,10 +4,12 @@ from pathlib import Path
 import time
 import hashlib
 
+from pywinauto import Application
+
 from winwatt_automation.domain.results import EvidenceItem, OperationResult
 from winwatt_automation.domain.room import RoomInput
 from winwatt_automation.live_ui.app_connector import get_main_window
-from winwatt_automation.runtime_mapping.room_deep_explorer import _activate_rooms_catalog_fast, _create_sandbox_room, _room_list_item, open_sandbox_building, open_sandbox_room
+from winwatt_automation.runtime_mapping.room_deep_explorer import _activate_rooms_catalog_fast, _active_window, _create_sandbox_room, _room_list_item, open_sandbox_building, open_sandbox_room
 
 from .verification_service import VerificationService
 from .winwatt_service import WinWattService
@@ -33,25 +35,43 @@ class RoomService:
         building.set_focus()
         from pywinauto import keyboard
         keyboard.send_keys("{ENTER}")
-        self._winwatt.save_project()
+        # The fixture opens read-only enough that File / Save can be disabled.
+        # The batch is persisted once, deterministically, through Save As below.
 
     @staticmethod
     def _edit_near(room: object, *, left: int, top: int) -> object:
         candidates = [item for item in room.descendants(control_type="Edit") if item.class_name() == "TEdit"]
         return min(candidates, key=lambda item: abs(item.rectangle().left - left) + abs(item.rectangle().top - top))
 
+    @staticmethod
+    def _set_edit_text(room: object, edit: object, value: float) -> None:
+        """Use native focus and keystrokes; this Delphi TEdit lacks UIA setters."""
+        from pywinauto import keyboard
+        native_edit = Application(backend="win32").connect(process=int(room.process_id())).window(handle=int(edit.handle))
+        native_edit.set_focus()
+        keyboard.send_keys("^a")
+        keyboard.send_keys(str(value).replace(".", ","))
+
+    @staticmethod
+    def _read_edit_text(room: object, edit: object) -> str:
+        native_edit = Application(backend="win32").connect(process=int(room.process_id())).window(handle=int(edit.handle))
+        return native_edit.window_text()
+
     def _apply_proven_fields(self, room: RoomInput, project_path: Path) -> None:
         if room.area_m2 is None and room.height_m is None and room.temperature_c is None:
             return
         detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
+        tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
+        # WinWatt remembers the last selected tab across room editors. Always
+        # reset the tab before using coordinate-based field identities.
+        tabs[0].click_input()
         if room.area_m2 is not None:
-            self._edit_near(detail, left=125, top=99).set_edit_text(str(room.area_m2).replace(".", ","))
+            self._set_edit_text(detail, self._edit_near(detail, left=125, top=99), room.area_m2)
         if room.height_m is not None:
-            self._edit_near(detail, left=125, top=146).set_edit_text(str(room.height_m).replace(".", ","))
+            self._set_edit_text(detail, self._edit_near(detail, left=125, top=146), room.height_m)
         if room.temperature_c is not None:
-            tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
             tabs[1].click_input()
-            self._edit_near(detail, left=215, top=79).set_edit_text(str(room.temperature_c).replace(".", ","))
+            self._set_edit_text(detail, self._edit_near(detail, left=215, top=79), room.temperature_c)
         from pywinauto import keyboard
         detail.set_focus(); keyboard.send_keys("{ENTER}")
         # Delphi closes the editor asynchronously; do not invoke Save-As until
@@ -59,18 +79,33 @@ class RoomService:
         deadline = time.monotonic() + 8.0
         while time.monotonic() < deadline:
             try:
-                if get_main_window().is_enabled():
+                active = _active_window(int(get_main_window().process_id()))
+                if active.class_name() != "TRoomModifyForm" and get_main_window().is_enabled():
                     break
             except Exception:
                 pass
             time.sleep(0.15)
+
+    def _ensure_saveable_main_window(self) -> None:
+        """Recover the current main wrapper only after all record editors close."""
+        from pywinauto import keyboard
+        main = get_main_window()
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline:
+            active = _active_window(int(main.process_id()))
+            if active.class_name() != "TRoomModifyForm":
+                return
+            active.set_focus(); keyboard.send_keys("{ENTER}")
+            time.sleep(0.2)
+            main = get_main_window()
+        raise RuntimeError("Room editor did not close before project persistence")
 
     def create_room(self, room: RoomInput, project_path: Path) -> EvidenceItem:
         self._open_rooms(project_path)
         main = get_main_window()
         if _room_list_item(main, room.name) is None:
             _create_sandbox_room(main, room.name)
-        self._winwatt.save_project()
+        self._apply_proven_fields(room, project_path)
         warnings = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c)) if value is not None]
         return EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present and project was saved", data={"name": room.name, "unsupported_requested_fields": warnings})
 
@@ -83,13 +118,14 @@ class RoomService:
         main = get_main_window()
         result: list[EvidenceItem] = []
         for room in rooms:
+            main = get_main_window()
             if _room_list_item(main, room.name) is None:
                 _create_sandbox_room(main, room.name)
             self._apply_proven_fields(room, project_path)
             unsupported = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c)) if value is not None]
             result.append(EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present before project persistence", data={"name": room.name, "unsupported_requested_fields": unsupported}))
             main = get_main_window()
-        self._winwatt.save_project()
+        self._ensure_saveable_main_window()
         return result
 
     def list_rooms(self, project_path: Path) -> list[str]:
@@ -115,14 +151,15 @@ class RoomService:
                 continue
             detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
             actual: dict[str, float] = {}
+            tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
+            tabs[0].click_input()
             if room.area_m2 is not None:
-                actual["area_m2"] = float(self._edit_near(detail, left=125, top=99).window_text().replace(",", "."))
+                actual["area_m2"] = float(self._read_edit_text(detail, self._edit_near(detail, left=125, top=99)).replace(",", "."))
             if room.height_m is not None:
-                actual["height_m"] = float(self._edit_near(detail, left=125, top=146).window_text().replace(",", "."))
+                actual["height_m"] = float(self._read_edit_text(detail, self._edit_near(detail, left=125, top=146)).replace(",", "."))
             if room.temperature_c is not None:
-                tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
                 tabs[1].click_input()
-                actual["temperature_c"] = float(self._edit_near(detail, left=215, top=79).window_text().replace(",", "."))
+                actual["temperature_c"] = float(self._read_edit_text(detail, self._edit_near(detail, left=215, top=79)).replace(",", "."))
             expected_values = {key: value for key, value in room.model_dump().items() if key != "name" and value is not None}
             match = all(abs(float(actual[key]) - float(value)) < 0.0001 for key, value in expected_values.items())
             values_ok = values_ok and match
