@@ -7,24 +7,24 @@
     "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T171021Z/operation_result.json"
   },
   "room.area_m2": {
-    "ui_read": "unverified",
-    "ui_write": "unverified",
-    "roundtrip_verified": false,
-    "preferred": null,
-    "reason": "TRoomModifyForm exposes unnamed TEdit controls; no stable label-to-control binding is yet evidenced."
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
   },
   "room.height_m": {
-    "ui_read": "candidate_only",
-    "ui_write": "unverified",
-    "roundtrip_verified": false,
-    "preferred": null,
-    "candidate_evidence": "room_core_tabs_20260827/states/room_general/state.json contains unnamed TEdit value 2,7 at rect [125,146,186,172]."
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
   },
   "room.temperature_c": {
-    "ui_read": "unverified",
-    "ui_write": "unverified",
-    "roundtrip_verified": false,
-    "preferred": null,
-    "reason": "No stable field locator or round-trip evidence."
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
   }
 }
