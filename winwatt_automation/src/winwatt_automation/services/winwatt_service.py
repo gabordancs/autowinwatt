@@ -78,9 +78,10 @@ class WinWattService:
             time.sleep(0.1)
         if dialog is None:
             raise RuntimeError("WinWatt Save-As dialog did not open")
-        filename = dialog.child_window(auto_id="1001", control_type="Edit")
+        filename = next(item for item in dialog.descendants(control_type="Edit") if item.element_info.automation_id == "1001")
         filename.set_edit_text(str(target))
-        dialog.child_window(auto_id="1", control_type="Button").click_input()
+        save_button = next(item for item in dialog.descendants(control_type="Button") if item.element_info.automation_id == "1")
+        save_button.click_input()
         time.sleep(2.0)
         if not target.is_file():
             raise RuntimeError(f"WinWatt Save-As did not create {target}")
