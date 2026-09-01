@@ -7,7 +7,7 @@ import hashlib
 from winwatt_automation.domain.results import EvidenceItem, OperationResult
 from winwatt_automation.domain.room import RoomInput
 from winwatt_automation.live_ui.app_connector import get_main_window
-from winwatt_automation.runtime_mapping.room_deep_explorer import _activate_rooms_catalog_fast, _create_sandbox_room, _room_list_item, open_sandbox_building
+from winwatt_automation.runtime_mapping.room_deep_explorer import _activate_rooms_catalog_fast, _create_sandbox_room, _room_list_item, open_sandbox_building, open_sandbox_room
 
 from .verification_service import VerificationService
 from .winwatt_service import WinWattService
@@ -35,6 +35,26 @@ class RoomService:
         keyboard.send_keys("{ENTER}")
         self._winwatt.save_project()
 
+    @staticmethod
+    def _edit_near(room: object, *, left: int, top: int) -> object:
+        candidates = [item for item in room.descendants(control_type="Edit") if item.class_name() == "TEdit"]
+        return min(candidates, key=lambda item: abs(item.rectangle().left - left) + abs(item.rectangle().top - top))
+
+    def _apply_proven_fields(self, room: RoomInput, project_path: Path) -> None:
+        if room.area_m2 is None and room.height_m is None and room.temperature_c is None:
+            return
+        detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
+        if room.area_m2 is not None:
+            self._edit_near(detail, left=125, top=99).set_edit_text(str(room.area_m2).replace(".", ","))
+        if room.height_m is not None:
+            self._edit_near(detail, left=125, top=146).set_edit_text(str(room.height_m).replace(".", ","))
+        if room.temperature_c is not None:
+            tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
+            tabs[1].click_input()
+            self._edit_near(detail, left=215, top=79).set_edit_text(str(room.temperature_c).replace(".", ","))
+        from pywinauto import keyboard
+        detail.set_focus(); keyboard.send_keys("{ENTER}")
+
     def create_room(self, room: RoomInput, project_path: Path) -> EvidenceItem:
         self._open_rooms(project_path)
         main = get_main_window()
@@ -55,6 +75,7 @@ class RoomService:
         for room in rooms:
             if _room_list_item(main, room.name) is None:
                 _create_sandbox_room(main, room.name)
+            self._apply_proven_fields(room, project_path)
             unsupported = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c)) if value is not None]
             result.append(EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present before project persistence", data={"name": room.name, "unsupported_requested_fields": unsupported}))
             main = get_main_window()
