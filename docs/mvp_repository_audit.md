@@ -93,6 +93,19 @@ Igazolt lépések: a fixture másolata → sandbox-épület → `MVP Nappali` é
 ebben a kiinduló állapotban letiltott; a bizonyított perzisztálási út ezért a
 natív `Fájl → Mentés másként…` párbeszédablak.
 
+## Mezőcapability-k
+
+A gépileg olvasható forrás: `winwatt_automation/data/capabilities/room_capabilities.json`.
+Jelenleg csak a `room.name` teljesen igazolt. Az `area_m2`, `height_m` és
+`temperature_c` nem íródik automatikusan: ez szándékos biztonsági korlát.
+A runtime state-ben több névtelen `TEdit` található; egy `2,7` értékű mező
+jelölt a belmagasságra, de címke–vezérlő kötés és round-trip hiányában csak
+`candidate_only` státuszú.
+
+Az E2E regresszió explicit, ezért a normál tesztek nem indítják el a
+WinWattot. Futásához: `RUN_WINWATT_E2E=1` és egy erre fenntartott Windows
+sandbox szükséges.
+
 ## MVP-határ és következő sorrend
 
 1. UI-tól független Pydantic `RoomInput`, `PrepareRoomsInput`,
