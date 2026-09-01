@@ -55,7 +55,7 @@ class RoomService:
             if _room_list_item(main, room.name) is None:
                 _create_sandbox_room(main, room.name)
             unsupported = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c)) if value is not None]
-            result.append(EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present and project was saved", data={"name": room.name, "unsupported_requested_fields": unsupported}))
+            result.append(EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present before project persistence", data={"name": room.name, "unsupported_requested_fields": unsupported}))
             main = get_main_window()
         self._winwatt.save_project()
         return result
@@ -89,9 +89,10 @@ class RoomService:
                 unsupported = [key for key, value in room.model_dump().items() if key != "name" and value is not None]
                 if unsupported:
                     warnings.append(f"{room.name}: not yet verified for UI writing: {', '.join(unsupported)}")
-            self._winwatt.save_project()
+            persisted_project = self._winwatt.save_project_as(project_path.with_name("prepared.wwp"))
             self._winwatt.close_project_gracefully()
-            verified, verification_evidence = self.verify_rooms(rooms, project_path)
+            verified, verification_evidence = self.verify_rooms(rooms, persisted_project)
+            evidence.append(EvidenceItem(kind="project_saved", message="Saved through WinWatt Save-As", data={"project": str(persisted_project)}))
             evidence.extend(verification_evidence)
             return OperationResult(success=verified, requested=len(rooms), completed=completed, verified=verified, warnings=warnings, evidence=evidence)
         except Exception as exc:
