@@ -12,5 +12,7 @@ def test_command_registry_searches_by_multiple_fields():
 
     assert registry.find_by_name("OpenProjekt")
     assert registry.find_by_form("MainForm")
-    assert registry.find_by_caption("Save Project")
+    # The parsed resource is Hungarian; captions are source UI text, not
+    # translated command labels.
+    assert registry.find_by_caption("Projekt &mentés")
     assert registry.find_by_item_type("TAction")
