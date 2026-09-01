@@ -54,6 +54,16 @@ class RoomService:
             self._edit_near(detail, left=215, top=79).set_edit_text(str(room.temperature_c).replace(".", ","))
         from pywinauto import keyboard
         detail.set_focus(); keyboard.send_keys("{ENTER}")
+        # Delphi closes the editor asynchronously; do not invoke Save-As until
+        # the modal form has yielded control back to the main window.
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline:
+            try:
+                if get_main_window().is_enabled():
+                    break
+            except Exception:
+                pass
+            time.sleep(0.15)
 
     def create_room(self, room: RoomInput, project_path: Path) -> EvidenceItem:
         self._open_rooms(project_path)
@@ -98,7 +108,28 @@ class RoomService:
         return next((item for item in self.list_rooms(project_path) if item.casefold() == name.casefold()), None)
 
     def verify_rooms(self, expected: list[RoomInput], project_path: Path) -> tuple[bool, list[EvidenceItem]]:
-        return self._verification.verify_rooms(expected, self.list_rooms(project_path))
+        names_ok, evidence = self._verification.verify_rooms(expected, self.list_rooms(project_path))
+        values_ok = True
+        for room in expected:
+            if all(value is None for value in (room.area_m2, room.height_m, room.temperature_c)):
+                continue
+            detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
+            actual: dict[str, float] = {}
+            if room.area_m2 is not None:
+                actual["area_m2"] = float(self._edit_near(detail, left=125, top=99).window_text().replace(",", "."))
+            if room.height_m is not None:
+                actual["height_m"] = float(self._edit_near(detail, left=125, top=146).window_text().replace(",", "."))
+            if room.temperature_c is not None:
+                tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
+                tabs[1].click_input()
+                actual["temperature_c"] = float(self._edit_near(detail, left=215, top=79).window_text().replace(",", "."))
+            expected_values = {key: value for key, value in room.model_dump().items() if key != "name" and value is not None}
+            match = all(abs(float(actual[key]) - float(value)) < 0.0001 for key, value in expected_values.items())
+            values_ok = values_ok and match
+            evidence.append(EvidenceItem(kind="room_values", message=f"Room {room.name!r} values {'match' if match else 'differ'}", data={"expected": expected_values, "actual": actual}))
+            from pywinauto import keyboard
+            detail.set_focus(); keyboard.send_keys("{ESC}")
+        return names_ok and values_ok, evidence
 
     def prepare_rooms(self, rooms: list[RoomInput], project_path: Path) -> OperationResult:
         evidence: list[EvidenceItem] = []
@@ -110,7 +141,7 @@ class RoomService:
             for room in rooms:
                 unsupported = [key for key, value in room.model_dump().items() if key != "name" and value is not None]
                 if unsupported:
-                    warnings.append(f"{room.name}: not yet verified for UI writing: {', '.join(unsupported)}")
+                    warnings.append(f"{room.name}: numeric values will be checked by post-save UI readback")
             persisted_project = self._winwatt.save_project_as(project_path.with_name("prepared.wwp"))
             self._winwatt.close_project_gracefully()
             verified, verification_evidence = self.verify_rooms(rooms, persisted_project)
