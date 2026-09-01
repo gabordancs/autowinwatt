@@ -90,6 +90,7 @@ class RoomService:
                 if unsupported:
                     warnings.append(f"{room.name}: not yet verified for UI writing: {', '.join(unsupported)}")
             self._winwatt.save_project()
+            self._winwatt.close_project_gracefully()
             verified, verification_evidence = self.verify_rooms(rooms, project_path)
             evidence.extend(verification_evidence)
             return OperationResult(success=verified, requested=len(rooms), completed=completed, verified=verified, warnings=warnings, evidence=evidence)

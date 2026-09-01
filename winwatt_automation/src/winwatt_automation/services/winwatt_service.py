@@ -29,4 +29,18 @@ class WinWattService:
         main = get_main_window()
         main.set_focus()
         keyboard.send_keys("^s")
-        time.sleep(0.7)
+        time.sleep(1.5)
+
+    def close_project_gracefully(self) -> None:
+        """Let WinWatt flush its project file before a restart verification.
+
+        ``prepare_fresh_winwatt_session`` deliberately kills stale processes
+        for mapping recovery. That is unsuitable immediately after a write:
+        old WinWatt builds may still have pending file serialization after
+        Ctrl+S. Close the saved project through its normal application route
+        first; the next open remains a defensive fallback only.
+        """
+        main = get_main_window()
+        main.set_focus()
+        keyboard.send_keys("%{F4}")
+        time.sleep(2.0)
