@@ -79,6 +79,20 @@ azonosítottak (`MainForm.XMLExportAction`, `MainForm.XMLImportAction`), de a
 jelenlegi probe-ok csak a párbeszédablak megjelenését ellenőrzik és megszakítják.
 Round-trip nélkül egyetlen domainmező sem jelölhető XML-importálhatóként.
 
+## Első vertical slice – igazolt eredmény
+
+2026-09-01-én a `tests/test_rooms.json` bemenettel lefutott a teljes,
+determinista workflow. A kimenet:
+
+`winwatt_automation/data/runtime_maps/mvp_runs/prepare_rooms_20260901T171021Z/operation_result.json`
+
+Igazolt lépések: a fixture másolata → sandbox-épület → `MVP Nappali` és
+`MVP Hálószoba` létrehozása → `Projekt mentés másként` → `prepared.wwp`
+újranyitása → név szerinti UIA-visszaolvasás. A jelentés `success=true`,
+`completed=2`, `verified=true` értéket rögzít. A sima `Projekt mentés` akció
+ebben a kiinduló állapotban letiltott; a bizonyított perzisztálási út ezért a
+natív `Fájl → Mentés másként…` párbeszédablak.
+
 ## MVP-határ és következő sorrend
 
 1. UI-tól független Pydantic `RoomInput`, `PrepareRoomsInput`,
