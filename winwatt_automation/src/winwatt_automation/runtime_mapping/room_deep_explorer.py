@@ -296,6 +296,29 @@ def _deduplicate_queue(queue: deque[tuple[list[ControlAction], str | None]]) -> 
     return unique
 
 
+def _contains_repeated_selector(path: list[ControlAction]) -> bool:
+    """Detect a stale navigation loop without suppressing distinct UI work.
+
+    Tree and list selections describe navigation context.  Returning to the
+    same logical selection in a single replay route cannot reveal a new
+    branch: the explorer has already visited that context earlier in the
+    route.  Delphi recreates these controls while scrolling, so use the
+    coordinate-free ``action_identity`` rather than the native handle/rect.
+
+    This deliberately does *not* prune repeated buttons, menus or dialogs:
+    those can legitimately form multi-step workflows.
+    """
+    seen: set[tuple[str, str, tuple[int, int, int, int], str]] = set()
+    for action in path:
+        if action.control_type not in {"TreeItem", "ListItem"}:
+            continue
+        identity = action_identity(action)
+        if identity in seen:
+            return True
+        seen.add(identity)
+    return False
+
+
 def _write_progress(output_dir: Path, states: list[dict[str, Any]], edges: list[dict[str, Any]], failures: list[dict[str, Any]], queue: deque[tuple[list[ControlAction], str | None]]) -> None:
     """Cheap, current progress for the status popup (not a resume artifact)."""
     _atomic_json_write(output_dir / PROGRESS_NAME, {
@@ -384,7 +407,7 @@ def _prune_queue(queue: deque[tuple[list[ControlAction], str | None]], states: l
     for path, parent_state in _deduplicate_queue(queue):
         serialized = json.dumps([asdict(item) for item in path], ensure_ascii=False, sort_keys=True)
         prefixes = {path_identity(path[:index]) for index in range(1, len(path) + 1)}
-        if serialized in exhausted or prefixes & terminal:
+        if serialized in exhausted or prefixes & terminal or _contains_repeated_selector(path):
             removed += 1
             continue
         kept.append((path, parent_state))
