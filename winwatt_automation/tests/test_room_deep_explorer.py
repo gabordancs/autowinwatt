@@ -83,3 +83,15 @@ def test_prune_queue_removes_exhausted_path_but_keeps_other_work() -> None:
     )
     assert removed == 1
     assert list(queue) == [([useful], None)]
+
+
+def test_prune_queue_removes_repeated_tree_or_list_navigation_loop() -> None:
+    category = ControlAction("TreeItem", "Anyagok", "", (10, 10, 100, 30))
+    type_item = ControlAction("ListItem", "Fal", "", (10, 40, 100, 60))
+    useful = ControlAction("Button", "Felvesz", "", (10, 70, 100, 90))
+    queue, removed = _prune_queue(
+        deque([([category, type_item, category], None), ([category, type_item, useful], None)]),
+        [], [], [],
+    )
+    assert removed == 1
+    assert list(queue) == [([category, type_item, useful], None)]
