@@ -10,6 +10,8 @@ from winwatt_automation.parser.exporters import export_ui_model
 from winwatt_automation.parser.program_map import build_program_map
 from winwatt_automation.parser.semantic_classifier import classify_model
 from winwatt_automation.parser.xml_parser import parse_hungarian_xml
+from winwatt_automation.domain.project import PrepareRoomsInput
+from winwatt_automation.services.room_service import RoomService
 
 app = typer.Typer(help="WinWatt automation CLI")
 
@@ -67,6 +69,31 @@ def build_program_map_cmd(
     typer.echo(f"actions: {counts['actions']}")
     typer.echo(f"dialogs: {counts['dialogs']}")
     typer.echo(f"workflow_seeds: {counts['workflow_seeds']}")
+
+
+@app.command("prepare-rooms")
+def prepare_rooms(
+    input_path: Path = typer.Argument(..., exists=True, readable=True, help="JSON PrepareRoomsInput file"),
+    output_dir: Path = typer.Option(Path("data/runtime_maps/mvp_runs"), help="Parent directory for the disposable sandbox"),
+) -> None:
+    """Create, save and reopen rooms in a newly copied sandbox project."""
+    import json
+    from datetime import datetime, timezone
+
+    payload = PrepareRoomsInput.model_validate_json(input_path.read_text(encoding="utf-8"))
+    source = payload.project_path
+    if not source.is_absolute():
+        source = (input_path.parent / source).resolve()
+    run_dir = output_dir.resolve() / datetime.now(timezone.utc).strftime("prepare_rooms_%Y%m%dT%H%M%SZ")
+    service = RoomService()
+    sandbox = service.create_sandbox(source, run_dir / "sandbox" / "testwwp.wwp")
+    result = service.prepare_rooms(payload.rooms, sandbox)
+    report = run_dir / "operation_result.json"
+    report.parent.mkdir(parents=True, exist_ok=True)
+    report.write_text(result.model_dump_json(indent=2) + "\n", encoding="utf-8")
+    typer.echo(json.dumps({"sandbox_project": str(sandbox), "report": str(report), **result.model_dump()}, ensure_ascii=False, default=str))
+    if not result.success:
+        raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":
