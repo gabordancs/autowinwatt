@@ -23,6 +23,7 @@ def main() -> int:
     parser.add_argument("--profile", required=True, type=Path)
     parser.add_argument("--project", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--resume", action="store_true", help="Continue the saved graph/checkpoint in --output-dir.")
     parser.add_argument("--status-popup", action="store_true")
     parser.add_argument("--session-islands", action="store_true")
     args = parser.parse_args()
@@ -58,7 +59,7 @@ def main() -> int:
         notifier = subprocess.Popen([sys.executable, "-m", "winwatt_automation.scripts.room_progress_popup", "--output-dir", str(args.output_dir)])
     try:
         graph = explore_room_state_graph(project_path=str(args.project.resolve()), output_dir=args.output_dir.resolve(),
-                                         session_islands=args.session_islands, root_opener=open_root,
+                                         resume=args.resume, session_islands=args.session_islands, root_opener=open_root,
                                          active_resolver=_active_window)
     finally:
         if notifier is not None:
