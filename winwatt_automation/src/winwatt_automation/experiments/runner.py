@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Callable, Protocol
 from uuid import uuid4
 
 from winwatt_automation.domain.results import OperationResult
@@ -24,12 +24,18 @@ class ExperimentRunner:
     encapsulated in the already verified RoomService workflow.
     """
 
-    _KNOWN_ACTIONS = {"room.area_m2"}
-
     def __init__(self, room_service: RoomWorkflow | None = None, output_dir: Path | None = None) -> None:
         self._rooms = room_service or RoomService()
         package_root = Path(__file__).resolve().parents[3]
         self.output_dir = output_dir or package_root / "data" / "runtime_maps" / "experiments"
+        self._handlers: dict[str, Callable[[ExperimentSpec, Path], OperationResult]] = {
+            "room.area_m2": self._execute_room_area,
+            "room.boundary.external_wall.x_m": self._execute_external_wall_x,
+        }
+        self._readers: dict[str, Callable[[OperationResult], float | str | None]] = {
+            "room.area_m2": self._read_room_area,
+            "room.boundary.external_wall.x_m": self._read_external_wall_x,
+        }
 
     def prepare_sandbox_project(self, source_project: Path) -> Path:
         source = source_project.resolve()
@@ -59,14 +65,27 @@ class ExperimentRunner:
         )
 
     def execute_known_action(self, spec: ExperimentSpec, sandbox_project: Path) -> OperationResult:
-        if spec.target_capability not in self._KNOWN_ACTIONS:
+        handler = self._handlers.get(spec.target_capability)
+        if handler is None:
             raise ValueError(f"Experiment execution is not approved for capability: {spec.target_capability}")
-        if spec.target_capability == "room.area_m2":
-            return self._rooms.prepare_rooms(
-                [RoomInput(name=spec.change.entity, area_m2=float(spec.change.to_value))],
-                sandbox_project,
-            )
-        raise AssertionError("known capability whitelist was not exhaustive")
+        return handler(spec, sandbox_project)
+
+    def _execute_room_area(self, spec: ExperimentSpec, sandbox_project: Path) -> OperationResult:
+        return self._rooms.prepare_rooms(
+            [RoomInput(name=spec.change.entity, area_m2=float(spec.change.to_value))], sandbox_project,
+        )
+
+    def _execute_external_wall_x(self, spec: ExperimentSpec, sandbox_project: Path) -> OperationResult:
+        """Use the existing RoomService external-wall workflow in a sandbox.
+
+        A new boundary needs a valid room surface in WinWatt.  The fixed
+        10 m² companion area is a sandbox prerequisite, not a claim about the
+        boundary capability under experiment.
+        """
+        return self._rooms.prepare_rooms(
+            [RoomInput(name=spec.change.entity, area_m2=10.0, external_wall_x_m=float(spec.change.to_value))],
+            sandbox_project,
+        )
 
     @staticmethod
     def _operation_evidence(operation: OperationResult) -> list[EvidenceRef]:
@@ -81,16 +100,24 @@ class ExperimentRunner:
         ]
 
     @staticmethod
-    def read_known_values(operation: OperationResult, capability: str) -> float | str | None:
-        field = {"room.area_m2": "area_m2"}.get(capability)
-        if field is None:
-            return None
+    def _read_room_area(operation: OperationResult) -> float | str | None:
         for evidence in reversed(operation.evidence):
             if evidence.kind == "room_values":
                 actual = evidence.data.get("actual", {})
-                if field in actual:
-                    return actual[field]
+                if "area_m2" in actual:
+                    return actual["area_m2"]
         return None
+
+    @staticmethod
+    def _read_external_wall_x(operation: OperationResult) -> float | str | None:
+        for evidence in reversed(operation.evidence):
+            if evidence.kind == "external_wall" and "actual_x_m" in evidence.data:
+                return evidence.data["actual_x_m"]
+        return None
+
+    def read_known_values(self, operation: OperationResult, capability: str) -> float | str | None:
+        reader = self._readers.get(capability)
+        return reader(operation) if reader else None
 
     @staticmethod
     def compare_expected_actual(expected: float | str, actual: float | str | None) -> bool:
@@ -138,18 +165,18 @@ class ExperimentRunner:
                 evidence.append(save)
             evidence.append(self.reopen_project(operation))
             actual = self.read_known_values(operation, spec.target_capability)
-            expected: float | str = (
-                float(spec.change.to_value)
-                if spec.target_capability == "room.area_m2"
-                else spec.change.to_value
-            )
+            expected: float | str = float(spec.change.to_value)
             matches = self.compare_expected_actual(expected, actual)
-            roundtrip = operation.success and operation.verified and matches and any(item.kind == "project_saved" for item in operation.evidence)
+            persisted_readback = (
+                actual is not None
+                and any(item.kind == "project_saved" for item in operation.evidence)
+            )
+            roundtrip = operation.success and operation.verified and matches and persisted_readback
             evidence.append(EvidenceRef(
                 kind="verification",
                 description="Deterministic expected/actual comparison after save/reopen",
-                deterministic=roundtrip,
-                data={"expected": expected, "actual": actual, "roundtrip_verified": roundtrip},
+                deterministic=persisted_readback,
+                data={"expected": expected, "actual": actual, "roundtrip_verified": roundtrip, "persisted_readback": persisted_readback},
             ))
             evidence.append(self.reset_sandbox(sandbox))
             return ExperimentResult(

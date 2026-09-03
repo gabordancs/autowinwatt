@@ -12,6 +12,7 @@ class RoomInput(BaseModel):
     temperature_c: float | None = None
     summer_design_temperature_c: float | None = Field(default=None, gt=0)
     external_wall: bool = False
+    external_wall_x_m: float | None = Field(default=None, gt=0)
 
     @field_validator("name")
     @classmethod

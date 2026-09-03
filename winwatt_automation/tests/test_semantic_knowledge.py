@@ -39,17 +39,20 @@ def test_hypothesis_never_enters_verified_state(tmp_path: Path) -> None:
     store = KnowledgeStore(tmp_path / "knowledge.json", _capabilities(tmp_path / "capabilities.json"))
     hypothesis = Hypothesis(hypothesis_id="h_unknown", target_capability="room.unknown", semantic_guess="Possibly a room coefficient", confidence=0.72)
     assert store.store_hypothesis(hypothesis).status is KnowledgeStatus.HYPOTHESIS
-    with pytest.raises(ValueError, match="verified"):
-        Hypothesis(hypothesis_id="bad", target_capability="room.unknown", semantic_guess="bad", status="verified")
+    with pytest.raises(ValueError, match="start in hypothesis"):
+        store.store_hypothesis(Hypothesis(hypothesis_id="bad", target_capability="room.other", semantic_guess="bad", status="verified"))
 
 
 def test_promotion_requires_deterministic_roundtrip_evidence(tmp_path: Path) -> None:
     store = KnowledgeStore(tmp_path / "knowledge.json", _capabilities(tmp_path / "capabilities.json"))
     incomplete = ExperimentResult(experiment_id="one", hypothesis_id="h", target_capability="room.area_m2", success=True, roundtrip_verified=True)
+    store.store_hypothesis(Hypothesis(hypothesis_id="h", target_capability="room.area_m2", semantic_guess="area"))
+    store.store_experiment_result(incomplete)
     with pytest.raises(ValueError, match="deterministic"):
         store.promote_to_verified("room.area_m2", incomplete)
     verified = ExperimentResult(
         experiment_id="two", hypothesis_id="h", target_capability="room.area_m2", success=True, roundtrip_verified=True,
         evidence=[EvidenceRef(kind="verification", deterministic=True, data={"expected": 31.7, "actual": 31.7})],
     )
+    store.store_experiment_result(verified)
     assert store.promote_to_verified("room.area_m2", verified).confidence == 1.0
