@@ -1,8 +1,8 @@
 {
-  "run_id": "0116_mainform_xmlimportaction_2026-08-26_05-43-45",
+  "run_id": "0117_diagnostic_2026-09-03_13-39-12",
   "state": "finished",
   "message": "Mapping finished successfully.",
-  "command": "safe_runtime_command MainForm.XMLImportAction",
+  "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --project-path data\\runtime_maps\\buildings_runs\\20260830T214001\\sandbox\\testwwp.wwp --top-menus Fájl --output-dir data\\runtime_maps\\file_energy_certificate_deep_20260903T153910 --safe-mode hybrid --allow-process-restart --max-submenu-depth -1 --placeholder-modal-policy allow_modal_probe --probe-top-menu Fájl --probe-row-text Energetikai minőségtanúsítvány... --probe-repeat 1 --log-profile diagnostic",
   "details": {
     "exit_code": 0,
     "summary": {
@@ -22,5 +22,5 @@
       "recovery_success": false
     }
   },
-  "updated_at": "2026-08-26T05:43:47.913294+00:00"
+  "updated_at": "2026-09-03T13:40:00.802447+00:00"
 }

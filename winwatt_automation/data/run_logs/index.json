@@ -2017,6 +2017,31 @@
       },
       "log_path": "data\\run_logs\\runs\\0116_mainform_xmlimportaction_2026-08-26_05-43-45.log",
       "json_path": "data\\run_logs\\runs\\0116_mainform_xmlimportaction_2026-08-26_05-43-45.json"
+    },
+    {
+      "sequence_number": 117,
+      "run_id": "0117_diagnostic_2026-09-03_13-39-12",
+      "started_at": "2026-09-03T13:39:12.525398+00:00",
+      "command": "python C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\src\\winwatt_automation\\scripts\\map_full_program.py --project-path data\\runtime_maps\\buildings_runs\\20260830T214001\\sandbox\\testwwp.wwp --top-menus Fájl --output-dir data\\runtime_maps\\file_energy_certificate_deep_20260903T153910 --safe-mode hybrid --allow-process-restart --max-submenu-depth -1 --placeholder-modal-policy allow_modal_probe --probe-top-menu Fájl --probe-row-text Energetikai minőségtanúsítvány... --probe-repeat 1 --log-profile diagnostic",
+      "success": true,
+      "short_summary": {
+        "no_project_top_menus": null,
+        "project_open_top_menus": null,
+        "diff_summary": {},
+        "startup_project_detected": null,
+        "already_open_before_mapping": null,
+        "project_open_verdict": null,
+        "expected_project_path": null,
+        "observed_project_path": null,
+        "path_match_normalized": null,
+        "skipped_by_safety": null,
+        "last_error": null,
+        "modal_detected": false,
+        "recovery_attempted": false,
+        "recovery_success": false
+      },
+      "log_path": "data\\run_logs\\runs\\0117_diagnostic_2026-09-03_13-39-12.log",
+      "json_path": "data\\run_logs\\runs\\0117_diagnostic_2026-09-03_13-39-12.json"
     }
   ]
 }

@@ -45,6 +45,7 @@ def _show_non_activating(output_dir: Path, interval_seconds: int) -> None:
     # call makes the form visible without giving it keyboard focus.
     import tkinter as tk
 
+    previous_foreground = ctypes.windll.user32.GetForegroundWindow()
     root = tk.Tk()
     root.title("AutoWinWatt – feltérképezés")
     root.resizable(False, False)
@@ -82,7 +83,23 @@ def _show_non_activating(output_dir: Path, interval_seconds: int) -> None:
     pause_button = tk.Button(root, text="Pillanat, allj", command=toggle_pause)
     pause_button.pack(pady=(0, 12))
     root.update_idletasks()
+    # ``SW_SHOWNOACTIVATE`` alone is insufficient: creating a Tk root can
+    # briefly make it foreground.  Mark it as a non-activating tool window at
+    # the Win32 level as well, otherwise the mapper quite correctly rejects
+    # its own status card as a wrong foreground window.
+    GWL_EXSTYLE = -20
+    WS_EX_NOACTIVATE = 0x08000000
+    HWND_TOPMOST = -1
+    SWP_NOSIZE = 0x0001
+    SWP_NOMOVE = 0x0002
+    SWP_NOACTIVATE = 0x0010
+    handle = root.winfo_id()
+    style = ctypes.windll.user32.GetWindowLongW(handle, GWL_EXSTYLE)
+    ctypes.windll.user32.SetWindowLongW(handle, GWL_EXSTYLE, style | WS_EX_NOACTIVATE)
+    ctypes.windll.user32.SetWindowPos(handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE)
     ctypes.windll.user32.ShowWindow(root.winfo_id(), 4)  # SW_SHOWNOACTIVATE
+    if previous_foreground:
+        ctypes.windll.user32.SetForegroundWindow(previous_foreground)
     refresh()
     root.mainloop()
 

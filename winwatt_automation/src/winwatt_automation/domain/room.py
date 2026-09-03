@@ -10,6 +10,8 @@ class RoomInput(BaseModel):
     area_m2: float | None = Field(default=None, gt=0)
     height_m: float | None = Field(default=None, gt=0)
     temperature_c: float | None = None
+    summer_design_temperature_c: float | None = Field(default=None, gt=0)
+    external_wall: bool = False
 
     @field_validator("name")
     @classmethod

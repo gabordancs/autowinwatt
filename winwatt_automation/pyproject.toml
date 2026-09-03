@@ -19,6 +19,9 @@ dependencies = [
   "typer>=0.12",
 ]
 
+[project.scripts]
+winwatt = "winwatt_automation.cli.main:app"
+
 [project.optional-dependencies]
 dev = ["pytest", "networkx"]
 

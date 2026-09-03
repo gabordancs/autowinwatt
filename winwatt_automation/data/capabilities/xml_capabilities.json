@@ -1,0 +1,33 @@
+{
+  "evidence_run": "data/runtime_maps/full_authorized_sandbox/building_e2e_stable_20260903T132028",
+  "native_xml_export": {
+    "status": "verified",
+    "evidence": [
+      "xml_export_result.json",
+      "baseline_native.xml"
+    ],
+    "proof": "Native Fájl → XML export created and XML-parsed a WinWatt32Project document."
+  },
+  "native_xml_import": {
+    "status": "verified_transport_only",
+    "evidence": [
+      "xml_roundtrip_initial_result.json",
+      "roundtrip_native.xml"
+    ],
+    "proof": "Native Fájl → XML import accepted a baseline export and a subsequent export completed.",
+    "warning": "Transport success does not prove individual property application."
+  },
+  "room.area_m2": {
+    "xml_export": "observed",
+    "xml_import": "unsafe",
+    "ui": "verified",
+    "preferred": "ui",
+    "evidence": {
+      "baseline_xml_value": 10,
+      "modified_xml_value": 11,
+      "reexported_xml_value": 11,
+      "ui_readback_value": 10
+    },
+    "reason": "After importing only WinWatt32Room/Area=11, the native re-export retained 11 while the room editor read 10. The XML field is therefore not a proven writer for the UI area."
+  }
+}
