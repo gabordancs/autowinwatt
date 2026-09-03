@@ -1,0 +1,758 @@
+[
+  {
+    "title": "Mentés...",
+    "class_name": "TButton",
+    "control_id": 198430,
+    "enabled": true
+  },
+  {
+    "title": "Betöltés...",
+    "class_name": "TButton",
+    "control_id": 198414,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TPageControl",
+    "control_id": 1771908,
+    "enabled": true
+  },
+  {
+    "title": "Szerkezetek",
+    "class_name": "TTabSheet",
+    "control_id": 132926,
+    "enabled": true
+  },
+  {
+    "title": "0",
+    "class_name": "TEdit",
+    "control_id": 132924,
+    "enabled": true
+  },
+  {
+    "title": "180",
+    "class_name": "TEdit",
+    "control_id": 198426,
+    "enabled": true
+  },
+  {
+    "title": "50",
+    "class_name": "TEdit",
+    "control_id": 198480,
+    "enabled": true
+  },
+  {
+    "title": "90",
+    "class_name": "TEdit",
+    "control_id": 198482,
+    "enabled": true
+  },
+  {
+    "title": "20",
+    "class_name": "TEdit",
+    "control_id": 198424,
+    "enabled": true
+  },
+  {
+    "title": "-2",
+    "class_name": "TEdit",
+    "control_id": 132930,
+    "enabled": true
+  },
+  {
+    "title": "Hőmérséklet szimbólumok",
+    "class_name": "TTabSheet",
+    "control_id": 788492,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TPanel",
+    "control_id": 1706000,
+    "enabled": true
+  },
+  {
+    "title": "Fan-coilok",
+    "class_name": "TTabSheet",
+    "control_id": 656732,
+    "enabled": true
+  },
+  {
+    "title": "Hidraulikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 197844,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 263370,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 264120,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 14419396,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 263376,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 263384,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Fűtőközeg adatok",
+    "class_name": "TGroupBox",
+    "control_id": 197832,
+    "enabled": true
+  },
+  {
+    "title": "normál víz",
+    "class_name": "TComboBox",
+    "control_id": 197824,
+    "enabled": true
+  },
+  {
+    "title": "Hőtechnikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 853980,
+    "enabled": true
+  },
+  {
+    "title": "Rel. páratartalom [%]",
+    "class_name": "TComboBox",
+    "control_id": 722852,
+    "enabled": true
+  },
+  {
+    "title": "Rel. páratartalom [%]",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Normál szakaszok",
+    "class_name": "TTabSheet",
+    "control_id": 133158,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 264222,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 393842,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 526298,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Hőcserélők, keverőszelepek",
+    "class_name": "TTabSheet",
+    "control_id": 591002,
+    "enabled": true
+  },
+  {
+    "title": "Hidraulikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 329114,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 7342664,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 263382,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 1510464,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 197822,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 263584,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Fűtőközeg adatok",
+    "class_name": "TGroupBox",
+    "control_id": 5638690,
+    "enabled": true
+  },
+  {
+    "title": "normál víz",
+    "class_name": "TComboBox",
+    "control_id": 3214236,
+    "enabled": true
+  },
+  {
+    "title": "Ismert teljesítményű fogyasztók",
+    "class_name": "TTabSheet",
+    "control_id": 198704,
+    "enabled": true
+  },
+  {
+    "title": "Hidraulikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 133148,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 264144,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 527270,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 396248,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 527276,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 329564,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Fűtőközeg adatok",
+    "class_name": "TGroupBox",
+    "control_id": 198726,
+    "enabled": true
+  },
+  {
+    "title": "normál víz",
+    "class_name": "TComboBox",
+    "control_id": 198778,
+    "enabled": true
+  },
+  {
+    "title": "Egycsöves körök",
+    "class_name": "TTabSheet",
+    "control_id": 788506,
+    "enabled": true
+  },
+  {
+    "title": "Hidraulikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 591854,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 4000770,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 198816,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 198800,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 133164,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 591956,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Fűtőközeg adatok",
+    "class_name": "TGroupBox",
+    "control_id": 2755634,
+    "enabled": true
+  },
+  {
+    "title": "normál víz",
+    "class_name": "TComboBox",
+    "control_id": 2427958,
+    "enabled": true
+  },
+  {
+    "title": "Felületfűtés-hűtés",
+    "class_name": "TTabSheet",
+    "control_id": 788498,
+    "enabled": true
+  },
+  {
+    "title": "Hidraulikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 591904,
+    "enabled": true
+  },
+  {
+    "title": "m",
+    "class_name": "TComboBox",
+    "control_id": 1247208,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 723112,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 3279708,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 1444016,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 2165318,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 592024,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Fűtőközeg adatok",
+    "class_name": "TGroupBox",
+    "control_id": 460934,
+    "enabled": true
+  },
+  {
+    "title": "normál víz",
+    "class_name": "TComboBox",
+    "control_id": 460908,
+    "enabled": true
+  },
+  {
+    "title": "Radiátorok",
+    "class_name": "TTabSheet",
+    "control_id": 1312616,
+    "enabled": true
+  },
+  {
+    "title": "Hidraulikai adatok",
+    "class_name": "TGroupBox",
+    "control_id": 460878,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 788594,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 788608,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 788540,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 460778,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 460890,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": true
+  },
+  {
+    "title": "Fűtőközeg adatok",
+    "class_name": "TGroupBox",
+    "control_id": 853938,
+    "enabled": true
+  },
+  {
+    "title": "normál víz",
+    "class_name": "TComboBox",
+    "control_id": 460756,
+    "enabled": true
+  },
+  {
+    "title": "Nyári hőterhelés",
+    "class_name": "TTabSheet",
+    "control_id": 919496,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TComboBox",
+    "control_id": 1378102,
+    "enabled": false
+  },
+  {
+    "title": "",
+    "class_name": "Edit",
+    "control_id": 1001,
+    "enabled": false
+  },
+  {
+    "title": "Téli hőszükséglet",
+    "class_name": "TTabSheet",
+    "control_id": 526410,
+    "enabled": true
+  },
+  {
+    "title": "Légcsereszám alapján",
+    "class_name": "TComboBox",
+    "control_id": 526412,
+    "enabled": true
+  },
+  {
+    "title": "Energiahordozók",
+    "class_name": "TTabSheet",
+    "control_id": 1443782,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TPageControl",
+    "control_id": 526346,
+    "enabled": true
+  },
+  {
+    "title": "Energetika",
+    "class_name": "TTabSheet",
+    "control_id": 788440,
+    "enabled": true
+  },
+  {
+    "title": "Közel nulla energiaigényű (2. melléklet)",
+    "class_name": "TComboBox",
+    "control_id": 591930,
+    "enabled": true
+  },
+  {
+    "title": "",
+    "class_name": "TCheckListBox",
+    "control_id": 788488,
+    "enabled": true
+  },
+  {
+    "title": "Közel nulla energiaigényű (6. melléklet)",
+    "class_name": "TComboBox",
+    "control_id": 526356,
+    "enabled": true
+  },
+  {
+    "title": "9/2023. ÉKM rendelet 2023.XI.1-i állapot",
+    "class_name": "TComboBox",
+    "control_id": 1771576,
+    "enabled": true
+  },
+  {
+    "title": "Épület",
+    "class_name": "TTabSheet",
+    "control_id": 1247220,
+    "enabled": true
+  },
+  {
+    "title": "városi",
+    "class_name": "TComboBox",
+    "control_id": 1181586,
+    "enabled": true
+  },
+  {
+    "title": "nehéz (mt > 400 kg/m2)",
+    "class_name": "TComboBox",
+    "control_id": 919602,
+    "enabled": true
+  },
+  {
+    "title": "folyamatos",
+    "class_name": "TComboBox",
+    "control_id": 722902,
+    "enabled": true
+  },
+  {
+    "title": "Súgó",
+    "class_name": "TButton",
+    "control_id": 198418,
+    "enabled": true
+  },
+  {
+    "title": "Elvet",
+    "class_name": "TButton",
+    "control_id": 132920,
+    "enabled": true
+  },
+  {
+    "title": "OK",
+    "class_name": "TButton",
+    "control_id": 198416,
+    "enabled": true
+  }
+]\n

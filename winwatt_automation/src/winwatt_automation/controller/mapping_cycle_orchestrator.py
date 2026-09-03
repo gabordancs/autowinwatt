@@ -207,7 +207,9 @@ class MappingCycleOrchestrator:
             ]
         )
         self.paths.prompt_path.write_text(prompt, encoding="utf-8")
-        status.latest_prompt_path = str(self.paths.prompt_path.relative_to(self.repo_root))
+        # Persist repository paths in a platform-independent form so status
+        # files can be exchanged between the two Windows workers and CI.
+        status.latest_prompt_path = self.paths.prompt_path.relative_to(self.repo_root).as_posix()
         self.save_status(status)
         return self.paths.prompt_path
 
@@ -218,7 +220,7 @@ class MappingCycleOrchestrator:
         codex_result = dict(STANDARD_RESULT_TEMPLATE)
         codex_result.update(payload)
         status.last_codex_result = codex_result
-        status.latest_result_path = str(path.relative_to(self.repo_root)) if path.is_absolute() else str(path)
+        status.latest_result_path = path.relative_to(self.repo_root).as_posix() if path.is_absolute() else path.as_posix()
         status.recommended_next_step = _string_or_none(codex_result.get("next_step"))
         status.commit = _string_or_none(codex_result.get("commit"))
         self.save_status(status)
@@ -245,7 +247,7 @@ class MappingCycleOrchestrator:
         status.last_test_runs = [_execution_to_dict(item) for item in test_runs]
         status.last_manual_run = _execution_to_dict(manual_run) if manual_run else None
         status.last_log_extract = log_extract
-        status.latest_log_extract_path = str(self.paths.log_extract_path.relative_to(self.repo_root))
+        status.latest_log_extract_path = self.paths.log_extract_path.relative_to(self.repo_root).as_posix()
         self.save_status(status)
         return TestStepResult(tests=test_runs, manual_run=manual_run, log_extract=log_extract)
 
@@ -285,7 +287,7 @@ class MappingCycleOrchestrator:
             f"- {status.commit or _current_commit(self.git)}",
         ]
         self.paths.handoff_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-        status.latest_handoff_path = str(self.paths.handoff_path.relative_to(self.repo_root))
+        status.latest_handoff_path = self.paths.handoff_path.relative_to(self.repo_root).as_posix()
         self.save_status(status)
         return self.paths.handoff_path
 
@@ -385,7 +387,7 @@ def _cycle_id() -> str:
 def _rel_or_none(path: Path | None, repo_root: Path) -> str | None:
     if not path:
         return None
-    return str(path.relative_to(repo_root)) if path.is_absolute() else str(path)
+    return path.relative_to(repo_root).as_posix() if path.is_absolute() else path.as_posix()
 
 
 def _resolve_latest_log_path(snapshot: RunLogSnapshot, repo_root: Path) -> Path | None:

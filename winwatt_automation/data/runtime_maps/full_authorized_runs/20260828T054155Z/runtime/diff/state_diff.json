@@ -1,0 +1,185 @@
+{
+  "dialog_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": []
+  },
+  "enabled_state_changes": [],
+  "menu_action_diff": {
+    "only_in_a": [
+      [
+        "fájl",
+        "[unlabeled row 15]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 16]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 18]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ]
+    ],
+    "only_in_b": [
+      [
+        "fájl",
+        "[unlabeled row 14]"
+      ],
+      [
+        "fájl",
+        "megnyitás"
+      ]
+    ],
+    "shared": [
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 10]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 11]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 12]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 13]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 16]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 17]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 18]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 19]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 20]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 21]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 22]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 23]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 24]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 25]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 26]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 27]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 2]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 3]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 4]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 5]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 6]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 7]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 8]"
+      ],
+      [
+        "jegyzékek",
+        "[unlabeled row 9]"
+      ],
+      [
+        "jegyzékek",
+        "végrehajtás"
+      ]
+    ]
+  },
+  "project_only_paths": [
+    [
+      "fájl",
+      "megnyitás"
+    ]
+  ],
+  "state_a": "full_no_project",
+  "state_b": "full_project_open",
+  "summary": {
+    "actions_only_in_a": 5,
+    "actions_only_in_b": 2,
+    "enabled_changes": 0,
+    "project_only_paths": 1,
+    "shared_top_menus": 5
+  },
+  "top_menu_diff": {
+    "only_in_a": [
+      "adatbázis"
+    ],
+    "only_in_b": [],
+    "shared": [
+      "ablak",
+      "beállítások",
+      "fájl",
+      "jegyzékek",
+      "súgó"
+    ]
+  },
+  "window_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": []
+  }
+}

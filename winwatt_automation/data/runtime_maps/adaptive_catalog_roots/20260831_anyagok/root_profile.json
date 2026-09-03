@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "catalog_index": 0,
+  "catalog_caption": "Anyagok",
+  "discovered_at": "2026-08-31T04:51:30.279428+00:00",
+  "context": {
+    "tree": null,
+    "list": null
+  },
+  "element_command": {
+    "index": 0,
+    "enabled": true,
+    "caption": ""
+  },
+  "root_window": {
+    "class": "TMaterialTypeForm",
+    "title": "Adatmegadási mód kiválasztása"
+  },
+  "probe_name": "Auto material probe",
+  "attempts": [
+    {
+      "round": 1,
+      "context": {
+        "tree": null,
+        "list": null
+      },
+      "command": {
+        "index": 0,
+        "enabled": true,
+        "caption": ""
+      },
+      "dialog_before_submit": {
+        "class": "TNewGroupForm",
+        "title": "Új elem létrehozása"
+      },
+      "dialog_after_submit": {
+        "class": "TMaterialTypeForm",
+        "title": "Adatmegadási mód kiválasztása"
+      }
+    }
+  ]
+}

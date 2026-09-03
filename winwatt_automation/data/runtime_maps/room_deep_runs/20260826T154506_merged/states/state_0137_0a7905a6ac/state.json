@@ -1,0 +1,4217 @@
+{
+  "state_id": "state_0137_0a7905a6ac",
+  "parent_state": "state_0136_f2b9889351",
+  "captured_at": "2026-08-27T12:03:31.375886+00:00",
+  "window": {
+    "title": "Határoló szerkezetek kiválasztása: Helyiségek - Room graph explorer",
+    "class_name": "TSelectBoundarisForm",
+    "handle": 57218428
+  },
+  "signature": {
+    "title": "Határoló szerkezetek kiválasztása: Helyiségek - Room graph explorer",
+    "class_name": "TSelectBoundarisForm",
+    "controls": [
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "...",
+        "automation_id": "60888466",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1253,
+          700,
+          1291,
+          731
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Bezárás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1308,
+          556,
+          1327,
+          580
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Bezárás",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1328,
+          196,
+          1388,
+          234
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal jobbra",
+        "automation_id": "DownPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          289,
+          958,
+          343,
+          984
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal jobbra",
+        "automation_id": "DownPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          325,
+          514,
+          799,
+          540
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal jobbra",
+        "automation_id": "DownPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          500,
+          956,
+          798,
+          982
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal balra",
+        "automation_id": "UpButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          209,
+          514,
+          230,
+          540
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal balra",
+        "automation_id": "UpButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          209,
+          958,
+          230,
+          984
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal balra",
+        "automation_id": "UpButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          374,
+          956,
+          395,
+          982
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal jobbra",
+        "automation_id": "DownButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          343,
+          958,
+          364,
+          984
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal jobbra",
+        "automation_id": "DownButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          798,
+          956,
+          819,
+          982
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal jobbra",
+        "automation_id": "DownButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          799,
+          514,
+          820,
+          540
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Felfelé",
+        "automation_id": "34870938",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          389,
+          546,
+          470,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Felvesz...",
+        "automation_id": "57087400",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          215,
+          546,
+          296,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Kis méret",
+        "automation_id": "",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          1208,
+          196,
+          1268,
+          234
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Lefelé",
+        "automation_id": "60626308",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          475,
+          546,
+          556,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "MSZ",
+        "automation_id": "55711024",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1173,
+          419,
+          1237,
+          450
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Megnyitás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1039,
+          249,
+          1058,
+          273
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Megnyitás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1039,
+          289,
+          1058,
+          313
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Másol",
+        "automation_id": "36574812",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          561,
+          546,
+          642,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Módosít...",
+        "automation_id": "61478330",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          301,
+          546,
+          382,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "OK",
+        "automation_id": "37950960",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1279,
+          245,
+          1373,
+          276
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Súgó",
+        "automation_id": "31266402",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1279,
+          280,
+          1373,
+          311
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Teljes méret",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1268,
+          196,
+          1327,
+          234
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Töröl",
+        "automation_id": "57021750",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          735,
+          546,
+          816,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Átnevez",
+        "automation_id": "58070362",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          649,
+          546,
+          730,
+          577
+        ],
+        "value": null
+      },
+      {
+        "control_type": "CheckBox",
+        "class_name": "TCheckBox",
+        "name": "nyáron",
+        "automation_id": "61281670",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1195,
+          616,
+          1270,
+          637
+        ],
+        "value": 0
+      },
+      {
+        "control_type": "CheckBox",
+        "class_name": "TCheckBox",
+        "name": "télen",
+        "automation_id": "57480562",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1195,
+          588,
+          1270,
+          609
+        ],
+        "value": 0
+      },
+      {
+        "control_type": "ComboBox",
+        "class_name": "TComboBox",
+        "name": "",
+        "automation_id": "56956308",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          879,
+          555,
+          1328,
+          581
+        ],
+        "value": "Túloldali hőmérsékletek minden számításnál"
+      },
+      {
+        "control_type": "ComboBox",
+        "class_name": "TComboBox",
+        "name": "",
+        "automation_id": "57415010",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          938,
+          248,
+          1059,
+          274
+        ],
+        "value": "0° (É)"
+      },
+      {
+        "control_type": "ComboBox",
+        "class_name": "TComboBox",
+        "name": "",
+        "automation_id": "58463628",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          938,
+          288,
+          1059,
+          314
+        ],
+        "value": "vízszintes"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "Edit",
+        "name": "",
+        "automation_id": "1001",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          941,
+          251,
+          1034,
+          270
+        ],
+        "value": "0° (É)"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "Edit",
+        "name": "",
+        "automation_id": "1001",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          941,
+          291,
+          1034,
+          310
+        ],
+        "value": "vízszintes"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "36050460",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1108,
+          419,
+          1164,
+          445
+        ],
+        "value": "0,7"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "26152036",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1108,
+          459,
+          1164,
+          485
+        ],
+        "value": "0,9"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "57808254",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1119,
+          673,
+          1168,
+          699
+        ],
+        "value": "20"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "60167542",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1119,
+          703,
+          1168,
+          729
+        ],
+        "value": "1"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "39327278",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1195,
+          673,
+          1244,
+          699
+        ],
+        "value": "26"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "33167012",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1195,
+          703,
+          1244,
+          729
+        ],
+        "value": "1"
+      },
+      {
+        "control_type": "List",
+        "class_name": "TListViewWithHeader",
+        "name": "",
+        "automation_id": "38475240",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          206,
+          296,
+          822,
+          537
+        ],
+        "value": null
+      },
+      {
+        "control_type": "List",
+        "class_name": "TListViewWithHeader",
+        "name": "",
+        "automation_id": "33953420",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          371,
+          651,
+          821,
+          980
+        ],
+        "value": null
+      },
+      {
+        "control_type": "List",
+        "class_name": "ComboLBox",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          879,
+          581,
+          1328,
+          649
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Energetikánál Bu értékek, máshol túloldali hőmérsékletek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          615,
+          1326,
+          631
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Hőmérséklet korrekciós értékek (Bu) minden számításnál",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          599,
+          1326,
+          615
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Hőmérséklet szimbólummal",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          631,
+          1326,
+          647
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Túloldali hőmérsékletek minden számításnál",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          583,
+          1326,
+          599
+        ],
+        "value": null
+      },
+      {
+        "control_type": "MenuBar",
+        "class_name": "",
+        "name": "Rendszer",
+        "automation_id": "MenuBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          205,
+          233,
+          233
+        ],
+        "value": null
+      },
+      {
+        "control_type": "MenuItem",
+        "class_name": "",
+        "name": "Rendszer",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          205,
+          233,
+          233
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "45684172",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          234,
+          824,
+          539
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "63313310",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          234,
+          824,
+          584
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "38868522",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          234,
+          824,
+          983
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "60167434",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          250,
+          824,
+          539
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "34018976",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          539,
+          824,
+          584
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "34412178",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          588,
+          824,
+          983
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "34084530",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          205,
+          604,
+          824,
+          983
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "8328670",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          370,
+          605,
+          823,
+          981
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "59250116",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          828,
+          238,
+          1383,
+          329
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "38147546",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          828,
+          238,
+          1383,
+          979
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TOthersideTempFrame",
+        "name": "",
+        "automation_id": "41948784",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          873,
+          509,
+          1334,
+          757
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "53417278",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          875,
+          585,
+          1331,
+          648
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "54596862",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          875,
+          585,
+          1331,
+          733
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "34280972",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          875,
+          648,
+          1331,
+          733
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "41686648",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1270,
+          238,
+          1383,
+          329
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TGroupBox",
+        "name": "Belső szerkezetek",
+        "automation_id": "38278654",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          873,
+          509,
+          1334,
+          757
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TGroupBox",
+        "name": "Külső szerkezet",
+        "automation_id": "38016464",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          873,
+          389,
+          1334,
+          500
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TTabSheet",
+        "name": "Tömör felület",
+        "automation_id": "37623344",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          833,
+          359,
+          1378,
+          974
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ScrollBar",
+        "class_name": "",
+        "name": "Vízszintes",
+        "automation_id": "NonClientHorizontalScrollBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          209,
+          514,
+          820,
+          540
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ScrollBar",
+        "class_name": "",
+        "name": "Vízszintes",
+        "automation_id": "NonClientHorizontalScrollBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          209,
+          958,
+          364,
+          984
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ScrollBar",
+        "class_name": "",
+        "name": "Vízszintes",
+        "automation_id": "NonClientHorizontalScrollBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          374,
+          956,
+          819,
+          982
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Tab",
+        "class_name": "TPageControl",
+        "name": "",
+        "automation_id": "58070318",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          828,
+          329,
+          1383,
+          979
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TabItem",
+        "class_name": "",
+        "name": "Takarások",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1004,
+          331,
+          1083,
+          354
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TabItem",
+        "class_name": "",
+        "name": "Tömör felület",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          830,
+          331,
+          921,
+          354
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TabItem",
+        "class_name": "",
+        "name": "Üvegfelület",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          921,
+          331,
+          1004,
+          354
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          230,
+          514,
+          325,
+          540
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          230,
+          958,
+          289,
+          984
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          395,
+          956,
+          500,
+          982
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TitleBar",
+        "class_name": "",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          225,
+          199,
+          1386,
+          234
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ToolTip",
+        "class_name": "tooltips_class32",
+        "name": "Határoló szerkezetek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          255,
+          629,
+          430,
+          655
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Tree",
+        "class_name": "TTreeView",
+        "name": "",
+        "automation_id": "44045844",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          206,
+          605,
+          366,
+          981
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Határoló szerkezetek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          260,
+          630,
+          424,
+          653
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Szerkezetek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          236,
+          608,
+          334,
+          631
+        ],
+        "value": null
+      }
+    ]
+  },
+  "signature_hash": "0a7905a6ac498423088979ef2c0982f51ac1010e1e958cfb3731a828f882dd3a",
+  "diff_from_parent": {
+    "kind": "structural_ui_diff",
+    "changed": true,
+    "added_controls": [
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Bezárás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1308,
+          556,
+          1327,
+          580
+        ],
+        "value": null
+      },
+      {
+        "control_type": "List",
+        "class_name": "ComboLBox",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          879,
+          581,
+          1328,
+          649
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Energetikánál Bu értékek, máshol túloldali hőmérsékletek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          615,
+          1326,
+          631
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Hőmérséklet korrekciós értékek (Bu) minden számításnál",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          599,
+          1326,
+          615
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Hőmérséklet szimbólummal",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          631,
+          1326,
+          647
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "Túloldali hőmérsékletek minden számításnál",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          880,
+          583,
+          1326,
+          599
+        ],
+        "value": null
+      }
+    ],
+    "removed_controls": [
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Megnyitás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          1308,
+          556,
+          1327,
+          580
+        ],
+        "value": null
+      }
+    ],
+    "value_changes": []
+  },
+  "path": [
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "16909516",
+      "rect": [
+        168,
+        111,
+        428,
+        137
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "1773018",
+      "rect": [
+        608,
+        111,
+        849,
+        137
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "855624",
+      "rect": [
+        168,
+        111,
+        428,
+        137
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "Button",
+      "name": "Szerkezetek...",
+      "automation_id": "3348090",
+      "rect": [
+        1035,
+        645,
+        1129,
+        676
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Szerkezetek...",
+      "automation_id": "3413626",
+      "rect": [
+        1035,
+        645,
+        1129,
+        676
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "rect": [
+        195,
+        565,
+        359,
+        588
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "202448",
+      "rect": [
+        1061,
+        331,
+        1192,
+        357
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Szerkezetek",
+      "automation_id": "",
+      "rect": [
+        171,
+        543,
+        269,
+        566
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Szerkezetek",
+      "automation_id": "",
+      "rect": [
+        171,
+        543,
+        269,
+        566
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "rect": [
+        195,
+        565,
+        359,
+        588
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "Ablak (Fa)",
+      "automation_id": "",
+      "rect": [
+        300,
+        589,
+        1635,
+        614
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Szerkezetek",
+      "automation_id": "",
+      "rect": [
+        236,
+        608,
+        334,
+        631
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "rect": [
+        260,
+        630,
+        424,
+        653
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "54007220",
+      "rect": [
+        879,
+        555,
+        1328,
+        581
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "Túloldali hőmérsékletek minden számításnál",
+      "automation_id": "",
+      "rect": [
+        880,
+        583,
+        1326,
+        599
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        1308,
+        556,
+        1327,
+        580
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "rect": [
+        260,
+        630,
+        424,
+        653
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Szerkezetek",
+      "automation_id": "",
+      "rect": [
+        236,
+        608,
+        334,
+        631
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "40506830",
+      "rect": [
+        879,
+        555,
+        1328,
+        581
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "rect": [
+        260,
+        630,
+        424,
+        653
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "56890792",
+      "rect": [
+        879,
+        555,
+        1328,
+        581
+      ],
+      "operation": "expand"
+    }
+  ],
+  "controls": [
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "...",
+      "automation_id": "60888466",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1253,
+        700,
+        1291,
+        731
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Bezárás",
+      "automation_id": "DropDown",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1308,
+        556,
+        1327,
+        580
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Bezárás",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1328,
+        196,
+        1388,
+        234
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        289,
+        958,
+        343,
+        984
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        325,
+        514,
+        799,
+        540
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        500,
+        956,
+        798,
+        982
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        209,
+        514,
+        230,
+        540
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        209,
+        958,
+        230,
+        984
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        374,
+        956,
+        395,
+        982
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        343,
+        958,
+        364,
+        984
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        798,
+        956,
+        819,
+        982
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        799,
+        514,
+        820,
+        540
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Felfelé",
+      "automation_id": "34870938",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        389,
+        546,
+        470,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Felvesz...",
+      "automation_id": "57087400",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        215,
+        546,
+        296,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Kis méret",
+      "automation_id": "",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        1208,
+        196,
+        1268,
+        234
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Lefelé",
+      "automation_id": "60626308",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        475,
+        546,
+        556,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "MSZ",
+      "automation_id": "55711024",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1173,
+        419,
+        1237,
+        450
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1039,
+        249,
+        1058,
+        273
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1039,
+        289,
+        1058,
+        313
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Másol",
+      "automation_id": "36574812",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        561,
+        546,
+        642,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Módosít...",
+      "automation_id": "61478330",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        301,
+        546,
+        382,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "OK",
+      "automation_id": "37950960",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1279,
+        245,
+        1373,
+        276
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Súgó",
+      "automation_id": "31266402",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1279,
+        280,
+        1373,
+        311
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Teljes méret",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1268,
+        196,
+        1327,
+        234
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Töröl",
+      "automation_id": "57021750",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        735,
+        546,
+        816,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Átnevez",
+      "automation_id": "58070362",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        649,
+        546,
+        730,
+        577
+      ],
+      "value": null
+    },
+    {
+      "control_type": "CheckBox",
+      "class_name": "TCheckBox",
+      "name": "nyáron",
+      "automation_id": "61281670",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1195,
+        616,
+        1270,
+        637
+      ],
+      "value": 0
+    },
+    {
+      "control_type": "CheckBox",
+      "class_name": "TCheckBox",
+      "name": "télen",
+      "automation_id": "57480562",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1195,
+        588,
+        1270,
+        609
+      ],
+      "value": 0
+    },
+    {
+      "control_type": "ComboBox",
+      "class_name": "TComboBox",
+      "name": "",
+      "automation_id": "56956308",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        879,
+        555,
+        1328,
+        581
+      ],
+      "value": "Túloldali hőmérsékletek minden számításnál"
+    },
+    {
+      "control_type": "ComboBox",
+      "class_name": "TComboBox",
+      "name": "",
+      "automation_id": "57415010",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        938,
+        248,
+        1059,
+        274
+      ],
+      "value": "0° (É)"
+    },
+    {
+      "control_type": "ComboBox",
+      "class_name": "TComboBox",
+      "name": "",
+      "automation_id": "58463628",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        938,
+        288,
+        1059,
+        314
+      ],
+      "value": "vízszintes"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "Edit",
+      "name": "",
+      "automation_id": "1001",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        941,
+        251,
+        1034,
+        270
+      ],
+      "value": "0° (É)"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "Edit",
+      "name": "",
+      "automation_id": "1001",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        941,
+        291,
+        1034,
+        310
+      ],
+      "value": "vízszintes"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "36050460",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1108,
+        419,
+        1164,
+        445
+      ],
+      "value": "0,7"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "26152036",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1108,
+        459,
+        1164,
+        485
+      ],
+      "value": "0,9"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "57808254",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1119,
+        673,
+        1168,
+        699
+      ],
+      "value": "20"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "60167542",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1119,
+        703,
+        1168,
+        729
+      ],
+      "value": "1"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "39327278",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1195,
+        673,
+        1244,
+        699
+      ],
+      "value": "26"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "33167012",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1195,
+        703,
+        1244,
+        729
+      ],
+      "value": "1"
+    },
+    {
+      "control_type": "List",
+      "class_name": "TListViewWithHeader",
+      "name": "",
+      "automation_id": "38475240",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        206,
+        296,
+        822,
+        537
+      ],
+      "value": null
+    },
+    {
+      "control_type": "List",
+      "class_name": "TListViewWithHeader",
+      "name": "",
+      "automation_id": "33953420",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        371,
+        651,
+        821,
+        980
+      ],
+      "value": null
+    },
+    {
+      "control_type": "List",
+      "class_name": "ComboLBox",
+      "name": "",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        879,
+        581,
+        1328,
+        649
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "Energetikánál Bu értékek, máshol túloldali hőmérsékletek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        880,
+        615,
+        1326,
+        631
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "Hőmérséklet korrekciós értékek (Bu) minden számításnál",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        880,
+        599,
+        1326,
+        615
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "Hőmérséklet szimbólummal",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        880,
+        631,
+        1326,
+        647
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "Túloldali hőmérsékletek minden számításnál",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        880,
+        583,
+        1326,
+        599
+      ],
+      "value": null
+    },
+    {
+      "control_type": "MenuBar",
+      "class_name": "",
+      "name": "Rendszer",
+      "automation_id": "MenuBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        205,
+        233,
+        233
+      ],
+      "value": null
+    },
+    {
+      "control_type": "MenuItem",
+      "class_name": "",
+      "name": "Rendszer",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        205,
+        233,
+        233
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "45684172",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        234,
+        824,
+        539
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "63313310",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        234,
+        824,
+        584
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "38868522",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        234,
+        824,
+        983
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "60167434",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        250,
+        824,
+        539
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "34018976",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        539,
+        824,
+        584
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "34412178",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        588,
+        824,
+        983
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "34084530",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        205,
+        604,
+        824,
+        983
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "8328670",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        370,
+        605,
+        823,
+        981
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "59250116",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        828,
+        238,
+        1383,
+        329
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "38147546",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        828,
+        238,
+        1383,
+        979
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TOthersideTempFrame",
+      "name": "",
+      "automation_id": "41948784",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        873,
+        509,
+        1334,
+        757
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "53417278",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        875,
+        585,
+        1331,
+        648
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "54596862",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        875,
+        585,
+        1331,
+        733
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "34280972",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        875,
+        648,
+        1331,
+        733
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "41686648",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1270,
+        238,
+        1383,
+        329
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TGroupBox",
+      "name": "Belső szerkezetek",
+      "automation_id": "38278654",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        873,
+        509,
+        1334,
+        757
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TGroupBox",
+      "name": "Külső szerkezet",
+      "automation_id": "38016464",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        873,
+        389,
+        1334,
+        500
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TTabSheet",
+      "name": "Tömör felület",
+      "automation_id": "37623344",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        833,
+        359,
+        1378,
+        974
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ScrollBar",
+      "class_name": "",
+      "name": "Vízszintes",
+      "automation_id": "NonClientHorizontalScrollBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        209,
+        514,
+        820,
+        540
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ScrollBar",
+      "class_name": "",
+      "name": "Vízszintes",
+      "automation_id": "NonClientHorizontalScrollBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        209,
+        958,
+        364,
+        984
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ScrollBar",
+      "class_name": "",
+      "name": "Vízszintes",
+      "automation_id": "NonClientHorizontalScrollBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        374,
+        956,
+        819,
+        982
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Tab",
+      "class_name": "TPageControl",
+      "name": "",
+      "automation_id": "58070318",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        828,
+        329,
+        1383,
+        979
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TabItem",
+      "class_name": "",
+      "name": "Takarások",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        1004,
+        331,
+        1083,
+        354
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TabItem",
+      "class_name": "",
+      "name": "Tömör felület",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        830,
+        331,
+        921,
+        354
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TabItem",
+      "class_name": "",
+      "name": "Üvegfelület",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        921,
+        331,
+        1004,
+        354
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "Elhelyezés",
+      "automation_id": "ScrollbarThumb",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        230,
+        514,
+        325,
+        540
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "Elhelyezés",
+      "automation_id": "ScrollbarThumb",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        230,
+        958,
+        289,
+        984
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "Elhelyezés",
+      "automation_id": "ScrollbarThumb",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        395,
+        956,
+        500,
+        982
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TitleBar",
+      "class_name": "",
+      "name": "",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        225,
+        199,
+        1386,
+        234
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ToolTip",
+      "class_name": "tooltips_class32",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        255,
+        629,
+        430,
+        655
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Tree",
+      "class_name": "TTreeView",
+      "name": "",
+      "automation_id": "44045844",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        206,
+        605,
+        366,
+        981
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        260,
+        630,
+        424,
+        653
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Szerkezetek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        236,
+        608,
+        334,
+        631
+      ],
+      "value": null
+    }
+  ],
+  "actions": [
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "rect": [
+        374,
+        956,
+        395,
+        982
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "rect": [
+        500,
+        956,
+        798,
+        982
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        798,
+        956,
+        819,
+        982
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "rect": [
+        209,
+        958,
+        230,
+        984
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "rect": [
+        289,
+        958,
+        343,
+        984
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        343,
+        958,
+        364,
+        984
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Szerkezetek",
+      "automation_id": "",
+      "rect": [
+        236,
+        608,
+        334,
+        631
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Határoló szerkezetek",
+      "automation_id": "",
+      "rect": [
+        260,
+        630,
+        424,
+        653
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "rect": [
+        209,
+        514,
+        230,
+        540
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "rect": [
+        325,
+        514,
+        799,
+        540
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        799,
+        514,
+        820,
+        540
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Súgó",
+      "automation_id": "31266402",
+      "rect": [
+        1279,
+        280,
+        1373,
+        311
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "OK",
+      "automation_id": "37950960",
+      "rect": [
+        1279,
+        245,
+        1373,
+        276
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "58463628",
+      "rect": [
+        938,
+        288,
+        1059,
+        314
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        1039,
+        289,
+        1058,
+        313
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "57415010",
+      "rect": [
+        938,
+        248,
+        1059,
+        274
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        1039,
+        249,
+        1058,
+        273
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "...",
+      "automation_id": "60888466",
+      "rect": [
+        1253,
+        700,
+        1291,
+        731
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "CheckBox",
+      "name": "télen",
+      "automation_id": "57480562",
+      "rect": [
+        1195,
+        588,
+        1270,
+        609
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "CheckBox",
+      "name": "nyáron",
+      "automation_id": "61281670",
+      "rect": [
+        1195,
+        616,
+        1270,
+        637
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "56956308",
+      "rect": [
+        879,
+        555,
+        1328,
+        581
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "Túloldali hőmérsékletek minden számításnál",
+      "automation_id": "",
+      "rect": [
+        880,
+        583,
+        1326,
+        599
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "Hőmérséklet korrekciós értékek (Bu) minden számításnál",
+      "automation_id": "",
+      "rect": [
+        880,
+        599,
+        1326,
+        615
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "Energetikánál Bu értékek, máshol túloldali hőmérsékletek",
+      "automation_id": "",
+      "rect": [
+        880,
+        615,
+        1326,
+        631
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "Hőmérséklet szimbólummal",
+      "automation_id": "",
+      "rect": [
+        880,
+        631,
+        1326,
+        647
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Bezárás",
+      "automation_id": "DropDown",
+      "rect": [
+        1308,
+        556,
+        1327,
+        580
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "MSZ",
+      "automation_id": "55711024",
+      "rect": [
+        1173,
+        419,
+        1237,
+        450
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TabItem",
+      "name": "Tömör felület",
+      "automation_id": "",
+      "rect": [
+        830,
+        331,
+        921,
+        354
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TabItem",
+      "name": "Üvegfelület",
+      "automation_id": "",
+      "rect": [
+        921,
+        331,
+        1004,
+        354
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TabItem",
+      "name": "Takarások",
+      "automation_id": "",
+      "rect": [
+        1004,
+        331,
+        1083,
+        354
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Teljes méret",
+      "automation_id": "",
+      "rect": [
+        1268,
+        196,
+        1327,
+        234
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Bezárás",
+      "automation_id": "",
+      "rect": [
+        1328,
+        196,
+        1388,
+        234
+      ],
+      "operation": "activate"
+    }
+  ],
+  "native_menu": {
+    "backend": "win32_native_menu",
+    "process_id": 21464,
+    "window_handle": 18943618,
+    "items": [
+      {
+        "index": 0,
+        "command_id": 1,
+        "caption_raw": "&Fájl",
+        "caption": "Fájl",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 2,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "NewProjekt",
+              "stable_key": "MainForm.NewProjekt",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "new_project_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 3,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "OpenProjekt",
+              "stable_key": "MainForm.OpenProjekt",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_open_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 4,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "SaveProjekt",
+              "stable_key": "MainForm.SaveProjekt",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 5,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 6,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "CloseProjekt",
+              "stable_key": "MainForm.CloseProjekt",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 7,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProjektData",
+              "stable_key": "MainForm.ProjektData",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_data_dialog_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 9,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "XMLExportAction",
+              "stable_key": "MainForm.XMLExportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "xml_export_save_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 10,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "XMLImportAction",
+              "stable_key": "MainForm.XMLImportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "xml_import_open_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 12,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 13,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 14,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": [
+              {
+                "index": 0,
+                "command_id": 15,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              },
+              {
+                "index": 1,
+                "command_id": 16,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              },
+              {
+                "index": 2,
+                "command_id": 17,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "index": 11,
+            "command_id": 18,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ETAction",
+              "stable_key": "MainForm.ETAction",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 19,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "CreateReportAction",
+              "stable_key": "MainForm.CreateReportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "custom_reports_template_picker_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 30,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 31,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ExitApplication",
+              "stable_key": "MainForm.ExitApplication",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "command_id": 130,
+        "caption_raw": "&Szerkesztés",
+        "caption": "Szerkesztés",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 131,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 132,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 133,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 134,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 135,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 136,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 137,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 138,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 139,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 140,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 144,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 145,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "command_id": 32,
+        "caption_raw": "&Jegyzékek",
+        "caption": "Jegyzékek",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 33,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 34,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 35,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 36,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 37,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 38,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 39,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 40,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 41,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 42,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 43,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 44,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 45,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 46,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 49,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 15,
+            "command_id": 50,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 16,
+            "command_id": 53,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "command_id": 146,
+        "caption_raw": "&Csoport",
+        "caption": "Csoport",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 147,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 148,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 149,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "command_id": 150,
+        "caption_raw": "&Elem",
+        "caption": "Elem",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 151,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 152,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 153,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 154,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 155,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 156,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 157,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "command_id": 54,
+        "caption_raw": "&Eszközök",
+        "caption": "Eszközök",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 55,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 56,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 57,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 58,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 59,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 60,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 61,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 62,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 71,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 72,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 73,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 74,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 75,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 76,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 77,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 15,
+            "command_id": 79,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "command_id": 88,
+        "caption_raw": "&Beállítások",
+        "caption": "Beállítások",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 89,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProgramOptions",
+              "stable_key": "MainForm.ProgramOptions",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "program_options_dialog_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 90,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProjektOptions",
+              "stable_key": "MainForm.ProjektOptions",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_options_dialog_detected_and_closed"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "command_id": 91,
+        "caption_raw": "&Ablak",
+        "caption": "Ablak",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 92,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 93,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 94,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 95,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 96,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 0,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 65280,
+            "caption_raw": "&1 Helyiségek",
+            "caption": "1 Helyiségek",
+            "caption_reliable": true,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "command_id": 97,
+        "caption_raw": "&Súgó",
+        "caption": "Súgó",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 98,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "HelpContent",
+              "stable_key": "MainForm.HelpContent",
+              "verification": "visual_static_xml_and_runtime_window_probe",
+              "runtime_evidence": "winwatt_chm_help_window_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 99,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "HelpAbout",
+              "stable_key": "MainForm.HelpAbout",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "about_dialog_detected_and_closed"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "screenshot": "data/runtime_maps/room_deep_runs/20260826T154506_merged/states/state_0137_0a7905a6ac/ui.png"
+}

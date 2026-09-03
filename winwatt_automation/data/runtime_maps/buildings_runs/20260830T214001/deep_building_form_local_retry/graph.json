@@ -1,0 +1,13 @@
+{
+  "states": [],
+  "edges": [],
+  "failures": [
+    {
+      "path": [],
+      "error": "No enabled WinWatt top-level window is active",
+      "attempt": 1
+    }
+  ],
+  "queue_size": 0,
+  "complete": true
+}

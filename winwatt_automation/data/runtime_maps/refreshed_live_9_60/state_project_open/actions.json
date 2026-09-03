@@ -1,0 +1,98 @@
+[
+  {
+    "action_key": "Fájl > Végrehajtás",
+    "attempted": false,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Fájl",
+      "Végrehajtás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "failed",
+    "row_index": 0,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Fájl",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Fájl > [unlabeled row 2]",
+    "attempted": false,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Fájl",
+      "[unlabeled row 2]"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "failed",
+    "row_index": 2,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Fájl",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Fájl > Megnyitás",
+    "attempted": true,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": null,
+    "event_details": {
+      "action_state_classification": "unknown",
+      "result_type": "no_observable_effect"
+    },
+    "menu_path": [
+      "Fájl",
+      "Megnyitás"
+    ],
+    "notes": "mapped_only",
+    "process_id": null,
+    "result_type": "no_observable_effect",
+    "row_index": 8,
+    "safety_level": "safe",
+    "state_id": "project_open",
+    "top_menu": "Fájl",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  },
+  {
+    "action_key": "Jegyzékek",
+    "attempted": false,
+    "dialog_class": null,
+    "dialog_title": null,
+    "error_text": "[Errno 22] Invalid argument",
+    "event_details": {},
+    "menu_path": [
+      "Jegyzékek"
+    ],
+    "notes": null,
+    "process_id": null,
+    "result_type": "failed_focus",
+    "row_index": -1,
+    "safety_level": "caution",
+    "state_id": "project_open",
+    "top_menu": "Jegyzékek",
+    "top_menu_click_count": null,
+    "window_class": null,
+    "window_title": null
+  }
+]

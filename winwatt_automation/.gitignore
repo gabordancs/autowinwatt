@@ -1,3 +1,5 @@
 __pycache__/
 *.py[cod]
+*.wwp.tmp
 .pytest_cache/
+.venv*/

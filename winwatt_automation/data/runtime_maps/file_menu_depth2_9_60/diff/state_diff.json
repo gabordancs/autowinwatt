@@ -1,0 +1,63 @@
+{
+  "dialog_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": []
+  },
+  "enabled_state_changes": [],
+  "menu_action_diff": {
+    "only_in_a": [
+      [
+        "fájl",
+        "[unlabeled row 3]"
+      ],
+      [
+        "fájl",
+        "[unlabeled row 5]"
+      ]
+    ],
+    "only_in_b": [
+      [
+        "fájl",
+        "megnyitás"
+      ]
+    ],
+    "shared": [
+      [
+        "fájl",
+        "[unlabeled row 2]"
+      ],
+      [
+        "fájl",
+        "végrehajtás"
+      ]
+    ]
+  },
+  "project_only_paths": [
+    [
+      "fájl",
+      "megnyitás"
+    ]
+  ],
+  "state_a": "no_project",
+  "state_b": "project_open",
+  "summary": {
+    "actions_only_in_a": 2,
+    "actions_only_in_b": 1,
+    "enabled_changes": 0,
+    "project_only_paths": 1,
+    "shared_top_menus": 1
+  },
+  "top_menu_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": [
+      "fájl"
+    ]
+  },
+  "window_diff": {
+    "only_in_a": [],
+    "only_in_b": [],
+    "shared": []
+  }
+}

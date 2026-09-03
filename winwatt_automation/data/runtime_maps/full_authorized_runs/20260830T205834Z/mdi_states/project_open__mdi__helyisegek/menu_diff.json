@@ -1,0 +1,668 @@
+{
+  "kind": "initial_state",
+  "changed": true,
+  "previous": null,
+  "current": [
+    {
+      "index": 0,
+      "caption": "Fájl",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 3,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 4,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 5,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 6,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 7,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 8,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 9,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 10,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": [
+            {
+              "index": 0,
+              "caption": null,
+              "caption_reliable": false,
+              "enabled": true,
+              "children": []
+            },
+            {
+              "index": 1,
+              "caption": null,
+              "caption_reliable": false,
+              "enabled": true,
+              "children": []
+            },
+            {
+              "index": 2,
+              "caption": null,
+              "caption_reliable": false,
+              "enabled": true,
+              "children": []
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 12,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 13,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 14,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "caption": "Szerkesztés",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 3,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 4,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 5,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 6,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 7,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 8,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 9,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 10,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 11,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "caption": "Jegyzékek",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 3,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 4,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 5,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 6,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 7,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 8,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 9,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 10,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 11,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 12,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 13,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 14,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 15,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 16,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "caption": "Csoport",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "caption": "Elem",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 3,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 4,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 5,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 6,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "caption": "Eszközök",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 3,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 4,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 5,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 6,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 7,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 8,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 9,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 10,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 11,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 12,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 13,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 14,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 15,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "caption": "Beállítások",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "caption": "Ablak",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 2,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 3,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 4,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 5,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": false,
+          "children": []
+        },
+        {
+          "index": 6,
+          "caption": "1 Helyiségek",
+          "caption_reliable": true,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "caption": "Súgó",
+      "caption_reliable": true,
+      "enabled": true,
+      "children": [
+        {
+          "index": 0,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        },
+        {
+          "index": 1,
+          "caption": null,
+          "caption_reliable": false,
+          "enabled": true,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

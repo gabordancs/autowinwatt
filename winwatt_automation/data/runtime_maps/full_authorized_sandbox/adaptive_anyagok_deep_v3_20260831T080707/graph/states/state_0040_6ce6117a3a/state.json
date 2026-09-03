@@ -1,0 +1,3546 @@
+{
+  "state_id": "state_0040_6ce6117a3a",
+  "parent_state": "state_0039_811f776c31",
+  "captured_at": "2026-08-31T09:09:08.872950+00:00",
+  "window": {
+    "title": "Hálózat számítása",
+    "class_name": "TNetworkModifyForm",
+    "handle": 78711884
+  },
+  "signature": {
+    "title": "Hálózat számítása",
+    "class_name": "TNetworkModifyForm",
+    "controls": [
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Bezárás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          391,
+          255,
+          410,
+          279
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Bezárás",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          753,
+          1,
+          797,
+          34
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal fel",
+        "automation_id": "UpPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          302,
+          415,
+          346
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy sorral fel",
+        "automation_id": "UpButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          281,
+          415,
+          302
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy sorral le",
+        "automation_id": "DownButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          390,
+          415,
+          411
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Elvet",
+        "automation_id": "31393398",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          579,
+          395,
+          673,
+          426
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Felvesz...",
+        "automation_id": "77401188",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          690,
+          131,
+          784,
+          162
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Megnyitás",
+        "automation_id": "DropDown",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          301,
+          54,
+          320,
+          78
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "OK",
+        "automation_id": "35652924",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          468,
+          395,
+          562,
+          426
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Súgó",
+        "automation_id": "119343860",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          690,
+          395,
+          784,
+          426
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Töröl",
+        "automation_id": "72548866",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          690,
+          53,
+          784,
+          84
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Töröl",
+        "automation_id": "63638134",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          690,
+          171,
+          784,
+          202
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Átnevez...",
+        "automation_id": "82908178",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          579,
+          53,
+          673,
+          84
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "TButton",
+        "name": "Új rendszer...",
+        "automation_id": "32508258",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          468,
+          53,
+          562,
+          84
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ComboBox",
+        "class_name": "TComboBox",
+        "name": "",
+        "automation_id": "137497436",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          110,
+          53,
+          321,
+          79
+        ],
+        "value": "Primer hálózat"
+      },
+      {
+        "control_type": "ComboBox",
+        "class_name": "TComboBox",
+        "name": "",
+        "automation_id": "74844770",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          110,
+          254,
+          411,
+          280
+        ],
+        "value": "propylénglykol-víz 35 tf% (-17 °C)"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "22154196",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          110,
+          134,
+          261,
+          160
+        ],
+        "value": ""
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "137824930",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          110,
+          174,
+          261,
+          200
+        ],
+        "value": ""
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "170592232",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          134,
+          391,
+          160
+        ],
+        "value": "0"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "62786384",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          174,
+          391,
+          200
+        ],
+        "value": "0"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "125241428",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          294,
+          391,
+          320
+        ],
+        "value": "90"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "44633102",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          334,
+          391,
+          360
+        ],
+        "value": "70"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "63111794",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          398,
+          391,
+          424
+        ],
+        "value": "0"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "118753410",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          621,
+          254,
+          682,
+          280
+        ],
+        "value": "996"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "88541960",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          621,
+          294,
+          682,
+          320
+        ],
+        "value": "8,926E-7"
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "TEdit",
+        "name": "",
+        "automation_id": "45288546",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          621,
+          334,
+          682,
+          360
+        ],
+        "value": "3951"
+      },
+      {
+        "control_type": "List",
+        "class_name": "ComboLBox",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          110,
+          280,
+          411,
+          413
+        ],
+        "value": null
+      },
+      {
+        "control_type": "List",
+        "class_name": "TListBox",
+        "name": "",
+        "automation_id": "61278262",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          461,
+          134,
+          682,
+          205
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "OVENTROP Tyfocor LS fagyálló folyadék szolár-berendezésekhez",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          363,
+          389,
+          379
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "felhasználó által megadott",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          395,
+          389,
+          411
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "levegő",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          379,
+          389,
+          395
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 40 tf% (-22 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          281,
+          389,
+          297
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 45 tf% (-27 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          298,
+          389,
+          314
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 50 tf% (-33 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          314,
+          389,
+          330
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 55 tf% (-39 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          330,
+          389,
+          346
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 60 tf% (-40 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          346,
+          389,
+          362
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "104794564",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          10,
+          33,
+          790,
+          104
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "109382292",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          10,
+          33,
+          790,
+          224
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "56165220",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          10,
+          385,
+          790,
+          436
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TGroupBox",
+        "name": "Csatlakozási pontok",
+        "automation_id": "79823772",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          10,
+          104,
+          451,
+          224
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TGroupBox",
+        "name": "Kizárt pontok listája",
+        "automation_id": "62524198",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          451,
+          104,
+          790,
+          224
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TGroupBox",
+        "name": "Közeg adatok",
+        "automation_id": "150997428",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          10,
+          224,
+          790,
+          385
+        ],
+        "value": null
+      },
+      {
+        "control_type": "RadioButton",
+        "class_name": "TRadioButton",
+        "name": "Fűtés",
+        "automation_id": "166791170",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          56,
+          431,
+          77
+        ],
+        "value": null
+      },
+      {
+        "control_type": "RadioButton",
+        "class_name": "TRadioButton",
+        "name": "Hűtés",
+        "automation_id": "100141342",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          330,
+          81,
+          431,
+          102
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ScrollBar",
+        "class_name": "",
+        "name": "Függőleges",
+        "automation_id": "NonClientVerticalScrollBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          281,
+          415,
+          411
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          346,
+          415,
+          364
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TitleBar",
+        "class_name": "",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          4,
+          4,
+          797,
+          33
+        ],
+        "value": null
+      }
+    ]
+  },
+  "signature_hash": "6ce6117a3a914a0e01c12735d5917268466e2e17208e9426ea0b4001251019e4",
+  "logical_signature_hash": "b73bea782a5e126f5f7d998f95c29ccae7d3124861ac4629195d5efe6449592d",
+  "diff_from_parent": {
+    "kind": "structural_ui_diff",
+    "changed": true,
+    "added_controls": [
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal fel",
+        "automation_id": "UpPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          302,
+          415,
+          346
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "OVENTROP Tyfocor LS fagyálló folyadék szolár-berendezésekhez",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          363,
+          389,
+          379
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "felhasználó által megadott",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          395,
+          389,
+          411
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "levegő",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          379,
+          389,
+          395
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 40 tf% (-22 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          281,
+          389,
+          297
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 45 tf% (-27 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          298,
+          389,
+          314
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 50 tf% (-33 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          314,
+          389,
+          330
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 55 tf% (-39 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          330,
+          389,
+          346
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 60 tf% (-40 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          346,
+          389,
+          362
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          346,
+          415,
+          364
+        ],
+        "value": null
+      }
+    ],
+    "removed_controls": [
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal fel",
+        "automation_id": "UpPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          302,
+          415,
+          344
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal le",
+        "automation_id": "DownPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          362,
+          415,
+          390
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "OVENTROP Tyfocor LS fagyálló folyadék szolár-berendezésekhez",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          379,
+          389,
+          395
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "levegő",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          395,
+          389,
+          411
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 35 tf% (-17 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          281,
+          389,
+          297
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 40 tf% (-22 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          298,
+          389,
+          314
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 45 tf% (-27 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          314,
+          389,
+          330
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 50 tf% (-33 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          330,
+          389,
+          346
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 55 tf% (-39 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          346,
+          389,
+          362
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ListItem",
+        "class_name": "",
+        "name": "propylénglykol-víz 60 tf% (-40 °C)",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          111,
+          363,
+          389,
+          379
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          389,
+          344,
+          415,
+          362
+        ],
+        "value": null
+      }
+    ],
+    "value_changes": []
+  },
+  "path": [
+    {
+      "control_type": "RadioButton",
+      "name": "Mázak, lemezek, kenések, fóliák",
+      "automation_id": "110233552",
+      "rect": [
+        24,
+        94,
+        332,
+        128
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "OK",
+      "automation_id": "77337618",
+      "rect": [
+        341,
+        53,
+        435,
+        84
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Mégse",
+      "automation_id": "93652674",
+      "rect": [
+        614,
+        134,
+        708,
+        165
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "MSZ EN ISO 10456",
+      "automation_id": "",
+      "rect": [
+        66,
+        654,
+        212,
+        677
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Nyílászárók anyagai",
+      "automation_id": "",
+      "rect": [
+        66,
+        654,
+        225,
+        677
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "PNP Orange",
+      "automation_id": "",
+      "rect": [
+        66,
+        654,
+        166,
+        677
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Nyílászárók anyagai",
+      "automation_id": "",
+      "rect": [
+        66,
+        609,
+        225,
+        632
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Nyílászárók anyagai",
+      "automation_id": "",
+      "rect": [
+        66,
+        609,
+        225,
+        632
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "CheckBox",
+      "name": "",
+      "automation_id": "",
+      "rect": [
+        519,
+        56,
+        548,
+        84
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "30671716",
+      "rect": [
+        110,
+        254,
+        411,
+        280
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "normál víz",
+      "automation_id": "",
+      "rect": [
+        111,
+        281,
+        389,
+        297
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "monoetilénglykol-víz 5 tf% (-2 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        298,
+        389,
+        314
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "monoetilénglykol-víz 40 tf% (-25 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        395,
+        389,
+        411
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 5 tf% (-1 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        363,
+        389,
+        379
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 40 tf% (-22 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        395,
+        389,
+        411
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 60 tf% (-40 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        346,
+        389,
+        362
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 55 tf% (-39 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        330,
+        389,
+        346
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 50 tf% (-33 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        314,
+        389,
+        330
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 45 tf% (-27 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        298,
+        389,
+        314
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "OVENTROP Tyfocor LS fagyálló folyadék szolár-berendezésekhez",
+      "automation_id": "",
+      "rect": [
+        111,
+        363,
+        389,
+        379
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "levegő",
+      "automation_id": "",
+      "rect": [
+        111,
+        379,
+        389,
+        395
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "felhasználó által megadott",
+      "automation_id": "",
+      "rect": [
+        111,
+        395,
+        389,
+        411
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy sorral fel",
+      "automation_id": "UpButton",
+      "rect": [
+        389,
+        281,
+        415,
+        302
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 35 tf% (-17 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        281,
+        389,
+        297
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy sorral le",
+      "automation_id": "DownButton",
+      "rect": [
+        389,
+        390,
+        415,
+        411
+      ],
+      "operation": "activate"
+    }
+  ],
+  "controls": [
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Bezárás",
+      "automation_id": "DropDown",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Bezárás",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        753,
+        1,
+        797,
+        34
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal fel",
+      "automation_id": "UpPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        389,
+        302,
+        415,
+        346
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy sorral fel",
+      "automation_id": "UpButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        389,
+        281,
+        415,
+        302
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy sorral le",
+      "automation_id": "DownButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        389,
+        390,
+        415,
+        411
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Elvet",
+      "automation_id": "31393398",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        579,
+        395,
+        673,
+        426
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Felvesz...",
+      "automation_id": "77401188",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        690,
+        131,
+        784,
+        162
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        301,
+        54,
+        320,
+        78
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "OK",
+      "automation_id": "35652924",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        468,
+        395,
+        562,
+        426
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Súgó",
+      "automation_id": "119343860",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        690,
+        395,
+        784,
+        426
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Töröl",
+      "automation_id": "72548866",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        690,
+        53,
+        784,
+        84
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Töröl",
+      "automation_id": "63638134",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        690,
+        171,
+        784,
+        202
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Átnevez...",
+      "automation_id": "82908178",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        579,
+        53,
+        673,
+        84
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "TButton",
+      "name": "Új rendszer...",
+      "automation_id": "32508258",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        468,
+        53,
+        562,
+        84
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ComboBox",
+      "class_name": "TComboBox",
+      "name": "",
+      "automation_id": "137497436",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        110,
+        53,
+        321,
+        79
+      ],
+      "value": "Primer hálózat"
+    },
+    {
+      "control_type": "ComboBox",
+      "class_name": "TComboBox",
+      "name": "",
+      "automation_id": "74844770",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        110,
+        254,
+        411,
+        280
+      ],
+      "value": "propylénglykol-víz 35 tf% (-17 °C)"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "22154196",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        110,
+        134,
+        261,
+        160
+      ],
+      "value": ""
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "137824930",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        110,
+        174,
+        261,
+        200
+      ],
+      "value": ""
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "170592232",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        134,
+        391,
+        160
+      ],
+      "value": "0"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "62786384",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        174,
+        391,
+        200
+      ],
+      "value": "0"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "125241428",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        294,
+        391,
+        320
+      ],
+      "value": "90"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "44633102",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        334,
+        391,
+        360
+      ],
+      "value": "70"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "63111794",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        398,
+        391,
+        424
+      ],
+      "value": "0"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "118753410",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        621,
+        254,
+        682,
+        280
+      ],
+      "value": "996"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "88541960",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        621,
+        294,
+        682,
+        320
+      ],
+      "value": "8,926E-7"
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "TEdit",
+      "name": "",
+      "automation_id": "45288546",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        621,
+        334,
+        682,
+        360
+      ],
+      "value": "3951"
+    },
+    {
+      "control_type": "List",
+      "class_name": "ComboLBox",
+      "name": "",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        110,
+        280,
+        411,
+        413
+      ],
+      "value": null
+    },
+    {
+      "control_type": "List",
+      "class_name": "TListBox",
+      "name": "",
+      "automation_id": "61278262",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        461,
+        134,
+        682,
+        205
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "OVENTROP Tyfocor LS fagyálló folyadék szolár-berendezésekhez",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        363,
+        389,
+        379
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "felhasználó által megadott",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        395,
+        389,
+        411
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "levegő",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        379,
+        389,
+        395
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "propylénglykol-víz 40 tf% (-22 °C)",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        281,
+        389,
+        297
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "propylénglykol-víz 45 tf% (-27 °C)",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        298,
+        389,
+        314
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "propylénglykol-víz 50 tf% (-33 °C)",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        314,
+        389,
+        330
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "propylénglykol-víz 55 tf% (-39 °C)",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        330,
+        389,
+        346
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ListItem",
+      "class_name": "",
+      "name": "propylénglykol-víz 60 tf% (-40 °C)",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        111,
+        346,
+        389,
+        362
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "104794564",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        10,
+        33,
+        790,
+        104
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "109382292",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        10,
+        33,
+        790,
+        224
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "56165220",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        10,
+        385,
+        790,
+        436
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TGroupBox",
+      "name": "Csatlakozási pontok",
+      "automation_id": "79823772",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        10,
+        104,
+        451,
+        224
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TGroupBox",
+      "name": "Kizárt pontok listája",
+      "automation_id": "62524198",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        451,
+        104,
+        790,
+        224
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TGroupBox",
+      "name": "Közeg adatok",
+      "automation_id": "150997428",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        10,
+        224,
+        790,
+        385
+      ],
+      "value": null
+    },
+    {
+      "control_type": "RadioButton",
+      "class_name": "TRadioButton",
+      "name": "Fűtés",
+      "automation_id": "166791170",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        56,
+        431,
+        77
+      ],
+      "value": null
+    },
+    {
+      "control_type": "RadioButton",
+      "class_name": "TRadioButton",
+      "name": "Hűtés",
+      "automation_id": "100141342",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        330,
+        81,
+        431,
+        102
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ScrollBar",
+      "class_name": "",
+      "name": "Függőleges",
+      "automation_id": "NonClientVerticalScrollBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        389,
+        281,
+        415,
+        411
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "Elhelyezés",
+      "automation_id": "ScrollbarThumb",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        389,
+        346,
+        415,
+        364
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TitleBar",
+      "class_name": "",
+      "name": "",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        4,
+        4,
+        797,
+        33
+      ],
+      "value": null
+    }
+  ],
+  "actions": [
+    {
+      "control_type": "Button",
+      "name": "OK",
+      "automation_id": "35652924",
+      "rect": [
+        468,
+        395,
+        562,
+        426
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Elvet",
+      "automation_id": "31393398",
+      "rect": [
+        579,
+        395,
+        673,
+        426
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Súgó",
+      "automation_id": "119343860",
+      "rect": [
+        690,
+        395,
+        784,
+        426
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "RadioButton",
+      "name": "Hűtés",
+      "automation_id": "100141342",
+      "rect": [
+        330,
+        81,
+        431,
+        102
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "RadioButton",
+      "name": "Fűtés",
+      "automation_id": "166791170",
+      "rect": [
+        330,
+        56,
+        431,
+        77
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Átnevez...",
+      "automation_id": "82908178",
+      "rect": [
+        579,
+        53,
+        673,
+        84
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "137497436",
+      "rect": [
+        110,
+        53,
+        321,
+        79
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "Button",
+      "name": "Megnyitás",
+      "automation_id": "DropDown",
+      "rect": [
+        301,
+        54,
+        320,
+        78
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Új rendszer...",
+      "automation_id": "32508258",
+      "rect": [
+        468,
+        53,
+        562,
+        84
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Felvesz...",
+      "automation_id": "77401188",
+      "rect": [
+        690,
+        131,
+        784,
+        162
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ComboBox",
+      "name": "",
+      "automation_id": "74844770",
+      "rect": [
+        110,
+        254,
+        411,
+        280
+      ],
+      "operation": "expand"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy sorral fel",
+      "automation_id": "UpButton",
+      "rect": [
+        389,
+        281,
+        415,
+        302
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal fel",
+      "automation_id": "UpPageButton",
+      "rect": [
+        389,
+        302,
+        415,
+        346
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy sorral le",
+      "automation_id": "DownButton",
+      "rect": [
+        389,
+        390,
+        415,
+        411
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 40 tf% (-22 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        281,
+        389,
+        297
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 45 tf% (-27 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        298,
+        389,
+        314
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 50 tf% (-33 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        314,
+        389,
+        330
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 55 tf% (-39 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        330,
+        389,
+        346
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "propylénglykol-víz 60 tf% (-40 °C)",
+      "automation_id": "",
+      "rect": [
+        111,
+        346,
+        389,
+        362
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "OVENTROP Tyfocor LS fagyálló folyadék szolár-berendezésekhez",
+      "automation_id": "",
+      "rect": [
+        111,
+        363,
+        389,
+        379
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "levegő",
+      "automation_id": "",
+      "rect": [
+        111,
+        379,
+        389,
+        395
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "ListItem",
+      "name": "felhasználó által megadott",
+      "automation_id": "",
+      "rect": [
+        111,
+        395,
+        389,
+        411
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Bezárás",
+      "automation_id": "DropDown",
+      "rect": [
+        391,
+        255,
+        410,
+        279
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Bezárás",
+      "automation_id": "",
+      "rect": [
+        753,
+        1,
+        797,
+        34
+      ],
+      "operation": "activate"
+    }
+  ],
+  "native_menu": {
+    "backend": "win32_native_menu",
+    "process_id": 24456,
+    "window_handle": 95684556,
+    "items": [
+      {
+        "index": 0,
+        "command_id": 1,
+        "caption_raw": "&Fájl",
+        "caption": "Fájl",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 2,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "NewProjekt",
+              "stable_key": "MainForm.NewProjekt",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "new_project_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 3,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "OpenProjekt",
+              "stable_key": "MainForm.OpenProjekt",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_open_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 4,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "SaveProjekt",
+              "stable_key": "MainForm.SaveProjekt",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 5,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 6,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "CloseProjekt",
+              "stable_key": "MainForm.CloseProjekt",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 7,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProjektData",
+              "stable_key": "MainForm.ProjektData",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_data_dialog_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 9,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "XMLExportAction",
+              "stable_key": "MainForm.XMLExportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "xml_export_save_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 10,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "XMLImportAction",
+              "stable_key": "MainForm.XMLImportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "xml_import_open_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 12,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 13,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 14,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": [
+              {
+                "index": 0,
+                "command_id": 15,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              },
+              {
+                "index": 1,
+                "command_id": 16,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              },
+              {
+                "index": 2,
+                "command_id": 17,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "index": 11,
+            "command_id": 18,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ETAction",
+              "stable_key": "MainForm.ETAction",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 19,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "CreateReportAction",
+              "stable_key": "MainForm.CreateReportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "custom_reports_template_picker_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 30,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 31,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ExitApplication",
+              "stable_key": "MainForm.ExitApplication",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "command_id": 130,
+        "caption_raw": "&Szerkesztés",
+        "caption": "Szerkesztés",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 131,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 132,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 133,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 134,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 135,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 136,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 137,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 138,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 139,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 140,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 141,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 142,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 143,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 144,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 145,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "command_id": 32,
+        "caption_raw": "&Jegyzékek",
+        "caption": "Jegyzékek",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 33,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 34,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 35,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 36,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 37,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 38,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 39,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 40,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 41,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 42,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 43,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 44,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 45,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 46,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 49,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 15,
+            "command_id": 50,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 16,
+            "command_id": 53,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "command_id": 146,
+        "caption_raw": "&Csoport",
+        "caption": "Csoport",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 147,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 148,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 149,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "command_id": 150,
+        "caption_raw": "&Elem",
+        "caption": "Elem",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 151,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 152,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 153,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 154,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 155,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 156,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 157,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "command_id": 54,
+        "caption_raw": "&Eszközök",
+        "caption": "Eszközök",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 55,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 56,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 57,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 58,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 59,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 60,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 61,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 62,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 71,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 72,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 73,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 74,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 75,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 76,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 77,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 15,
+            "command_id": 79,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "command_id": 88,
+        "caption_raw": "&Beállítások",
+        "caption": "Beállítások",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 89,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProgramOptions",
+              "stable_key": "MainForm.ProgramOptions",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "program_options_dialog_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 90,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProjektOptions",
+              "stable_key": "MainForm.ProjektOptions",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_options_dialog_detected_and_closed"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "command_id": 91,
+        "caption_raw": "&Ablak",
+        "caption": "Ablak",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 92,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 93,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 94,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 95,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 96,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 0,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 65280,
+            "caption_raw": "&1 Anyagok - Nyílászárók anyagai",
+            "caption": "1 Anyagok - Nyílászárók anyagai",
+            "caption_reliable": true,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "command_id": 97,
+        "caption_raw": "&Súgó",
+        "caption": "Súgó",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 98,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "HelpContent",
+              "stable_key": "MainForm.HelpContent",
+              "verification": "visual_static_xml_and_runtime_window_probe",
+              "runtime_evidence": "winwatt_chm_help_window_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 99,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "HelpAbout",
+              "stable_key": "MainForm.HelpAbout",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "about_dialog_detected_and_closed"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "screenshot": "data/runtime_maps/full_authorized_sandbox/adaptive_anyagok_deep_v3_20260831T080707/graph/states/state_0040_6ce6117a3a/ui.png"
+}

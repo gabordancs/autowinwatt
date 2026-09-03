@@ -1,0 +1,440 @@
+{
+  "command_id": 55,
+  "result": "opened_mapped_and_cancelled",
+  "dialog": {
+    "friendly_class": "TChangeBoundarisForm",
+    "title": "Szerkezetek cseréje"
+  },
+  "control_count": 58,
+  "controls": [
+    {
+      "index": 0,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 1,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 2,
+      "friendly_class": "TreeView",
+      "class_name": "TTreeView",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 3,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 4,
+      "friendly_class": "RadioButton",
+      "class_name": "TRadioButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Csak a kijelöltek"
+    },
+    {
+      "index": 5,
+      "friendly_class": "RadioButton",
+      "class_name": "TRadioButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Mind"
+    },
+    {
+      "index": 6,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 7,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Súgó"
+    },
+    {
+      "index": 8,
+      "friendly_class": "CheckBox",
+      "class_name": "TCheckBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Csak az előfordulások keresése, módosítás nélkül"
+    },
+    {
+      "index": 9,
+      "friendly_class": "TGroupBox",
+      "class_name": "TGroupBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "A szerkezet új adatai"
+    },
+    {
+      "index": 10,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 11,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "..."
+    },
+    {
+      "index": 12,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 13,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 14,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Keresés szerinti"
+    },
+    {
+      "index": 15,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 16,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Jegyzék..."
+    },
+    {
+      "index": 17,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 18,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 19,
+      "friendly_class": "TPageControl",
+      "class_name": "TPageControl",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 20,
+      "friendly_class": "TTabSheet",
+      "class_name": "TTabSheet",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Méretek, helyzet"
+    },
+    {
+      "index": 21,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 22,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 23,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 24,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 25,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 26,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 27,
+      "friendly_class": "TTabSheet",
+      "class_name": "TTabSheet",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Túloldali hőmérséklet"
+    },
+    {
+      "index": 28,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 29,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 30,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 31,
+      "friendly_class": "TTabSheet",
+      "class_name": "TTabSheet",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Távoli takarások"
+    },
+    {
+      "index": 32,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 33,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 34,
+      "friendly_class": "TTabSheet",
+      "class_name": "TTabSheet",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Közeli takarások"
+    },
+    {
+      "index": 35,
+      "friendly_class": "TRadioGroup",
+      "class_name": "TRadioGroup",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Nyílászáró dőlésszöge"
+    },
+    {
+      "index": 36,
+      "friendly_class": "RadioButton",
+      "class_name": "TGroupButton",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Ferde vagy vízszintes"
+    },
+    {
+      "index": 37,
+      "friendly_class": "RadioButton",
+      "class_name": "TGroupButton",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Függőleges"
+    },
+    {
+      "index": 38,
+      "friendly_class": "TTabSheet",
+      "class_name": "TTabSheet",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Nyílászáró számítása"
+    },
+    {
+      "index": 39,
+      "friendly_class": "TWindowCalcFrame",
+      "class_name": "TWindowCalcFrame",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 40,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 41,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 42,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 43,
+      "friendly_class": "Static",
+      "class_name": "TPanel",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 44,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 45,
+      "friendly_class": "TTabSheet",
+      "class_name": "TTabSheet",
+      "is_enabled": true,
+      "is_visible": false,
+      "text": "Üvegezett szerkezet"
+    },
+    {
+      "index": 46,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": false,
+      "is_visible": false
+    },
+    {
+      "index": 47,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": false,
+      "is_visible": false
+    },
+    {
+      "index": 48,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": false,
+      "is_visible": false
+    },
+    {
+      "index": 49,
+      "friendly_class": "Edit",
+      "class_name": "Edit",
+      "is_enabled": false,
+      "is_visible": false
+    },
+    {
+      "index": 50,
+      "friendly_class": "UpDown",
+      "class_name": "msctls_updown32",
+      "is_enabled": true,
+      "is_visible": false
+    },
+    {
+      "index": 51,
+      "friendly_class": "TGroupBox",
+      "class_name": "TGroupBox",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Szerkezet keresési feltételek"
+    },
+    {
+      "index": 52,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Jegyzék..."
+    },
+    {
+      "index": 53,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 54,
+      "friendly_class": "Edit",
+      "class_name": "TEdit",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 55,
+      "friendly_class": "ComboBox",
+      "class_name": "TComboBox",
+      "is_enabled": true,
+      "is_visible": true
+    },
+    {
+      "index": 56,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "Bezár"
+    },
+    {
+      "index": 57,
+      "friendly_class": "Button",
+      "class_name": "TButton",
+      "is_enabled": true,
+      "is_visible": true,
+      "text": "OK"
+    }
+  ],
+  "screenshot": "data/snapshots/high_risk_dialogs_9_60/55_TChangeBoundarisForm.png",
+  "main_enabled_after": true
+}

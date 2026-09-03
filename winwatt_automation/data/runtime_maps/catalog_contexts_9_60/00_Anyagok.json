@@ -1,0 +1,1133 @@
+{
+  "backend": "win32_native_menu",
+  "process_id": 24488,
+  "window_handle": 657294,
+  "items": [
+    {
+      "index": 0,
+      "command_id": 1,
+      "caption_raw": "&Fájl",
+      "caption": "Fájl",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 2,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "NewProjekt",
+            "stable_key": "MainForm.NewProjekt",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "new_project_dialog_detected_and_cancelled"
+          },
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 3,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "OpenProjekt",
+            "stable_key": "MainForm.OpenProjekt",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "project_open_dialog_detected_and_cancelled"
+          },
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 4,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "SaveProjekt",
+            "stable_key": "MainForm.SaveProjekt",
+            "verification": "visual_and_static_xml"
+          },
+          "children": []
+        },
+        {
+          "index": 3,
+          "command_id": 5,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 4,
+          "command_id": 6,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "CloseProjekt",
+            "stable_key": "MainForm.CloseProjekt",
+            "verification": "visual_and_static_xml"
+          },
+          "children": []
+        },
+        {
+          "index": 5,
+          "command_id": 7,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "ProjektData",
+            "stable_key": "MainForm.ProjektData",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "project_data_dialog_detected_and_closed"
+          },
+          "children": []
+        },
+        {
+          "index": 6,
+          "command_id": 9,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "XMLExportAction",
+            "stable_key": "MainForm.XMLExportAction",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "xml_export_save_dialog_detected_and_cancelled"
+          },
+          "children": []
+        },
+        {
+          "index": 7,
+          "command_id": 10,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "XMLImportAction",
+            "stable_key": "MainForm.XMLImportAction",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "xml_import_open_dialog_detected_and_cancelled"
+          },
+          "children": []
+        },
+        {
+          "index": 8,
+          "command_id": 12,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 9,
+          "command_id": 13,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 10,
+          "command_id": 14,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": [
+            {
+              "index": 0,
+              "command_id": 15,
+              "caption_raw": "",
+              "caption": "",
+              "caption_reliable": false,
+              "enabled": true,
+              "verified_static_binding": null,
+              "children": []
+            },
+            {
+              "index": 1,
+              "command_id": 16,
+              "caption_raw": "",
+              "caption": "",
+              "caption_reliable": false,
+              "enabled": true,
+              "verified_static_binding": null,
+              "children": []
+            },
+            {
+              "index": 2,
+              "command_id": 17,
+              "caption_raw": "",
+              "caption": "",
+              "caption_reliable": false,
+              "enabled": true,
+              "verified_static_binding": null,
+              "children": []
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "command_id": 18,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "ETAction",
+            "stable_key": "MainForm.ETAction",
+            "verification": "visual_and_static_xml"
+          },
+          "children": []
+        },
+        {
+          "index": 12,
+          "command_id": 19,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "CreateReportAction",
+            "stable_key": "MainForm.CreateReportAction",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "custom_reports_template_picker_detected_and_cancelled"
+          },
+          "children": []
+        },
+        {
+          "index": 13,
+          "command_id": 30,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 14,
+          "command_id": 31,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "ExitApplication",
+            "stable_key": "MainForm.ExitApplication",
+            "verification": "visual_and_static_xml"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "command_id": 760,
+      "caption_raw": "&Szerkesztés",
+      "caption": "Szerkesztés",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 761,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 762,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 763,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 3,
+          "command_id": 764,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 4,
+          "command_id": 765,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 5,
+          "command_id": 766,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 6,
+          "command_id": 767,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 7,
+          "command_id": 768,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 8,
+          "command_id": 769,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 9,
+          "command_id": 770,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 10,
+          "command_id": 771,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 11,
+          "command_id": 772,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 12,
+          "command_id": 773,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 13,
+          "command_id": 774,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 14,
+          "command_id": 775,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "command_id": 32,
+      "caption_raw": "&Jegyzékek",
+      "caption": "Jegyzékek",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 33,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 34,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 35,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 3,
+          "command_id": 36,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 4,
+          "command_id": 37,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 5,
+          "command_id": 38,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 6,
+          "command_id": 39,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 7,
+          "command_id": 40,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 8,
+          "command_id": 41,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 9,
+          "command_id": 42,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 10,
+          "command_id": 43,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 11,
+          "command_id": 44,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 12,
+          "command_id": 45,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 13,
+          "command_id": 46,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 14,
+          "command_id": 49,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 15,
+          "command_id": 50,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 16,
+          "command_id": 53,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "command_id": 776,
+      "caption_raw": "&Csoport",
+      "caption": "Csoport",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 777,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 778,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 779,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "command_id": 780,
+      "caption_raw": "&Elem",
+      "caption": "Elem",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 781,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 782,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 783,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 3,
+          "command_id": 784,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 4,
+          "command_id": 785,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 5,
+          "command_id": 786,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 6,
+          "command_id": 787,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "command_id": 54,
+      "caption_raw": "&Eszközök",
+      "caption": "Eszközök",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 55,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 56,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 57,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 3,
+          "command_id": 58,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 4,
+          "command_id": 59,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 5,
+          "command_id": 60,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 6,
+          "command_id": 61,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 7,
+          "command_id": 62,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 8,
+          "command_id": 71,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 9,
+          "command_id": 72,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 10,
+          "command_id": 73,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 11,
+          "command_id": 74,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 12,
+          "command_id": 75,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 13,
+          "command_id": 76,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 14,
+          "command_id": 77,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 15,
+          "command_id": 79,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "command_id": 88,
+      "caption_raw": "&Beállítások",
+      "caption": "Beállítások",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 89,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "ProgramOptions",
+            "stable_key": "MainForm.ProgramOptions",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "program_options_dialog_detected_and_closed"
+          },
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 90,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "ProjektOptions",
+            "stable_key": "MainForm.ProjektOptions",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "project_options_dialog_detected_and_closed"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "command_id": 91,
+      "caption_raw": "&Ablak",
+      "caption": "Ablak",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 92,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 93,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 2,
+          "command_id": 94,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 3,
+          "command_id": 95,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 4,
+          "command_id": 96,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 5,
+          "command_id": 0,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": false,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 6,
+          "command_id": 65280,
+          "caption_raw": "&1 Szerkezetek",
+          "caption": "1 Szerkezetek",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 7,
+          "command_id": 65281,
+          "caption_raw": "&2 Helyiségek",
+          "caption": "2 Helyiségek",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 8,
+          "command_id": 65282,
+          "caption_raw": "&3 Épületek",
+          "caption": "3 Épületek",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 9,
+          "command_id": 65283,
+          "caption_raw": "&4 Egycsöves körök",
+          "caption": "4 Egycsöves körök",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 10,
+          "command_id": 65284,
+          "caption_raw": "&5 Felületfűtés-hűtés körök",
+          "caption": "5 Felületfűtés-hűtés körök",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 11,
+          "command_id": 65285,
+          "caption_raw": "&6 Ismert teljesítményű fogyasztók",
+          "caption": "6 Ismert teljesítményű fogyasztók",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 12,
+          "command_id": 65286,
+          "caption_raw": "&7 Hőcserélők, keverőszelepek",
+          "caption": "7 Hőcserélők, keverőszelepek",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 13,
+          "command_id": 65287,
+          "caption_raw": "&8 Szakaszok",
+          "caption": "8 Szakaszok",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 14,
+          "command_id": 65288,
+          "caption_raw": "&9 Anyagok",
+          "caption": "9 Anyagok",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        },
+        {
+          "index": 15,
+          "command_id": 65289,
+          "caption_raw": "&További ablakok...",
+          "caption": "További ablakok...",
+          "caption_reliable": true,
+          "enabled": true,
+          "verified_static_binding": null,
+          "children": []
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "command_id": 97,
+      "caption_raw": "&Súgó",
+      "caption": "Súgó",
+      "caption_reliable": true,
+      "enabled": true,
+      "verified_static_binding": null,
+      "children": [
+        {
+          "index": 0,
+          "command_id": 98,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "HelpContent",
+            "stable_key": "MainForm.HelpContent",
+            "verification": "visual_static_xml_and_runtime_window_probe",
+            "runtime_evidence": "winwatt_chm_help_window_detected_and_closed"
+          },
+          "children": []
+        },
+        {
+          "index": 1,
+          "command_id": 99,
+          "caption_raw": "",
+          "caption": "",
+          "caption_reliable": false,
+          "enabled": true,
+          "verified_static_binding": {
+            "item_name": "HelpAbout",
+            "stable_key": "MainForm.HelpAbout",
+            "verification": "visual_static_xml_and_runtime_dialog_probe",
+            "runtime_evidence": "about_dialog_detected_and_closed"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+}

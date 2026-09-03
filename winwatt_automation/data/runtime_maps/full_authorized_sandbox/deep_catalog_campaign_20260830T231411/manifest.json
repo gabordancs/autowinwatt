@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-08-30T21:14:13.036499+00:00",
+  "source_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "selected_indices": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "catalogs": [
+    {
+      "index": 0,
+      "caption": "Anyagok",
+      "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\deep_catalog_campaign_20260830T231411\\sandboxes\\00_anyagok\\testwwp.wwp",
+      "output": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\full_authorized_sandbox\\deep_catalog_campaign_20260830T231411\\00_anyagok",
+      "status": "running"
+    }
+  ],
+  "reuse_sources": [
+    "room_deep_runs",
+    "catalog_contexts_9_60",
+    "mdi_runtime_states_9_60"
+  ]
+}

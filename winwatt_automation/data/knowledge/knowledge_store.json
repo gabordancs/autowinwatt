@@ -1,0 +1,168 @@
+{
+  "capabilities": {
+    "room.area_m2": {
+      "capability": "room.area_m2",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+        }
+      ],
+      "preferred_transport": "ui",
+      "roundtrip_verified": true,
+      "status": "verified",
+      "ui_read": "verified",
+      "ui_write": "verified"
+    },
+    "room.height_m": {
+      "capability": "room.height_m",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+        }
+      ],
+      "preferred_transport": "ui",
+      "roundtrip_verified": true,
+      "status": "verified",
+      "ui_read": "verified",
+      "ui_write": "verified"
+    },
+    "room.name": {
+      "capability": "room.name",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T171021Z/operation_result.json"
+        }
+      ],
+      "preferred_transport": "ui",
+      "roundtrip_verified": true,
+      "status": "verified",
+      "ui_read": "verified",
+      "ui_write": "verified"
+    },
+    "room.temperature_c": {
+      "capability": "room.temperature_c",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+        }
+      ],
+      "preferred_transport": "ui",
+      "roundtrip_verified": true,
+      "status": "verified",
+      "ui_read": "verified",
+      "ui_write": "verified"
+    }
+  },
+  "concepts": {
+    "room.area_m2": {
+      "concept": "room.area_m2",
+      "confidence": 1.0,
+      "data_type": "float",
+      "entity": "Room",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+        }
+      ],
+      "status": "verified",
+      "unit": "m2"
+    },
+    "room.height_m": {
+      "concept": "room.height_m",
+      "confidence": 1.0,
+      "data_type": "float",
+      "entity": "Room",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+        }
+      ],
+      "status": "verified",
+      "unit": "m"
+    },
+    "room.name": {
+      "concept": "room.name",
+      "confidence": 1.0,
+      "data_type": "string",
+      "entity": "Room",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T171021Z/operation_result.json"
+        }
+      ],
+      "status": "verified",
+      "unit": null
+    },
+    "room.temperature_c": {
+      "concept": "room.temperature_c",
+      "confidence": 1.0,
+      "data_type": "float",
+      "entity": "Room",
+      "evidence": [
+        {
+          "data": {
+            "roundtrip_verified": true,
+            "source": "room_capabilities.json"
+          },
+          "description": "Imported from the existing room capability registry",
+          "deterministic": true,
+          "kind": "legacy_capability_registry",
+          "path": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+        }
+      ],
+      "status": "verified",
+      "unit": "C"
+    }
+  },
+  "experiments": {},
+  "hypotheses": {}
+}

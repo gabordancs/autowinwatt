@@ -1,0 +1,30 @@
+{
+  "room.name": {
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T171021Z/operation_result.json"
+  },
+  "room.area_m2": {
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+  },
+  "room.height_m": {
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+  },
+  "room.temperature_c": {
+    "ui_read": "verified",
+    "ui_write": "verified",
+    "roundtrip_verified": true,
+    "preferred": "ui",
+    "evidence": "data/runtime_maps/mvp_runs/prepare_rooms_20260901T184107Z/operation_result.json"
+  }
+}

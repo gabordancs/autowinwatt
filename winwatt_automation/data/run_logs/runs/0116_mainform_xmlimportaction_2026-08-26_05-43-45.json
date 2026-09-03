@@ -1,0 +1,71 @@
+{
+  "run_id": "0116_mainform_xmlimportaction_2026-08-26_05-43-45",
+  "sequence_number": 116,
+  "started_at": "2026-08-26T05:43:45.450363+00:00",
+  "finished_at": "2026-08-26T05:43:47.881204+00:00",
+  "duration_seconds": 2.431,
+  "command": "safe_runtime_command MainForm.XMLImportAction",
+  "cwd": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "safe",
+  "project_path": null,
+  "exit_code": 0,
+  "success": true,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "startup_project_detected": null,
+    "already_open_before_mapping": null,
+    "project_open_verdict": null,
+    "expected_project_path": null,
+    "observed_project_path": null,
+    "path_match_normalized": null,
+    "skipped_by_safety": null,
+    "last_error": null,
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-08-26T05:43:45.465565+00:00",
+      "event_type": "command_accepted",
+      "payload": {
+        "input": "xml import ellenorzese",
+        "stable_key": "MainForm.XMLImportAction"
+      }
+    },
+    {
+      "timestamp": "2026-08-26T05:43:47.867131+00:00",
+      "event_type": "workflow_result",
+      "payload": {
+        "workflow": "safe_xml_import_probe",
+        "command": "MainForm.XMLImportAction",
+        "native_menu_path": [
+          {
+            "menu_command_id": 1
+          },
+          {
+            "command_id": 10
+          }
+        ],
+        "dialog_found": true,
+        "dialog_title": "Megnyitás",
+        "dialog_class": "#32770",
+        "dialog_handle": 1377708,
+        "dialog_dismissed": true,
+        "main_window_enabled_after": true,
+        "forbidden_effect": "select_file_or_confirm_xml_import",
+        "success": true
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0116_mainform_xmlimportaction_2026-08-26_05-43-45.log",
+    "json_path": "data\\run_logs\\runs\\0116_mainform_xmlimportaction_2026-08-26_05-43-45.json"
+  },
+  "tags": [
+    "safe_command",
+    "MainForm.XMLImportAction"
+  ]
+}

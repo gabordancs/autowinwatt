@@ -1,0 +1,8 @@
+run_id=0112_mainform_helpabout_2026-08-25_20-44-06
+started_at=2026-08-25T20:44:06.773546+00:00
+command=safe_runtime_command MainForm.HelpAbout
+
+[event] command_accepted: {"input": "névjegy", "stable_key": "MainForm.HelpAbout"}
+[event] workflow_result: {"command": "MainForm.HelpAbout", "dialog_class": "TAboutForm", "dialog_dismissed": true, "dialog_found": true, "dialog_handle": 788804, "dialog_title": "Névjegy", "main_window_enabled_after": true, "native_menu_path": [{"index": 5, "menu_command_id": 97}, {"command_id": 99, "index": 1}], "success": true, "workflow": "safe_about_probe"}
+
+finished_at=2026-08-25T20:44:09.444965+00:00 success=True exit_code=0

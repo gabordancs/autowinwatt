@@ -1,0 +1,23 @@
+{
+  "expected_name": "AutoWinWatt teszt helyiség",
+  "active_mdi_title": "Helyiségek",
+  "dynamic_context": {
+    "recognized": true,
+    "signature": [
+      130,
+      146,
+      150
+    ],
+    "active_mdi_title": "Helyiségek",
+    "context": {
+      "index": 3,
+      "caption": "Helyiségek",
+      "source": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\03_Helyiségek.json"
+    }
+  },
+  "list_items": [
+    "AutoWinWatt teszt helyiség"
+  ],
+  "name_found": true,
+  "ui_snapshot": "data/runtime_maps/mdi_runtime_states_9_60/project_open__mdi__helyisegek/created_room_catalog.png"
+}

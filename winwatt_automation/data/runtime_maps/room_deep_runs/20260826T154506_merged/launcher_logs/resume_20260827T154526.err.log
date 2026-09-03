@@ -1,0 +1,7 @@
+usage: explore_rooms_deep.py [-h] --project PROJECT --output-dir OUTPUT_DIR
+                             [--room-name ROOM_NAME] [--resume]
+                             [--retry-failures] [--exclude-tab TAB]
+                             [--status-popup]
+                             [--status-interval STATUS_INTERVAL]
+                             [--status-visible-seconds STATUS_VISIBLE_SECONDS]
+explore_rooms_deep.py: error: unrecognized arguments: választék választék választék

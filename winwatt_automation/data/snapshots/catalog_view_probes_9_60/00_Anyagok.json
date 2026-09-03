@@ -1,0 +1,1912 @@
+{
+  "name": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "control_type": "Window",
+  "class_name": "TMainForm",
+  "automation_id": "",
+  "children": [
+    {
+      "name": "",
+      "control_type": "ToolBar",
+      "class_name": "TToolBar",
+      "automation_id": "1443736",
+      "children": [
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "CheckBox",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "",
+      "control_type": "StatusBar",
+      "class_name": "TStatusBar",
+      "automation_id": "984478",
+      "children": [
+        {
+          "name": "Szerkezetek jegyzék megnyitása",
+          "control_type": "Text",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Munkaterület",
+      "control_type": "Pane",
+      "class_name": "MDIClient",
+      "automation_id": "",
+      "children": [
+        {
+          "name": "Anyagok",
+          "control_type": "Window",
+          "class_name": "TChildWinForm",
+          "automation_id": "65280",
+          "children": [
+            {
+              "name": "",
+              "control_type": "Pane",
+              "class_name": "TPanel",
+              "automation_id": "722850",
+              "children": [
+                {
+                  "name": "",
+                  "control_type": "List",
+                  "class_name": "TListViewWithHeader",
+                  "automation_id": "3148802",
+                  "children": [
+                    {
+                      "name": "Vízszintes",
+                      "control_type": "ScrollBar",
+                      "class_name": "",
+                      "automation_id": "NonClientHorizontalScrollBar",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "",
+              "control_type": "Tree",
+              "class_name": "TTreeView",
+              "automation_id": "7277430",
+              "children": [
+                {
+                  "name": "Függőleges",
+                  "control_type": "ScrollBar",
+                  "class_name": "",
+                  "automation_id": "NonClientVerticalScrollBar",
+                  "children": [
+                    {
+                      "name": "Egy sorral fel",
+                      "control_type": "Button",
+                      "class_name": "",
+                      "automation_id": "UpButton",
+                      "children": []
+                    },
+                    {
+                      "name": "Elhelyezés",
+                      "control_type": "Thumb",
+                      "class_name": "",
+                      "automation_id": "ScrollbarThumb",
+                      "children": []
+                    },
+                    {
+                      "name": "Egy oldallal le",
+                      "control_type": "Button",
+                      "class_name": "",
+                      "automation_id": "DownPageButton",
+                      "children": []
+                    },
+                    {
+                      "name": "Egy sorral le",
+                      "control_type": "Button",
+                      "class_name": "",
+                      "automation_id": "DownButton",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Vízszintes",
+                  "control_type": "ScrollBar",
+                  "class_name": "",
+                  "automation_id": "NonClientHorizontalScrollBar",
+                  "children": [
+                    {
+                      "name": "Egy oszloppal balra",
+                      "control_type": "Button",
+                      "class_name": "",
+                      "automation_id": "UpButton",
+                      "children": []
+                    },
+                    {
+                      "name": "Elhelyezés",
+                      "control_type": "Thumb",
+                      "class_name": "",
+                      "automation_id": "ScrollbarThumb",
+                      "children": []
+                    },
+                    {
+                      "name": "Egy oldallal jobbra",
+                      "control_type": "Button",
+                      "class_name": "",
+                      "automation_id": "DownPageButton",
+                      "children": []
+                    },
+                    {
+                      "name": "Egy oszloppal jobbra",
+                      "control_type": "Button",
+                      "class_name": "",
+                      "automation_id": "DownButton",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "",
+                  "control_type": "Thumb",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Anyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "AUSTROTHERM 2016",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": " EPS termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": " EXPERT",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": " XPS és Zenit",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "További termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "BACHL-NIKECELL",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Bachl EPS",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Bachl PIR",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Bachl XPS",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "BAUMIT",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Alapelőkészítés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Esztrichek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Falazóhabarcsok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Felújító vakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Festékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Finom vakolatok, glettanyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Gipszes vakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Hőszigetelő rendszerek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Hőszigetelő vakolat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Mész-cement vakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Nemesvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Ragasztók és tapaszok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Speciális termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Betonok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Bio",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "természetes anyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "vakolat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "vályog",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "vályogtégla",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Burkolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Caparol",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Capatect",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Compacfoam",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Egyéb anyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Faanyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Feltöltések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Fóliák",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "MASTERPLAST termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Drainlemezek/HDPE",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Párazáró fóliák",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Páraáteresztő tetőfóliák",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Gipszkészítmények",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Hőszigetelő anyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Austrotherm",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "EXPERT",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Expandált polisztirolhab",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Extrudált polisztirolhab",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "További termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "DOW-STYROFOAM",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Heraklith",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Heraklith-C",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Heratekta-C3",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Tektalan-HS",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Heralan kőzetgyapot",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "MASTERPLAST termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Expandált polisztirol lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Extrudált polisztirol lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Fagyapot lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Polietilén habfóliák",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "NIKECELL",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "URSA",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "üveggyapot filcek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "üveggyapot lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "ISOVER",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Kövek és kőfalak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "LB-KNAUF",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Alapozók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Alapvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "EUROSAN rendszer",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Felületképzők",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Thermosystem",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Thermosystem Mineral",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Lambda hőmérséklet korrekció",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Lambda nedvesség korrekció",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Leier",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Falazóelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Födémek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Lemezek, mázak, kenések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Légrétegek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "MSZ EN ISO 10456",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Betonok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Burkolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Cserepek, csempék",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Faalapú termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Faanyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Fémek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Gipsz, gipsztermékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Gumik",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Gázok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Kövek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Lemezek, mázak, kenések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Műanyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Talajok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Tömítőanyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Vakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Üvegek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Nyílászárók anyagai",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "ALBA THERM",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "háromrétegű üvegezés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "argongáz töltésű LOW-E bevonat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "kétrétegű üvegezés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "argongáz töltésű LOW-E bevonat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "levegő töltésű",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "levegő töltésű LOW-E bevonat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Alumínium profilok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Fa anyagú tok és keretszerk.",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PVC profilok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "TNM adatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "keret típusok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "merevítő, az üvegtől d > 2 mm",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "2 rétegű üvegezés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "2 rétegű üvegezés, Low-e",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "3 rétegű, Low-e, 1 gázrétegben",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "3 rétegű, Low-e, 2 gázrétegben",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "merevítő, az üvegtől d > 4 mm",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "2 rétegű üvegezés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "2 rétegű üvegezés, Low-e",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "3 rétegű, Low-e, 1 gázrétegben",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "3 rétegű, Low-e, 2 gázrétegben",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "távtartók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "fa és műanyag nyílászárók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "fém nyílászáró, term. elv.",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "fém nyílászáró, term. elv. nélk.",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "üvegezések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Távtartók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "háromrétegű üvegezés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "argongáz töltésű LOW-E bevonat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "kriptongáz töltésű LOW-E bev.",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "kétrétegű üvegezés",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "argongáz töltésű LOW-E bevonat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "levegő töltésű",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "levegő töltésű LOW-E bevonat",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP Orange",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 150 MG",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 200",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 200 W",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 300",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 300 W",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 500",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "PNP XPS 700",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM termékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM HS falazóelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM N+F falazóelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "régi",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM termékek 2015",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM egyéb falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM födémek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM hanggátló falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM külső falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM termékek 2021",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM belső falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM födémek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM hanggátló falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM külső falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM termékek 2023",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM belső falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM födémek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM hanggátló falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "POROTHERM külső falak",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "R.W. Bautech",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Rockwool",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Rockwool 2021",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Födém szigetelések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Gépészeti és tűzvédelmi szigetel",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Homlokzati szigetelések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Lapostető hőszigetelések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Magastető és beltéri szigetelése",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Vakolható szigetelések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Válaszfal és akusztikai szigetel",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "SGW Terranova",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Homlokzatfestékek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Hőszigetelő anyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Hőszigetelő lapragasztók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Segédanyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Vakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Alapvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Előfröcskölő",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Fehér glett",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Hőszigetelő alapvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Nemesvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Simítóvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Szines díszítő- és lábazati",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Vékonyvakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "weber.san felújító rendszerek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "SILKA mészhomoktégla",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Burkoló téglák",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Falazóelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Válaszfalelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Trapéz lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Téglák és falazóblokkok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Vakolatok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Villas",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Magastető alátétlemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Vízszigetelések",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Lapostető hőszigetelő anyagok",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "OCB lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Oxidbitumenes lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Papírbetétes lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Polimerbitumenes lemezek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "YTONG pórusbeton",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Falazóelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Falpallók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Födém- és tetőpallók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Kiegészítő elemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Teherhordó áthidalók",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Válaszfalelemek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "",
+              "control_type": "TitleBar",
+              "class_name": "",
+              "automation_id": "",
+              "children": [
+                {
+                  "name": "Rendszer",
+                  "control_type": "MenuBar",
+                  "class_name": "",
+                  "automation_id": "MenuBar",
+                  "children": [
+                    {
+                      "name": "Dokumentumablak",
+                      "control_type": "MenuItem",
+                      "class_name": "",
+                      "automation_id": "",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Kis méret",
+                  "control_type": "Button",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Teljes méret",
+                  "control_type": "Button",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Bezárás",
+                  "control_type": "Button",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "",
+      "control_type": "TitleBar",
+      "class_name": "",
+      "automation_id": "",
+      "children": [
+        {
+          "name": "Rendszer",
+          "control_type": "MenuBar",
+          "class_name": "",
+          "automation_id": "MenuBar",
+          "children": [
+            {
+              "name": "Rendszer",
+              "control_type": "MenuItem",
+              "class_name": "",
+              "automation_id": "",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Kis méret",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Előző méret",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Bezárás",
+          "control_type": "Button",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "Alkalmazás",
+      "control_type": "MenuBar",
+      "class_name": "",
+      "automation_id": "MenuBar",
+      "children": [
+        {
+          "name": "Fájl",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Szerkesztés",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Jegyzékek",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Csoport",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Elem",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Eszközök",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Beállítások",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Ablak",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Súgó",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

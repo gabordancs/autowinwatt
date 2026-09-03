@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "requested": 2,
+  "completed": 2,
+  "verified": true,
+  "warnings": [],
+  "errors": [],
+  "evidence": [
+    {
+      "kind": "room_created",
+      "message": "Room 'MVP Nappali' is present before project persistence",
+      "data": {
+        "name": "MVP Nappali",
+        "unsupported_requested_fields": []
+      }
+    },
+    {
+      "kind": "room_created",
+      "message": "Room 'MVP Hálószoba' is present before project persistence",
+      "data": {
+        "name": "MVP Hálószoba",
+        "unsupported_requested_fields": []
+      }
+    },
+    {
+      "kind": "project_saved",
+      "message": "Saved through WinWatt Save-As",
+      "data": {
+        "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\mvp_runs\\prepare_rooms_20260901T171021Z\\sandbox\\prepared.wwp"
+      }
+    },
+    {
+      "kind": "room_exists",
+      "message": "Room 'MVP Nappali' found",
+      "data": {
+        "expected": "MVP Nappali",
+        "actual": "MVP Nappali"
+      }
+    },
+    {
+      "kind": "room_exists",
+      "message": "Room 'MVP Hálószoba' found",
+      "data": {
+        "expected": "MVP Hálószoba",
+        "actual": "MVP Hálószoba"
+      }
+    }
+  ]
+}

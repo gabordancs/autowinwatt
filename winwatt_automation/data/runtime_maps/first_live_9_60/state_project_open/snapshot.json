@@ -1,0 +1,69 @@
+{
+  "already_open_before_mapping": false,
+  "bootstrap": {
+    "close_result": {
+      "message": "SUCCESS: The process with PID 14964 (child process of PID 23380) has been terminated.",
+      "ok": true,
+      "returncode": 0
+    },
+    "launch_result": {
+      "method": "os.startfile",
+      "ok": true,
+      "target": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+    },
+    "snapshot_project_path": null,
+    "snapshot_ready": false,
+    "snapshot_title": ""
+  },
+  "expected_project_path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "mapping_partial": true,
+  "mapping_stop_reason": "project_open_recovery_failed",
+  "observed_main_window_title": "",
+  "observed_project_path": null,
+  "observed_startup_project_path": null,
+  "path_match_normalized": false,
+  "project_open_recovery": {
+    "close_attempts": [],
+    "diagnostics": {
+      "bootstrap": {
+        "close_result": {
+          "message": "SUCCESS: The process with PID 14964 (child process of PID 23380) has been terminated.",
+          "ok": true,
+          "returncode": 0
+        },
+        "launch_result": {
+          "method": "os.startfile",
+          "ok": true,
+          "target": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+        },
+        "snapshot_project_path": null,
+        "snapshot_ready": false,
+        "snapshot_title": ""
+      }
+    },
+    "main_window_ready_after_attempt": false,
+    "modal_pending": false,
+    "reason": "fresh_process_launch",
+    "success": false
+  },
+  "project_open_verdict": "open_attempt_failed",
+  "recovery_diagnostics": {
+    "bootstrap": {
+      "close_result": {
+        "message": "SUCCESS: The process with PID 14964 (child process of PID 23380) has been terminated.",
+        "ok": true,
+        "returncode": 0
+      },
+      "launch_result": {
+        "method": "os.startfile",
+        "ok": true,
+        "target": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp"
+      },
+      "snapshot_project_path": null,
+      "snapshot_ready": false,
+      "snapshot_title": ""
+    }
+  },
+  "startup_project_detected": false,
+  "state_id": "project_open"
+}

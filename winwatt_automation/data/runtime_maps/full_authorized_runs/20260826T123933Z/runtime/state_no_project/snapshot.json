@@ -1,0 +1,100 @@
+{
+  "already_open_before_mapping": false,
+  "bootstrap": {
+    "close_result": {
+      "message": "SUCCESS: The process with PID 19000 (child process of PID 1928) has been terminated.",
+      "ok": true,
+      "returncode": 0
+    },
+    "launch_result": {
+      "method": "subprocess.Popen",
+      "ok": true,
+      "target": "C:\\Program Files (x86)\\Bausoft\\WinWatt gólya\\WinWatt32.exe"
+    },
+    "snapshot_project_path": null,
+    "snapshot_ready": true,
+    "snapshot_title": "WinWatt gólya"
+  },
+  "discovered_top_menus": [
+    "Rendszer",
+    "Fájl",
+    "Jegyzékek",
+    "Adatbázis...",
+    "Beállítások",
+    "Ablak",
+    "Súgó"
+  ],
+  "foreground_window": {
+    "class_name": "TMainForm",
+    "handle": 2230034,
+    "process_id": 20716,
+    "title": "WinWatt gólya"
+  },
+  "main_window_class": "TMainForm",
+  "main_window_enabled": true,
+  "main_window_title": "WinWatt gólya",
+  "main_window_visible": true,
+  "mapping_partial": false,
+  "mapping_stop_reason": null,
+  "observed_startup_project_path": null,
+  "process_id": 20716,
+  "startup_project_detected": false,
+  "state_id": "full_no_project",
+  "timestamp": "2026-08-26T12:40:16.297303+00:00",
+  "visible_top_windows": [
+    {
+      "class_name": "Shell_TrayWnd",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Tálca"
+    },
+    {
+      "class_name": "TMainForm",
+      "handle": null,
+      "process_id": 20716,
+      "title": "WinWatt gólya"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 9196,
+      "title": "Welcome - autowinwatt - Visual Studio Code"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 9196,
+      "title": "ETAI Agent Platform (localhost:5173) - ETAI_Agents - Visual Studio Code"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 15020,
+      "title": "Videóból prezentáció készítése - Google Chrome"
+    },
+    {
+      "class_name": "Chrome_WidgetWin_1",
+      "handle": null,
+      "process_id": 23408,
+      "title": "GitHub Desktop"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Letöltések – Fájlkezelő"
+    },
+    {
+      "class_name": "CabinetWClass",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Elso_projekt – Fájlkezelő"
+    },
+    {
+      "class_name": "Progman",
+      "handle": null,
+      "process_id": 16532,
+      "title": "Program Manager"
+    }
+  ]
+}

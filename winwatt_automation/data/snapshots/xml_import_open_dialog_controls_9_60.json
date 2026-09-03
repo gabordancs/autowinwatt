@@ -1,0 +1,31 @@
+{
+  "control_count": 50,
+  "class_summary": {
+    "Address Band Root": 1,
+    "Breadcrumb Parent": 1,
+    "Button": 3,
+    "ComboBox": 3,
+    "ComboBoxEx32": 2,
+    "CtrlNotifySink": 5,
+    "DUIViewWndClassName": 1,
+    "DirectUIHWND": 3,
+    "Edit": 2,
+    "ListBox": 1,
+    "NamespaceTreeControl": 1,
+    "ReBarWindow32": 1,
+    "SHELLDLL_DefView": 1,
+    "ScrollBar": 3,
+    "Search Box": 1,
+    "SearchEditBoxWrapperClass": 1,
+    "SeparatorBand": 2,
+    "Shell Preview Extension Host": 1,
+    "Static": 7,
+    "SysTreeView32": 1,
+    "ToolbarWindow32": 4,
+    "TravelBand": 1,
+    "UniversalSearchBand": 1,
+    "UpBand": 1,
+    "WorkerW": 1,
+    "msctls_progress32": 1
+  }
+}

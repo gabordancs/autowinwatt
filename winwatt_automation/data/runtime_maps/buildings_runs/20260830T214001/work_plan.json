@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "catalog": {
+    "caption": "Buildings",
+    "index": 4
+  },
+  "sandbox_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\buildings_runs\\20260830T214001\\sandbox\\testwwp.wwp",
+  "created_at": "2026-08-30T19:40:02.567192+00:00",
+  "reuse_sources": [
+    "data/runtime_maps/catalog_contexts_9_60/04_Epuletek.json",
+    "data/runtime_maps/mdi_runtime_states_9_60/project_open__mdi__epuletek",
+    "data/runtime_maps/deep_native_menu_buildings_mdi_9_60.json"
+  ],
+  "tasks": [
+    {
+      "id": "baseline",
+      "description": "Buildings list root, MDI state, and dynamic menu snapshots",
+      "status": "completed",
+      "lease": null,
+      "evidence_dir": "tasks/baseline",
+      "finished_at": "2026-08-30T19:40:30.292909+00:00",
+      "note": "root state and dynamic menu evidence captured"
+    },
+    {
+      "id": "element",
+      "description": "Elem menu and every child dialog opened from its enabled commands",
+      "status": "pending",
+      "lease": null,
+      "evidence_dir": "tasks/element"
+    },
+    {
+      "id": "group",
+      "description": "Csoport menu and every child dialog opened from its enabled commands",
+      "status": "pending",
+      "lease": null,
+      "evidence_dir": "tasks/group"
+    },
+    {
+      "id": "edit",
+      "description": "Szerkesztes menu and context-sensitive list actions",
+      "status": "pending",
+      "lease": null,
+      "evidence_dir": "tasks/edit"
+    },
+    {
+      "id": "tools",
+      "description": "Eszkozok actions available in Buildings context",
+      "status": "pending",
+      "lease": null,
+      "evidence_dir": "tasks/tools"
+    },
+    {
+      "id": "settings_window",
+      "description": "Beallitasok and Ablak context branches",
+      "status": "pending",
+      "lease": null,
+      "evidence_dir": "tasks/settings_window"
+    }
+  ]
+}

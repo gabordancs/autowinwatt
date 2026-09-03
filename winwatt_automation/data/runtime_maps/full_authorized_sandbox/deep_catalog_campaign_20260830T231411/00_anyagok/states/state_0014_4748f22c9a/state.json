@@ -1,0 +1,3610 @@
+{
+  "state_id": "state_0014_4748f22c9a",
+  "parent_state": "state_0013_1e270fad62",
+  "captured_at": "2026-08-30T23:24:47.863497+00:00",
+  "window": {
+    "title": "Anyagok - YTONG pórusbeton",
+    "class_name": "TChildWinForm",
+    "handle": 54921140
+  },
+  "signature": {
+    "title": "Anyagok - YTONG pórusbeton",
+    "class_name": "TChildWinForm",
+    "controls": [
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal balra",
+        "automation_id": "UpPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          24,
+          973,
+          33,
+          999
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal fel",
+        "automation_id": "UpPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          228,
+          116,
+          254,
+          132
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oldallal jobbra",
+        "automation_id": "DownPageButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          141,
+          973,
+          207,
+          999
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal balra",
+        "automation_id": "UpButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          3,
+          973,
+          24,
+          999
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy oszloppal jobbra",
+        "automation_id": "DownButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          207,
+          973,
+          228,
+          999
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy sorral fel",
+        "automation_id": "UpButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          228,
+          95,
+          254,
+          116
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Button",
+        "class_name": "",
+        "name": "Egy sorral le",
+        "automation_id": "DownButton",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          228,
+          952,
+          254,
+          973
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Edit",
+        "class_name": "Edit",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          949,
+          201,
+          974
+        ],
+        "value": "YTONG pórusbeton"
+      },
+      {
+        "control_type": "List",
+        "class_name": "TListViewWithHeader",
+        "name": "",
+        "automation_id": "38930378",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          256,
+          139,
+          1919,
+          995
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Pane",
+        "class_name": "TPanel",
+        "name": "",
+        "automation_id": "58790930",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          255,
+          93,
+          1920,
+          997
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ScrollBar",
+        "class_name": "",
+        "name": "Függőleges",
+        "automation_id": "NonClientVerticalScrollBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          228,
+          95,
+          254,
+          973
+        ],
+        "value": null
+      },
+      {
+        "control_type": "ScrollBar",
+        "class_name": "",
+        "name": "Vízszintes",
+        "automation_id": "NonClientHorizontalScrollBar",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          3,
+          973,
+          228,
+          999
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "",
+        "automation_id": "",
+        "enabled": false,
+        "visible": true,
+        "rect": [
+          228,
+          973,
+          249,
+          994
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          33,
+          973,
+          141,
+          999
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Thumb",
+        "class_name": "",
+        "name": "Elhelyezés",
+        "automation_id": "ScrollbarThumb",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          228,
+          132,
+          254,
+          776
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TitleBar",
+        "class_name": "",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          0,
+          64,
+          1920,
+          92
+        ],
+        "value": null
+      },
+      {
+        "control_type": "Tree",
+        "class_name": "TTreeView",
+        "name": "",
+        "automation_id": "40176716",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          0,
+          93,
+          251,
+          997
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "AUSTROTHERM 2016",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          95,
+          211,
+          118
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "BACHL-NIKECELL",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          118,
+          178,
+          141
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "BAUMIT",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          140,
+          104,
+          163
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Betonok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          163,
+          103,
+          186
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Bio",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          185,
+          65,
+          208
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Burkolatok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          208,
+          120,
+          231
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Caparol",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          230,
+          100,
+          253
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Compacfoam",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          253,
+          141,
+          276
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Egyéb anyagok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          275,
+          160,
+          298
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Faanyagok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          298,
+          126,
+          321
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Feltöltések",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          320,
+          123,
+          343
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Fóliák",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          343,
+          86,
+          366
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Gipszkészítmények",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          365,
+          185,
+          388
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Hőszigetelő anyagok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          388,
+          200,
+          411
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "ISOVER",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          410,
+          103,
+          433
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Kövek és kőfalak",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          433,
+          169,
+          456
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "LB-KNAUF",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          455,
+          121,
+          478
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Lambda hőmérséklet korrekció",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          478,
+          273,
+          501
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Lambda nedvesség korrekció",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          500,
+          265,
+          523
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Leier",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          523,
+          78,
+          546
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Lemezek, mázak, kenések",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          545,
+          239,
+          568
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Légrétegek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          568,
+          126,
+          591
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "MSZ EN ISO 10456",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          590,
+          181,
+          613
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Nyílászárók anyagai",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          613,
+          194,
+          636
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "PNP Orange",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          635,
+          135,
+          658
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "POROTHERM termékek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          658,
+          224,
+          681
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "POROTHERM termékek 2015",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          680,
+          263,
+          703
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "POROTHERM termékek 2021",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          703,
+          263,
+          726
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "POROTHERM termékek 2023",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          725,
+          263,
+          748
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "R.W. Bautech",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          748,
+          141,
+          771
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Rockwool",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          770,
+          115,
+          793
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Rockwool 2021",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          793,
+          154,
+          816
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "SGW Terranova",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          815,
+          163,
+          838
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "SILKA mészhomoktégla",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          838,
+          218,
+          861
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Trapéz lemezek",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          860,
+          161,
+          883
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Téglák és falazóblokkok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          883,
+          225,
+          906
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Vakolatok",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          905,
+          116,
+          928
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "Villas",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          928,
+          81,
+          951
+        ],
+        "value": null
+      },
+      {
+        "control_type": "TreeItem",
+        "class_name": "",
+        "name": "YTONG pórusbeton",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          950,
+          189,
+          973
+        ],
+        "value": null
+      }
+    ]
+  },
+  "signature_hash": "4748f22c9a19e2a85a96ddee236042e66a4e8e2bcd1b3106833b126159d290e9",
+  "logical_signature_hash": "be13787931b474f240ff58348f86612f321e0d30146dfcdb9edfda93d9d018aa",
+  "diff_from_parent": {
+    "kind": "structural_ui_diff",
+    "changed": true,
+    "added_controls": [
+      {
+        "control_type": "Edit",
+        "class_name": "Edit",
+        "name": "",
+        "automation_id": "",
+        "enabled": true,
+        "visible": true,
+        "rect": [
+          35,
+          949,
+          201,
+          974
+        ],
+        "value": "YTONG pórusbeton"
+      }
+    ],
+    "removed_controls": [],
+    "value_changes": []
+  },
+  "path": [
+    {
+      "control_type": "TreeItem",
+      "name": "MSZ EN ISO 10456",
+      "automation_id": "",
+      "rect": [
+        66,
+        654,
+        212,
+        677
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Nyílászárók anyagai",
+      "automation_id": "",
+      "rect": [
+        66,
+        654,
+        225,
+        677
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "PNP Orange",
+      "automation_id": "",
+      "rect": [
+        66,
+        654,
+        166,
+        677
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "PNP Orange",
+      "automation_id": "",
+      "rect": [
+        66,
+        631,
+        166,
+        654
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Teljes méret",
+      "automation_id": "",
+      "rect": [
+        1530,
+        108,
+        1570,
+        131
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "rect": [
+        54,
+        950,
+        208,
+        973
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "rect": [
+        54,
+        950,
+        208,
+        973
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        207,
+        973,
+        228,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "rect": [
+        48,
+        950,
+        202,
+        973
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        207,
+        973,
+        228,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "rect": [
+        41,
+        950,
+        195,
+        973
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        207,
+        973,
+        228,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "rect": [
+        35,
+        950,
+        189,
+        973
+      ],
+      "operation": "activate"
+    }
+  ],
+  "controls": [
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal balra",
+      "automation_id": "UpPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        24,
+        973,
+        33,
+        999
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal fel",
+      "automation_id": "UpPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        228,
+        116,
+        254,
+        132
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        141,
+        973,
+        207,
+        999
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        3,
+        973,
+        24,
+        999
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        207,
+        973,
+        228,
+        999
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy sorral fel",
+      "automation_id": "UpButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        228,
+        95,
+        254,
+        116
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Button",
+      "class_name": "",
+      "name": "Egy sorral le",
+      "automation_id": "DownButton",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        228,
+        952,
+        254,
+        973
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Edit",
+      "class_name": "Edit",
+      "name": "",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        949,
+        201,
+        974
+      ],
+      "value": "YTONG pórusbeton"
+    },
+    {
+      "control_type": "List",
+      "class_name": "TListViewWithHeader",
+      "name": "",
+      "automation_id": "38930378",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        256,
+        139,
+        1919,
+        995
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Pane",
+      "class_name": "TPanel",
+      "name": "",
+      "automation_id": "58790930",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        255,
+        93,
+        1920,
+        997
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ScrollBar",
+      "class_name": "",
+      "name": "Függőleges",
+      "automation_id": "NonClientVerticalScrollBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        228,
+        95,
+        254,
+        973
+      ],
+      "value": null
+    },
+    {
+      "control_type": "ScrollBar",
+      "class_name": "",
+      "name": "Vízszintes",
+      "automation_id": "NonClientHorizontalScrollBar",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        3,
+        973,
+        228,
+        999
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "",
+      "automation_id": "",
+      "enabled": false,
+      "visible": true,
+      "rect": [
+        228,
+        973,
+        249,
+        994
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "Elhelyezés",
+      "automation_id": "ScrollbarThumb",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        33,
+        973,
+        141,
+        999
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Thumb",
+      "class_name": "",
+      "name": "Elhelyezés",
+      "automation_id": "ScrollbarThumb",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        228,
+        132,
+        254,
+        776
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TitleBar",
+      "class_name": "",
+      "name": "",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        0,
+        64,
+        1920,
+        92
+      ],
+      "value": null
+    },
+    {
+      "control_type": "Tree",
+      "class_name": "TTreeView",
+      "name": "",
+      "automation_id": "40176716",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        0,
+        93,
+        251,
+        997
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "AUSTROTHERM 2016",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        95,
+        211,
+        118
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "BACHL-NIKECELL",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        118,
+        178,
+        141
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "BAUMIT",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        140,
+        104,
+        163
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Betonok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        163,
+        103,
+        186
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Bio",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        185,
+        65,
+        208
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Burkolatok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        208,
+        120,
+        231
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Caparol",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        230,
+        100,
+        253
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Compacfoam",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        253,
+        141,
+        276
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Egyéb anyagok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        275,
+        160,
+        298
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Faanyagok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        298,
+        126,
+        321
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Feltöltések",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        320,
+        123,
+        343
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Fóliák",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        343,
+        86,
+        366
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Gipszkészítmények",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        365,
+        185,
+        388
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Hőszigetelő anyagok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        388,
+        200,
+        411
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "ISOVER",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        410,
+        103,
+        433
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Kövek és kőfalak",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        433,
+        169,
+        456
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "LB-KNAUF",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        455,
+        121,
+        478
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Lambda hőmérséklet korrekció",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        478,
+        273,
+        501
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Lambda nedvesség korrekció",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        500,
+        265,
+        523
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Leier",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        523,
+        78,
+        546
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Lemezek, mázak, kenések",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        545,
+        239,
+        568
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Légrétegek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        568,
+        126,
+        591
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "MSZ EN ISO 10456",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        590,
+        181,
+        613
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Nyílászárók anyagai",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        613,
+        194,
+        636
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "PNP Orange",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        635,
+        135,
+        658
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "POROTHERM termékek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        658,
+        224,
+        681
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "POROTHERM termékek 2015",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        680,
+        263,
+        703
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "POROTHERM termékek 2021",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        703,
+        263,
+        726
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "POROTHERM termékek 2023",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        725,
+        263,
+        748
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "R.W. Bautech",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        748,
+        141,
+        771
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Rockwool",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        770,
+        115,
+        793
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Rockwool 2021",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        793,
+        154,
+        816
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "SGW Terranova",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        815,
+        163,
+        838
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "SILKA mészhomoktégla",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        838,
+        218,
+        861
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Trapéz lemezek",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        860,
+        161,
+        883
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Téglák és falazóblokkok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        883,
+        225,
+        906
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Vakolatok",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        905,
+        116,
+        928
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "Villas",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        928,
+        81,
+        951
+      ],
+      "value": null
+    },
+    {
+      "control_type": "TreeItem",
+      "class_name": "",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "enabled": true,
+      "visible": true,
+      "rect": [
+        35,
+        950,
+        189,
+        973
+      ],
+      "value": null
+    }
+  ],
+  "actions": [
+    {
+      "control_type": "Button",
+      "name": "Egy sorral fel",
+      "automation_id": "UpButton",
+      "rect": [
+        228,
+        95,
+        254,
+        116
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal fel",
+      "automation_id": "UpPageButton",
+      "rect": [
+        228,
+        116,
+        254,
+        132
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy sorral le",
+      "automation_id": "DownButton",
+      "rect": [
+        228,
+        952,
+        254,
+        973
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal balra",
+      "automation_id": "UpButton",
+      "rect": [
+        3,
+        973,
+        24,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal balra",
+      "automation_id": "UpPageButton",
+      "rect": [
+        24,
+        973,
+        33,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oldallal jobbra",
+      "automation_id": "DownPageButton",
+      "rect": [
+        141,
+        973,
+        207,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "Button",
+      "name": "Egy oszloppal jobbra",
+      "automation_id": "DownButton",
+      "rect": [
+        207,
+        973,
+        228,
+        999
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "AUSTROTHERM 2016",
+      "automation_id": "",
+      "rect": [
+        35,
+        95,
+        211,
+        118
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "BACHL-NIKECELL",
+      "automation_id": "",
+      "rect": [
+        35,
+        118,
+        178,
+        141
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "BAUMIT",
+      "automation_id": "",
+      "rect": [
+        35,
+        140,
+        104,
+        163
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Betonok",
+      "automation_id": "",
+      "rect": [
+        35,
+        163,
+        103,
+        186
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Bio",
+      "automation_id": "",
+      "rect": [
+        35,
+        185,
+        65,
+        208
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Burkolatok",
+      "automation_id": "",
+      "rect": [
+        35,
+        208,
+        120,
+        231
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Caparol",
+      "automation_id": "",
+      "rect": [
+        35,
+        230,
+        100,
+        253
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Compacfoam",
+      "automation_id": "",
+      "rect": [
+        35,
+        253,
+        141,
+        276
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Egyéb anyagok",
+      "automation_id": "",
+      "rect": [
+        35,
+        275,
+        160,
+        298
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Faanyagok",
+      "automation_id": "",
+      "rect": [
+        35,
+        298,
+        126,
+        321
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Feltöltések",
+      "automation_id": "",
+      "rect": [
+        35,
+        320,
+        123,
+        343
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Fóliák",
+      "automation_id": "",
+      "rect": [
+        35,
+        343,
+        86,
+        366
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Gipszkészítmények",
+      "automation_id": "",
+      "rect": [
+        35,
+        365,
+        185,
+        388
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Hőszigetelő anyagok",
+      "automation_id": "",
+      "rect": [
+        35,
+        388,
+        200,
+        411
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "ISOVER",
+      "automation_id": "",
+      "rect": [
+        35,
+        410,
+        103,
+        433
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Kövek és kőfalak",
+      "automation_id": "",
+      "rect": [
+        35,
+        433,
+        169,
+        456
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "LB-KNAUF",
+      "automation_id": "",
+      "rect": [
+        35,
+        455,
+        121,
+        478
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Lambda hőmérséklet korrekció",
+      "automation_id": "",
+      "rect": [
+        35,
+        478,
+        273,
+        501
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Lambda nedvesség korrekció",
+      "automation_id": "",
+      "rect": [
+        35,
+        500,
+        265,
+        523
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Leier",
+      "automation_id": "",
+      "rect": [
+        35,
+        523,
+        78,
+        546
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Lemezek, mázak, kenések",
+      "automation_id": "",
+      "rect": [
+        35,
+        545,
+        239,
+        568
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Légrétegek",
+      "automation_id": "",
+      "rect": [
+        35,
+        568,
+        126,
+        591
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "MSZ EN ISO 10456",
+      "automation_id": "",
+      "rect": [
+        35,
+        590,
+        181,
+        613
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Nyílászárók anyagai",
+      "automation_id": "",
+      "rect": [
+        35,
+        613,
+        194,
+        636
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "PNP Orange",
+      "automation_id": "",
+      "rect": [
+        35,
+        635,
+        135,
+        658
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "POROTHERM termékek",
+      "automation_id": "",
+      "rect": [
+        35,
+        658,
+        224,
+        681
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "POROTHERM termékek 2015",
+      "automation_id": "",
+      "rect": [
+        35,
+        680,
+        263,
+        703
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "POROTHERM termékek 2021",
+      "automation_id": "",
+      "rect": [
+        35,
+        703,
+        263,
+        726
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "POROTHERM termékek 2023",
+      "automation_id": "",
+      "rect": [
+        35,
+        725,
+        263,
+        748
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "R.W. Bautech",
+      "automation_id": "",
+      "rect": [
+        35,
+        748,
+        141,
+        771
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Rockwool",
+      "automation_id": "",
+      "rect": [
+        35,
+        770,
+        115,
+        793
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Rockwool 2021",
+      "automation_id": "",
+      "rect": [
+        35,
+        793,
+        154,
+        816
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "SGW Terranova",
+      "automation_id": "",
+      "rect": [
+        35,
+        815,
+        163,
+        838
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "SILKA mészhomoktégla",
+      "automation_id": "",
+      "rect": [
+        35,
+        838,
+        218,
+        861
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Trapéz lemezek",
+      "automation_id": "",
+      "rect": [
+        35,
+        860,
+        161,
+        883
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Téglák és falazóblokkok",
+      "automation_id": "",
+      "rect": [
+        35,
+        883,
+        225,
+        906
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Vakolatok",
+      "automation_id": "",
+      "rect": [
+        35,
+        905,
+        116,
+        928
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "Villas",
+      "automation_id": "",
+      "rect": [
+        35,
+        928,
+        81,
+        951
+      ],
+      "operation": "activate"
+    },
+    {
+      "control_type": "TreeItem",
+      "name": "YTONG pórusbeton",
+      "automation_id": "",
+      "rect": [
+        35,
+        950,
+        189,
+        973
+      ],
+      "operation": "activate"
+    }
+  ],
+  "native_menu": {
+    "backend": "win32_native_menu",
+    "process_id": 15248,
+    "window_handle": 101451730,
+    "items": [
+      {
+        "index": 0,
+        "command_id": 0,
+        "caption_raw": "",
+        "caption": "",
+        "caption_reliable": false,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 61728,
+            "caption_raw": "&Előző méret",
+            "caption": "Előző méret",
+            "caption_reliable": true,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 61456,
+            "caption_raw": "Át&helyezés",
+            "caption": "Áthelyezés",
+            "caption_reliable": true,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 61440,
+            "caption_raw": "&Méretezés",
+            "caption": "Méretezés",
+            "caption_reliable": true,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 61472,
+            "caption_raw": "&Kis méret",
+            "caption": "Kis méret",
+            "caption_reliable": true,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 61488,
+            "caption_raw": "&Teljes méret",
+            "caption": "Teljes méret",
+            "caption_reliable": true,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 0,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 61536,
+            "caption_raw": "Be&zárás\tCtrl+F4",
+            "caption": "Bezárás\tCtrl+F4",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 0,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 61504,
+            "caption_raw": "Kö&vetkező\tCtrl+F6",
+            "caption": "Következő\tCtrl+F6",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "command_id": 1,
+        "caption_raw": "&Fájl",
+        "caption": "Fájl",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 2,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "NewProjekt",
+              "stable_key": "MainForm.NewProjekt",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "new_project_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 3,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "OpenProjekt",
+              "stable_key": "MainForm.OpenProjekt",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_open_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 4,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": {
+              "item_name": "SaveProjekt",
+              "stable_key": "MainForm.SaveProjekt",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 5,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 6,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "CloseProjekt",
+              "stable_key": "MainForm.CloseProjekt",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 7,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProjektData",
+              "stable_key": "MainForm.ProjektData",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_data_dialog_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 9,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "XMLExportAction",
+              "stable_key": "MainForm.XMLExportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "xml_export_save_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 10,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "XMLImportAction",
+              "stable_key": "MainForm.XMLImportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "xml_import_open_dialog_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 12,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 13,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 14,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": [
+              {
+                "index": 0,
+                "command_id": 15,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              },
+              {
+                "index": 1,
+                "command_id": 16,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              },
+              {
+                "index": 2,
+                "command_id": 17,
+                "caption_raw": "",
+                "caption": "",
+                "caption_reliable": false,
+                "enabled": true,
+                "verified_static_binding": null,
+                "children": []
+              }
+            ]
+          },
+          {
+            "index": 11,
+            "command_id": 18,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ETAction",
+              "stable_key": "MainForm.ETAction",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 19,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "CreateReportAction",
+              "stable_key": "MainForm.CreateReportAction",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "custom_reports_template_picker_detected_and_cancelled"
+            },
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 30,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 31,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ExitApplication",
+              "stable_key": "MainForm.ExitApplication",
+              "verification": "visual_and_static_xml"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "command_id": 130,
+        "caption_raw": "&Szerkesztés",
+        "caption": "Szerkesztés",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 131,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 132,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 133,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 134,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 135,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 136,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 137,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 138,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 139,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 140,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 141,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 142,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 143,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 144,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 145,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "command_id": 32,
+        "caption_raw": "&Jegyzékek",
+        "caption": "Jegyzékek",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 33,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 34,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 35,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 36,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 37,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 38,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 39,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 40,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 41,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 42,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 43,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 44,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 45,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 46,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 49,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 15,
+            "command_id": 50,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 16,
+            "command_id": 53,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 4,
+        "command_id": 146,
+        "caption_raw": "&Csoport",
+        "caption": "Csoport",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 147,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 148,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 149,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 5,
+        "command_id": 150,
+        "caption_raw": "&Elem",
+        "caption": "Elem",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 151,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 152,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 153,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 154,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 155,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 156,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 157,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 6,
+        "command_id": 54,
+        "caption_raw": "&Eszközök",
+        "caption": "Eszközök",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 55,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 56,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 57,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 58,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 59,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 60,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 61,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 7,
+            "command_id": 62,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 8,
+            "command_id": 71,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 9,
+            "command_id": 72,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 10,
+            "command_id": 73,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 11,
+            "command_id": 74,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 12,
+            "command_id": 75,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 13,
+            "command_id": 76,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 14,
+            "command_id": 77,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 15,
+            "command_id": 79,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 7,
+        "command_id": 88,
+        "caption_raw": "&Beállítások",
+        "caption": "Beállítások",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 89,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProgramOptions",
+              "stable_key": "MainForm.ProgramOptions",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "program_options_dialog_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 90,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "ProjektOptions",
+              "stable_key": "MainForm.ProjektOptions",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "project_options_dialog_detected_and_closed"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 8,
+        "command_id": 91,
+        "caption_raw": "&Ablak",
+        "caption": "Ablak",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 92,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 93,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 2,
+            "command_id": 94,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 3,
+            "command_id": 95,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 4,
+            "command_id": 96,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 5,
+            "command_id": 0,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": false,
+            "verified_static_binding": null,
+            "children": []
+          },
+          {
+            "index": 6,
+            "command_id": 65280,
+            "caption_raw": "&1 Anyagok - YTONG pórusbeton",
+            "caption": "1 Anyagok - YTONG pórusbeton",
+            "caption_reliable": true,
+            "enabled": true,
+            "verified_static_binding": null,
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 9,
+        "command_id": 97,
+        "caption_raw": "&Súgó",
+        "caption": "Súgó",
+        "caption_reliable": true,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": [
+          {
+            "index": 0,
+            "command_id": 98,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "HelpContent",
+              "stable_key": "MainForm.HelpContent",
+              "verification": "visual_static_xml_and_runtime_window_probe",
+              "runtime_evidence": "winwatt_chm_help_window_detected_and_closed"
+            },
+            "children": []
+          },
+          {
+            "index": 1,
+            "command_id": 99,
+            "caption_raw": "",
+            "caption": "",
+            "caption_reliable": false,
+            "enabled": true,
+            "verified_static_binding": {
+              "item_name": "HelpAbout",
+              "stable_key": "MainForm.HelpAbout",
+              "verification": "visual_static_xml_and_runtime_dialog_probe",
+              "runtime_evidence": "about_dialog_detected_and_closed"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "index": 10,
+        "command_id": 61472,
+        "caption_raw": "",
+        "caption": "",
+        "caption_reliable": false,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": []
+      },
+      {
+        "index": 11,
+        "command_id": 61728,
+        "caption_raw": "",
+        "caption": "",
+        "caption_reliable": false,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": []
+      },
+      {
+        "index": 12,
+        "command_id": 61536,
+        "caption_raw": "",
+        "caption": "",
+        "caption_reliable": false,
+        "enabled": true,
+        "verified_static_binding": null,
+        "children": []
+      }
+    ]
+  },
+  "screenshot": "data/runtime_maps/full_authorized_sandbox/deep_catalog_campaign_20260830T231411/00_anyagok/states/state_0014_4748f22c9a/ui.png"
+}

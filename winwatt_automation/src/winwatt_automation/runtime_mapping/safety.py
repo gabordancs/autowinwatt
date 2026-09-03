@@ -24,6 +24,7 @@ CAUTION_RULES = (
 BLOCKED_RULES = (
     "kilep",
     "exit",
+    "torol",
     "torles",
     "delete",
     "reset",

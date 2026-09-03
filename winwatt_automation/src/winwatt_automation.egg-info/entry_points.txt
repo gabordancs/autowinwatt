@@ -1,0 +1,2 @@
+[console_scripts]
+winwatt = winwatt_automation.cli.main:app

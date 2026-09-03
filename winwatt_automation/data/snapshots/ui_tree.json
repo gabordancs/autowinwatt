@@ -1,5 +1,5 @@
 {
-  "name": "WinWatt gólya",
+  "name": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
   "control_type": "Window",
   "class_name": "TMainForm",
   "automation_id": "",
@@ -8,7 +8,7 @@
       "name": "",
       "control_type": "ToolBar",
       "class_name": "TToolBar",
-      "automation_id": "923178",
+      "automation_id": "788380",
       "children": [
         {
           "name": "",
@@ -163,7 +163,7 @@
       "name": "",
       "control_type": "StatusBar",
       "class_name": "TStatusBar",
-      "automation_id": "1970802",
+      "automation_id": "329478",
       "children": [
         {
           "name": "",
@@ -179,7 +179,97 @@
       "control_type": "Pane",
       "class_name": "MDIClient",
       "automation_id": "",
-      "children": []
+      "children": [
+        {
+          "name": "Szerkezetek",
+          "control_type": "Window",
+          "class_name": "TChildWinForm",
+          "automation_id": "65280",
+          "children": [
+            {
+              "name": "",
+              "control_type": "Pane",
+              "class_name": "TPanel",
+              "automation_id": "1050470",
+              "children": [
+                {
+                  "name": "",
+                  "control_type": "List",
+                  "class_name": "TListViewWithHeader",
+                  "automation_id": "591724",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "",
+              "control_type": "Tree",
+              "class_name": "TTreeView",
+              "automation_id": "198370",
+              "children": [
+                {
+                  "name": "Szerkezetek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Határoló szerkezetek",
+                  "control_type": "TreeItem",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "",
+              "control_type": "TitleBar",
+              "class_name": "",
+              "automation_id": "",
+              "children": [
+                {
+                  "name": "Rendszer",
+                  "control_type": "MenuBar",
+                  "class_name": "",
+                  "automation_id": "MenuBar",
+                  "children": [
+                    {
+                      "name": "Dokumentumablak",
+                      "control_type": "MenuItem",
+                      "class_name": "",
+                      "automation_id": "",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "name": "Kis méret",
+                  "control_type": "Button",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Teljes méret",
+                  "control_type": "Button",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                },
+                {
+                  "name": "Bezárás",
+                  "control_type": "Button",
+                  "class_name": "",
+                  "automation_id": "",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "",
@@ -210,7 +300,7 @@
           "children": []
         },
         {
-          "name": "Teljes méret",
+          "name": "Előző méret",
           "control_type": "Button",
           "class_name": "",
           "automation_id": "",
@@ -239,6 +329,13 @@
           "children": []
         },
         {
+          "name": "Szerkesztés",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
           "name": "Jegyzékek",
           "control_type": "MenuItem",
           "class_name": "",
@@ -246,7 +343,21 @@
           "children": []
         },
         {
-          "name": "Adatbázis...",
+          "name": "Csoport",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Elem",
+          "control_type": "MenuItem",
+          "class_name": "",
+          "automation_id": "",
+          "children": []
+        },
+        {
+          "name": "Eszközök",
           "control_type": "MenuItem",
           "class_name": "",
           "automation_id": "",

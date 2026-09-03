@@ -1,0 +1,72 @@
+{
+  "run_id": "0112_mainform_helpabout_2026-08-25_20-44-06",
+  "sequence_number": 112,
+  "started_at": "2026-08-25T20:44:06.773546+00:00",
+  "finished_at": "2026-08-25T20:44:09.444965+00:00",
+  "duration_seconds": 2.671,
+  "command": "safe_runtime_command MainForm.HelpAbout",
+  "cwd": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation",
+  "safe_mode": "safe",
+  "project_path": null,
+  "exit_code": 0,
+  "success": true,
+  "summary": {
+    "no_project_top_menus": null,
+    "project_open_top_menus": null,
+    "diff_summary": {},
+    "startup_project_detected": null,
+    "already_open_before_mapping": null,
+    "project_open_verdict": null,
+    "expected_project_path": null,
+    "observed_project_path": null,
+    "path_match_normalized": null,
+    "skipped_by_safety": null,
+    "last_error": null,
+    "modal_detected": false,
+    "recovery_attempted": false,
+    "recovery_success": false
+  },
+  "important_events": [
+    {
+      "timestamp": "2026-08-25T20:44:06.786476+00:00",
+      "event_type": "command_accepted",
+      "payload": {
+        "input": "névjegy",
+        "stable_key": "MainForm.HelpAbout"
+      }
+    },
+    {
+      "timestamp": "2026-08-25T20:44:09.444965+00:00",
+      "event_type": "workflow_result",
+      "payload": {
+        "workflow": "safe_about_probe",
+        "command": "MainForm.HelpAbout",
+        "native_menu_path": [
+          {
+            "menu_command_id": 97,
+            "index": 5
+          },
+          {
+            "command_id": 99,
+            "index": 1
+          }
+        ],
+        "dialog_found": true,
+        "dialog_title": "Névjegy",
+        "dialog_class": "TAboutForm",
+        "dialog_handle": 788804,
+        "dialog_dismissed": true,
+        "main_window_enabled_after": true,
+        "success": true
+      }
+    }
+  ],
+  "output_paths": {
+    "log_path": "data\\run_logs\\runs\\0112_mainform_helpabout_2026-08-25_20-44-06.log",
+    "json_path": "data\\run_logs\\runs\\0112_mainform_helpabout_2026-08-25_20-44-06.json"
+  },
+  "tags": [
+    "safe_command",
+    "MainForm.HelpAbout"
+  ]
+}

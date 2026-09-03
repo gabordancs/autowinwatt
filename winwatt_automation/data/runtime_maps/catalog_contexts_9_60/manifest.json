@@ -1,0 +1,128 @@
+[
+  {
+    "index": 0,
+    "caption": "Anyagok",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\00_Anyagok.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\00_Anyagok.png",
+    "dynamic_menu_popups": []
+  },
+  {
+    "index": 1,
+    "caption": "Globális szerkezetek adatbázis",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\01_Globális szerkezetek adatbázis.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\01_Globális szerkezetek adatbázis.png",
+    "dynamic_menu_popups": []
+  },
+  {
+    "index": 2,
+    "caption": "Szerkezetek",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\02_Szerkezetek.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\02_Szerkezetek.png",
+    "dynamic_menu_popups": []
+  },
+  {
+    "index": 3,
+    "caption": "Helyiségek",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\03_Helyiségek.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\03_Helyiségek.png",
+    "dynamic_menu_popups": []
+  },
+  {
+    "index": 4,
+    "caption": "Épületek",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\04_Épületek.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\04_Épületek.png",
+    "dynamic_menu_popups": []
+  },
+  {
+    "index": 5,
+    "caption": "Egycsöves körök",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\05_Egycsöves körök.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\05_Egycsöves körök.png",
+    "dynamic_menu_popups": []
+  },
+  {
+    "index": 6,
+    "caption": "Felületfűtés-hűtés körök",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\06_Felületfűtés-hűtés körök.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\06_Felületfűtés-hűtés körök.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\06_Felületfűtés-hűtés körök\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\06_Felületfűtés-hűtés körök\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\06_Felületfűtés-hűtés körök\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 7,
+    "caption": "Ismert teljesítményű fogyasztók",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\07_Ismert teljesítményű fogyasztók.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\07_Ismert teljesítményű fogyasztók.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\07_Ismert teljesítményű fogyasztók\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\07_Ismert teljesítményű fogyasztók\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\07_Ismert teljesítményű fogyasztók\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 8,
+    "caption": "Hőcserélők, keverőszelepek",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\08_Hőcserélők, keverőszelepek.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\08_Hőcserélők, keverőszelepek.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\08_Hőcserélők, keverőszelepek\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\08_Hőcserélők, keverőszelepek\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\08_Hőcserélők, keverőszelepek\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 9,
+    "caption": "Szakaszok",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\09_Szakaszok.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\09_Szakaszok.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\09_Szakaszok\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\09_Szakaszok\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\09_Szakaszok\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 10,
+    "caption": "Túláramszelepek",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\10_Túláramszelepek.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\10_Túláramszelepek.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\10_Túláramszelepek\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\10_Túláramszelepek\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\10_Túláramszelepek\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 11,
+    "caption": "Nyomáskülönbség szabályozók",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\11_Nyomáskülönbség szabályozók.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\11_Nyomáskülönbség szabályozók.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\11_Nyomáskülönbség szabályozók\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\11_Nyomáskülönbség szabályozók\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\11_Nyomáskülönbség szabályozók\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 12,
+    "caption": "Csomópontok",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\12_Csomópontok.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\12_Csomópontok.png",
+    "dynamic_menu_popups": [
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\12_Csomópontok\\Csoport.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\12_Csomópontok\\Elem.png",
+      "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\dynamic_menu_popups\\12_Csomópontok\\Szerkesztés.png"
+    ]
+  },
+  {
+    "index": 13,
+    "caption": "Hibalista",
+    "native_menu": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\13_Hibalista.json",
+    "screenshot": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\catalog_contexts_9_60\\13_Hibalista.png",
+    "dynamic_menu_popups": []
+  }
+]
