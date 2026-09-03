@@ -130,6 +130,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--top-menus", default=None)
     parser.add_argument("--max-submenu-depth", type=int, default=-1, help="Use -1 for unlimited submenu traversal depth")
     parser.add_argument("--include-disabled", default="true")
+    parser.add_argument(
+        "--close-winwatt-after-mapping",
+        action="store_true",
+        help="Close the attached WinWatt process after mapping. Disabled by default to protect unsaved user work.",
+    )
+    parser.add_argument(
+        "--allow-process-restart",
+        action="store_true",
+        help="Allow the mapper to terminate and relaunch WinWatt to capture clean no-project and project-open states.",
+    )
     parser.add_argument("--progress-overlay", action="store_true", help="Show a non-activating status HUD while mapping runs")
     parser.add_argument("--diagnostic-fast-mode", action="store_true", help="Diagnostic mode: disable global popup scan, reduce cache validation, and avoid placeholder-triggered relists")
     parser.add_argument("--placeholder-traversal-focus", action="store_true", help="Diagnostic mode: focus logs and traversal behavior around geometry placeholder rows")
@@ -160,6 +170,8 @@ def main() -> int:
             "cwd": str(Path.cwd()),
             "safe_mode": args.safe_mode,
             "project_path": args.project_path or DEFAULT_TEST_PROJECT_PATH,
+            "close_winwatt_after_mapping": args.close_winwatt_after_mapping,
+            "allow_process_restart": args.allow_process_restart,
             "tags": ["map_full_program", "runtime_mapping"],
         },
     )
@@ -234,6 +246,7 @@ def main() -> int:
             top_menus=_parse_top_menus(args.top_menus),
             max_submenu_depth=args.max_submenu_depth,
             include_disabled=_parse_bool(args.include_disabled),
+            allow_process_restart=args.allow_process_restart,
             event_recorder=_event_recorder,
         )
         log_cache_usage_summary()
@@ -311,7 +324,11 @@ def main() -> int:
         )
         raise
     finally:
-        close_result = _close_winwatt_after_mapping()
+        close_result = (
+            _close_winwatt_after_mapping()
+            if args.close_winwatt_after_mapping
+            else {"closed": False, "method": "skipped_by_policy", "error": None}
+        )
         record_event(run_ctx, "winwatt_close", close_result)
         logger.remove(sink_id)
 

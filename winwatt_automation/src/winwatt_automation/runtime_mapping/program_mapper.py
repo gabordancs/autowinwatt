@@ -49,7 +49,8 @@ from winwatt_automation.live_ui.ui_cache import PopupState
 
 DEFAULT_TOP_MENUS = ["Fájl", "Jegyzékek", "Adatbázis...", "Beállítások", "Ablak", "Súgó"]
 SYSTEM_TOP_MENUS = ["Rendszer"]
-DEFAULT_TEST_PROJECT_PATH = r"C:\Users\dancsg\OneDrive - Futureal\Documents\GitHub\autowinwatt\winwatt_automation\tests\testwwp.wwp"
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEFAULT_TEST_PROJECT_PATH = str(PROJECT_ROOT / "tests" / "testwwp.wwp")
 DEFAULT_WINWATT_EXE_PATH = r"C:\Program Files (x86)\Bausoft\WinWatt gólya\WinWatt32.exe"
 DEFAULT_WINWATT_PROCESS_NAME = "WinWatt32.exe"
 ENABLE_GEOMETRY_PLACEHOLDERS = True
@@ -207,8 +208,8 @@ def _launch_winwatt_target(*, target_path: str | None, exe_path: str) -> dict[st
     launch_target = str(target_path or exe_path)
     try:
         if os.name == "nt" and target_path and target_path.lower().endswith(".wwp"):
-            os.startfile(target_path)
-            return {"method": "os.startfile", "target": launch_target, "ok": True}
+            subprocess.Popen([exe_path, target_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return {"method": "explicit_exe_with_project", "target": launch_target, "ok": True}
         subprocess.Popen([launch_target], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         return {"method": "subprocess.Popen", "target": launch_target, "ok": True}
     except Exception as exc:
@@ -246,7 +247,7 @@ def prepare_fresh_winwatt_session(
     project_path: str | None = None,
     exe_path: str = DEFAULT_WINWATT_EXE_PATH,
     process_image_name: str = DEFAULT_WINWATT_PROCESS_NAME,
-    timeout_s: float = 20.0,
+    timeout_s: float = 75.0,
 ) -> dict[str, Any]:
     reset_winwatt_connection_cache()
     close_result = {"ok": True, "message": "not_attempted", "returncode": None}
@@ -3219,8 +3220,17 @@ def _list_recovery_target_windows(*, main_window_handle: Any | None = None, main
         handle = _safe_call(window, "handle", None)
         if main_window_handle is not None and handle == main_window_handle:
             continue
+        # TApplication is WinWatt's process-level owner window, not a dialog.
+        # Never make it a recovery target: closing/focusing it can terminate the
+        # entire application instead of dismissing the modal that blocked it.
+        class_name = (_safe_call(window, "class_name", "") or "").strip()
+        if class_name in {"TApplication", "TMainForm"}:
+            continue
+        process_id = _safe_call(window, "process_id", None)
+        if main_process_id is not None and process_id != main_process_id:
+            continue
         score = 0
-        if main_process_id is not None and _safe_call(window, "process_id", None) == main_process_id:
+        if main_process_id is not None and process_id == main_process_id:
             score += 10
         title = (_safe_call(window, "window_text", "") or "").strip()
         if title:
@@ -4889,7 +4899,10 @@ def _compute_knowledge_verification(current: dict[str, Any], baseline: dict[str,
 
     baseline_total = len(baseline_menus)
     covered = baseline_total - len(missing_menu_paths)
-    coverage_pct = 100.0 if baseline_total == 0 else round((covered / baseline_total) * 100, 2)
+    # A first mapping run has no comparison baseline.  Treating its empty set
+    # as 100% coverage hides the fact that no longitudinal verification was
+    # performed, so make the metric explicitly unavailable instead.
+    coverage_pct = None if baseline_total == 0 else round((covered / baseline_total) * 100, 2)
 
     return {
         "baseline_loaded": bool(baseline),
@@ -4920,6 +4933,8 @@ def _load_previous_knowledge(path: Path) -> dict[str, Any] | None:
 
 
 def _knowledge_markdown(verification: dict[str, Any]) -> str:
+    coverage = verification.get("coverage_pct")
+    coverage_text = "n/a (no baseline)" if coverage is None else f"{coverage}%"
     return "\n".join(
         [
             "# Runtime tudás verifikáció",
@@ -4931,7 +4946,7 @@ def _knowledge_markdown(verification: dict[str, Any]) -> str:
             f"- new menu paths: {len(verification.get('new_menu_paths', []))}",
             f"- missing dialogs: {len(verification.get('missing_dialogs', []))}",
             f"- missing windows: {len(verification.get('missing_windows', []))}",
-            f"- coverage: {verification.get('coverage_pct')}%",
+            f"- coverage: {coverage_text}",
             "",
         ]
     )
@@ -4945,8 +4960,15 @@ def build_full_runtime_program_map(
     top_menus: list[str] | None = None,
     max_submenu_depth: int | None = None,
     include_disabled: bool = True,
+    allow_process_restart: bool = True,
     event_recorder: Callable[[str, dict[str, Any]], None] | None = None,
 ) -> dict[str, Any]:
+    if not allow_process_restart:
+        raise RuntimeError(
+            "Full runtime mapping requires --allow-process-restart because it terminates and relaunches WinWatt "
+            "to establish reproducible no-project and project-open states."
+        )
+
     paths = ensure_output_dirs(Path(output_dir))
     knowledge_path = paths["base"] / "knowledge.json"
     previous_knowledge = _load_previous_knowledge(knowledge_path)
@@ -5180,7 +5202,7 @@ def build_full_runtime_program_map(
         "knowledge verification: "
         f"missing={len(knowledge_verification['missing_menu_paths'])}, "
         f"new={len(knowledge_verification['new_menu_paths'])}, "
-        f"coverage={knowledge_verification['coverage_pct']}%"
+        f"coverage={'n/a (no baseline)' if knowledge_verification['coverage_pct'] is None else str(knowledge_verification['coverage_pct']) + '%'}"
     )
     print(f"output: {paths['base']}")
 

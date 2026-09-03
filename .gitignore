@@ -1,0 +1,4 @@
+scripts/__pycache__/
+# Generated UI snapshots, screenshots, checkpoints and sandbox projects are
+# local evidence, not source code to deploy to the remote mapper machine.
+winwatt_automation/data/runtime_maps/
