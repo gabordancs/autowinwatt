@@ -11,6 +11,9 @@ from winwatt_automation.knowledge import ExperimentSpec
 
 
 class FakeRoomWorkflow:
+    def __init__(self) -> None:
+        self.last_room = None
+
     def create_sandbox(self, source_project: Path, sandbox_project: Path) -> Path:
         sandbox_project.parent.mkdir(parents=True, exist_ok=True)
         sandbox_project.write_bytes(source_project.read_bytes())
@@ -21,11 +24,16 @@ class FakeRoomWorkflow:
 
     def prepare_rooms(self, rooms: list[object], project_path: Path) -> OperationResult:
         room = rooms[0]
+        self.last_room = room
+        external = []
+        if room.external_wall_x_m is not None:
+            external = [EvidenceItem(kind="external_wall", message="external wall X matches", data={"expected_x_m": room.external_wall_x_m, "actual_x_m": room.external_wall_x_m})]
         return OperationResult(
             success=True, requested=1, completed=1, verified=True,
             evidence=[
                 EvidenceItem(kind="project_saved", message="saved", data={"project": str(project_path.with_name("prepared.wwp"))}),
                 EvidenceItem(kind="room_values", message="values match", data={"expected": {"area_m2": room.area_m2}, "actual": {"area_m2": room.area_m2}}),
+                *external,
             ],
         )
 
@@ -66,3 +74,18 @@ def test_unknown_capability_is_not_executed(tmp_path: Path) -> None:
     result = ExperimentRunner(FakeRoomWorkflow(), tmp_path / "runs").run(spec, source)
     assert result.success is False
     assert "not approved" in result.errors[0]
+
+
+def test_external_wall_handler_uses_semantic_room_service_input(tmp_path: Path) -> None:
+    source = tmp_path / "template.wwp"
+    source.write_bytes(b"template")
+    workflow = FakeRoomWorkflow()
+    spec = ExperimentSpec.model_validate({
+        "hypothesis_id": "hyp_wall_x", "target_capability": "room.boundary.external_wall.x_m",
+        "change": {"entity": "MVP Boundary Room", "to": 1.37}, "observe": ["ui_readback", "save_reopen"],
+    })
+    result = ExperimentRunner(workflow, tmp_path / "runs").run(spec, source)
+    assert result.success
+    assert result.actual == 1.37
+    assert workflow.last_room.external_wall_x_m == 1.37
+    assert workflow.last_room.area_m2 == 10.0
