@@ -15,7 +15,7 @@ from winwatt_automation.parser.xml_parser import parse_hungarian_xml
 from winwatt_automation.domain.project import PrepareRoomsInput
 from winwatt_automation.services.room_service import RoomService
 from winwatt_automation.experiments.runner import ExperimentRunner
-from winwatt_automation.knowledge.models import ExperimentSpec
+from winwatt_automation.knowledge.models import ExperimentSpec, Hypothesis, KnowledgeStatus
 from winwatt_automation.knowledge.store import KnowledgeStore
 
 app = typer.Typer(help="WinWatt automation CLI")
@@ -35,8 +35,8 @@ def knowledge_show(concept: str = typer.Argument(..., help="Semantic concept/cap
     store = KnowledgeStore()
     item = store.get_concept(concept)
     if item is None:
-        _json_output({"error": "concept_not_found", "concept": concept})
-        raise typer.Exit(code=1)
+        _json_output({"concept": {"concept": concept, "status": KnowledgeStatus.UNKNOWN}, "capability": None})
+        return
     capability = store.get_capability(concept)
     _json_output({"concept": item.model_dump(mode="json"), "capability": capability.model_dump(mode="json") if capability else None})
 
@@ -46,6 +46,22 @@ def knowledge_search(query: str = typer.Argument(..., help="Concept text to sear
     """Search semantic concepts; output is intentionally JSON-only."""
     store = KnowledgeStore()
     _json_output({"query": query, "concepts": [item.model_dump(mode="json") for item in store.search_concepts(query)]})
+
+
+@knowledge_app.command("hypothesize")
+def knowledge_hypothesize(
+    concept: str = typer.Argument(..., help="Target semantic concept/capability"),
+    hypothesis_id: str = typer.Argument(..., help="Stable hypothesis id"),
+    semantic_guess: str = typer.Argument(..., help="Human/heuristic semantic interpretation"),
+    confidence: float = typer.Option(0.5, min=0.0, max=1.0),
+) -> None:
+    """Create a non-verified hypothesis; it cannot execute UI actions by itself."""
+    store = KnowledgeStore()
+    hypothesis = store.store_hypothesis(Hypothesis(
+        hypothesis_id=hypothesis_id, target_capability=concept,
+        semantic_guess=semantic_guess, confidence=confidence,
+    ))
+    _json_output({"hypothesis": hypothesis.model_dump(mode="json"), "concept": store.get_concept(concept).model_dump(mode="json")})
 
 
 @experiment_app.command("run")
@@ -62,6 +78,13 @@ def experiment_run(
     if source is not None and not source.is_absolute():
         source = (experiment_path.parent / source).resolve()
     store = KnowledgeStore()
+    if store.get_hypothesis(spec.hypothesis_id) is None:
+        store.store_hypothesis(Hypothesis(
+            hypothesis_id=spec.hypothesis_id,
+            target_capability=spec.target_capability,
+            semantic_guess=f"Experiment-provided meaning for {spec.target_capability}",
+            confidence=0.5,
+        ))
     result = ExperimentRunner(output_dir=output_dir.resolve()).run(spec, source_project=source)
     store.store_experiment_result(result)
     promoted = None

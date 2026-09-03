@@ -112,7 +112,7 @@ class RoomService:
         must provide a positive area in the same request.  The wall workflow
         writes X=1 and the minimum valid companion geometry before committing.
         """
-        if not room.external_wall:
+        if not room.external_wall and room.external_wall_x_m is None:
             return
         if room.area_m2 is None:
             raise ValueError("external_wall requires a positive area_m2")
@@ -121,7 +121,7 @@ class RoomService:
         from winwatt_automation.scripts.create_building_with_rooms import add_external_wall, _set_room_area
         detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
         _set_room_area(detail, room.area_m2)
-        add_external_wall(detail)
+        add_external_wall(detail, x_m=room.external_wall_x_m or 1.0)
 
     def _ensure_saveable_main_window(self) -> None:
         """Recover the current main wrapper only after all record editors close."""
@@ -145,8 +145,10 @@ class RoomService:
         self._apply_proven_fields(room, project_path)
         self._apply_external_wall(room, project_path)
         fields = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c), ("summer_design_temperature_c", room.summer_design_temperature_c)) if value is not None]
-        if room.external_wall:
+        if room.external_wall or room.external_wall_x_m is not None:
             fields.append("external_wall")
+        if room.external_wall_x_m is not None:
+            fields.append("external_wall_x_m")
         return EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present and project was saved", data={"name": room.name, "applied_fields": fields})
 
     def create_rooms(self, rooms: list[RoomInput], project_path: Path) -> list[EvidenceItem]:
@@ -167,8 +169,10 @@ class RoomService:
             self._apply_proven_fields(room, project_path)
             self._apply_external_wall(room, project_path)
             applied = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c), ("summer_design_temperature_c", room.summer_design_temperature_c)) if value is not None]
-            if room.external_wall:
+            if room.external_wall or room.external_wall_x_m is not None:
                 applied.append("external_wall")
+            if room.external_wall_x_m is not None:
+                applied.append("external_wall_x_m")
             result.append(EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present before project persistence", data={"name": room.name, "applied_fields": applied}))
             main = get_main_window()
         self._ensure_saveable_main_window()
@@ -238,17 +242,18 @@ class RoomService:
             evidence.append(EvidenceItem(kind="room_values", message=f"Room {room.name!r} values {'match' if match else 'differ'}", data={"expected": expected_values, "actual": actual}))
             from pywinauto import keyboard
             detail.set_focus(); keyboard.send_keys("{ESC}")
-            if room.external_wall:
+            if room.external_wall or room.external_wall_x_m is not None:
                 from winwatt_automation.scripts.create_building_with_rooms import read_external_wall_x
                 wall_detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
                 try:
                     actual_x = read_external_wall_x(wall_detail)
-                    wall_match = abs(actual_x - 1.0) < 0.0001
+                    expected_x = room.external_wall_x_m or 1.0
+                    wall_match = abs(actual_x - expected_x) < 0.0001
                     values_ok = values_ok and wall_match
                     evidence.append(EvidenceItem(
                         kind="external_wall",
                         message=f"Room {room.name!r} external-wall X {'matches' if wall_match else 'differs'}",
-                        data={"expected_x_m": 1.0, "actual_x_m": actual_x},
+                        data={"expected_x_m": expected_x, "actual_x_m": actual_x},
                     ))
                 except Exception as exc:
                     values_ok = False

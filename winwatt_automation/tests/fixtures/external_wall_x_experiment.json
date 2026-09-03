@@ -1,0 +1,10 @@
+{
+  "hypothesis_id": "hyp_external_wall_x_cli",
+  "target_capability": "room.boundary.external_wall.x_m",
+  "source_project": "../testwwp.wwp",
+  "change": {
+    "entity": "Learning external wall",
+    "to": 1.37
+  },
+  "observe": ["ui_readback", "save_reopen"]
+}
