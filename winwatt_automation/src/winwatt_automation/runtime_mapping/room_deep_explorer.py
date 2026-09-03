@@ -41,6 +41,10 @@ EVENT_LOG_NAME = "exploration.events.jsonl"
 PROGRESS_NAME = "progress.json"
 PAUSE_REQUEST_NAME = "pause.request"
 MAX_DROPDOWN_REPRESENTATIVES = 3
+# WinWatt truncates long project captions before the filename.  Keep the
+# process identity of the fresh session we started as a second, authoritative
+# session marker for batched creation operations.
+_ACTIVE_SANDBOX_SESSION: tuple[int, str] | None = None
 
 
 @dataclass(frozen=True)
@@ -544,10 +548,24 @@ def _create_sandbox_room(main: Any, room_name: str) -> None:
 
 def _project_session_is_ready(project_path: str) -> bool:
     try:
-        title = get_main_window().window_text().casefold()
+        main = get_main_window()
+        title = main.window_text().casefold()
+        process_id = int(main.process_id())
     except Exception:
         return False
-    return Path(project_path).name.casefold() in title and "winwatt" in title
+    project = Path(project_path)
+    # The legacy main form sometimes truncates the final character of a
+    # project extension in its window caption (``testwwp.w`` for
+    # ``testwwp.wwp``).  Requiring the complete filename caused every room in
+    # a batch to relaunch WinWatt, discarding the not-yet-Save-As records.
+    # The project stem is stable in both the full and truncated captions.
+    caption_matches = (
+        (project.name.casefold() in title or project.stem.casefold() in title)
+        and "winwatt" in title
+    )
+    if caption_matches:
+        return True
+    return _ACTIVE_SANDBOX_SESSION == (process_id, str(project.resolve()))
 
 
 def _dismiss_secondary_windows(process_id: int, *, attempts: int = 5) -> None:
@@ -577,8 +595,11 @@ def _activate_rooms_catalog_fast(main: Any) -> None:
 
 def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
     """Restart into the sandbox project and return a room detail form."""
+    global _ACTIVE_SANDBOX_SESSION
     if not _project_session_is_ready(project_path):
         prepare_fresh_winwatt_session(project_path=project_path)
+        refreshed_main = get_main_window()
+        _ACTIVE_SANDBOX_SESSION = (int(refreshed_main.process_id()), str(Path(project_path).resolve()))
     else:
         _dismiss_secondary_windows(int(get_main_window().process_id()))
     main = get_main_window()
@@ -647,8 +668,10 @@ def open_sandbox_buildings(*, project_path: str) -> Any:
     # Building creation/edit dialogs can be nested (and temporarily disable
     # one another), so each replay deliberately starts a fresh application
     # session after the sandbox reset.
+    global _ACTIVE_SANDBOX_SESSION
     prepare_fresh_winwatt_session(project_path=project_path)
     main = get_main_window()
+    _ACTIVE_SANDBOX_SESSION = (int(main.process_id()), str(project.resolve()))
     native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
     catalog_menu = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Jegyzékek")
     catalog_menu.click()

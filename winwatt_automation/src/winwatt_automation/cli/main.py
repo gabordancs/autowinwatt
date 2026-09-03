@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
+import os
 
 import typer
 
@@ -12,8 +14,62 @@ from winwatt_automation.parser.semantic_classifier import classify_model
 from winwatt_automation.parser.xml_parser import parse_hungarian_xml
 from winwatt_automation.domain.project import PrepareRoomsInput
 from winwatt_automation.services.room_service import RoomService
+from winwatt_automation.experiments.runner import ExperimentRunner
+from winwatt_automation.knowledge.models import ExperimentSpec
+from winwatt_automation.knowledge.store import KnowledgeStore
 
 app = typer.Typer(help="WinWatt automation CLI")
+knowledge_app = typer.Typer(help="Inspect deterministic semantic knowledge")
+experiment_app = typer.Typer(help="Run sandbox-only deterministic experiments")
+app.add_typer(knowledge_app, name="knowledge")
+app.add_typer(experiment_app, name="experiment")
+
+
+def _json_output(value: object) -> None:
+    typer.echo(json.dumps(value, ensure_ascii=False, default=str))
+
+
+@knowledge_app.command("show")
+def knowledge_show(concept: str = typer.Argument(..., help="Semantic concept/capability id")) -> None:
+    """Return one concept and its associated capability as JSON."""
+    store = KnowledgeStore()
+    item = store.get_concept(concept)
+    if item is None:
+        _json_output({"error": "concept_not_found", "concept": concept})
+        raise typer.Exit(code=1)
+    capability = store.get_capability(concept)
+    _json_output({"concept": item.model_dump(mode="json"), "capability": capability.model_dump(mode="json") if capability else None})
+
+
+@knowledge_app.command("search")
+def knowledge_search(query: str = typer.Argument(..., help="Concept text to search")) -> None:
+    """Search semantic concepts; output is intentionally JSON-only."""
+    store = KnowledgeStore()
+    _json_output({"query": query, "concepts": [item.model_dump(mode="json") for item in store.search_concepts(query)]})
+
+
+@experiment_app.command("run")
+def experiment_run(
+    experiment_path: Path = typer.Argument(..., exists=True, readable=True, help="ExperimentSpec JSON file"),
+    output_dir: Path = typer.Option(Path("data/runtime_maps/experiments"), help="Parent directory for copied sandbox projects"),
+) -> None:
+    """Run an approved semantic action only when WinWatt E2E is explicitly enabled."""
+    if os.environ.get("WINWATT_E2E") != "1":
+        _json_output({"error": "e2e_disabled", "hint": "Set WINWATT_E2E=1 to permit a sandbox WinWatt experiment."})
+        raise typer.Exit(code=2)
+    spec = ExperimentSpec.model_validate_json(experiment_path.read_text(encoding="utf-8"))
+    source = Path(spec.source_project) if spec.source_project else None
+    if source is not None and not source.is_absolute():
+        source = (experiment_path.parent / source).resolve()
+    store = KnowledgeStore()
+    result = ExperimentRunner(output_dir=output_dir.resolve()).run(spec, source_project=source)
+    store.store_experiment_result(result)
+    promoted = None
+    if result.success:
+        promoted = store.promote_to_verified(spec.target_capability, result)
+    _json_output({"result": result.model_dump(mode="json"), "concept": promoted.model_dump(mode="json") if promoted else store.get_concept(spec.target_capability).model_dump(mode="json")})
+    if not result.success:
+        raise typer.Exit(code=1)
 
 
 @app.command("parse-xml")

@@ -15,9 +15,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from pywinauto import Application, keyboard
+from pywinauto import Application, Desktop, keyboard
 
 from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.services.winwatt_service import WinWattService
 from winwatt_automation.runtime_mapping.room_deep_explorer import (
     _active_window,
     _room_list_item,
@@ -40,14 +41,65 @@ def _wait_window(process_id: int, classes: set[str], timeout: float = 8.0) -> An
     raise RuntimeError(f"Expected one of {sorted(classes)!r}, got {observed.class_name()!r}")
 
 
+def _dismiss_room_validation_warning(process_id: int, timeout: float = 5.0) -> None:
+    """Accept WinWatt's modal boundary-area validation warning when present."""
+    deadline = time.monotonic() + timeout
+    seen_dialog = False
+    while time.monotonic() < deadline:
+        try:
+            dialogs = [
+                item for item in Desktop(backend="win32").windows()
+                if item.class_name() == "#32770" and item.is_visible()
+                and int(item.process_id()) == process_id
+            ]
+            if not dialogs:
+                # The validation dialog is posted shortly after the room
+                # editor's default button.  Do not return in that race window.
+                if seen_dialog:
+                    return
+                time.sleep(0.1)
+                continue
+            active = dialogs[-1]
+            seen_dialog = True
+            buttons = [item for item in active.descendants() if item.class_name() == "Button" and item.is_visible() and item.is_enabled()]
+            ok = next((item for item in buttons if item.window_text().strip() == "OK"), None)
+            if ok is None:
+                raise RuntimeError(f"Unexpected WinWatt validation dialog: {active.window_text()!r}")
+            Application(backend="win32").connect(process=process_id).window(handle=int(ok.handle)).click_input()
+            time.sleep(0.2)
+        except Exception:
+            time.sleep(0.1)
+
+
 def _find_visible(window: Any, control_type: str, name: str) -> Any:
     for item in window.descendants(control_type=control_type):
-        if item.is_visible() and item.is_enabled() and item.window_text().strip() == name:
+        if item.is_visible() and item.is_enabled() and _plain(item.window_text()) == _plain(name):
             return item
     raise LookupError(f"Missing enabled {control_type} {name!r} in {window.class_name()}")
 
 
+def _find_dialog_button(window: Any, name: str) -> Any:
+    """Pick a button physically owned by the dialog, not its MDI parent."""
+    bounds = window.rectangle()
+    candidates = [
+        item for item in window.descendants(control_type="Button")
+        if item.is_visible() and item.is_enabled()
+        and _plain(item.window_text()) == _plain(name)
+        and bounds.left <= item.rectangle().left < bounds.right
+        and bounds.top <= item.rectangle().top < bounds.bottom
+    ]
+    if not candidates:
+        raise LookupError(f"Missing dialog button {name!r} in {window.class_name()}")
+    return max(candidates, key=lambda item: item.rectangle().left)
+
+
 def _plain(value: str) -> str:
+    # UIA occasionally returns UTF-8 text decoded as Windows-1252.  Treat
+    # both that mojibake representation and genuine Hungarian text alike.
+    try:
+        value = value.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        pass
     return unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii").casefold()
 
 
@@ -81,16 +133,61 @@ def _select_external_wall_in_library(selector: Any) -> None:
         raise RuntimeError(f"Native construction selection failed: expected row {index}, got {selected}")
 
 
+def _set_room_area(room: Any, area_m2: float = 10.0) -> None:
+    """Set a positive floor area before adding a boundary construction."""
+    edits = [item for item in room.descendants(control_type="Edit") if item.class_name() == "TEdit"]
+    area = min(edits, key=lambda item: abs(item.rectangle().left - 125) + abs(item.rectangle().top - 99))
+    native = Application(backend="win32").connect(process=int(room.process_id())).window(handle=int(area.handle))
+    native.set_focus()
+    keyboard.send_keys("^a")
+    keyboard.send_keys(str(area_m2).replace(".", ","))
+
+
+def _wall_x_edit(detail: Any) -> Any:
+    """Locate X by the wall-form layout, independent of dialog placement.
+
+    Both wall editors expose a left deducted-area field and a four-field
+    geometry column (m, X, Y, U).  Absolute desktop coordinates differed
+    between their Delphi form classes, so selecting the second field in that
+    four-field column is the stable semantic identity for X.
+    """
+    edits = [item for item in detail.descendants(control_type="Edit") if item.class_name() == "TEdit"]
+    columns: list[list[Any]] = []
+    for edit in sorted(edits, key=lambda item: item.rectangle().left):
+        left = edit.rectangle().left
+        column = next((group for group in columns if abs(group[0].rectangle().left - left) <= 12), None)
+        if column is None:
+            columns.append([edit])
+        else:
+            column.append(edit)
+    geometry_columns = [group for group in columns if len(group) >= 3 and group[0].rectangle().left < 500]
+    if not geometry_columns:
+        raise RuntimeError(f"Could not identify wall geometry column among {len(edits)} edits")
+    geometry = min(geometry_columns, key=lambda group: group[0].rectangle().left)
+    ordered = sorted(geometry, key=lambda item: item.rectangle().top)
+    if len(ordered) < 2:
+        raise RuntimeError("Wall geometry column does not expose an X field")
+    return ordered[1]
+
+
+def _set_wall_x(detail: Any, x_m: float = 1.0) -> None:
+    """Set only the requested X geometry value for a new external wall."""
+    x_edit = _wall_x_edit(detail)
+    app = Application(backend="win32").connect(process=int(detail.process_id()))
+    native = app.window(handle=int(x_edit.handle))
+    native.set_focus()
+    keyboard.send_keys("^a")
+    keyboard.send_keys(str(x_m).replace(".", ","))
+
+
 def _save_project() -> None:
-    """Commit the catalog changes to the disposable project file."""
-    main = get_main_window()
-    main.set_focus()
-    keyboard.send_keys("^s")
-    time.sleep(0.6)
+    """Keep changes in-session; the final Save-As is the durable commit."""
 
 
-def add_external_wall(room: Any) -> dict[str, str]:
+def add_external_wall(room: Any, x_m: float = 1.0) -> dict[str, Any]:
     """Add the previously verified ``Külső fal`` boundary and commit it."""
+    if x_m <= 0:
+        raise ValueError("x_m must be positive")
     process_id = int(room.process_id())
     _find_visible(room, "Button", "Szerkezetek...").click_input()
     selector = _wait_window(process_id, {"TSelectBoundarisForm"})
@@ -105,17 +202,93 @@ def add_external_wall(room: Any) -> dict[str, str]:
 
     detail = _wait_window(process_id, {"TWallBoundaryModifyForm", "TBoundaryModifyForm"})
     boundary_form = detail.class_name()
-    detail.set_focus()
-    keyboard.send_keys("{ENTER}")
+    native_detail = Application(backend="win32").connect(process=process_id)
+    fields = []
+    for edit in detail.descendants(control_type="Edit"):
+        if edit.class_name() != "TEdit":
+            continue
+        rect = edit.rectangle()
+        fields.append({
+            "class": edit.class_name(),
+            "value": native_detail.window(handle=int(edit.handle)).window_text(),
+            "rect": [int(rect.left), int(rect.top), int(rect.right), int(rect.bottom)],
+        })
+    detail_buttons = [
+        {"text": item.window_text(), "class": item.class_name(), "enabled": bool(item.is_enabled())}
+        for item in detail.descendants(control_type="Button") if item.is_visible()
+    ]
+    _set_wall_x(detail, x_m)
+    detail_ok = _find_dialog_button(detail, "OK")
+    Application(backend="win32").connect(process=process_id).window(handle=int(detail_ok.handle)).click()
     # The detail form closes back to the selector.  Confirm the selector and
     # finally the room editor, so the new row is committed to the project.
     selector = _wait_window(process_id, {"TSelectBoundarisForm"})
-    _find_visible(selector, "Button", "OK").click_input()
+    selector_native = Application(backend="win32").connect(process=process_id).window(handle=int(selector.handle))
+    assigned_list = min(
+        (item for item in selector_native.descendants() if item.class_name() == "TListViewWithHeader"),
+        key=lambda item: item.rectangle().top,
+    )
+    assigned_count_before_selector_ok = ctypes.windll.user32.SendMessageW(int(assigned_list.handle), 0x1004, 0, 0)
+    # This modal Delphi form ignores UIA Invoke in some sessions.  Its
+    # default-button accelerator is reliable and must close the selector
+    # before the room editor can commit the new boundary.
+    ok_button = _find_dialog_button(selector, "OK")
+    Application(backend="win32").connect(process=process_id).window(handle=int(ok_button.handle)).click()
     room = _wait_window(process_id, {"TRoomModifyForm"})
-    room.set_focus()
+    room_ok = _find_dialog_button(room, "OK")
+    room_ok.set_focus()
     keyboard.send_keys("{ENTER}")
+    _dismiss_room_validation_warning(process_id)
+    deadline = time.monotonic() + 8.0
+    while time.monotonic() < deadline:
+        main = get_main_window()
+        try:
+            if main.is_enabled() and _active_window(process_id).class_name() == "TMainForm":
+                break
+        except Exception:
+            pass
+        time.sleep(0.15)
+    else:
+        raise RuntimeError("Room editor did not yield to the main window before Save-As")
     _save_project()
-    return {"room_form": room.class_name(), "boundary_form": boundary_form}
+    return {
+        "room_form": room.class_name(), "boundary_form": boundary_form, "x_m": x_m,
+        "boundary_fields_before_confirm": fields, "boundary_buttons": detail_buttons,
+        "assigned_count_before_selector_ok": assigned_count_before_selector_ok,
+    }
+
+
+def read_external_wall_x(room: Any) -> float:
+    """Read the first assigned external wall's X dimension without editing it.
+
+    This follows the same native selection route used for creation.  It is
+    deliberately a UI readback rather than an XML/file inspection: WinWatt's
+    editor is the authoritative proof that the persisted record can be used.
+    """
+    process_id = int(room.process_id())
+    _find_visible(room, "Button", "Szerkezetek...").click_input()
+    selector = _wait_window(process_id, {"TSelectBoundarisForm"})
+    native_selector = Application(backend="win32").connect(process=process_id)
+    assigned_list = min(
+        (item for item in native_selector.window(handle=int(selector.handle)).descendants()
+         if item.class_name() == "TListViewWithHeader"),
+        key=lambda item: item.rectangle().top,
+    )
+    if ctypes.windll.user32.SendMessageW(int(assigned_list.handle), 0x1004, 0, 0) < 1:
+        raise RuntimeError("No assigned boundary exists for external-wall readback")
+    assigned_list.set_focus()
+    keyboard.send_keys("{HOME}{SPACE}")
+    time.sleep(0.2)
+    _find_dialog_button(selector, "Módosít...").click_input()
+    detail = _wait_window(process_id, {"TWallBoundaryModifyForm", "TBoundaryModifyForm"})
+    x_edit = _wall_x_edit(detail)
+    raw_x = Application(backend="win32").connect(process=process_id).window(handle=int(x_edit.handle)).window_text()
+    detail.set_focus(); keyboard.send_keys("{ESC}")
+    selector = _wait_window(process_id, {"TSelectBoundarisForm"})
+    selector.set_focus(); keyboard.send_keys("{ESC}")
+    room = _wait_window(process_id, {"TRoomModifyForm"})
+    room.set_focus(); keyboard.send_keys("{ESC}")
+    return float(raw_x.replace(",", "."))
 
 
 def main() -> int:
@@ -124,7 +297,10 @@ def main() -> int:
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--building-name", default="Automation demo building")
     parser.add_argument("--room-prefix", default="Automation demo room")
+    parser.add_argument("--room-count", type=int, default=3)
     args = parser.parse_args()
+    if args.room_count < 1:
+        parser.error("--room-count must be at least 1")
     project = args.project.resolve()
     if "full_authorized_sandbox" not in {part.casefold() for part in project.parts}:
         parser.error("project must be in an explicitly created full_authorized_sandbox directory")
@@ -138,11 +314,14 @@ def main() -> int:
         "project": str(project), "building": args.building_name,
         "started_at": datetime.now(timezone.utc).isoformat(), "rooms": [],
     }
-    for index in range(1, 4):
+    for index in range(1, args.room_count + 1):
         room_name = f"{args.room_prefix} {index}"
         room = open_sandbox_room(project_path=str(project), room_name=room_name)
+        _set_room_area(room)
         boundary = add_external_wall(room)
         result["rooms"].append({"name": room_name, "boundary": "Külső fal", **boundary})
+    persisted = WinWattService().save_project_as(project.with_name("prepared.wwp"))
+    result["project"] = str(persisted)
     result["finished_at"] = datetime.now(timezone.utc).isoformat()
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, ensure_ascii=False))

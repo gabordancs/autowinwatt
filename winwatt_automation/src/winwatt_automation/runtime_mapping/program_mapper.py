@@ -247,7 +247,7 @@ def prepare_fresh_winwatt_session(
     project_path: str | None = None,
     exe_path: str = DEFAULT_WINWATT_EXE_PATH,
     process_image_name: str = DEFAULT_WINWATT_PROCESS_NAME,
-    timeout_s: float = 20.0,
+    timeout_s: float = 75.0,
 ) -> dict[str, Any]:
     reset_winwatt_connection_cache()
     close_result = {"ok": True, "message": "not_attempted", "returncode": None}
