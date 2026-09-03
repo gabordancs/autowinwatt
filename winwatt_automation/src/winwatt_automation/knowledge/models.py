@@ -3,7 +3,7 @@ from __future__ import annotations
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel, Field, field_validator, model_validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class KnowledgeStatus(StrEnum):
@@ -51,12 +51,7 @@ class Hypothesis(BaseModel):
     status: KnowledgeStatus = KnowledgeStatus.HYPOTHESIS
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
     evidence: list[EvidenceRef] = Field(default_factory=list)
-
-    @model_validator(mode="after")
-    def hypothesis_status_only(self) -> "Hypothesis":
-        if self.status not in {KnowledgeStatus.HYPOTHESIS, KnowledgeStatus.EXPERIMENTED, KnowledgeStatus.REJECTED}:
-            raise ValueError("a hypothesis cannot be created as verified")
-        return self
+    experiment_ids: list[str] = Field(default_factory=list)
 
 
 class ExperimentChange(BaseModel):

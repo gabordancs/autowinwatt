@@ -144,30 +144,18 @@ def _set_room_area(room: Any, area_m2: float = 10.0) -> None:
 
 
 def _wall_x_edit(detail: Any) -> Any:
-    """Locate X by the wall-form layout, independent of dialog placement.
+    """Return the actual ``x [m]`` edit in the boundary detail form.
 
-    Both wall editors expose a left deducted-area field and a four-field
-    geometry column (m, X, Y, U).  Absolute desktop coordinates differed
-    between their Delphi form classes, so selecting the second field in that
-    four-field column is the stable semantic identity for X.
+    Runtime inspection proves the former column heuristic selected the nearby
+    ``Darabszám`` (count) field.  X is the unique leftmost upper geometry edit;
+    Y and count occupy the next column.
     """
     edits = [item for item in detail.descendants(control_type="Edit") if item.class_name() == "TEdit"]
-    columns: list[list[Any]] = []
-    for edit in sorted(edits, key=lambda item: item.rectangle().left):
-        left = edit.rectangle().left
-        column = next((group for group in columns if abs(group[0].rectangle().left - left) <= 12), None)
-        if column is None:
-            columns.append([edit])
-        else:
-            column.append(edit)
-    geometry_columns = [group for group in columns if len(group) >= 3 and group[0].rectangle().left < 500]
-    if not geometry_columns:
-        raise RuntimeError(f"Could not identify wall geometry column among {len(edits)} edits")
-    geometry = min(geometry_columns, key=lambda group: group[0].rectangle().left)
-    ordered = sorted(geometry, key=lambda item: item.rectangle().top)
-    if len(ordered) < 2:
-        raise RuntimeError("Wall geometry column does not expose an X field")
-    return ordered[1]
+    candidates = [edit for edit in edits if edit.rectangle().left < 160 and edit.rectangle().top < 160]
+    if len(candidates) != 1:
+        observed = [(item.rectangle().left, item.rectangle().top) for item in edits]
+        raise RuntimeError(f"Could not uniquely identify external-wall X edit; observed={observed}")
+    return candidates[0]
 
 
 def _set_wall_x(detail: Any, x_m: float = 1.0) -> None:
@@ -178,6 +166,15 @@ def _set_wall_x(detail: Any, x_m: float = 1.0) -> None:
     native.set_focus()
     keyboard.send_keys("^a")
     keyboard.send_keys(str(x_m).replace(".", ","))
+    # Delphi commits the geometry edit on focus loss. Without this explicit
+    # transition the dialog can save its default X=1 after confirmation.
+    keyboard.send_keys("{TAB}")
+    observed = native.window_text().replace(",", ".").strip()
+    try:
+        if abs(float(observed) - x_m) >= 0.0001:
+            raise RuntimeError(f"External-wall X edit did not retain {x_m}; observed {observed!r}")
+    except ValueError as exc:
+        raise RuntimeError(f"External-wall X edit is not numeric after write: {observed!r}") from exc
 
 
 def _save_project() -> None:
@@ -218,6 +215,13 @@ def add_external_wall(room: Any, x_m: float = 1.0) -> dict[str, Any]:
         for item in detail.descendants(control_type="Button") if item.is_visible()
     ]
     _set_wall_x(detail, x_m)
+    fields_after_x = [
+        {
+            "value": native_detail.window(handle=int(edit.handle)).window_text(),
+            "rect": [int(edit.rectangle().left), int(edit.rectangle().top), int(edit.rectangle().right), int(edit.rectangle().bottom)],
+        }
+        for edit in detail.descendants(control_type="Edit") if edit.class_name() == "TEdit"
+    ]
     detail_ok = _find_dialog_button(detail, "OK")
     Application(backend="win32").connect(process=process_id).window(handle=int(detail_ok.handle)).click()
     # The detail form closes back to the selector.  Confirm the selector and
@@ -253,7 +257,8 @@ def add_external_wall(room: Any, x_m: float = 1.0) -> dict[str, Any]:
     _save_project()
     return {
         "room_form": room.class_name(), "boundary_form": boundary_form, "x_m": x_m,
-        "boundary_fields_before_confirm": fields, "boundary_buttons": detail_buttons,
+        "boundary_fields_before_confirm": fields, "boundary_fields_after_x": fields_after_x,
+        "boundary_buttons": detail_buttons,
         "assigned_count_before_selector_ok": assigned_count_before_selector_ok,
     }
 

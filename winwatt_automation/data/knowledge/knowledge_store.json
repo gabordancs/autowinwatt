@@ -20,6 +20,58 @@
       "ui_read": "verified",
       "ui_write": "verified"
     },
+    "room.boundary.external_wall.x_m": {
+      "capability": "room.boundary.external_wall.x_m",
+      "evidence": [
+        {
+          "data": {
+            "experiment_id": "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "experiment_id": "exp_9b2e225ed1784f3c825e1da71bad78ee",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "experiment_id": "exp_c1860584afb84bc9924376d23d869145",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": 1.37,
+            "expected": 1.37,
+            "persisted_readback": true,
+            "roundtrip_verified": true
+          },
+          "description": "Deterministic expected/actual comparison after save/reopen",
+          "deterministic": true,
+          "kind": "verification",
+          "path": null
+        }
+      ],
+      "preferred_transport": null,
+      "roundtrip_verified": true,
+      "status": "verified",
+      "ui_read": "unknown",
+      "ui_write": "unknown"
+    },
     "room.height_m": {
       "capability": "room.height_m",
       "evidence": [
@@ -102,6 +154,58 @@
       "status": "verified",
       "unit": "m2"
     },
+    "room.boundary.external_wall.x_m": {
+      "concept": "room.boundary.external_wall.x_m",
+      "confidence": 1.0,
+      "data_type": "float",
+      "entity": "RoomBoundary",
+      "evidence": [
+        {
+          "data": {
+            "experiment_id": "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "experiment_id": "exp_9b2e225ed1784f3c825e1da71bad78ee",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "experiment_id": "exp_c1860584afb84bc9924376d23d869145",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": 1.37,
+            "expected": 1.37,
+            "persisted_readback": true,
+            "roundtrip_verified": true
+          },
+          "description": "Deterministic expected/actual comparison after save/reopen",
+          "deterministic": true,
+          "kind": "verification",
+          "path": null
+        }
+      ],
+      "status": "verified",
+      "unit": "m"
+    },
     "room.height_m": {
       "concept": "room.height_m",
       "confidence": 1.0,
@@ -163,6 +267,477 @@
       "unit": "C"
     }
   },
-  "experiments": {},
-  "hypotheses": {}
+  "experiments": {
+    "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f": {
+      "actual": 1.0,
+      "errors": [],
+      "evidence": [
+        {
+          "data": {
+            "actual": null,
+            "entity": "Learning external wall",
+            "ui_read": false
+          },
+          "description": "Pre-action sandbox state; numeric proof is collected after save/reopen",
+          "deterministic": false,
+          "kind": "state",
+          "path": null
+        },
+        {
+          "data": {
+            "applied_fields": [
+              "area_m2",
+              "external_wall",
+              "external_wall_x_m"
+            ],
+            "name": "Learning external wall"
+          },
+          "description": "Room 'Learning external wall' is present before project persistence",
+          "deterministic": false,
+          "kind": "room_created",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T145356Z_4928e002\\sandbox\\prepared.wwp",
+            "sha256": "cc9385060b292de93d49f89bd8f413592d8343db5bbc6f217999554b993d6484"
+          },
+          "description": "Saved through WinWatt Save-As",
+          "deterministic": true,
+          "kind": "project_saved",
+          "path": null
+        },
+        {
+          "data": {
+            "actual_buildings": [
+              "Building graph explorer"
+            ],
+            "expected": "Building graph explorer",
+            "matched": "Building graph explorer"
+          },
+          "description": "Building 'Building graph explorer' is present after reopen",
+          "deterministic": true,
+          "kind": "building",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": "Learning external wall",
+            "expected": "Learning external wall"
+          },
+          "description": "Room 'Learning external wall' found",
+          "deterministic": true,
+          "kind": "room_exists",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": {
+              "area_m2": 10.0
+            },
+            "expected": {
+              "area_m2": 10.0
+            }
+          },
+          "description": "Room 'Learning external wall' values match",
+          "deterministic": true,
+          "kind": "room_values",
+          "path": null
+        },
+        {
+          "data": {
+            "actual_x_m": 1.0,
+            "expected_x_m": 1.37
+          },
+          "description": "Room 'Learning external wall' external-wall X differs",
+          "deterministic": false,
+          "kind": "external_wall",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T145356Z_4928e002\\sandbox\\prepared.wwp",
+            "sha256": "cc9385060b292de93d49f89bd8f413592d8343db5bbc6f217999554b993d6484"
+          },
+          "description": "Saved through WinWatt Save-As",
+          "deterministic": true,
+          "kind": "project_saved",
+          "path": null
+        },
+        {
+          "data": {
+            "verified": false
+          },
+          "description": "Save/reopen verification completed by RoomService.prepare_rooms",
+          "deterministic": false,
+          "kind": "save_reopen",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": 1.0,
+            "expected": 1.37,
+            "roundtrip_verified": false
+          },
+          "description": "Deterministic expected/actual comparison after save/reopen",
+          "deterministic": false,
+          "kind": "verification",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T145356Z_4928e002\\sandbox\\testwwp.wwp"
+          },
+          "description": "Sandbox retained; next run uses a fresh copy",
+          "deterministic": false,
+          "kind": "sandbox_reset",
+          "path": null
+        }
+      ],
+      "expected": 1.37,
+      "experiment_id": "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+      "hypothesis_id": "hyp_external_wall_x_cli",
+      "roundtrip_verified": false,
+      "sandbox_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T145356Z_4928e002\\sandbox\\testwwp.wwp",
+      "success": false,
+      "target_capability": "room.boundary.external_wall.x_m"
+    },
+    "exp_9b2e225ed1784f3c825e1da71bad78ee": {
+      "actual": 1.0,
+      "errors": [],
+      "evidence": [
+        {
+          "data": {
+            "actual": null,
+            "entity": "Learning external wall",
+            "ui_read": false
+          },
+          "description": "Pre-action sandbox state; numeric proof is collected after save/reopen",
+          "deterministic": false,
+          "kind": "state",
+          "path": null
+        },
+        {
+          "data": {
+            "applied_fields": [
+              "area_m2",
+              "external_wall",
+              "external_wall_x_m"
+            ],
+            "name": "Learning external wall"
+          },
+          "description": "Room 'Learning external wall' is present before project persistence",
+          "deterministic": false,
+          "kind": "room_created",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T152606Z_2dbd1db8\\sandbox\\prepared.wwp",
+            "sha256": "f6d66c3f489a088209a6269776cd3ff24f07c47eb5927e20d59d1dac118c3016"
+          },
+          "description": "Saved through WinWatt Save-As",
+          "deterministic": true,
+          "kind": "project_saved",
+          "path": null
+        },
+        {
+          "data": {
+            "actual_buildings": [
+              "Building graph explorer"
+            ],
+            "expected": "Building graph explorer",
+            "matched": "Building graph explorer"
+          },
+          "description": "Building 'Building graph explorer' is present after reopen",
+          "deterministic": true,
+          "kind": "building",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": "Learning external wall",
+            "expected": "Learning external wall"
+          },
+          "description": "Room 'Learning external wall' found",
+          "deterministic": true,
+          "kind": "room_exists",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": {
+              "area_m2": 10.0
+            },
+            "expected": {
+              "area_m2": 10.0
+            }
+          },
+          "description": "Room 'Learning external wall' values match",
+          "deterministic": true,
+          "kind": "room_values",
+          "path": null
+        },
+        {
+          "data": {
+            "actual_x_m": 1.0,
+            "expected_x_m": 1.37
+          },
+          "description": "Room 'Learning external wall' external-wall X differs",
+          "deterministic": false,
+          "kind": "external_wall",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T152606Z_2dbd1db8\\sandbox\\prepared.wwp",
+            "sha256": "f6d66c3f489a088209a6269776cd3ff24f07c47eb5927e20d59d1dac118c3016"
+          },
+          "description": "Saved through WinWatt Save-As",
+          "deterministic": true,
+          "kind": "project_saved",
+          "path": null
+        },
+        {
+          "data": {
+            "verified": false
+          },
+          "description": "Save/reopen verification completed by RoomService.prepare_rooms",
+          "deterministic": false,
+          "kind": "save_reopen",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": 1.0,
+            "expected": 1.37,
+            "persisted_readback": true,
+            "roundtrip_verified": false
+          },
+          "description": "Deterministic expected/actual comparison after save/reopen",
+          "deterministic": true,
+          "kind": "verification",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T152606Z_2dbd1db8\\sandbox\\testwwp.wwp"
+          },
+          "description": "Sandbox retained; next run uses a fresh copy",
+          "deterministic": false,
+          "kind": "sandbox_reset",
+          "path": null
+        }
+      ],
+      "expected": 1.37,
+      "experiment_id": "exp_9b2e225ed1784f3c825e1da71bad78ee",
+      "hypothesis_id": "hyp_external_wall_x_cli",
+      "roundtrip_verified": false,
+      "sandbox_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T152606Z_2dbd1db8\\sandbox\\testwwp.wwp",
+      "success": false,
+      "target_capability": "room.boundary.external_wall.x_m"
+    },
+    "exp_c1860584afb84bc9924376d23d869145": {
+      "actual": 1.37,
+      "errors": [],
+      "evidence": [
+        {
+          "data": {
+            "actual": null,
+            "entity": "Learning external wall",
+            "ui_read": false
+          },
+          "description": "Pre-action sandbox state; numeric proof is collected after save/reopen",
+          "deterministic": false,
+          "kind": "state",
+          "path": null
+        },
+        {
+          "data": {
+            "applied_fields": [
+              "area_m2",
+              "external_wall",
+              "external_wall_x_m"
+            ],
+            "name": "Learning external wall"
+          },
+          "description": "Room 'Learning external wall' is present before project persistence",
+          "deterministic": false,
+          "kind": "room_created",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T153912Z_4c4b6251\\sandbox\\prepared.wwp",
+            "sha256": "43b591c9e0bfb26078be82a843d59fe6f726afdc21233acb799cc60ae99eb472"
+          },
+          "description": "Saved through WinWatt Save-As",
+          "deterministic": true,
+          "kind": "project_saved",
+          "path": null
+        },
+        {
+          "data": {
+            "actual_buildings": [
+              "Building graph explorer"
+            ],
+            "expected": "Building graph explorer",
+            "matched": "Building graph explorer"
+          },
+          "description": "Building 'Building graph explorer' is present after reopen",
+          "deterministic": true,
+          "kind": "building",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": "Learning external wall",
+            "expected": "Learning external wall"
+          },
+          "description": "Room 'Learning external wall' found",
+          "deterministic": true,
+          "kind": "room_exists",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": {
+              "area_m2": 10.0
+            },
+            "expected": {
+              "area_m2": 10.0
+            }
+          },
+          "description": "Room 'Learning external wall' values match",
+          "deterministic": true,
+          "kind": "room_values",
+          "path": null
+        },
+        {
+          "data": {
+            "actual_x_m": 1.37,
+            "expected_x_m": 1.37
+          },
+          "description": "Room 'Learning external wall' external-wall X matches",
+          "deterministic": false,
+          "kind": "external_wall",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T153912Z_4c4b6251\\sandbox\\prepared.wwp",
+            "sha256": "43b591c9e0bfb26078be82a843d59fe6f726afdc21233acb799cc60ae99eb472"
+          },
+          "description": "Saved through WinWatt Save-As",
+          "deterministic": true,
+          "kind": "project_saved",
+          "path": null
+        },
+        {
+          "data": {
+            "verified": true
+          },
+          "description": "Save/reopen verification completed by RoomService.prepare_rooms",
+          "deterministic": true,
+          "kind": "save_reopen",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": 1.37,
+            "expected": 1.37,
+            "persisted_readback": true,
+            "roundtrip_verified": true
+          },
+          "description": "Deterministic expected/actual comparison after save/reopen",
+          "deterministic": true,
+          "kind": "verification",
+          "path": null
+        },
+        {
+          "data": {
+            "project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T153912Z_4c4b6251\\sandbox\\testwwp.wwp"
+          },
+          "description": "Sandbox retained; next run uses a fresh copy",
+          "deterministic": false,
+          "kind": "sandbox_reset",
+          "path": null
+        }
+      ],
+      "expected": 1.37,
+      "experiment_id": "exp_c1860584afb84bc9924376d23d869145",
+      "hypothesis_id": "hyp_external_wall_x_cli",
+      "roundtrip_verified": true,
+      "sandbox_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\learning_loop_cli_e2e\\experiment_20260903T153912Z_4c4b6251\\sandbox\\testwwp.wwp",
+      "success": true,
+      "target_capability": "room.boundary.external_wall.x_m"
+    }
+  },
+  "hypotheses": {
+    "cli_wall_x": {
+      "confidence": 0.72,
+      "evidence": [],
+      "experiment_ids": [],
+      "hypothesis_id": "cli_wall_x",
+      "semantic_guess": "External wall X",
+      "status": "hypothesis",
+      "target_capability": "room.boundary.external_wall.x_m"
+    },
+    "hyp_external_wall_x_cli": {
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "data": {
+            "experiment_id": "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "experiment_id": "exp_9b2e225ed1784f3c825e1da71bad78ee",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "experiment_id": "exp_c1860584afb84bc9924376d23d869145",
+            "hypothesis_id": "hyp_external_wall_x_cli"
+          },
+          "description": "Experiment linked to hypothesis",
+          "deterministic": false,
+          "kind": "experiment",
+          "path": null
+        },
+        {
+          "data": {
+            "actual": 1.37,
+            "expected": 1.37,
+            "persisted_readback": true,
+            "roundtrip_verified": true
+          },
+          "description": "Deterministic expected/actual comparison after save/reopen",
+          "deterministic": true,
+          "kind": "verification",
+          "path": null
+        }
+      ],
+      "experiment_ids": [
+        "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+        "exp_9b2e225ed1784f3c825e1da71bad78ee",
+        "exp_c1860584afb84bc9924376d23d869145"
+      ],
+      "hypothesis_id": "hyp_external_wall_x_cli",
+      "semantic_guess": "Experiment-provided meaning for room.boundary.external_wall.x_m",
+      "status": "verified",
+      "target_capability": "room.boundary.external_wall.x_m"
+    }
+  }
 }

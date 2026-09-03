@@ -5,7 +5,7 @@ from pathlib import Path
 
 from winwatt_automation.domain.results import EvidenceItem, OperationResult
 from winwatt_automation.experiments import ExperimentRunner
-from winwatt_automation.knowledge import ExperimentSpec, KnowledgeStatus, KnowledgeStore
+from winwatt_automation.knowledge import ExperimentSpec, Hypothesis, KnowledgeStatus, KnowledgeStore
 
 
 class _Workflow:
@@ -38,6 +38,7 @@ def test_mapping_capability_to_experiment_to_verified_knowledge(tmp_path: Path) 
         "change": {"entity": "MVP Nappali", "from": 28.4, "to": 31.7},
         "observe": ["ui_readback", "save_reopen"],
     })
+    store.store_hypothesis(Hypothesis(hypothesis_id=spec.hypothesis_id, target_capability=spec.target_capability, semantic_guess="room area"))
     result = ExperimentRunner(_Workflow(), tmp_path / "runs").run(spec, source)
     store.store_experiment_result(result)
     concept = store.promote_to_verified("room.area_m2", result)
