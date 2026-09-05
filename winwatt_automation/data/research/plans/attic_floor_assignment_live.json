@@ -1,0 +1,228 @@
+{
+  "validation_error": "planner output goal does not match requested goal",
+  "parsed_plan": {
+    "goal": "Tanuld meg, hogyan vehető fel egy már létező Padlásfödém szerkezet egy helyiség határoló szerkezeteként.",
+    "interpreted_scope": "Egy projektadatbázisban már létező, Padlásfödém típusú szerkezet hozzárendelésének feltárása egy helyiség határoló szerkezeteihez; új szerkezet létrehozása nem része a célnak.",
+    "known_verified": [
+      "room.boundary.external_wall.x_m"
+    ],
+    "manual_supported": [
+      "A kézikönyv szerint a projekt szerkezeteiből építhetők fel a helyiségek, és a Padlásfödém támogatott szerkezettípus.",
+      "A kézikönyv szerint a helyiség adatablakából megnyitható egy ablak, amely a határoló szerkezetek adatait a szerkezetadatbázisból tölti fel.",
+      "A kézikönyv ismerteti a helyiséghez tartozó határoló szerkezetek listájának rendezését, másolását és törlését, de ez nem igazolja futásidőben a Padlásfödém hozzárendelését."
+    ],
+    "hypotheses": [],
+    "unknowns": [
+      "Nem igazolt, hogy egy már létező Padlásfödém szerkezet ténylegesen kiválasztható és hozzárendelhető a helyiséghez.",
+      "Nem ismert a hozzárendelés mentett adatmodellje vagy stabil szemantikai mezője.",
+      "Nincs mentés–újranyitás–visszaolvasás bizonyíték arra, hogy a hozzárendelés tartósan megmarad.",
+      "Nem ismert, milyen további geometriai vagy tájolási adatokat követel meg a Padlásfödém határoló szerkezetként."
+    ],
+    "recommended_next_target": "room.boundary.attic_floor.structure_reference",
+    "reasoning_summary": "A kézikönyv alátámasztja a munkafolyamat általános lehetőségét, de dokumentációként nem számít verifikációnak. A célt közvetlenül lefedő képesség nincs a biztonságos kísérletkezelők között, ezért ehhez most nem javasolható végrehajtható kísérlet.",
+    "proposed_hypothesis": {
+      "target_capability": "room.boundary.attic_floor.structure_reference",
+      "semantic_guess": "Egy helyiség határoló szerkezete hivatkozhat a projektadatbázisban már létező, Padlásfödém típusú szerkezetre.",
+      "confidence": 0.78
+    },
+    "proposed_experiment": {
+      "experiment_status": "unsupported",
+      "reason": "A célképesség nem szerepel a known_safe_experiment_handlers listában; a rendelkezésre álló kezelők csak a room.area_m2 és room.boundary.external_wall.x_m képességeket támogatják.",
+      "missing_capability": "room.boundary.attic_floor.structure_reference",
+      "spec": null
+    },
+    "needs_human_input": false,
+    "human_question": null
+  },
+  "audit": {
+    "prompt_version": "research_planner_v0.1",
+    "instructions": "You are a WinWatt research planner. Produce only the supplied structured schema.\nYou plan from the supplied context and nothing else. VERIFIED means only deterministic runtime\nsave/reopen/readback evidence. Manual material is documentation, never verification. A hypothesis\nis unproven. You must not claim a new verified capability, create UI commands, coordinates, keys,\nshell commands, or arbitrary automation. Propose an experiment only when its target is in\nknown_safe_experiment_handlers and its schema is valid; otherwise mark it unsupported and say why.\nThis is a dry-run: do not request execution.\n\nKNOWN_VERIFIED: Only copy exact concept identifiers from allowed_verified_concepts. Never infer that a related or parent concept is verified. For example, verification of room.boundary.external_wall.x_m does not verify room.boundary.external_wall, room.boundary.external_wall.dimensions, or any other identifier. known_verified must be a strict subset of allowed_verified_concepts.\n\nHYPOTHESES: Only copy exact identifiers from allowed_hypothesis_concepts. Do not invent or rename an existing hypothesis in the hypotheses list; use proposed_hypothesis for a new suggestion.\n\nallowed_verified_concepts = [\"room.area_m2\", \"room.boundary.external_wall.x_m\", \"room.height_m\", \"room.name\", \"room.temperature_c\"]\n\nallowed_hypothesis_concepts = [\"room.boundary.external_wall.solar_absorptance\"]",
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "context": {
+      "goal": "Tanuld meg, hogyan kell egy már létező Padlásfödém szerkezetet egy helyiség határoló szerkezeteként felvenni",
+      "verified_concepts": [
+        {
+          "concept": "room.area_m2",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.boundary.external_wall.x_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "experiment",
+            "verification"
+          ]
+        },
+        {
+          "concept": "room.height_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.name",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.temperature_c",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "concept": "room.boundary.external_wall.solar_absorptance",
+          "status": "hypothesis",
+          "confidence": 0.72,
+          "evidence_kinds": [
+            "research_manual"
+          ]
+        }
+      ],
+      "rejected_hypotheses": [],
+      "relevant_capabilities": [
+        {
+          "concept": "room.boundary.external_wall.solar_absorptance",
+          "status": "hypothesis",
+          "confidence": 0.72,
+          "evidence_kinds": [
+            "research_manual"
+          ]
+        },
+        {
+          "concept": "room.area_m2",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.boundary.external_wall.x_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "experiment",
+            "verification"
+          ]
+        },
+        {
+          "concept": "room.height_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.name",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.temperature_c",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        }
+      ],
+      "manual_evidence": [
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 33,
+          "section": "Helyiségek 33",
+          "excerpt": "Helyiségek 33 BAUSFT Pécsvárad Kft. A határoló szerkezetek sorrendjének megváltoztatására - a sorrend a szá- mítást nem befolyásolja - szolgálnak a Felfelé és Lefelé gombok, amik a listában a kijelölt határoló szerkezet mozgatását végzik a jelzett irányba. A Másol nyomógomb segítségével a listában kijelölt határoló szerkezet egy másolata adódik hozzá a listához, a lista végén. A Töröl nyomógomb lenyomására történik a listában a kijelölt határoló szerkezet törlése, előtte még egy figyelmeztetést kapunk, ami lehetőséget ad a törlés elvetésére. A határoló szerkezetek megadásakor gyakran van arra szükség, hogy az egyik szerkezet felületét egy másikból levonjuk. Ezt legkényelmesebben vidd és dobd módszerrel végezhetjük el. A levonandó szerkezetre állunk az egér mutatójával, lenyomjuk az egér bal gombját, majd a gomb lenyomott állapota mellett az egér mutatóját rámozgatjuk arra a szerkezetre,",
+          "related_concepts": []
+        },
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 23,
+          "section": "Szerkezetek 23",
+          "excerpt": "Szerkezetek 23 BAUSFT Pécsvárad Kft. mező tartalmazza az elvégzett számítások alapján, a rétegekre illetve a teljes szerkezetre vonatkozó értékelést. 7.6. Ismert szerkezet adatainak megadása Ha egy szerkezet adatai más számításokból ismertek, vagy réteges szer- kezetként nem is számítható (pl. ablak, ajtó stb.), ismert szerkezetként visszük be a projekt szerkezetei közé, hogy a későbbiekben, amikor a szer- kezetekből felépítjük a helyiségeket, az ilyen szerkezetek is egyszerűen be- illeszthetők legyenek. A szerkezet mérete és a hőátbocsátási tényező mellett, a kiválasztott szerkezet típus szerint vagy a falszerkezet adatok , vagy az üvegezett szerkezet adatok megadása lehetséges. 7.7. Szerkezettípusok Az egyes szerkezettípusok meghatározzák a számítás módját is. Az alkalmazható szerkezettípusok a következők: külső szerkezet belső szerkezet padló (talajra fektetett) tető padlásfödém",
+          "related_concepts": []
+        },
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 40,
+          "section": "40 Helyiségek",
+          "excerpt": "tartozó teljesítményeket (fűtő / hűtő) kapjuk. A szükséges méretű panel kiválasztásához kattintsunk duplán az adott cellában. Az első sorban és a bal szélső oszlopban a méretsor jelenik meg, az ebben a részben végrehajtott dupla kattintással a felkínált méretek száma csökkenthető. 8.4. Helyiség felépítése A helyiség adatainak megadására szolgáló ablakból nyílik a határoló szerkezet adatoknak a szerkezet adatbázisból való feltöltését biztosító ablak. A felső listában szerepelnek a helyiséget határoló szerkezetek. A listában mozgathatjuk a kijelölt tételt a felfelé illetve lefelé nyomó- gombok segítségével. A másol nyomógomb segítségével a listában kijelölt határoló szerkezet egy másolata adódik hozzá a listához, a lista végén. Ki is törölhetjük a kijelölt szerkezetet, erre a töröl nyomógombot kell használni. Mielőtt törölné az adott szerkezetet a program, még egyszer rákérdez,",
+          "related_concepts": []
+        },
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 18,
+          "section": "18 Szerkezetek",
+          "excerpt": "18 Szerkezetek BAUSFT Pécsvárad Kft. 7. Szerkezetek A szerkezetek a projekt adatbázisban vannak tárolva. A szerkezetek jegyzék mind a menü Jegyzék | Szerkezetek menüpontjával, mind az eszközsáv ikonjával előhívható. A jegyzékben a csoportokra illetve a csoportok elemeire elvégezhető műveletek a létrehozás, másolás, átnevezés illetve törlés mellett a szerkezet adatainak a módosítása. A szerkezetek adatai különböző formátumokban ki is nyomtathatók. Egy új szerkezet létrehozásakor dönthetünk róla, hogy egy réteges szerkezetről van-e szó, ahol a rétegrend megadása után a program számolja ki a szerkezet jellemzőit, vagy egy ismert szerkezetről, amelynek vala- mennyi adatát magunk adjuk meg. 7.1. Réteges szerkezet adatainak megadása és módosítása Az adatok megadására a következő párbeszédpanel áll rendelkezésre. A szerkezet típus meghatározza a számítások módját is. A típusváltással átírásra",
+          "related_concepts": []
+        }
+      ],
+      "previous_experiments": [
+        "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+        "exp_9b2e225ed1784f3c825e1da71bad78ee",
+        "exp_c1860584afb84bc9924376d23d869145"
+      ],
+      "known_safe_experiment_handlers": [
+        "room.area_m2",
+        "room.boundary.external_wall.x_m"
+      ]
+    },
+    "raw_response": {
+      "response_id": "resp_0e80095e45f61ee9016a99d4bd983c87d2baa86b13f0fbcd35",
+      "output": {
+        "goal": "Tanuld meg, hogyan vehető fel egy már létező Padlásfödém szerkezet egy helyiség határoló szerkezeteként.",
+        "interpreted_scope": "Egy projektadatbázisban már létező, Padlásfödém típusú szerkezet hozzárendelésének feltárása egy helyiség határoló szerkezeteihez; új szerkezet létrehozása nem része a célnak.",
+        "known_verified": [
+          "room.boundary.external_wall.x_m"
+        ],
+        "manual_supported": [
+          "A kézikönyv szerint a projekt szerkezeteiből építhetők fel a helyiségek, és a Padlásfödém támogatott szerkezettípus.",
+          "A kézikönyv szerint a helyiség adatablakából megnyitható egy ablak, amely a határoló szerkezetek adatait a szerkezetadatbázisból tölti fel.",
+          "A kézikönyv ismerteti a helyiséghez tartozó határoló szerkezetek listájának rendezését, másolását és törlését, de ez nem igazolja futásidőben a Padlásfödém hozzárendelését."
+        ],
+        "hypotheses": [],
+        "unknowns": [
+          "Nem igazolt, hogy egy már létező Padlásfödém szerkezet ténylegesen kiválasztható és hozzárendelhető a helyiséghez.",
+          "Nem ismert a hozzárendelés mentett adatmodellje vagy stabil szemantikai mezője.",
+          "Nincs mentés–újranyitás–visszaolvasás bizonyíték arra, hogy a hozzárendelés tartósan megmarad.",
+          "Nem ismert, milyen további geometriai vagy tájolási adatokat követel meg a Padlásfödém határoló szerkezetként."
+        ],
+        "recommended_next_target": "room.boundary.attic_floor.structure_reference",
+        "reasoning_summary": "A kézikönyv alátámasztja a munkafolyamat általános lehetőségét, de dokumentációként nem számít verifikációnak. A célt közvetlenül lefedő képesség nincs a biztonságos kísérletkezelők között, ezért ehhez most nem javasolható végrehajtható kísérlet.",
+        "proposed_hypothesis": {
+          "target_capability": "room.boundary.attic_floor.structure_reference",
+          "semantic_guess": "Egy helyiség határoló szerkezete hivatkozhat a projektadatbázisban már létező, Padlásfödém típusú szerkezetre.",
+          "confidence": 0.78
+        },
+        "proposed_experiment": {
+          "experiment_status": "unsupported",
+          "reason": "A célképesség nem szerepel a known_safe_experiment_handlers listában; a rendelkezésre álló kezelők csak a room.area_m2 és room.boundary.external_wall.x_m képességeket támogatják.",
+          "missing_capability": "room.boundary.attic_floor.structure_reference",
+          "spec": null
+        },
+        "needs_human_input": false,
+        "human_question": null
+      }
+    }
+  },
+  "dry_run": true
+}

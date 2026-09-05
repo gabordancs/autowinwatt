@@ -8,6 +8,7 @@ from pydantic import ValidationError
 from winwatt_automation.domain.results import EvidenceItem, OperationResult
 from winwatt_automation.experiments import ExperimentRunner
 from winwatt_automation.knowledge import ExperimentSpec
+from winwatt_automation.knowledge.models import AssignExistingBoundaryStructureInput
 
 
 class FakeRoomWorkflow:
@@ -34,6 +35,17 @@ class FakeRoomWorkflow:
                 EvidenceItem(kind="project_saved", message="saved", data={"project": str(project_path.with_name("prepared.wwp"))}),
                 EvidenceItem(kind="room_values", message="values match", data={"expected": {"area_m2": room.area_m2}, "actual": {"area_m2": room.area_m2}}),
                 *external,
+            ],
+        )
+
+    def assign_existing_boundary_structure(self, room_name: str, reference: str, project_path: Path) -> OperationResult:
+        self.assigned = (room_name, reference, project_path)
+        return OperationResult(
+            success=True, requested=1, completed=1, verified=True,
+            evidence=[
+                EvidenceItem(kind="boundary_assignment", message="assigned", data={"expected_reference": reference, "matched": reference}),
+                EvidenceItem(kind="project_saved", message="saved", data={"project": str(project_path.with_name("prepared.wwp"))}),
+                EvidenceItem(kind="boundary_assignment_readback", message="read after reopen", data={"expected_reference": reference, "matched": reference, "evidence_quality": "deterministic_ui_caption"}),
             ],
         )
 
@@ -89,3 +101,19 @@ def test_external_wall_handler_uses_semantic_room_service_input(tmp_path: Path) 
     assert result.actual == 1.37
     assert workflow.last_room.external_wall_x_m == 1.37
     assert workflow.last_room.area_m2 == 10.0
+
+
+def test_assign_existing_reference_uses_allowlisted_semantic_handler(tmp_path: Path) -> None:
+    source = tmp_path / "template.wwp"
+    source.write_bytes(b"template")
+    request = AssignExistingBoundaryStructureInput(
+        hypothesis_id="hyp_assign", room_identifier="Discovery room", structure_reference="Külső fal",
+        sandbox_project=str(source),
+    )
+    workflow = FakeRoomWorkflow()
+    result = ExperimentRunner(workflow, tmp_path / "runs").run(request.as_experiment_spec(), source)
+    assert result.success is True
+    assert result.actual == "Külső fal"
+    assert result.roundtrip_verified is True
+    assert workflow.assigned[:2] == ("Discovery room", "Külső fal")
+    assert any(item.kind == "verification" and item.deterministic for item in result.evidence)
