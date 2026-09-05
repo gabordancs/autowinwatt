@@ -103,8 +103,8 @@ def _plain(value: str) -> str:
     return unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii").casefold()
 
 
-def _select_external_wall_in_library(selector: Any) -> None:
-    """Select ``Külső fal`` through the native list-view selection model.
+def select_boundary_structure_reference(selector: Any, display_name: str) -> None:
+    """Select an observed catalogue reference through the native list-view model.
 
     The Delphi list exposes its rows to UIA, but a UIA click leaves its native
     selected-index unset, and therefore keeps ``Felvesz...`` disabled.
@@ -122,15 +122,20 @@ def _select_external_wall_in_library(selector: Any) -> None:
         [item for item in selector.descendants(control_type="ListItem") if item.is_visible() and item.rectangle().top >= library.rectangle().top],
         key=lambda item: item.rectangle().top,
     )
-    index = next((pos for pos, item in enumerate(rows) if _plain(item.window_text()) == "kulso fal"), None)
+    index = next((pos for pos, item in enumerate(rows) if _plain(item.window_text()) == _plain(display_name)), None)
     if index is None:
-        raise RuntimeError("Külső fal is not present in the selected construction library")
+        raise RuntimeError(f"Structure reference is not present in the selected construction library: {display_name!r}")
     row_height = max(1, (rows[1].rectangle().top - rows[0].rectangle().top) if len(rows) > 1 else 24)
     library.click_input(coords=(30, index * row_height + row_height // 2))
     time.sleep(0.25)
     selected = ctypes.windll.user32.SendMessageW(int(library.handle), 0x100C, -1, 2)
     if selected != index:
-        raise RuntimeError(f"Native construction selection failed: expected row {index}, got {selected}")
+        raise RuntimeError(f"Native construction selection failed for {display_name!r}: expected row {index}, got {selected}")
+
+
+def _select_external_wall_in_library(selector: Any) -> None:
+    """Backward-compatible mapped route for the older external-wall workflow."""
+    select_boundary_structure_reference(selector, "Külső fal")
 
 
 def _set_room_area(room: Any, area_m2: float = 10.0) -> None:
@@ -261,6 +266,57 @@ def add_external_wall(room: Any, x_m: float = 1.0) -> dict[str, Any]:
         "boundary_buttons": detail_buttons,
         "assigned_count_before_selector_ok": assigned_count_before_selector_ok,
     }
+
+
+def read_assigned_boundary_references(selector: Any) -> list[str]:
+    """Read the selector's upper assigned list; captions are the UI identity available in v0."""
+    native = Application(backend="win32").connect(process=int(selector.process_id())).window(handle=int(selector.handle))
+    lists = sorted((item for item in native.descendants() if item.class_name() == "TListViewWithHeader"), key=lambda item: item.rectangle().top)
+    if not lists:
+        raise RuntimeError("Assigned-boundary list is not available")
+    assigned = lists[0]
+    rows = sorted(
+        [item for item in selector.descendants(control_type="ListItem") if item.is_visible()
+         and item.rectangle().top >= assigned.rectangle().top and item.rectangle().bottom <= assigned.rectangle().bottom],
+        key=lambda item: item.rectangle().top,
+    )
+    return [item.window_text().strip() for item in rows if item.window_text().strip()]
+
+
+def assign_existing_boundary_structure(room: Any, display_name: str, *, x_m: float = 1.0) -> dict[str, Any]:
+    """Assign a named catalogue reference and commit it to the current room editor.
+
+    The display name is caller data.  The mapped geometry initialization is a
+    detail-form prerequisite, not a reference-name-specific UI route.
+    """
+    if x_m <= 0:
+        raise ValueError("x_m must be positive")
+    process_id = int(room.process_id())
+    _find_visible(room, "Button", "Szerkezetek...").click_input()
+    selector = _wait_window(process_id, {"TSelectBoundarisForm"})
+    _find_visible(selector, "TreeItem", "Szerkezetek").click_input(); time.sleep(0.2)
+    _find_visible(selector, "TreeItem", "Határoló szerkezetek").click_input(); time.sleep(0.3)
+    select_boundary_structure_reference(selector, display_name)
+    _find_visible(selector, "Button", "Felvesz...").click_input()
+    detail = _wait_window(process_id, {"TWallBoundaryModifyForm", "TBoundaryModifyForm"})
+    boundary_form = detail.class_name()
+    _set_wall_x(detail, x_m)
+    _find_dialog_button(detail, "OK").click_input()
+    selector = _wait_window(process_id, {"TSelectBoundarisForm"})
+    assigned_before_save = read_assigned_boundary_references(selector)
+    _find_dialog_button(selector, "OK").click_input()
+    room = _wait_window(process_id, {"TRoomModifyForm"})
+    _find_dialog_button(room, "OK").set_focus(); keyboard.send_keys("{ENTER}")
+    _dismiss_room_validation_warning(process_id)
+    deadline = time.monotonic() + 8.0
+    while time.monotonic() < deadline:
+        main = get_main_window()
+        if main.is_enabled() and _active_window(process_id).class_name() == "TMainForm":
+            break
+        time.sleep(0.15)
+    else:
+        raise RuntimeError("Room editor did not yield to the main window before Save-As")
+    return {"structure_reference": display_name, "assigned_references_before_save": assigned_before_save, "boundary_form": boundary_form, "x_m": x_m}
 
 
 def read_external_wall_x(room: Any) -> float:

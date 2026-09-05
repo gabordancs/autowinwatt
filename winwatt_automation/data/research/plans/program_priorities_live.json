@@ -1,0 +1,197 @@
+{
+  "plan": {
+    "goal": "Az eddig megszerzett tudás és a WinWatt kézikönyve alapján azonosítsd a program legfontosabb, még feltárandó funkcionális területeit. Válaszd ki közülük azt az egy területet, amelynek megtanulása a legnagyobb előrelépést adná, bontsd fel konkrét szemantikai képességekre, és határozd meg a következő kutatási célt.",
+    "interpreted_scope": "A jelenlegi bizonyítékok alapján a feltárandó területek rangsorolása, egy kiemelt terület szemantikai felbontása és egy következő kutatási cél kijelölése, új végrehajtás vagy ellenőrzés nélkül.",
+    "known_verified": [
+      "room.boundary.external_wall.x_m"
+    ],
+    "manual_supported": [
+      "A kézikönyv 72. oldali részlete hálózati modellezést, ellenállástényezőket és T elem esetén automatikus ágkiválasztást dokumentál; ez nem runtime-verifikáció."
+    ],
+    "hypotheses": [
+      "room.boundary.external_wall.solar_absorptance"
+    ],
+    "unknowns": [
+      "Az épületburok külső falainak geometriai méreten túli fizikai és sugárzási paraméterezése nincs runtime save/reopen/readback bizonyítékkal feltárva.",
+      "Nem ismert, hogy a külső fal szoláris abszorpciós tényezője szemantikailag beállítható, menthető, újranyitás után kiolvasható és számításban felhasználható-e.",
+      "A hálózat felépítésének szerkesztési szemantikája, valamint a T elemek automatikus ágkiválasztásának runtime viselkedése nincs feltárva.",
+      "A room.area_m2, room.height_m, room.name és room.temperature_c fogalmakhoz csak legacy nyilvántartási státusz szerepel; determinisztikus save/reopen/readback bizonyíték nincs megadva."
+    ],
+    "recommended_next_target": "room.boundary.external_wall.solar_absorptance",
+    "reasoning_summary": "A legnagyobb közvetlen előrelépést az épületburok külsőfal-paramétereinek feltárása adná: a külső fal egyik geometriai képessége már runtime-ellenőrzött, és rendelkezésre áll egy kézikönyvi eredetű hipotézis a szoláris abszorpciós tényezőről. A cél szemantikai részei a paraméter azonosítása, módosíthatósága, falhoz rendelése, mentési perzisztenciája, újranyitás utáni kiolvashatósága és számítási szerepe. A hálózati modellezés szintén fontos, de a kapott kézikönyvrészlet önmagában kevésbé tesz lehetővé konkrét, biztonságosan tesztelhető következő lépést.",
+    "proposed_hypothesis": null,
+    "proposed_experiment": {
+      "experiment_status": "unsupported",
+      "reason": "A kijelölt célhoz nincs bejegyzett biztonságos kísérleti kezelő; a known_safe_experiment_handlers csak a room.area_m2 és room.boundary.external_wall.x_m célokat tartalmazza.",
+      "missing_capability": "room.boundary.external_wall.solar_absorptance",
+      "spec": null
+    },
+    "needs_human_input": true,
+    "human_question": "Elérhetővé tehető-e később biztonságos kísérleti kezelő a room.boundary.external_wall.solar_absorptance szemantikai célhoz?"
+  },
+  "audit": {
+    "prompt_version": "research_planner_v0.1",
+    "instructions": "You are a WinWatt research planner. Produce only the supplied structured schema.\nYou plan from the supplied context and nothing else. VERIFIED means only deterministic runtime\nsave/reopen/readback evidence. Manual material is documentation, never verification. A hypothesis\nis unproven. You must not claim a new verified capability, create UI commands, coordinates, keys,\nshell commands, or arbitrary automation. Propose an experiment only when its target is in\nknown_safe_experiment_handlers and its schema is valid; otherwise mark it unsupported and say why.\nThis is a dry-run: do not request execution.\n\nKNOWN_VERIFIED: Only copy exact concept identifiers from allowed_verified_concepts. Never infer that a related or parent concept is verified. For example, verification of room.boundary.external_wall.x_m does not verify room.boundary.external_wall, room.boundary.external_wall.dimensions, or any other identifier. known_verified must be a strict subset of allowed_verified_concepts.\n\nHYPOTHESES: Only copy exact identifiers from allowed_hypothesis_concepts. Do not invent or rename an existing hypothesis in the hypotheses list; use proposed_hypothesis for a new suggestion.\n\nGOAL: The caller-supplied requested goal is authoritative and immutable. The goal field is only a non-authoritative echo and will be canonicalized by the caller. Put your natural-language interpretation only in interpreted_scope.\n\nallowed_verified_concepts = [\"room.area_m2\", \"room.boundary.external_wall.x_m\", \"room.height_m\", \"room.name\", \"room.temperature_c\"]\n\nallowed_hypothesis_concepts = [\"room.boundary.external_wall.solar_absorptance\"]",
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "context": {
+      "goal": "Az eddig megszerzett tudás és a WinWatt kézikönyve alapján azonosítsd a program legfontosabb, még feltárandó funkcionális területeit. Válaszd ki közülük azt az egy területet, amelynek megtanulása a legnagyobb előrelépést adná, bontsd fel konkrét szemantikai képességekre, és határozd meg a következő kutatási célt.",
+      "verified_concepts": [
+        {
+          "concept": "room.area_m2",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.boundary.external_wall.x_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "experiment",
+            "verification"
+          ]
+        },
+        {
+          "concept": "room.height_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.name",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.temperature_c",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "concept": "room.boundary.external_wall.solar_absorptance",
+          "status": "hypothesis",
+          "confidence": 0.72,
+          "evidence_kinds": [
+            "research_manual"
+          ]
+        }
+      ],
+      "rejected_hypotheses": [],
+      "relevant_capabilities": [
+        {
+          "concept": "room.boundary.external_wall.solar_absorptance",
+          "status": "hypothesis",
+          "confidence": 0.72,
+          "evidence_kinds": [
+            "research_manual"
+          ]
+        },
+        {
+          "concept": "room.area_m2",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.boundary.external_wall.x_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "experiment",
+            "verification"
+          ]
+        },
+        {
+          "concept": "room.height_m",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.name",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        },
+        {
+          "concept": "room.temperature_c",
+          "status": "verified",
+          "confidence": 1.0,
+          "evidence_kinds": [
+            "legacy_capability_registry"
+          ]
+        }
+      ],
+      "manual_evidence": [
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 72,
+          "section": "72 A hálózat felépítése",
+          "excerpt": "ellenállástényezőkkel számol. Az eddigi két módszernél egy T elem esetén a program automatikusan dönt arról, hogy a két lehetséges ág közül melyiket tekintse a merőleges",
+          "related_concepts": []
+        }
+      ],
+      "previous_experiments": [
+        "exp_7d1c8e4b85c44d7cb9c6adcb46dd590f",
+        "exp_9b2e225ed1784f3c825e1da71bad78ee",
+        "exp_c1860584afb84bc9924376d23d869145"
+      ],
+      "known_safe_experiment_handlers": [
+        "room.area_m2",
+        "room.boundary.external_wall.x_m"
+      ]
+    },
+    "raw_response": {
+      "response_id": "resp_0523a99521f6b793016a99d5d41ea887d2b78e9b2cfbe28394",
+      "output": {
+        "goal": "Az eddig megszerzett tudás és a WinWatt kézikönyve alapján azonosítsd a program legfontosabb, még feltárandó funkcionális területeit. Válaszd ki közülük azt az egy területet, amelynek megtanulása a legnagyobb előrelépést adná, bontsd fel konkrét szemantikai képességekre, és határozd meg a következő kutatási célt.",
+        "interpreted_scope": "A jelenlegi bizonyítékok alapján a feltárandó területek rangsorolása, egy kiemelt terület szemantikai felbontása és egy következő kutatási cél kijelölése, új végrehajtás vagy ellenőrzés nélkül.",
+        "known_verified": [
+          "room.boundary.external_wall.x_m"
+        ],
+        "manual_supported": [
+          "A kézikönyv 72. oldali részlete hálózati modellezést, ellenállástényezőket és T elem esetén automatikus ágkiválasztást dokumentál; ez nem runtime-verifikáció."
+        ],
+        "hypotheses": [
+          "room.boundary.external_wall.solar_absorptance"
+        ],
+        "unknowns": [
+          "Az épületburok külső falainak geometriai méreten túli fizikai és sugárzási paraméterezése nincs runtime save/reopen/readback bizonyítékkal feltárva.",
+          "Nem ismert, hogy a külső fal szoláris abszorpciós tényezője szemantikailag beállítható, menthető, újranyitás után kiolvasható és számításban felhasználható-e.",
+          "A hálózat felépítésének szerkesztési szemantikája, valamint a T elemek automatikus ágkiválasztásának runtime viselkedése nincs feltárva.",
+          "A room.area_m2, room.height_m, room.name és room.temperature_c fogalmakhoz csak legacy nyilvántartási státusz szerepel; determinisztikus save/reopen/readback bizonyíték nincs megadva."
+        ],
+        "recommended_next_target": "room.boundary.external_wall.solar_absorptance",
+        "reasoning_summary": "A legnagyobb közvetlen előrelépést az épületburok külsőfal-paramétereinek feltárása adná: a külső fal egyik geometriai képessége már runtime-ellenőrzött, és rendelkezésre áll egy kézikönyvi eredetű hipotézis a szoláris abszorpciós tényezőről. A cél szemantikai részei a paraméter azonosítása, módosíthatósága, falhoz rendelése, mentési perzisztenciája, újranyitás utáni kiolvashatósága és számítási szerepe. A hálózati modellezés szintén fontos, de a kapott kézikönyvrészlet önmagában kevésbé tesz lehetővé konkrét, biztonságosan tesztelhető következő lépést.",
+        "proposed_hypothesis": null,
+        "proposed_experiment": {
+          "experiment_status": "unsupported",
+          "reason": "A kijelölt célhoz nincs bejegyzett biztonságos kísérleti kezelő; a known_safe_experiment_handlers csak a room.area_m2 és room.boundary.external_wall.x_m célokat tartalmazza.",
+          "missing_capability": "room.boundary.external_wall.solar_absorptance",
+          "spec": null
+        },
+        "needs_human_input": true,
+        "human_question": "Elérhetővé tehető-e később biztonságos kísérleti kezelő a room.boundary.external_wall.solar_absorptance szemantikai célhoz?"
+      }
+    }
+  }
+}

@@ -193,6 +193,55 @@ class RoomService:
     def read_room(self, name: str, project_path: Path) -> str | None:
         return next((item for item in self.list_rooms(project_path) if item.casefold() == name.casefold()), None)
 
+    def assign_existing_boundary_structure(self, room_name: str, structure_reference: str, project_path: Path, *, room_area_m2: float = 10.0) -> OperationResult:
+        """Commit one discovered boundary reference, then prove it after native Save-As/reopen.
+
+        This is intentionally a narrow semantic service: callers supply a room
+        and a catalogue caption, never a desktop coordinate or raw keystroke.
+        Captions are recorded as deterministic UI readback with an explicit
+        `ui_caption` evidence quality limitation.
+        """
+        from pywinauto import keyboard
+        from winwatt_automation.scripts.create_building_with_rooms import (
+            _plain, _set_room_area, assign_existing_boundary_structure, read_assigned_boundary_references,
+        )
+
+        evidence: list[EvidenceItem] = []
+        try:
+            # `open_sandbox_room` is the existing sandbox route. It creates a
+            # named disposable room when absent, avoiding any dependency on a
+            # particular template project's room catalogue.
+            room = open_sandbox_room(project_path=str(project_path), room_name=room_name)
+            _set_room_area(room, room_area_m2)
+            assignment = assign_existing_boundary_structure(room, structure_reference)
+            before = assignment["assigned_references_before_save"]
+            assigned_before = next((item for item in before if _plain(item) == _plain(structure_reference)), None)
+            if assigned_before is None:
+                raise RuntimeError(f"Assignment UI did not contain the selected reference before save: {structure_reference!r}; actual={before!r}")
+            persisted_project = self._winwatt.save_project_as(project_path.with_name("prepared.wwp"))
+            self._winwatt.close_project_gracefully()
+            reopened_room = open_sandbox_room(project_path=str(persisted_project), room_name=room_name)
+            from winwatt_automation.scripts.create_building_with_rooms import _find_visible
+            _find_visible(reopened_room, "Button", "Szerkezetek...").click_input()
+            selector = _active_window(int(reopened_room.process_id()))
+            if selector.class_name() != "TSelectBoundarisForm":
+                raise RuntimeError(f"Boundary selector did not open after reopen: {selector.class_name()!r}")
+            after = read_assigned_boundary_references(selector)
+            matched = next((item for item in after if _plain(item) == _plain(structure_reference)), None)
+            selector.set_focus(); keyboard.send_keys("{ESC}")
+            room_after = _active_window(int(reopened_room.process_id()))
+            if room_after.class_name() == "TRoomModifyForm":
+                room_after.set_focus(); keyboard.send_keys("{ESC}")
+            digest = hashlib.sha256(persisted_project.read_bytes()).hexdigest()
+            evidence.extend([
+                EvidenceItem(kind="boundary_assignment", message="Boundary reference assigned before native save", data={"expected_reference": structure_reference, "actual_references": before, "matched": assigned_before, "boundary_form": assignment["boundary_form"]}),
+                EvidenceItem(kind="project_saved", message="Saved through WinWatt Save-As", data={"project": str(persisted_project), "sha256": digest}),
+                EvidenceItem(kind="boundary_assignment_readback", message="Boundary reference read after close/reopen", data={"expected_reference": structure_reference, "actual_references": after, "matched": matched, "evidence_quality": "deterministic_ui_caption"}),
+            ])
+            return OperationResult(success=matched is not None, requested=1, completed=1, verified=matched is not None, evidence=evidence)
+        except Exception as exc:
+            return OperationResult(success=False, requested=1, completed=0, verified=False, errors=[str(exc)], evidence=evidence)
+
     def verify_building(self, project_path: Path, name: str = DEFAULT_SANDBOX_BUILDING) -> EvidenceItem:
         """Reopen the Buildings catalog and prove the parent record survived.
 

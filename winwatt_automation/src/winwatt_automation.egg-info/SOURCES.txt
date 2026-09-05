@@ -70,6 +70,13 @@ src/winwatt_automation/parser/normalizer.py
 src/winwatt_automation/parser/program_map.py
 src/winwatt_automation/parser/semantic_classifier.py
 src/winwatt_automation/parser/xml_parser.py
+src/winwatt_automation/planner/__init__.py
+src/winwatt_automation/planner/models.py
+src/winwatt_automation/planner/planner.py
+src/winwatt_automation/planner/provider.py
+src/winwatt_automation/research/__init__.py
+src/winwatt_automation/research/manual_index.py
+src/winwatt_automation/research/models.py
 src/winwatt_automation/runtime_logging/__init__.py
 src/winwatt_automation/runtime_logging/progress_display.py
 src/winwatt_automation/runtime_logging/run_recorder.py
@@ -179,6 +186,8 @@ tests/test_experiment_runner_e2e.py
 tests/test_file_dialog.py
 tests/test_full_authorized_explore.py
 tests/test_inspect_live_ui_script.py
+tests/test_learning_loop.py
+tests/test_learning_loop_external_wall_e2e.py
 tests/test_live_ui.py
 tests/test_map_full_program_script.py
 tests/test_mapping_cycle_orchestrator.py
@@ -192,6 +201,9 @@ tests/test_probe_menu_popup.py
 tests/test_program_map.py
 tests/test_progress_display.py
 tests/test_project_open_recovery.py
+tests/test_research_manual_pdf_integration.py
+tests/test_research_planner.py
+tests/test_research_sources.py
 tests/test_room_deep_audit.py
 tests/test_room_deep_explorer.py
 tests/test_room_progress_popup.py

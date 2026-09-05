@@ -31,10 +31,12 @@ class ExperimentRunner:
         self._handlers: dict[str, Callable[[ExperimentSpec, Path], OperationResult]] = {
             "room.area_m2": self._execute_room_area,
             "room.boundary.external_wall.x_m": self._execute_external_wall_x,
+            "room.boundary.structure_reference.assign_existing": self._execute_assign_existing_boundary_structure,
         }
         self._readers: dict[str, Callable[[OperationResult], float | str | None]] = {
             "room.area_m2": self._read_room_area,
             "room.boundary.external_wall.x_m": self._read_external_wall_x,
+            "room.boundary.structure_reference.assign_existing": self._read_assigned_structure_reference,
         }
 
     def prepare_sandbox_project(self, source_project: Path) -> Path:
@@ -87,6 +89,12 @@ class ExperimentRunner:
             sandbox_project,
         )
 
+    def _execute_assign_existing_boundary_structure(self, spec: ExperimentSpec, sandbox_project: Path) -> OperationResult:
+        assign = getattr(self._rooms, "assign_existing_boundary_structure", None)
+        if not callable(assign):
+            raise RuntimeError("Room workflow does not support controlled boundary-reference assignment")
+        return assign(spec.change.entity, str(spec.change.to_value), sandbox_project)
+
     @staticmethod
     def _operation_evidence(operation: OperationResult) -> list[EvidenceRef]:
         return [
@@ -113,6 +121,13 @@ class ExperimentRunner:
         for evidence in reversed(operation.evidence):
             if evidence.kind == "external_wall" and "actual_x_m" in evidence.data:
                 return evidence.data["actual_x_m"]
+        return None
+
+    @staticmethod
+    def _read_assigned_structure_reference(operation: OperationResult) -> float | str | None:
+        for evidence in reversed(operation.evidence):
+            if evidence.kind == "boundary_assignment_readback":
+                return evidence.data.get("matched")
         return None
 
     def read_known_values(self, operation: OperationResult, capability: str) -> float | str | None:
@@ -165,12 +180,9 @@ class ExperimentRunner:
                 evidence.append(save)
             evidence.append(self.reopen_project(operation))
             actual = self.read_known_values(operation, spec.target_capability)
-            expected: float | str = float(spec.change.to_value)
+            expected: float | str = spec.change.to_value
             matches = self.compare_expected_actual(expected, actual)
-            persisted_readback = (
-                actual is not None
-                and any(item.kind == "project_saved" for item in operation.evidence)
-            )
+            persisted_readback = actual is not None and any(item.kind == "project_saved" for item in operation.evidence)
             roundtrip = operation.success and operation.verified and matches and persisted_readback
             evidence.append(EvidenceRef(
                 kind="verification",
