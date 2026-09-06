@@ -52,6 +52,7 @@ class Hypothesis(BaseModel):
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
     evidence: list[EvidenceRef] = Field(default_factory=list)
     experiment_ids: list[str] = Field(default_factory=list)
+    research_evidence_ids: list[str] = Field(default_factory=list)
 
 
 class ExperimentChange(BaseModel):
@@ -94,3 +95,24 @@ class ExperimentResult(BaseModel):
     sandbox_project: str | None = None
     evidence: list[EvidenceRef] = Field(default_factory=list)
     errors: list[str] = Field(default_factory=list)
+
+
+class AssignExistingBoundaryStructureInput(BaseModel):
+    """Safe semantic input for a previously discovered catalogue reference."""
+
+    hypothesis_id: str = Field(min_length=1)
+    room_identifier: str = Field(min_length=1)
+    structure_reference: str = Field(min_length=1)
+    expected_kind: str | None = None
+    sandbox_project: str
+    room_area_m2: float = Field(default=10.0, gt=0)
+
+    model_config = {"extra": "forbid"}
+
+    def as_experiment_spec(self) -> ExperimentSpec:
+        return ExperimentSpec(
+            hypothesis_id=self.hypothesis_id,
+            target_capability="room.boundary.structure_reference.assign_existing",
+            change={"entity": self.room_identifier, "to": self.structure_reference},
+            observe=["ui_readback", "save_reopen"], source_project=self.sandbox_project,
+        )

@@ -35,6 +35,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "data" / "runtime_maps" / "mdi_runtime_states_9_60"
 ROOMS_CATALOG_INDEX = 3
 ROOMS_TITLE = "Helyis\u00e9gek"
+STRUCTURES_CATALOG_INDEX = 2
+STRUCTURES_TITLE = "Szerkezetek"
 ELEMENT_MENU_TITLE = "Elem"
 CREATE_ELEMENT_VISIBLE_CAPTION = "L\u00e9trehoz..."
 
@@ -155,6 +157,37 @@ def activate_rooms_catalog() -> dict[str, Any]:
     if title != ROOMS_TITLE:
         raise RuntimeError(f"Expected active MDI title {ROOMS_TITLE!r}, observed {title!r}")
     return {"catalog_index": ROOMS_CATALOG_INDEX, "active_mdi_title": title, "clicked_rectangle": clicked.get("rectangle")}
+
+
+def activate_structures_catalog_native() -> dict[str, Any]:
+    """Open the mapped global Structures catalogue through its native menu.
+
+    The submenu is owner-drawn in this WinWatt build, so its popup UIA names
+    are unreliable.  The top-level native menu and the ordinal were mapped in
+    prior sandbox runs; the active MDI title is verified after invocation.
+    This is navigation only and never creates, edits, saves or deletes data.
+    """
+    from pywinauto import Application
+
+    main = get_main_window()
+    native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
+    catalog = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Jegyz\u00e9kek")
+    rows = catalog.sub_menu().items()
+    if len(rows) <= STRUCTURES_CATALOG_INDEX or not rows[STRUCTURES_CATALOG_INDEX].is_enabled():
+        raise RuntimeError("Mapped Szerkezetek catalogue entry is absent or disabled")
+    catalog.click()
+    time.sleep(0.12)
+    rows[STRUCTURES_CATALOG_INDEX].click()
+    time.sleep(0.45)
+    title = active_mdi_title()
+    if title != STRUCTURES_TITLE:
+        raise RuntimeError(f"Expected active MDI title {STRUCTURES_TITLE!r}, observed {title!r}")
+    return {
+        "capability": "catalog.structure.open",
+        "catalog_index": STRUCTURES_CATALOG_INDEX,
+        "active_mdi_title": title,
+        "transport": "verified_native_menu_ordinal",
+    }
 
 
 def map_rooms_new_element_menu(*, output_dir: Path = DEFAULT_OUTPUT_DIR) -> dict[str, Any]:

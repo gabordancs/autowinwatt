@@ -12,6 +12,9 @@ Requires-Dist: pydantic>=2.0
 Requires-Dist: loguru
 Requires-Dist: tenacity
 Requires-Dist: typer>=0.12
+Requires-Dist: pypdf>=6.0
+Requires-Dist: openai>=2.0
+Requires-Dist: python-dotenv>=1.0
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
 Requires-Dist: networkx; extra == "dev"
