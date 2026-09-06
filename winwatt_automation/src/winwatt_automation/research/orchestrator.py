@@ -315,10 +315,26 @@ class ResearchOrchestrator:
                 # Recovery is deliberately not an iteration/action/progress;
                 # it only restores a stable snapshot of the same frontier.
                 current_frontier = current_snapshot.state_fingerprint
+            navigation_frontier_audit: dict[str, Any] | None = None
             if replayable_exists:
                     # A freshly opened Delphi MDI main form can expose an
                     # empty transient UIA tree for a moment.  Bind replay to
                     # the settled state, not that startup transient.
+                    # Route selection is not an executor-policy loop. Exclude
+                    # edges with no safe physical implementation before route
+                    # lookup so they cannot consume a research iteration.
+                    rejected_edges: list[dict[str, str]] = []
+                    for candidate in navigation_store.transitions():
+                        if candidate.status not in {"verified", "replayed"}:
+                            continue
+                        safe_executor = (
+                            candidate.action_kind in {"activate_control", "select_list_item"} and bool(candidate.action_identity)
+                        ) or (
+                            candidate.action_kind in {"open_known_navigation", "native_menu_ordinal"} and candidate.capability == "catalog.structure.open"
+                        )
+                        if not safe_executor:
+                            blocked_persistent_transitions.add(candidate.id)
+                            rejected_edges.append({"transition_id": candidate.id, "reason": "no_registered_safe_executor"})
                     route = navigation_store.executable_route(goal, current_snapshot.state_fingerprint, exclude_transition_ids=blocked_persistent_transitions)
                     if route is not None:
                         edge = route.transitions[0]
@@ -342,43 +358,55 @@ class ResearchOrchestrator:
                             activate_structures_catalog_native()
                             executed = None
                         else:
-                            iteration.failures.append("Persistent route has no registered safe executor.")
+                            # Defensive fallback: this must normally have
+                            # been excluded before selection. Do not create an
+                            # iteration or retry it; hand off at the frontier.
                             blocked_persistent_transitions.add(edge.transition_id)
-                            iteration.observations.append({"persistent_route_blocked": {"transition_id": edge.transition_id, "reason": "no_registered_safe_executor", "stale": False}})
-                            iterations.append(iteration); actions.append(action)
-                            continue
-                        after = explorer.inspect_window()
-                        expected_postcondition = next((ref.data.get("expected_postcondition") for ref in edge.evidence_refs if ref.data.get("expected_postcondition")), None)
-                        observed_postcondition = None
-                        verification_kind = "state_fingerprint"
-                        if edge.action_kind == "native_menu_ordinal" and expected_postcondition is not None:
-                            verification_kind = "semantic_postcondition"
-                            observed_postcondition = {"active_mdi_title": active_mdi_title()}
-                            runtime_match = observed_postcondition == expected_postcondition
-                            navigation_store.mark_semantic_replay(edge.transition_id, runtime_match)
+                            rejected_edges.append({"transition_id": edge.transition_id, "reason": "no_registered_safe_executor"})
+                            navigation_frontier_audit = {"state_fingerprint": current_snapshot.state_fingerprint, "reason": "persistent_edge_not_executable", "rejected_persistent_edges": rejected_edges, "actionable_controls": [item.identity for item in current_snapshot.controls if item.enabled], "planner_handoff": True}
+                            route = None
+                        if route is None:
+                            # Skip all transport verification below; planner
+                            # gets the same observed state this iteration.
+                            pass
                         else:
-                            runtime_match = after.state_fingerprint == edge.expected_state
-                            navigation_store.mark_replay(edge.transition_id, after.state_fingerprint)
-                        iteration.route_replay = {
-                            "source": "persistent_navigation_knowledge", "route_id": route.route_id,
-                            "transition_id": edge.transition_id, "retrieval_score": route.goal_relevance,
-                            "status_before": edge.status, "from_state": before.state_fingerprint,
-                            "expected_state": edge.expected_state, "observed_state": after.state_fingerprint,
-                            "verification_kind": verification_kind, "expected_postcondition": expected_postcondition,
-                            "observed_postcondition": observed_postcondition,
-                            "runtime_match": runtime_match,
-                            "status_after": next(item.status for item in navigation_store.transitions() if item.id == edge.transition_id),
-                        }
-                        iteration.observations.append({"before": before.model_dump(mode="json"), "after": after.model_dump(mode="json"), "action_source": action.action_source})
-                        if runtime_match:
-                            was_new = catalog_post_action_state(after, source_action=action, iteration=iteration)
-                            progress(iteration, "known_transition_replayed_to_new_frontier" if was_new else "known_transition_replayed", frontier=after.state_fingerprint)
+                            after = explorer.inspect_window()
+                            expected_postcondition = next((ref.data.get("expected_postcondition") for ref in edge.evidence_refs if ref.data.get("expected_postcondition")), None)
+                            observed_postcondition = None
+                            verification_kind = "state_fingerprint"
+                            if edge.action_kind == "native_menu_ordinal" and expected_postcondition is not None:
+                                verification_kind = "semantic_postcondition"
+                                observed_postcondition = {"active_mdi_title": active_mdi_title()}
+                                runtime_match = observed_postcondition == expected_postcondition
+                                navigation_store.mark_semantic_replay(edge.transition_id, runtime_match)
+                            else:
+                                runtime_match = after.state_fingerprint == edge.expected_state
+                                navigation_store.mark_replay(edge.transition_id, after.state_fingerprint)
+                            iteration.route_replay = {
+                                "source": "persistent_navigation_knowledge", "route_id": route.route_id,
+                                "transition_id": edge.transition_id, "retrieval_score": route.goal_relevance,
+                                "status_before": edge.status, "from_state": before.state_fingerprint,
+                                "expected_state": edge.expected_state, "observed_state": after.state_fingerprint,
+                                "verification_kind": verification_kind, "expected_postcondition": expected_postcondition,
+                                "observed_postcondition": observed_postcondition,
+                                "runtime_match": runtime_match,
+                                "status_after": next(item.status for item in navigation_store.transitions() if item.id == edge.transition_id),
+                            }
+                            iteration.observations.append({"before": before.model_dump(mode="json"), "after": after.model_dump(mode="json"), "action_source": action.action_source})
+                            if runtime_match:
+                                was_new = catalog_post_action_state(after, source_action=action, iteration=iteration)
+                                progress(iteration, "known_transition_replayed_to_new_frontier" if was_new else "known_transition_replayed", frontier=after.state_fingerprint)
+                                actions.append(action); iterations.append(iteration); evidence.extend(iteration.evidence_created)
+                                continue
+                            iteration.failures.append("Persistent route mismatch; edge marked stale and replay aborted.")
                             actions.append(action); iterations.append(iteration); evidence.extend(iteration.evidence_created)
-                            continue
-                        iteration.failures.append("Persistent route mismatch; edge marked stale and replay aborted.")
-                        actions.append(action); iterations.append(iteration); evidence.extend(iteration.evidence_created)
-                        # Current observed state becomes the safe frontier for the next planner cycle.
-                        recent_trace.append(RecentResearchStep(action="route_stale", semantic_context=action.semantic_context, resulting_window=after.class_name, state_fingerprint=after.state_fingerprint, state_change=True))
+                            # Current observed state becomes the safe frontier for the next planner cycle.
+                            recent_trace.append(RecentResearchStep(action="route_stale", semantic_context=action.semantic_context, resulting_window=after.class_name, state_fingerprint=after.state_fingerprint, state_change=True))
+                    if route is None:
+                        reason = "no_goal_relevant_executable_transition" if not rejected_edges else "persistent_edges_rejected_before_execution"
+                        navigation_frontier_audit = navigation_frontier_audit or {"state_fingerprint": current_snapshot.state_fingerprint, "reason": reason, "rejected_persistent_edges": rejected_edges, "actionable_controls": [item.identity for item in current_snapshot.controls if item.enabled], "planner_handoff": True}
+                        if not recent_trace or recent_trace[-1].state_fingerprint != current_snapshot.state_fingerprint:
+                            recent_trace.append(RecentResearchStep(action="navigation_frontier", semantic_context=goal, resulting_window=current_snapshot.class_name, state_fingerprint=current_snapshot.state_fingerprint, discovered_controls=[RecentDiscoveredControl(identity=item.identity, caption=item.caption, control_type=item.control_type, enabled=item.enabled) for item in current_snapshot.controls], state_change=False))
             try:
                 planned = self._timed_step("planner/provider call", budget.provider_timeout_seconds, lambda: self.planner.plan(goal, human_hints, recent_trace[-4:])).plan
             except TimeoutError as exc:
@@ -486,6 +514,8 @@ class ResearchOrchestrator:
                 break
             seen_actions.add(signature)
             iteration = ResearchIteration(index=index, current_goal=goal, selected_action=action, remaining_unknowns=planned.unknowns)
+            if navigation_frontier_audit is not None:
+                iteration.observations.append({"navigation_frontier_reached": navigation_frontier_audit})
             actions.append(action)
             if planned.proposed_hypothesis and self.store.get_hypothesis(f"session_{session_id}_{index}") is None:
                 hypothesis = Hypothesis(hypothesis_id=f"session_{session_id}_{index}", target_capability=planned.proposed_hypothesis.target_capability, semantic_guess=planned.proposed_hypothesis.semantic_guess, confidence=planned.proposed_hypothesis.confidence)

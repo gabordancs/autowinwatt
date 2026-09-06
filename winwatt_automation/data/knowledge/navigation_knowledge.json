@@ -875,6 +875,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "state_0107_2e086991ce"
     },
+    "state_018ca577c773cf30": {
+      "controls_summary": [],
+      "fingerprint": "b346ad63dfe71b26",
+      "first_seen_at": "2026-09-06T13:59:46.437822Z",
+      "id": "state_018ca577c773cf30",
+      "last_seen_at": "2026-09-06T13:59:54.903436Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_full_fields_20260906T155716\\s"
+    },
     "state_01d12a21c1caf1d7": {
       "controls_summary": [
         {
@@ -4460,6 +4482,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "selection_external_wall__glass"
     },
+    "state_03e68aec95542c01": {
+      "controls_summary": [],
+      "fingerprint": "870e547e738d82ff",
+      "first_seen_at": "2026-09-06T13:46:34.160373Z",
+      "id": "state_03e68aec95542c01",
+      "last_seen_at": "2026-09-06T13:46:43.666472Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_branch_20260906T15440"
+    },
     "state_0448bce1c2cdf115": {
       "controls_summary": [
         {
@@ -6045,6 +6089,28 @@
       "semantic_context": "state_0054_dd4a9d4aeb",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0054_dd4a9d4aeb"
+    },
+    "state_05f6c7d28cf3524d": {
+      "controls_summary": [],
+      "fingerprint": "167d284a96d9f8ba",
+      "first_seen_at": "2026-09-06T13:52:03.896310Z",
+      "id": "state_05f6c7d28cf3524d",
+      "last_seen_at": "2026-09-06T13:52:11.825323Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_safeprobe_20260906T15"
     },
     "state_0740dd20e64e477e": {
       "controls_summary": [
@@ -17084,6 +17150,28 @@
       "semantic_context": "state_0000_6d68e6323a",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0000_6d68e6323a"
+    },
+    "state_0d91c54151c055d2": {
+      "controls_summary": [],
+      "fingerprint": "1c962005fc52ccef",
+      "first_seen_at": "2026-09-06T13:59:48.233970Z",
+      "id": "state_0d91c54151c055d2",
+      "last_seen_at": "2026-09-06T13:59:58.401535Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_full_fields_20260906T155716\\s"
     },
     "state_0dff2226311bb597": {
       "controls_summary": [
@@ -52114,6 +52202,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "no_project"
     },
+    "state_26bdfa8c32145f15": {
+      "controls_summary": [],
+      "fingerprint": "4e494027ac730514",
+      "first_seen_at": "2026-09-05T12:18:25.191689Z",
+      "id": "state_26bdfa8c32145f15",
+      "last_seen_at": "2026-09-05T12:18:34.248804Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_commit_20260905T1415"
+    },
     "state_26f27d778176841a": {
       "controls_summary": [
         {
@@ -69624,6 +69734,28 @@
       "semantic_context": "external_wall_detail",
       "window_class": "legacy_runtime_map",
       "window_title": "external_wall_detail"
+    },
+    "state_3a961379c890b0b1": {
+      "controls_summary": [],
+      "fingerprint": "dff2366a5d4df9c4",
+      "first_seen_at": "2026-09-05T12:18:27.100049Z",
+      "id": "state_3a961379c890b0b1",
+      "last_seen_at": "2026-09-05T12:18:38.321144Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_commit_20260905T1415"
     },
     "state_3ac87303946c845c": {
       "controls_summary": [
@@ -113518,6 +113650,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "state_0025_f0efd746fd"
     },
+    "state_5f2e0024a66e7249": {
+      "controls_summary": [],
+      "fingerprint": "eceaed16bc06bde0",
+      "first_seen_at": "2026-09-06T13:52:05.637693Z",
+      "id": "state_5f2e0024a66e7249",
+      "last_seen_at": "2026-09-06T13:52:16.663024Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_safeprobe_20260906T15"
+    },
     "state_5f56a011f0aaf139": {
       "controls_summary": [
         {
@@ -123388,6 +123542,28 @@
       "semantic_context": "state_0020_03c975ff03",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0020_03c975ff03"
+    },
+    "state_6a580fc88df1d483": {
+      "controls_summary": [],
+      "fingerprint": "8a25d254c50b5283",
+      "first_seen_at": "2026-09-06T13:46:35.012000Z",
+      "id": "state_6a580fc88df1d483",
+      "last_seen_at": "2026-09-06T13:46:44.527145Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_branch_20260906T15440"
     },
     "state_6a5c62048d801b61": {
       "controls_summary": [
@@ -137899,6 +138075,28 @@
       "semantic_context": "state_0063_a9657a9932",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0063_a9657a9932"
+    },
+    "state_78cd136dd1bf74a4": {
+      "controls_summary": [],
+      "fingerprint": "405b137e642a653f",
+      "first_seen_at": "2026-09-05T12:18:26.159157Z",
+      "id": "state_78cd136dd1bf74a4",
+      "last_seen_at": "2026-09-05T12:18:37.374784Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_commit_20260905T1415"
     },
     "state_78ea9aee5aaa69df": {
       "controls_summary": [
@@ -171764,6 +171962,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "state_0127_b9e9de9f8c"
     },
+    "state_96957e1fbb567e11": {
+      "controls_summary": [],
+      "fingerprint": "34c69ace83235bcf",
+      "first_seen_at": "2026-09-06T11:02:57.408103Z",
+      "id": "state_96957e1fbb567e11",
+      "last_seen_at": "2026-09-06T11:03:11.695853Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_next_dialog_20260906"
+    },
     "state_96df94802a16dc05": {
       "controls_summary": [
         {
@@ -190125,6 +190345,28 @@
       "semantic_context": "state_0008_a311dc20ef",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0008_a311dc20ef"
+    },
+    "state_a387aa0777ceed43": {
+      "controls_summary": [],
+      "fingerprint": "62db438463287212",
+      "first_seen_at": "2026-09-06T13:52:04.779991Z",
+      "id": "state_a387aa0777ceed43",
+      "last_seen_at": "2026-09-06T13:52:15.230499Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_safeprobe_20260906T15"
     },
     "state_a41df155e4ed2483": {
       "controls_summary": [
@@ -213009,6 +213251,28 @@
       "semantic_context": "state_0090_1b1f12458f",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0090_1b1f12458f"
+    },
+    "state_b48b2ec052485d61": {
+      "controls_summary": [],
+      "fingerprint": "d6b2e38599b12bd4",
+      "first_seen_at": "2026-09-05T12:11:51.567627Z",
+      "id": "state_b48b2ec052485d61",
+      "last_seen_at": "2026-09-05T12:11:56.079932Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_focus_20260905T14094"
     },
     "state_b491ea7e137c243a": {
       "controls_summary": [
@@ -244565,6 +244829,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "state_0000_dd7a2e36c6"
     },
+    "state_cbabe707c24c3c64": {
+      "controls_summary": [],
+      "fingerprint": "76eaae47a4b7a30e",
+      "first_seen_at": "2026-09-06T11:02:56.268123Z",
+      "id": "state_cbabe707c24c3c64",
+      "last_seen_at": "2026-09-06T11:03:10.350229Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_next_dialog_20260906"
+    },
     "state_cbaeab940b9402d3": {
       "controls_summary": [
         {
@@ -257232,6 +257518,28 @@
       "window_class": "legacy_runtime_map",
       "window_title": "state_0023_edad234796"
     },
+    "state_d6c68a9eeee3a950": {
+      "controls_summary": [],
+      "fingerprint": "3c9c9c2fe86ef901",
+      "first_seen_at": "2026-09-06T13:46:33.295430Z",
+      "id": "state_d6c68a9eeee3a950",
+      "last_seen_at": "2026-09-06T13:46:41.093833Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_branch_20260906T15440"
+    },
     "state_d7031d0204c38d42": {
       "controls_summary": [
         {
@@ -259512,6 +259820,28 @@
       "semantic_context": "state_0011_81f60b414f",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0011_81f60b414f"
+    },
+    "state_d81d2c6796d3e257": {
+      "controls_summary": [],
+      "fingerprint": "b344061b89c80dc2",
+      "first_seen_at": "2026-09-06T11:02:55.101958Z",
+      "id": "state_d81d2c6796d3e257",
+      "last_seen_at": "2026-09-06T11:03:06.723386Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_next_dialog_20260906"
     },
     "state_d8685a98f38908fe": {
       "controls_summary": [
@@ -265403,6 +265733,28 @@
       "semantic_context": "state_0061_01a12f172c",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0061_01a12f172c"
+    },
+    "state_dd7dfc7fdfc4f12a": {
+      "controls_summary": [],
+      "fingerprint": "52e7c97f01be52a6",
+      "first_seen_at": "2026-09-06T13:59:47.368343Z",
+      "id": "state_dd7dfc7fdfc4f12a",
+      "last_seen_at": "2026-09-06T13:59:57.533169Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_full_fields_20260906T155716\\s"
     },
     "state_ddfb91a289108505": {
       "controls_summary": [
@@ -280560,7 +280912,7 @@
       "fingerprint": "93a1f2b15560ba6b",
       "first_seen_at": "2026-09-04T19:04:20.739785Z",
       "id": "state_e9de69492ef2ecac",
-      "last_seen_at": "2026-09-05T07:39:44.721899Z",
+      "last_seen_at": "2026-09-06T13:59:52.287284Z",
       "mdi_title": "A globális szerkezetjegyzékben elérhető új szerkezet létrehozási munkafolyamat, a választható szerkezettípusok és a szükséges adatmezők feltárása.",
       "provenance": [
         {
@@ -280571,9 +280923,18 @@
           "deterministic": false,
           "kind": "navigation_provenance",
           "path": null
+        },
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
         }
       ],
-      "semantic_context": "A globális szerkezetjegyzékben elérhető új szerkezet létrehozási munkafolyamat, a választható szerkezettípusok és a szükséges adatmezők feltárása.",
+      "semantic_context": "catalog.structure",
       "window_class": "TMainForm",
       "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\research_sessions\\research_a5e64112c49b4d38960cfff09a1f0814\\sa"
     },
@@ -302055,7 +302416,7 @@
       "fingerprint": "9b4b48158ee1a001",
       "first_seen_at": "2026-09-04T19:04:20.477575Z",
       "id": "state_fc222ab23458bd03",
-      "last_seen_at": "2026-09-05T07:39:45.599411Z",
+      "last_seen_at": "2026-09-06T13:59:49.183039Z",
       "mdi_title": "A globális Szerkezetek jegyzék új elem létrehozási útvonalának, a réteges és ismert szerkezet munkafolyamatoknak, a választható szerkezettípusoknak és a megjelenő adatmezőknek a feltárása.",
       "provenance": [
         {
@@ -302066,9 +302427,18 @@
           "deterministic": false,
           "kind": "navigation_provenance",
           "path": null
+        },
+        {
+          "data": {
+            "source": "structure_catalog_deep_mapper"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
         }
       ],
-      "semantic_context": "A globális Szerkezetek jegyzék új elem létrehozási útvonalának, a réteges és ismert szerkezet munkafolyamatoknak, a választható szerkezettípusoknak és a megjelenő adatmezőknek a feltárása.",
+      "semantic_context": "catalog.structure",
       "window_class": "TMainForm",
       "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\research_sessions\\research_a5e64112c49b4d38960cfff09a1f0814\\sa"
     },
@@ -306139,6 +306509,31 @@
     }
   },
   "transitions": {
+    "transition_0a015c2060cc141e": {
+      "action_identity": "85ea5eee6894bdc3",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "62db438463287212",
+      "from_state_id": "state_05f6c7d28cf3524d",
+      "id": "transition_0a015c2060cc141e",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_a387aa0777ceed43"
+    },
     "transition_1909a0e5d5f4d2e3": {
       "action_identity": "6fa1df7f24f63f08",
       "action_kind": "activate_control",
@@ -306177,6 +306572,56 @@
       "success_count": 3,
       "to_state_id": "state_3eb7146894ee5121"
     },
+    "transition_2082936856205572": {
+      "action_identity": "e083e10589fe38f3",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "34c69ace83235bcf",
+      "from_state_id": "state_cbabe707c24c3c64",
+      "id": "transition_2082936856205572",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_96957e1fbb567e11"
+    },
+    "transition_20adf00b7fdb4f27": {
+      "action_identity": "3e9a2031b2848b3a",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "8a25d254c50b5283",
+      "from_state_id": "state_03e68aec95542c01",
+      "id": "transition_20adf00b7fdb4f27",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_6a580fc88df1d483"
+    },
     "transition_2861af8f1655b3b0": {
       "action_identity": null,
       "action_kind": "activate_control",
@@ -306192,6 +306637,31 @@
       "success_count": 3,
       "to_state_id": "state_bd8fa7cf3e053290"
     },
+    "transition_2964c21a6ae73c64": {
+      "action_identity": "6fa1df7f24f63f08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "3c9c9c2fe86ef901",
+      "from_state_id": "state_e9de69492ef2ecac",
+      "id": "transition_2964c21a6ae73c64",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_d6c68a9eeee3a950"
+    },
     "transition_36d498ba99148959": {
       "action_identity": "12543feff2db8f93",
       "action_kind": "activate_control",
@@ -306203,16 +306673,25 @@
           "deterministic": false,
           "kind": "research_ui_transition",
           "path": null
+        },
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
         }
       ],
       "expected_state": "93a1f2b15560ba6b",
       "from_state_id": "state_fc222ab23458bd03",
       "id": "transition_36d498ba99148959",
       "last_verified_at": null,
-      "replay_count": 12,
+      "replay_count": 23,
       "semantic_action": "A globális szerkezetjegyzékben elérhető új szerkezet létrehozási munkafolyamat, a választható szerkezettípusok és a szükséges adatmezők feltárása.",
       "status": "replayed",
-      "success_count": 13,
+      "success_count": 30,
       "to_state_id": "state_e9de69492ef2ecac"
     },
     "transition_43845e5bba79cf75": {
@@ -306229,6 +306708,31 @@
       "status": "replayed",
       "success_count": 9,
       "to_state_id": "state_e9de69492ef2ecac"
+    },
+    "transition_54e9e8c8825824b5": {
+      "action_identity": "d1905a3f41158d0d",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "52e7c97f01be52a6",
+      "from_state_id": "state_018ca577c773cf30",
+      "id": "transition_54e9e8c8825824b5",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_dd7dfc7fdfc4f12a"
     },
     "transition_57dc73263294a200": {
       "action_identity": "1c9f3c103b49331d",
@@ -306252,6 +306756,31 @@
       "status": "replayed",
       "success_count": 2,
       "to_state_id": "state_f66df35f673cc863"
+    },
+    "transition_58f262e6823ae211": {
+      "action_identity": "3ca05e35b74e5b4b",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "1c962005fc52ccef",
+      "from_state_id": "state_dd7dfc7fdfc4f12a",
+      "id": "transition_58f262e6823ae211",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_0d91c54151c055d2"
     },
     "transition_61597ca938078c55": {
       "action_identity": null,
@@ -306283,6 +306812,31 @@
       "success_count": 3,
       "to_state_id": "state_b22f1471d633580f"
     },
+    "transition_81319d6cf6e09446": {
+      "action_identity": "1def926dcf03cc42",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "870e547e738d82ff",
+      "from_state_id": "state_d6c68a9eeee3a950",
+      "id": "transition_81319d6cf6e09446",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_03e68aec95542c01"
+    },
     "transition_87d45ca4b38ddcd9": {
       "action_identity": null,
       "action_kind": "activate_control",
@@ -306297,6 +306851,31 @@
       "status": "replayed",
       "success_count": 3,
       "to_state_id": "state_6e148c25f1fe9e13"
+    },
+    "transition_8972f2092a2412b9": {
+      "action_identity": "6fa1df7f24f63f08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "b346ad63dfe71b26",
+      "from_state_id": "state_e9de69492ef2ecac",
+      "id": "transition_8972f2092a2412b9",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_018ca577c773cf30"
     },
     "transition_9530cff2fddc1926": {
       "action_identity": null,
@@ -306352,6 +306931,56 @@
       "success_count": 8,
       "to_state_id": "state_a526b85d26c4f543"
     },
+    "transition_97cbff84c76d8f76": {
+      "action_identity": "6fa1df7f24f63f08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "167d284a96d9f8ba",
+      "from_state_id": "state_e9de69492ef2ecac",
+      "id": "transition_97cbff84c76d8f76",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_05f6c7d28cf3524d"
+    },
+    "transition_9aa2adabcb33d212": {
+      "action_identity": "747e88b658b4fb08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "eceaed16bc06bde0",
+      "from_state_id": "state_a387aa0777ceed43",
+      "id": "transition_9aa2adabcb33d212",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_5f2e0024a66e7249"
+    },
     "transition_9d0bd8d8703a6573": {
       "action_identity": null,
       "action_kind": "activate_control",
@@ -306367,6 +306996,81 @@
       "success_count": 3,
       "to_state_id": "state_fc222ab23458bd03"
     },
+    "transition_9d5b4f0f80eb79ad": {
+      "action_identity": "99345aab0f259f0f",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "dff2366a5d4df9c4",
+      "from_state_id": "state_78cd136dd1bf74a4",
+      "id": "transition_9d5b4f0f80eb79ad",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_3a961379c890b0b1"
+    },
+    "transition_a53cd3944b24f52f": {
+      "action_identity": "6fa1df7f24f63f08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "b344061b89c80dc2",
+      "from_state_id": "state_e9de69492ef2ecac",
+      "id": "transition_a53cd3944b24f52f",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_d81d2c6796d3e257"
+    },
+    "transition_a931d28a8de01431": {
+      "action_identity": "8e8577f85a005a5e",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "76eaae47a4b7a30e",
+      "from_state_id": "state_d81d2c6796d3e257",
+      "id": "transition_a931d28a8de01431",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_cbabe707c24c3c64"
+    },
     "transition_ad47cb1e97329317": {
       "action_identity": null,
       "action_kind": "activate_control",
@@ -306381,6 +307085,31 @@
       "status": "replayed",
       "success_count": 3,
       "to_state_id": "state_07a7b6c48335553e"
+    },
+    "transition_b5322c87369fbbf6": {
+      "action_identity": "6fa1df7f24f63f08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "4e494027ac730514",
+      "from_state_id": "state_e9de69492ef2ecac",
+      "id": "transition_b5322c87369fbbf6",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_26bdfa8c32145f15"
     },
     "transition_ba9d162c7f0192d0": {
       "action_identity": null,
@@ -306429,10 +307158,10 @@
       "from_state_id": "state_e9de69492ef2ecac",
       "id": "transition_c591f474a62b5489",
       "last_verified_at": null,
-      "replay_count": 6,
+      "replay_count": 16,
       "semantic_action": "A globális Szerkezetek jegyzék új elem létrehozási útvonalának, a réteges és ismert szerkezet munkafolyamatoknak, a választható szerkezettípusoknak és a megjelenő adatmezőknek a feltárása.",
       "status": "replayed",
-      "success_count": 7,
+      "success_count": 17,
       "to_state_id": "state_fc222ab23458bd03"
     },
     "transition_c813307a8d6887d6": {
@@ -306449,6 +307178,31 @@
       "status": "replayed",
       "success_count": 3,
       "to_state_id": "state_78ea9aee5aaa69df"
+    },
+    "transition_cdcbc210b27c40c3": {
+      "action_identity": "6fa1df7f24f63f08",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "d6b2e38599b12bd4",
+      "from_state_id": "state_e9de69492ef2ecac",
+      "id": "transition_cdcbc210b27c40c3",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_b48b2ec052485d61"
     },
     "transition_e68dc99da151a6e4": {
       "action_identity": null,
@@ -306490,12 +307244,37 @@
       "expected_state": "global structure catalog",
       "from_state_id": "state_2239d5ab62d2e34c",
       "id": "transition_f4fa3c93ceb56ef3",
-      "last_verified_at": "2026-09-05T08:12:44.723090Z",
-      "replay_count": 9,
+      "last_verified_at": "2026-09-06T13:59:43.782944Z",
+      "replay_count": 11,
       "semantic_action": "catalog.structure.open",
       "status": "verified",
-      "success_count": 46,
+      "success_count": 60,
       "to_state_id": "state_1e44d521c53a2621"
+    },
+    "transition_fb733bf619676f43": {
+      "action_identity": "f33b8661aad04959",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "reversible": true
+          },
+          "description": "Deterministic sandbox mapping observation",
+          "deterministic": false,
+          "kind": "structure_catalog_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "405b137e642a653f",
+      "from_state_id": "state_26bdfa8c32145f15",
+      "id": "transition_fb733bf619676f43",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_78cd136dd1bf74a4"
     }
   }
 }
