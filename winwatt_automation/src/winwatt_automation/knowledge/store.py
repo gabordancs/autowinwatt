@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from .models import (
     EvidenceRef,
@@ -12,6 +12,11 @@ from .models import (
     SemanticCapability,
     SemanticConcept,
 )
+if TYPE_CHECKING:
+    from winwatt_automation.discovery.models import (
+        CandidateCapability, DiscoveryEvidence, StructureKindCandidate, StructureReferenceCandidate,
+    )
+    from winwatt_automation.research.models import ResearchEvidence, ResearchSource
 
 
 class KnowledgeStore:
@@ -28,8 +33,12 @@ class KnowledgeStore:
     def _load(self) -> dict[str, Any]:
         if self.path.is_file():
             data = json.loads(self.path.read_text(encoding="utf-8"))
-            return {key: data.get(key, {}) for key in ("concepts", "capabilities", "hypotheses", "experiments")}
-        return {"concepts": {}, "capabilities": {}, "hypotheses": {}, "experiments": {}}
+            return {key: data.get(key, {}) for key in (
+                "concepts", "capabilities", "hypotheses", "experiments", "sources", "research_evidence",
+                "candidate_capabilities", "discovery_evidence",
+                "structure_reference_candidates", "structure_kind_candidates",
+            )}
+        return {"concepts": {}, "capabilities": {}, "hypotheses": {}, "experiments": {}, "sources": {}, "research_evidence": {}, "candidate_capabilities": {}, "discovery_evidence": {}, "structure_reference_candidates": {}, "structure_kind_candidates": {}}
 
     def _save(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -43,6 +52,7 @@ class KnowledgeStore:
             "room.height_m": ("Room", "float", "m"),
             "room.temperature_c": ("Room", "float", "C"),
             "room.boundary.external_wall.x_m": ("RoomBoundary", "float", "m"),
+            "room.boundary.structure_reference.assign_existing": ("RoomBoundary", "string", None),
         }
         return known.get(capability, ("Unknown", "unknown", None))
 
@@ -108,6 +118,103 @@ class KnowledgeStore:
 
     def get_concept_hypotheses(self, concept: str) -> list[Hypothesis]:
         return [item for item in (Hypothesis.model_validate(value) for value in self._data["hypotheses"].values()) if item.target_capability == concept]
+
+    def store_research_source(self, source: ResearchSource) -> ResearchSource:
+        """Store source metadata; source text remains in its regenerable local index."""
+        self._data["sources"][source.id] = source.model_dump(mode="json")
+        self._save()
+        return source
+
+    def get_research_source(self, source_id: str) -> ResearchSource | None:
+        from winwatt_automation.research.models import ResearchSource
+        value = self._data["sources"].get(source_id)
+        return ResearchSource.model_validate(value) if value else None
+
+    def list_research_sources(self) -> list[ResearchSource]:
+        from winwatt_automation.research.models import ResearchSource
+        return [ResearchSource.model_validate(value) for value in self._data["sources"].values()]
+
+    def store_research_evidence(self, evidence: ResearchEvidence) -> ResearchEvidence:
+        if self.get_research_source(evidence.source_id) is None:
+            raise KeyError(f"unknown research source: {evidence.source_id}")
+        self._data["research_evidence"][evidence.evidence_id] = evidence.model_dump(mode="json")
+        self._save()
+        return evidence
+
+    def get_research_evidence(self, evidence_id: str) -> ResearchEvidence | None:
+        from winwatt_automation.research.models import ResearchEvidence
+        value = self._data["research_evidence"].get(evidence_id)
+        return ResearchEvidence.model_validate(value) if value else None
+
+    def get_concept_research_evidence(self, concept: str) -> list[ResearchEvidence]:
+        from winwatt_automation.research.models import ResearchEvidence
+        return [item for item in (ResearchEvidence.model_validate(value) for value in self._data["research_evidence"].values()) if concept in item.related_concepts]
+
+    def attach_research_evidence(self, hypothesis_id: str, evidence_id: str) -> Hypothesis:
+        """Link non-deterministic manual evidence without changing verification status."""
+        hypothesis = self.get_hypothesis(hypothesis_id)
+        evidence = self.get_research_evidence(evidence_id)
+        if hypothesis is None:
+            raise KeyError(f"unknown hypothesis: {hypothesis_id}")
+        if evidence is None:
+            raise KeyError(f"unknown research evidence: {evidence_id}")
+        if hypothesis.target_capability not in evidence.related_concepts:
+            raise ValueError("research evidence is not related to the hypothesis capability")
+        if evidence_id not in hypothesis.research_evidence_ids:
+            hypothesis.research_evidence_ids.append(evidence_id)
+            hypothesis.evidence.append(evidence.as_evidence_ref())
+            self._data["hypotheses"][hypothesis_id] = hypothesis.model_dump(mode="json")
+            concept = self.get_concept(hypothesis.target_capability)
+            if concept is not None:
+                concept.evidence.append(evidence.as_evidence_ref())
+                self._data["concepts"][concept.concept] = concept.model_dump(mode="json")
+            capability = self.get_capability(hypothesis.target_capability)
+            if capability is not None:
+                capability.evidence.append(evidence.as_evidence_ref())
+                self._data["capabilities"][capability.capability] = capability.model_dump(mode="json")
+            self._save()
+        return hypothesis
+
+    def store_discovery_evidence(self, evidence: DiscoveryEvidence) -> DiscoveryEvidence:
+        if evidence.deterministic:
+            raise ValueError("discovery evidence can never be deterministic verification")
+        self._data["discovery_evidence"][evidence.evidence_id] = evidence.model_dump(mode="json")
+        self._save()
+        return evidence
+
+    def store_candidate_capability(self, candidate: CandidateCapability) -> CandidateCapability:
+        if candidate.status is not KnowledgeStatus.HYPOTHESIS:
+            raise ValueError("discovery candidates must remain hypotheses")
+        self._data["candidate_capabilities"][candidate.candidate_id] = candidate.model_dump(mode="json")
+        self._save()
+        return candidate
+
+    def list_candidate_capabilities(self, semantic_scope: str | None = None) -> list[CandidateCapability]:
+        from winwatt_automation.discovery.models import CandidateCapability
+        items = [CandidateCapability.model_validate(value) for value in self._data["candidate_capabilities"].values()]
+        return [item for item in items if semantic_scope is None or item.proposed_concept.startswith(semantic_scope)]
+
+    def store_structure_reference_candidate(self, candidate: StructureReferenceCandidate) -> StructureReferenceCandidate:
+        if candidate.status is not KnowledgeStatus.HYPOTHESIS:
+            raise ValueError("structure reference discovery candidates must remain hypotheses")
+        self._data["structure_reference_candidates"][candidate.reference_id] = candidate.model_dump(mode="json")
+        self._save()
+        return candidate
+
+    def store_structure_kind_candidate(self, candidate: StructureKindCandidate) -> StructureKindCandidate:
+        if candidate.status is not KnowledgeStatus.HYPOTHESIS:
+            raise ValueError("structure kind discovery candidates must remain hypotheses")
+        self._data["structure_kind_candidates"][candidate.proposed_kind] = candidate.model_dump(mode="json")
+        self._save()
+        return candidate
+
+    def list_structure_reference_candidates(self) -> list[StructureReferenceCandidate]:
+        from winwatt_automation.discovery.models import StructureReferenceCandidate
+        return [StructureReferenceCandidate.model_validate(value) for value in self._data["structure_reference_candidates"].values()]
+
+    def list_structure_kind_candidates(self) -> list[StructureKindCandidate]:
+        from winwatt_automation.discovery.models import StructureKindCandidate
+        return [StructureKindCandidate.model_validate(value) for value in self._data["structure_kind_candidates"].values()]
 
     def get_state_evidence(self, concept: str) -> list[EvidenceRef]:
         item = self.get_concept(concept)

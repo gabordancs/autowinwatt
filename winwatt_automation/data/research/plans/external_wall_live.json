@@ -1,0 +1,132 @@
+{
+  "plan": {
+    "goal": "Tanuld meg a Padlásfödém felvételét",
+    "interpreted_scope": "A Padlásfödém szerkezettípus létrehozásának vagy helyiséghez történő hozzárendelésének kutatása; a cél megfogalmazása nem dönti el, melyik művelet értendő.",
+    "known_verified": [],
+    "manual_supported": [
+      "A kézikönyv a padlásfödémet alkalmazható szerkezettípusként sorolja fel.",
+      "Padlásfödém esetén a program mindkét oldalról számít fajlagos hőtároló tömeget.",
+      "Épület-ellenőrzéskor a program vizsgálhatja, hogy padlásfödém esetén be van-e kapcsolva a túloldali tér fűtetlen beállítása."
+    ],
+    "hypotheses": [
+      "room.boundary.external_wall.solar_absorptance"
+    ],
+    "unknowns": [
+      "Nem ismert, hogy a cél új Padlásfödém szerkezet definiálása vagy egy meglévő szerkezet helyiséghez rendelése.",
+      "Nincs determinisztikus mentés–újranyitás–visszaolvasás bizonyíték a Padlásfödém felvételére.",
+      "A meglévő hipotézis nem kapcsolódik közvetlenül a Padlásfödém felvételéhez.",
+      "A Padlásfödémhez nem áll rendelkezésre ismert biztonságos kísérletkezelő."
+    ],
+    "recommended_next_target": "room.boundary.attic_floor",
+    "reasoning_summary": "A kézikönyv igazolja, hogy a Padlásfödém támogatott szerkezettípus, de ez dokumentációs bizonyíték, nem futásidejű verifikáció. A célhoz új szemantikai képességhipotézis szükséges, amelyhez jelenleg nincs engedélyezett kísérletkezelő.",
+    "proposed_hypothesis": {
+      "target_capability": "room.boundary.attic_floor",
+      "semantic_guess": "Egy helyiség határoló szerkezeteként Padlásfödém rögzíthető, várhatóan fűtetlen túloldali tér beállítással.",
+      "confidence": 0.63
+    },
+    "proposed_experiment": {
+      "experiment_status": "unsupported",
+      "reason": "A javasolt room.boundary.attic_floor cél nincs a known_safe_experiment_handlers listában, ezért érvényes biztonságos kísérlet nem tervezhető hozzá.",
+      "missing_capability": "room.boundary.attic_floor",
+      "spec": null
+    },
+    "needs_human_input": true,
+    "human_question": "A „Padlásfödém felvétele” új szerkezet definiálását jelenti, vagy egy már létező Padlásfödém helyiséghez rendelését?"
+  },
+  "audit": {
+    "prompt_version": "research_planner_v0.1",
+    "instructions": "You are a WinWatt research planner. Produce only the supplied structured schema.\nYou plan from the supplied context and nothing else. VERIFIED means only deterministic runtime\nsave/reopen/readback evidence. Manual material is documentation, never verification. A hypothesis\nis unproven. You must not claim a new verified capability, create UI commands, coordinates, keys,\nshell commands, or arbitrary automation. Propose an experiment only when its target is in\nknown_safe_experiment_handlers and its schema is valid; otherwise mark it unsupported and say why.\nThis is a dry-run: do not request execution.\n\nKNOWN_VERIFIED: Only copy exact concept identifiers from allowed_verified_concepts. Never infer that a related or parent concept is verified. For example, verification of room.boundary.external_wall.x_m does not verify room.boundary.external_wall, room.boundary.external_wall.dimensions, or any other identifier. known_verified must be a strict subset of allowed_verified_concepts.\n\nHYPOTHESES: Only copy exact identifiers from allowed_hypothesis_concepts. Do not invent or rename an existing hypothesis in the hypotheses list; use proposed_hypothesis for a new suggestion.\n\nallowed_verified_concepts = []\n\nallowed_hypothesis_concepts = [\"room.boundary.external_wall.solar_absorptance\"]",
+    "provider": "openai",
+    "model": "gpt-5.6-sol",
+    "context": {
+      "goal": "Tanuld meg a Padlásfödém felvételét",
+      "verified_concepts": [],
+      "hypotheses": [
+        {
+          "concept": "room.boundary.external_wall.solar_absorptance",
+          "status": "hypothesis",
+          "confidence": 0.72,
+          "evidence_kinds": [
+            "research_manual"
+          ]
+        }
+      ],
+      "rejected_hypotheses": [],
+      "relevant_capabilities": [
+        {
+          "concept": "room.boundary.external_wall.solar_absorptance",
+          "status": "hypothesis",
+          "confidence": 0.72,
+          "evidence_kinds": [
+            "research_manual"
+          ]
+        }
+      ],
+      "manual_evidence": [
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 23,
+          "section": "Szerkezetek 23",
+          "excerpt": "Szerkezetek 23 BAUSFT Pécsvárad Kft. mező tartalmazza az elvégzett számítások alapján, a rétegekre illetve a teljes szerkezetre vonatkozó értékelést. 7.6. Ismert szerkezet adatainak megadása Ha egy szerkezet adatai más számításokból ismertek, vagy réteges szer- kezetként nem is számítható (pl. ablak, ajtó stb.), ismert szerkezetként visszük be a projekt szerkezetei közé, hogy a későbbiekben, amikor a szer- kezetekből felépítjük a helyiségeket, az ilyen szerkezetek is egyszerűen be- illeszthetők legyenek. A szerkezet mérete és a hőátbocsátási tényező mellett, a kiválasztott szerkezet típus szerint vagy a falszerkezet adatok , vagy az üvegezett szerkezet adatok megadása lehetséges. 7.7. Szerkezettípusok Az egyes szerkezettípusok meghatározzák a számítás módját is. Az alkalmazható szerkezettípusok a következők: külső szerkezet belső szerkezet padló (talajra fektetett) tető padlásfödém",
+          "related_concepts": []
+        },
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 24,
+          "section": "24 Szerkezetek",
+          "excerpt": "24 Szerkezetek BAUSFT Pécsvárad Kft. Ismert szerkezetek esetén további típusok is lehetségesek: ablak (külső) ablak (belső) ajtó (külső) ajtó (belső) üvegezett ajtó (külső) felülvilágító kapu (külső) hőhíd (külső) hőhíd (belső) A padló (talajra fektetett) és talajjal érintkező fal esetén a padlószint magasság alapján vonalmenti hőátbocsátási tényezőt számít a program. Mindkét típus számítható az ISO 13370 szabvány szerint is. Talajra fektetett padló esetén ilyenkor a tényleges felületi hőátbocsátási tényező csak a szerkezet beépítésekor számítódik ki, mivel ennél a módszernél mind a felület, mind a külső kerület, illetve ezek aránya is szerepel a hőátbocsátási tényező meghatározásában. Mindkét oldalról számít fajlagos hőtároló tömeget a belső szerkezet , padlásfödém, pincefödém, belső födém (felfelé hűlő) és belső födém (lefelé hűlő) esetén. Kiszámítja a padló hőelnyelési tényezőt és",
+          "related_concepts": []
+        },
+        {
+          "source_id": "manual:winwatt:6c2aef8892fe",
+          "page": 59,
+          "section": "Épületek 59",
+          "excerpt": "dokumentálására szolgál, hogy a szerkezeteink hőátbocsátási tényezői hogyan viszonyulnak a megengedett értékekhez. A következő, ellenőrzések lap, csak akkor jelenik meg, ha a programnak vannak észrevételei. A program a következőket próbálja meg ellenőrizni. Megfelelő-e az alkalmazott energetikai rendelet. Padlásfödémek, pincefödémek esetén be van-e kapcsolva a túloldali tér fűtetlen kapcsoló? Szerkezeteknél az egyszerűsített hőhíd számításhoz tartozó dU növekmény meg van-e adva? Üvegezés g érték, üvegezési arány ellenőrzése, extrém értékekre észrevétel. Talajjal érintkező szerkezet felület és vonalmenti hossz érték ellenőrzése. A szerkezetnél szereplő U érték és az épületnél lévő U érték összevetése. Épület fajlagos hőtároló tömeg és a beállítás összevetése. A gépészeti rendszerek által lefedett terület hogyan viszonyul",
+          "related_concepts": []
+        }
+      ],
+      "previous_experiments": [],
+      "known_safe_experiment_handlers": [
+        "room.area_m2",
+        "room.boundary.external_wall.x_m"
+      ]
+    },
+    "raw_response": {
+      "response_id": "resp_0e05ebba0e44f625016a99d42e41f887d29d6e8700519b332e",
+      "output": {
+        "goal": "Tanuld meg a Padlásfödém felvételét",
+        "interpreted_scope": "A Padlásfödém szerkezettípus létrehozásának vagy helyiséghez történő hozzárendelésének kutatása; a cél megfogalmazása nem dönti el, melyik művelet értendő.",
+        "known_verified": [],
+        "manual_supported": [
+          "A kézikönyv a padlásfödémet alkalmazható szerkezettípusként sorolja fel.",
+          "Padlásfödém esetén a program mindkét oldalról számít fajlagos hőtároló tömeget.",
+          "Épület-ellenőrzéskor a program vizsgálhatja, hogy padlásfödém esetén be van-e kapcsolva a túloldali tér fűtetlen beállítása."
+        ],
+        "hypotheses": [
+          "room.boundary.external_wall.solar_absorptance"
+        ],
+        "unknowns": [
+          "Nem ismert, hogy a cél új Padlásfödém szerkezet definiálása vagy egy meglévő szerkezet helyiséghez rendelése.",
+          "Nincs determinisztikus mentés–újranyitás–visszaolvasás bizonyíték a Padlásfödém felvételére.",
+          "A meglévő hipotézis nem kapcsolódik közvetlenül a Padlásfödém felvételéhez.",
+          "A Padlásfödémhez nem áll rendelkezésre ismert biztonságos kísérletkezelő."
+        ],
+        "recommended_next_target": "room.boundary.attic_floor",
+        "reasoning_summary": "A kézikönyv igazolja, hogy a Padlásfödém támogatott szerkezettípus, de ez dokumentációs bizonyíték, nem futásidejű verifikáció. A célhoz új szemantikai képességhipotézis szükséges, amelyhez jelenleg nincs engedélyezett kísérletkezelő.",
+        "proposed_hypothesis": {
+          "target_capability": "room.boundary.attic_floor",
+          "semantic_guess": "Egy helyiség határoló szerkezeteként Padlásfödém rögzíthető, várhatóan fűtetlen túloldali tér beállítással.",
+          "confidence": 0.63
+        },
+        "proposed_experiment": {
+          "experiment_status": "unsupported",
+          "reason": "A javasolt room.boundary.attic_floor cél nincs a known_safe_experiment_handlers listában, ezért érvényes biztonságos kísérlet nem tervezhető hozzá.",
+          "missing_capability": "room.boundary.attic_floor",
+          "spec": null
+        },
+        "needs_human_input": true,
+        "human_question": "A „Padlásfödém felvétele” új szerkezet definiálását jelenti, vagy egy már létező Padlásfödém helyiséghez rendelését?"
+      }
+    }
+  }
+}
