@@ -160,6 +160,38 @@ class SandboxUIExplorer:
             return result
         except Exception as exc:
             return self._result(iteration, before, identity, "set_control_value", "blocked", False, str(exc))
+
+    def commit_observed_control(self, identity: str, iteration: int, *, sandbox_experiment: bool = False) -> ExplorationAction:
+        """Commit one exact, currently observed control in an explicit sandbox experiment.
+
+        Normal discovery deliberately cannot invoke commit candidates.  This
+        narrow boundary is for an opt-in experiment only: it still requires an
+        observed enabled Button and does not accept a caption or coordinates.
+        """
+        before = self.inspect_window()
+        control = next((item for item in before.controls if item.identity == identity), None)
+        if not sandbox_experiment:
+            return self._result(iteration, before, identity, "commit_observed_control", "blocked", False, "explicit sandbox experiment authorization required")
+        if not control or control.control_type != "Button" or not control.enabled:
+            return self._result(iteration, before, identity, "commit_observed_control", "blocked", False, "unknown, disabled, or non-Button commit control")
+        if self._safety(control) != "commit_candidate":
+            return self._result(iteration, before, identity, "commit_observed_control", "blocked", False, "control is not an observed commit candidate")
+        live = self._live_by_identity.get(identity)
+        if live is None:
+            return self._result(iteration, before, identity, "commit_observed_control", "blocked", False, "control disappeared")
+        try:
+            live.click_input()
+            return self._result(iteration, before, identity, "commit_observed_control", "commit_candidate", True, after=self.inspect_window())
+        except Exception as exc:
+            return self._result(iteration, before, identity, "commit_observed_control", "commit_candidate", False, str(exc))
+    def go_back(self, iteration: int) -> ExplorationAction:
+        """Safe reversible navigation: Escape only, never arbitrary keys."""
+        before = self.inspect_window()
+        try:
+            self.window.type_keys("{ESC}")
+            return self._result(iteration, before, None, "go_back", "safe_navigation", True, after=self.inspect_window())
+        except Exception as exc:
+            return self._result(iteration, before, None, "go_back", "blocked", False, str(exc))
     def _result(self,i,before,selected,kind,safety,success,failure=None,after=None):
         b={x.identity for x in before.controls}; a={x.identity for x in (after.controls if after else [])}
         return ExplorationAction(action_id=f"uia_{uuid4().hex}",iteration=i,window_before=before,selected_control=selected,action_type=kind,safety_class=safety,state_before=before,state_after=after,controls_added=sorted(a-b),controls_removed=sorted(b-a),success=success,failure=failure,evidence_refs=[EvidenceRef(kind="ui_exploration",description=kind,deterministic=False,data={"sandbox":True, "source_state": before.state_fingerprint, "target_state": after.state_fingerprint if after else None, "state_changed": bool(after and before.state_fingerprint != after.state_fingerprint), "selected_identity": selected, "control_effect_only": True})])
