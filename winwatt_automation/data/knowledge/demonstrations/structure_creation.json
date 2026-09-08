@@ -1,0 +1,868 @@
+{
+  "name": "structure_creation",
+  "target": "structure_creation",
+  "created_at": "2026-09-07T14:00:16.262900+00:00",
+  "source_project": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\testwwp.wwp",
+  "steps": [
+    {
+      "step_index": 1,
+      "timestamp": "2026-09-07T13:57:39.699247+00:00",
+      "raw_state_fingerprint": "71d8ebc0bcdf732d",
+      "semantic_state_fingerprint": "d80ecdb535516dd7",
+      "active_mdi_title": "Szerkezetek",
+      "window_identity": "887a44a4b18ba9a6",
+      "window_class": "TMainForm",
+      "source_state": "d9957feca1e1100a",
+      "target_state": "71d8ebc0bcdf732d",
+      "semantic_state_delta": true,
+      "action_type": "ambiguous_manual_transition",
+      "observed_control": null,
+      "candidate_controls": [
+        {
+          "identity": "fceab8b8af388bc8",
+          "control_type": "Button",
+          "caption": null,
+          "parent_identity": "e9ba1d222b488a77",
+          "ordinal": 0
+        },
+        {
+          "identity": "2e6167b43c9a1138",
+          "control_type": "MenuItem",
+          "caption": "Rendszer",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 0
+        },
+        {
+          "identity": "22bc60fb40f01939",
+          "control_type": "Button",
+          "caption": "Kis méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 0
+        },
+        {
+          "identity": "b2c7ea58173d356a",
+          "control_type": "Button",
+          "caption": "Teljes méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 1
+        },
+        {
+          "identity": "34babce122b0c645",
+          "control_type": "Button",
+          "caption": "Bezárás",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 2
+        },
+        {
+          "identity": "dcecb29307288339",
+          "control_type": "MenuItem",
+          "caption": "Fájl",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 0
+        },
+        {
+          "identity": "1c9f3c103b49331d",
+          "control_type": "MenuItem",
+          "caption": "Jegyzékek",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 1
+        },
+        {
+          "identity": "c069b6f8e6a7698b",
+          "control_type": "MenuItem",
+          "caption": "Eszközök",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 2
+        },
+        {
+          "identity": "790a0b7e4f6a43be",
+          "control_type": "MenuItem",
+          "caption": "Beállítások",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 3
+        },
+        {
+          "identity": "4a9b674eac787166",
+          "control_type": "MenuItem",
+          "caption": "Ablak",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 4
+        },
+        {
+          "identity": "dd1f065aaf7deb7f",
+          "control_type": "MenuItem",
+          "caption": "Súgó",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 5
+        }
+      ]
+    },
+    {
+      "step_index": 2,
+      "timestamp": "2026-09-07T13:58:10.857691+00:00",
+      "raw_state_fingerprint": "c850ef6af854ef4d",
+      "semantic_state_fingerprint": "af6973daf70363f3",
+      "active_mdi_title": "Szerkezetek",
+      "window_identity": "887a44a4b18ba9a6",
+      "window_class": "TMainForm",
+      "source_state": "71d8ebc0bcdf732d",
+      "target_state": "c850ef6af854ef4d",
+      "semantic_state_delta": true,
+      "action_type": "ambiguous_manual_transition",
+      "observed_control": null,
+      "candidate_controls": [
+        {
+          "identity": "fceab8b8af388bc8",
+          "control_type": "Button",
+          "caption": null,
+          "parent_identity": "e9ba1d222b488a77",
+          "ordinal": 0
+        },
+        {
+          "identity": "2e6167b43c9a1138",
+          "control_type": "MenuItem",
+          "caption": "Rendszer",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 0
+        },
+        {
+          "identity": "22bc60fb40f01939",
+          "control_type": "Button",
+          "caption": "Kis méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 0
+        },
+        {
+          "identity": "b2c7ea58173d356a",
+          "control_type": "Button",
+          "caption": "Teljes méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 1
+        },
+        {
+          "identity": "34babce122b0c645",
+          "control_type": "Button",
+          "caption": "Bezárás",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 2
+        },
+        {
+          "identity": "dcecb29307288339",
+          "control_type": "MenuItem",
+          "caption": "Fájl",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 0
+        },
+        {
+          "identity": "1c9f3c103b49331d",
+          "control_type": "MenuItem",
+          "caption": "Jegyzékek",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 1
+        },
+        {
+          "identity": "c069b6f8e6a7698b",
+          "control_type": "MenuItem",
+          "caption": "Eszközök",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 2
+        },
+        {
+          "identity": "790a0b7e4f6a43be",
+          "control_type": "MenuItem",
+          "caption": "Beállítások",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 3
+        },
+        {
+          "identity": "4a9b674eac787166",
+          "control_type": "MenuItem",
+          "caption": "Ablak",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 4
+        },
+        {
+          "identity": "dd1f065aaf7deb7f",
+          "control_type": "MenuItem",
+          "caption": "Súgó",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 5
+        },
+        {
+          "identity": "0019ae98d678c463",
+          "control_type": "MenuItem",
+          "caption": null,
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 6
+        },
+        {
+          "identity": "52fe601c53e13860",
+          "control_type": "MenuItem",
+          "caption": null,
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 7
+        },
+        {
+          "identity": "25f3d71a461451ff",
+          "control_type": "MenuItem",
+          "caption": null,
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 8
+        },
+        {
+          "identity": "33ea0d4ff6b0b5a0",
+          "control_type": "MenuItem",
+          "caption": null,
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 9
+        },
+        {
+          "identity": "b69c25f863bf97e6",
+          "control_type": "MenuItem",
+          "caption": null,
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 10
+        },
+        {
+          "identity": "a19076cc9761692c",
+          "control_type": "MenuItem",
+          "caption": null,
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 11
+        }
+      ]
+    },
+    {
+      "step_index": 3,
+      "timestamp": "2026-09-07T13:58:38.737170+00:00",
+      "raw_state_fingerprint": "4814078ab8d0dbf2",
+      "semantic_state_fingerprint": "5849e93db049ee66",
+      "active_mdi_title": "Szerkezetek",
+      "window_identity": "887a44a4b18ba9a6",
+      "window_class": "TMainForm",
+      "source_state": "c850ef6af854ef4d",
+      "target_state": "4814078ab8d0dbf2",
+      "semantic_state_delta": true,
+      "action_type": "ambiguous_manual_transition",
+      "observed_control": null,
+      "candidate_controls": [
+        {
+          "identity": "fceab8b8af388bc8",
+          "control_type": "Button",
+          "caption": null,
+          "parent_identity": "e9ba1d222b488a77",
+          "ordinal": 0
+        },
+        {
+          "identity": "fa171677c9d77f59",
+          "control_type": "Button",
+          "caption": "Egy oszloppal balra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 0
+        },
+        {
+          "identity": "ac27b5ed8bf37fed",
+          "control_type": "Button",
+          "caption": "Egy oldallal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 1
+        },
+        {
+          "identity": "7b9f660731154002",
+          "control_type": "Button",
+          "caption": "Egy oszloppal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 2
+        },
+        {
+          "identity": "da1792ae7285aabf",
+          "control_type": "TreeItem",
+          "caption": "Szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 0
+        },
+        {
+          "identity": "fe84e0c07a2b1eb7",
+          "control_type": "TreeItem",
+          "caption": "Határoló szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 1
+        },
+        {
+          "identity": "bb710e899754606e",
+          "control_type": "MenuItem",
+          "caption": "Dokumentumablak",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 0
+        },
+        {
+          "identity": "22bc60fb40f01939",
+          "control_type": "Button",
+          "caption": "Kis méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 0
+        },
+        {
+          "identity": "b2c7ea58173d356a",
+          "control_type": "Button",
+          "caption": "Teljes méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 1
+        },
+        {
+          "identity": "34babce122b0c645",
+          "control_type": "Button",
+          "caption": "Bezárás",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 2
+        },
+        {
+          "identity": "2e6167b43c9a1138",
+          "control_type": "MenuItem",
+          "caption": "Rendszer",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 1
+        },
+        {
+          "identity": "dcecb29307288339",
+          "control_type": "MenuItem",
+          "caption": "Fájl",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 0
+        },
+        {
+          "identity": "d574d406faad70a2",
+          "control_type": "MenuItem",
+          "caption": "Szerkesztés",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 1
+        },
+        {
+          "identity": "1c9f3c103b49331d",
+          "control_type": "MenuItem",
+          "caption": "Jegyzékek",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 2
+        },
+        {
+          "identity": "de5847b6fd3b6bb1",
+          "control_type": "MenuItem",
+          "caption": "Csoport",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 3
+        },
+        {
+          "identity": "12543feff2db8f93",
+          "control_type": "MenuItem",
+          "caption": "Elem",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 4
+        },
+        {
+          "identity": "c069b6f8e6a7698b",
+          "control_type": "MenuItem",
+          "caption": "Eszközök",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 5
+        },
+        {
+          "identity": "790a0b7e4f6a43be",
+          "control_type": "MenuItem",
+          "caption": "Beállítások",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 6
+        },
+        {
+          "identity": "4a9b674eac787166",
+          "control_type": "MenuItem",
+          "caption": "Ablak",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 7
+        },
+        {
+          "identity": "dd1f065aaf7deb7f",
+          "control_type": "MenuItem",
+          "caption": "Súgó",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 8
+        }
+      ]
+    },
+    {
+      "step_index": 4,
+      "timestamp": "2026-09-07T13:59:06.681821+00:00",
+      "raw_state_fingerprint": "0019c201484cc50b",
+      "semantic_state_fingerprint": "1784d8ef3b677c55",
+      "active_mdi_title": "Szerkezetek",
+      "window_identity": "887a44a4b18ba9a6",
+      "window_class": "TMainForm",
+      "source_state": "4814078ab8d0dbf2",
+      "target_state": "0019c201484cc50b",
+      "semantic_state_delta": true,
+      "action_type": "ambiguous_manual_transition",
+      "observed_control": null,
+      "candidate_controls": [
+        {
+          "identity": "fceab8b8af388bc8",
+          "control_type": "Button",
+          "caption": null,
+          "parent_identity": "e9ba1d222b488a77",
+          "ordinal": 0
+        },
+        {
+          "identity": "fa171677c9d77f59",
+          "control_type": "Button",
+          "caption": "Egy oszloppal balra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 0
+        },
+        {
+          "identity": "ac27b5ed8bf37fed",
+          "control_type": "Button",
+          "caption": "Egy oldallal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 1
+        },
+        {
+          "identity": "7b9f660731154002",
+          "control_type": "Button",
+          "caption": "Egy oszloppal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 2
+        },
+        {
+          "identity": "79b9ad9576222bf3",
+          "control_type": "ListItem",
+          "caption": "akarmi",
+          "parent_identity": "3e8e041437bc03c4",
+          "ordinal": 0
+        },
+        {
+          "identity": "da1792ae7285aabf",
+          "control_type": "TreeItem",
+          "caption": "Szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 0
+        },
+        {
+          "identity": "fe84e0c07a2b1eb7",
+          "control_type": "TreeItem",
+          "caption": "Határoló szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 1
+        },
+        {
+          "identity": "bb710e899754606e",
+          "control_type": "MenuItem",
+          "caption": "Dokumentumablak",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 0
+        },
+        {
+          "identity": "22bc60fb40f01939",
+          "control_type": "Button",
+          "caption": "Kis méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 0
+        },
+        {
+          "identity": "b2c7ea58173d356a",
+          "control_type": "Button",
+          "caption": "Teljes méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 1
+        },
+        {
+          "identity": "34babce122b0c645",
+          "control_type": "Button",
+          "caption": "Bezárás",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 2
+        },
+        {
+          "identity": "2e6167b43c9a1138",
+          "control_type": "MenuItem",
+          "caption": "Rendszer",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 1
+        },
+        {
+          "identity": "dcecb29307288339",
+          "control_type": "MenuItem",
+          "caption": "Fájl",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 0
+        },
+        {
+          "identity": "d574d406faad70a2",
+          "control_type": "MenuItem",
+          "caption": "Szerkesztés",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 1
+        },
+        {
+          "identity": "1c9f3c103b49331d",
+          "control_type": "MenuItem",
+          "caption": "Jegyzékek",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 2
+        },
+        {
+          "identity": "de5847b6fd3b6bb1",
+          "control_type": "MenuItem",
+          "caption": "Csoport",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 3
+        },
+        {
+          "identity": "12543feff2db8f93",
+          "control_type": "MenuItem",
+          "caption": "Elem",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 4
+        },
+        {
+          "identity": "c069b6f8e6a7698b",
+          "control_type": "MenuItem",
+          "caption": "Eszközök",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 5
+        },
+        {
+          "identity": "790a0b7e4f6a43be",
+          "control_type": "MenuItem",
+          "caption": "Beállítások",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 6
+        },
+        {
+          "identity": "4a9b674eac787166",
+          "control_type": "MenuItem",
+          "caption": "Ablak",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 7
+        }
+      ]
+    },
+    {
+      "step_index": 5,
+      "timestamp": "2026-09-07T13:59:40.156157+00:00",
+      "raw_state_fingerprint": "4e1cf04f3a618bbc",
+      "semantic_state_fingerprint": "941511e019fa3937",
+      "active_mdi_title": "Szerkezetek",
+      "window_identity": "887a44a4b18ba9a6",
+      "window_class": "TMainForm",
+      "source_state": "0019c201484cc50b",
+      "target_state": "4e1cf04f3a618bbc",
+      "semantic_state_delta": true,
+      "action_type": "ambiguous_manual_transition",
+      "observed_control": null,
+      "candidate_controls": [
+        {
+          "identity": "fceab8b8af388bc8",
+          "control_type": "Button",
+          "caption": null,
+          "parent_identity": "e9ba1d222b488a77",
+          "ordinal": 0
+        },
+        {
+          "identity": "fa171677c9d77f59",
+          "control_type": "Button",
+          "caption": "Egy oszloppal balra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 0
+        },
+        {
+          "identity": "ac27b5ed8bf37fed",
+          "control_type": "Button",
+          "caption": "Egy oldallal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 1
+        },
+        {
+          "identity": "7b9f660731154002",
+          "control_type": "Button",
+          "caption": "Egy oszloppal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 2
+        },
+        {
+          "identity": "79b9ad9576222bf3",
+          "control_type": "ListItem",
+          "caption": "akarmi",
+          "parent_identity": "3e8e041437bc03c4",
+          "ordinal": 0
+        },
+        {
+          "identity": "da1792ae7285aabf",
+          "control_type": "TreeItem",
+          "caption": "Szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 0
+        },
+        {
+          "identity": "fe84e0c07a2b1eb7",
+          "control_type": "TreeItem",
+          "caption": "Határoló szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 1
+        },
+        {
+          "identity": "bb710e899754606e",
+          "control_type": "MenuItem",
+          "caption": "Dokumentumablak",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 0
+        },
+        {
+          "identity": "22bc60fb40f01939",
+          "control_type": "Button",
+          "caption": "Kis méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 0
+        },
+        {
+          "identity": "b2c7ea58173d356a",
+          "control_type": "Button",
+          "caption": "Teljes méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 1
+        },
+        {
+          "identity": "34babce122b0c645",
+          "control_type": "Button",
+          "caption": "Bezárás",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 2
+        },
+        {
+          "identity": "2e6167b43c9a1138",
+          "control_type": "MenuItem",
+          "caption": "Rendszer",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 1
+        },
+        {
+          "identity": "dcecb29307288339",
+          "control_type": "MenuItem",
+          "caption": "Fájl",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 0
+        },
+        {
+          "identity": "d574d406faad70a2",
+          "control_type": "MenuItem",
+          "caption": "Szerkesztés",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 1
+        },
+        {
+          "identity": "1c9f3c103b49331d",
+          "control_type": "MenuItem",
+          "caption": "Jegyzékek",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 2
+        },
+        {
+          "identity": "de5847b6fd3b6bb1",
+          "control_type": "MenuItem",
+          "caption": "Csoport",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 3
+        },
+        {
+          "identity": "12543feff2db8f93",
+          "control_type": "MenuItem",
+          "caption": "Elem",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 4
+        },
+        {
+          "identity": "c069b6f8e6a7698b",
+          "control_type": "MenuItem",
+          "caption": "Eszközök",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 5
+        },
+        {
+          "identity": "790a0b7e4f6a43be",
+          "control_type": "MenuItem",
+          "caption": "Beállítások",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 6
+        },
+        {
+          "identity": "4a9b674eac787166",
+          "control_type": "MenuItem",
+          "caption": "Ablak",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 7
+        }
+      ]
+    },
+    {
+      "step_index": 6,
+      "timestamp": "2026-09-07T13:59:57.889625+00:00",
+      "raw_state_fingerprint": "41072dbeb5f3be6b",
+      "semantic_state_fingerprint": "2c8476425796beae",
+      "active_mdi_title": "Szerkezetek",
+      "window_identity": "887a44a4b18ba9a6",
+      "window_class": "TMainForm",
+      "source_state": "4e1cf04f3a618bbc",
+      "target_state": "41072dbeb5f3be6b",
+      "semantic_state_delta": true,
+      "action_type": "ambiguous_manual_transition",
+      "observed_control": null,
+      "candidate_controls": [
+        {
+          "identity": "fceab8b8af388bc8",
+          "control_type": "Button",
+          "caption": null,
+          "parent_identity": "e9ba1d222b488a77",
+          "ordinal": 0
+        },
+        {
+          "identity": "fa171677c9d77f59",
+          "control_type": "Button",
+          "caption": "Egy oszloppal balra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 0
+        },
+        {
+          "identity": "ac27b5ed8bf37fed",
+          "control_type": "Button",
+          "caption": "Egy oldallal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 1
+        },
+        {
+          "identity": "7b9f660731154002",
+          "control_type": "Button",
+          "caption": "Egy oszloppal jobbra",
+          "parent_identity": "ddd8e17cd90a760c",
+          "ordinal": 2
+        },
+        {
+          "identity": "79b9ad9576222bf3",
+          "control_type": "ListItem",
+          "caption": "akarmi",
+          "parent_identity": "3e8e041437bc03c4",
+          "ordinal": 0
+        },
+        {
+          "identity": "da1792ae7285aabf",
+          "control_type": "TreeItem",
+          "caption": "Szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 0
+        },
+        {
+          "identity": "fe84e0c07a2b1eb7",
+          "control_type": "TreeItem",
+          "caption": "Határoló szerkezetek",
+          "parent_identity": "bfbb04be2c750cd0",
+          "ordinal": 1
+        },
+        {
+          "identity": "bb710e899754606e",
+          "control_type": "MenuItem",
+          "caption": "Dokumentumablak",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 0
+        },
+        {
+          "identity": "22bc60fb40f01939",
+          "control_type": "Button",
+          "caption": "Kis méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 0
+        },
+        {
+          "identity": "b2c7ea58173d356a",
+          "control_type": "Button",
+          "caption": "Teljes méret",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 1
+        },
+        {
+          "identity": "34babce122b0c645",
+          "control_type": "Button",
+          "caption": "Bezárás",
+          "parent_identity": "ef981a3aee6670da",
+          "ordinal": 2
+        },
+        {
+          "identity": "2e6167b43c9a1138",
+          "control_type": "MenuItem",
+          "caption": "Rendszer",
+          "parent_identity": "c04ee85a43b30322",
+          "ordinal": 1
+        },
+        {
+          "identity": "dcecb29307288339",
+          "control_type": "MenuItem",
+          "caption": "Fájl",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 0
+        },
+        {
+          "identity": "d574d406faad70a2",
+          "control_type": "MenuItem",
+          "caption": "Szerkesztés",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 1
+        },
+        {
+          "identity": "1c9f3c103b49331d",
+          "control_type": "MenuItem",
+          "caption": "Jegyzékek",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 2
+        },
+        {
+          "identity": "de5847b6fd3b6bb1",
+          "control_type": "MenuItem",
+          "caption": "Csoport",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 3
+        },
+        {
+          "identity": "12543feff2db8f93",
+          "control_type": "MenuItem",
+          "caption": "Elem",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 4
+        },
+        {
+          "identity": "c069b6f8e6a7698b",
+          "control_type": "MenuItem",
+          "caption": "Eszközök",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 5
+        },
+        {
+          "identity": "790a0b7e4f6a43be",
+          "control_type": "MenuItem",
+          "caption": "Beállítások",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 6
+        },
+        {
+          "identity": "4a9b674eac787166",
+          "control_type": "MenuItem",
+          "caption": "Ablak",
+          "parent_identity": "5b9437e810066d33",
+          "ordinal": 7
+        }
+      ]
+    }
+  ],
+  "terminal_state": {
+    "raw_state_fingerprint": "41072dbeb5f3be6b",
+    "semantic_state_fingerprint": "2c8476425796beae",
+    "active_mdi_title": "Szerkezetek",
+    "window_class": "TMainForm"
+  },
+  "notes": null,
+  "provenance": "human_demonstration"
+}

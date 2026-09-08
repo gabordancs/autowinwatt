@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 from loguru import logger
 from winwatt_automation.knowledge.models import EvidenceRef
 
-SafetyClass = Literal["read_only", "safe_navigation", "commit_candidate", "blocked"]
+SafetyClass = Literal["read_only", "safe_navigation", "commit_candidate", "sandbox_mutation", "blocked"]
 
 class ControlSummary(BaseModel):
     identity: str; caption: str; control_type: str; class_name: str; enabled: bool; caption_source: str = "uia"
@@ -26,11 +26,14 @@ class ExplorationAction(BaseModel):
 
 class SandboxUIExplorer:
     allowed = {"Button", "TabItem", "ListItem", "ComboBox", "TreeItem", "MenuItem"}
-    blocked = {"torol", "delete", "licenc", "license", "beallitas", "settings", "registry", "megnyitas", "open"}
-    commit = {"ok", "apply", "save", "ment", "felvesz", "uj", "masol"}
-    def __init__(self, window: Any, sandbox_project: Any) -> None:
+    # These leave the disposable project boundary or can alter the host
+    # application.  They remain unavailable even to aggressive mapping.
+    blocked = {"licenc", "license", "beallitas", "settings", "registry", "megnyitas", "open", "kilep", "exit"}
+    mutation = {"torol", "t?r?l", "delete", "ok", "apply", "save", "ment", "felvesz", "uj", "letrehoz", "masol", "copy", "atnevez", "rename", "modosit", "edit", "remove"}
+    def __init__(self, window: Any, sandbox_project: Any, *, aggressive_sandbox: bool = False) -> None:
         if "sandbox" not in {part.casefold() for part in sandbox_project.resolve().parts}: raise ValueError("sandbox path required")
         self.window = window
+        self.aggressive_sandbox = aggressive_sandbox
         self._native_live: dict[str, Any] = {}
         self._live_by_identity: dict[str, Any] = {}
     def _id(self, item: Any) -> str:
@@ -113,7 +116,7 @@ class SandboxUIExplorer:
     def _safety(self, c: ControlSummary) -> SafetyClass:
         text=unicodedata.normalize("NFKD", c.caption).encode("ascii", "ignore").decode().casefold()
         if any(x in text for x in self.blocked): return "blocked"
-        if any(x in text for x in self.commit): return "commit_candidate"
+        if any(x in text for x in self.mutation): return "sandbox_mutation" if self.aggressive_sandbox else "commit_candidate"
         return "safe_navigation"
     def activate_control(self, identity: str, iteration: int) -> ExplorationAction:
         before=self.inspect_window(); c=next((x for x in before.controls if x.identity==identity),None)
