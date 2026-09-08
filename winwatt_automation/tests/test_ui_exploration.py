@@ -51,6 +51,20 @@ def test_commit_caption_requires_separate_commit_budget(tmp_path: Path) -> None:
     assert result.success is False
 
 
+def test_aggressive_disposable_sandbox_can_explore_observed_delete(tmp_path: Path) -> None:
+    sandbox = tmp_path / "sandbox" / "test.wwp"; sandbox.parent.mkdir(); sandbox.write_text("x")
+    # Keep the behavioural test encoding-neutral; localized captions are
+    # normalized by the production safety classifier.
+    delete = FakeControl("TĂ¶rĂ¶l")
+    delete.caption = "Delete"
+    explorer = SandboxUIExplorer(FakeWindow([delete]), sandbox, aggressive_sandbox=True)
+    identity = explorer.inspect_window().controls[0].identity
+    result = explorer.activate_control(identity, 1)
+    assert result.success is True
+    assert result.safety_class == "sandbox_mutation"
+    assert delete.clicked is True
+
+
 def test_captionless_menu_item_is_a_safe_effect_probe_and_records_diff(tmp_path: Path) -> None:
     """An empty accessible name is evidence-poor, not an automatic blocker."""
     sandbox = tmp_path / "sandbox" / "test.wwp"; sandbox.parent.mkdir(); sandbox.write_text("x")

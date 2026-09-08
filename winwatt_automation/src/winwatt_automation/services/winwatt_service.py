@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import shutil
 import time
+from dataclasses import asdict
 from pathlib import Path
 
 from pywinauto import Application, keyboard
@@ -25,6 +26,38 @@ class WinWattService:
 
     def open_project(self, project_path: Path) -> None:
         prepare_fresh_winwatt_session(project_path=str(project_path.resolve()))
+
+    def reopen_sandbox_project_in_current_session(self, project_path: Path) -> dict[str, object]:
+        """Reopen a sandbox project without deliberately killing WinWatt.
+
+        ``open_project`` is the recovery hammer: its legacy bootstrap kills
+        stale processes by design.  Recursive read-only navigation needs a
+        cheaper recovery first.  This uses the already verified native project
+        open dialog inside the currently owned process and accepts success only
+        when the same process remains alive and the normalized path matches.
+        """
+        target = project_path.resolve()
+        if "sandbox" not in {part.casefold() for part in target.parts}:
+            raise ValueError("current-session reopen requires a sandbox project")
+        from winwatt_automation.live_ui.file_dialog import open_project_file_via_dialog_dict
+        from winwatt_automation.runtime_mapping.program_mapper import capture_state_snapshot
+
+        before_main = get_main_window()
+        before_pid = int(before_main.process_id())
+        before = asdict(capture_state_snapshot("recursive_reopen_before"))
+        result = open_project_file_via_dialog_dict(
+            str(target),
+            before_snapshot=before,
+            after_snapshot_provider=lambda: asdict(capture_state_snapshot("recursive_reopen_after")),
+        )
+        if not result.get("success") or not result.get("path_match_normalized"):
+            return {"success": False, "same_process": False, "reason": result.get("error") or "open_dialog_verification_failed"}
+        try:
+            after_main = get_main_window()
+            same_process = int(after_main.process_id()) == before_pid
+        except Exception as exc:
+            return {"success": False, "same_process": False, "reason": f"main_window_after_reopen_unavailable: {exc!r}"}
+        return {"success": bool(same_process), "same_process": bool(same_process), "reason": None if same_process else "process_changed"}
 
     def save_project(self) -> None:
         """Execute the verified native File → Save project command.

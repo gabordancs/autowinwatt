@@ -1,0 +1,257 @@
+{
+  "conflict_21654335148751c7": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Dancs – Személyes (OneDrive)",
+      "control_type": "TreeItem",
+      "identity": "fbd8f54fb5fd2e4f",
+      "ordinal": 0,
+      "parent_identity": "6493948525441d45"
+    },
+    "id": "conflict_21654335148751c7",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_8980ee1a50f616b9",
+      "state_eb0385a9c103e777"
+    ]
+  },
+  "conflict_2705dfae2c125498": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Nézet csúszka",
+      "control_type": "Button",
+      "identity": "9729f6d76f92f352",
+      "ordinal": 0,
+      "parent_identity": "ea6cff1878ff7d67"
+    },
+    "id": "conflict_2705dfae2c125498",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_1014c805d8f97e14",
+      "state_8980ee1a50f616b9"
+    ]
+  },
+  "conflict_302d212bc4298e69": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Letöltések (kitűzve)",
+      "control_type": "TreeItem",
+      "identity": "2beb854988461060",
+      "ordinal": 2,
+      "parent_identity": "6493948525441d45"
+    },
+    "id": "conflict_302d212bc4298e69",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_8980ee1a50f616b9",
+      "state_cb7dcf2d2ae937ad"
+    ]
+  },
+  "conflict_3b9386a2f69b0bcc": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "116f8551f6188ebf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_3b9386a2f69b0bcc",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_03dd0348cd0a3631",
+      "state_8980ee1a50f616b9"
+    ]
+  },
+  "conflict_4e011705d6574066": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2b6fd9426eaf2b84",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_4e011705d6574066",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_8980ee1a50f616b9",
+      "state_f243646c08bfcb00"
+    ]
+  },
+  "conflict_571a2d7fc38f3c36": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Rendezés",
+      "control_type": "Button",
+      "identity": "116f8551f6188ebf",
+      "ordinal": 1,
+      "parent_identity": "211b6c438557fa16"
+    },
+    "id": "conflict_571a2d7fc38f3c36",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_03dd0348cd0a3631",
+      "state_8980ee1a50f616b9"
+    ]
+  },
+  "conflict_644088e260be089b": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "9729f6d76f92f352",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_644088e260be089b",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_1014c805d8f97e14",
+      "state_8980ee1a50f616b9"
+    ]
+  },
+  "conflict_7cb8811586e2cad5": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": "MenuItem",
+      "identity": "6fa1df7f24f63f08",
+      "ordinal": 0,
+      "parent_identity": "8563c83311e69c18"
+    },
+    "id": "conflict_7cb8811586e2cad5",
+    "source_state": "state_8ac3a30d4366ca6f",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_0dd21934628b7876",
+      "state_342c69ac8fbf681c"
+    ]
+  },
+  "conflict_bacfad09d0619e64": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2beb854988461060",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_bacfad09d0619e64",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_8980ee1a50f616b9",
+      "state_cb7dcf2d2ae937ad"
+    ]
+  },
+  "conflict_bbc17bcf268363e6": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": "Elem",
+      "control_type": "MenuItem",
+      "identity": "12543feff2db8f93",
+      "ordinal": 4,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "conflict_bbc17bcf268363e6",
+    "source_state": "state_962ab5fb3c13620b",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_603bea16f71d8d8c",
+      "state_962ab5fb3c13620b"
+    ]
+  },
+  "conflict_bbddb3bfbabffdd8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "6fa1df7f24f63f08",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_bbddb3bfbabffdd8",
+    "source_state": "state_2a6d1b5981b18d19",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_2c2e063c92880c21",
+      "state_7fc7ac966a3dda96"
+    ]
+  },
+  "conflict_bf441898054fd038": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fbd8f54fb5fd2e4f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_bf441898054fd038",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_8980ee1a50f616b9",
+      "state_eb0385a9c103e777"
+    ]
+  },
+  "conflict_bfeb74c16d697c02": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Gyors elérés indítása – Asztal (kitűzve)",
+      "control_type": "TreeItem",
+      "identity": "2b6fd9426eaf2b84",
+      "ordinal": 1,
+      "parent_identity": "6493948525441d45"
+    },
+    "id": "conflict_bfeb74c16d697c02",
+    "source_state": "state_8980ee1a50f616b9",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_8980ee1a50f616b9",
+      "state_f243646c08bfcb00"
+    ]
+  },
+  "conflict_d181d03e16f16964": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": null,
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_d181d03e16f16964",
+    "source_state": "state_112b062984ac1e0b",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_112b062984ac1e0b",
+      "state_2a6d1b5981b18d19"
+    ]
+  },
+  "conflict_e636117dbf6076c4": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": null,
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_e636117dbf6076c4",
+    "source_state": "state_b6a7714f38b7ad41",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_112b062984ac1e0b",
+      "state_b6a7714f38b7ad41"
+    ]
+  }
+}

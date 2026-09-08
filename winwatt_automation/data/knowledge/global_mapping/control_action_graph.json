@@ -1,0 +1,951 @@
+{
+  "control_04e1eecb0a482043": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "e4f6f72cea80c5dd"
+    },
+    "id": "control_04e1eecb0a482043",
+    "uses": [
+      "edge_89a796850339c48d"
+    ]
+  },
+  "control_06df951c71116117": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "8b131d54ed83c8c6"
+    },
+    "id": "control_06df951c71116117",
+    "uses": [
+      "edge_274757e28b3222da"
+    ]
+  },
+  "control_09622978ab557f5f": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "850eae64d7d170eb"
+    },
+    "id": "control_09622978ab557f5f",
+    "uses": [
+      "edge_63fd56a298b71146"
+    ]
+  },
+  "control_097cf92469912047": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Kis méret",
+      "control_type": "MenuItem",
+      "identity": "179c970f2a692305",
+      "ordinal": 3,
+      "parent_identity": "e5eb76bba12fbafe"
+    },
+    "id": "control_097cf92469912047",
+    "uses": [
+      "edge_ef83e5719c819653",
+      "edge_aca19763b429c507",
+      "edge_b2e2475c0a9c54c2"
+    ]
+  },
+  "control_1193c5f2a103c3a2": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oszloppal jobbra",
+      "control_type": "Button",
+      "identity": "7b9f660731154002",
+      "ordinal": 2,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "id": "control_1193c5f2a103c3a2",
+    "uses": [
+      "edge_3dbb7ab08198a311",
+      "edge_e7aa050f8eaddc99",
+      "edge_c121676e14e98358",
+      "edge_39ad3ff60c0945d0",
+      "edge_8f56a76f8a61f021",
+      "edge_baa6d98ff47f40c4",
+      "edge_d6688009c979a40d"
+    ]
+  },
+  "control_31d309c4fa3beacd": {
+    "action": {
+      "action_kind": "Edit",
+      "caption": null,
+      "control_type": "Edit",
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": 2,
+      "parent_identity": "d953512b7b89a7a3"
+    },
+    "id": "control_31d309c4fa3beacd",
+    "uses": [
+      "edge_7d33b5a1a46763b6"
+    ]
+  },
+  "control_34e4974dcc2559d2": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 1,
+      "parent_identity": "651ee06c4f1a3b64"
+    },
+    "id": "control_34e4974dcc2559d2",
+    "uses": [
+      "edge_3c41246bc88f3954"
+    ]
+  },
+  "control_3e5eeedd28471e7c": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oszloppal balra",
+      "control_type": "Button",
+      "identity": "fa171677c9d77f59",
+      "ordinal": 0,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "id": "control_3e5eeedd28471e7c",
+    "uses": [
+      "edge_b2c3137e08aae820",
+      "edge_5670781aa7e8342d",
+      "edge_0608ed8c2f3f1c4f",
+      "edge_aa5fbfc1e6bc7036",
+      "edge_bdbe4e50b8b6588f",
+      "edge_282a5d9796fdeecd",
+      "edge_dd9259d5de59d8d9"
+    ]
+  },
+  "control_3f4642565e4a1174": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Áthelyezés",
+      "control_type": "MenuItem",
+      "identity": "7d8912a0a855f782",
+      "ordinal": 1,
+      "parent_identity": "e5eb76bba12fbafe"
+    },
+    "id": "control_3f4642565e4a1174",
+    "uses": [
+      "edge_769d511d12f980cc",
+      "edge_9c93fb77e47e561b"
+    ]
+  },
+  "control_4109255e6e9670d7": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "9f6844b8f75d06e1"
+    },
+    "id": "control_4109255e6e9670d7",
+    "uses": [
+      "edge_249eebee349eb5fc"
+    ]
+  },
+  "control_42b399636433d770": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Csoport",
+      "control_type": "MenuItem",
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": 3,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_42b399636433d770",
+    "uses": [
+      "edge_fd17890d087e8d8d",
+      "edge_aa4511a9d3d2f128",
+      "edge_140363a0d154e821",
+      "edge_dba59aaf41a9dd6f",
+      "edge_e702151e2215a7b2"
+    ]
+  },
+  "control_44012318fc088959": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Rendszer",
+      "control_type": "MenuItem",
+      "identity": "2e6167b43c9a1138",
+      "ordinal": 1,
+      "parent_identity": "c04ee85a43b30322"
+    },
+    "id": "control_44012318fc088959",
+    "uses": [
+      "edge_2e13c9d4faace392",
+      "edge_35f63d0d444bae69",
+      "edge_7013ab834fb6bcf1",
+      "edge_c86147b16fd343f6",
+      "edge_5a8ceb3ffca4f4ef"
+    ]
+  },
+  "control_4efb8b0b169e20a3": {
+    "action": {
+      "action_kind": "Edit",
+      "caption": null,
+      "control_type": "Edit",
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": 0,
+      "parent_identity": "02d8bfbb2c3593cd"
+    },
+    "id": "control_4efb8b0b169e20a3",
+    "uses": [
+      "edge_0a573b9107e0ae86"
+    ]
+  },
+  "control_51711a102c772bb6": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "control_51711a102c772bb6",
+    "uses": [
+      "edge_29a7d2a0682b20e9",
+      "edge_58cfdfdbc7983ce9",
+      "edge_6cf6072bdb35b765",
+      "edge_b13e5dc20dd0c2ed",
+      "edge_0b5277121d95388c",
+      "edge_d0757a74746c6d4e",
+      "edge_b9365d30bf528e96",
+      "edge_10f91a9a2bff7979",
+      "edge_e193d114641b7d34",
+      "edge_d3c03d5c00b76ac8",
+      "edge_9a246c9b667e57d0",
+      "edge_6b981ad6b18077a9",
+      "edge_92317cc20b04df70",
+      "edge_c17dafc5bbc28d44",
+      "edge_e26bdc12ef8c28f6",
+      "edge_982d180c5ef3460b",
+      "edge_7f0235f551e49406",
+      "edge_d70a896545a696e3",
+      "edge_09ca2b325c6eb497",
+      "edge_4970c74e408b31b9",
+      "edge_6f5dcbc485fa5435",
+      "edge_1399d0edada3481c",
+      "edge_a25ae08b7ccfbb5c",
+      "edge_f49c4cbbe4de0346",
+      "edge_2114a53be9cd9130",
+      "edge_4f634746cbccace3",
+      "edge_7021622840562a7c",
+      "edge_2d3aa798ed752403",
+      "edge_16b0e5f9ba584c96",
+      "edge_2d283200864c812d",
+      "edge_8cce65bf32bd3303",
+      "edge_5f11c70acd1f2cc1",
+      "edge_7c7c1f6675fc342e",
+      "edge_41c1fc61054882ac",
+      "edge_9ceed88aca254a77",
+      "edge_ca1346a2cb3bed85",
+      "edge_3d38194d771993a1",
+      "edge_02fe3f33f6b95919",
+      "edge_9ddd65e2dc80b846",
+      "edge_246c6e9770517919",
+      "edge_bef33b7f654f84ef",
+      "edge_47fa2ea36c5f9daf",
+      "edge_823b8dfe94a77904",
+      "edge_d1b7cf9870f8f5ac",
+      "edge_22e1fc591e3338d0",
+      "edge_eddf0f9a3b1c5267",
+      "edge_1186035e14cfee3a",
+      "edge_64d32b4d3d77980c",
+      "edge_974f28e3284fedc6",
+      "edge_c497970c90810651",
+      "edge_f086a2fb97b54331",
+      "edge_c2fe4b2860f62e39",
+      "edge_d464821c06776ce3",
+      "edge_13af62f8e537d0c1",
+      "edge_692509eaee5204ef",
+      "edge_45a3ad70292a4c2d",
+      "edge_568782d7d30724bd",
+      "edge_0ddac46efe3d305f",
+      "edge_ca74de93a673b253",
+      "edge_1cb192cb291c6bf1",
+      "edge_ffdd147c50d7117f",
+      "edge_c6b2392d1f7bdfe2",
+      "edge_f615d878a4c8e9e7",
+      "edge_51e44029af227264",
+      "edge_e0007e7c6fd17658",
+      "edge_f0257effbb62639a",
+      "edge_d199845502cfa054",
+      "edge_a2721a65326151ad",
+      "edge_7257e0252761a19d",
+      "edge_d505817ccdf7e888",
+      "edge_96b36155a66fa043",
+      "edge_e270912c0ab76580",
+      "edge_01878676c1f5a9da",
+      "edge_fbd7fca242089eab",
+      "edge_d6797f0dbe4120f3",
+      "edge_ff4c68f242303df5",
+      "edge_e2e23cd93405b5ff",
+      "edge_3566025169839d7f",
+      "edge_f88013d9a8916b95",
+      "edge_19f88dc074ccc2d1",
+      "edge_f19af3cc19248501",
+      "edge_10be1e61b619d240",
+      "edge_7445de3c0d0149fc",
+      "edge_ff609cb37b1cfcc9",
+      "edge_9d2ca99e6b5fd587",
+      "edge_473896a6ab20559b",
+      "edge_0dd4f79c042b8726",
+      "edge_e76d19fbad9ea928",
+      "edge_e3b1529f9b5ba5da",
+      "edge_dcd67dda8b10cf33",
+      "edge_5db11f2362f02b41",
+      "edge_8e2bd9c84eda6dfb",
+      "edge_4fafb712616d18cd",
+      "edge_aa1cd61fba329d8b",
+      "edge_28bd4f50ad9191e3",
+      "edge_f147ff6fa978138d",
+      "edge_8bfa3952c4374d0f",
+      "edge_605ed740a77bcac0",
+      "edge_3d7f7d210a7dbccc",
+      "edge_2c52558ea5d1d518",
+      "edge_03d402394df53794",
+      "edge_6c69407a4a69ebaa",
+      "edge_611a19e53905e4c1",
+      "edge_ec2d3122ce101995",
+      "edge_7dd205c447a68d88",
+      "edge_cedb9bf506e83eb8",
+      "edge_1af826fde44ac1bf",
+      "edge_84da83298cd653e7",
+      "edge_78cb4c62c9d6d5fb",
+      "edge_bc6fc16ac62ed7e1",
+      "edge_e9a4bc354dac6099",
+      "edge_9ee6550af518b7c3",
+      "edge_4a2495be5da37d8d",
+      "edge_d23fef9838f83081",
+      "edge_1fa25c318204ab9f",
+      "edge_a6ff0e3a2e35ac87",
+      "edge_ca3feece8ff0d893",
+      "edge_ec9590d72aaf1a45"
+    ]
+  },
+  "control_6496ea259f7432de": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "c7704fa61d5a7f13"
+    },
+    "id": "control_6496ea259f7432de",
+    "uses": [
+      "edge_53b1cb1c3a1d6c31"
+    ]
+  },
+  "control_661fef8c6105311b": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "ef94410062a0bde1"
+    },
+    "id": "control_661fef8c6105311b",
+    "uses": [
+      "edge_aa126a89ab990820"
+    ]
+  },
+  "control_673b274c6c164823": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 1,
+      "parent_identity": "b672da6918fa0a4a"
+    },
+    "id": "control_673b274c6c164823",
+    "uses": [
+      "edge_e412c8e5587cfde4"
+    ]
+  },
+  "control_67e46a1bb31c8417": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 2,
+      "parent_identity": "b672da6918fa0a4a"
+    },
+    "id": "control_67e46a1bb31c8417",
+    "uses": [
+      "edge_e3ba57a45b313807"
+    ]
+  },
+  "control_6df7531d5794ca61": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Fájl",
+      "control_type": "MenuItem",
+      "identity": "dcecb29307288339",
+      "ordinal": 0,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_6df7531d5794ca61",
+    "uses": [
+      "edge_66305481401cf4f3",
+      "edge_195ee8b240d4ba3b",
+      "edge_c40b733457d834a9",
+      "edge_42334510722099b3",
+      "edge_35ae71930ea38100"
+    ]
+  },
+  "control_74a65893b01f2ed1": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 1,
+      "parent_identity": "6a935998d534917f"
+    },
+    "id": "control_74a65893b01f2ed1",
+    "uses": [
+      "edge_7e27601719de1518"
+    ]
+  },
+  "control_76659240d5e3123d": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Bezárás",
+      "control_type": "MenuItem",
+      "identity": "61db58bf44c8d6fa",
+      "ordinal": 5,
+      "parent_identity": "e5eb76bba12fbafe"
+    },
+    "id": "control_76659240d5e3123d",
+    "uses": [
+      "edge_c2df5381fc937455",
+      "edge_99d2bc8972f2f760"
+    ]
+  },
+  "control_77496982865509cb": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 1,
+      "parent_identity": "d0d0be6e506a80cb"
+    },
+    "id": "control_77496982865509cb",
+    "uses": [
+      "edge_cdbdc732c98949f0"
+    ]
+  },
+  "control_7dd28ae997f94145": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 0,
+      "parent_identity": "a68a3a412923add4"
+    },
+    "id": "control_7dd28ae997f94145",
+    "uses": [
+      "edge_5b3d68b7a7028eed"
+    ]
+  },
+  "control_84eb64178dff22aa": {
+    "action": {
+      "action_kind": "Edit",
+      "caption": null,
+      "control_type": "Edit",
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": 0,
+      "parent_identity": "65c2aff50a330eea"
+    },
+    "id": "control_84eb64178dff22aa",
+    "uses": [
+      "edge_1745a68a7014c755"
+    ]
+  },
+  "control_86e547f268d7b877": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Eszközök",
+      "control_type": "MenuItem",
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": 5,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_86e547f268d7b877",
+    "uses": [
+      "edge_06c1cd401f6013b3",
+      "edge_af0a78289b168d2a",
+      "edge_4e161234d022b689",
+      "edge_fef163e146b5e32a",
+      "edge_0f9d23c7d21ef3aa"
+    ]
+  },
+  "control_8a782bbe8c72c468": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Teljes méret",
+      "control_type": "Button",
+      "identity": "b2c7ea58173d356a",
+      "ordinal": 1,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "id": "control_8a782bbe8c72c468",
+    "uses": [
+      "edge_27c6bd52be62eb95",
+      "edge_5238f68bc960e263",
+      "edge_4f3b45bfb41b5a34",
+      "edge_5be417b8145ce6f7",
+      "edge_f568bba33a15f865",
+      "edge_ada7250ba14d40e4",
+      "edge_f68e7e3335eb6e49"
+    ]
+  },
+  "control_8c6846d8d611e0a4": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Szerkesztés",
+      "control_type": "MenuItem",
+      "identity": "d574d406faad70a2",
+      "ordinal": 1,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_8c6846d8d611e0a4",
+    "uses": [
+      "edge_0f43430a44446697",
+      "edge_093d61393396f662",
+      "edge_19cca74771b8be12",
+      "edge_ac0644c54debe146",
+      "edge_a04e17405f652d64"
+    ]
+  },
+  "control_8e593608ae5ae8b2": {
+    "action": {
+      "action_kind": "Edit",
+      "caption": null,
+      "control_type": "Edit",
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": 0,
+      "parent_identity": "32f0aa3a9a8b6080"
+    },
+    "id": "control_8e593608ae5ae8b2",
+    "uses": [
+      "edge_adce2bf3687e415d"
+    ]
+  },
+  "control_9409fe9ebe4213d8": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Bezárás",
+      "control_type": "Button",
+      "identity": "34babce122b0c645",
+      "ordinal": 2,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "id": "control_9409fe9ebe4213d8",
+    "uses": [
+      "edge_38371b4716582f5f",
+      "edge_16b72b09af371b23",
+      "edge_99d5bf3dad634439",
+      "edge_5c323b9d9d965481",
+      "edge_6e632c4d5fdbfbe1",
+      "edge_13ca328b709c65d3",
+      "edge_6c700172b7256bad"
+    ]
+  },
+  "control_96d14164f7b249e5": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Kis méret",
+      "control_type": "Button",
+      "identity": "22bc60fb40f01939",
+      "ordinal": 0,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "id": "control_96d14164f7b249e5",
+    "uses": [
+      "edge_b588621fb412142e",
+      "edge_cb0bf35735fd1060",
+      "edge_4c02786c35576462",
+      "edge_08f404b874529f81",
+      "edge_a75e162eed89ee81",
+      "edge_1c98acbed5ba5f84",
+      "edge_aff641c33a3336e2"
+    ]
+  },
+  "control_96e41754c2736d00": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "1c0e8b7ec3fe46c8"
+    },
+    "id": "control_96e41754c2736d00",
+    "uses": [
+      "edge_ca74925cb9089584"
+    ]
+  },
+  "control_97cbe51f849f8bc7": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Méretezés",
+      "control_type": "MenuItem",
+      "identity": "a11bbb755802c75c",
+      "ordinal": 2,
+      "parent_identity": "e5eb76bba12fbafe"
+    },
+    "id": "control_97cbe51f849f8bc7",
+    "uses": [
+      "edge_4cb92c82b59b6454",
+      "edge_1702b81da67fb52f"
+    ]
+  },
+  "control_99c87d1ec7d19bb4": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 2,
+      "parent_identity": "f96cce20bf63656e"
+    },
+    "id": "control_99c87d1ec7d19bb4",
+    "uses": [
+      "edge_ea78fe0ef5a33a0f"
+    ]
+  },
+  "control_9d2a44ac65cd2597": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 1,
+      "parent_identity": "ae7ec5c5164904aa"
+    },
+    "id": "control_9d2a44ac65cd2597",
+    "uses": [
+      "edge_b75b7a88a53b82af"
+    ]
+  },
+  "control_a07531850eb050ee": {
+    "action": {
+      "action_kind": "Edit",
+      "caption": null,
+      "control_type": "Edit",
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": 0,
+      "parent_identity": "be955b417c3e731f"
+    },
+    "id": "control_a07531850eb050ee",
+    "uses": [
+      "edge_dfe27af2b9f22296"
+    ]
+  },
+  "control_a18f1dad4a8a736b": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 1,
+      "parent_identity": "f52246f0a0bffd85"
+    },
+    "id": "control_a18f1dad4a8a736b",
+    "uses": [
+      "edge_ddc0a74aebb28c49"
+    ]
+  },
+  "control_acbec2ddaf7be0f7": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Dokumentumablak",
+      "control_type": "MenuItem",
+      "identity": "bb710e899754606e",
+      "ordinal": 0,
+      "parent_identity": "c04ee85a43b30322"
+    },
+    "id": "control_acbec2ddaf7be0f7",
+    "uses": [
+      "edge_208bcfadefdfecc4",
+      "edge_208bcfadefdfecc4",
+      "edge_6377c66b45cfa46a",
+      "edge_7e266f0b0b3322e5",
+      "edge_b3e7bad7c388a71e",
+      "edge_032b518289585fd9",
+      "edge_ea21b245c4ae3256"
+    ]
+  },
+  "control_aee46491890fa886": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 1,
+      "parent_identity": "f96cce20bf63656e"
+    },
+    "id": "control_aee46491890fa886",
+    "uses": [
+      "edge_263ff2a6ed354240"
+    ]
+  },
+  "control_afb62642f4aaaa2a": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 2,
+      "parent_identity": "ae7ec5c5164904aa"
+    },
+    "id": "control_afb62642f4aaaa2a",
+    "uses": [
+      "edge_b764ad91b31fe1ae"
+    ]
+  },
+  "control_b9705848a735ffce": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 0,
+      "parent_identity": "0993efa8d4da447e"
+    },
+    "id": "control_b9705848a735ffce",
+    "uses": [
+      "edge_eeaa3c712e484a0e"
+    ]
+  },
+  "control_c05035a2e63f084c": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Következő\tCtrl+F6",
+      "control_type": "MenuItem",
+      "identity": "b368b1841d6b6b7e",
+      "ordinal": 6,
+      "parent_identity": "e5eb76bba12fbafe"
+    },
+    "id": "control_c05035a2e63f084c",
+    "uses": [
+      "edge_af59b18a61fe4380",
+      "edge_a899bf850c47b43f"
+    ]
+  },
+  "control_c6b3e06cb8438cbb": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 1,
+      "parent_identity": "0993efa8d4da447e"
+    },
+    "id": "control_c6b3e06cb8438cbb",
+    "uses": [
+      "edge_0de5df04685f464b"
+    ]
+  },
+  "control_d080255a66c1d4bc": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 2,
+      "parent_identity": "d0d0be6e506a80cb"
+    },
+    "id": "control_d080255a66c1d4bc",
+    "uses": [
+      "edge_46952458111cfdad"
+    ]
+  },
+  "control_dc5a98a4ee32becb": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 0,
+      "parent_identity": "f52246f0a0bffd85"
+    },
+    "id": "control_dc5a98a4ee32becb",
+    "uses": [
+      "edge_e6aa26fe39366972"
+    ]
+  },
+  "control_e0db267ec92bdee4": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Súgó",
+      "control_type": "MenuItem",
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": 8,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_e0db267ec92bdee4",
+    "uses": [
+      "edge_61ae41ff614e893e",
+      "edge_19b0f4f011e60769",
+      "edge_3cabef90d5bc62dd",
+      "edge_4723dcc778cd2428",
+      "edge_df52d7cf994dff75"
+    ]
+  },
+  "control_e1851b0f6afb4d1e": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Ablak",
+      "control_type": "MenuItem",
+      "identity": "4a9b674eac787166",
+      "ordinal": 7,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_e1851b0f6afb4d1e",
+    "uses": [
+      "edge_92a308672bdd6414",
+      "edge_5a73667701ed684f",
+      "edge_bf708974ee90a914",
+      "edge_448887b7d7f1bdfb",
+      "edge_f767fbab6dfef3b8"
+    ]
+  },
+  "control_e3dbacb240678101": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Beállítások",
+      "control_type": "MenuItem",
+      "identity": "790a0b7e4f6a43be",
+      "ordinal": 6,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_e3dbacb240678101",
+    "uses": [
+      "edge_9b830a31e0c72fca",
+      "edge_d4da049a806c567b",
+      "edge_e870008b0a2313b3",
+      "edge_dd4c0734567b1331",
+      "edge_066638f037da8a45"
+    ]
+  },
+  "control_e792118cb3171936": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "bc133c296cd0a68b"
+    },
+    "id": "control_e792118cb3171936",
+    "uses": [
+      "edge_308d0940ed910acd"
+    ]
+  },
+  "control_ede34b09af6fed53": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oldallal jobbra",
+      "control_type": "Button",
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": 1,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "id": "control_ede34b09af6fed53",
+    "uses": [
+      "edge_e15cf94e318ec8f0",
+      "edge_a128177cab03f2b4",
+      "edge_7c5ab482ce5e9399",
+      "edge_5ffc08e6006e5e7b",
+      "edge_3d9284d640aa8a76",
+      "edge_c3b3b91edf47ce97",
+      "edge_e62c901de3341894"
+    ]
+  },
+  "control_f50f74e5f048d861": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Jegyzékek",
+      "control_type": "MenuItem",
+      "identity": "1c9f3c103b49331d",
+      "ordinal": 2,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_f50f74e5f048d861",
+    "uses": [
+      "edge_37cda072c7a7b523",
+      "edge_5bd875204d604eea",
+      "edge_6b2f1fd737d839c2",
+      "edge_005e34bd7ec67068",
+      "edge_a6b919283d907098"
+    ]
+  },
+  "control_f69ea42536c518df": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 0,
+      "parent_identity": "651ee06c4f1a3b64"
+    },
+    "id": "control_f69ea42536c518df",
+    "uses": [
+      "edge_bb5784e300865290"
+    ]
+  },
+  "control_f7b7866a93fe3228": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Elem",
+      "control_type": "MenuItem",
+      "identity": "12543feff2db8f93",
+      "ordinal": 4,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "id": "control_f7b7866a93fe3228",
+    "uses": [
+      "edge_80b271a775203069",
+      "edge_ef7ff266b2ab1a48",
+      "edge_73363b05c35682f0",
+      "edge_68b8b4011df6d983",
+      "edge_68125b971c09c523"
+    ]
+  },
+  "control_fbe3199ca5be139d": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Teljes méret",
+      "control_type": "MenuItem",
+      "identity": "798d8bc57bb7c677",
+      "ordinal": 4,
+      "parent_identity": "e5eb76bba12fbafe"
+    },
+    "id": "control_fbe3199ca5be139d",
+    "uses": [
+      "edge_64d8ed14e8d9c14d",
+      "edge_2ca749a037069798",
+      "edge_07806030c935ac4c"
+    ]
+  }
+}

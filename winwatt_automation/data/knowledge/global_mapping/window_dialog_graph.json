@@ -1,0 +1,74 @@
+{
+  "window_3175f9016fabe064": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\aggressive_smoke_20260908T003\\crawl\\sandbox"
+    },
+    "id": "window_3175f9016fabe064",
+    "to": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\aggressive_smoke_20260908T003\\crawl\\sandbox"
+    },
+    "transition": "edge_208bcfadefdfecc4"
+  },
+  "window_4878255399804ccb": {
+    "from": {
+      "class": null,
+      "title": null
+    },
+    "id": "window_4878255399804ccb",
+    "to": {
+      "class": "TMainForm",
+      "title": null
+    },
+    "transition": "edge_ca1346a2cb3bed85"
+  },
+  "window_51711a102c772bb6": {
+    "from": {
+      "class": null,
+      "title": null
+    },
+    "id": "window_51711a102c772bb6",
+    "to": {
+      "class": null,
+      "title": null
+    },
+    "transition": "edge_ec9590d72aaf1a45"
+  },
+  "window_5441e40b7083e1f0": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+    },
+    "id": "window_5441e40b7083e1f0",
+    "to": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+    },
+    "transition": "edge_e62c901de3341894"
+  },
+  "window_cbdfd428d1421f98": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+    },
+    "id": "window_cbdfd428d1421f98",
+    "to": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya"
+    },
+    "transition": "edge_63fd56a298b71146"
+  },
+  "window_fa3809156c8de615": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+    },
+    "id": "window_fa3809156c8de615",
+    "to": {
+      "class": null,
+      "title": null
+    },
+    "transition": "edge_f68e7e3335eb6e49"
+  }
+}
