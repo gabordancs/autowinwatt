@@ -1,0 +1,347 @@
+{
+  "prov_12cdfaea63aee23f": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_probe_20260906_223044\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.659592+00:00",
+    "id": "prov_12cdfaea63aee23f",
+    "kind": "observed_mapping"
+  },
+  "prov_15a7e79047d520df": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_commit_20260905T141534\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.709381+00:00",
+    "id": "prov_15a7e79047d520df",
+    "kind": "observed_mapping"
+  },
+  "prov_1d1884a8f59f3098": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_next_dialog_20260906T125947\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.605725+00:00",
+    "id": "prov_1d1884a8f59f3098",
+    "kind": "observed_mapping"
+  },
+  "prov_215b3506e4f65191": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\aggressive_smoke_20260908T003\\crawl\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T08:01:54.023329+00:00",
+    "id": "prov_215b3506e4f65191",
+    "kind": "observed_mapping"
+  },
+  "prov_255f2d49a5ff8949": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_existing_detail_20260906T125601\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.611036+00:00",
+    "id": "prov_255f2d49a5ff8949",
+    "kind": "observed_mapping"
+  },
+  "prov_2863529e306f3e38": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\smoke_20260908T001\\crawl\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:41:44.252270+00:00",
+    "id": "prov_2863529e306f3e38",
+    "kind": "observed_mapping"
+  },
+  "prov_2d10cbb880d73f03": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T08:03:33.818689+00:00",
+    "id": "prov_2d10cbb880d73f03",
+    "kind": "observed_mapping"
+  },
+  "prov_2db409c4d2227128": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_20260906_220108\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.657038+00:00",
+    "id": "prov_2db409c4d2227128",
+    "kind": "observed_mapping"
+  },
+  "prov_319901f4491b0211": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\overnight_20260907_063932\\creation_bootstrap\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.577417+00:00",
+    "id": "prov_319901f4491b0211",
+    "kind": "observed_mapping"
+  },
+  "prov_3b95e1f54eece73b": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_probe_20260906_223806\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.663100+00:00",
+    "id": "prov_3b95e1f54eece73b",
+    "kind": "observed_mapping"
+  },
+  "prov_3cc31cc2d5b81cb8": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_recursive_20260907T100311\\recursive_crawl\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.756992+00:00",
+    "id": "prov_3cc31cc2d5b81cb8",
+    "kind": "observed_mapping"
+  },
+  "prov_42c9e6a42c29c53c": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_branch_20260906T154402\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.611036+00:00",
+    "id": "prov_42c9e6a42c29c53c",
+    "kind": "observed_mapping"
+  },
+  "prov_44c586d01dca5017": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\capabilities\\room_capabilities.json",
+    "confidence": 0.7,
+    "data": {
+      "records": 4
+    },
+    "first_seen": "2026-09-08T07:21:16.424747+00:00",
+    "id": "prov_44c586d01dca5017",
+    "kind": "legacy_capability_registry"
+  },
+  "prov_44d149c4211e13d5": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_recursive_20260907T100311\\recursive_crawl\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.627230+00:00",
+    "id": "prov_44d149c4211e13d5",
+    "kind": "observed_mapping"
+  },
+  "prov_45497bd8cef2d03b": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_focus_20260905T140946\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.714346+00:00",
+    "id": "prov_45497bd8cef2d03b",
+    "kind": "observed_mapping"
+  },
+  "prov_4a3501b3b186ab11": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_probe_20260906_223044\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.568948+00:00",
+    "id": "prov_4a3501b3b186ab11",
+    "kind": "observed_mapping"
+  },
+  "prov_4b7878b4525a5fda": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_20260906_220108\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.568948+00:00",
+    "id": "prov_4b7878b4525a5fda",
+    "kind": "observed_mapping"
+  },
+  "prov_5ab107efb0608a91": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\smoke_20260908T001\\crawl\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:41:44.208300+00:00",
+    "id": "prov_5ab107efb0608a91",
+    "kind": "observed_mapping"
+  },
+  "prov_6cc1010c190cb23e": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_recursive_20260907T100311\\creation_bootstrap\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.618920+00:00",
+    "id": "prov_6cc1010c190cb23e",
+    "kind": "observed_mapping"
+  },
+  "prov_6d11495d6b3405fb": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_full_fields_20260906T155716\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.611036+00:00",
+    "id": "prov_6d11495d6b3405fb",
+    "kind": "observed_mapping"
+  },
+  "prov_70f4e681d327e92e": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\knowledge\\navigation_knowledge.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:30.029069+00:00",
+    "id": "prov_70f4e681d327e92e",
+    "kind": "legacy_capability_registry"
+  },
+  "prov_766ec505c8bd5c83": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\aggressive_smoke_20260908T003\\crawl\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:58:02.747453+00:00",
+    "id": "prov_766ec505c8bd5c83",
+    "kind": "observed_mapping"
+  },
+  "prov_7869c9d31663189e": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\knowledge\\demonstrations\\structure_creation.json",
+    "confidence": 0.5,
+    "data": {
+      "steps": 6,
+      "target": "structure_creation"
+    },
+    "first_seen": "2026-09-08T07:17:30.573094+00:00",
+    "id": "prov_7869c9d31663189e",
+    "kind": "human_demonstration"
+  },
+  "prov_7ddd30bbb4de6e6d": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_full_fields_20260906T155716\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.723532+00:00",
+    "id": "prov_7ddd30bbb4de6e6d",
+    "kind": "observed_mapping"
+  },
+  "prov_7fff94d892bd59c5": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_commit_20260905T141534\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.604880+00:00",
+    "id": "prov_7fff94d892bd59c5",
+    "kind": "observed_mapping"
+  },
+  "prov_897ec4388b6b7fa7": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_next_dialog_20260906T125947\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.717345+00:00",
+    "id": "prov_897ec4388b6b7fa7",
+    "kind": "observed_mapping"
+  },
+  "prov_947dc40e738a2697": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_safeprobe_20260906T154933\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.611036+00:00",
+    "id": "prov_947dc40e738a2697",
+    "kind": "observed_mapping"
+  },
+  "prov_95ddd09d9af0cbf2": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_creation_focus_20260905T140946\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.605725+00:00",
+    "id": "prov_95ddd09d9af0cbf2",
+    "kind": "observed_mapping"
+  },
+  "prov_9c3d2f971f0a3694": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_branch_20260906T154402\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.728570+00:00",
+    "id": "prov_9c3d2f971f0a3694",
+    "kind": "observed_mapping"
+  },
+  "prov_9d84026845c3609f": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\overnight_20260907_063932\\recursive_crawl\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.587297+00:00",
+    "id": "prov_9d84026845c3609f",
+    "kind": "observed_mapping"
+  },
+  "prov_aa40964525587002": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\knowledge\\knowledge_store.json",
+    "confidence": 0.7,
+    "data": {
+      "records": 7
+    },
+    "first_seen": "2026-09-08T07:21:16.666084+00:00",
+    "id": "prov_aa40964525587002",
+    "kind": "legacy_capability_registry"
+  },
+  "prov_ae4b319825cba66d": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_catalog_v0_20260905T140150\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.595082+00:00",
+    "id": "prov_ae4b319825cba66d",
+    "kind": "observed_mapping"
+  },
+  "prov_ae70766bc482d6ed": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\overnight_20260907_063932\\creation_bootstrap\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.670306+00:00",
+    "id": "prov_ae70766bc482d6ed",
+    "kind": "observed_mapping"
+  },
+  "prov_b7a63e5ffda8f05a": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\auto_20260906_212156\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.560967+00:00",
+    "id": "prov_b7a63e5ffda8f05a",
+    "kind": "observed_mapping"
+  },
+  "prov_bfcb1cc19dca994a": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\capabilities\\xml_capabilities.json",
+    "confidence": 0.7,
+    "data": {
+      "records": 4
+    },
+    "first_seen": "2026-09-08T07:21:16.450054+00:00",
+    "id": "prov_bfcb1cc19dca994a",
+    "kind": "legacy_capability_registry"
+  },
+  "prov_c0f08707042b14de": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_safeprobe_20260906T154933\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.734556+00:00",
+    "id": "prov_c0f08707042b14de",
+    "kind": "observed_mapping"
+  },
+  "prov_c6529722693105e5": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\auto_20260906_212156\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.641098+00:00",
+    "id": "prov_c6529722693105e5",
+    "kind": "observed_mapping"
+  },
+  "prov_c9ab05a91beb3cfd": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_catalog_v0_20260905T140150\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.696293+00:00",
+    "id": "prov_c9ab05a91beb3cfd",
+    "kind": "observed_mapping"
+  },
+  "prov_d900fcb6c5edc72e": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_probe_20260906_223806\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.568948+00:00",
+    "id": "prov_d900fcb6c5edc72e",
+    "kind": "observed_mapping"
+  },
+  "prov_ded16c2d307b203c": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\overnight_20260907_063932\\recursive_crawl\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.676547+00:00",
+    "id": "prov_ded16c2d307b203c",
+    "kind": "observed_mapping"
+  },
+  "prov_ec31ada943e37ced": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\smoke_20260908T002\\crawl\\states.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:56:07.416973+00:00",
+    "id": "prov_ec31ada943e37ced",
+    "kind": "observed_mapping"
+  },
+  "prov_f0e555e12cf585b8": {
+    "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_recursive_20260907T100311\\creation_bootstrap\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-08T07:17:29.745127+00:00",
+    "id": "prov_f0e555e12cf585b8",
+    "kind": "observed_mapping"
+  }
+}

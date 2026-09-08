@@ -100,6 +100,10 @@ def main() -> int:
     parser.add_argument("--max-states", type=int, default=25000)
     parser.add_argument("--replay-pause-seconds", type=float, default=0.08)
     parser.add_argument("--no-import-navigation", action="store_true")
+    parser.add_argument("--resume", action="store_true", help="Resume a prior output-root without repeating verified bootstrap")
+    parser.add_argument("--guide", help="Human demonstration name; only changes BFS tie-breaking")
+    parser.add_argument("--demonstrations-dir", type=Path)
+    parser.add_argument("--global-store-dir", type=Path)
     args = parser.parse_args()
 
     source = args.project.resolve()
@@ -107,38 +111,47 @@ def main() -> int:
     output_root.mkdir(parents=True, exist_ok=True)
     stop_at = parse_stop_at(args.stop_at)
 
+    prior_summary_path = output_root / "overnight_summary.json"
+    prior_summary = json.loads(prior_summary_path.read_text(encoding="utf-8")) if args.resume and prior_summary_path.is_file() else {}
+    prior_verified = bool((prior_summary.get("creation_verification") or {}).get("verified"))
     summary: dict[str, Any] = {
         "source_project": str(source),
         "started_at": datetime.now().isoformat(),
         "stop_at": stop_at.isoformat(),
-        "creation": None,
-        "creation_verification": None,
+        "creation": prior_summary.get("creation") if prior_verified else None,
+        "creation_verification": prior_summary.get("creation_verification") if prior_verified else None,
         "recursive_crawl": None,
         "errors": [],
     }
     write_json(output_root / "overnight_summary.json", summary)
 
     # Phase 1: explicitly create one disposable sandbox structure and persist it.
+    # Resume may reuse only an already proven bootstrap; an unverified prior
+    # mutation is never silently trusted.
     creation_dir = output_root / "creation_bootstrap"
-    try:
-        creation = StructureCatalogDeepMapper(
-            source_project=source,
-            output_dir=creation_dir,
-            max_actions=max(args.creation_max_actions, 1),
-            import_navigation=not args.no_import_navigation,
-            focus_creation=True,
-            probe_input=True,
-            commit_creation=True,
-        ).run()
-        summary["creation"] = creation
+    if prior_verified and (creation_dir / "sandbox" / source.name).is_file():
+        summary["creation_reused_from_resume"] = True
         write_json(output_root / "overnight_summary.json", summary)
-    except Exception as exc:
-        summary["errors"].append({"stage": "creation", "error": repr(exc)})
-        summary["status"] = "creation_failed"
-        summary["finished_at"] = datetime.now().isoformat()
-        write_json(output_root / "overnight_summary.json", summary)
-        print(json.dumps(summary, ensure_ascii=False, default=str))
-        return 2
+    else:
+        try:
+            creation = StructureCatalogDeepMapper(
+                source_project=source,
+                output_dir=creation_dir,
+                max_actions=max(args.creation_max_actions, 1),
+                import_navigation=not args.no_import_navigation,
+                focus_creation=True,
+                probe_input=True,
+                commit_creation=True,
+            ).run()
+            summary["creation"] = creation
+            write_json(output_root / "overnight_summary.json", summary)
+        except Exception as exc:
+            summary["errors"].append({"stage": "creation", "error": repr(exc)})
+            summary["status"] = "creation_failed"
+            summary["finished_at"] = datetime.now().isoformat()
+            write_json(output_root / "overnight_summary.json", summary)
+            print(json.dumps(summary, ensure_ascii=False, default=str))
+            return 2
 
     if datetime.now() >= stop_at:
         summary["status"] = "deadline_reached_after_creation"
@@ -193,6 +206,10 @@ def main() -> int:
             max_states=max(args.max_states, 1),
             replay_pause_seconds=max(args.replay_pause_seconds, 0.0),
             import_navigation=not args.no_import_navigation,
+            resume=args.resume,
+            guide=args.guide,
+            demonstrations_dir=args.demonstrations_dir,
+            global_store_dir=args.global_store_dir,
         )
         crawl_result = crawler.run()
         summary["recursive_crawl"] = crawl_result
