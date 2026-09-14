@@ -48,7 +48,14 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
     actual_by_azimuth: dict[str, float] = defaultdict(float)
     actual_loss = 0.0
     boundary_count = 0
+    actual_room_conditions: dict[str, dict[str, float]] = {}
     for room in rooms:
+        room_name = (room.findtext("ItemHeader/ItemName") or "").strip()
+        actual_room_conditions[room_name] = {
+            "winter_temperature_c": _number(room.findtext("Heating/Temp")),
+            "summer_temperature_c": _number(room.findtext("Cooling/Temp")),
+            "air_change_h": _number(room.findtext("Heating/Filtration/AirChangeFact")),
+        }
         for boundary in room.findall("Boundary"):
             boundary_count += 1
             area = _number(boundary.findtext("A"))
@@ -74,6 +81,18 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
         expected_loss += float(boundary.get("heat_loss_wk") or 0.0)
     source_area = float(model["project"]["heated_area_m2"])
     source_volume = float(model["project"]["heated_volume_m3"])
+    room_conditions: dict[str, dict[str, dict[str, float]]] = {}
+    for source_room in model.get("rooms", []):
+        name = str(source_room.get("name") or "").strip()
+        actual = actual_room_conditions.get(name, {})
+        expected_winter = source_room.get("temperature_c")
+        expected_air_change = source_room.get("air_change_h")
+        if expected_winter is not None or expected_air_change is not None:
+            room_conditions[name] = {}
+            if expected_winter is not None:
+                room_conditions[name]["winter_temperature_c"] = _diff(float(expected_winter), actual.get("winter_temperature_c", 0.0))
+            if expected_air_change is not None:
+                room_conditions[name]["air_change_h"] = _diff(float(expected_air_change), actual.get("air_change_h", 0.0))
     report = {
         "source_model": str(model_path), "readback_xml": str(readback_xml),
         "counts": {"buildings": len(buildings), "zones": sum(len(building.findall("ETZone")) for building in buildings), "rooms": len(rooms), "structures": len(panels), "boundaries": boundary_count,
@@ -85,6 +104,7 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
         },
         "surface_by_source_type_m2": {key: _diff(value, actual_by_type.get(key, 0.0)) for key, value in sorted(expected_by_type.items())},
         "surface_by_azimuth_deg_m2": {key: _diff(value, actual_by_azimuth.get(key, 0.0)) for key, value in sorted(expected_by_azimuth.items())},
+        "room_conditions": room_conditions,
         "mechanics_included": False,
     }
     return report

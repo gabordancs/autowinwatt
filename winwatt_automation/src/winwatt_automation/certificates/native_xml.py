@@ -13,7 +13,12 @@ from pathlib import Path
 
 PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("Roof1",3),"külső tető":("Roof3",5),"tető":("Roof3",5),"tetőablak":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
 def _set(node:ET.Element,name:str,value:object)->None:
-    child=node.find(name) or ET.SubElement(node,name); child.text=str(value)
+    # ElementTree leaf elements are false-y, so ``find(...) or`` silently
+    # appended duplicate fields instead of updating existing template values.
+    child = node.find(name)
+    if child is None:
+        child = ET.SubElement(node, name)
+    child.text=str(value)
 def _header(node:ET.Element,name:str,path:str,id_:int)->None:
     head=node.find("ItemHeader") or ET.SubElement(node,"ItemHeader")
     _set(head,"ItemName",name);_set(head,"ItemPath",path);_set(head,"ID",id_)
@@ -50,6 +55,18 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     room_ids=[]
     for room_spec in model["rooms"]:
         room=copy.deepcopy(rooms[0]);_header(room,room_spec["name"],"Certificate\\",next_id);_set(room,"Area",room_spec["area_m2"]);_set(room,"Height",room_spec["height_m"]);_set(room,"CalculatedVolume",room_spec.get("volume_m3",room_spec["area_m2"]*room_spec["height_m"]));_set(room,"GivedVolume",room_spec.get("volume_m3",room_spec["area_m2"]*room_spec["height_m"]));_set(room,"BuildingRefID",building_id)
+        # Room conditions are source-model inputs, not incidental template
+        # defaults.  Cooling is retained from the version-specific template
+        # unless an explicit source value is supplied.
+        heating = room.find("Heating")
+        if heating is not None and room_spec.get("temperature_c") is not None:
+            _set(heating, "Temp", room_spec["temperature_c"])
+        filtration = heating.find("Filtration") if heating is not None else None
+        if filtration is not None and room_spec.get("air_change_h") is not None:
+            _set(filtration, "AirChangeFact", room_spec["air_change_h"])
+        cooling = room.find("Cooling")
+        if cooling is not None and room_spec.get("summer_temperature_c") is not None:
+            _set(cooling, "Temp", room_spec["summer_temperature_c"])
         for old in list(room.findall("Boundary")):room.remove(old)
         for boundary in by_room[room_spec["name"]]:
             _,code=PANEL_TYPES[boundary["winwatt_type"]];sample=boundary_templates.get(str(code)) or next(iter(boundary_templates.values()));out=copy.deepcopy(sample);area=float(boundary["area_m2"]);_set(out,"Name",boundary["name"]);_set(out,"Type",code);_set(out,"x",area);_set(out,"y",1);_set(out,"A",area)
