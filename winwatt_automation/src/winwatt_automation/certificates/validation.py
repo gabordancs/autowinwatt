@@ -32,6 +32,18 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
     buildings = root.findall("WinWatt32Building")
     expected_layers = len(model.get("layers", []))
     actual_layers = sum(len(panel.findall("PanelLayer")) for panel in panels)
+    # WinWatt's native ``Type`` code is not sufficiently expressive for a
+    # source comparison: in this WinWatt version code 10 is used for both
+    # some ordinary windows and rooflights.  The generated Boundary/Name is
+    # preserved on export, so use it as the authoritative source mapping and
+    # only fall back to the native type code for unknown/imported elements.
+    source_types_by_name: dict[str, set[str]] = defaultdict(set)
+    for boundary in model.get("boundaries", []):
+        name = str(boundary.get("name") or "").strip()
+        source_type = str(boundary.get("winwatt_type") or "unknown")
+        if name:
+            source_types_by_name[name].add(source_type)
+
     actual_by_type: dict[str, float] = defaultdict(float)
     actual_by_azimuth: dict[str, float] = defaultdict(float)
     actual_loss = 0.0
@@ -40,7 +52,14 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
         for boundary in room.findall("Boundary"):
             boundary_count += 1
             area = _number(boundary.findtext("A"))
-            kind = _CODE_TO_SOURCE_TYPE.get(boundary.findtext("Type") or "", boundary.findtext("Type") or "unknown")
+            name = (boundary.findtext("Name") or "").strip()
+            mapped = source_types_by_name.get(name, set())
+            kind = next(iter(mapped)) if len(mapped) == 1 else _CODE_TO_SOURCE_TYPE.get(
+                boundary.findtext("Type") or "", boundary.findtext("Type") or "unknown"
+            )
+            # Do not infer orientation from the source name here: the report
+            # must expose legacy WinWatt fields which were not persisted after
+            # import/reopen (notably Compass on this version's roof type).
             azimuth = str(round(_number(boundary.findtext("Compass"))))
             actual_by_type[kind] += area
             actual_by_azimuth[azimuth] += area
