@@ -7,11 +7,12 @@ reviewed or be produced by a deterministic plan parser.
 from __future__ import annotations
 import copy
 import json
+import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
-PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("Roof1",3),"külső tető":("Roof3",5),"tető":("Roof3",5),"tetőablak":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
+PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("Roof1",3),"külső tető":("Roof3",5),"tető":("Roof3",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
 def _set(node:ET.Element,name:str,value:object)->None:
     # ElementTree leaf elements are false-y, so ``find(...) or`` silently
     # appended duplicate fields instead of updating existing template values.
@@ -24,6 +25,15 @@ def _header(node:ET.Element,name:str,path:str,id_:int)->None:
     _set(head,"ItemName",name);_set(head,"ItemPath",path);_set(head,"ID",id_)
 def _kind(value:str)->str:
     return PANEL_TYPES.get(value,("OutsideWall",0))[0]
+
+
+def _explicit_glass_ratio(structure: dict) -> float | None:
+    """Read only an explicitly stated glazing ratio from reviewed source data."""
+    direct = structure.get("glass_ratio_percent")
+    if direct is not None:
+        return float(direct)
+    match = re.search(r"(\d+(?:[.,]\d+)?)\s*%\s*(?:üvegezési|uvegezesi)", str(structure.get("note") or ""), re.I)
+    return float(match.group(1).replace(",", ".")) if match else None
 def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     model=json.loads(model_path.read_text(encoding="utf-8")); tree=ET.parse(template_path); root=tree.getroot()
     panels=root.findall("WinWatt32Panel"); rooms=root.findall("WinWatt32Room"); buildings=root.findall("WinWatt32Building")
@@ -42,6 +52,9 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
         kind=_kind(structure.get("type","külső fal")); base=next((item for item in panels if item.attrib.get("Type")==kind),panels[0]); panel=copy.deepcopy(base)
         panel.attrib["Type"]=kind; layered=bool(by_layer[structure["name"]]); panel.attrib["Layered"]="Yes" if layered else "No";_header(panel,structure["name"],"Certificate\\Structures\\",next_id)
         _set(panel,"Type",structure.get("winwatt_use",structure.get("type",""))); _set(panel,"k",structure.get("u_effective") or structure.get("u_layer") or 0)
+        glass_ratio = _explicit_glass_ratio(structure)
+        if glass_ratio is not None:
+            _set(panel, "GlassRatio", glass_ratio)
         for old in list(panel.findall("PanelLayer")):panel.remove(old)
         for layer in sorted(by_layer[structure["name"]],key=lambda item:item.get("sequence",0)):
             row=copy.deepcopy(layer_template);_set(row,"LayerName",layer["name"]);_set(row,"Thickness",float(layer.get("thickness_cm") or 0)/100);_set(row,"Density",layer.get("density_kgm3") or 1);_set(row,"ThermalCond",layer.get("lambda_wmk") or 9999);_set(row,"ThermalRes",layer.get("r") or 0);_set(row,"HeatCapacity",layer.get("heat_capacity_kjkgk") or 0);panel.append(row)

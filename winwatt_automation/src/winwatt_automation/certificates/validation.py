@@ -7,6 +7,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+from .native_xml import _explicit_glass_ratio
+
 _CODE_TO_SOURCE_TYPE = {"0": "külső fal", "3": "talajon fekvő padló", "5": "külső tető", "10": "tetőablak", "12": "külső ajtó/kapu"}
 
 
@@ -49,6 +51,10 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
     actual_loss = 0.0
     boundary_count = 0
     actual_room_conditions: dict[str, dict[str, float]] = {}
+    actual_glass_ratios = {
+        (panel.findtext("ItemHeader/ItemName") or "").strip(): _number(panel.findtext("GlassRatio"))
+        for panel in panels
+    }
     for room in rooms:
         room_name = (room.findtext("ItemHeader/ItemName") or "").strip()
         actual_room_conditions[room_name] = {
@@ -93,6 +99,11 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
                 room_conditions[name]["winter_temperature_c"] = _diff(float(expected_winter), actual.get("winter_temperature_c", 0.0))
             if expected_air_change is not None:
                 room_conditions[name]["air_change_h"] = _diff(float(expected_air_change), actual.get("air_change_h", 0.0))
+    opening_glass_ratios = {
+        str(structure["name"]): _diff(float(ratio), actual_glass_ratios.get(str(structure["name"]), 0.0))
+        for structure in model.get("structures", [])
+        if (ratio := _explicit_glass_ratio(structure)) is not None
+    }
     report = {
         "source_model": str(model_path), "readback_xml": str(readback_xml),
         "counts": {"buildings": len(buildings), "zones": sum(len(building.findall("ETZone")) for building in buildings), "rooms": len(rooms), "structures": len(panels), "boundaries": boundary_count,
@@ -105,6 +116,7 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
         "surface_by_source_type_m2": {key: _diff(value, actual_by_type.get(key, 0.0)) for key, value in sorted(expected_by_type.items())},
         "surface_by_azimuth_deg_m2": {key: _diff(value, actual_by_azimuth.get(key, 0.0)) for key, value in sorted(expected_by_azimuth.items())},
         "room_conditions": room_conditions,
+        "opening_glass_ratio_percent": opening_glass_ratios,
         "mechanics_included": False,
     }
     return report
