@@ -1,0 +1,122 @@
+{
+  "source_model": "C:\\Users\\Admin\\Documents\\GitHub\\260307 - Budapest - Kerepesi - DG\\outputs\\kerepesi_winwatt\\kerepesi_envelope_model.json",
+  "readback_xml": "data\\certificate_builds\\kerepesi\\v11_reopen_readback.xml",
+  "counts": {
+    "buildings": 1,
+    "zones": 2,
+    "rooms": 2,
+    "structures": 21,
+    "boundaries": 61,
+    "layer_rows": 67,
+    "expected_layer_rows": 67
+  },
+  "totals": {
+    "heated_area_m2": {
+      "expected": 2970.55,
+      "actual": 2970.5,
+      "absolute": -0.05,
+      "relative_percent": -0.001683
+    },
+    "heated_volume_m3": {
+      "expected": 12188.6,
+      "actual": 12189.0,
+      "absolute": 0.4,
+      "relative_percent": 0.003282
+    },
+    "transmission_wk": {
+      "expected": 3182.7235,
+      "actual": 3182.601825,
+      "absolute": -0.121675,
+      "relative_percent": -0.003823
+    }
+  },
+  "surface_by_source_type_m2": {
+    "külső ablak": {
+      "expected": 483.3,
+      "actual": 483.3,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "külső ajtó/kapu": {
+      "expected": 84.1,
+      "actual": 84.1,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "külső fal": {
+      "expected": 951.1,
+      "actual": 951.1,
+      "absolute": -0.0,
+      "relative_percent": -0.0
+    },
+    "külső tető": {
+      "expected": 1957.6,
+      "actual": 1957.6,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "talajon fekvő padló": {
+      "expected": 2085.2,
+      "actual": 2085.2,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "tetőablak": {
+      "expected": 16.2,
+      "actual": 16.2,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    }
+  },
+  "surface_by_azimuth_deg_m2": {
+    "0": {
+      "expected": 3849.4,
+      "actual": 4158.1,
+      "absolute": 308.7,
+      "relative_percent": 8.019432
+    },
+    "135": {
+      "expected": 372.2,
+      "actual": 324.7,
+      "absolute": -47.5,
+      "relative_percent": -12.761956
+    },
+    "180": {
+      "expected": 77.0,
+      "actual": 29.5,
+      "absolute": -47.5,
+      "relative_percent": -61.688312
+    },
+    "225": {
+      "expected": 406.6,
+      "actual": 359.1,
+      "absolute": -47.5,
+      "relative_percent": -11.682243
+    },
+    "270": {
+      "expected": 90.1,
+      "actual": 66.4,
+      "absolute": -23.7,
+      "relative_percent": -26.304107
+    },
+    "315": {
+      "expected": 267.0,
+      "actual": 219.5,
+      "absolute": -47.5,
+      "relative_percent": -17.790262
+    },
+    "45": {
+      "expected": 315.1,
+      "actual": 267.6,
+      "absolute": -47.5,
+      "relative_percent": -15.074579
+    },
+    "90": {
+      "expected": 200.1,
+      "actual": 152.6,
+      "absolute": -47.5,
+      "relative_percent": -23.738131
+    }
+  },
+  "mechanics_included": false
+}

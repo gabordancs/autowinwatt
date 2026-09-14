@@ -7,18 +7,25 @@ reviewed or be produced by a deterministic plan parser.
 from __future__ import annotations
 import copy
 import json
+import math
 import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
+from .geometry import is_vertical_wall, wall_geometry_issues, xy_area
 
 PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("Roof1",3),"külső tető":("Roof3",5),"tető":("Roof3",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
 def _set(node:ET.Element,name:str,value:object)->None:
-    # ElementTree leaf elements are false-y, so ``find(...) or`` silently
-    # appended duplicate fields instead of updating existing template values.
-    child = node.find(name)
-    if child is None:
-        child = ET.SubElement(node, name)
+    """Set a direct XML field and collapse legacy duplicate field nodes.
+
+    Several older WinWatt exports contain the same direct field twice.  The
+    program imports the final occurrence, so merely changing the first one
+    leaves the former project value active.  Keep exactly one direct field.
+    """
+    matches = [child for child in list(node) if child.tag == name]
+    child = matches[0] if matches else ET.SubElement(node, name)
+    for duplicate in matches[1:]:
+        node.remove(duplicate)
     child.text=str(value)
 def _header(node:ET.Element,name:str,path:str,id_:int)->None:
     head=node.find("ItemHeader") or ET.SubElement(node,"ItemHeader")
@@ -47,6 +54,10 @@ def _building_specs(model: dict) -> list[dict]:
 
 def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     model=json.loads(model_path.read_text(encoding="utf-8")); tree=ET.parse(template_path); root=tree.getroot()
+    if model.get("project", {}).get("require_wall_xy"):
+        issues = wall_geometry_issues(model)
+        if issues:
+            raise ValueError("Strict wall geometry required; unresolved walls:\n" + "\n".join(issues))
     panels=root.findall("WinWatt32Panel"); rooms=root.findall("WinWatt32Room"); buildings=root.findall("WinWatt32Building")
     if not panels or not rooms or not buildings: raise ValueError("Template must contain panel, room and building examples")
     layer_template=next((panel.find("PanelLayer") for panel in panels if panel.find("PanelLayer") is not None),None)
@@ -106,7 +117,13 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
             _set(cooling, "Temp", room_spec["summer_temperature_c"])
         for old in list(room.findall("Boundary")):room.remove(old)
         for boundary in by_room[room_spec["name"]]:
-            _,code=PANEL_TYPES[boundary["winwatt_type"]];sample=boundary_templates.get(str(code)) or next(iter(boundary_templates.values()));out=copy.deepcopy(sample);area=float(boundary["area_m2"]);_set(out,"Name",boundary["name"]);_set(out,"Type",code);_set(out,"x",area);_set(out,"y",1);_set(out,"A",area)
+            _,code=PANEL_TYPES[boundary["winwatt_type"]];sample=boundary_templates.get(str(code)) or next(iter(boundary_templates.values()));out=copy.deepcopy(sample);area=float(boundary["area_m2"])
+            # For plan-measured vertical walls, preserve the actual operands:
+            # X=wall length, Y=wall height, A=X*Y. Legacy aggregate records
+            # retain the area×1 fallback until their contour is measured.
+            geometry = xy_area(boundary)
+            x, y = (geometry[0], geometry[1]) if geometry is not None else (area, 1.0)
+            _set(out,"Name",boundary["name"]);_set(out,"Type",code);_set(out,"x",x);_set(out,"y",y);_set(out,"A",area)
             # Ground-contact source tables frequently supply psi [W/mK] and
             # perimeter rather than U. Preserve the certified transmission
             # loss in WinWatt's area*U field without inventing material data.

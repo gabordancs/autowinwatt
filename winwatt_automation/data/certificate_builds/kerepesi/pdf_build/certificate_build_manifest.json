@@ -1,0 +1,187 @@
+{
+  "source": {
+    "pdf": "C:\\Users\\Admin\\Documents\\GitHub\\260307 - Budapest - Kerepesi - DG\\Wallis Kerepesi _Energetikai minőségtanúsítvány összesítő_230313.pdf másolata.pdf",
+    "sha256": "d07463717a5ca9af3da9362bfd665a79e9cfe376ba22e0bfdf4f8d7dd26b0f5a",
+    "pages": 17
+  },
+  "values": [],
+  "material_decisions": [
+    {
+      "source_name": "Alumínium 62 mm-es 3 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "Alumínium 55 mm-es 2 kamrás",
+        "material_id": "1090",
+        "path": "Nyílászárók anyagai\\Alumínium profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    },
+    {
+      "source_name": "szélesség = 70 mm",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "PVC 60 mm-es 3 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "PVC 50 mm-es 2 kamrás",
+        "material_id": "1121",
+        "path": "Nyílászárók anyagai\\PVC profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    },
+    {
+      "source_name": "15,6 m",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "77.000 m",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "PVC 75 mm-es 4-5 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "PVC 50 mm-es 2 kamrás",
+        "material_id": "1121",
+        "path": "Nyílászárók anyagai\\PVC profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    },
+    {
+      "source_name": "26.400 m",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "8,05 m",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "6,44 m",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "84.780 m",
+      "status": "review",
+      "candidate": {
+        "name": " GRAFIT 100",
+        "material_id": "1190",
+        "path": "AUSTROTHERM 2016\\ EPS termékek",
+        "lambda_wmk": 0.03,
+        "density_kgm3": 15.0,
+        "heat_capacity_kjkgk": 1.46
+      },
+      "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=hiányos); ellenőrzés szükséges, új anyag nem készült.",
+      "confidence": 0.0,
+      "decision_mode": "manual_review"
+    },
+    {
+      "source_name": "Alumínium 72 mm-es 3 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "Alumínium 55 mm-es 2 kamrás",
+        "material_id": "1090",
+        "path": "Nyílászárók anyagai\\Alumínium profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    }
+  ],
+  "unresolved": [
+    "szélesség = 70 mm",
+    "15,6 m",
+    "77.000 m",
+    "26.400 m",
+    "8,05 m",
+    "6,44 m",
+    "84.780 m"
+  ],
+  "llm_used": false,
+  "llm_result": null,
+  "next_step": "Provide an approved structured geometry mapping before native XML generation; raw PDF prose is insufficient evidence for room-boundary allocation."
+}
