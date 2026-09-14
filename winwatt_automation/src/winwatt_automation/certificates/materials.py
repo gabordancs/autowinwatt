@@ -73,8 +73,11 @@ def match_material(
     family: str | None = None,
 ) -> MaterialDecision:
     """Rank local candidates from source text plus known physical data."""
-    query = _normal(f"{source_name} {family or ''}")
-    source_family = material_family(query)
+    # ``family`` is a classification hint, not part of the material name.
+    # Adding it to the token set used to dilute exact names such as
+    # "kavicsfeltöltés" when a source model supplied a verbose layer type.
+    query = _normal(source_name)
+    source_family = material_family(query) or material_family(family or "")
     if source_family == "air_gap":
         return MaterialDecision(source_name=source_name, status="special", confidence=1, decision_mode="special", reason="Zárt légrés: WinWatt rétegellenállásként kezelendő, nem normál katalogizált anyag.")
     tokens = {token for token in query.split() if len(token) > 2}
