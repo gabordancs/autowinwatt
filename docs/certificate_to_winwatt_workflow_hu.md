@@ -12,6 +12,11 @@ python -m winwatt_automation.cli.main certificate-build `
 
 A ChatGPT CLI alapértelmezésben nem fut. Csak `--allow-llm` kapcsolóval kapja meg a helyi kivonás felülvizsgálandó részleteit; nem küldi fel a teljes tanúsítványt, és nem találhat ki hiányzó geometriát vagy anyagtulajdonságot.
 
+A helyi kivonó külön kiszűri az önmagukban álló méretsorokat (például
+`77.000 m` vagy `szélesség = 70 mm`): ezek geometriai bizonyítékok, nem
+anyagmegnevezések, ezért sem a katalóguskeresést, sem az esetleges LLM-reviewt
+nem szennyezhetik.
+
 A kimenet `certificate_build_manifest.json`. A következő, natív WinWatt-lépés kizárólag jóváhagyott, strukturált geometriai mappingből készíthet XML-t, majd a meglévő `NativeXmlService` importja és a `MainForm.SaveProjekt` mentése állít elő `.wwp` fájlt. Nyers `.wwp` bináris írás tiltott.
 # Tanúsítvány → natív WinWatt projekt
 
