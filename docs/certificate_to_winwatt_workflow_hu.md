@@ -12,7 +12,7 @@ python -m winwatt_automation.cli.main certificate-build `
 
 A ChatGPT CLI alapértelmezésben nem fut. Csak `--allow-llm` kapcsolóval kapja meg a helyi kivonás felülvizsgálandó részleteit; nem küldi fel a teljes tanúsítványt, és nem találhat ki hiányzó geometriát vagy anyagtulajdonságot.
 
-A kimenet `certificate_build_manifest.json`. A következő, natív WinWatt-lépés kizárólag jóváhagyott, strukturált geometriai mappingből készíthet XML-t, majd a meglévő `NativeXmlService` importja és a `WinWattService.save_project_as` mentése állít elő `.wwp` fájlt. Nyers `.wwp` bináris írás tiltott.
+A kimenet `certificate_build_manifest.json`. A következő, natív WinWatt-lépés kizárólag jóváhagyott, strukturált geometriai mappingből készíthet XML-t, majd a meglévő `NativeXmlService` importja és a `MainForm.SaveProjekt` mentése állít elő `.wwp` fájlt. Nyers `.wwp` bináris írás tiltott.
 # Tanúsítvány → natív WinWatt projekt
 
 Az `certificate-native-project` a feltárt AutoWinWatt-mappinget használja:
@@ -25,5 +25,12 @@ anyagcsalád, hővezetési tényező, sűrűség és fajhő alapján rangsorol. 
 ellentmondó fizikai adat `review`; új anyag nem keletkezik automatikusan. Zárt
 légrés külön `special` döntés, nem katalógusanyag.
 
-Az integrációs Kerepesi-visszaolvasás kontrollértéke: 1 épület, 2 helyiség,
-21 szerkezet, 61 határoló elem, 2970,5 m² és 12189 m³.
+Az integrációs Kerepesi-visszaolvasás kontrollértéke: 1 épület, 2 energetikai
+zóna, 2 helyiség, 21 szerkezet, 67 rétegsor, 61 határoló elem, 2970,5 m² és
+12189 m³. A transzmissziós hőveszteség eltérése 0,121675 W/K (−0,003823%).
+Minden szerkezettípus felülete egyezik a felülvizsgált forrásmodellel.
+
+Az ezen a gépen lévő régi WinWatt kiadásban a külső tető (`Type=5`) importált
+`Compass` értékét megnyitás–mentés után 0°-ra normalizálja; a 45°-os dőlés,
+felület, U-érték és transzmisszió megmarad. A visszaolvasási riport ezt valódi
+tájolási eltérésként jelöli, nem maszkolja forrásbeli feltételezéssel.

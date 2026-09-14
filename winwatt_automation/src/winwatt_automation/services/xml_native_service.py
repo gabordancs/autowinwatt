@@ -78,7 +78,10 @@ class NativeXmlService:
         if dialog is None:
             raise RuntimeError("WinWatt XML Export save dialog did not open")
         self._filename_edit(dialog).set_edit_text(str(target))
-        self._confirm_button(dialog).click_input()
+        # The legacy common dialog occasionally ignores injected mouse input
+        # although it accepts the native window message sent by ``click``.
+        # This is especially visible after a project reopen.
+        self._confirm_button(dialog).click()
         if not self._wait_for_dialog_to_close(process_id, "MentĂ©s mĂˇskĂ©nt"):
             raise RuntimeError("WinWatt XML Export dialog did not close after confirmation")
         deadline = time.monotonic() + 8.0
