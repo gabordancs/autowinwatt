@@ -36,6 +36,10 @@ A `review` nem hibásan kitalált anyag: a projekt a tanúsítványból származ
 megadott rétegfizikát őrzi meg, míg a jelölt katalógusanyag és az indoklás a
 visszakövethető felülvizsgálati nyomban marad.
 
+A rétegaudit `trace` rekordja tartalmazza a forrásdokumentumot és -elemet,
+az eredeti és normalizált értéket, a kiválasztott WinWatt-katalógusobjektumot,
+a confidence értéket, a döntési módot és az indoklást.
+
 Az integrációs Kerepesi-visszaolvasás kontrollértéke: 1 épület, 2 energetikai
 zóna, 2 helyiség, 21 szerkezet, 67 rétegsor, 61 határoló elem, 2970,5 m² és
 12189 m³. A transzmissziós hőveszteség eltérése 0,121675 W/K (−0,003823%).

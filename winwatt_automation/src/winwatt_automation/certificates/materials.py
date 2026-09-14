@@ -14,10 +14,15 @@ from pathlib import Path
 from .models import MaterialCandidate, MaterialDecision
 
 
-def _normal(value: str) -> str:
+def normalize_material_name(value: str) -> str:
+    """Produce a deterministic accent- and punctuation-insensitive key."""
     text = unicodedata.normalize("NFD", value.casefold())
     text = "".join(ch for ch in text if unicodedata.category(ch) != "Mn")
     return " ".join(re.sub(r"[^a-z0-9]+", " ", text).split())
+
+
+# Kept private as an implementation alias for callers in this module.
+_normal = normalize_material_name
 
 
 def _number(value: str | None) -> float | None:

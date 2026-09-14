@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from winwatt_automation.certificates.materials import load_catalog, match_by_name, match_material
+from winwatt_automation.certificates.materials import load_catalog, match_by_name, match_material, normalize_material_name
 
 
 def test_local_catalog_match_and_air_gap(tmp_path: Path) -> None:
@@ -32,3 +32,7 @@ def test_family_hint_does_not_dilute_an_exact_catalogue_name(tmp_path: Path) -> 
     )
     assert decision.status == "catalog"
     assert decision.candidate and decision.candidate.material_id == "343"
+
+
+def test_material_normalization_is_stable_for_hungarian_names() -> None:
+    assert normalize_material_name("Zárt légréteg (függőleges)") == "zart legreteg fuggoleges"
