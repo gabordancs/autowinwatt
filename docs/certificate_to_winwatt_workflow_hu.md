@@ -40,13 +40,17 @@ A rétegaudit `trace` rekordja tartalmazza a forrásdokumentumot és -elemet,
 az eredeti és normalizált értéket, a kiválasztott WinWatt-katalógusobjektumot,
 a confidence értéket, a döntési módot és az indoklást.
 
-Az integrációs Kerepesi-visszaolvasás kontrollértéke: 1 épület, 2 energetikai
+Az integrációs Kerepesi-v14 visszaolvasás kontrollértéke: 1 épület, 2 energetikai
 zóna, 2 helyiség, 21 szerkezet, 67 rétegsor, 61 határoló elem, 2970,5 m² és
 12189 m³. A transzmissziós hőveszteség eltérése 0,121675 W/K (−0,003823%).
 Minden szerkezettípus felülete egyezik a felülvizsgált forrásmodellel.
-Az újranyitott v12 projektben a helyiségfeltételek is igazoltak: mindkét zóna
+Az újranyitott v14 projektben a helyiségfeltételek is igazoltak: mindkét zóna
 20 °C-os téli belső hőmérséklete, valamint a Műhely 1,0 1/h és a Szalonok/iroda
 0,8 1/h légcseréje pontosan megmaradt.
+Az explicit forrásadatú Felülvilágító helyesen `OutsideWindow` panelként marad
+meg, `GlassRatio=90%` és `k=3,9 W/(m²K)` értékkel. Ezt a visszaolvasási
+validátor külön kontrollálja; más nyílászáróknál nem tekint sablonértéket
+forrásadatnak.
 
 Az ezen a gépen lévő régi WinWatt kiadásban a külső tető (`Type=5`) importált
 `Compass` értékét megnyitás–mentés után 0°-ra normalizálja; a 45°-os dőlés,

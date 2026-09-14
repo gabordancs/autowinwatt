@@ -27,3 +27,13 @@ def test_readback_uses_preserved_name_for_window_type_mapping(tmp_path: Path) ->
     report = validate_native_readback(model_path, xml)
     assert report["surface_by_source_type_m2"]["külső ablak"]["actual"] == 2
     assert report["surface_by_azimuth_deg_m2"]["180"]["actual"] == 2
+
+
+def test_readback_validates_explicit_rooflight_glazing_ratio(tmp_path: Path) -> None:
+    model = {"project": {"heated_area_m2": 1, "heated_volume_m3": 1}, "structures": [
+        {"name": "Felülvilágító", "note": "90% üvegezési arány"},
+    ]}
+    model_path = tmp_path / "model.json"; model_path.write_text(json.dumps(model), encoding="utf-8")
+    xml = tmp_path / "readback.xml"; xml.write_text("""<WinWatt32Project><WinWatt32Panel><ItemHeader><ItemName>Felülvilágító</ItemName></ItemHeader><GlassRatio>90</GlassRatio></WinWatt32Panel></WinWatt32Project>""", encoding="utf-8")
+    report = validate_native_readback(model_path, xml)
+    assert report["opening_glass_ratio_percent"]["Felülvilágító"]["absolute"] == 0
