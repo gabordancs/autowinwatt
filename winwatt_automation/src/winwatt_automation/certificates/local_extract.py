@@ -22,10 +22,10 @@ def source_digest(pdf_path: Path) -> str:
     return hashlib.sha256(pdf_path.read_bytes()).hexdigest()
 def extract_known_values(pages: list[str]) -> list[ExtractedValue]:
     patterns={
-        "heated_area_m2":r"fűtött\s+(?:nettó\s+)?alapterület\s*[:=]?\s*([0-9 .]+,[0-9]+)\s*m[²2]",
-        "heated_volume_m3":r"V\s*:\s*([0-9 .]+,[0-9]+)\s*m[³3]\s*\(Fűtött\s+épület",
-        "a_v":r"A\s*/\s*V\s*:\s*([0-9]+,[0-9]+)\s*m[²2]/m[³3]",
-        "transmission_wk":r"ΣAU\s*\+\s*ΣlΨ\s*:\s*([0-9 .]+,[0-9]+)\s*W/K",
+        "heated_area_m2":r"fűtött\s+(?:nettó\s+)?alapterület\s*[:=]?\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[²2]",
+        "heated_volume_m3":r"V\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[³3]\s*\(Fűtött\s+épület",
+        "a_v":r"A\s*/\s*V\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[²2]/m[³3]",
+        "transmission_wk":r"ΣAU\s*\+\s*ΣlΨ\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*W/K",
     }
     found=[]
     for index,page in enumerate(pages,1):
