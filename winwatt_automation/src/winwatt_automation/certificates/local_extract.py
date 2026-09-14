@@ -4,10 +4,20 @@ import hashlib, re
 from pathlib import Path
 from .models import Evidence, ExtractedValue
 def extract_pdf_pages(pdf_path: Path) -> list[str]:
-    # Keep catalogue-only and manifest tests usable in lightweight developer
-    # environments; PDF support remains a declared runtime dependency.
-    from pypdf import PdfReader
-    return [(page.extract_text() or "") for page in PdfReader(str(pdf_path)).pages]
+    """Read text locally, preferring pypdf with a PyMuPDF fallback."""
+    try:
+        from pypdf import PdfReader
+        return [(page.extract_text() or "") for page in PdfReader(str(pdf_path)).pages]
+    except ModuleNotFoundError:
+        try:
+            import fitz  # PyMuPDF is bundled in the local workspace runtime.
+        except ModuleNotFoundError as exc:
+            raise RuntimeError("PDF extraction needs pypdf or local PyMuPDF (fitz)") from exc
+        document = fitz.open(pdf_path)
+        try:
+            return [page.get_text() or "" for page in document]
+        finally:
+            document.close()
 def source_digest(pdf_path: Path) -> str:
     return hashlib.sha256(pdf_path.read_bytes()).hexdigest()
 def extract_known_values(pages: list[str]) -> list[ExtractedValue]:
