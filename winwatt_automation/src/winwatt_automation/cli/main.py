@@ -4,6 +4,7 @@ from pathlib import Path
 import json
 import os
 from uuid import uuid4
+from typing import TYPE_CHECKING
 
 import typer
 
@@ -18,13 +19,13 @@ from winwatt_automation.services.room_service import RoomService
 from winwatt_automation.experiments.runner import ExperimentRunner
 from winwatt_automation.knowledge.models import AssignExistingBoundaryStructureInput, ExperimentSpec, Hypothesis, KnowledgeStatus
 from winwatt_automation.knowledge.store import KnowledgeStore
-from winwatt_automation.research.manual_index import ManualIndex
 from winwatt_automation.research.models import ResearchEvidence
-from winwatt_automation.planner.planner import ResearchPlanValidationError, ResearchPlanner
-from winwatt_automation.planner.provider import OpenAIProvider
 from winwatt_automation.discovery.models import DiscoveryGoal, StructureClassificationGoal
-from winwatt_automation.discovery.runner import LiveRoomBoundaryDiscoveryUI, ResearchDiscoveryRunner
-from winwatt_automation.research.orchestrator import ResearchBudget, ResearchOrchestrator
+from winwatt_automation.certificates import CertificateBuildInput, CertificateProjectBuilder
+from winwatt_automation.certificates.native_xml import compile_native_xml
+
+if TYPE_CHECKING:
+    from winwatt_automation.research.manual_index import ManualIndex
 
 app = typer.Typer(help="WinWatt automation CLI")
 knowledge_app = typer.Typer(help="Inspect deterministic semantic knowledge")
@@ -164,7 +165,8 @@ def experiment_assign_boundary_structure(
         raise typer.Exit(code=1)
 
 
-def _load_manual_index(pdf_path: Path, index_path: Path) -> ManualIndex:
+def _load_manual_index(pdf_path: Path, index_path: Path) -> "ManualIndex":
+    from winwatt_automation.research.manual_index import ManualIndex
     index = ManualIndex(source_path=pdf_path, index_path=index_path)
     if index_path.is_file():
         index.load()
@@ -185,6 +187,7 @@ def manual_index(
     index_path: Path = typer.Option(DEFAULT_MANUAL_INDEX),
 ) -> None:
     """Build a deterministic, regenerable local lexical index from the source PDF."""
+    from winwatt_automation.research.manual_index import ManualIndex
     index = ManualIndex(source_path=pdf_path, index_path=index_path)
     source = index.build()
     KnowledgeStore().store_research_source(source)
@@ -267,6 +270,8 @@ def research_plan(
     model: str | None = typer.Option(None, help="Optional OpenAI model override; defaults to WINWATT_RESEARCH_MODEL or gpt-5.6-sol"),
 ) -> None:
     """Retrieve local evidence and ask an LLM for a validated plan. Never executes WinWatt."""
+    from winwatt_automation.planner.planner import ResearchPlanValidationError, ResearchPlanner
+    from winwatt_automation.planner.provider import OpenAIProvider
     try:
         index = _load_manual_index(DEFAULT_MANUAL_PATH, DEFAULT_MANUAL_INDEX)
         store = KnowledgeStore()
@@ -300,6 +305,10 @@ def research_run(
     json_output: bool = typer.Option(False, "--json"),
 ) -> None:
     """Run one bounded sandbox research session; never exposes raw desktop controls."""
+    from winwatt_automation.discovery.runner import LiveRoomBoundaryDiscoveryUI, ResearchDiscoveryRunner
+    from winwatt_automation.planner.planner import ResearchPlanner
+    from winwatt_automation.planner.provider import OpenAIProvider
+    from winwatt_automation.research.orchestrator import ResearchBudget, ResearchOrchestrator
     if os.environ.get("WINWATT_E2E") != "1":
         _json_output({"error": "e2e_disabled", "hint": "Set WINWATT_E2E=1 to permit a sandbox research session."})
         raise typer.Exit(code=2)
@@ -333,6 +342,7 @@ def discover_room_boundary_types(
     json_output: bool = typer.Option(False, "--json"),
 ) -> None:
     """Enumerate room-boundary types in a disposable sandbox; never verifies a capability."""
+    from winwatt_automation.discovery.runner import LiveRoomBoundaryDiscoveryUI, ResearchDiscoveryRunner
     if os.environ.get("WINWATT_E2E") != "1":
         _json_output({"error": "e2e_disabled", "hint": "Set WINWATT_E2E=1 to permit bounded sandbox UI discovery."})
         raise typer.Exit(code=2)
@@ -368,6 +378,7 @@ def classify_room_boundary_structures(
     json_output: bool = typer.Option(False, "--json"),
 ) -> None:
     """Classify concrete catalogue references from bounded, cancelled detail inspection only."""
+    from winwatt_automation.discovery.runner import LiveRoomBoundaryDiscoveryUI, ResearchDiscoveryRunner
     if os.environ.get("WINWATT_E2E") != "1":
         _json_output({"error": "e2e_disabled", "hint": "Set WINWATT_E2E=1 to permit bounded sandbox UI discovery."})
         raise typer.Exit(code=2)
@@ -467,6 +478,80 @@ def prepare_rooms(
     typer.echo(json.dumps({"sandbox_project": str(sandbox), "report": str(report), **result.model_dump()}, ensure_ascii=False, default=str))
     if not result.success:
         raise typer.Exit(code=1)
+
+
+@app.command("certificate-build")
+def certificate_build(
+    certificate_pdf: Path = typer.Argument(..., exists=True, readable=True, help="Existing energy-certificate PDF"),
+    output_dir: Path = typer.Option(Path("data/certificate_builds"), help="Evidence and review output directory"),
+    catalog_xml: Path = typer.Option(..., exists=True, readable=True, help="Local WinWatt material catalogue XML"),
+    allow_llm: bool = typer.Option(False, help="Use the installed ChatGPT CLI only for unresolved excerpts"),
+) -> None:
+    """Extract a certificate locally and create an evidence-first WinWatt build manifest.
+
+    This command never fabricates room geometry or a raw .wwp binary.  Once
+    the reviewed geometry mapping is present, the native XML/UI adapter can
+    import it and Save As through the installed WinWatt application.
+    """
+    result = CertificateProjectBuilder().build(CertificateBuildInput(
+        certificate_pdf=certificate_pdf, output_dir=output_dir,
+        catalog_xml=catalog_xml, allow_llm=allow_llm,
+    ))
+    _json_output({
+        "output_dir": str(result.output_dir),
+        "manifest": str(result.output_dir / "certificate_build_manifest.json"),
+        "deterministic_values": len(result.deterministic_values),
+        "material_decisions": len(result.material_decisions),
+        "unresolved": len(result.unresolved),
+        "llm_used": result.llm_used,
+    })
+
+
+@app.command("certificate-native-project")
+def certificate_native_project(
+    model_json: Path = typer.Argument(..., exists=True, readable=True, help="Reviewed explicit certificate model JSON"),
+    xml_template: Path = typer.Option(..., exists=True, readable=True, help="Native XML export from this WinWatt version"),
+    xml_output: Path = typer.Option(..., help="Generated native import XML"),
+    wwp_output: Path | None = typer.Option(None, help="Native .wwp output; enables WinWatt import + Save As"),
+) -> None:
+    """Compile reviewed geometry and optionally save a real .wwp through WinWatt."""
+    payload = compile_native_xml(model_json, xml_template, xml_output)
+    if wwp_output is not None:
+        from winwatt_automation.services.xml_native_service import NativeXmlService
+        from winwatt_automation.services.winwatt_service import WinWattService
+        if wwp_output.exists():
+            raise typer.BadParameter(f"Refusing to overwrite existing project: {wwp_output}")
+        service = WinWattService()
+        # New Project creates the final target itself.  This avoids Save As in
+        # older WinWatt versions, where a stale confirmation can point at the
+        # previously opened filename despite a different filename edit value.
+        service.create_empty_project(wwp_output)
+        NativeXmlService().import_xml(xml_output)
+        service.save_project()
+        payload["wwp"] = str(wwp_output.resolve())
+    _json_output(payload)
+
+
+@app.command("certificate-validate-readback")
+def certificate_validate_readback(
+    model_json: Path = typer.Argument(..., exists=True, readable=True),
+    readback_xml: Path = typer.Argument(..., exists=True, readable=True),
+    report_output: Path = typer.Option(..., help="JSON validation report"),
+) -> None:
+    """Write a deterministic source-model versus reopened-WinWatt XML report."""
+    from winwatt_automation.certificates.validation import write_validation_report
+    _json_output(write_validation_report(model_json, readback_xml, report_output))
+
+
+@app.command("certificate-layer-audit")
+def certificate_layer_audit(
+    model_json: Path = typer.Argument(..., exists=True, readable=True),
+    catalog_xml: Path = typer.Option(..., exists=True, readable=True),
+    report_output: Path = typer.Option(...),
+) -> None:
+    """Create the physical-property-based local WinWatt material audit."""
+    from winwatt_automation.certificates.layer_audit import audit_layers
+    _json_output(audit_layers(model_json, catalog_xml, report_output))
 
 
 if __name__ == "__main__":
