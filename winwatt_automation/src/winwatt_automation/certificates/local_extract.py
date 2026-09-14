@@ -36,7 +36,21 @@ def extract_known_values(pages: list[str]) -> list[ExtractedValue]:
                 found.append(ExtractedValue(key=key,value=float(match.group(1).replace(" ","").replace(",",".")),evidence=Evidence(page=index,excerpt=match.group(0),confidence=.98)))
     return found
 def candidate_material_lines(pages: list[str]) -> list[str]:
+    """Return prose-like material candidates, never bare dimension rows.
+
+    Certificate layouts often emit dimensions such as ``77.000 m`` on their
+    own line.  They are geometry evidence, not material names, and must not
+    pollute catalogue matching or an optional narrowly-scoped LLM review.
+    """
     lines=[]
     for page in pages:
-        lines.extend(" ".join(line.split()) for line in page.splitlines() if re.search(r"\b(?:mm|cm|m)\b",line,re.I) and len(line.strip())>=6)
+        for raw_line in page.splitlines():
+            line = " ".join(raw_line.split())
+            if not re.search(r"\b(?:mm|cm|m)\b", line, re.I) or len(line) < 6:
+                continue
+            # A leading number or an assignment label indicates a measured
+            # geometric dimension rather than a catalogue/material caption.
+            if re.match(r"^[0-9]", line) or "=" in line:
+                continue
+            lines.append(line)
     return list(dict.fromkeys(lines))
