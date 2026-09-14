@@ -94,6 +94,8 @@ class WinWattService:
     def save_project_as(self, target_path: Path) -> Path:
         """Persist through the verified Hungarian Save-As common dialog."""
         target = target_path.resolve()
+        if target.exists():
+            raise FileExistsError(f"Refusing to overwrite an existing WinWatt project: {target}")
         target.parent.mkdir(parents=True, exist_ok=True)
         main = get_main_window()
         process_id = int(main.process_id())
@@ -115,7 +117,95 @@ class WinWattService:
         filename.set_edit_text(str(target))
         save_button = next(item for item in dialog.descendants(control_type="Button") if item.element_info.automation_id == "1")
         save_button.click_input()
-        time.sleep(2.0)
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline and not target.is_file():
+            time.sleep(0.1)
         if not target.is_file():
             raise RuntimeError(f"WinWatt Save-As did not create {target}")
         return target
+
+    def create_empty_project(self, target_path: Path) -> Path:
+        """Create a new native project via mapped ``MainForm.NewProjekt``.
+
+        A clean target is deliberately mandatory: XML Import merges objects
+        into the active project, therefore importing into a copied/template
+        project would silently duplicate its envelope.
+        """
+        from winwatt_automation.workflows.safe_new_project_probe import (
+            _find_new_project_dialog,
+            _send_new_project_menu_sequence,
+        )
+
+        target = target_path.resolve()
+        if target.exists():
+            raise FileExistsError(f"Refusing to reuse a non-empty project seed: {target}")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        main = get_main_window()
+        main.set_focus()
+        process_id = int(main.process_id())
+        _send_new_project_menu_sequence()
+        # If the active project has unsaved import data, WinWatt asks whether
+        # to save it before showing New Project.  The clean-seed invariant
+        # means this transient project must be discarded, never overwritten.
+        deadline = time.monotonic() + 6.0
+        dialog = None
+        while time.monotonic() < deadline:
+            dialog, _ = _find_new_project_dialog(process_id, timeout=0.05)
+            if dialog is not None:
+                break
+            for candidate in Desktop(backend="win32").windows():
+                try:
+                    if int(candidate.process_id()) != process_id or candidate.class_name() != "#32770":
+                        continue
+                    text = candidate.window_text().casefold()
+                    if "winwatt" not in text or not candidate.is_visible() or not candidate.is_enabled():
+                        continue
+                    buttons = [item for item in candidate.descendants() if item.class_name() == "Button" and item.is_visible()]
+                    # Hungarian confirmation buttons are Igen / Nem / Mégse;
+                    # the centre button is always the safe non-saving choice.
+                    if len(buttons) >= 3:
+                        sorted(buttons, key=lambda item: item.rectangle().left)[1].click_input()
+                except Exception:
+                    continue
+            time.sleep(0.1)
+        if dialog is None:
+            raise RuntimeError("WinWatt New Project dialog did not open")
+        filename = next(
+            item for item in dialog.descendants()
+            if item.class_name() == "Edit" and item.is_visible() and item.control_id() == 1148
+        )
+        filename.set_edit_text(str(target))
+        open_button = next(
+            item for item in dialog.descendants()
+            if item.class_name() == "Button" and item.is_visible() and item.control_id() == 1
+        )
+        # Legacy common dialogs intermittently ignore click_input after an
+        # Edit value change; their native click is the observed reliable path.
+        open_button.click()
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline and not target.is_file():
+            time.sleep(0.1)
+        if not target.is_file():
+            raise RuntimeError(f"WinWatt did not create clean project seed: {target}")
+        # New Project itself opens Project Data. Accepting untouched defaults
+        # is required before an XML import can be issued; this is the same
+        # verified modal form the importer handles after some legacy imports.
+        deadline = time.monotonic() + 8.0
+        accepted = False
+        while time.monotonic() < deadline:
+            for candidate in Desktop(backend="win32").windows():
+                try:
+                    if (int(candidate.process_id()) == process_id and candidate.window_text() == "Projekt adatok"
+                            and candidate.class_name() == "TProjektDataForm" and candidate.is_visible()):
+                        ok = next(item for item in candidate.descendants() if item.window_text().strip().casefold() == "ok" and item.is_visible() and item.is_enabled())
+                        ok.click_input(); accepted = True
+                        break
+                except Exception:
+                    continue
+            try:
+                if get_main_window().is_enabled():
+                    return target
+            except Exception:
+                pass
+            time.sleep(0.1)
+        raise RuntimeError("WinWatt New Project remained disabled after Project Data defaults")
