@@ -1,0 +1,336 @@
+{
+  "rule": "R5 only becomes importable when a room-contour edge, a dimension chain and an exterior contour edge agree.",
+  "counts": {
+    "rooms": 28,
+    "single_r5": 15,
+    "separate_r5": 1,
+    "multi_wall_candidates": 5
+  },
+  "rooms": [
+    {
+      "room": "B01 - Pince",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B02 - Lépcsőház pince",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B03 - Nappali",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B03 - Nappali külső határoló fal",
+          "area_m2": 10.0,
+          "azimuth_deg": 216
+        }
+      ],
+      "status": "multiple_wall_candidate_requires_measurement",
+      "reason": "földszinti külső kontúr: alsó és bal oldali falszakasz",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B04 - Konyha",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B04 - Konyha külső határoló fal",
+          "area_m2": 12.0,
+          "azimuth_deg": 216
+        }
+      ],
+      "status": "multiple_wall_candidate_requires_measurement",
+      "reason": "földszinti külső kontúr: alsó és jobb oldali falszakasz",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B05a - Földszinti fürdő",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B05b - Földszinti WC",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B05c - Földszinti fürdő",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B05d - Földszinti WC",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B05e - Földszinti WC",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B06 - Háztartási helyiség",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B06 - Háztartási helyiség külső határoló fal",
+          "area_m2": 8.2,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B07a - Földszinti közlekedő",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B07b - Földszinti közlekedő",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B07c - Előszoba",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B08 - Pihenő / télikert",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B08 - Pihenő / télikert külső határoló fal",
+          "area_m2": 25.1,
+          "azimuth_deg": 306
+        }
+      ],
+      "status": "multiple_wall_candidate_requires_measurement",
+      "reason": "földszinti külső kontúr: felső és bal oldali falszakasz",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B09 - Földszinti szoba",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B09 - Földszinti szoba külső határoló fal",
+          "area_m2": 9.7,
+          "azimuth_deg": 36
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B10a - Földszinti gardrób",
+      "r5_count": 2,
+      "r5_segments": [
+        {
+          "name": "B10a - Földszinti gardrób felső tervi falszakasz",
+          "area_m2": 5.45,
+          "azimuth_deg": 36
+        },
+        {
+          "name": "B10a - Földszinti gardrób jobb oldali tervi falszakasz",
+          "area_m2": 11.42,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "separate_segments_present",
+      "reason": "Két külön tervi méretláncból felvett R5 falszakasz.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B10b - Földszinti tároló",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B10c - Földszinti tároló",
+      "r5_count": 0,
+      "r5_segments": [],
+      "status": "no_r5_boundary",
+      "reason": "A helyiséghez jelenleg nincs R5; csak tervi kontúrillesztés után dönthető el, kell-e.",
+      "winwatt_xy_ready": true
+    },
+    {
+      "room": "B11a - Tetőtéri fürdő",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B11a - Tetőtéri fürdő külső határoló fal",
+          "area_m2": 9.63,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B11b - Tetőtéri WC",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B11b - Tetőtéri WC külső határoló fal",
+          "area_m2": 6.82,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B11c - Tetőtéri WC",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B11c - Tetőtéri WC külső határoló fal",
+          "area_m2": 5.83,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B12 - Tetőtéri szoba 1",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B12 - Tetőtéri szoba 1 külső határoló fal",
+          "area_m2": 17.14,
+          "azimuth_deg": 306
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B13 - Tetőtéri szoba 2",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B13 - Tetőtéri szoba 2 külső határoló fal",
+          "area_m2": 18.29,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "multiple_wall_candidate_requires_measurement",
+      "reason": "tetőtéri külső kontúr: felső és jobb oldali falszakasz",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B14 - Tetőtéri szoba 3",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B14 - Tetőtéri szoba 3 külső határoló fal",
+          "area_m2": 16.84,
+          "azimuth_deg": 306
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B15 - Tetőtéri szoba 4",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B15 - Tetőtéri szoba 4 külső határoló fal",
+          "area_m2": 19.27,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B16 - Tetőtéri szoba 5",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B16 - Tetőtéri szoba 5 külső határoló fal",
+          "area_m2": 17.91,
+          "azimuth_deg": 306
+        }
+      ],
+      "status": "multiple_wall_candidate_requires_measurement",
+      "reason": "tetőtéri külső kontúr: alsó és bal oldali falszakasz",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B17 - Tetőtéri közlekedő",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B17 - Tetőtéri közlekedő külső határoló fal",
+          "area_m2": 26.62,
+          "azimuth_deg": 306
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    },
+    {
+      "room": "B18 - Tetőtéri gardrób",
+      "r5_count": 1,
+      "r5_segments": [
+        {
+          "name": "B18 - Tetőtéri gardrób külső határoló fal",
+          "area_m2": 12.78,
+          "azimuth_deg": 126
+        }
+      ],
+      "status": "single_aggregate_requires_contour_check",
+      "reason": "Egy R5 rekord nem igazolja, hogy csak egy külső falszakasz van.",
+      "winwatt_xy_ready": false
+    }
+  ]
+}

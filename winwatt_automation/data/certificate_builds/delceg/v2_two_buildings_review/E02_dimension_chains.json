@@ -1,0 +1,1496 @@
+{
+  "source_pdf": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\É02_TERVEZETT FÖLDSZINTI ALAPRAJZ_végl.pdf",
+  "dimension_chains": [
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.12,
+      "dimension_start": [
+        357.6903076171875,
+        400.9073944091797
+      ],
+      "dimension_end": [
+        389.3448486328125,
+        400.9073944091797
+      ],
+      "text": "1,12",
+      "text_center": [
+        373.5172424316406,
+        396.117431640625
+      ],
+      "tick_count": 2,
+      "extension_count": 2,
+      "confidence": 1.0
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 3.41,
+      "dimension_start": [
+        354.29864501953125,
+        858.6863403320312
+      ],
+      "dimension_end": [
+        450.8213195800781,
+        858.6863403320312
+      ],
+      "text": "3,41",
+      "text_center": [
+        402.58282470703125,
+        853.9070434570312
+      ],
+      "tick_count": 2,
+      "extension_count": 2,
+      "confidence": 1.0
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 3.9,
+      "dimension_start": [
+        450.8213195800781,
+        859.1158142089844
+      ],
+      "dimension_end": [
+        561.3896789550781,
+        859.1158142089844
+      ],
+      "text": "3,90",
+      "text_center": [
+        506.1280517578125,
+        854.3380126953125
+      ],
+      "tick_count": 2,
+      "extension_count": 2,
+      "confidence": 1.0
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 8.88,
+      "dimension_start": [
+        354.29864501953125,
+        858.6863403320312
+      ],
+      "dimension_end": [
+        450.8213195800781,
+        858.6863403320312
+      ],
+      "text": "8,88",
+      "text_center": [
+        418.9361877441406,
+        871.7689819335938
+      ],
+      "tick_count": 2,
+      "extension_count": 2,
+      "confidence": 1.0
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 11.65,
+      "dimension_start": [
+        231.27088165283203,
+        925.4019622802734
+      ],
+      "dimension_end": [
+        561.4350280761719,
+        925.4019622802734
+      ],
+      "text": "11,65",
+      "text_center": [
+        396.4320831298828,
+        920.6212158203125
+      ],
+      "tick_count": 2,
+      "extension_count": 2,
+      "confidence": 1.0
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.53,
+      "dimension_start": [
+        231.29638671875,
+        900.195556640625
+      ],
+      "dimension_end": [
+        274.6775817871094,
+        900.195556640625
+      ],
+      "text": "1,53",
+      "text_center": [
+        252.99384307861328,
+        895.4130859375
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 2.78,
+      "dimension_start": [
+        275.37745666503906,
+        858.3220825195312
+      ],
+      "dimension_end": [
+        354.29864501953125,
+        858.3220825195312
+      ],
+      "text": "2,78",
+      "text_center": [
+        314.8606262207031,
+        853.5430297851562
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 4.52,
+      "dimension_start": [
+        171.63919067382812,
+        677.3410339355469
+      ],
+      "dimension_end": [
+        171.63919067382812,
+        805.3935241699219
+      ],
+      "text": "4,52",
+      "text_center": [
+        166.85950469970703,
+        741.3445739746094
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 5.72,
+      "dimension_start": [
+        171.63919067382812,
+        677.3410339355469
+      ],
+      "dimension_end": [
+        171.63919067382812,
+        805.3935241699219
+      ],
+      "text": "5,72",
+      "text_center": [
+        187.73253631591797,
+        741.4685974121094
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 5.72,
+      "dimension_start": [
+        148.4327621459961,
+        660.2367553710938
+      ],
+      "dimension_end": [
+        148.4327621459961,
+        822.3787536621094
+      ],
+      "text": "5,72",
+      "text_center": [
+        143.65345001220703,
+        741.2855529785156
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 10.12,
+      "dimension_start": [
+        274.6775817871094,
+        900.3641967773438
+      ],
+      "dimension_end": [
+        561.4605712890625,
+        900.3641967773438
+      ],
+      "text": "10,12",
+      "text_center": [
+        418.07667541503906,
+        895.5837707519531
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 20.0,
+      "dimension_start": [
+        129.05615997314453,
+        255.18553924560547
+      ],
+      "dimension_end": [
+        129.05615997314453,
+        822.27099609375
+      ],
+      "text": "20,00",
+      "text_center": [
+        124.27956008911133,
+        538.7047424316406
+      ],
+      "tick_count": 2,
+      "extension_count": 1,
+      "confidence": 0.9
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.06,
+      "dimension_start": [
+        531.3749694824219,
+        76.84481430053711
+      ],
+      "dimension_end": [
+        561.8503112792969,
+        76.84481430053711
+      ],
+      "text": "1,06",
+      "text_center": [
+        546.6126098632812,
+        72.0550308227539
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.17,
+      "dimension_start": [
+        523.0977783203125,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        561.8503112792969,
+        96.42714309692383
+      ],
+      "text": "1,17",
+      "text_center": [
+        545.3096313476562,
+        91.63727569580078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.17,
+      "dimension_start": [
+        523.0977783203125,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        561.8503112792969,
+        96.42714309692383
+      ],
+      "text": "1,17",
+      "text_center": [
+        545.3096313476562,
+        112.9188232421875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.18,
+      "dimension_start": [
+        596.9815521240234,
+        412.1368713378906
+      ],
+      "dimension_end": [
+        596.9815521240234,
+        445.7132873535156
+      ],
+      "text": "1,18",
+      "text_center": [
+        592.1994018554688,
+        428.91864013671875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.39,
+      "dimension_start": [
+        172.78084564208984,
+        447.3007049560547
+      ],
+      "dimension_end": [
+        172.78084564208984,
+        486.7306671142578
+      ],
+      "text": "1,39",
+      "text_center": [
+        168.00150299072266,
+        466.9920654296875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.4,
+      "dimension_start": [
+        596.8702850341797,
+        518.9889831542969
+      ],
+      "dimension_end": [
+        596.8702850341797,
+        558.7931518554688
+      ],
+      "text": "1,40",
+      "text_center": [
+        592.08740234375,
+        538.8838500976562
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.49,
+      "dimension_start": [
+        617.7800903320312,
+        386.4379119873047
+      ],
+      "dimension_end": [
+        617.7800903320312,
+        428.7960968017578
+      ],
+      "text": "1,49",
+      "text_center": [
+        612.9974365234375,
+        407.60955810546875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.52,
+      "dimension_start": [
+        172.59801483154297,
+        489.48594665527344
+      ],
+      "dimension_end": [
+        172.59801483154297,
+        532.4422607421875
+      ],
+      "text": "1,52",
+      "text_center": [
+        167.8185043334961,
+        510.9410858154297
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.68,
+      "dimension_start": [
+        172.40972137451172,
+        532.4422607421875
+      ],
+      "dimension_end": [
+        172.40972137451172,
+        579.9495544433594
+      ],
+      "text": "1,68",
+      "text_center": [
+        167.63050079345703,
+        556.1731567382812
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.74,
+      "dimension_start": [
+        479.3194580078125,
+        117.70912551879883
+      ],
+      "dimension_end": [
+        528.76708984375,
+        117.70912551879883
+      ],
+      "text": "1,74",
+      "text_center": [
+        504.04351806640625,
+        112.9188232421875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 1.89,
+      "dimension_start": [
+        194.42255020141602,
+        255.5985565185547
+      ],
+      "dimension_end": [
+        194.42255020141602,
+        309.25889587402344
+      ],
+      "text": "1,89",
+      "text_center": [
+        189.64354705810547,
+        282.4056701660156
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 1.92,
+      "dimension_start": [
+        460.22528076171875,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        514.5938720703125,
+        96.42714309692383
+      ],
+      "text": "1,92",
+      "text_center": [
+        487.4104919433594,
+        91.63727569580078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 2.16,
+      "dimension_start": [
+        193.8635597229004,
+        386.1402893066406
+      ],
+      "dimension_end": [
+        193.8635597229004,
+        447.38572692871094
+      ],
+      "text": "2,16",
+      "text_center": [
+        189.08454132080078,
+        416.7409362792969
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 2.46,
+      "dimension_start": [
+        409.5984344482422,
+        117.70912551879883
+      ],
+      "dimension_end": [
+        479.3194580078125,
+        117.70912551879883
+      ],
+      "text": "2,46",
+      "text_center": [
+        444.4584045410156,
+        112.9188232421875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 2.58,
+      "dimension_start": [
+        596.9276885986328,
+        445.7132873535156
+      ],
+      "dimension_end": [
+        596.9276885986328,
+        518.9889831542969
+      ],
+      "text": "2,58",
+      "text_center": [
+        592.1453857421875,
+        482.3447570800781
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 2.6,
+      "dimension_start": [
+        193.58292388916016,
+        447.38572692871094
+      ],
+      "dimension_end": [
+        193.58292388916016,
+        520.998779296875
+      ],
+      "text": "2,60",
+      "text_center": [
+        188.80355072021484,
+        484.17010498046875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 2.71,
+      "dimension_start": [
+        194.15099334716797,
+        309.25889587402344
+      ],
+      "dimension_end": [
+        194.15099334716797,
+        386.1402893066406
+      ],
+      "text": "2,71",
+      "text_center": [
+        189.37154388427734,
+        347.67779541015625
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 2.73,
+      "dimension_start": [
+        332.0792541503906,
+        117.70912551879883
+      ],
+      "dimension_end": [
+        409.5984344482422,
+        117.70912551879883
+      ],
+      "text": "2,73",
+      "text_center": [
+        370.8382263183594,
+        112.9188232421875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 2.84,
+      "dimension_start": [
+        172.14354705810547,
+        579.9495544433594
+      ],
+      "dimension_end": [
+        172.14354705810547,
+        660.3331298828125
+      ],
+      "text": "2,84",
+      "text_center": [
+        167.36449432373047,
+        620.1193542480469
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 2.89,
+      "dimension_start": [
+        596.8079223632812,
+        558.7931518554688
+      ],
+      "dimension_end": [
+        596.8079223632812,
+        640.6465148925781
+      ],
+      "text": "2,89",
+      "text_center": [
+        592.025390625,
+        599.7119750976562
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 3.42,
+      "dimension_start": [
+        360.42433166503906,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        457.390625,
+        96.42714309692383
+      ],
+      "text": "3,42",
+      "text_center": [
+        408.9073181152344,
+        91.63727569580078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 3.55,
+      "dimension_start": [
+        231.31439208984375,
+        117.70912551879883
+      ],
+      "dimension_end": [
+        332.0792541503906,
+        117.70912551879883
+      ],
+      "text": "3,55",
+      "text_center": [
+        281.6970520019531,
+        112.9188232421875
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        597.2132873535156,
+        148.22852325439453
+      ],
+      "dimension_end": [
+        597.2132873535156,
+        255.5635528564453
+      ],
+      "text": "3,79",
+      "text_center": [
+        592.431396484375,
+        201.88914489746094
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        617.9898376464844,
+        148.24978637695312
+      ],
+      "dimension_end": [
+        617.9898376464844,
+        255.58480834960938
+      ],
+      "text": "3,79",
+      "text_center": [
+        613.2074584960938,
+        201.91014099121094
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        636.685791015625,
+        148.26892852783203
+      ],
+      "dimension_end": [
+        636.685791015625,
+        255.60379028320312
+      ],
+      "text": "3,79",
+      "text_center": [
+        631.9034423828125,
+        201.92913055419922
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        636.685791015625,
+        148.26892852783203
+      ],
+      "dimension_end": [
+        636.685791015625,
+        255.60379028320312
+      ],
+      "text": "3,79",
+      "text_center": [
+        653.1425170898438,
+        201.9661407470703
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        194.75802993774414,
+        148.03095245361328
+      ],
+      "dimension_end": [
+        194.75802993774414,
+        255.5985565185547
+      ],
+      "text": "3,79",
+      "text_center": [
+        189.9785385131836,
+        201.7914810180664
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        173.88494873046875,
+        147.9440689086914
+      ],
+      "dimension_end": [
+        173.88494873046875,
+        255.51180267333984
+      ],
+      "text": "3,79",
+      "text_center": [
+        169.1054916381836,
+        201.70447540283203
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        130.45973587036133,
+        147.76336669921875
+      ],
+      "dimension_end": [
+        130.45973587036133,
+        255.18553924560547
+      ],
+      "text": "3,79",
+      "text_center": [
+        145.89945220947266,
+        201.60846710205078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 3.79,
+      "dimension_start": [
+        130.45973587036133,
+        147.76336669921875
+      ],
+      "dimension_end": [
+        130.45973587036133,
+        255.18553924560547
+      ],
+      "text": "3,79",
+      "text_center": [
+        125.6804084777832,
+        201.45146942138672
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 3.95,
+      "dimension_start": [
+        245.52051544189453,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        357.5896911621094,
+        96.42714309692383
+      ],
+      "text": "3,95",
+      "text_center": [
+        301.55506896972656,
+        91.63727569580078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 4.02,
+      "dimension_start": [
+        617.8630065917969,
+        269.7846984863281
+      ],
+      "dimension_end": [
+        617.8630065917969,
+        383.60325622558594
+      ],
+      "text": "4,02",
+      "text_center": [
+        613.0794677734375,
+        326.6874084472656
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 4.5,
+      "dimension_start": [
+        617.4392242431641,
+        678.316162109375
+      ],
+      "dimension_end": [
+        617.4392242431641,
+        805.9746398925781
+      ],
+      "text": "4,50",
+      "text_center": [
+        612.6564331054688,
+        742.1392822265625
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 4.56,
+      "dimension_start": [
+        596.8079223632812,
+        558.7931518554688
+      ],
+      "dimension_end": [
+        596.8079223632812,
+        640.6465148925781
+      ],
+      "text": "4,56",
+      "text_center": [
+        612.8004760742188,
+        600.9879760742188
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 4.92,
+      "dimension_start": [
+        172.2424087524414,
+        532.4422607421875
+      ],
+      "dimension_end": [
+        172.2424087524414,
+        660.3331298828125
+      ],
+      "text": "4,92",
+      "text_center": [
+        188.36054229736328,
+        590.6872863769531
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 4.92,
+      "dimension_start": [
+        149.0602149963379,
+        520.8173217773438
+      ],
+      "dimension_end": [
+        149.0602149963379,
+        660.2367553710938
+      ],
+      "text": "4,92",
+      "text_center": [
+        144.28044891357422,
+        590.5043029785156
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 5.52,
+      "dimension_start": [
+        597.0786437988281,
+        255.5635528564453
+      ],
+      "dimension_end": [
+        597.0786437988281,
+        412.1368713378906
+      ],
+      "text": "5,52",
+      "text_center": [
+        592.29638671875,
+        333.8434143066406
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 5.77,
+      "dimension_start": [
+        173.26231384277344,
+        269.61334228515625
+      ],
+      "dimension_end": [
+        173.26231384277344,
+        433.0650939941406
+      ],
+      "text": "5,77",
+      "text_center": [
+        168.48249053955078,
+        351.3167724609375
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 6.43,
+      "dimension_start": [
+        596.6725769042969,
+        640.6465148925781
+      ],
+      "dimension_end": [
+        596.6725769042969,
+        822.9456787109375
+      ],
+      "text": "6,43",
+      "text_center": [
+        591.890380859375,
+        731.7882690429688
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 9.28,
+      "dimension_start": [
+        617.8396148681641,
+        269.7846984863281
+      ],
+      "dimension_end": [
+        617.8396148681641,
+        428.7960968017578
+      ],
+      "text": "9,28",
+      "text_center": [
+        631.7144165039062,
+        387.3095397949219
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 9.35,
+      "dimension_start": [
+        149.9026756286621,
+        255.41515350341797
+      ],
+      "dimension_end": [
+        149.9026756286621,
+        520.8173217773438
+      ],
+      "text": "9,35",
+      "text_center": [
+        145.12345123291016,
+        388.0928649902344
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 10.0,
+      "dimension_start": [
+        617.6992950439453,
+        459.78306579589844
+      ],
+      "dimension_end": [
+        617.6992950439453,
+        513.4841003417969
+      ],
+      "text": "10",
+      "text_center": [
+        602.9923095703125,
+        487.18577575683594
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 10.0,
+      "dimension_start": [
+        596.9815521240234,
+        412.1368713378906
+      ],
+      "dimension_end": [
+        596.9815521240234,
+        445.7132873535156
+      ],
+      "text": "10",
+      "text_center": [
+        603.05029296875,
+        430.19764709472656
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 10.0,
+      "dimension_start": [
+        617.8396148681641,
+        269.7846984863281
+      ],
+      "dimension_end": [
+        617.8396148681641,
+        428.7960968017578
+      ],
+      "text": "10",
+      "text_center": [
+        613.025390625,
+        377.16754150390625
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 10.0,
+      "dimension_start": [
+        172.6857452392578,
+        447.3007049560547
+      ],
+      "dimension_end": [
+        172.6857452392578,
+        532.4422607421875
+      ],
+      "text": "10",
+      "text_center": [
+        157.98827362060547,
+        488.0450744628906
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 10.0,
+      "dimension_start": [
+        245.52051544189453,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        457.390625,
+        96.42714309692383
+      ],
+      "text": "10",
+      "text_center": [
+        351.16014099121094,
+        91.63727569580078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 10.0,
+      "dimension_start": [
+        360.42433166503906,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        514.5938720703125,
+        96.42714309692383
+      ],
+      "text": "10",
+      "text_center": [
+        450.9613494873047,
+        91.63727569580078
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 10.59,
+      "dimension_start": [
+        231.2854766845703,
+        76.84481430053711
+      ],
+      "dimension_end": [
+        531.3749694824219,
+        76.84481430053711
+      ],
+      "text": "10,59",
+      "text_center": [
+        381.3297424316406,
+        72.0550308227539
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 10.72,
+      "dimension_start": [
+        617.5100860595703,
+        665.5602416992188
+      ],
+      "dimension_end": [
+        617.5100860595703,
+        678.316162109375
+      ],
+      "text": "10,72",
+      "text_center": [
+        631.4271545410156,
+        671.0006408691406
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 20.0,
+      "dimension_start": [
+        617.6730804443359,
+        488.61854553222656
+      ],
+      "dimension_end": [
+        617.6730804443359,
+        536.4306030273438
+      ],
+      "text": "20",
+      "text_center": [
+        604.1782836914062,
+        516.0008239746094
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 20.0,
+      "dimension_start": [
+        617.9246520996094,
+        148.24978637695312
+      ],
+      "dimension_end": [
+        617.9246520996094,
+        383.60325622558594
+      ],
+      "text": "20",
+      "text_center": [
+        613.1563720703125,
+        249.14927673339844
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 20.0,
+      "dimension_start": [
+        657.5807189941406,
+        255.6558074951172
+      ],
+      "dimension_end": [
+        657.5807189941406,
+        823.0052490234375
+      ],
+      "text": "20,00",
+      "text_center": [
+        652.8012390136719,
+        539.3244018554688
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 20.0,
+      "dimension_start": [
+        172.8925323486328,
+        433.0650939941406
+      ],
+      "dimension_end": [
+        172.8925323486328,
+        447.3007049560547
+      ],
+      "text": "20",
+      "text_center": [
+        158.17028045654297,
+        444.38897705078125
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 20.0,
+      "dimension_start": [
+        173.51544952392578,
+        147.9440689086914
+      ],
+      "dimension_end": [
+        173.51544952392578,
+        433.0650939941406
+      ],
+      "text": "20",
+      "text_center": [
+        168.90428924560547,
+        249.0595703125
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 20.0,
+      "dimension_start": [
+        514.5938720703125,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        561.8503112792969,
+        96.42714309692383
+      ],
+      "text": "20",
+      "text_center": [
+        531.0195617675781,
+        83.13335418701172
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 30.0,
+      "dimension_start": [
+        617.9246520996094,
+        148.24978637695312
+      ],
+      "dimension_end": [
+        617.9246520996094,
+        383.60325622558594
+      ],
+      "text": "30",
+      "text_center": [
+        613.1283569335938,
+        276.2073211669922
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 30.0,
+      "dimension_start": [
+        173.15062713623047,
+        269.61334228515625
+      ],
+      "dimension_end": [
+        173.15062713623047,
+        486.7306671142578
+      ],
+      "text": "30",
+      "text_center": [
+        168.16529083251953,
+        426.6139373779297
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "vertical",
+      "value_m": 30.0,
+      "dimension_start": [
+        173.51544952392578,
+        147.9440689086914
+      ],
+      "dimension_end": [
+        173.51544952392578,
+        433.0650939941406
+      ],
+      "text": "30",
+      "text_center": [
+        168.79228973388672,
+        276.0196228027344
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    },
+    {
+      "page": 1,
+      "orientation": "horizontal",
+      "value_m": 30.0,
+      "dimension_start": [
+        460.22528076171875,
+        96.42714309692383
+      ],
+      "dimension_end": [
+        561.8503112792969,
+        96.42714309692383
+      ],
+      "text": "30",
+      "text_center": [
+        513.468505859375,
+        86.11865997314453
+      ],
+      "tick_count": 2,
+      "extension_count": 0,
+      "confidence": 0.8
+    }
+  ]
+}

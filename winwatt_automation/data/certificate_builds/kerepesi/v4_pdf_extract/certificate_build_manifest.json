@@ -1,0 +1,102 @@
+{
+  "source": {
+    "pdf": "C:\\Users\\Admin\\Documents\\GitHub\\260307 - Budapest - Kerepesi - DG\\Wallis Kerepesi _Energetikai minőségtanúsítvány összesítő_230313.pdf másolata.pdf",
+    "sha256": "d07463717a5ca9af3da9362bfd665a79e9cfe376ba22e0bfdf4f8d7dd26b0f5a",
+    "pages": 17
+  },
+  "values": [
+    {
+      "key": "heated_volume_m3",
+      "value": 12188.6,
+      "evidence": {
+        "page": 10,
+        "excerpt": "V: 12188.6 m3 (Fűtött épület",
+        "confidence": 0.98
+      }
+    },
+    {
+      "key": "a_v",
+      "value": 0.458,
+      "evidence": {
+        "page": 10,
+        "excerpt": "A/V: 0.458 m2/m3",
+        "confidence": 0.98
+      }
+    },
+    {
+      "key": "transmission_wk",
+      "value": 3183.0,
+      "evidence": {
+        "page": 10,
+        "excerpt": "ΣAU + ΣlΨ: 3183.0 W/K",
+        "confidence": 0.98
+      }
+    }
+  ],
+  "material_decisions": [
+    {
+      "source_name": "Alumínium 62 mm-es 3 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "Alumínium 55 mm-es 2 kamrás",
+        "material_id": "1090",
+        "path": "Nyílászárók anyagai\\Alumínium profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    },
+    {
+      "source_name": "PVC 60 mm-es 3 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "PVC 50 mm-es 2 kamrás",
+        "material_id": "1121",
+        "path": "Nyílászárók anyagai\\PVC profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    },
+    {
+      "source_name": "PVC 75 mm-es 4-5 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "PVC 50 mm-es 2 kamrás",
+        "material_id": "1121",
+        "path": "Nyílászárók anyagai\\PVC profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    },
+    {
+      "source_name": "Alumínium 72 mm-es 3 kamrás",
+      "status": "catalog",
+      "candidate": {
+        "name": "Alumínium 55 mm-es 2 kamrás",
+        "material_id": "1090",
+        "path": "Nyílászárók anyagai\\Alumínium profilok",
+        "lambda_wmk": null,
+        "density_kgm3": null,
+        "heat_capacity_kjkgk": null
+      },
+      "reason": "Helyi katalógus-egyezés: név=100%, fizika=hiányos.",
+      "confidence": 0.55,
+      "decision_mode": "catalog_match"
+    }
+  ],
+  "unresolved": [],
+  "llm_used": false,
+  "llm_result": null,
+  "next_step": "Provide an approved structured geometry mapping before native XML generation; raw PDF prose is insufficient evidence for room-boundary allocation."
+}

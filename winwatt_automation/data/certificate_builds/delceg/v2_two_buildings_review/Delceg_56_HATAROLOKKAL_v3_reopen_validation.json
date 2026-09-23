@@ -1,0 +1,259 @@
+{
+  "source_model": "data\\certificate_builds\\delceg\\v2_two_buildings_review\\delceg_two_buildings_model.json",
+  "readback_xml": "data\\certificate_builds\\delceg\\v2_two_buildings_review\\Delceg_56_HATAROLOKKAL_v3_reopen_readback.xml",
+  "counts": {
+    "buildings": 2,
+    "zones": 19,
+    "rooms": 19,
+    "structures": 12,
+    "boundaries": 56,
+    "layer_rows": 0,
+    "expected_layer_rows": 0
+  },
+  "totals": {
+    "heated_area_m2": {
+      "expected": 383.52,
+      "actual": 383.52,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "heated_volume_m3": {
+      "expected": 1052.42,
+      "actual": 1052.4292,
+      "absolute": 0.0092,
+      "relative_percent": 0.000874
+    },
+    "transmission_wk": {
+      "expected": 211.483684,
+      "actual": 211.48698,
+      "absolute": 0.003296,
+      "relative_percent": 0.001559
+    }
+  },
+  "surface_by_source_type_m2": {
+    "külső ablak": {
+      "expected": 10.0,
+      "actual": 10.0,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "külső fal": {
+      "expected": 299.21,
+      "actual": 299.21,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "külső tető": {
+      "expected": 415.97,
+      "actual": 415.97,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "lábazati fal": {
+      "expected": 79.7,
+      "actual": 79.7,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "talajon fekvő padló": {
+      "expected": 383.52,
+      "actual": 383.52,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    }
+  },
+  "surface_by_azimuth_deg_m2": {
+    "0": {
+      "expected": 834.58,
+      "actual": 968.39,
+      "absolute": 133.81,
+      "relative_percent": 16.033214
+    },
+    "126": {
+      "expected": 132.36,
+      "actual": 79.7,
+      "absolute": -52.66,
+      "relative_percent": -39.785434
+    },
+    "216": {
+      "expected": 22.0,
+      "actual": 22.0,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "306": {
+      "expected": 189.76,
+      "actual": 108.61,
+      "absolute": -81.15,
+      "relative_percent": -42.764545
+    },
+    "36": {
+      "expected": 9.7,
+      "actual": 9.7,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    }
+  },
+  "room_conditions": {
+    "A01 - Meglévő lakás (tanúsítványi aggregát)": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 0.0,
+        "absolute": -20.0,
+        "relative_percent": -100.0
+      },
+      "air_change_h": {
+        "expected": 0.6,
+        "actual": 0.0,
+        "absolute": -0.6,
+        "relative_percent": -100.0
+      }
+    },
+    "B01 - Pince": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B02 - Lépcsőház pince": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B03 - Nappali": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B04 - Konyha": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B05 - Földszinti vizes helyiségek": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 0.0,
+        "absolute": -20.0,
+        "relative_percent": -100.0
+      }
+    },
+    "B06 - Háztartási helyiség": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B07 - Földszinti közlekedők": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B08 - Pihenő / télikert": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B09 - Földszinti szoba": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B10 - Gardrób és tárolók": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B11 - Tetőtéri fürdő és WC-k": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B12 - Tetőtéri szoba 1": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B13 - Tetőtéri szoba 2": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B14 - Tetőtéri szoba 3": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B15 - Tetőtéri szoba 4": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B16 - Tetőtéri szoba 5": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B17 - Tetőtéri közlekedő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B18 - Tetőtéri gardrób": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    }
+  },
+  "opening_glass_ratio_percent": {},
+  "mechanics_included": false
+}
