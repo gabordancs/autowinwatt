@@ -19,6 +19,7 @@ from winwatt_automation.live_ui.app_connector import (
 )
 from winwatt_automation.workflows.safe_xml_export_probe import _find_save_dialog, _open_xml_export
 from winwatt_automation.workflows.safe_xml_import_probe import _find_open_dialog, _open_xml_import
+from winwatt_automation.workflows.safe_project_data_probe import DATA_CLASS, DATA_TITLE
 
 
 class NativeXmlService:
@@ -77,7 +78,10 @@ class NativeXmlService:
         if dialog is None:
             raise RuntimeError("WinWatt XML Export save dialog did not open")
         self._filename_edit(dialog).set_edit_text(str(target))
-        self._confirm_button(dialog).click_input()
+        # The legacy common dialog occasionally ignores injected mouse input
+        # although it accepts the native window message sent by ``click``.
+        # This is especially visible after a project reopen.
+        self._confirm_button(dialog).click()
         if not self._wait_for_dialog_to_close(process_id, "MentĂ©s mĂˇskĂ©nt"):
             raise RuntimeError("WinWatt XML Export dialog did not close after confirmation")
         deadline = time.monotonic() + 8.0
@@ -117,12 +121,36 @@ class NativeXmlService:
         if not self._wait_for_dialog_to_close(process_id, "Megnyitás"):
             raise RuntimeError("WinWatt XML Import dialog did not close after confirmation")
         deadline = time.monotonic() + 8.0
+        project_data_accepted = False
         while time.monotonic() < deadline:
+            # Importing into a new project opens this native form before the
+            # main window is enabled.  It is part of the documented WinWatt
+            # import flow, not an import failure.  Keep its defaults; project
+            # identity is stored by the generated XML/building hierarchy.
+            for candidate in Desktop(backend="win32").windows():
+                try:
+                    if (
+                        int(candidate.process_id()) == process_id
+                        and candidate.window_text() == DATA_TITLE
+                        and candidate.class_name() == DATA_CLASS
+                        and candidate.is_visible()
+                    ):
+                        ok = next(
+                            button for button in candidate.descendants()
+                            if button.window_text().strip().casefold() == "ok"
+                            and button.is_visible() and button.is_enabled()
+                        )
+                        ok.click_input()
+                        project_data_accepted = True
+                        break
+                except Exception:
+                    continue
             if get_cached_main_window().is_enabled():
                 return EvidenceItem(
                     kind="xml_import",
                     message="Native WinWatt XML import command completed",
-                    data={"path": str(source), "root_tag": root.tag, "bytes": source.stat().st_size},
+                    data={"path": str(source), "root_tag": root.tag, "bytes": source.stat().st_size,
+                          "project_data_defaults_accepted": project_data_accepted},
                 )
             time.sleep(0.1)
         raise RuntimeError("WinWatt remained disabled after XML import")
