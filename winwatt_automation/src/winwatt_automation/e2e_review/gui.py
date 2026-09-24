@@ -6,7 +6,7 @@ from pathlib import Path
 from .domain import ReviewStatus, numeric_value
 from .pdf_evidence import render_full_page
 from .persistence import ReviewStore
-from .wall_overlay import WallOverlay
+from .wall_overlay import WallOverlay, layout_outside_labels
 
 
 def run_gui(store: ReviewStore, pdf_root: Path, reviewer: str, *, wall_overlay_path: Path | None = None) -> int:
@@ -70,10 +70,18 @@ def run_gui(store: ReviewStore, pdf_root: Path, reviewer: str, *, wall_overlay_p
 
         def _draw_wall_overlay(self, pixmap, labels):
             painter=QPainter(pixmap); painter.setRenderHint(QPainter.Antialiasing); font=QFont("Arial",max(7,int(8*self.zoom))); painter.setFont(font)
-            for label in labels:
-                x=label.x_ratio*pixmap.width(); y=label.y_ratio*pixmap.height(); metrics=painter.fontMetrics(); leading=metrics.height()+2; width=max(metrics.horizontalAdvance(line) for line in label.lines)+12; height=len(label.lines)*leading+8
-                rect_x=int(x-width/2); rect_y=int(y-height/2); painter.setPen(QPen(QColor("#075a87"))); painter.setBrush(QColor(0,96,145,235)); painter.drawRoundedRect(rect_x,rect_y,width,height,5,5); painter.setPen(QPen(QColor("white")))
-                for index,line in enumerate(label.lines): painter.drawText(rect_x+6,rect_y+leading*(index+1),line)
+            metrics=painter.fontMetrics(); leading=metrics.height()+2
+            placed=layout_outside_labels(labels,pixmap.width(),pixmap.height(),line_height=leading,width_for_lines=lambda lines:max(metrics.horizontalAdvance(line) for line in lines))
+            for item in placed:
+                # Leader line ends at the inner edge of the side label. Its
+                # anchor remains inside the actual room, while the blue box is
+                # kept outside the usable plan area.
+                end_x=item.rect_x+item.width if item.side=="left" else item.rect_x
+                end_y=min(max(item.anchor_y,item.rect_y+6),item.rect_y+item.height-6)
+                painter.setPen(QPen(QColor("#075a87"),max(1,int(self.zoom)))); painter.drawLine(int(item.anchor_x),int(item.anchor_y),int(end_x),int(end_y))
+                painter.setBrush(QColor("#075a87")); painter.drawEllipse(int(item.anchor_x-2*self.zoom),int(item.anchor_y-2*self.zoom),max(3,int(4*self.zoom)),max(3,int(4*self.zoom)))
+                painter.setPen(QPen(QColor("#075a87"))); painter.setBrush(QColor(0,96,145,235)); painter.drawRoundedRect(int(item.rect_x),int(item.rect_y),int(item.width),int(item.height),5,5); painter.setPen(QPen(QColor("white")))
+                for index,line in enumerate(item.label.lines): painter.drawText(int(item.rect_x+6),int(item.rect_y+leading*(index+1)),line)
             painter.end()
 
         def zoom_at_mouse(self, factor: float, position=None):

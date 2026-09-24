@@ -20,6 +20,50 @@ class WallOverlayLabel:
     room_code: str
 
 
+@dataclass(frozen=True)
+class PlacedWallOverlayLabel:
+    label: WallOverlayLabel
+    anchor_x: float
+    anchor_y: float
+    rect_x: float
+    rect_y: float
+    width: float
+    height: float
+    side: str
+
+
+def layout_outside_labels(
+    labels: list[WallOverlayLabel], image_width: float, image_height: float, *,
+    line_height: float, width_for_lines: callable, margin: float = 18.0, gap: float = 8.0,
+) -> list[PlacedWallOverlayLabel]:
+    """Place labels in left/right plan margins and resolve vertical collisions.
+
+    ``x_ratio/y_ratio`` remain source anchors inside the room. The resulting
+    rectangle is deliberately at a side margin, connected by a leader line.
+    """
+    prepared=[]
+    for label in labels:
+        width=width_for_lines(label.lines)+12; height=len(label.lines)*line_height+8
+        side="left" if label.x_ratio < 0.5 else "right"
+        anchor_x=label.x_ratio*image_width; anchor_y=label.y_ratio*image_height
+        rect_x=margin if side=="left" else image_width-margin-width
+        prepared.append({"label":label,"side":side,"anchor_x":anchor_x,"anchor_y":anchor_y,"rect_x":rect_x,"width":width,"height":height,"rect_y":anchor_y-height/2})
+    output=[]
+    for side in ("left","right"):
+        group=sorted((item for item in prepared if item["side"]==side),key=lambda item:item["anchor_y"])
+        previous_bottom=margin
+        for item in group:
+            item["rect_y"]=max(item["rect_y"],previous_bottom)
+            previous_bottom=item["rect_y"]+item["height"]+gap
+        # If lower labels leave the page, shift the complete side column up.
+        overflow=previous_bottom-gap-(image_height-margin)
+        if overflow>0:
+            for item in group: item["rect_y"]-=overflow
+        for item in group:
+            output.append(PlacedWallOverlayLabel(item["label"],item["anchor_x"],item["anchor_y"],item["rect_x"],item["rect_y"],item["width"],item["height"],side))
+    return output
+
+
 def _boundary_code(boundary: dict[str, Any]) -> str:
     name=str(boundary.get("structure") or "")
     for code in ("R1B","R14","R15","R16","R7","R6","R5"):
