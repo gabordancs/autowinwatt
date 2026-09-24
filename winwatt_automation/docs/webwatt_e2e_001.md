@@ -182,3 +182,14 @@ vonatkoznak.
 - Golden metrika / sorrend / kockázat / nyereség: 13.; a négy ablation változatban javuló holdout room IoU/opening recall; kevés mintás túlillesztés; csak akkor emelkedő automatizálási arány.
 
 **Stop point:** a 3. fázis terve elkészült. A 4. fázis – ezen komponensek iteratív implementációja, golden evaluation és commitok – csak külön, kifejezett `mehet` / `OK, implementáld` jóváhagyás után indulhat.
+
+## Fázis 4 – megvalósított iterációk
+
+- `c783a2a`: lokális review queue, approved XLSX export és biztonságos WWP build-gate.
+- `ef58fbc`: két- vagy több-anchoros méretlánc-kalibráció, magyarázható room-stamp/topology fusion és Délceg fixture-manifest.
+- `cc62bb3`: egyértelmű natív PDF-szövegtalálat → valódi bbox; Délcegen 48 rekord.
+- `5e33389`: rétegek determinisztikus feloldása a helyi WinWatt katalógusból; bizonytalan egyezés nem hoz létre új anyagot.
+- `c3f3908`: zónaalapú termikus burokbesorolás és 3D tetősík terület, nettó nyílászáró-levonással.
+- WebWatt: `490ff5e` új `DocumentEvidence` / `ReviewCandidate` szerződés és RLS-védett perzisztencia-migráció.
+
+Ellenőrzött állapot: 15 Python célzott teszt, valamint a WebWatt review-contract Vitest teszt és production build sikeres. A neural/Raster2Seq tanítás továbbra sem indult el: a golden fixture még `needs_human_approved_geometry`, ezért ez a szándékos biztonsági feltétel teljesül.
