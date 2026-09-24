@@ -37,3 +37,20 @@ def render_viewport(pdf: Path, evidence: DocumentEvidence, *, zoom: float = 1.5)
         return pixmap.tobytes("png"), viewport
     finally:
         document.close()
+
+
+def render_full_page(pdf: Path, evidence: DocumentEvidence, *, zoom: float = 1.5) -> tuple[bytes, PdfViewport]:
+    """Render a complete source page so the reviewer can pan beyond evidence.
+
+    ``viewport_for_evidence`` is still returned to let the GUI initially centre
+    on a confirmed bbox, but the bitmap itself is not cropped.
+    """
+    import fitz
+    document = fitz.open(pdf)
+    try:
+        page = document[(evidence.page or 1) - 1]
+        viewport = viewport_for_evidence(evidence, page.rect.width, page.rect.height)
+        pixmap = page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), alpha=False)
+        return pixmap.tobytes("png"), viewport
+    finally:
+        document.close()
