@@ -1,0 +1,19 @@
+{
+  "project": {
+    "name": "Approved WebWatt project",
+    "address": "",
+    "heated_area_m2": 0.0,
+    "heated_volume_m3": 0.0,
+    "require_wall_xy": true
+  },
+  "buildings": [
+    {
+      "name": "Approved WebWatt project",
+      "address": ""
+    }
+  ],
+  "structures": [],
+  "layers": [],
+  "rooms": [],
+  "boundaries": []
+}

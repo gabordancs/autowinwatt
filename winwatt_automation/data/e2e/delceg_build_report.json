@@ -1,0 +1,23 @@
+{
+  "input": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\e2e\\delceg_approved_project.xlsx",
+  "output": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\e2e\\delceg.wwp",
+  "model": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\e2e\\delceg.canonical.json",
+  "imported_objects": {},
+  "generated": {
+    "rooms": 0,
+    "structures": 0,
+    "layers": 0,
+    "boundaries": 0
+  },
+  "mapping_warnings": [],
+  "unresolved": [
+    "Canonical project contains no accepted or edited candidates",
+    "No approved rooms",
+    "No approved boundaries"
+  ],
+  "validation_errors": [
+    "No WWP generated: approved data is semantically incomplete."
+  ],
+  "provenance": "only accepted/edited records from Canonical project were included",
+  "wwp_created": false
+}
