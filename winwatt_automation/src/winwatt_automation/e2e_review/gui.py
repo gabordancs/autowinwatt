@@ -6,11 +6,12 @@ from pathlib import Path
 from .domain import ReviewStatus, numeric_value
 from .pdf_evidence import render_full_page
 from .persistence import ReviewStore
+from .wall_overlay import WallOverlay
 
 
-def run_gui(store: ReviewStore, pdf_root: Path, reviewer: str) -> int:
+def run_gui(store: ReviewStore, pdf_root: Path, reviewer: str, *, wall_overlay_path: Path | None = None) -> int:
     from PySide6.QtCore import Qt
-    from PySide6.QtGui import QImage, QPixmap, QShortcut, QKeySequence
+    from PySide6.QtGui import QColor, QFont, QImage, QPainter, QPen, QPixmap, QShortcut, QKeySequence
     from PySide6.QtWidgets import QApplication, QComboBox, QFormLayout, QHBoxLayout, QLabel, QLineEdit, QMainWindow, QMessageBox, QPushButton, QScrollArea, QSplitter, QTextEdit, QVBoxLayout, QWidget
 
     class PdfScrollArea(QScrollArea):
@@ -34,7 +35,7 @@ def run_gui(store: ReviewStore, pdf_root: Path, reviewer: str) -> int:
             for title, state in (("Elfogadás [A]", ReviewStatus.ACCEPTED), ("Felülírás [E]", ReviewStatus.EDITED), ("Elutasítás [R]", ReviewStatus.REJECTED), ("Nem azonosítható [U]", ReviewStatus.UNRESOLVED)):
                 button=QPushButton(title); button.clicked.connect(lambda checked=False, s=state: self.apply(s)); buttons.addWidget(button)
             previous=QPushButton("Előző"); previous.clicked.connect(lambda: self.move(-1)); following=QPushButton("Következő"); following.clicked.connect(lambda: self.move(1)); buttons.addWidget(previous); buttons.addWidget(following); form.addRow(buttons)
-            right=QWidget(); right_layout=QVBoxLayout(right); self.zoom=1.5; self.current_pdf=None; self.current_evidence=None; self.current_viewport=None
+            right=QWidget(); right_layout=QVBoxLayout(right); self.zoom=1.5; self.current_pdf=None; self.current_evidence=None; self.current_viewport=None; self.wall_overlay=WallOverlay.load(wall_overlay_path) if wall_overlay_path else None
             self.image=QLabel("PDF evidence betöltése..."); self.image.setAlignment(Qt.AlignLeft | Qt.AlignTop)
             self.pdf_scroll=PdfScrollArea(self.zoom_at_mouse); self.pdf_scroll.setWidget(self.image); self.pdf_scroll.setWidgetResizable(False); self.pdf_scroll.setAlignment(Qt.AlignCenter)
             toolbar=QHBoxLayout(); zoom_out=QPushButton("−"); zoom_out.clicked.connect(lambda: self.zoom_at_mouse(1/1.2)); zoom_in=QPushButton("+"); zoom_in.clicked.connect(lambda: self.zoom_at_mouse(1.2)); fit_context=QPushButton("Evidence nézet"); fit_context.clicked.connect(self.fit_context); fit_page=QPushButton("Teljes oldal"); fit_page.clicked.connect(self.fit_page)
@@ -58,11 +59,22 @@ def run_gui(store: ReviewStore, pdf_root: Path, reviewer: str) -> int:
         def render_page(self, *, center_evidence: bool=False):
             if not self.current_pdf or not self.current_evidence: return
             data, viewport=render_full_page(self.current_pdf,self.current_evidence,zoom=self.zoom); self.current_viewport=viewport
-            image=QImage.fromData(data,"PNG"); self.image.setPixmap(QPixmap.fromImage(image)); self.image.resize(image.size())
-            self.pdf_state.setText(f"{self.current_pdf.name}, oldal {viewport.page}; {self.current_evidence.location_status}; {self.zoom:.0%}. Görgetés: pásztázás, Ctrl+görgő: zoom.")
+            image=QImage.fromData(data,"PNG"); pixmap=QPixmap.fromImage(image); labels=self.wall_overlay.labels_for_pdf(self.current_pdf.name) if self.wall_overlay else []
+            if labels: self._draw_wall_overlay(pixmap,labels)
+            self.image.setPixmap(pixmap); self.image.resize(image.size())
+            suffix=f" | {len(labels)} faljelölt" if labels else ""
+            self.pdf_state.setText(f"{self.current_pdf.name}, oldal {viewport.page}; {self.current_evidence.location_status}; {self.zoom:.0%}{suffix}. Görgetés: pásztázás, Ctrl+görgő: zoom.")
             if center_evidence and self.current_evidence.evidence_bbox:
                 x0,y0,x1,y1=self.current_evidence.evidence_bbox; center_x=(x0+x1)/2*self.zoom; center_y=(y0+y1)/2*self.zoom
                 self.pdf_scroll.horizontalScrollBar().setValue(max(0,int(center_x-self.pdf_scroll.viewport().width()/2))); self.pdf_scroll.verticalScrollBar().setValue(max(0,int(center_y-self.pdf_scroll.viewport().height()/2)))
+
+        def _draw_wall_overlay(self, pixmap, labels):
+            painter=QPainter(pixmap); painter.setRenderHint(QPainter.Antialiasing); font=QFont("Arial",max(7,int(8*self.zoom))); painter.setFont(font)
+            for label in labels:
+                x=label.x_ratio*pixmap.width(); y=label.y_ratio*pixmap.height(); metrics=painter.fontMetrics(); leading=metrics.height()+2; width=max(metrics.horizontalAdvance(line) for line in label.lines)+12; height=len(label.lines)*leading+8
+                rect_x=int(x-width/2); rect_y=int(y-height/2); painter.setPen(QPen(QColor("#075a87"))); painter.setBrush(QColor(0,96,145,235)); painter.drawRoundedRect(rect_x,rect_y,width,height,5,5); painter.setPen(QPen(QColor("white")))
+                for index,line in enumerate(label.lines): painter.drawText(rect_x+6,rect_y+leading*(index+1),line)
+            painter.end()
 
         def zoom_at_mouse(self, factor: float, position=None):
             if not self.current_pdf: return

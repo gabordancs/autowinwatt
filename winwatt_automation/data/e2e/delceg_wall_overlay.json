@@ -1,0 +1,10 @@
+{
+  "model_path": "../certificate_builds/delceg/v2_two_buildings_review/delceg_two_buildings_model.json",
+  "plans": [
+    {"match":"E02_","canvas":{"width":2526,"height":3572},"labels":[
+      {"x":850,"y":2400,"room":"B03"},{"x":1290,"y":2400,"room":"B04"},{"x":800,"y":1740,"room":"B05a"},{"x":1195,"y":1930,"room":"B05b"},{"x":1390,"y":1440,"room":"B05c"},{"x":1510,"y":1550,"room":"B05d"},{"x":980,"y":1570,"room":"B05e"},{"x":1460,"y":2020,"room":"B06"},{"x":1080,"y":1830,"room":"B07a"},{"x":1080,"y":1460,"room":"B07b"},{"x":800,"y":1530,"room":"B07c"},{"x":700,"y":1150,"room":"B08"},{"x":1240,"y":980,"room":"B09"},{"x":1470,"y":870,"room":"B10a"},{"x":740,"y":1680,"room":"B10b"},{"x":1130,"y":1570,"room":"B10c"}]},
+    {"match":"E02B_","canvas":{"width":2526,"height":3572},"labels":[
+      {"x":1420,"y":1320,"room":"B11a"},{"x":1430,"y":1470,"room":"B11b"},{"x":1450,"y":2050,"room":"B11c"},{"x":820,"y":1430,"room":"B12"},{"x":1320,"y":930,"room":"B13"},{"x":810,"y":2050,"room":"B14"},{"x":1350,"y":2130,"room":"B15"},{"x":820,"y":2530,"room":"B16"},{"x":1070,"y":1180,"room":"B17"},{"x":1360,"y":1770,"room":"B18"}]},
+    {"match":"E02C_","canvas":{"width":2526,"height":3572},"labels":[{"x":1290,"y":1400,"room":"B01"},{"x":1400,"y":1930,"room":"B02"}]}
+  ]
+}

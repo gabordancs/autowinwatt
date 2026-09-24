@@ -34,6 +34,17 @@ Export:
 .venv\Scripts\python.exe scripts\review_project.py <forras.xlsx> --database data\delceg-review.sqlite --export approved_project.xlsx
 ```
 
+### Délceg faljelölt overlay
+
+Az előző WinWatt-vizualizáció kék címkéi a review PDF-panelbe is
+beolvashatók. A címke a modellben ténylegesen rögzített helyiség-alapterületet,
+belmagasságot és szerkezetenkénti `X×Y` operándust mutatja. Sima egérgörgővel
+pásztázás, `Ctrl+görgővel` zoom működik; az overlay a PDF-fel együtt skálázódik.
+
+```powershell
+.venv\Scripts\python.exe scripts\review_project.py data\e2e\delceg_source_snapshot.xlsx --database data\e2e\delceg_review.sqlite --pdf-root ..\test --reviewer Gabor --wall-overlay data\e2e\delceg_wall_overlay.json
+```
+
 ## Fázis 2: approved workbook → WWP
 
 ```powershell
