@@ -6,3 +6,5 @@ __pycache__/
 .env
 data/knowledge/*.tmp
 data/knowledge/.*.tmp
+*.sqlite-wal
+*.sqlite-shm
