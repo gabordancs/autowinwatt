@@ -53,6 +53,11 @@ Ez nem ír vissza a Sheetbe és nem módosítja az eredeti PDF-eket. A jelenlegi
 import 368 review candidate-et adott; mivel egyet sem hagytak még jóvá, az
 első `approved_project.xlsx`-ben szándékosan nulla canonical adat van.
 
+A 4. fázis első determinisztikus evidence-passza 48 olyan jelöltet talált,
+amelynek értéke pontosan egyszer szerepel a deklarált forrás-PDF natív
+szövegrétegében. Ezek `native_pdf_text_exact` bboxot kaptak. A többször
+előforduló méretek nem kaptak automatikus koordinátát.
+
 ### Implementációs roadmap – itt a kötelező stop point
 
 Az alábbi terv a `Forrás és automatizálás` lap és a három repo tényleges

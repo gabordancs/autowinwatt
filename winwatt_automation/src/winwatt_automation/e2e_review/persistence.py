@@ -72,6 +72,13 @@ class ReviewStore:
         self.connection.commit()
         return after
 
+    def replace(self, candidate: ReviewCandidate, *, action: str = "update") -> ReviewCandidate:
+        """Persist derived evidence without changing machine/review values."""
+        before=self.get(candidate.candidate_id)
+        self._write(candidate,action,before)
+        self.connection.commit()
+        return candidate
+
     def audit(self, candidate_id: str | None = None) -> list[dict]:
         if candidate_id:
             rows = self.connection.execute("SELECT * FROM audit_events WHERE candidate_id=? ORDER BY event_id", (candidate_id,)).fetchall()
