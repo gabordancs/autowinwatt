@@ -9,10 +9,13 @@ ROOT=Path(__file__).resolve().parents[1]
 def test_delceg_wall_overlay_reuses_model_xy_labels():
     overlay=WallOverlay.load(ROOT/"data"/"e2e"/"delceg_wall_overlay.json")
     labels=overlay.labels_for_pdf("É02_TERVEZETT FÖLDSZINTI ALAPRAJZ_végl.pdf")
-    assert len(labels)==16
-    b10a=next(label for label in labels if label.room_code=="B10a")
-    assert b10a.lines[0].startswith("B10a | A=")
-    assert any("X×Y=" in line for line in b10a.lines[1:])
+    assert len(labels)>16  # room summaries plus individual vertical walls
+    b10a_room=next(label for label in labels if label.room_code=="B10a" and label.target_x_ratio is None)
+    b10a_wall=next(label for label in labels if label.room_code=="B10a" and label.target_x_ratio is not None)
+    assert b10a_room.lines[0].startswith("B10a | A=")
+    assert "x (alaprajzi falhossz)" in b10a_wall.lines[1]
+    assert "y (fal magassága)" in b10a_wall.lines[2]
+    assert (b10a_wall.target_x_ratio,b10a_wall.target_y_ratio)!=(b10a_wall.x_ratio,b10a_wall.y_ratio)
 
 
 def test_overlay_only_matches_the_configured_plan():
