@@ -15,6 +15,7 @@ from openpyxl import load_workbook
 
 from winwatt_automation.certificates.native_xml import compile_native_xml
 from winwatt_automation.certificates.validation import validate_native_readback
+from .material_resolution import resolve_layers
 
 
 def _number(value: Any) -> float | None:
@@ -89,10 +90,11 @@ def canonical_to_model(workbook: Path) -> tuple[dict[str, Any], list[str], dict[
     return model,warnings,dict(counts)
 
 
-def build(workbook: Path, output: Path, *, template_xml: Path | None = None, execute_winwatt: bool = False) -> dict[str, Any]:
+def build(workbook: Path, output: Path, *, template_xml: Path | None = None, catalog_xml: Path | None = None, execute_winwatt: bool = False) -> dict[str, Any]:
     model,warnings,counts=canonical_to_model(workbook); output=output.resolve(); output.parent.mkdir(parents=True,exist_ok=True)
+    model["layers"], material_decisions, material_warnings=resolve_layers(model["layers"],catalog_xml)
     model_path=output.with_suffix(".canonical.json"); model_path.write_text(json.dumps(model,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    blockers=list(warnings)
+    blockers=list(warnings)+material_warnings
     if not counts:
         blockers.append("Canonical project contains no accepted or edited candidates")
     if not model["rooms"]:
@@ -100,7 +102,7 @@ def build(workbook: Path, output: Path, *, template_xml: Path | None = None, exe
     if not model["boundaries"]:
         blockers.append("No approved boundaries")
     blockers.extend([f"structure {item['name']}: U value missing" for item in model["structures"] if item.get("u_effective") is None])
-    report={"input":str(workbook.resolve()),"output":str(output),"model":str(model_path),"imported_objects":counts,"generated":{"rooms":len(model["rooms"]),"structures":len(model["structures"]),"layers":len(model["layers"]),"boundaries":len(model["boundaries"])},"mapping_warnings":warnings,"unresolved":blockers,"validation_errors":[],"provenance":"only accepted/edited records from Canonical project were included","wwp_created":False}
+    report={"input":str(workbook.resolve()),"output":str(output),"model":str(model_path),"imported_objects":counts,"generated":{"rooms":len(model["rooms"]),"structures":len(model["structures"]),"layers":len(model["layers"]),"boundaries":len(model["boundaries"])},"mapping_warnings":warnings,"material_decisions":material_decisions,"unresolved":blockers,"validation_errors":[],"provenance":"only accepted/edited records from Canonical project were included","wwp_created":False}
     if blockers:
         report["validation_errors"]=["No WWP generated: approved data is semantically incomplete."]
         return report
