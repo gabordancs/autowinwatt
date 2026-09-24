@@ -1,0 +1,88 @@
+{
+  "fixture": "delceg-e2e-001",
+  "fixture_status": "needs_human_approved_geometry",
+  "source_workbook": {
+    "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\e2e\\delceg_source_snapshot.xlsx",
+    "sha256": "7131cd4ce0b31f8d52d745ca6805698370645bbed1cf7ad8ed793edbb9063fff"
+  },
+  "source_pdfs": [
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Delceg_56_hatarolo_szerkezet_v2_B10a_ket_kulso_fal.pdf",
+      "sha256": "6ad8cda2e646a5961bec7fdacb2bc6436561761b924e20907601bac73e963a81",
+      "bytes": 4024081
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Delceg_56_hatarolo_szerkezet_v3_B10a_meretlanc_alapjan.pdf",
+      "sha256": "271217b71568491306f1cb7bee3962dce357b539dda16cd4f593cea7c0cac9ca",
+      "bytes": 4024083
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Delceg_56_hatarolo_szerkezet_v4_B10a_XY_geometria.pdf",
+      "sha256": "5aa15492dd11de10b6326bd979a836047d3559c59ce1633bf13dbb28efbda331",
+      "bytes": 4024084
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Delceg_56_hatarolo_szerkezet_v5_B10a_XY_geometria.pdf",
+      "sha256": "0cd309c16ee15494dc1fa857511f9c881d7cab018f8a97cd7d401b5febea3dbe",
+      "bytes": 4024086
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Delceg_56_hatarolo_szerkezet_v6_XY_kotelezo_falgeometria.pdf",
+      "sha256": "28dd564407c9f37e8025881bd70c9117af320af0d8e7544a91be9e671183f594",
+      "bytes": 4024632
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Delceg_56_hatarolo_szerkezet_vizualis_ellenorzes.pdf",
+      "sha256": "5c0bd2747b00ba664e1a44b1ab979cc7a7e2a6fce4b56d299124f630c208a5a2",
+      "bytes": 4023982
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\Energetika tan_Délceg utca 56_181208.pdf",
+      "sha256": "496437bfd05544afac094628b5037f05dee6e71475f3d23f93494d5890a40233",
+      "bytes": 3427870
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\É01_TERVEZETT HELYSZÍNRAJZ_végl.pdf",
+      "sha256": "5f51ab47b803309ef8638b4d707d7d4af27cebc31fdab5f5a3ce33d14569408a",
+      "bytes": 457431
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\É02_TERVEZETT FÖLDSZINTI ALAPRAJZ_végl.pdf",
+      "sha256": "cddb05499e915160fcba4d69615dafcf78001363b1b7cc2e796e0a134a4ef797",
+      "bytes": 406114
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\É02B_TERVEZETT TETŐTÉRI ALAPRAJZ_végl.pdf",
+      "sha256": "a83dc59050e1a6a8f371bf262d1cb075dea12d29bd1af60d8e6130662cb9b900",
+      "bytes": 326164
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\É02C_TERVEZETT PINCESZINTI ALAPRAJZ_végl.pdf",
+      "sha256": "151cd3821d38c924361fe4fad8ac708aceacfe07f93708dfd6fcfdd305e81748",
+      "bytes": 311238
+    },
+    {
+      "path": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\test\\É03_TERVEZETT METSZETEK_végl.pdf",
+      "sha256": "7fb129f0cd19e72ea6ba84ac08b495f4a6999d7d05746414ab1a502c45a25048",
+      "bytes": 454400
+    }
+  ],
+  "candidate_inventory": {
+    "total": 368,
+    "by_entity_type": {
+      "boundary": 144,
+      "layer": 122,
+      "project_field": 20,
+      "room": 82
+    },
+    "with_missing_evidence_location": 368
+  },
+  "required_approved_assets": [
+    "room polygons",
+    "wall centerlines/bands",
+    "opening associations",
+    "dimension anchors",
+    "thermal-zone states",
+    "roof planes"
+  ]
+}
