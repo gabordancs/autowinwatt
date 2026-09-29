@@ -754,12 +754,16 @@ def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SAN
             time.sleep(0.15)
         else:
             raise RuntimeError("Created Building did not appear in its catalog list")
-    list_view.click_input(coords=(30, 24))
-    time.sleep(0.15)
-    element_menu = next(item for item in native_main.menu().items() if item.text().replace("&", "").strip() == "Elem")
-    element_menu.click()
-    time.sleep(0.15)
-    element_menu.sub_menu().items()[1].click()
+    # The header height depends on DPI and multiline column captions.  The old
+    # fixed y=24 click could hit the header, leaving Modify disabled.  Resolve
+    # the dedicated record by its native text and double-click that item.
+    from pywinauto.controls.common_controls import ListViewWrapper
+    native_list = ListViewWrapper(int(list_view.handle))
+    matching_rows = [index for index in range(native_list.item_count())
+                     if native_list.get_item(index).text() == building_name]
+    if len(matching_rows) != 1:
+        raise RuntimeError(f"Expected one sandbox building {building_name!r}, found {len(matching_rows)}")
+    native_list.get_item(matching_rows[0]).click_input(double=True)
     deadline = time.monotonic() + 8.0
     while time.monotonic() < deadline:
         try:

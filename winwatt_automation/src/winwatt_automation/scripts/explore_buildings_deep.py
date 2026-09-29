@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -21,7 +22,12 @@ def main() -> int:
     parser.add_argument("--retry-failures", action="store_true")
     parser.add_argument("--session-islands", action="store_true")
     parser.add_argument("--status-popup", action="store_true")
+    parser.add_argument("--version-profile", type=Path, help="Reject changed executable/resources before any UI action")
     args = parser.parse_args()
+    if args.version_profile:
+        from winwatt_automation.version_profile import require_profile
+        profile = require_profile(args.version_profile)
+        os.environ['WWA_WINWATT_EXE_PATH'] = profile['exe_path']
     notifier = None
     if args.status_popup:
         notifier = subprocess.Popen([

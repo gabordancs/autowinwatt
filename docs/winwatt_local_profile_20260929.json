@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "exe_path": "C:\\Program Files (x86)\\Bausoft\\WinWatt gólya\\WinWatt32.exe",
+  "exe_sha256": "e3440d191b0a09999b13a330b15e0f30552109e8d0dde13b4e9a6045c5ee01ad",
+  "file_version": "9.60.0.0",
+  "product_version": "1.0.0.0",
+  "architecture": "x86",
+  "resources": {
+    "borlndmm.dll": "bcd486ff7d4ed57a875f3f5cf0520457a4daf265012ae13b27a70b5ca07dbc09",
+    "cc32240.dll": "1725921c025509898a4ae478cbd669f84f594b91206ab3a252b6a0f94b7a8a2e",
+    "cc32240mt.dll": "ee5186552b84799429ce483065852172231ae176dfd188570f2fca8fe6cfd269",
+    "cc32c240.dll": "396ebe4c6d85a262838a28078fbef32c38031266e257ab3c6d966a66406ff60d",
+    "cc32c240mt.dll": "178ac78b77c73e7aaeb048913eefa9950b16c48c39ef2d83a793ed7438539541"
+  },
+  "extra_resource_paths": [],
+  "captured_at": "2026-09-29T10:31:13.436510+00:00",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 11:58:42) [MSC v.1943 32 bit (Intel)]",
+    "python_bits": 32,
+    "machine": "Munka-PC",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "ui_verification": {
+    "edition": null,
+    "enabled_modules": null,
+    "status": "pending"
+  },
+  "scope": "Executable and listed resources only; UI modules/licence/catalog completeness unverified.",
+  "profile_id": "winwatt_8c137b67c0a2214bb91aeae8"
+}
