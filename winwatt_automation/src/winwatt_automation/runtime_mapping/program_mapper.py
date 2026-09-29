@@ -11,6 +11,7 @@ import time
 from typing import Any, Callable
 
 from loguru import logger
+from winwatt_automation.version_profile import resolve_executable
 
 from winwatt_automation.live_ui import menu_helpers
 from winwatt_automation.dialog_explorer.dialog_explorer import explore_dialog
@@ -245,10 +246,11 @@ def _wait_for_startup_snapshot(
 def prepare_fresh_winwatt_session(
     *,
     project_path: str | None = None,
-    exe_path: str = DEFAULT_WINWATT_EXE_PATH,
+    exe_path: str | None = None,
     process_image_name: str = DEFAULT_WINWATT_PROCESS_NAME,
     timeout_s: float = 75.0,
 ) -> dict[str, Any]:
+    exe_path = str(resolve_executable(exe_path))
     reset_winwatt_connection_cache()
     close_result = {"ok": True, "message": "not_attempted", "returncode": None}
     if os.name == "nt":

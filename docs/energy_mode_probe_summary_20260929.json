@@ -1,0 +1,192 @@
+{
+  "scope": "local experiments, not certificate readiness",
+  "runs": [
+    {
+      "source": "winwatt_automation/data/runtime_maps/e20260929a/report.json",
+      "sha256": "43f80262c346a4f00a5930ccfde216287c3fa3d5dcee143d6971eecfc7d89f87",
+      "report": {
+        "profile_id": "winwatt_8c137b67c0a2214bb91aeae8",
+        "source": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\versions\\winwatt_8c137b67c0a2214bb91aeae8\\20260929T103113936631Z\\sandbox\\testwwp.wwp",
+        "source_sha256": "cb70a1ae2a9abe86a17a27cb5ec8e9acd7659c72e3010458d58fafbd9c569dea",
+        "project": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\e20260929a\\testwwp.wwp",
+        "status": "failed",
+        "modes": [
+          {
+            "index": 0,
+            "mode": "7/2006. TNM rendelet 2006.V.24-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_00.json"
+          },
+          {
+            "index": 1,
+            "mode": "MSZ-04-140-2:1991",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_01.json"
+          },
+          {
+            "index": 2,
+            "mode": "7/2006. TNM rendelet 2013.I.9-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_02.json"
+          },
+          {
+            "index": 3,
+            "mode": "7/2006. TNM rendelet 2014.IV.6-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_03.json"
+          },
+          {
+            "index": 4,
+            "mode": "7/2006. TNM rendelet 2015.I.1-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_04.json"
+          },
+          {
+            "index": 5,
+            "mode": "7/2006. TNM rendelet 2016.I.1-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_05.json"
+          },
+          {
+            "index": 6,
+            "mode": "7/2006. TNM rendelet 2019.XI.29-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_06.json"
+          },
+          {
+            "index": 7,
+            "mode": "7/2006. TNM rendelet 2021.I.1-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Primer energia igény számítása",
+              "Becsült éves fogyasztás, CO2 kibocsátás",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Energia igény tervezési adatok"
+            ],
+            "snapshot": "mode_07.json"
+          },
+          {
+            "index": 8,
+            "mode": "9/2023. ÉKM rendelet 2023.XI.1-i állapot",
+            "available_tabs": [
+              "Helyiségek",
+              "Fűtött teret határoló szerkezetek",
+              "Épülettechnikai rendszerek",
+              "Felújítás (szerkezetek)",
+              "Fotók",
+              "PDF fájlok",
+              "Általános adatok",
+              "Hőszükséglet, fajlagos hőveszteségtényező",
+              "Nyári hőterhelés",
+              "Zónák",
+              "Referencia épület adatai"
+            ],
+            "snapshot": "mode_08.json"
+          }
+        ],
+        "restoration": "original_mode_selected",
+        "original_mode": "9/2023. ÉKM rendelet 2023.XI.1-i állapot",
+        "roundtrip": {
+          "field": "building.orientation_deg",
+          "before": "0",
+          "expected": 42.5,
+          "actual": "42",
+          "saved_sha256": "8a525ed0877a9b294f913c17495996a578e94c76a045075f7ebe8889e5b534bd",
+          "passed": false
+        },
+        "mode_after_reopen": "9/2023. ÉKM rendelet 2023.XI.1-i állapot",
+        "source_unchanged": true
+      }
+    },
+    {
+      "source": "winwatt_automation/data/runtime_maps/e20260929b/report.json",
+      "sha256": "8ff311c89b4b02f4c14d8229336e77515582652d11bea22ad3922d360d764b44",
+      "report": {
+        "profile_id": "winwatt_8c137b67c0a2214bb91aeae8",
+        "source": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\versions\\winwatt_8c137b67c0a2214bb91aeae8\\20260929T103113936631Z\\sandbox\\testwwp.wwp",
+        "source_sha256": "cb70a1ae2a9abe86a17a27cb5ec8e9acd7659c72e3010458d58fafbd9c569dea",
+        "project": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\e20260929b\\testwwp.wwp",
+        "status": "passed",
+        "modes": [],
+        "restoration": "original_mode_selected",
+        "original_mode": "9/2023. ÉKM rendelet 2023.XI.1-i állapot",
+        "roundtrip": {
+          "field": "building.orientation_deg",
+          "before": "0",
+          "expected": 42.0,
+          "actual": "42",
+          "saved_sha256": "3cdbadc6382e143159daa4b224888116f8250c16d7bfa686d1d0332103c7375e",
+          "passed": true
+        },
+        "mode_after_reopen": "9/2023. ÉKM rendelet 2023.XI.1-i állapot",
+        "source_unchanged": true
+      }
+    }
+  ]
+}
