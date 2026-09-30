@@ -32,19 +32,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.504528+00:00",
     "id": "edge_01878676c1f5a9da",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_0272c7aa9c53a4cb": {
@@ -72,6 +73,54 @@
     "success_count": 2,
     "target_state": "state_3124e9a8980c5359"
   },
+  "edge_028a53ca651dca3a": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.473400+00:00",
+    "id": "edge_028a53ca651dca3a",
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_6ae497da841acbbf"
+  },
+  "edge_02d921db0319ee80": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.390809+00:00",
+    "id": "edge_02d921db0319ee80",
+    "last_seen": "2026-09-29T19:46:17.390809+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
+  },
   "edge_02fe3f33f6b95919": {
     "action": {
       "action_kind": "activate_control",
@@ -81,19 +130,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.460270+00:00",
     "id": "edge_02fe3f33f6b95919",
-    "last_seen": "2026-09-08T08:01:54.597902+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_c2eb637014360317"
   },
   "edge_032b518289585fd9": {
@@ -129,19 +179,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_03d402394df53794",
-    "last_seen": "2026-09-08T08:01:54.661820+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_2c2e063c92880c21"
   },
   "edge_0608ed8c2f3f1c4f": {
@@ -191,6 +242,30 @@
     "source_state": "state_016aa79bc4957abb",
     "success_count": 0,
     "target_state": null
+  },
+  "edge_06683b2d643e6183": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.489177+00:00",
+    "id": "edge_06683b2d643e6183",
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
   },
   "edge_06875c8706cc50d4": {
     "action": {
@@ -477,20 +552,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.436922+00:00",
     "id": "edge_09ca2b325c6eb497",
-    "last_seen": "2026-09-08T08:01:54.574409+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_0a3ebc8a6f9a9d6e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.449010+00:00",
+    "id": "edge_0a3ebc8a6f9a9d6e",
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_6fa76e2be386c8b9"
   },
   "edge_0a573b9107e0ae86": {
     "action": {
@@ -525,20 +625,69 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.425987+00:00",
     "id": "edge_0b5277121d95388c",
-    "last_seen": "2026-09-08T08:01:54.561556+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.387332+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_0bb296446233f465": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.440724+00:00",
+    "id": "edge_0bb296446233f465",
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_6667bb9dbb4f5ea0"
+  },
+  "edge_0bbbacc1ad38aef8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.465288+00:00",
+    "id": "edge_0bbbacc1ad38aef8",
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
   },
   "edge_0c093663e4af5669": {
     "action": {
@@ -599,19 +748,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_0dd4f79c042b8726",
-    "last_seen": "2026-09-08T08:01:54.647243+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_3c62f0fd0fef4534",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_dd9564450c169aeb"
   },
   "edge_0ddac46efe3d305f": {
@@ -623,19 +773,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_0ddac46efe3d305f",
-    "last_seen": "2026-09-08T08:01:54.617188+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_0de5df04685f464b": {
@@ -719,19 +870,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.518637+00:00",
     "id": "edge_10be1e61b619d240",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_10f91a9a2bff7979": {
@@ -743,19 +895,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.428287+00:00",
     "id": "edge_10f91a9a2bff7979",
-    "last_seen": "2026-09-08T08:01:54.565202+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.395120+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_ee8ced1914b66ab1",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_852c819ec90bef36"
   },
   "edge_1186035e14cfee3a": {
@@ -767,20 +920,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_1186035e14cfee3a",
-    "last_seen": "2026-09-08T08:01:54.606122+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_5e41794ff68a948a"
+  },
+  "edge_13256ddfa91e2dad": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7b9f660731154002",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.539346+00:00",
+    "id": "edge_13256ddfa91e2dad",
+    "last_seen": "2026-09-29T19:46:17.539346+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_d7c4b26e210fc673"
   },
   "edge_1399d0edada3481c": {
     "action": {
@@ -791,19 +969,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.447721+00:00",
     "id": "edge_1399d0edada3481c",
-    "last_seen": "2026-09-08T08:01:54.577592+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_93479d9c23705e0a",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_06d5fc779d2a1a6b"
   },
   "edge_13af62f8e537d0c1": {
@@ -815,19 +994,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_13af62f8e537d0c1",
-    "last_seen": "2026-09-08T08:01:54.614198+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_e0a14a18343183c0"
   },
   "edge_13ca328b709c65d3": {
@@ -877,6 +1057,30 @@
     "source_state": "state_c8419b31e19dcc40",
     "success_count": 1,
     "target_state": "state_96cd6bc298b98486"
+  },
+  "edge_15694bbff733c792": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.465288+00:00",
+    "id": "edge_15694bbff733c792",
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_d7c4b26e210fc673"
   },
   "edge_15a0311a2106dd11": {
     "action": {
@@ -959,19 +1163,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.454819+00:00",
     "id": "edge_16b0e5f9ba584c96",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_2a6d1b5981b18d19"
   },
   "edge_16b72b09af371b23": {
@@ -1070,6 +1275,30 @@
     "success_count": 1,
     "target_state": "state_cb5ce4827c98c524"
   },
+  "edge_198629f7d3116819": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.395120+00:00",
+    "id": "edge_198629f7d3116819",
+    "last_seen": "2026-09-29T19:46:17.395120+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_0665b5ee4ef02aa8"
+  },
   "edge_19b0f4f011e60769": {
     "action": {
       "action_kind": "MenuItem",
@@ -1127,19 +1356,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.510676+00:00",
     "id": "edge_19f88dc074ccc2d1",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.486302+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_df2216c9d39f7641",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8df492dd15364a2d"
   },
   "edge_1af826fde44ac1bf": {
@@ -1151,19 +1381,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.552544+00:00",
     "id": "edge_1af826fde44ac1bf",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_0330a422a4be050d"
   },
   "edge_1c98acbed5ba5f84": {
@@ -1199,19 +1430,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_1cb192cb291c6bf1",
-    "last_seen": "2026-09-08T08:01:54.617188+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.457201+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_1db7d4ffcecb489c": {
@@ -1237,6 +1469,30 @@
     "source_state": "state_a89daed77f0af882",
     "success_count": 1,
     "target_state": "state_bd398d6af4c55ac7"
+  },
+  "edge_1ece05647f80f6b6": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.473400+00:00",
+    "id": "edge_1ece05647f80f6b6",
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_443044719ea94b39"
   },
   "edge_1efbf08af7b05ad9": {
     "action": {
@@ -1296,19 +1552,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.563192+00:00",
     "id": "edge_1fa25c318204ab9f",
-    "last_seen": "2026-09-08T08:01:54.678400+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.539346+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_973952f2c99288b5",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_cc5da7aaf9219b60"
   },
   "edge_208bcfadefdfecc4": {
@@ -1344,20 +1601,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.447721+00:00",
     "id": "edge_2114a53be9cd9130",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_22d5d62ecd02de00": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7d8912a0a855f782",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.489177+00:00",
+    "id": "edge_22d5d62ecd02de00",
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
   },
   "edge_22e1fc591e3338d0": {
     "action": {
@@ -1368,19 +1650,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.471979+00:00",
     "id": "edge_22e1fc591e3338d0",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_713099d481e31835"
   },
   "edge_246c6e9770517919": {
@@ -1392,19 +1675,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.466052+00:00",
     "id": "edge_246c6e9770517919",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_d4be1535baaa56d1",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_612db10867b67ae0"
   },
   "edge_249eebee349eb5fc": {
@@ -1455,6 +1739,30 @@
     "source_state": "state_8980ee1a50f616b9",
     "success_count": 2,
     "target_state": "state_8e36f9ec7861923d"
+  },
+  "edge_2589dbf01e02bf64": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Elem",
+      "control_type": "MenuItem",
+      "identity": "12543feff2db8f93",
+      "ordinal": 4,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:52:14.252363+00:00",
+    "id": "edge_2589dbf01e02bf64",
+    "last_seen": "2026-09-29T19:52:14.252363+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_b15bcee12c9713f2"
   },
   "edge_263ff2a6ed354240": {
     "action": {
@@ -1611,20 +1919,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.535884+00:00",
     "id": "edge_28bd4f50ad9191e3",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_b6a7714f38b7ad41",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_112b062984ac1e0b"
+  },
+  "edge_28c774c317d905b3": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7b9f660731154002",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.489177+00:00",
+    "id": "edge_28c774c317d905b3",
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_d890464996b65707"
   },
   "edge_29a7d2a0682b20e9": {
     "action": {
@@ -1635,19 +1968,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.411147+00:00",
     "id": "edge_29a7d2a0682b20e9",
-    "last_seen": "2026-09-08T08:01:54.557192+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.382736+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_837f03723af1f80f"
   },
   "edge_2a18b8fb6a0895a9": {
@@ -1698,6 +2032,30 @@
     "success_count": 1,
     "target_state": "state_1014c805d8f97e14"
   },
+  "edge_2a87486c4943c9ec": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "61db58bf44c8d6fa",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.461429+00:00",
+    "id": "edge_2a87486c4943c9ec",
+    "last_seen": "2026-09-29T19:46:17.461429+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_973952f2c99288b5"
+  },
   "edge_2b6696b39f2130cd": {
     "action": {
       "action_kind": "Button",
@@ -1723,6 +2081,30 @@
     "success_count": 2,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_2ba2f46faac472cb": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_2ba2f46faac472cb",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_c1c52dabaa76120f"
+  },
   "edge_2c52558ea5d1d518": {
     "action": {
       "action_kind": "activate_control",
@@ -1732,20 +2114,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_2c52558ea5d1d518",
-    "last_seen": "2026-09-08T08:01:54.661820+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_2c8e467705f05ec9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.382736+00:00",
+    "id": "edge_2c8e467705f05ec9",
+    "last_seen": "2026-09-29T19:46:17.382736+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
   },
   "edge_2ca749a037069798": {
     "action": {
@@ -1780,19 +2187,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.454819+00:00",
     "id": "edge_2d283200864c812d",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_2d3aa798ed752403": {
@@ -1804,19 +2212,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.454819+00:00",
     "id": "edge_2d3aa798ed752403",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.415449+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_c36307cc3194f0ee"
   },
   "edge_2d7d91c22197da5d": {
@@ -1941,6 +2350,78 @@
     "success_count": 2,
     "target_state": "state_e0a14a18343183c0"
   },
+  "edge_332b65d1d9c015b2": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oldallal jobbra",
+      "control_type": "Button",
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": 1,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:55:15.141293+00:00",
+    "id": "edge_332b65d1d9c015b2",
+    "last_seen": "2026-09-29T19:55:15.141293+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_e432e6cbaccd7e66",
+    "success_count": 1,
+    "target_state": "state_dd74a80152bbb38b"
+  },
+  "edge_338c22d38d756a8a": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "34babce122b0c645",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.497547+00:00",
+    "id": "edge_338c22d38d756a8a",
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_973952f2c99288b5"
+  },
+  "edge_33dc515f37ee2b77": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_33dc515f37ee2b77",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
+  },
   "edge_3566025169839d7f": {
     "action": {
       "action_kind": "activate_control",
@@ -1950,19 +2431,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.510676+00:00",
     "id": "edge_3566025169839d7f",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_ab739da9462260e0"
   },
   "edge_35ae71930ea38100": {
@@ -2037,6 +2519,54 @@
     "success_count": 1,
     "target_state": "state_4220fa0568cb2c0e"
   },
+  "edge_3648bf86b9c3bd44": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.486302+00:00",
+    "id": "edge_3648bf86b9c3bd44",
+    "last_seen": "2026-09-29T19:46:17.486302+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_c1c52dabaa76120f"
+  },
+  "edge_3772145d5fd19af4": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.514580+00:00",
+    "id": "edge_3772145d5fd19af4",
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_b9c53943035c1c5e"
+  },
   "edge_37cda072c7a7b523": {
     "action": {
       "action_kind": "MenuItem",
@@ -2060,6 +2590,30 @@
     "source_state": "state_be1ffa1e75536e4a",
     "success_count": 1,
     "target_state": "state_607f20ef3cdc0012"
+  },
+  "edge_37e201f909c32601": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.459427+00:00",
+    "id": "edge_37e201f909c32601",
+    "last_seen": "2026-09-29T19:46:17.459427+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_b66e54b0eecd441b"
   },
   "edge_38371b4716582f5f": {
     "action": {
@@ -2108,6 +2662,54 @@
     "source_state": "state_8980ee1a50f616b9",
     "success_count": 1,
     "target_state": "state_eb0385a9c103e777"
+  },
+  "edge_38c30e04a088fb25": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.461429+00:00",
+    "id": "edge_38c30e04a088fb25",
+    "last_seen": "2026-09-29T19:46:17.461429+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_b89e9fca757ed0c2"
+  },
+  "edge_391c4b7d54f3d5b5": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.544913+00:00",
+    "id": "edge_391c4b7d54f3d5b5",
+    "last_seen": "2026-09-29T19:46:17.544913+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_b45f1814a24e748c"
   },
   "edge_39ad3ff60c0945d0": {
     "action": {
@@ -2158,6 +2760,30 @@
     "success_count": 0,
     "target_state": "state_962ab5fb3c13620b"
   },
+  "edge_3baf15ee03efd629": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_3baf15ee03efd629",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_b66e54b0eecd441b"
+  },
   "edge_3c41246bc88f3954": {
     "action": {
       "action_kind": "TreeItem",
@@ -2181,6 +2807,30 @@
     "source_state": "state_10464f651dd2aac5",
     "success_count": 1,
     "target_state": "state_47d0683e56e019a0"
+  },
+  "edge_3c96daa987a3bbf2": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.530831+00:00",
+    "id": "edge_3c96daa987a3bbf2",
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_174d51f94e888242"
   },
   "edge_3ca0bb3536bcfbc7": {
     "action": {
@@ -2239,19 +2889,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.460270+00:00",
     "id": "edge_3d38194d771993a1",
-    "last_seen": "2026-09-08T08:01:54.590177+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_6980fc2abe286220",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_03bf201fd19b5e47"
   },
   "edge_3d7f7d210a7dbccc": {
@@ -2263,19 +2914,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.535884+00:00",
     "id": "edge_3d7f7d210a7dbccc",
-    "last_seen": "2026-09-08T08:01:54.661820+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_5111b6eaa46978b3",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_362ebdd4098ba590"
   },
   "edge_3d9284d640aa8a76": {
@@ -2350,6 +3002,30 @@
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_3f753cb8456e491e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_3f753cb8456e491e",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_3c58e99c9cf48b0d"
+  },
   "edge_405571290f477c22": {
     "action": {
       "action_kind": "TreeItem",
@@ -2407,19 +3083,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.460270+00:00",
     "id": "edge_41c1fc61054882ac",
-    "last_seen": "2026-09-08T08:01:54.590177+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_42334510722099b3": {
@@ -2445,6 +3122,54 @@
     "source_state": "state_dfdd5754faf3e721",
     "success_count": 1,
     "target_state": "state_6ae3c702178f25e7"
+  },
+  "edge_42de6a5a4119c5a9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.387332+00:00",
+    "id": "edge_42de6a5a4119c5a9",
+    "last_seen": "2026-09-29T19:46:17.387332+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_e63dfe2ae1211379"
+  },
+  "edge_44058e9b0bf226d9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.440724+00:00",
+    "id": "edge_44058e9b0bf226d9",
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_f1f9bea88e587374"
   },
   "edge_448887b7d7f1bdfb": {
     "action": {
@@ -2504,20 +3229,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_45a3ad70292a4c2d",
-    "last_seen": "2026-09-08T08:01:54.614198+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_3c62f0fd0fef4534"
+  },
+  "edge_464d84466e3d2ae2": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "179c970f2a692305",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.489177+00:00",
+    "id": "edge_464d84466e3d2ae2",
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_fa7a9fdc2c1a3e18"
   },
   "edge_46952458111cfdad": {
     "action": {
@@ -2576,19 +3326,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_473896a6ab20559b",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_f8988f278298fe0a",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_abe62fd868b8d12b"
   },
   "edge_47af859d753be7ee": {
@@ -2624,20 +3375,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.471979+00:00",
     "id": "edge_47fa2ea36c5f9daf",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_4bb03e8873becaba"
+  },
+  "edge_4855a60a07b4f04f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.489177+00:00",
+    "id": "edge_4855a60a07b4f04f",
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_2a147f1501277cd6",
+    "success_count": 1,
+    "target_state": "state_2a147f1501277cd6"
   },
   "edge_4881d951ce903625": {
     "action": {
@@ -2672,20 +3448,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.443701+00:00",
     "id": "edge_4970c74e408b31b9",
-    "last_seen": "2026-09-08T08:01:54.577592+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_49c96472a8af8eb8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.432578+00:00",
+    "id": "edge_49c96472a8af8eb8",
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
   },
   "edge_4a2495be5da37d8d": {
     "action": {
@@ -2696,19 +3497,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.560509+00:00",
     "id": "edge_4a2495be5da37d8d",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_e592a71a57c7eb98"
   },
   "edge_4c02786c35576462": {
@@ -2808,6 +3610,30 @@
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_4dd6713497390aba": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.423756+00:00",
+    "id": "edge_4dd6713497390aba",
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_03a90c3490f26e52"
+  },
   "edge_4e161234d022b689": {
     "action": {
       "action_kind": "MenuItem",
@@ -2889,19 +3715,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.447721+00:00",
     "id": "edge_4f634746cbccace3",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_4fafb712616d18cd": {
@@ -2913,19 +3740,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_4fafb712616d18cd",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_973952f2c99288b5"
   },
   "edge_510ce517848992d8": {
@@ -2986,19 +3814,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.497351+00:00",
     "id": "edge_51e44029af227264",
-    "last_seen": "2026-09-08T08:01:54.622366+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_5238f68bc960e263": {
@@ -3025,6 +3854,30 @@
     "success_count": 1,
     "target_state": "state_611f38ef5f0171ce"
   },
+  "edge_527a4c6ff624e4e0": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_527a4c6ff624e4e0",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
+  },
   "edge_52e9945d1178ef6f": {
     "action": {
       "action_kind": "set_control_value",
@@ -3048,6 +3901,30 @@
     "source_state": "state_a731a0bf67411d77",
     "success_count": 1,
     "target_state": "state_1d6cf789f22a98f0"
+  },
+  "edge_538918d6435a0d90": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.461429+00:00",
+    "id": "edge_538918d6435a0d90",
+    "last_seen": "2026-09-29T19:46:17.461429+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_0665b5ee4ef02aa8"
   },
   "edge_53b1cb1c3a1d6c31": {
     "action": {
@@ -3203,19 +4080,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_568782d7d30724bd",
-    "last_seen": "2026-09-08T08:01:54.616776+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_58cfdfdbc7983ce9": {
@@ -3227,19 +4105,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.418159+00:00",
     "id": "edge_58cfdfdbc7983ce9",
-    "last_seen": "2026-09-08T08:01:54.559161+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.382736+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_58d868700ffc5536": {
@@ -3266,6 +4145,30 @@
     "source_state": "state_a615a77f7b133c22",
     "success_count": 2,
     "target_state": "state_ac9b936ec2db974b"
+  },
+  "edge_59ea8e4bc0e6d139": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oszloppal jobbra",
+      "control_type": "Button",
+      "identity": "7b9f660731154002",
+      "ordinal": 2,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:57:18.542595+00:00",
+    "id": "edge_59ea8e4bc0e6d139",
+    "last_seen": "2026-09-29T19:57:18.542595+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_472a31bb4b6c2fe3",
+    "success_count": 1,
+    "target_state": "state_b5735e4ee4ae4afb"
   },
   "edge_5a73667701ed684f": {
     "action": {
@@ -3493,19 +4396,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_5db11f2362f02b41",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_afff57538b725fe4"
   },
   "edge_5f11c70acd1f2cc1": {
@@ -3517,19 +4421,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.460270+00:00",
     "id": "edge_5f11c70acd1f2cc1",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_2a6d1b5981b18d19"
   },
   "edge_5f472d4853278c78": {
@@ -3613,20 +4518,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.535884+00:00",
     "id": "edge_605ed740a77bcac0",
-    "last_seen": "2026-09-08T08:01:54.659481+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_112b062984ac1e0b"
+  },
+  "edge_606befbbb77ee6bf": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Kis méret",
+      "control_type": "Button",
+      "identity": "22bc60fb40f01939",
+      "ordinal": 0,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:59:45.645632+00:00",
+    "id": "edge_606befbbb77ee6bf",
+    "last_seen": "2026-09-29T19:59:45.645632+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_ba50ae97e60ad228",
+    "success_count": 1,
+    "target_state": "state_88ba25b9405c4dc3"
   },
   "edge_611a19e53905e4c1": {
     "action": {
@@ -3637,19 +4567,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_611a19e53905e4c1",
-    "last_seen": "2026-09-08T08:01:54.666315+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_cb7dcf2d2ae937ad"
   },
   "edge_61ae41ff614e893e": {
@@ -3701,6 +4632,78 @@
     "success_count": 0,
     "target_state": null
   },
+  "edge_62e5edd953fbdb75": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "61db58bf44c8d6fa",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.449010+00:00",
+    "id": "edge_62e5edd953fbdb75",
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_973952f2c99288b5"
+  },
+  "edge_6303694366a1625d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "798d8bc57bb7c677",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_6303694366a1625d",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_443044719ea94b39"
+  },
+  "edge_634024f72a6ac09e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.440724+00:00",
+    "id": "edge_634024f72a6ac09e",
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_c883b3489a1aa23b"
+  },
   "edge_6377c66b45cfa46a": {
     "action": {
       "action_kind": "MenuItem",
@@ -3724,6 +4727,30 @@
     "source_state": "state_68fd3931bc79c7db",
     "success_count": 1,
     "target_state": "state_c964484ff0d08243"
+  },
+  "edge_63bddf278ab4555d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.530831+00:00",
+    "id": "edge_63bddf278ab4555d",
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_443044719ea94b39"
   },
   "edge_63fd56a298b71146": {
     "action": {
@@ -3758,19 +4785,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_64d32b4d3d77980c",
-    "last_seen": "2026-09-08T08:01:54.606122+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_4ce3e3c040fb049e",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_2151ff797944b36c"
   },
   "edge_64d8ed14e8d9c14d": {
@@ -3893,6 +4921,30 @@
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_66eaeffc41815f10": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Szerkesztés",
+      "control_type": "MenuItem",
+      "identity": "d574d406faad70a2",
+      "ordinal": 1,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:51:11.455322+00:00",
+    "id": "edge_66eaeffc41815f10",
+    "last_seen": "2026-09-29T19:51:11.455322+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_a32a2947985ae7ce"
+  },
   "edge_68125b971c09c523": {
     "action": {
       "action_kind": "MenuItem",
@@ -3916,6 +4968,30 @@
     "source_state": "state_9b40b89638a72efb",
     "success_count": 1,
     "target_state": "state_98f110ac6289dddc"
+  },
+  "edge_688d7e5b5273e455": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 0,
+      "parent_identity": "d248ed66cca2ab08"
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:47:55.617557+00:00",
+    "id": "edge_688d7e5b5273e455",
+    "last_seen": "2026-09-29T19:47:55.617557+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_4b880e2776e8a66b",
+    "success_count": 1,
+    "target_state": "state_4b880e2776e8a66b"
   },
   "edge_68b8b4011df6d983": {
     "action": {
@@ -3941,6 +5017,30 @@
     "success_count": 1,
     "target_state": "state_1b14982f82f15a90"
   },
+  "edge_68f0ee66a08dc32f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.473400+00:00",
+    "id": "edge_68f0ee66a08dc32f",
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_2a147f1501277cd6",
+    "success_count": 1,
+    "target_state": "state_daeeb3684336051c"
+  },
   "edge_692509eaee5204ef": {
     "action": {
       "action_kind": "activate_control",
@@ -3950,19 +5050,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.485559+00:00",
     "id": "edge_692509eaee5204ef",
-    "last_seen": "2026-09-08T08:01:54.614198+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_6a1776bca411149b": {
@@ -4071,19 +5172,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.431253+00:00",
     "id": "edge_6b981ad6b18077a9",
-    "last_seen": "2026-09-08T08:01:54.565202+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_6c69407a4a69ebaa": {
@@ -4095,19 +5197,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_6c69407a4a69ebaa",
-    "last_seen": "2026-09-08T08:01:54.661820+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_6c700172b7256bad": {
@@ -4143,19 +5246,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.422401+00:00",
     "id": "edge_6cf6072bdb35b765",
-    "last_seen": "2026-09-08T08:01:54.559161+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.387332+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_6cfe6907211ef064": {
@@ -4205,6 +5309,54 @@
     "source_state": "state_962ab5fb3c13620b",
     "success_count": 1,
     "target_state": "state_603bea16f71d8d8c"
+  },
+  "edge_6d52b3efd2f7695c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.479680+00:00",
+    "id": "edge_6d52b3efd2f7695c",
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_2a6d1b5981b18d19"
+  },
+  "edge_6dc63f9600f32c8f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.459427+00:00",
+    "id": "edge_6dc63f9600f32c8f",
+    "last_seen": "2026-09-29T19:46:17.459427+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
   },
   "edge_6e61b37150a48e97": {
     "action": {
@@ -4278,6 +5430,30 @@
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_6f37288e56c77a08": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.416959+00:00",
+    "id": "edge_6f37288e56c77a08",
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_d890464996b65707"
+  },
   "edge_6f5dcbc485fa5435": {
     "action": {
       "action_kind": "activate_control",
@@ -4287,19 +5463,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.445711+00:00",
     "id": "edge_6f5dcbc485fa5435",
-    "last_seen": "2026-09-08T08:01:54.577592+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_a615a77f7b133c22"
   },
   "edge_7013ab834fb6bcf1": {
@@ -4335,20 +5512,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.453101+00:00",
     "id": "edge_7021622840562a7c",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.415449+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_dceb59cb0d5543d8"
+  },
+  "edge_713bd1b1c3f76c04": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.432578+00:00",
+    "id": "edge_713bd1b1c3f76c04",
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_443044719ea94b39"
   },
   "edge_7257e0252761a19d": {
     "action": {
@@ -4359,20 +5561,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.502136+00:00",
     "id": "edge_7257e0252761a19d",
-    "last_seen": "2026-09-08T08:01:54.626908+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_bd17b21ee741312d"
+  },
+  "edge_73084a2be5b05377": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Súgó",
+      "control_type": "MenuItem",
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": 8,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:53:07.402406+00:00",
+    "id": "edge_73084a2be5b05377",
+    "last_seen": "2026-09-29T19:53:07.402406+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_52228a93b1704772"
   },
   "edge_73363b05c35682f0": {
     "action": {
@@ -4397,6 +5624,30 @@
     "source_state": "state_977f84c162a296f5",
     "success_count": 1,
     "target_state": "state_696d6291b081ceb4"
+  },
+  "edge_733cc807f6662b86": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7d8912a0a855f782",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.407422+00:00",
+    "id": "edge_733cc807f6662b86",
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
   },
   "edge_73d943899181c698": {
     "action": {
@@ -4455,19 +5706,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.523363+00:00",
     "id": "edge_7445de3c0d0149fc",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_274858f1d4d36e50",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_2094f4fc5bd90e77"
   },
   "edge_74725d15b9b4faa5": {
@@ -4542,6 +5794,78 @@
     "success_count": 1,
     "target_state": "state_7852b06df0804d2f"
   },
+  "edge_76c3cb99821c7b2c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.399528+00:00",
+    "id": "edge_76c3cb99821c7b2c",
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_03a90c3490f26e52"
+  },
+  "edge_76c6fc9c5206d73c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.423756+00:00",
+    "id": "edge_76c6fc9c5206d73c",
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_6ae497da841acbbf"
+  },
+  "edge_771b9314219a8fe1": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Dokumentumablak",
+      "control_type": "MenuItem",
+      "identity": "bb710e899754606e",
+      "ordinal": 0,
+      "parent_identity": "c04ee85a43b30322"
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "PARTIALLY_EXPLORED",
+    "failure_count": 1,
+    "first_seen": "2026-09-29T19:50:18.814789+00:00",
+    "id": "edge_771b9314219a8fe1",
+    "last_seen": "2026-09-29T19:50:18.814789+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 0,
+    "target_state": null
+  },
   "edge_7802a89ad8dd7d69": {
     "action": {
       "action_kind": "activate_control",
@@ -4599,19 +5923,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.554975+00:00",
     "id": "edge_78cb4c62c9d6d5fb",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_79b91f30ca94ab90": {
@@ -4696,19 +6021,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.460270+00:00",
     "id": "edge_7c7c1f6675fc342e",
-    "last_seen": "2026-09-08T08:01:54.590177+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_7ce15ee45608e313": {
@@ -4768,19 +6094,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_7dd205c447a68d88",
-    "last_seen": "2026-09-08T08:01:54.666315+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_213ba7e61d0911a3"
   },
   "edge_7e266f0b0b3322e5": {
@@ -4840,20 +6167,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.436922+00:00",
     "id": "edge_7f0235f551e49406",
-    "last_seen": "2026-09-08T08:01:54.574409+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_6cc66f89c5067209",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_185036a43068b592"
+  },
+  "edge_80675d474be41ddb": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.497547+00:00",
+    "id": "edge_80675d474be41ddb",
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_174d51f94e888242"
   },
   "edge_8079a9bc549ffee9": {
     "action": {
@@ -4912,20 +6264,93 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.471979+00:00",
     "id": "edge_823b8dfe94a77904",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_d99c5a54b57c0b95",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_d8386bf67ca5c763"
+  },
+  "edge_829fbd9da387e456": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_829fbd9da387e456",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_dd9564450c169aeb"
+  },
+  "edge_830e2081cba51ff9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_830e2081cba51ff9",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_2abe2f0292a183eb"
+  },
+  "edge_84257bb74d186fcf": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_84257bb74d186fcf",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
   },
   "edge_84da83298cd653e7": {
     "action": {
@@ -4936,19 +6361,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.554975+00:00",
     "id": "edge_84da83298cd653e7",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_b6a7714f38b7ad41",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_b6a7714f38b7ad41"
   },
   "edge_86c7c38986a826e6": {
@@ -5058,19 +6484,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.535884+00:00",
     "id": "edge_8bfa3952c4374d0f",
-    "last_seen": "2026-09-08T08:01:54.659481+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_612db10867b67ae0",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_4ae7512a7f9b72d4"
   },
   "edge_8cce65bf32bd3303": {
@@ -5082,19 +6509,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.454819+00:00",
     "id": "edge_8cce65bf32bd3303",
-    "last_seen": "2026-09-08T08:01:54.582521+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_a615a77f7b133c22"
   },
   "edge_8d17274c69588891": {
@@ -5203,19 +6631,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_8e2bd9c84eda6dfb",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_550b776057e94790"
   },
   "edge_8f56a76f8a61f021": {
@@ -5340,6 +6769,30 @@
     "success_count": 1,
     "target_state": "state_03dd0348cd0a3631"
   },
+  "edge_91d4e58a3e933d86": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7b9f660731154002",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.514580+00:00",
+    "id": "edge_91d4e58a3e933d86",
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_d890464996b65707"
+  },
   "edge_92317cc20b04df70": {
     "action": {
       "action_kind": "activate_control",
@@ -5349,19 +6802,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.435584+00:00",
     "id": "edge_92317cc20b04df70",
-    "last_seen": "2026-09-08T08:01:54.565202+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_0710cee2b6237ec0"
   },
   "edge_92a308672bdd6414": {
@@ -5388,6 +6842,54 @@
     "success_count": 1,
     "target_state": "state_1c6fc89a2934379d"
   },
+  "edge_945bd1b6a0204a85": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.489177+00:00",
+    "id": "edge_945bd1b6a0204a85",
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_03a90c3490f26e52"
+  },
+  "edge_9566dc7eea9f3916": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.416959+00:00",
+    "id": "edge_9566dc7eea9f3916",
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_08a879b54e0c0ba7"
+  },
   "edge_96b36155a66fa043": {
     "action": {
       "action_kind": "activate_control",
@@ -5397,20 +6899,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.504528+00:00",
     "id": "edge_96b36155a66fa043",
-    "last_seen": "2026-09-08T08:01:54.626908+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_96c393db889b66d0": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.390809+00:00",
+    "id": "edge_96c393db889b66d0",
+    "last_seen": "2026-09-29T19:46:17.390809+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_f553c017cfd8926c"
   },
   "edge_974f28e3284fedc6": {
     "action": {
@@ -5421,20 +6948,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_974f28e3284fedc6",
-    "last_seen": "2026-09-08T08:01:54.606122+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_ee8ced1914b66ab1"
+  },
+  "edge_97aefcc6055936d1": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.497547+00:00",
+    "id": "edge_97aefcc6055936d1",
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_0665b5ee4ef02aa8"
   },
   "edge_982d180c5ef3460b": {
     "action": {
@@ -5445,19 +6997,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.436922+00:00",
     "id": "edge_982d180c5ef3460b",
-    "last_seen": "2026-09-08T08:01:54.573903+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_abe62fd868b8d12b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_ed0210a31876c073"
   },
   "edge_99d2bc8972f2f760": {
@@ -5517,20 +7070,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.431253+00:00",
     "id": "edge_9a246c9b667e57d0",
-    "last_seen": "2026-09-08T08:01:54.565202+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_9ab951a6fc8f55e1": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Teljes méret",
+      "control_type": "Button",
+      "identity": "b2c7ea58173d356a",
+      "ordinal": 1,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T20:01:50.986423+00:00",
+    "id": "edge_9ab951a6fc8f55e1",
+    "last_seen": "2026-09-29T20:01:50.986423+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_13eeb3717976e33d",
+    "success_count": 1,
+    "target_state": "state_de77de95cb32fe1f"
   },
   "edge_9b830a31e0c72fca": {
     "action": {
@@ -5555,6 +7133,54 @@
     "source_state": "state_68fd3931bc79c7db",
     "success_count": 0,
     "target_state": null
+  },
+  "edge_9bacbe40377f9e08": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.514580+00:00",
+    "id": "edge_9bacbe40377f9e08",
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_b7fea23162f43f35"
+  },
+  "edge_9be83338eef44d88": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 1,
+      "parent_identity": "d248ed66cca2ab08"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:48:15.567784+00:00",
+    "id": "edge_9be83338eef44d88",
+    "last_seen": "2026-09-29T19:48:15.567784+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_4b880e2776e8a66b",
+    "success_count": 1,
+    "target_state": "state_abb1aeddabbbf857"
   },
   "edge_9c93fb77e47e561b": {
     "action": {
@@ -5589,19 +7215,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.460270+00:00",
     "id": "edge_9ceed88aca254a77",
-    "last_seen": "2026-09-08T08:01:54.590177+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_9d2ca99e6b5fd587": {
@@ -5613,20 +7240,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.523363+00:00",
     "id": "edge_9d2ca99e6b5fd587",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_f8988f278298fe0a"
+  },
+  "edge_9dc22752082a07e8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_9dc22752082a07e8",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_2a147f1501277cd6"
   },
   "edge_9ddd65e2dc80b846": {
     "action": {
@@ -5637,19 +7289,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.466052+00:00",
     "id": "edge_9ddd65e2dc80b846",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_02092ff7db46c2c7"
   },
   "edge_9ee6550af518b7c3": {
@@ -5661,20 +7314,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.558501+00:00",
     "id": "edge_9ee6550af518b7c3",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_550b776057e94790",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8ad78157f890e08d"
+  },
+  "edge_a00314cd182e07b9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_a00314cd182e07b9",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_6667bb9dbb4f5ea0"
   },
   "edge_a04e17405f652d64": {
     "action": {
@@ -5758,19 +7436,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.447721+00:00",
     "id": "edge_a25ae08b7ccfbb5c",
-    "last_seen": "2026-09-08T08:01:54.577592+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_9da54914eafe9852"
   },
   "edge_a2721a65326151ad": {
@@ -5782,19 +7461,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.497351+00:00",
     "id": "edge_a2721a65326151ad",
-    "last_seen": "2026-09-08T08:01:54.626908+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_a30fd935e0ad4609": {
@@ -5893,6 +7573,54 @@
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_a4dfcd41df158c48": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.440724+00:00",
+    "id": "edge_a4dfcd41df158c48",
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_b9c53943035c1c5e"
+  },
+  "edge_a5ea065d07becc9d": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Fájl",
+      "control_type": "MenuItem",
+      "identity": "dcecb29307288339",
+      "ordinal": 0,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:50:51.236837+00:00",
+    "id": "edge_a5ea065d07becc9d",
+    "last_seen": "2026-09-29T19:50:51.236837+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_be40dbfebc48192d"
+  },
   "edge_a67e484ae6c20af4": {
     "action": {
       "action_kind": "activate_control",
@@ -5916,6 +7644,54 @@
     "source_state": "state_8ac3a30d4366ca6f",
     "success_count": 1,
     "target_state": "state_a731a0bf67411d77"
+  },
+  "edge_a6929d08cde0e70e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.440724+00:00",
+    "id": "edge_a6929d08cde0e70e",
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_b66e54b0eecd441b"
+  },
+  "edge_a69aa1d46cfed381": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.461429+00:00",
+    "id": "edge_a69aa1d46cfed381",
+    "last_seen": "2026-09-29T19:46:17.461429+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_b89e9fca757ed0c2"
   },
   "edge_a6b919283d907098": {
     "action": {
@@ -5950,19 +7726,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.563192+00:00",
     "id": "edge_a6ff0e3a2e35ac87",
-    "last_seen": "2026-09-08T08:01:54.678400+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.539346+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_3124e9a8980c5359"
   },
   "edge_a75e162eed89ee81": {
@@ -6013,6 +7790,30 @@
     "success_count": 1,
     "target_state": "state_92beeeecec3387ee"
   },
+  "edge_a7e61b135078fdc5": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b368b1841d6b6b7e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_a7e61b135078fdc5",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
+  },
   "edge_a899bf850c47b43f": {
     "action": {
       "action_kind": "MenuItem",
@@ -6036,6 +7837,54 @@
     "source_state": "state_235c15f855dc8efa",
     "success_count": 0,
     "target_state": null
+  },
+  "edge_a968eea0d6c0913f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.465288+00:00",
+    "id": "edge_a968eea0d6c0913f",
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_443044719ea94b39"
+  },
+  "edge_a98378a95ac523fa": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.416959+00:00",
+    "id": "edge_a98378a95ac523fa",
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
   },
   "edge_a9f150ba8a0fbcf3": {
     "action": {
@@ -6095,19 +7944,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.535884+00:00",
     "id": "edge_aa1cd61fba329d8b",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_962ab5fb3c13620b"
   },
   "edge_aa4511a9d3d2f128": {
@@ -6157,6 +8007,30 @@
     "source_state": "state_b29a203c27c5b7c8",
     "success_count": 1,
     "target_state": "state_0b3a68e98c537b65"
+  },
+  "edge_abe81bf93db590fa": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "a11bbb755802c75c",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.486302+00:00",
+    "id": "edge_abe81bf93db590fa",
+    "last_seen": "2026-09-29T19:46:17.486302+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
   },
   "edge_ac0644c54debe146": {
     "action": {
@@ -6375,6 +8249,30 @@
     "success_count": 0,
     "target_state": null
   },
+  "edge_b0b03c53418282ab": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.459427+00:00",
+    "id": "edge_b0b03c53418282ab",
+    "last_seen": "2026-09-29T19:46:17.459427+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_08a879b54e0c0ba7",
+    "success_count": 1,
+    "target_state": "state_2a147f1501277cd6"
+  },
   "edge_b13e5dc20dd0c2ed": {
     "action": {
       "action_kind": "activate_control",
@@ -6384,19 +8282,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.423913+00:00",
     "id": "edge_b13e5dc20dd0c2ed",
-    "last_seen": "2026-09-08T08:01:54.561556+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.387332+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_ab739da9462260e0",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_df2216c9d39f7641"
   },
   "edge_b21f3350e64976c1": {
@@ -6616,6 +8515,30 @@
     "success_count": 1,
     "target_state": "state_ac683a108682258f"
   },
+  "edge_b7d0700bb59b782d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "34babce122b0c645",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.423756+00:00",
+    "id": "edge_b7d0700bb59b782d",
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_973952f2c99288b5"
+  },
   "edge_b9365d30bf528e96": {
     "action": {
       "action_kind": "activate_control",
@@ -6625,19 +8548,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.428287+00:00",
     "id": "edge_b9365d30bf528e96",
-    "last_seen": "2026-09-08T08:01:54.561556+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.390809+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_baa6d98ff47f40c4": {
@@ -6663,6 +8587,30 @@
     "source_state": "state_085ae81646b6ef59",
     "success_count": 0,
     "target_state": null
+  },
+  "edge_bab07c24b57fe434": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.473400+00:00",
+    "id": "edge_bab07c24b57fe434",
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_dd9564450c169aeb"
   },
   "edge_bb5784e300865290": {
     "action": {
@@ -6712,6 +8660,54 @@
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_bc250677b922490d": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Jegyzékek",
+      "control_type": "MenuItem",
+      "identity": "1c9f3c103b49331d",
+      "ordinal": 2,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:51:31.718081+00:00",
+    "id": "edge_bc250677b922490d",
+    "last_seen": "2026-09-29T19:51:31.718081+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_0fac3ad9bc349956"
+  },
+  "edge_bc31b1d6fbc5b00e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.440724+00:00",
+    "id": "edge_bc31b1d6fbc5b00e",
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_789d057a50650f6e"
+  },
   "edge_bc6fc16ac62ed7e1": {
     "action": {
       "action_kind": "activate_control",
@@ -6721,20 +8717,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.556990+00:00",
     "id": "edge_bc6fc16ac62ed7e1",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_bd9d07ec8ecbea54": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.465288+00:00",
+    "id": "edge_bd9d07ec8ecbea54",
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_cd81022ffcba45bf"
   },
   "edge_bdbe4e50b8b6588f": {
     "action": {
@@ -6769,19 +8790,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.471979+00:00",
     "id": "edge_bef33b7f654f84ef",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_40399033c2ee1be0"
   },
   "edge_bf708974ee90a914": {
@@ -6841,20 +8863,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.436922+00:00",
     "id": "edge_c17dafc5bbc28d44",
-    "last_seen": "2026-09-08T08:01:54.572043+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_1d57846ffb990423"
+  },
+  "edge_c20dc8f4e31783c2": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "8dce05a2663a0023"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:53:26.685813+00:00",
+    "id": "edge_c20dc8f4e31783c2",
+    "last_seen": "2026-09-29T19:53:26.685813+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_f5da711c4dbb4220"
   },
   "edge_c22400fac3b22e63": {
     "action": {
@@ -6939,19 +8986,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_c2fe4b2860f62e39",
-    "last_seen": "2026-09-08T08:01:54.610999+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_bd17b21ee741312d",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_c3b3b91edf47ce97": {
@@ -7003,6 +9051,30 @@
     "success_count": 2,
     "target_state": "state_f8bd5de2aad4a87a"
   },
+  "edge_c3c97cbb381b944e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.416959+00:00",
+    "id": "edge_c3c97cbb381b944e",
+    "last_seen": "2026-09-29T19:46:17.416959+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_f1f9bea88e587374"
+  },
   "edge_c40b733457d834a9": {
     "action": {
       "action_kind": "MenuItem",
@@ -7027,6 +9099,30 @@
     "success_count": 0,
     "target_state": null
   },
+  "edge_c48a7c78018bfc32": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oszloppal balra",
+      "control_type": "Button",
+      "identity": "fa171677c9d77f59",
+      "ordinal": 0,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:55:03.832473+00:00",
+    "id": "edge_c48a7c78018bfc32",
+    "last_seen": "2026-09-29T19:55:03.832473+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_e432e6cbaccd7e66",
+    "success_count": 1,
+    "target_state": "state_e432e6cbaccd7e66"
+  },
   "edge_c497970c90810651": {
     "action": {
       "action_kind": "activate_control",
@@ -7036,20 +9132,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_c497970c90810651",
-    "last_seen": "2026-09-08T08:01:54.606122+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_962ab5fb3c13620b"
+  },
+  "edge_c6a13428706bd0a2": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.407422+00:00",
+    "id": "edge_c6a13428706bd0a2",
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_443044719ea94b39"
   },
   "edge_c6b2392d1f7bdfe2": {
     "action": {
@@ -7060,19 +9181,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_c6b2392d1f7bdfe2",
-    "last_seen": "2026-09-08T08:01:54.617188+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.461429+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_9da54914eafe9852",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_6cc66f89c5067209"
   },
   "edge_c6f93de8c3bcc2a6": {
@@ -7197,6 +9319,30 @@
     "success_count": 0,
     "target_state": null
   },
+  "edge_c8c08d5a199d48d7": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_c8c08d5a199d48d7",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_dd9564450c169aeb"
+  },
   "edge_c9dc66d788adcbab": {
     "action": {
       "action_kind": "activate_control",
@@ -7230,19 +9376,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.5,
+    "confidence": 0.6000000000000001,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T08:01:54.590177+00:00",
     "id": "edge_ca1346a2cb3bed85",
-    "last_seen": "2026-09-08T08:01:54.590177+00:00",
-    "observation_count": 1,
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 2,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 1,
+    "success_count": 2,
     "target_state": "state_789d057a50650f6e"
   },
   "edge_ca3feece8ff0d893": {
@@ -7254,19 +9401,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.563192+00:00",
     "id": "edge_ca3feece8ff0d893",
-    "last_seen": "2026-09-08T08:01:54.678400+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.542849+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_afff57538b725fe4",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_274858f1d4d36e50"
   },
   "edge_ca53c9cea05507d5": {
@@ -7350,19 +9498,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_ca74de93a673b253",
-    "last_seen": "2026-09-08T08:01:54.617188+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_cb0bf35735fd1060": {
@@ -7412,6 +9561,30 @@
     "source_state": "state_2a1da75f658c41d5",
     "success_count": 1,
     "target_state": "state_561a6952525caeaa"
+  },
+  "edge_cdb5eec46d5801d4": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.423756+00:00",
+    "id": "edge_cdb5eec46d5801d4",
+    "last_seen": "2026-09-29T19:46:17.423756+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_a7ec410e4ebd06d9"
   },
   "edge_cdbdc732c98949f0": {
     "action": {
@@ -7471,20 +9644,69 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_cedb9bf506e83eb8",
-    "last_seen": "2026-09-08T08:01:54.669330+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_de58cae8dec35ed6"
+  },
+  "edge_cedfb33b91959856": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Beállítások",
+      "control_type": "MenuItem",
+      "identity": "790a0b7e4f6a43be",
+      "ordinal": 6,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "PARTIALLY_EXPLORED",
+    "failure_count": 1,
+    "first_seen": "2026-09-29T19:52:35.843376+00:00",
+    "id": "edge_cedfb33b91959856",
+    "last_seen": "2026-09-29T19:52:35.843376+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 0,
+    "target_state": null
+  },
+  "edge_cf6674835bfe08ab": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.514580+00:00",
+    "id": "edge_cf6674835bfe08ab",
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_4f992f3bc3a3b7e2"
   },
   "edge_d0757a74746c6d4e": {
     "action": {
@@ -7495,20 +9717,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.428287+00:00",
     "id": "edge_d0757a74746c6d4e",
-    "last_seen": "2026-09-08T08:01:54.561556+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.390809+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_eb0385a9c103e777"
+  },
+  "edge_d0c35cee4081b381": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Csoport",
+      "control_type": "MenuItem",
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": 3,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:51:53.879448+00:00",
+    "id": "edge_d0c35cee4081b381",
+    "last_seen": "2026-09-29T19:51:53.879448+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_20a0ad7077fad8d5"
   },
   "edge_d199845502cfa054": {
     "action": {
@@ -7519,19 +9766,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.497351+00:00",
     "id": "edge_d199845502cfa054",
-    "last_seen": "2026-09-08T08:01:54.622366+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_6980fc2abe286220"
   },
   "edge_d1b7cf9870f8f5ac": {
@@ -7543,19 +9791,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.471979+00:00",
     "id": "edge_d1b7cf9870f8f5ac",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_03bf201fd19b5e47",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_b218186eb9178cfc"
   },
   "edge_d23fef9838f83081": {
@@ -7567,19 +9816,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.560509+00:00",
     "id": "edge_d23fef9838f83081",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_852c819ec90bef36",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_ca9c95ad279bdb0a"
   },
   "edge_d3c03d5c00b76ac8": {
@@ -7591,19 +9841,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN_STALE",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.431253+00:00",
     "id": "edge_d3c03d5c00b76ac8",
-    "last_seen": "2026-09-08T08:01:54.565202+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399162+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_b1213d1b9e3a2c5a"
   },
   "edge_d464821c06776ce3": {
@@ -7615,20 +9866,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_d464821c06776ce3",
-    "last_seen": "2026-09-08T08:01:54.610999+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_d4c40066945eb467": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.465288+00:00",
+    "id": "edge_d4c40066945eb467",
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_2a147f1501277cd6"
   },
   "edge_d4da049a806c567b": {
     "action": {
@@ -7663,19 +9939,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.504528+00:00",
     "id": "edge_d505817ccdf7e888",
-    "last_seen": "2026-09-08T08:01:54.626908+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_374145d655e17a3c"
   },
   "edge_d5c1ae1d17ed9f6c": {
@@ -7759,20 +10036,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.510676+00:00",
     "id": "edge_d6797f0dbe4120f3",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_d6d8358b18bdd5c1": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "a11bbb755802c75c",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.457201+00:00",
+    "id": "edge_d6d8358b18bdd5c1",
+    "last_seen": "2026-09-29T19:46:17.457201+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
   },
   "edge_d70a896545a696e3": {
     "action": {
@@ -7783,20 +10085,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.436922+00:00",
     "id": "edge_d70a896545a696e3",
-    "last_seen": "2026-09-08T08:01:54.574409+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_d4be1535baaa56d1"
+  },
+  "edge_d812d330c83833fa": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.539346+00:00",
+    "id": "edge_d812d330c83833fa",
+    "last_seen": "2026-09-29T19:46:17.539346+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_c883b3489a1aa23b"
   },
   "edge_d8e96a218b7c156a": {
     "action": {
@@ -7903,20 +10230,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_dcd67dda8b10cf33",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_cbd6d72fe1ed3a34"
+  },
+  "edge_dd33fc1733963e52": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.449010+00:00",
+    "id": "edge_dd33fc1733963e52",
+    "last_seen": "2026-09-29T19:46:17.449010+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_b7fea23162f43f35"
   },
   "edge_dd4c0734567b1331": {
     "action": {
@@ -8072,20 +10424,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.497351+00:00",
     "id": "edge_e0007e7c6fd17658",
-    "last_seen": "2026-09-08T08:01:54.622366+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_1014c805d8f97e14"
+  },
+  "edge_e0f57d30bb3dcc49": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.484299+00:00",
+    "id": "edge_e0f57d30bb3dcc49",
+    "last_seen": "2026-09-29T19:46:17.484299+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_7eb30b37091799b0"
   },
   "edge_e15cf94e318ec8f0": {
     "action": {
@@ -8120,20 +10497,69 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.431253+00:00",
     "id": "edge_e193d114641b7d34",
-    "last_seen": "2026-09-08T08:01:54.565202+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.395120+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_54ebfa442e88644e"
+  },
+  "edge_e224956adc4b19d8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_e224956adc4b19d8",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_3c62f0fd0fef4534"
+  },
+  "edge_e26b509271205a3c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.497547+00:00",
+    "id": "edge_e26b509271205a3c",
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_7eb30b37091799b0"
   },
   "edge_e26bdc12ef8c28f6": {
     "action": {
@@ -8144,19 +10570,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.436922+00:00",
     "id": "edge_e26bdc12ef8c28f6",
-    "last_seen": "2026-09-08T08:01:54.572043+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_c94d4b8bacb05e62"
   },
   "edge_e270912c0ab76580": {
@@ -8168,19 +10595,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.504528+00:00",
     "id": "edge_e270912c0ab76580",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.473400+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_03dd0348cd0a3631"
   },
   "edge_e2e23cd93405b5ff": {
@@ -8192,19 +10620,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.510676+00:00",
     "id": "edge_e2e23cd93405b5ff",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_973952f2c99288b5",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_0979b647ffd8a7ed"
   },
   "edge_e3b1529f9b5ba5da": {
@@ -8216,19 +10645,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_e3b1529f9b5ba5da",
-    "last_seen": "2026-09-08T08:01:54.650861+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_5767460f7c21cf30"
   },
   "edge_e3ba57a45b313807": {
@@ -8255,6 +10685,30 @@
     "success_count": 1,
     "target_state": "state_e2902639bd64273e"
   },
+  "edge_e3ee9b80b56d6ca8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.542849+00:00",
+    "id": "edge_e3ee9b80b56d6ca8",
+    "last_seen": "2026-09-29T19:46:17.542849+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
+  },
   "edge_e412c8e5587cfde4": {
     "action": {
       "action_kind": "TreeItem",
@@ -8278,6 +10732,30 @@
     "source_state": "state_400d544e746bdc40",
     "success_count": 1,
     "target_state": "state_400d544e746bdc40"
+  },
+  "edge_e56111055e96784b": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Ablak",
+      "control_type": "MenuItem",
+      "identity": "4a9b674eac787166",
+      "ordinal": 7,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:52:47.333399+00:00",
+    "id": "edge_e56111055e96784b",
+    "last_seen": "2026-09-29T19:52:47.333399+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_67e09178534aa56d"
   },
   "edge_e56cc5e26f0e157e": {
     "action": {
@@ -8385,19 +10863,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.527367+00:00",
     "id": "edge_e76d19fbad9ea928",
-    "last_seen": "2026-09-08T08:01:54.649345+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.497547+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_6726322997f535d6"
   },
   "edge_e7aa050f8eaddc99": {
@@ -8457,19 +10936,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.558501+00:00",
     "id": "edge_e9a4bc354dac6099",
-    "last_seen": "2026-09-08T08:01:54.670536+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_88707596ffcade30"
   },
   "edge_ea21b245c4ae3256": {
@@ -8545,6 +11025,30 @@
     "success_count": 2,
     "target_state": "state_8980ee1a50f616b9"
   },
+  "edge_eb19691cba6747d5": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Bezárás",
+      "control_type": "Button",
+      "identity": "34babce122b0c645",
+      "ordinal": 2,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:59:21.851982+00:00",
+    "id": "edge_eb19691cba6747d5",
+    "last_seen": "2026-09-29T19:59:21.851982+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_89d39aa2f46f58aa",
+    "success_count": 1,
+    "target_state": "state_9dab0bba98836fc1"
+  },
   "edge_ec2d3122ce101995": {
     "action": {
       "action_kind": "activate_control",
@@ -8554,19 +11058,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.543114+00:00",
     "id": "edge_ec2d3122ce101995",
-    "last_seen": "2026-09-08T08:01:54.666315+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.514580+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_f243646c08bfcb00"
   },
   "edge_ec9590d72aaf1a45": {
@@ -8578,20 +11083,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.566529+00:00",
     "id": "edge_ec9590d72aaf1a45",
-    "last_seen": "2026-09-08T08:01:54.678400+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.544913+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_962ab5fb3c13620b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_3a131a506dc69403"
+  },
+  "edge_ec9f31673e73bc49": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "22bc60fb40f01939",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.530831+00:00",
+    "id": "edge_ec9f31673e73bc49",
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_fa7a9fdc2c1a3e18"
   },
   "edge_ecd4dbbb367ed98f": {
     "action": {
@@ -8641,6 +11171,30 @@
     "success_count": 1,
     "target_state": "state_0b35eee90f5b7fcd"
   },
+  "edge_eddabf49e2c1b81e": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Eszközök",
+      "control_type": "MenuItem",
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": 5,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "PARTIALLY_EXPLORED",
+    "failure_count": 1,
+    "first_seen": "2026-09-29T19:52:29.318832+00:00",
+    "id": "edge_eddabf49e2c1b81e",
+    "last_seen": "2026-09-29T19:52:29.318832+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 0,
+    "target_state": null
+  },
   "edge_eddf0f9a3b1c5267": {
     "action": {
       "action_kind": "activate_control",
@@ -8650,20 +11204,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.471979+00:00",
     "id": "edge_eddf0f9a3b1c5267",
-    "last_seen": "2026-09-08T08:01:54.598510+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.432578+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_2a6d1b5981b18d19",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_7fc7ac966a3dda96"
+  },
+  "edge_ee330563397cc041": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Rendszer",
+      "control_type": "MenuItem",
+      "identity": "2e6167b43c9a1138",
+      "ordinal": 1,
+      "parent_identity": "c04ee85a43b30322"
+    },
+    "confidence": 0.5,
+    "effect": "state_changed",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:50:31.105483+00:00",
+    "id": "edge_ee330563397cc041",
+    "last_seen": "2026-09-29T19:50:31.105483+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_dda01825019eb2e6"
+    ],
+    "source_state": "state_9546e732ed427326",
+    "success_count": 1,
+    "target_state": "state_4c5cfc43613158ab"
   },
   "edge_eeaa3c712e484a0e": {
     "action": {
@@ -8737,6 +11316,54 @@
     "success_count": 1,
     "target_state": "state_443051ade79e6cce"
   },
+  "edge_efd9d7db38eef3c8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "34babce122b0c645",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.390809+00:00",
+    "id": "edge_efd9d7db38eef3c8",
+    "last_seen": "2026-09-29T19:46:17.390809+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
+  },
+  "edge_f001c8691e557d67": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_f001c8691e557d67",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_a7ec410e4ebd06d9"
+  },
   "edge_f0257effbb62639a": {
     "action": {
       "action_kind": "activate_control",
@@ -8746,20 +11373,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.497351+00:00",
     "id": "edge_f0257effbb62639a",
-    "last_seen": "2026-09-08T08:01:54.622366+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_dd9564450c169aeb",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_b6a7714f38b7ad41"
+  },
+  "edge_f06a8737748d6b76": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "22bc60fb40f01939",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.395120+00:00",
+    "id": "edge_f06a8737748d6b76",
+    "last_seen": "2026-09-29T19:46:17.395120+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_fa7a9fdc2c1a3e18"
   },
   "edge_f086a2fb97b54331": {
     "action": {
@@ -8770,20 +11422,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.477546+00:00",
     "id": "edge_f086a2fb97b54331",
-    "last_seen": "2026-09-08T08:01:54.610999+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.440724+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_f0b80f0fd3097372": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.522576+00:00",
+    "id": "edge_f0b80f0fd3097372",
+    "last_seen": "2026-09-29T19:46:17.522576+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
   },
   "edge_f147ff6fa978138d": {
     "action": {
@@ -8794,19 +11471,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.535884+00:00",
     "id": "edge_f147ff6fa978138d",
-    "last_seen": "2026-09-08T08:01:54.659481+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_112b062984ac1e0b",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_112b062984ac1e0b"
   },
   "edge_f19af3cc19248501": {
@@ -8818,20 +11496,69 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.516547+00:00",
     "id": "edge_f19af3cc19248501",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.486302+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_c94d4b8bacb05e62",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_112b062984ac1e0b"
+  },
+  "edge_f257c4a4ffb4350c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.530831+00:00",
+    "id": "edge_f257c4a4ffb4350c",
+    "last_seen": "2026-09-29T19:46:17.530831+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_d7c4b26e210fc673"
+  },
+  "edge_f345de4ff5afae11": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.505885+00:00",
+    "id": "edge_f345de4ff5afae11",
+    "last_seen": "2026-09-29T19:46:17.505885+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_2abe2f0292a183eb"
   },
   "edge_f49c4cbbe4de0346": {
     "action": {
@@ -8842,19 +11569,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.447721+00:00",
     "id": "edge_f49c4cbbe4de0346",
-    "last_seen": "2026-09-08T08:01:54.580940+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.407422+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_f5450f0211000c07": {
@@ -8906,6 +11634,30 @@
     "success_count": 1,
     "target_state": "state_b64cf9aa53543df9"
   },
+  "edge_f57c6c81ef42e82d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.399528+00:00",
+    "id": "edge_f57c6c81ef42e82d",
+    "last_seen": "2026-09-29T19:46:17.399528+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_789d057a50650f6e",
+    "success_count": 1,
+    "target_state": "state_112b062984ac1e0b"
+  },
   "edge_f615d878a4c8e9e7": {
     "action": {
       "action_kind": "activate_control",
@@ -8915,19 +11667,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.494226+00:00",
     "id": "edge_f615d878a4c8e9e7",
-    "last_seen": "2026-09-08T08:01:54.622366+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_7fc7ac966a3dda96",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_50ca3917fe2e5c2f"
   },
   "edge_f68e7e3335eb6e49": {
@@ -8987,20 +11740,45 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.510676+00:00",
     "id": "edge_f88013d9a8916b95",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.484299+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_fa11cef75b209b2c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.395120+00:00",
+    "id": "edge_fa11cef75b209b2c",
+    "last_seen": "2026-09-29T19:46:17.395120+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_3c62f0fd0fef4534",
+    "success_count": 1,
+    "target_state": "state_b7fea23162f43f35"
   },
   "edge_fbd7fca242089eab": {
     "action": {
@@ -9011,19 +11789,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.504528+00:00",
     "id": "edge_fbd7fca242089eab",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_f58247233d0829e8",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_cc5da7aaf9219b60"
   },
   "edge_fd17890d087e8d8d": {
@@ -9050,6 +11829,54 @@
     "success_count": 1,
     "target_state": "state_e923668e214f1e3c"
   },
+  "edge_fd40b638379dab7f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.542849+00:00",
+    "id": "edge_fd40b638379dab7f",
+    "last_seen": "2026-09-29T19:46:17.542849+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_b7fea23162f43f35",
+    "success_count": 1,
+    "target_state": "state_f553c017cfd8926c"
+  },
+  "edge_fda90457d98a3c74": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.465288+00:00",
+    "id": "edge_fda90457d98a3c74",
+    "last_seen": "2026-09-29T19:46:17.465288+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_112b062984ac1e0b",
+    "success_count": 1,
+    "target_state": "state_d890464996b65707"
+  },
   "edge_fdc30568b878951e": {
     "action": {
       "action_kind": "Button",
@@ -9073,6 +11900,30 @@
     "source_state": "state_a615a77f7b133c22",
     "success_count": 1,
     "target_state": "state_8980ee1a50f616b9"
+  },
+  "edge_fdcb20168e62b876": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "confidence": 0.5,
+    "effect": "semantic_noop",
+    "exploration_status": "KNOWN",
+    "failure_count": 0,
+    "first_seen": "2026-09-29T19:46:17.539346+00:00",
+    "id": "edge_fdcb20168e62b876",
+    "last_seen": "2026-09-29T19:46:17.539346+00:00",
+    "observation_count": 1,
+    "provenances": [
+      "prov_3344e1fa1bec3213"
+    ],
+    "source_state": "state_5e41794ff68a948a",
+    "success_count": 1,
+    "target_state": "state_4f992f3bc3a3b7e2"
   },
   "edge_fea6aeb905e7d8e5": {
     "action": {
@@ -9180,19 +12031,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.510676+00:00",
     "id": "edge_ff4c68f242303df5",
-    "last_seen": "2026-09-08T08:01:54.630639+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.479680+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_8980ee1a50f616b9",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_8980ee1a50f616b9"
   },
   "edge_ff609cb37b1cfcc9": {
@@ -9204,19 +12056,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.523363+00:00",
     "id": "edge_ff609cb37b1cfcc9",
-    "last_seen": "2026-09-08T08:01:54.638687+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.489177+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_bd17b21ee741312d"
   },
   "edge_ffad1b0bbbf27d9e": {
@@ -9253,19 +12106,20 @@
       "ordinal": null,
       "parent_identity": null
     },
-    "confidence": 0.7000000000000001,
+    "confidence": 0.8,
     "effect": "semantic_noop",
     "exploration_status": "KNOWN",
     "failure_count": 0,
     "first_seen": "2026-09-08T07:17:30.486091+00:00",
     "id": "edge_ffdd147c50d7117f",
-    "last_seen": "2026-09-08T08:01:54.617188+00:00",
-    "observation_count": 3,
+    "last_seen": "2026-09-29T19:46:17.457201+00:00",
+    "observation_count": 4,
     "provenances": [
-      "prov_70f4e681d327e92e"
+      "prov_70f4e681d327e92e",
+      "prov_3344e1fa1bec3213"
     ],
     "source_state": "state_a615a77f7b133c22",
-    "success_count": 3,
+    "success_count": 4,
     "target_state": "state_ac9b936ec2db974b"
   }
 }

@@ -25,6 +25,32 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_028a53ca651dca3a": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_028a53ca651dca3a",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_6ae497da841acbbf"
+  },
+  "edge_02d921db0319ee80": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_02d921db0319ee80",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_3c62f0fd0fef4534"
+  },
   "edge_02fe3f33f6b95919": {
     "action": {
       "action_kind": "activate_control",
@@ -89,6 +115,19 @@
     "edge": "edge_066638f037da8a45",
     "from": "state_016aa79bc4957abb",
     "to": null
+  },
+  "edge_06683b2d643e6183": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_06683b2d643e6183",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_3c62f0fd0fef4534"
   },
   "edge_06c1cd401f6013b3": {
     "action": {
@@ -155,6 +194,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_0a3ebc8a6f9a9d6e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_0a3ebc8a6f9a9d6e",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_6fa76e2be386c8b9"
+  },
   "edge_0a573b9107e0ae86": {
     "action": {
       "action_kind": "Edit",
@@ -180,6 +232,32 @@
     "edge": "edge_0b5277121d95388c",
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
+  },
+  "edge_0bb296446233f465": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_0bb296446233f465",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_6667bb9dbb4f5ea0"
+  },
+  "edge_0bbbacc1ad38aef8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_0bbbacc1ad38aef8",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_3c62f0fd0fef4534"
   },
   "edge_0dd4f79c042b8726": {
     "action": {
@@ -285,6 +363,19 @@
     "from": "state_112b062984ac1e0b",
     "to": "state_5e41794ff68a948a"
   },
+  "edge_13256ddfa91e2dad": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7b9f660731154002",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_13256ddfa91e2dad",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_d7c4b26e210fc673"
+  },
   "edge_1399d0edada3481c": {
     "action": {
       "action_kind": "activate_control",
@@ -336,6 +427,19 @@
     "edge": "edge_140363a0d154e821",
     "from": "state_c8419b31e19dcc40",
     "to": "state_96cd6bc298b98486"
+  },
+  "edge_15694bbff733c792": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_15694bbff733c792",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_d7c4b26e210fc673"
   },
   "edge_16b0e5f9ba584c96": {
     "action": {
@@ -401,6 +505,19 @@
     "edge": "edge_195ee8b240d4ba3b",
     "from": "state_89d91ff74e673d51",
     "to": "state_cb5ce4827c98c524"
+  },
+  "edge_198629f7d3116819": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_198629f7d3116819",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_0665b5ee4ef02aa8"
   },
   "edge_19b0f4f011e60769": {
     "action": {
@@ -480,6 +597,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_1ece05647f80f6b6": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_1ece05647f80f6b6",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_443044719ea94b39"
+  },
   "edge_1fa25c318204ab9f": {
     "action": {
       "action_kind": "native_menu_ordinal",
@@ -519,6 +649,19 @@
     "from": "state_a615a77f7b133c22",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_22d5d62ecd02de00": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7d8912a0a855f782",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_22d5d62ecd02de00",
+    "from": "state_789d057a50650f6e",
+    "to": "state_112b062984ac1e0b"
+  },
   "edge_22e1fc591e3338d0": {
     "action": {
       "action_kind": "activate_control",
@@ -557,6 +700,19 @@
     "edge": "edge_249eebee349eb5fc",
     "from": "state_00b6760703bbdaee",
     "to": null
+  },
+  "edge_2589dbf01e02bf64": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Elem",
+      "control_type": "MenuItem",
+      "identity": "12543feff2db8f93",
+      "ordinal": 4,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_2589dbf01e02bf64",
+    "from": "state_9546e732ed427326",
+    "to": "state_b15bcee12c9713f2"
   },
   "edge_263ff2a6ed354240": {
     "action": {
@@ -623,6 +779,19 @@
     "from": "state_b6a7714f38b7ad41",
     "to": "state_112b062984ac1e0b"
   },
+  "edge_28c774c317d905b3": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7b9f660731154002",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_28c774c317d905b3",
+    "from": "state_789d057a50650f6e",
+    "to": "state_d890464996b65707"
+  },
   "edge_29a7d2a0682b20e9": {
     "action": {
       "action_kind": "activate_control",
@@ -636,6 +805,32 @@
     "from": "state_a615a77f7b133c22",
     "to": "state_837f03723af1f80f"
   },
+  "edge_2a87486c4943c9ec": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "61db58bf44c8d6fa",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_2a87486c4943c9ec",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_973952f2c99288b5"
+  },
+  "edge_2ba2f46faac472cb": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_2ba2f46faac472cb",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_c1c52dabaa76120f"
+  },
   "edge_2c52558ea5d1d518": {
     "action": {
       "action_kind": "activate_control",
@@ -648,6 +843,19 @@
     "edge": "edge_2c52558ea5d1d518",
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
+  },
+  "edge_2c8e467705f05ec9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_2c8e467705f05ec9",
+    "from": "state_789d057a50650f6e",
+    "to": "state_112b062984ac1e0b"
   },
   "edge_2ca749a037069798": {
     "action": {
@@ -714,6 +922,45 @@
     "from": "state_be1ffa1e75536e4a",
     "to": "state_c1d268ae49a4db8f"
   },
+  "edge_332b65d1d9c015b2": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oldallal jobbra",
+      "control_type": "Button",
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": 1,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "edge": "edge_332b65d1d9c015b2",
+    "from": "state_e432e6cbaccd7e66",
+    "to": "state_dd74a80152bbb38b"
+  },
+  "edge_338c22d38d756a8a": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "34babce122b0c645",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_338c22d38d756a8a",
+    "from": "state_789d057a50650f6e",
+    "to": "state_973952f2c99288b5"
+  },
+  "edge_33dc515f37ee2b77": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_33dc515f37ee2b77",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_3c62f0fd0fef4534"
+  },
   "edge_3566025169839d7f": {
     "action": {
       "action_kind": "activate_control",
@@ -753,6 +1000,32 @@
     "from": "state_348517c0beaa6e86",
     "to": "state_4220fa0568cb2c0e"
   },
+  "edge_3648bf86b9c3bd44": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_3648bf86b9c3bd44",
+    "from": "state_789d057a50650f6e",
+    "to": "state_c1c52dabaa76120f"
+  },
+  "edge_3772145d5fd19af4": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_3772145d5fd19af4",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_b9c53943035c1c5e"
+  },
   "edge_37cda072c7a7b523": {
     "action": {
       "action_kind": "MenuItem",
@@ -765,6 +1038,19 @@
     "edge": "edge_37cda072c7a7b523",
     "from": "state_be1ffa1e75536e4a",
     "to": "state_607f20ef3cdc0012"
+  },
+  "edge_37e201f909c32601": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_37e201f909c32601",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_b66e54b0eecd441b"
   },
   "edge_38371b4716582f5f": {
     "action": {
@@ -779,6 +1065,32 @@
     "from": "state_5a4edfa609485ca9",
     "to": "state_c5da6a7b068f8d40"
   },
+  "edge_38c30e04a088fb25": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_38c30e04a088fb25",
+    "from": "state_789d057a50650f6e",
+    "to": "state_b89e9fca757ed0c2"
+  },
+  "edge_391c4b7d54f3d5b5": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_391c4b7d54f3d5b5",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_b45f1814a24e748c"
+  },
   "edge_39ad3ff60c0945d0": {
     "action": {
       "action_kind": "Button",
@@ -792,6 +1104,19 @@
     "from": "state_18eb054d7c5de201",
     "to": null
   },
+  "edge_3baf15ee03efd629": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_3baf15ee03efd629",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_b66e54b0eecd441b"
+  },
   "edge_3c41246bc88f3954": {
     "action": {
       "action_kind": "TreeItem",
@@ -804,6 +1129,19 @@
     "edge": "edge_3c41246bc88f3954",
     "from": "state_10464f651dd2aac5",
     "to": "state_47d0683e56e019a0"
+  },
+  "edge_3c96daa987a3bbf2": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_3c96daa987a3bbf2",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_174d51f94e888242"
   },
   "edge_3cabef90d5bc62dd": {
     "action": {
@@ -870,6 +1208,19 @@
     "from": "state_6fb92c68044209b2",
     "to": "state_e4c37a4af6cac4ca"
   },
+  "edge_3f753cb8456e491e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_3f753cb8456e491e",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_3c58e99c9cf48b0d"
+  },
   "edge_41c1fc61054882ac": {
     "action": {
       "action_kind": "activate_control",
@@ -896,6 +1247,32 @@
     "from": "state_dfdd5754faf3e721",
     "to": "state_6ae3c702178f25e7"
   },
+  "edge_42de6a5a4119c5a9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_42de6a5a4119c5a9",
+    "from": "state_789d057a50650f6e",
+    "to": "state_e63dfe2ae1211379"
+  },
+  "edge_44058e9b0bf226d9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_44058e9b0bf226d9",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_f1f9bea88e587374"
+  },
   "edge_448887b7d7f1bdfb": {
     "action": {
       "action_kind": "MenuItem",
@@ -921,6 +1298,19 @@
     "edge": "edge_45a3ad70292a4c2d",
     "from": "state_112b062984ac1e0b",
     "to": "state_3c62f0fd0fef4534"
+  },
+  "edge_464d84466e3d2ae2": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "179c970f2a692305",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_464d84466e3d2ae2",
+    "from": "state_789d057a50650f6e",
+    "to": "state_fa7a9fdc2c1a3e18"
   },
   "edge_46952458111cfdad": {
     "action": {
@@ -974,6 +1364,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_4bb03e8873becaba"
   },
+  "edge_4855a60a07b4f04f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_4855a60a07b4f04f",
+    "from": "state_2a147f1501277cd6",
+    "to": "state_2a147f1501277cd6"
+  },
   "edge_4970c74e408b31b9": {
     "action": {
       "action_kind": "activate_control",
@@ -986,6 +1389,19 @@
     "edge": "edge_4970c74e408b31b9",
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
+  },
+  "edge_49c96472a8af8eb8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_49c96472a8af8eb8",
+    "from": "state_789d057a50650f6e",
+    "to": "state_112b062984ac1e0b"
   },
   "edge_4a2495be5da37d8d": {
     "action": {
@@ -1025,6 +1441,19 @@
     "edge": "edge_4cb92c82b59b6454",
     "from": "state_237b4a9111aeda4a",
     "to": "state_efc738974bbfc354"
+  },
+  "edge_4dd6713497390aba": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_4dd6713497390aba",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_03a90c3490f26e52"
   },
   "edge_4e161234d022b689": {
     "action": {
@@ -1104,6 +1533,32 @@
     "from": "state_43a9a1e62bcbf125",
     "to": "state_611f38ef5f0171ce"
   },
+  "edge_527a4c6ff624e4e0": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_527a4c6ff624e4e0",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_3c62f0fd0fef4534"
+  },
+  "edge_538918d6435a0d90": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_538918d6435a0d90",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_0665b5ee4ef02aa8"
+  },
   "edge_53b1cb1c3a1d6c31": {
     "action": {
       "action_kind": "Button",
@@ -1155,6 +1610,19 @@
     "edge": "edge_58cfdfdbc7983ce9",
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
+  },
+  "edge_59ea8e4bc0e6d139": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oszloppal jobbra",
+      "control_type": "Button",
+      "identity": "7b9f660731154002",
+      "ordinal": 2,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "edge": "edge_59ea8e4bc0e6d139",
+    "from": "state_472a31bb4b6c2fe3",
+    "to": "state_b5735e4ee4ae4afb"
   },
   "edge_5a73667701ed684f": {
     "action": {
@@ -1286,6 +1754,19 @@
     "from": "state_2a6d1b5981b18d19",
     "to": "state_112b062984ac1e0b"
   },
+  "edge_606befbbb77ee6bf": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Kis méret",
+      "control_type": "Button",
+      "identity": "22bc60fb40f01939",
+      "ordinal": 0,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "edge": "edge_606befbbb77ee6bf",
+    "from": "state_ba50ae97e60ad228",
+    "to": "state_88ba25b9405c4dc3"
+  },
   "edge_611a19e53905e4c1": {
     "action": {
       "action_kind": "activate_control",
@@ -1312,6 +1793,45 @@
     "from": "state_be1ffa1e75536e4a",
     "to": "state_db4905241462c2b8"
   },
+  "edge_62e5edd953fbdb75": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "61db58bf44c8d6fa",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_62e5edd953fbdb75",
+    "from": "state_789d057a50650f6e",
+    "to": "state_973952f2c99288b5"
+  },
+  "edge_6303694366a1625d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "798d8bc57bb7c677",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_6303694366a1625d",
+    "from": "state_789d057a50650f6e",
+    "to": "state_443044719ea94b39"
+  },
+  "edge_634024f72a6ac09e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_634024f72a6ac09e",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_c883b3489a1aa23b"
+  },
   "edge_6377c66b45cfa46a": {
     "action": {
       "action_kind": "MenuItem",
@@ -1324,6 +1844,19 @@
     "edge": "edge_6377c66b45cfa46a",
     "from": "state_68fd3931bc79c7db",
     "to": "state_c964484ff0d08243"
+  },
+  "edge_63bddf278ab4555d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_63bddf278ab4555d",
+    "from": "state_789d057a50650f6e",
+    "to": "state_443044719ea94b39"
   },
   "edge_63fd56a298b71146": {
     "action": {
@@ -1377,6 +1910,19 @@
     "from": "state_be1ffa1e75536e4a",
     "to": "state_438ed55309af2575"
   },
+  "edge_66eaeffc41815f10": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Szerkesztés",
+      "control_type": "MenuItem",
+      "identity": "d574d406faad70a2",
+      "ordinal": 1,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_66eaeffc41815f10",
+    "from": "state_9546e732ed427326",
+    "to": "state_a32a2947985ae7ce"
+  },
   "edge_68125b971c09c523": {
     "action": {
       "action_kind": "MenuItem",
@@ -1390,6 +1936,19 @@
     "from": "state_9b40b89638a72efb",
     "to": "state_98f110ac6289dddc"
   },
+  "edge_688d7e5b5273e455": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "da1792ae7285aabf",
+      "ordinal": 0,
+      "parent_identity": "d248ed66cca2ab08"
+    },
+    "edge": "edge_688d7e5b5273e455",
+    "from": "state_4b880e2776e8a66b",
+    "to": "state_4b880e2776e8a66b"
+  },
   "edge_68b8b4011df6d983": {
     "action": {
       "action_kind": "MenuItem",
@@ -1402,6 +1961,19 @@
     "edge": "edge_68b8b4011df6d983",
     "from": "state_6344abd66ec48d00",
     "to": "state_1b14982f82f15a90"
+  },
+  "edge_68f0ee66a08dc32f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_68f0ee66a08dc32f",
+    "from": "state_2a147f1501277cd6",
+    "to": "state_daeeb3684336051c"
   },
   "edge_692509eaee5204ef": {
     "action": {
@@ -1481,6 +2053,32 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_6d52b3efd2f7695c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_6d52b3efd2f7695c",
+    "from": "state_789d057a50650f6e",
+    "to": "state_2a6d1b5981b18d19"
+  },
+  "edge_6dc63f9600f32c8f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_6dc63f9600f32c8f",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_3c62f0fd0fef4534"
+  },
   "edge_6e632c4d5fdbfbe1": {
     "action": {
       "action_kind": "Button",
@@ -1493,6 +2091,19 @@
     "edge": "edge_6e632c4d5fdbfbe1",
     "from": "state_e94fba706c70fc63",
     "to": null
+  },
+  "edge_6f37288e56c77a08": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_6f37288e56c77a08",
+    "from": "state_789d057a50650f6e",
+    "to": "state_d890464996b65707"
   },
   "edge_6f5dcbc485fa5435": {
     "action": {
@@ -1533,6 +2144,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_dceb59cb0d5543d8"
   },
+  "edge_713bd1b1c3f76c04": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_713bd1b1c3f76c04",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_443044719ea94b39"
+  },
   "edge_7257e0252761a19d": {
     "action": {
       "action_kind": "activate_control",
@@ -1546,6 +2170,19 @@
     "from": "state_a615a77f7b133c22",
     "to": "state_bd17b21ee741312d"
   },
+  "edge_73084a2be5b05377": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Súgó",
+      "control_type": "MenuItem",
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": 8,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_73084a2be5b05377",
+    "from": "state_9546e732ed427326",
+    "to": "state_52228a93b1704772"
+  },
   "edge_73363b05c35682f0": {
     "action": {
       "action_kind": "MenuItem",
@@ -1558,6 +2195,19 @@
     "edge": "edge_73363b05c35682f0",
     "from": "state_977f84c162a296f5",
     "to": "state_696d6291b081ceb4"
+  },
+  "edge_733cc807f6662b86": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7d8912a0a855f782",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_733cc807f6662b86",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_3c62f0fd0fef4534"
   },
   "edge_7445de3c0d0149fc": {
     "action": {
@@ -1584,6 +2234,45 @@
     "edge": "edge_769d511d12f980cc",
     "from": "state_919b9930630cf278",
     "to": "state_7852b06df0804d2f"
+  },
+  "edge_76c3cb99821c7b2c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_76c3cb99821c7b2c",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_03a90c3490f26e52"
+  },
+  "edge_76c6fc9c5206d73c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_76c6fc9c5206d73c",
+    "from": "state_789d057a50650f6e",
+    "to": "state_6ae497da841acbbf"
+  },
+  "edge_771b9314219a8fe1": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Dokumentumablak",
+      "control_type": "MenuItem",
+      "identity": "bb710e899754606e",
+      "ordinal": 0,
+      "parent_identity": "c04ee85a43b30322"
+    },
+    "edge": "edge_771b9314219a8fe1",
+    "from": "state_9546e732ed427326",
+    "to": null
   },
   "edge_78cb4c62c9d6d5fb": {
     "action": {
@@ -1689,6 +2378,19 @@
     "from": "state_6cc66f89c5067209",
     "to": "state_185036a43068b592"
   },
+  "edge_80675d474be41ddb": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_80675d474be41ddb",
+    "from": "state_789d057a50650f6e",
+    "to": "state_174d51f94e888242"
+  },
   "edge_80b271a775203069": {
     "action": {
       "action_kind": "MenuItem",
@@ -1714,6 +2416,45 @@
     "edge": "edge_823b8dfe94a77904",
     "from": "state_d99c5a54b57c0b95",
     "to": "state_d8386bf67ca5c763"
+  },
+  "edge_829fbd9da387e456": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_829fbd9da387e456",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_dd9564450c169aeb"
+  },
+  "edge_830e2081cba51ff9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_830e2081cba51ff9",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_2abe2f0292a183eb"
+  },
+  "edge_84257bb74d186fcf": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_84257bb74d186fcf",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_3c62f0fd0fef4534"
   },
   "edge_84da83298cd653e7": {
     "action": {
@@ -1793,6 +2534,19 @@
     "from": "state_e94fba706c70fc63",
     "to": null
   },
+  "edge_91d4e58a3e933d86": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "7b9f660731154002",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_91d4e58a3e933d86",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_d890464996b65707"
+  },
   "edge_92317cc20b04df70": {
     "action": {
       "action_kind": "activate_control",
@@ -1819,6 +2573,32 @@
     "from": "state_be1ffa1e75536e4a",
     "to": "state_1c6fc89a2934379d"
   },
+  "edge_945bd1b6a0204a85": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "d574d406faad70a2",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_945bd1b6a0204a85",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_03a90c3490f26e52"
+  },
+  "edge_9566dc7eea9f3916": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_9566dc7eea9f3916",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_08a879b54e0c0ba7"
+  },
   "edge_96b36155a66fa043": {
     "action": {
       "action_kind": "activate_control",
@@ -1832,6 +2612,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_96c393db889b66d0": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_96c393db889b66d0",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_f553c017cfd8926c"
+  },
   "edge_974f28e3284fedc6": {
     "action": {
       "action_kind": "activate_control",
@@ -1844,6 +2637,19 @@
     "edge": "edge_974f28e3284fedc6",
     "from": "state_2a6d1b5981b18d19",
     "to": "state_ee8ced1914b66ab1"
+  },
+  "edge_97aefcc6055936d1": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "4a9b674eac787166",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_97aefcc6055936d1",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_0665b5ee4ef02aa8"
   },
   "edge_982d180c5ef3460b": {
     "action": {
@@ -1897,6 +2703,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_9ab951a6fc8f55e1": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Teljes méret",
+      "control_type": "Button",
+      "identity": "b2c7ea58173d356a",
+      "ordinal": 1,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "edge": "edge_9ab951a6fc8f55e1",
+    "from": "state_13eeb3717976e33d",
+    "to": "state_de77de95cb32fe1f"
+  },
   "edge_9b830a31e0c72fca": {
     "action": {
       "action_kind": "MenuItem",
@@ -1909,6 +2728,32 @@
     "edge": "edge_9b830a31e0c72fca",
     "from": "state_68fd3931bc79c7db",
     "to": null
+  },
+  "edge_9bacbe40377f9e08": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_9bacbe40377f9e08",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_b7fea23162f43f35"
+  },
+  "edge_9be83338eef44d88": {
+    "action": {
+      "action_kind": "TreeItem",
+      "caption": "Határoló szerkezetek",
+      "control_type": "TreeItem",
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": 1,
+      "parent_identity": "d248ed66cca2ab08"
+    },
+    "edge": "edge_9be83338eef44d88",
+    "from": "state_4b880e2776e8a66b",
+    "to": "state_abb1aeddabbbf857"
   },
   "edge_9c93fb77e47e561b": {
     "action": {
@@ -1949,6 +2794,19 @@
     "from": "state_2a6d1b5981b18d19",
     "to": "state_f8988f278298fe0a"
   },
+  "edge_9dc22752082a07e8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_9dc22752082a07e8",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_2a147f1501277cd6"
+  },
   "edge_9ddd65e2dc80b846": {
     "action": {
       "action_kind": "activate_control",
@@ -1974,6 +2832,19 @@
     "edge": "edge_9ee6550af518b7c3",
     "from": "state_550b776057e94790",
     "to": "state_8ad78157f890e08d"
+  },
+  "edge_a00314cd182e07b9": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a00314cd182e07b9",
+    "from": "state_789d057a50650f6e",
+    "to": "state_6667bb9dbb4f5ea0"
   },
   "edge_a04e17405f652d64": {
     "action": {
@@ -2027,6 +2898,58 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_a4dfcd41df158c48": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dcecb29307288339",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a4dfcd41df158c48",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_b9c53943035c1c5e"
+  },
+  "edge_a5ea065d07becc9d": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Fájl",
+      "control_type": "MenuItem",
+      "identity": "dcecb29307288339",
+      "ordinal": 0,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_a5ea065d07becc9d",
+    "from": "state_9546e732ed427326",
+    "to": "state_be40dbfebc48192d"
+  },
+  "edge_a6929d08cde0e70e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a6929d08cde0e70e",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_b66e54b0eecd441b"
+  },
+  "edge_a69aa1d46cfed381": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "dd1f065aaf7deb7f",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a69aa1d46cfed381",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_b89e9fca757ed0c2"
+  },
   "edge_a6b919283d907098": {
     "action": {
       "action_kind": "MenuItem",
@@ -2066,6 +2989,19 @@
     "from": "state_e94fba706c70fc63",
     "to": null
   },
+  "edge_a7e61b135078fdc5": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b368b1841d6b6b7e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a7e61b135078fdc5",
+    "from": "state_789d057a50650f6e",
+    "to": "state_112b062984ac1e0b"
+  },
   "edge_a899bf850c47b43f": {
     "action": {
       "action_kind": "MenuItem",
@@ -2078,6 +3014,32 @@
     "edge": "edge_a899bf850c47b43f",
     "from": "state_235c15f855dc8efa",
     "to": null
+  },
+  "edge_a968eea0d6c0913f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a968eea0d6c0913f",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_443044719ea94b39"
+  },
+  "edge_a98378a95ac523fa": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_a98378a95ac523fa",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_112b062984ac1e0b"
   },
   "edge_aa126a89ab990820": {
     "action": {
@@ -2130,6 +3092,19 @@
     "edge": "edge_aa5fbfc1e6bc7036",
     "from": "state_b29a203c27c5b7c8",
     "to": "state_0b3a68e98c537b65"
+  },
+  "edge_abe81bf93db590fa": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "a11bbb755802c75c",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_abe81bf93db590fa",
+    "from": "state_789d057a50650f6e",
+    "to": "state_112b062984ac1e0b"
   },
   "edge_ac0644c54debe146": {
     "action": {
@@ -2222,6 +3197,19 @@
     "from": "state_c2280dd938feb18f",
     "to": null
   },
+  "edge_b0b03c53418282ab": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_b0b03c53418282ab",
+    "from": "state_08a879b54e0c0ba7",
+    "to": "state_2a147f1501277cd6"
+  },
   "edge_b13e5dc20dd0c2ed": {
     "action": {
       "action_kind": "activate_control",
@@ -2313,6 +3301,19 @@
     "from": "state_e376e9b65b7c95fd",
     "to": "state_ac683a108682258f"
   },
+  "edge_b7d0700bb59b782d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "34babce122b0c645",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_b7d0700bb59b782d",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_973952f2c99288b5"
+  },
   "edge_b9365d30bf528e96": {
     "action": {
       "action_kind": "activate_control",
@@ -2339,6 +3340,19 @@
     "from": "state_085ae81646b6ef59",
     "to": null
   },
+  "edge_bab07c24b57fe434": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_bab07c24b57fe434",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_dd9564450c169aeb"
+  },
   "edge_bb5784e300865290": {
     "action": {
       "action_kind": "TreeItem",
@@ -2352,6 +3366,32 @@
     "from": "state_10464f651dd2aac5",
     "to": "state_4e3a6a2db99f3b7c"
   },
+  "edge_bc250677b922490d": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Jegyzékek",
+      "control_type": "MenuItem",
+      "identity": "1c9f3c103b49331d",
+      "ordinal": 2,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_bc250677b922490d",
+    "from": "state_9546e732ed427326",
+    "to": "state_0fac3ad9bc349956"
+  },
+  "edge_bc31b1d6fbc5b00e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_bc31b1d6fbc5b00e",
+    "from": "state_789d057a50650f6e",
+    "to": "state_789d057a50650f6e"
+  },
   "edge_bc6fc16ac62ed7e1": {
     "action": {
       "action_kind": "activate_control",
@@ -2364,6 +3404,19 @@
     "edge": "edge_bc6fc16ac62ed7e1",
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
+  },
+  "edge_bd9d07ec8ecbea54": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_bd9d07ec8ecbea54",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_cd81022ffcba45bf"
   },
   "edge_bdbe4e50b8b6588f": {
     "action": {
@@ -2430,6 +3483,19 @@
     "from": "state_962ab5fb3c13620b",
     "to": "state_1d57846ffb990423"
   },
+  "edge_c20dc8f4e31783c2": {
+    "action": {
+      "action_kind": "Button",
+      "caption": null,
+      "control_type": "Button",
+      "identity": "fceab8b8af388bc8",
+      "ordinal": 0,
+      "parent_identity": "8dce05a2663a0023"
+    },
+    "edge": "edge_c20dc8f4e31783c2",
+    "from": "state_9546e732ed427326",
+    "to": "state_f5da711c4dbb4220"
+  },
   "edge_c2df5381fc937455": {
     "action": {
       "action_kind": "MenuItem",
@@ -2469,6 +3535,19 @@
     "from": "state_085ae81646b6ef59",
     "to": null
   },
+  "edge_c3c97cbb381b944e": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_c3c97cbb381b944e",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_f1f9bea88e587374"
+  },
   "edge_c40b733457d834a9": {
     "action": {
       "action_kind": "MenuItem",
@@ -2482,6 +3561,19 @@
     "from": "state_8a0e3e71e1403c5b",
     "to": null
   },
+  "edge_c48a7c78018bfc32": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Egy oszloppal balra",
+      "control_type": "Button",
+      "identity": "fa171677c9d77f59",
+      "ordinal": 0,
+      "parent_identity": "ddd8e17cd90a760c"
+    },
+    "edge": "edge_c48a7c78018bfc32",
+    "from": "state_e432e6cbaccd7e66",
+    "to": "state_e432e6cbaccd7e66"
+  },
   "edge_c497970c90810651": {
     "action": {
       "action_kind": "activate_control",
@@ -2494,6 +3586,19 @@
     "edge": "edge_c497970c90810651",
     "from": "state_112b062984ac1e0b",
     "to": "state_962ab5fb3c13620b"
+  },
+  "edge_c6a13428706bd0a2": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "b2c7ea58173d356a",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_c6a13428706bd0a2",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_443044719ea94b39"
   },
   "edge_c6b2392d1f7bdfe2": {
     "action": {
@@ -2520,6 +3625,19 @@
     "edge": "edge_c86147b16fd343f6",
     "from": "state_3dcc67aac822210b",
     "to": "state_4951bfce1b017b16"
+  },
+  "edge_c8c08d5a199d48d7": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "12543feff2db8f93",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_c8c08d5a199d48d7",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_dd9564450c169aeb"
   },
   "edge_ca1346a2cb3bed85": {
     "action": {
@@ -2586,6 +3704,19 @@
     "from": "state_77843847d0f8c93a",
     "to": "state_b352b889a2cf11d3"
   },
+  "edge_cdb5eec46d5801d4": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_cdb5eec46d5801d4",
+    "from": "state_789d057a50650f6e",
+    "to": "state_a7ec410e4ebd06d9"
+  },
   "edge_cdbdc732c98949f0": {
     "action": {
       "action_kind": "TreeItem",
@@ -2612,6 +3743,32 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_de58cae8dec35ed6"
   },
+  "edge_cedfb33b91959856": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Beállítások",
+      "control_type": "MenuItem",
+      "identity": "790a0b7e4f6a43be",
+      "ordinal": 6,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_cedfb33b91959856",
+    "from": "state_9546e732ed427326",
+    "to": null
+  },
+  "edge_cf6674835bfe08ab": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_cf6674835bfe08ab",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_4f992f3bc3a3b7e2"
+  },
   "edge_d0757a74746c6d4e": {
     "action": {
       "action_kind": "activate_control",
@@ -2624,6 +3781,19 @@
     "edge": "edge_d0757a74746c6d4e",
     "from": "state_8980ee1a50f616b9",
     "to": "state_eb0385a9c103e777"
+  },
+  "edge_d0c35cee4081b381": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Csoport",
+      "control_type": "MenuItem",
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": 3,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_d0c35cee4081b381",
+    "from": "state_9546e732ed427326",
+    "to": "state_20a0ad7077fad8d5"
   },
   "edge_d199845502cfa054": {
     "action": {
@@ -2690,6 +3860,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_d4c40066945eb467": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "18f7448dc4ed6eb9",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_d4c40066945eb467",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_2a147f1501277cd6"
+  },
   "edge_d4da049a806c567b": {
     "action": {
       "action_kind": "MenuItem",
@@ -2742,6 +3925,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_d6d8358b18bdd5c1": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "a11bbb755802c75c",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_d6d8358b18bdd5c1",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_3c62f0fd0fef4534"
+  },
   "edge_d70a896545a696e3": {
     "action": {
       "action_kind": "activate_control",
@@ -2754,6 +3950,19 @@
     "edge": "edge_d70a896545a696e3",
     "from": "state_2a6d1b5981b18d19",
     "to": "state_d4be1535baaa56d1"
+  },
+  "edge_d812d330c83833fa": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_d812d330c83833fa",
+    "from": "state_789d057a50650f6e",
+    "to": "state_c883b3489a1aa23b"
   },
   "edge_dba59aaf41a9dd6f": {
     "action": {
@@ -2780,6 +3989,19 @@
     "edge": "edge_dcd67dda8b10cf33",
     "from": "state_a615a77f7b133c22",
     "to": "state_cbd6d72fe1ed3a34"
+  },
+  "edge_dd33fc1733963e52": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "da1792ae7285aabf",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_dd33fc1733963e52",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_b7fea23162f43f35"
   },
   "edge_dd4c0734567b1331": {
     "action": {
@@ -2859,6 +4081,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_1014c805d8f97e14"
   },
+  "edge_e0f57d30bb3dcc49": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_e0f57d30bb3dcc49",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_7eb30b37091799b0"
+  },
   "edge_e15cf94e318ec8f0": {
     "action": {
       "action_kind": "Button",
@@ -2884,6 +4119,32 @@
     "edge": "edge_e193d114641b7d34",
     "from": "state_a615a77f7b133c22",
     "to": "state_54ebfa442e88644e"
+  },
+  "edge_e224956adc4b19d8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_e224956adc4b19d8",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_3c62f0fd0fef4534"
+  },
+  "edge_e26b509271205a3c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_e26b509271205a3c",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_7eb30b37091799b0"
   },
   "edge_e26bdc12ef8c28f6": {
     "action": {
@@ -2950,6 +4211,19 @@
     "from": "state_400d544e746bdc40",
     "to": "state_e2902639bd64273e"
   },
+  "edge_e3ee9b80b56d6ca8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_e3ee9b80b56d6ca8",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_112b062984ac1e0b"
+  },
   "edge_e412c8e5587cfde4": {
     "action": {
       "action_kind": "TreeItem",
@@ -2962,6 +4236,19 @@
     "edge": "edge_e412c8e5587cfde4",
     "from": "state_400d544e746bdc40",
     "to": "state_400d544e746bdc40"
+  },
+  "edge_e56111055e96784b": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Ablak",
+      "control_type": "MenuItem",
+      "identity": "4a9b674eac787166",
+      "ordinal": 7,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_e56111055e96784b",
+    "from": "state_9546e732ed427326",
+    "to": "state_67e09178534aa56d"
   },
   "edge_e62c901de3341894": {
     "action": {
@@ -3080,6 +4367,19 @@
     "from": "state_e7be3e85c65cab9b",
     "to": "state_13b466a8716f9f4e"
   },
+  "edge_eb19691cba6747d5": {
+    "action": {
+      "action_kind": "Button",
+      "caption": "Bezárás",
+      "control_type": "Button",
+      "identity": "34babce122b0c645",
+      "ordinal": 2,
+      "parent_identity": "ef981a3aee6670da"
+    },
+    "edge": "edge_eb19691cba6747d5",
+    "from": "state_89d39aa2f46f58aa",
+    "to": "state_9dab0bba98836fc1"
+  },
   "edge_ec2d3122ce101995": {
     "action": {
       "action_kind": "activate_control",
@@ -3106,6 +4406,32 @@
     "from": "state_962ab5fb3c13620b",
     "to": "state_3a131a506dc69403"
   },
+  "edge_ec9f31673e73bc49": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "22bc60fb40f01939",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_ec9f31673e73bc49",
+    "from": "state_789d057a50650f6e",
+    "to": "state_fa7a9fdc2c1a3e18"
+  },
+  "edge_eddabf49e2c1b81e": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Eszközök",
+      "control_type": "MenuItem",
+      "identity": "c069b6f8e6a7698b",
+      "ordinal": 5,
+      "parent_identity": "5b9437e810066d33"
+    },
+    "edge": "edge_eddabf49e2c1b81e",
+    "from": "state_9546e732ed427326",
+    "to": null
+  },
   "edge_eddf0f9a3b1c5267": {
     "action": {
       "action_kind": "activate_control",
@@ -3118,6 +4444,19 @@
     "edge": "edge_eddf0f9a3b1c5267",
     "from": "state_2a6d1b5981b18d19",
     "to": "state_7fc7ac966a3dda96"
+  },
+  "edge_ee330563397cc041": {
+    "action": {
+      "action_kind": "MenuItem",
+      "caption": "Rendszer",
+      "control_type": "MenuItem",
+      "identity": "2e6167b43c9a1138",
+      "ordinal": 1,
+      "parent_identity": "c04ee85a43b30322"
+    },
+    "edge": "edge_ee330563397cc041",
+    "from": "state_9546e732ed427326",
+    "to": "state_4c5cfc43613158ab"
   },
   "edge_eeaa3c712e484a0e": {
     "action": {
@@ -3158,6 +4497,32 @@
     "from": "state_b41f64a31349fec0",
     "to": "state_443051ade79e6cce"
   },
+  "edge_efd9d7db38eef3c8": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "34babce122b0c645",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_efd9d7db38eef3c8",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_112b062984ac1e0b"
+  },
+  "edge_f001c8691e557d67": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_f001c8691e557d67",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_a7ec410e4ebd06d9"
+  },
   "edge_f0257effbb62639a": {
     "action": {
       "action_kind": "activate_control",
@@ -3171,6 +4536,19 @@
     "from": "state_dd9564450c169aeb",
     "to": "state_b6a7714f38b7ad41"
   },
+  "edge_f06a8737748d6b76": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "22bc60fb40f01939",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_f06a8737748d6b76",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_fa7a9fdc2c1a3e18"
+  },
   "edge_f086a2fb97b54331": {
     "action": {
       "action_kind": "activate_control",
@@ -3183,6 +4561,19 @@
     "edge": "edge_f086a2fb97b54331",
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
+  },
+  "edge_f0b80f0fd3097372": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fa171677c9d77f59",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_f0b80f0fd3097372",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_112b062984ac1e0b"
   },
   "edge_f147ff6fa978138d": {
     "action": {
@@ -3210,6 +4601,32 @@
     "from": "state_c94d4b8bacb05e62",
     "to": "state_112b062984ac1e0b"
   },
+  "edge_f257c4a4ffb4350c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_f257c4a4ffb4350c",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_d7c4b26e210fc673"
+  },
+  "edge_f345de4ff5afae11": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "1c9f3c103b49331d",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_f345de4ff5afae11",
+    "from": "state_789d057a50650f6e",
+    "to": "state_2abe2f0292a183eb"
+  },
   "edge_f49c4cbbe4de0346": {
     "action": {
       "action_kind": "activate_control",
@@ -3235,6 +4652,19 @@
     "edge": "edge_f568bba33a15f865",
     "from": "state_243e3d93a05e4b42",
     "to": "state_b64cf9aa53543df9"
+  },
+  "edge_f57c6c81ef42e82d": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fe84e0c07a2b1eb7",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_f57c6c81ef42e82d",
+    "from": "state_789d057a50650f6e",
+    "to": "state_112b062984ac1e0b"
   },
   "edge_f615d878a4c8e9e7": {
     "action": {
@@ -3288,6 +4718,19 @@
     "from": "state_8980ee1a50f616b9",
     "to": "state_8980ee1a50f616b9"
   },
+  "edge_fa11cef75b209b2c": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "bb710e899754606e",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_fa11cef75b209b2c",
+    "from": "state_3c62f0fd0fef4534",
+    "to": "state_b7fea23162f43f35"
+  },
   "edge_fbd7fca242089eab": {
     "action": {
       "action_kind": "native_menu_ordinal",
@@ -3313,6 +4756,45 @@
     "edge": "edge_fd17890d087e8d8d",
     "from": "state_be1ffa1e75536e4a",
     "to": "state_e923668e214f1e3c"
+  },
+  "edge_fd40b638379dab7f": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "2e6167b43c9a1138",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_fd40b638379dab7f",
+    "from": "state_b7fea23162f43f35",
+    "to": "state_f553c017cfd8926c"
+  },
+  "edge_fda90457d98a3c74": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "ac27b5ed8bf37fed",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_fda90457d98a3c74",
+    "from": "state_112b062984ac1e0b",
+    "to": "state_d890464996b65707"
+  },
+  "edge_fdcb20168e62b876": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "de5847b6fd3b6bb1",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "edge": "edge_fdcb20168e62b876",
+    "from": "state_5e41794ff68a948a",
+    "to": "state_4f992f3bc3a3b7e2"
   },
   "edge_fef163e146b5e32a": {
     "action": {
@@ -3446,6 +4928,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_03a90c3490f26e52": {
+    "semantic_fingerprints": [
+      "adc2f1f601ef6855"
+    ],
+    "state": "state_03a90c3490f26e52",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_03b188068ad1f650": {
     "semantic_fingerprints": [
       "a1ec000b3820ca5b2f66"
@@ -3524,6 +5014,14 @@
     ],
     "state": "state_0633e131bc2090c2",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_0665b5ee4ef02aa8": {
+    "semantic_fingerprints": [
+      "939d76aec617698c"
+    ],
+    "state": "state_0665b5ee4ef02aa8",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_06a4e48044297ac9": {
@@ -3605,6 +5103,14 @@
     "state": "state_085ae81646b6ef59",
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+  },
+  "state_08a879b54e0c0ba7": {
+    "semantic_fingerprints": [
+      "c7aa5bc36f21821f"
+    ],
+    "state": "state_08a879b54e0c0ba7",
+    "window_class": "TMainForm",
+    "window_title": ""
   },
   "state_08e1b309a4381c6f": {
     "semantic_fingerprints": [
@@ -3757,6 +5263,14 @@
     "state": "state_0f0a744c70f55358",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_0fac3ad9bc349956": {
+    "semantic_fingerprints": [
+      "f5be8e48f67740e7"
+    ],
+    "state": "state_0fac3ad9bc349956",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_0fbd18686e9a7834": {
     "semantic_fingerprints": [
@@ -3926,6 +5440,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_13eeb3717976e33d": {
+    "semantic_fingerprints": [
+      "cbfc9c7fa55f9ecd"
+    ],
+    "state": "state_13eeb3717976e33d",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_14d07524b7eb2a10": {
     "semantic_fingerprints": [
       "58316495d1dbda55"
@@ -3980,6 +5502,14 @@
     ],
     "state": "state_17317d36b99f2555",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_174d51f94e888242": {
+    "semantic_fingerprints": [
+      "b1586ca81d1dd128"
+    ],
+    "state": "state_174d51f94e888242",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_185036a43068b592": {
@@ -4253,6 +5783,14 @@
     "state": "state_2094f4fc5bd90e77",
     "window_class": "TMainForm",
     "window_title": ""
+  },
+  "state_20a0ad7077fad8d5": {
+    "semantic_fingerprints": [
+      "67a0e7069312826e"
+    ],
+    "state": "state_20a0ad7077fad8d5",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_213ba7e61d0911a3": {
     "semantic_fingerprints": [
@@ -4534,6 +6072,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_2a147f1501277cd6": {
+    "semantic_fingerprints": [
+      "4f0efde1003e942e"
+    ],
+    "state": "state_2a147f1501277cd6",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_2a1ab9984bab1b2c": {
     "semantic_fingerprints": [
       "67ce561392c04f239048"
@@ -4555,6 +6101,14 @@
       "93a1f2b15560ba6b"
     ],
     "state": "state_2a6d1b5981b18d19",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
+  "state_2abe2f0292a183eb": {
+    "semantic_fingerprints": [
+      "8fca9785bb35cb7d"
+    ],
+    "state": "state_2abe2f0292a183eb",
     "window_class": "TMainForm",
     "window_title": ""
   },
@@ -5086,6 +6640,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_3c58e99c9cf48b0d": {
+    "semantic_fingerprints": [
+      "f48f098795e355f9"
+    ],
+    "state": "state_3c58e99c9cf48b0d",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_3c5baa5ce5b31b40": {
     "semantic_fingerprints": [
       "ce7c844b06379d7452ab"
@@ -5350,6 +6912,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_443044719ea94b39": {
+    "semantic_fingerprints": [
+      "4408ee1584a8eac7"
+    ],
+    "state": "state_443044719ea94b39",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_443051ade79e6cce": {
     "semantic_fingerprints": [
       "7730f689134c3f8e"
@@ -5461,6 +7031,14 @@
     "state": "state_4649410d0d719dd0",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_472a31bb4b6c2fe3": {
+    "semantic_fingerprints": [
+      "416b6097370750ba"
+    ],
+    "state": "state_472a31bb4b6c2fe3",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_474cf90a69d99525": {
     "semantic_fingerprints": [
@@ -5590,6 +7168,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_4b880e2776e8a66b": {
+    "semantic_fingerprints": [
+      "d1c92eb3addf518c"
+    ],
+    "state": "state_4b880e2776e8a66b",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_4bb03e8873becaba": {
     "semantic_fingerprints": [
       "28f61bd2dd160cfc"
@@ -5645,6 +7231,14 @@
     "state": "state_4c3af72a9e4611f3",
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya"
+  },
+  "state_4c5cfc43613158ab": {
+    "semantic_fingerprints": [
+      "dfe165daf8d50fc2"
+    ],
+    "state": "state_4c5cfc43613158ab",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_4ce3e3c040fb049e": {
     "semantic_fingerprints": [
@@ -5708,6 +7302,14 @@
     ],
     "state": "state_4f8a195c8fa35948",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_4f992f3bc3a3b7e2": {
+    "semantic_fingerprints": [
+      "4ef0c4652834cfbf"
+    ],
+    "state": "state_4f992f3bc3a3b7e2",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_5004068fda1deeab": {
@@ -5797,6 +7399,14 @@
     "state": "state_51aa69e29c907779",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_52228a93b1704772": {
+    "semantic_fingerprints": [
+      "507adb65041527ce"
+    ],
+    "state": "state_52228a93b1704772",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_522f915dbb60c6b6": {
     "semantic_fingerprints": [
@@ -6374,6 +7984,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_6667bb9dbb4f5ea0": {
+    "semantic_fingerprints": [
+      "bb0f25ccd1eb334d"
+    ],
+    "state": "state_6667bb9dbb4f5ea0",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_6726322997f535d6": {
     "semantic_fingerprints": [
       "537a558eb08bf244"
@@ -6381,6 +7999,14 @@
     "state": "state_6726322997f535d6",
     "window_class": "TMainForm",
     "window_title": ""
+  },
+  "state_67e09178534aa56d": {
+    "semantic_fingerprints": [
+      "714fc5187e1adfa5"
+    ],
+    "state": "state_67e09178534aa56d",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_681f08ac6228c591": {
     "semantic_fingerprints": [
@@ -6477,6 +8103,14 @@
     "state": "state_6ae3c702178f25e7",
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+  },
+  "state_6ae497da841acbbf": {
+    "semantic_fingerprints": [
+      "67247543151f8bc9"
+    ],
+    "state": "state_6ae497da841acbbf",
+    "window_class": "TMainForm",
+    "window_title": ""
   },
   "state_6aec68c0e424fdcb": {
     "semantic_fingerprints": [
@@ -6604,6 +8238,14 @@
     ],
     "state": "state_6f59d812cad49a2d",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_6fa76e2be386c8b9": {
+    "semantic_fingerprints": [
+      "dd7f46c83facbd82"
+    ],
+    "state": "state_6fa76e2be386c8b9",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_6fb92c68044209b2": {
@@ -6958,6 +8600,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_7eb30b37091799b0": {
+    "semantic_fingerprints": [
+      "594257dc71f07e81"
+    ],
+    "state": "state_7eb30b37091799b0",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_7eba48f99489a8a6": {
     "semantic_fingerprints": [
       "cb95a15d116e902e7faf"
@@ -7278,6 +8928,14 @@
     "window_class": "TMainForm",
     "window_title": ""
   },
+  "state_88ba25b9405c4dc3": {
+    "semantic_fingerprints": [
+      "0f63b868ba8e5697"
+    ],
+    "state": "state_88ba25b9405c4dc3",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_893a458e9ee81bf9": {
     "semantic_fingerprints": [
       "56f6a8354edaf43551da"
@@ -7301,6 +8959,14 @@
     "state": "state_8980ee1a50f616b9",
     "window_class": "TMainForm",
     "window_title": ""
+  },
+  "state_89d39aa2f46f58aa": {
+    "semantic_fingerprints": [
+      "bfac87e71432da0c"
+    ],
+    "state": "state_89d39aa2f46f58aa",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_89d91ff74e673d51": {
     "semantic_fingerprints": [
@@ -7670,6 +9336,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_9546e732ed427326": {
+    "semantic_fingerprints": [
+      "19cec11e49061fc2"
+    ],
+    "state": "state_9546e732ed427326",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_95dd7275e2cadc64": {
     "semantic_fingerprints": [
       "3e8c1cb91c763d641e48"
@@ -7886,6 +9560,14 @@
     "window_class": "TMainForm",
     "window_title": ""
   },
+  "state_9dab0bba98836fc1": {
+    "semantic_fingerprints": [
+      "440030604af3d847"
+    ],
+    "state": "state_9dab0bba98836fc1",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_9dbe4a7d1f15ce41": {
     "semantic_fingerprints": [
       "a1d227839d56d7d3bcb4"
@@ -8022,6 +9704,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_a32a2947985ae7ce": {
+    "semantic_fingerprints": [
+      "7e050e26b7037a3d"
+    ],
+    "state": "state_a32a2947985ae7ce",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_a376f7e5e62f8404": {
     "semantic_fingerprints": [
       "00d756522da6785a4c82"
@@ -8148,6 +9838,14 @@
     ],
     "state": "state_a7a404020701ab51",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_a7ec410e4ebd06d9": {
+    "semantic_fingerprints": [
+      "23e15e054f382389"
+    ],
+    "state": "state_a7ec410e4ebd06d9",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_a838f3a1d79d6613": {
@@ -8326,6 +10024,14 @@
     "window_class": "TMainForm",
     "window_title": ""
   },
+  "state_abb1aeddabbbf857": {
+    "semantic_fingerprints": [
+      "f541d4f5f1577a5c"
+    ],
+    "state": "state_abb1aeddabbbf857",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_abe62fd868b8d12b": {
     "semantic_fingerprints": [
       "76eaae47a4b7a30e"
@@ -8470,6 +10176,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_b15bcee12c9713f2": {
+    "semantic_fingerprints": [
+      "4a7de7f661f06c53"
+    ],
+    "state": "state_b15bcee12c9713f2",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_b190ceeb07a65eb2": {
     "semantic_fingerprints": [
       "28e7a61583f1da563dcd"
@@ -8558,6 +10272,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_b45f1814a24e748c": {
+    "semantic_fingerprints": [
+      "49203317fce1c237"
+    ],
+    "state": "state_b45f1814a24e748c",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_b47738867f289a76": {
     "semantic_fingerprints": [
       "9e1febbc743ff28faeac"
@@ -8589,6 +10311,14 @@
     "state": "state_b569dd4545c3da54",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_b5735e4ee4ae4afb": {
+    "semantic_fingerprints": [
+      "4aad4d3c81536bf3"
+    ],
+    "state": "state_b5735e4ee4ae4afb",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_b5c710ba5550e4e2": {
     "semantic_fingerprints": [
@@ -8636,6 +10366,14 @@
     ],
     "state": "state_b65503e4099a7bc7",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_b66e54b0eecd441b": {
+    "semantic_fingerprints": [
+      "7ce9d1db64527c67"
+    ],
+    "state": "state_b66e54b0eecd441b",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_b68929f4ee577bcc": {
@@ -8694,6 +10432,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_b7fea23162f43f35": {
+    "semantic_fingerprints": [
+      "668ab6a5c6253b14"
+    ],
+    "state": "state_b7fea23162f43f35",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_b8271f91bb8efd24": {
     "semantic_fingerprints": [
       "453349bd85bbb1625b0e"
@@ -8726,6 +10472,22 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_b89e9fca757ed0c2": {
+    "semantic_fingerprints": [
+      "34d835aa8da00e88"
+    ],
+    "state": "state_b89e9fca757ed0c2",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
+  "state_b9c53943035c1c5e": {
+    "semantic_fingerprints": [
+      "9a8baecfa1f017a1"
+    ],
+    "state": "state_b9c53943035c1c5e",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_b9f19adb2b1957c9": {
     "semantic_fingerprints": [
       "da7922733a10022d9598"
@@ -8741,6 +10503,14 @@
     "state": "state_b9f2fde40222018e",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_ba50ae97e60ad228": {
+    "semantic_fingerprints": [
+      "817b585a99bdfd84"
+    ],
+    "state": "state_ba50ae97e60ad228",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_ba7ce920378b4493": {
     "semantic_fingerprints": [
@@ -8829,6 +10599,14 @@
     "state": "state_be244a83277cbc98",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_be40dbfebc48192d": {
+    "semantic_fingerprints": [
+      "5571bc95816f3eb5"
+    ],
+    "state": "state_be40dbfebc48192d",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_be5d7914707138e7": {
     "semantic_fingerprints": [
@@ -8940,6 +10718,14 @@
     ],
     "state": "state_c1ab118aeb1797f6",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_c1c52dabaa76120f": {
+    "semantic_fingerprints": [
+      "0e415b5a175a2220"
+    ],
+    "state": "state_c1c52dabaa76120f",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_c1d268ae49a4db8f": {
@@ -9134,6 +10920,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_c883b3489a1aa23b": {
+    "semantic_fingerprints": [
+      "b1151d6a721bccc3"
+    ],
+    "state": "state_c883b3489a1aa23b",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_c89e928731abdcd2": {
     "semantic_fingerprints": [
       "8b88144714f95803"
@@ -9292,6 +11086,14 @@
     ],
     "state": "state_cd1efef3db9a752b",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_cd81022ffcba45bf": {
+    "semantic_fingerprints": [
+      "f168776ea215b47d"
+    ],
+    "state": "state_cd81022ffcba45bf",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_cd831527704fdbfd": {
@@ -9534,6 +11336,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_d7c4b26e210fc673": {
+    "semantic_fingerprints": [
+      "eb9fbf4a2dc94f5b"
+    ],
+    "state": "state_d7c4b26e210fc673",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_d7f516d57695d848": {
     "semantic_fingerprints": [
       "04f38cd2235e9e96"
@@ -9580,6 +11390,14 @@
     ],
     "state": "state_d88bc2daa6a9f7bc",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_d890464996b65707": {
+    "semantic_fingerprints": [
+      "819ac677b62c05c7"
+    ],
+    "state": "state_d890464996b65707",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_d8b7dd2946d9d86b": {
@@ -9636,6 +11454,14 @@
     ],
     "state": "state_da6e3f5d9d50b6f1",
     "window_class": "legacy_runtime_map",
+    "window_title": ""
+  },
+  "state_daeeb3684336051c": {
+    "semantic_fingerprints": [
+      "14c0062faf78c9e8"
+    ],
+    "state": "state_daeeb3684336051c",
+    "window_class": "TMainForm",
     "window_title": ""
   },
   "state_db2bb2aa8fe9c3e1": {
@@ -9718,6 +11544,14 @@
     "window_class": "TMainForm",
     "window_title": ""
   },
+  "state_dd74a80152bbb38b": {
+    "semantic_fingerprints": [
+      "f6ea3fc4b4b5f31b"
+    ],
+    "state": "state_dd74a80152bbb38b",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_dd9564450c169aeb": {
     "semantic_fingerprints": [
       "2e6cefcac19c84cb"
@@ -9789,6 +11623,14 @@
     "state": "state_de58cae8dec35ed6",
     "window_class": "TMainForm",
     "window_title": ""
+  },
+  "state_de77de95cb32fe1f": {
+    "semantic_fingerprints": [
+      "2ac279c56abd9e67"
+    ],
+    "state": "state_de77de95cb32fe1f",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
   },
   "state_deb851277f4b8ae7": {
     "semantic_fingerprints": [
@@ -9942,6 +11784,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_e432e6cbaccd7e66": {
+    "semantic_fingerprints": [
+      "b20b94b127702fab"
+    ],
+    "state": "state_e432e6cbaccd7e66",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+  },
   "state_e4c37a4af6cac4ca": {
     "semantic_fingerprints": [
       "daf1c58f37631874"
@@ -9971,6 +11821,14 @@
       "f6bc823687d839b9"
     ],
     "state": "state_e592a71a57c7eb98",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
+  "state_e63dfe2ae1211379": {
+    "semantic_fingerprints": [
+      "1f1f0fcb841d879a"
+    ],
+    "state": "state_e63dfe2ae1211379",
     "window_class": "TMainForm",
     "window_title": ""
   },
@@ -10374,6 +12232,14 @@
     "window_class": "legacy_runtime_map",
     "window_title": ""
   },
+  "state_f1f9bea88e587374": {
+    "semantic_fingerprints": [
+      "f756f877b488e289"
+    ],
+    "state": "state_f1f9bea88e587374",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_f21b197a1f563727": {
     "semantic_fingerprints": [
       "2374bd93d1ef303ddc82"
@@ -10478,6 +12344,14 @@
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
   },
+  "state_f553c017cfd8926c": {
+    "semantic_fingerprints": [
+      "02f6abdce6fd3bb4"
+    ],
+    "state": "state_f553c017cfd8926c",
+    "window_class": "TMainForm",
+    "window_title": ""
+  },
   "state_f5728e257663582c": {
     "semantic_fingerprints": [
       "dc9a57fea6317dba0ddb"
@@ -10509,6 +12383,14 @@
     "state": "state_f5d977962af9b51a",
     "window_class": "legacy_runtime_map",
     "window_title": ""
+  },
+  "state_f5da711c4dbb4220": {
+    "semantic_fingerprints": [
+      "9785261eafddd64e"
+    ],
+    "state": "state_f5da711c4dbb4220",
+    "window_class": "TMainForm",
+    "window_title": "WinWatt gólya"
   },
   "state_f62d9a89bb0d5352": {
     "semantic_fingerprints": [
@@ -10605,6 +12487,14 @@
     "state": "state_f8b60ec22c62936f",
     "window_class": "TMainForm",
     "window_title": "WinWatt gólya - C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260908T100151\\crawl\\sandboxes\\"
+  },
+  "state_fa7a9fdc2c1a3e18": {
+    "semantic_fingerprints": [
+      "2fca63889b5840e8"
+    ],
+    "state": "state_fa7a9fdc2c1a3e18",
+    "window_class": "TMainForm",
+    "window_title": ""
   },
   "state_fac2a6cec1b80778": {
     "semantic_fingerprints": [

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "workflow": "webwatt.certificate_intake.local",
+  "status": "review_required",
+  "created_at": "2026-09-30T08:17:16.183286+00:00",
+  "source": {
+    "path": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\tests\\test.xml",
+    "name": "test.xml",
+    "sha256": "9716b170d647a103b5240330ccf061cdc8b8d2ac9a06d5434d4ca3f35c6d4413",
+    "size": 5070481
+  },
+  "catalog": null,
+  "summary": {
+    "kind": "xml",
+    "llm_used": false
+  },
+  "artifacts": [
+    {
+      "name": "xml_intake_summary.json",
+      "path": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\webwatt_jobs\\dry_run_runner_20260930a\\xml_intake_summary.json",
+      "sha256": "93a19937164f78f640e4824f4fb4c82944d683816ca1897d6c03b67c077cd610",
+      "size": 3694
+    }
+  ],
+  "review_required": true,
+  "winwatt_started": false,
+  "llm_used": false,
+  "cache_hit": false
+}

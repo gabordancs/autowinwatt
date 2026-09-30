@@ -71,6 +71,14 @@
     "id": "prov_319901f4491b0211",
     "kind": "observed_mapping"
   },
+  "prov_3344e1fa1bec3213": {
+    "artifact": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\knowledge\\navigation_knowledge.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-29T19:46:17.183002+00:00",
+    "id": "prov_3344e1fa1bec3213",
+    "kind": "legacy_capability_registry"
+  },
   "prov_3b95e1f54eece73b": {
     "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_probe_20260906_223806\\transitions.json",
     "confidence": 0.6,
@@ -144,6 +152,16 @@
     "first_seen": "2026-09-08T07:41:44.208300+00:00",
     "id": "prov_5ab107efb0608a91",
     "kind": "observed_mapping"
+  },
+  "prov_61a2aaf393a75707": {
+    "artifact": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\capabilities\\xml_capabilities.json",
+    "confidence": 0.7,
+    "data": {
+      "records": 4
+    },
+    "first_seen": "2026-09-29T19:46:17.652842+00:00",
+    "id": "prov_61a2aaf393a75707",
+    "kind": "legacy_capability_registry"
   },
   "prov_6cc1010c190cb23e": {
     "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_recursive_20260907T100311\\creation_bootstrap\\states.json",
@@ -228,6 +246,16 @@
     "id": "prov_95ddd09d9af0cbf2",
     "kind": "observed_mapping"
   },
+  "prov_9b331248ee88282e": {
+    "artifact": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\capabilities\\room_capabilities.json",
+    "confidence": 0.7,
+    "data": {
+      "records": 4
+    },
+    "first_seen": "2026-09-29T19:46:17.617731+00:00",
+    "id": "prov_9b331248ee88282e",
+    "kind": "legacy_capability_registry"
+  },
   "prov_9c3d2f971f0a3694": {
     "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_layered_branch_20260906T154402\\transitions.json",
     "confidence": 0.6,
@@ -304,6 +332,17 @@
     "id": "prov_c6529722693105e5",
     "kind": "observed_mapping"
   },
+  "prov_c6fbb684d7eca096": {
+    "artifact": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\knowledge\\demonstrations\\structure_creation.json",
+    "confidence": 0.5,
+    "data": {
+      "steps": 6,
+      "target": "structure_creation"
+    },
+    "first_seen": "2026-09-29T19:46:17.915214+00:00",
+    "id": "prov_c6fbb684d7eca096",
+    "kind": "human_demonstration"
+  },
   "prov_c9ab05a91beb3cfd": {
     "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\structure_catalog_v0_20260905T140150\\transitions.json",
     "confidence": 0.6,
@@ -312,12 +351,30 @@
     "id": "prov_c9ab05a91beb3cfd",
     "kind": "observed_mapping"
   },
+  "prov_c9be8ed57045e9ff": {
+    "artifact": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\knowledge\\knowledge_store.json",
+    "confidence": 0.7,
+    "data": {
+      "records": 7
+    },
+    "first_seen": "2026-09-29T19:46:17.848484+00:00",
+    "id": "prov_c9be8ed57045e9ff",
+    "kind": "legacy_capability_registry"
+  },
   "prov_d900fcb6c5edc72e": {
     "artifact": "C:\\Users\\Admin\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\structure_deep_mapping\\creation_probe_20260906_223806\\states.json",
     "confidence": 0.6,
     "data": {},
     "first_seen": "2026-09-08T07:17:29.568948+00:00",
     "id": "prov_d900fcb6c5edc72e",
+    "kind": "observed_mapping"
+  },
+  "prov_dda01825019eb2e6": {
+    "artifact": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\transitions.json",
+    "confidence": 0.6,
+    "data": {},
+    "first_seen": "2026-09-29T19:47:55.612760+00:00",
+    "id": "prov_dda01825019eb2e6",
     "kind": "observed_mapping"
   },
   "prov_ded16c2d307b203c": {

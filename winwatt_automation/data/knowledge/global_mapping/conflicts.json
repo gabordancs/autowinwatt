@@ -135,6 +135,40 @@
       "state_342c69ac8fbf681c"
     ]
   },
+  "conflict_9d0ce41ee021ba33": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_9d0ce41ee021ba33",
+    "source_state": "state_3c62f0fd0fef4534",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_3c62f0fd0fef4534",
+      "state_cd81022ffcba45bf"
+    ]
+  },
+  "conflict_b00c4ab1de0f9d00": {
+    "action": {
+      "action_kind": "activate_control",
+      "caption": null,
+      "control_type": null,
+      "identity": "fceab8b8af388bc8",
+      "ordinal": null,
+      "parent_identity": null
+    },
+    "id": "conflict_b00c4ab1de0f9d00",
+    "source_state": "state_112b062984ac1e0b",
+    "status": "conflicting_observations",
+    "targets": [
+      "state_6fa76e2be386c8b9",
+      "state_b45f1814a24e748c"
+    ]
+  },
   "conflict_bacfad09d0619e64": {
     "action": {
       "action_kind": "activate_control",

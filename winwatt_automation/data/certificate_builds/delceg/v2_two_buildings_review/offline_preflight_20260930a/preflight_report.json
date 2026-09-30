@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "tool": "winwatt.certificate.preflight",
+  "tool_version": "1.0.0",
+  "status": "failed",
+  "scope": "full_certificate",
+  "created_at": "2026-09-30T07:56:00.457650+00:00",
+  "model": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\delceg_two_buildings_model.json",
+  "model_sha256": "15a6724567d715da71dd6e190ff86d26bce312acae7dc17b9cb8c929ca31a9f5",
+  "readback_xml": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\Delceg_56_v4_reopen_readback.xml",
+  "readback_xml_sha256": "e9ebd8001fbce7951f658afbecea3e6ffaae30ebd88919007771598bdd9aa2d5",
+  "catalog_xml": null,
+  "catalog_xml_sha256": null,
+  "tolerance": 0.02,
+  "checks": [
+    {
+      "check_id": "model.project",
+      "status": "passed",
+      "summary": "Project identity and heated totals are present.",
+      "issues": []
+    },
+    {
+      "check_id": "model.references",
+      "status": "passed",
+      "summary": "Rooms, structures and boundary references are internally consistent.",
+      "issues": []
+    },
+    {
+      "check_id": "model.wall_geometry",
+      "status": "failed",
+      "summary": "Vertical wall X/Y/A geometry follows the shared contract.",
+      "issues": [
+        "A01 külső falak: missing X length and Y height",
+        "B01 - Pince külső határoló fal: missing X length and Y height",
+        "B02 - Lépcsőház pince külső határoló fal: missing X length and Y height",
+        "B03 - Nappali külső határoló fal: missing X length and Y height",
+        "B04 - Konyha külső határoló fal: missing X length and Y height",
+        "B06 - Háztartási helyiség külső határoló fal: missing X length and Y height",
+        "B08 - Pihenő / télikert külső határoló fal: missing X length and Y height",
+        "B09 - Földszinti szoba külső határoló fal: missing X length and Y height",
+        "B11a - Tetőtéri fürdő külső határoló fal: missing X length and Y height",
+        "B11b - Tetőtéri WC külső határoló fal: missing X length and Y height",
+        "B11c - Tetőtéri WC külső határoló fal: missing X length and Y height",
+        "B12 - Tetőtéri szoba 1 külső határoló fal: missing X length and Y height",
+        "B13 - Tetőtéri szoba 2 külső határoló fal: missing X length and Y height",
+        "B14 - Tetőtéri szoba 3 külső határoló fal: missing X length and Y height",
+        "B15 - Tetőtéri szoba 4 külső határoló fal: missing X length and Y height",
+        "B16 - Tetőtéri szoba 5 külső határoló fal: missing X length and Y height",
+        "B17 - Tetőtéri közlekedő külső határoló fal: missing X length and Y height",
+        "B18 - Tetőtéri gardrób külső határoló fal: missing X length and Y height"
+      ]
+    },
+    {
+      "check_id": "model.heated_totals",
+      "status": "passed",
+      "summary": "Room totals agree with project heated area and volume.",
+      "issues": []
+    },
+    {
+      "check_id": "materials.catalog",
+      "status": "passed",
+      "summary": "The reviewed model contains no explicit layer rows to catalogue-audit.",
+      "issues": []
+    },
+    {
+      "check_id": "winwatt.readback",
+      "status": "failed",
+      "summary": "Reopened native XML agrees with the reviewed source model.",
+      "issues": [
+        "counts.boundaries: expected 79, actual 78",
+        "totals.transmission_wk: expected 214.21777, actual 212.87471, absolute -1.34306",
+        "surface_by_source_type_m2.külső fal: expected 317.2, actual 308.33, absolute -8.87",
+        "surface_by_azimuth_deg_m2.0: expected 834.58, actual 968.4, absolute 133.82",
+        "surface_by_azimuth_deg_m2.126: expected 144.91, actual 88.82, absolute -56.09",
+        "surface_by_azimuth_deg_m2.306: expected 189.76, actual 108.61, absolute -81.15",
+        "surface_by_azimuth_deg_m2.36: expected 15.15, actual 9.7, absolute -5.45",
+        "room_conditions.A01 - Meglévő lakás (tanúsítványi aggregát).winter_temperature_c: expected 20.0, actual 0.0, absolute -20.0",
+        "room_conditions.A01 - Meglévő lakás (tanúsítványi aggregát).air_change_h: expected 0.6, actual 0.0, absolute -0.6",
+        "wall_xy_geometry.B10a - Földszinti gardrób felső tervi falszakasz.x_m: expected 1.92, actual 0.0, absolute -1.92",
+        "wall_xy_geometry.B10a - Földszinti gardrób felső tervi falszakasz.y_m: expected 2.84, actual 0.0, absolute -2.84",
+        "wall_xy_geometry.B10a - Földszinti gardrób felső tervi falszakasz.area_m2: expected 5.45, actual 0.0, absolute -5.45",
+        "wall_xy_geometry.B10a - Földszinti gardrób jobb oldali tervi falszakasz.x_m: expected 4.02, actual 0.0, absolute -4.02",
+        "wall_xy_geometry.B10a - Földszinti gardrób jobb oldali tervi falszakasz.y_m: expected 2.84, actual 0.0, absolute -2.84",
+        "wall_xy_geometry.B10a - Földszinti gardrób jobb oldali tervi falszakasz.area_m2: expected 11.42, actual 0.0, absolute -11.42",
+        "A01 külső falak: missing X length and Y height",
+        "B01 - Pince külső határoló fal: missing X length and Y height",
+        "B02 - Lépcsőház pince külső határoló fal: missing X length and Y height",
+        "B03 - Nappali külső határoló fal: missing X length and Y height",
+        "B04 - Konyha külső határoló fal: missing X length and Y height",
+        "B06 - Háztartási helyiség külső határoló fal: missing X length and Y height",
+        "B08 - Pihenő / télikert külső határoló fal: missing X length and Y height",
+        "B09 - Földszinti szoba külső határoló fal: missing X length and Y height",
+        "B11a - Tetőtéri fürdő külső határoló fal: missing X length and Y height",
+        "B11b - Tetőtéri WC külső határoló fal: missing X length and Y height",
+        "B11c - Tetőtéri WC külső határoló fal: missing X length and Y height",
+        "B12 - Tetőtéri szoba 1 külső határoló fal: missing X length and Y height",
+        "B13 - Tetőtéri szoba 2 külső határoló fal: missing X length and Y height",
+        "B14 - Tetőtéri szoba 3 külső határoló fal: missing X length and Y height",
+        "B15 - Tetőtéri szoba 4 külső határoló fal: missing X length and Y height",
+        "B16 - Tetőtéri szoba 5 külső határoló fal: missing X length and Y height",
+        "B17 - Tetőtéri közlekedő külső határoló fal: missing X length and Y height",
+        "B18 - Tetőtéri gardrób külső határoló fal: missing X length and Y height"
+      ]
+    },
+    {
+      "check_id": "certificate.systems",
+      "status": "review_required",
+      "summary": "Building-service systems are present in the reviewed model.",
+      "issues": [
+        "reviewed systems are missing"
+      ]
+    },
+    {
+      "check_id": "certificate.calculation",
+      "status": "review_required",
+      "summary": "WinWatt calculation results are attached to the reviewed model.",
+      "issues": [
+        "calculation results are missing"
+      ]
+    }
+  ],
+  "readiness": {
+    "geometry_ready": false,
+    "materials_ready": true,
+    "xml_readback_ready": false,
+    "systems_ready": false,
+    "calculation_ready": false,
+    "engineer_review_required": true
+  },
+  "artifacts": {
+    "readback_validation": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\offline_preflight_20260930a\\readback_validation.json"
+  },
+  "llm_used": false
+}

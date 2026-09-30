@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "tool_id": "winwatt.certificate.preflight",
+  "tool_version": "1.0.0",
+  "handler": "winwatt_automation.scripts.certificate_preflight",
+  "profile_id": "winwatt_8c137b67c0a2214bb91aeae8",
+  "source": null,
+  "output": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\offline_preflight_runner_20260930a",
+  "parameters": {
+    "model": "data/certificate_builds/delceg/v2_two_buildings_review/delceg_two_buildings_model.json",
+    "readback_xml": "data/certificate_builds/delceg/v2_two_buildings_review/Delceg_56_v4_reopen_readback.xml",
+    "scope": "full_certificate"
+  },
+  "started_at": "2026-09-30T07:58:19.526385+00:00",
+  "finished_at": "2026-09-30T07:58:19.960550+00:00",
+  "exit_code": 1,
+  "report": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\offline_preflight_runner_20260930a\\preflight_report.json",
+  "report_status": "failed",
+  "llm_used": false
+}

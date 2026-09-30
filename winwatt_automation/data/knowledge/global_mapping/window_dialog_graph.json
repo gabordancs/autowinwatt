@@ -1,4 +1,16 @@
 {
+  "window_272c83ea86434db8": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+    },
+    "id": "window_272c83ea86434db8",
+    "to": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+    },
+    "transition": "edge_9ab951a6fc8f55e1"
+  },
   "window_3175f9016fabe064": {
     "from": {
       "class": "TMainForm",
@@ -21,7 +33,7 @@
       "class": "TMainForm",
       "title": null
     },
-    "transition": "edge_ca1346a2cb3bed85"
+    "transition": "edge_391c4b7d54f3d5b5"
   },
   "window_51711a102c772bb6": {
     "from": {
@@ -47,6 +59,30 @@
     },
     "transition": "edge_e62c901de3341894"
   },
+  "window_8381534daea40d39": {
+    "from": {
+      "class": "TMainForm",
+      "title": null
+    },
+    "id": "window_8381534daea40d39",
+    "to": {
+      "class": null,
+      "title": null
+    },
+    "transition": "edge_33dc515f37ee2b77"
+  },
+  "window_b947400ba1d03cb3": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+    },
+    "id": "window_b947400ba1d03cb3",
+    "to": {
+      "class": null,
+      "title": null
+    },
+    "transition": "edge_cedfb33b91959856"
+  },
   "window_cbdfd428d1421f98": {
     "from": {
       "class": "TMainForm",
@@ -58,6 +94,30 @@
       "title": "WinWatt gólya"
     },
     "transition": "edge_63fd56a298b71146"
+  },
+  "window_dc593c0cba82b9c9": {
+    "from": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya - C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\runtime_maps\\background_mapping\\background_20260929T214618_2b7d376f\\crawl\\s"
+    },
+    "id": "window_dc593c0cba82b9c9",
+    "to": {
+      "class": "TMainForm",
+      "title": "WinWatt gólya"
+    },
+    "transition": "edge_c20dc8f4e31783c2"
+  },
+  "window_f84583e130905d42": {
+    "from": {
+      "class": "TMainForm",
+      "title": null
+    },
+    "id": "window_f84583e130905d42",
+    "to": {
+      "class": "TMainForm",
+      "title": null
+    },
+    "transition": "edge_fd40b638379dab7f"
   },
   "window_fa3809156c8de615": {
     "from": {

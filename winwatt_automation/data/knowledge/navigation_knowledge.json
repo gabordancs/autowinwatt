@@ -6,7 +6,7 @@
       "fingerprint": "b1586ca81d1dd128",
       "first_seen_at": "2026-09-08T08:07:47.337663Z",
       "id": "state_0013f5385333afe0",
-      "last_seen_at": "2026-09-08T08:46:26.736366Z",
+      "last_seen_at": "2026-09-29T19:50:53.427200Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -13710,7 +13710,7 @@
       "fingerprint": "2d59914c272f5249",
       "first_seen_at": "2026-09-06T19:29:58.299319Z",
       "id": "state_0bfe6fe94455f8a8",
-      "last_seen_at": "2026-09-08T09:35:06.087606Z",
+      "last_seen_at": "2026-09-29T19:48:21.109000Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -15190,6 +15190,28 @@
       "semantic_context": "state_0026_637e0397b9",
       "window_class": "legacy_runtime_map",
       "window_title": "state_0026_637e0397b9"
+    },
+    "state_0c7d8fe847fb9cd0": {
+      "controls_summary": [],
+      "fingerprint": "78c9243c8c2fbe0f",
+      "first_seen_at": "2026-09-29T19:53:28.917595Z",
+      "id": "state_0c7d8fe847fb9cd0",
+      "last_seen_at": "2026-09-29T19:53:28.917595Z",
+      "mdi_title": null,
+      "provenance": [
+        {
+          "data": {
+            "source": "recursive_structure_crawler"
+          },
+          "description": "Navigation state observed",
+          "deterministic": false,
+          "kind": "navigation_provenance",
+          "path": null
+        }
+      ],
+      "semantic_context": "catalog.structure",
+      "window_class": "TMainForm",
+      "window_title": "WinWatt gólya"
     },
     "state_0c86bcc24ca1a55e": {
       "controls_summary": [
@@ -21862,7 +21884,7 @@
       "fingerprint": "8fca9785bb35cb7d",
       "first_seen_at": "2026-09-08T08:08:53.870444Z",
       "id": "state_10196a3b7cc62fda",
-      "last_seen_at": "2026-09-08T08:52:40.934045Z",
+      "last_seen_at": "2026-09-29T19:51:34.246042Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -36795,7 +36817,7 @@
       "fingerprint": "819ac677b62c05c7",
       "first_seen_at": "2026-09-08T08:14:31.909434Z",
       "id": "state_1bbc671e0dda3fc3",
-      "last_seen_at": "2026-09-08T09:18:28.043907Z",
+      "last_seen_at": "2026-09-29T19:57:20.823537Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -48063,7 +48085,7 @@
       "fingerprint": "d9957feca1e1100a",
       "first_seen_at": "2026-09-04T19:34:32.557819Z",
       "id": "state_2239d5ab62d2e34c",
-      "last_seen_at": "2026-09-08T10:48:17.765796Z",
+      "last_seen_at": "2026-09-29T19:59:24.128798Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -68867,7 +68889,7 @@
       "fingerprint": "23e15e054f382389",
       "first_seen_at": "2026-09-08T08:09:28.859121Z",
       "id": "state_3790f627b427e637",
-      "last_seen_at": "2026-09-08T08:55:50.716419Z",
+      "last_seen_at": "2026-09-29T19:51:56.194547Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -120752,7 +120774,7 @@
       "fingerprint": "bb0f25ccd1eb334d",
       "first_seen_at": "2026-09-08T08:07:14.158655Z",
       "id": "state_67007cb3a091ab54",
-      "last_seen_at": "2026-09-08T08:43:24.520199Z",
+      "last_seen_at": "2026-09-29T19:50:33.308830Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -129518,7 +129540,7 @@
       "fingerprint": "67247543151f8bc9",
       "first_seen_at": "2026-09-08T08:11:12.714608Z",
       "id": "state_70cb2da73a59349d",
-      "last_seen_at": "2026-09-08T09:05:11.873185Z",
+      "last_seen_at": "2026-09-29T19:52:49.605316Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -195740,7 +195762,7 @@
       "fingerprint": "2fca63889b5840e8",
       "first_seen_at": "2026-09-08T08:20:04.822337Z",
       "id": "state_a5ca49aed8cb78cf",
-      "last_seen_at": "2026-09-08T09:28:08.178438Z",
+      "last_seen_at": "2026-09-29T19:59:47.849017Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -205189,7 +205211,7 @@
       "fingerprint": "4408ee1584a8eac7",
       "first_seen_at": "2026-09-08T08:22:33.005634Z",
       "id": "state_adc8657bab525c74",
-      "last_seen_at": "2026-09-08T12:10:16.141003Z",
+      "last_seen_at": "2026-09-29T20:01:53.208609Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -207343,7 +207365,7 @@
       "fingerprint": "34d835aa8da00e88",
       "first_seen_at": "2026-09-08T08:11:46.509841Z",
       "id": "state_ae89cee171abece0",
-      "last_seen_at": "2026-09-08T09:08:17.729640Z",
+      "last_seen_at": "2026-09-29T19:53:09.638981Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -282409,7 +282431,7 @@
       "fingerprint": "93a1f2b15560ba6b",
       "first_seen_at": "2026-09-04T19:04:20.739785Z",
       "id": "state_e9de69492ef2ecac",
-      "last_seen_at": "2026-09-08T08:58:57.180622Z",
+      "last_seen_at": "2026-09-29T19:52:16.482129Z",
       "mdi_title": "A globális szerkezetjegyzékben elérhető új szerkezet létrehozási munkafolyamat, a választható szerkezettípusok és a szükséges adatmezők feltárása.",
       "provenance": [
         {
@@ -285459,7 +285481,7 @@
       "fingerprint": "0e415b5a175a2220",
       "first_seen_at": "2026-09-08T08:08:20.959751Z",
       "id": "state_ed3a21c7387eaf62",
-      "last_seen_at": "2026-09-08T08:49:34.166665Z",
+      "last_seen_at": "2026-09-29T19:51:13.707194Z",
       "mdi_title": null,
       "provenance": [
         {
@@ -304098,7 +304120,7 @@
       "fingerprint": "9b4b48158ee1a001",
       "first_seen_at": "2026-09-04T19:04:20.477575Z",
       "id": "state_fc222ab23458bd03",
-      "last_seen_at": "2026-09-08T12:53:53.718445Z",
+      "last_seen_at": "2026-09-29T20:01:52.574711Z",
       "mdi_title": "A globális Szerkezetek jegyzék új elem létrehozási útvonalának, a réteges és ismert szerkezet munkafolyamatoknak, a választható szerkezettípusoknak és a megjelenő adatmezőknek a feltárása.",
       "provenance": [
         {
@@ -308572,8 +308594,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_a5ca49aed8cb78cf"
     },
     "transition_153d01bcb41b7a99": {
@@ -309330,7 +309352,7 @@
       "replay_count": 23,
       "semantic_action": "A globális szerkezetjegyzékben elérhető új szerkezet létrehozási munkafolyamat, a választható szerkezettípusok és a szükséges adatmezők feltárása.",
       "status": "replayed",
-      "success_count": 36,
+      "success_count": 37,
       "to_state_id": "state_e9de69492ef2ecac"
     },
     "transition_36e88c7de9c2da62": {
@@ -309668,8 +309690,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_2239d5ab62d2e34c"
     },
     "transition_54e9e8c8825824b5": {
@@ -310120,8 +310142,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_67007cb3a091ab54"
     },
     "transition_61597ca938078c55": {
@@ -310224,7 +310246,7 @@
       "replay_count": 0,
       "semantic_action": "structure catalog mapped navigation",
       "status": "replayed",
-      "success_count": 3,
+      "success_count": 4,
       "to_state_id": "state_0bfe6fe94455f8a8"
     },
     "transition_6767eac9632f4449": {
@@ -310832,8 +310854,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_ae89cee171abece0"
     },
     "transition_81319d6cf6e09446": {
@@ -311138,8 +311160,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_1bbc671e0dda3fc3"
     },
     "transition_89b5d16f5f46073a": {
@@ -311223,6 +311245,33 @@
       "success_count": 2,
       "to_state_id": "state_7323646c1da50184"
     },
+    "transition_8d2ceb4fed85282e": {
+      "action_identity": "da1792ae7285aabf",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "caption": "Szerkezetek",
+            "control_type": "TreeItem",
+            "safety_class": "safe_navigation"
+          },
+          "description": "Deterministic sandbox recursive UI observation",
+          "deterministic": false,
+          "kind": "recursive_structure_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "9b4b48158ee1a001",
+      "from_state_id": "state_fc222ab23458bd03",
+      "id": "transition_8d2ceb4fed85282e",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog recursive mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_fc222ab23458bd03"
+    },
     "transition_8d3fd4eac79b0ed8": {
       "action_identity": "4a9b674eac787166",
       "action_kind": "activate_control",
@@ -311246,8 +311295,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_70cb2da73a59349d"
     },
     "transition_8e0063a9e5d2e3d4": {
@@ -311327,8 +311376,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_adc8657bab525c74"
     },
     "transition_90f9bd33e9d17270": {
@@ -312407,8 +312456,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_3790f627b427e637"
     },
     "transition_c1797b211043a814": {
@@ -312807,8 +312856,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_1bbc671e0dda3fc3"
     },
     "transition_d27375fca87aab47": {
@@ -312888,8 +312937,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_10196a3b7cc62fda"
     },
     "transition_d687cb7371897d6c": {
@@ -312915,8 +312964,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_fc222ab23458bd03"
     },
     "transition_d945da63508eb923": {
@@ -312996,8 +313045,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_ed3a21c7387eaf62"
     },
     "transition_dbaf3c7cf9126ddb": {
@@ -313283,6 +313332,33 @@
       "success_count": 1,
       "to_state_id": "state_392b62809d4892a9"
     },
+    "transition_ed527c1f24d068c0": {
+      "action_identity": "fceab8b8af388bc8",
+      "action_kind": "activate_control",
+      "capability": null,
+      "evidence_refs": [
+        {
+          "data": {
+            "caption": null,
+            "control_type": "Button",
+            "safety_class": "safe_navigation"
+          },
+          "description": "Deterministic sandbox recursive UI observation",
+          "deterministic": false,
+          "kind": "recursive_structure_mapping",
+          "path": null
+        }
+      ],
+      "expected_state": "78c9243c8c2fbe0f",
+      "from_state_id": "state_fc222ab23458bd03",
+      "id": "transition_ed527c1f24d068c0",
+      "last_verified_at": null,
+      "replay_count": 0,
+      "semantic_action": "structure catalog recursive mapped navigation",
+      "status": "observed",
+      "success_count": 1,
+      "to_state_id": "state_0c7d8fe847fb9cd0"
+    },
     "transition_eda25cab50fa88aa": {
       "action_identity": "1c9f3c103b49331d",
       "action_kind": "activate_control",
@@ -313435,8 +313511,8 @@
       "last_verified_at": null,
       "replay_count": 0,
       "semantic_action": "structure catalog recursive mapped navigation",
-      "status": "observed",
-      "success_count": 1,
+      "status": "replayed",
+      "success_count": 2,
       "to_state_id": "state_0013f5385333afe0"
     },
     "transition_f3d4ebdc7d029354": {
@@ -313491,11 +313567,11 @@
       "expected_state": "global structure catalog",
       "from_state_id": "state_2239d5ab62d2e34c",
       "id": "transition_f4fa3c93ceb56ef3",
-      "last_verified_at": "2026-09-08T12:58:42.868900Z",
+      "last_verified_at": "2026-09-29T20:01:51.907685Z",
       "replay_count": 11,
       "semantic_action": "catalog.structure.open",
       "status": "verified",
-      "success_count": 274,
+      "success_count": 291,
       "to_state_id": "state_1e44d521c53a2621"
     },
     "transition_f579a56eca8ef515": {

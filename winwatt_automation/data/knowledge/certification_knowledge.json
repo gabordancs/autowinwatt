@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "winwatt_certification_20260930",
+  "profile_id": "winwatt_8c137b67c0a2214bb91aeae8",
+  "runtime_invariants": [
+    "A WinWatt UI automation 32 bites Pythonból fut.",
+    "A telepített EXE és erőforrások lenyomatának egyeznie kell a rögzített profillal.",
+    "Egyszerre csak egy WinWatt UI automatizmus futhat, feloldott Windows-asztalon.",
+    "Minden írás új WWP-másolaton és új, üres evidence-könyvtárban történik.",
+    "A forrás WWP hash-e a futás előtt és után azonos marad.",
+    "Megfigyelésből csak mentés–teljes újranyitás–visszaolvasás után lehet verified tool.",
+    "A kampány- és tool-végrehajtás nem használ LLM-et; llm_used értéke false."
+  ],
+  "promotion_rule": [
+    "A művelet verzióprofilhoz kötött.",
+    "A bemenet, kimenet, előfeltétel és utófeltétel géppel ellenőrizhető.",
+    "A módosítás külön projektmásolaton fut.",
+    "A mentett érték teljes WinWatt bezárás és újranyitás után visszaolvasható.",
+    "A bizonyíték riportja és a forrás változatlansága ellenőrzött.",
+    "A tool-regiszter státusza verified; observed elem nem hajtható végre toolként."
+  ],
+  "facts": [
+    {
+      "fact_id": "runtime.installed_profile",
+      "status": "verified",
+      "claim": "A helyi WinWatt gólya 9.60 x86 bináris és rögzített erőforrásai a winwatt_8c137b67c0a2214bb91aeae8 profilhoz tartoznak.",
+      "evidence": [
+        {
+          "path": "../docs/winwatt_local_profile_20260929.json",
+          "assertion": "EXE-, verzió-, architektúra- és erőforrás-lenyomat."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.energy_modes",
+      "status": "verified",
+      "claim": "Kilenc számítási mód érhető el; a 2023-as mód 11 épületenergetikai fület mutat, a nyolc korábbi mód 8-at.",
+      "evidence": [
+        {
+          "path": "data/runtime_maps/e20260929b/report.json",
+          "assertion": "A számítási módok és fülek helyi felvétele."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.orientation.integer_roundtrip",
+      "status": "verified",
+      "claim": "Az egész fokú tájolás mentés és újranyitás után megmarad; a 42,5 fokos kérés 42 fokra kerekedett, ezért a tool egész számot fogad.",
+      "tool_ids": [
+        "winwatt.building.orientation.roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/e20260929b/report.json",
+          "assertion": "A 0 → 42 fokos roundtrip sikeres és a törtérték eltérése dokumentált."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.system_dialogs",
+      "status": "observed",
+      "claim": "A 2023-as rendszerek lapon hat létrehozó párbeszéd érhető el: fűtés, HMV, világítás, légtechnika, hűtés és nyereség/veszteség.",
+      "evidence": [
+        {
+          "path": "data/runtime_maps/systems_dialogs_20260929c/report.json",
+          "assertion": "A hat dialógus osztálya és címe módosítás nélkül rögzítve."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.lighting_roundtrip",
+      "status": "verified",
+      "claim": "Egy minimális világítási rendszer neve teljes újranyitás után megmarad.",
+      "tool_ids": [
+        "winwatt.building.system.lighting.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/lighting_roundtrip_20260929b/report.json",
+          "assertion": "A rendszer létrehozása és roundtripje sikeres."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.heated_zone_roundtrip",
+      "status": "verified",
+      "claim": "A teljes 10 m²-es épület fűtött zónaneve a zónadialógusból visszaolvasva megmarad újranyitás után.",
+      "tool_ids": [
+        "winwatt.building.zone.heated.roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/heated_zone_roundtrip_20260930b/report.json",
+          "assertion": "A fűtött zóna mentés–újranyitás ellenőrzése sikeres."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.electric_heating_roundtrip",
+      "status": "verified",
+      "claim": "A villamos hősugárzó/fűtőfilm alapú, P-szabályozós, tároló és elosztási veszteség nélküli tesztfűtés a zónával együtt megmarad újranyitás után.",
+      "tool_ids": [
+        "winwatt.building.system.heating.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/heating_system_roundtrip_20260930b/report.json",
+          "assertion": "A fűtési rendszer és zóna közös roundtripje sikeres."
+        }
+      ]
+    },
+    {
+      "fact_id": "heating.generator_catalog",
+      "status": "observed",
+      "claim": "A fűtési hőtermelő katalógus 32 levéleleme helyben, módosítás nélkül fel lett véve.",
+      "evidence": [
+        {
+          "path": "data/runtime_maps/certification_mapping/mainroadmap_20260929T230344/jobs/heating_generator_catalog/attempt_001/report.json",
+          "assertion": "A katalóguslevelek és függő mezőállapotok riportja."
+        }
+      ]
+    },
+    {
+      "fact_id": "workflow.heating_fixture",
+      "status": "verified",
+      "claim": "A fűtött zóna és a minimális elektromos fűtés egymásra épülő, két toolos workflow-ja egy paranccsal sikeresen végrehajtható.",
+      "tool_ids": [
+        "winwatt.building.zone.heated.roundtrip",
+        "winwatt.building.system.heating.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/heating_certification_workflow_20260930a/workflow_report.json",
+          "assertion": "Mindkét lépés passed, a forrás változatlan és llm_used false."
+        }
+      ]
+    },
+    {
+      "fact_id": "certificate.offline_preflight",
+      "status": "verified",
+      "claim": "A helyi preflight egyetlen AI- és WinWatt-mentes futásban minősíti a modellkonzisztenciát, falgeometriát, anyagokat, natív XML-visszaolvasást, gépészeti és számítási készültséget.",
+      "tool_ids": [
+        "winwatt.certificate.preflight"
+      ],
+      "evidence": [
+        {
+          "path": "data/certificate_builds/delceg/v2_two_buildings_review/offline_preflight_20260930a/preflight_report.json",
+          "assertion": "A Délceg-modellen a kapu determinisztikusan azonosította a falgeometriai és readback eltéréseket, valamint a hiányzó gépészetet és számítást."
+        }
+      ]
+    },
+    {
+      "fact_id": "mapping.campaign_summary",
+      "status": "verified",
+      "claim": "Egy futó vagy leállított mapping-kampány állapota, forráshash-e, jobjai, gráfprogressze és ismétlődő műveletei WinWatt és AI nélkül kompakt riporttá alakíthatók.",
+      "tool_ids": [
+        "winwatt.mapping.campaign.summarize"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/certification_mapping/mainroadmap_20260929T230344/summaries/summary_20260930c/campaign_summary.json",
+          "assertion": "Az élő főkampány összefoglalása igazolta a változatlan forrást, és a checkpointból összesítette az állapotokat, éleket, hibákat, várólistát és műveleteket."
+        }
+      ]
+    },
+    {
+      "fact_id": "webwatt.certificate_intake.local",
+      "status": "verified",
+      "claim": "A WebWatt tanúsítási előfeldolgozó helyi PDF/XML bemenetből hashes review-manifestet készít hálózat, WinWatt és AI nélkül, és azonos forráshash esetén újra felhasználja a teljes lokális eredményt.",
+      "tool_ids": [
+        "webwatt.certificate.intake.local"
+      ],
+      "evidence": [
+        {
+          "path": "data/webwatt_jobs/dry_run_20260930a/intake_manifest.json",
+          "assertion": "A helyi XML dry-run review_required manifestet és hashes artefaktot készített; winwatt_started és llm_used értéke false."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.room.create_roundtrip",
+      "status": "verified",
+      "claim": "Egy névvel azonosított helyiség RoomService használatával külön WWP-másolaton létrehozható, menthető, teljes WinWatt újranyitás után visszaolvasható.",
+      "tool_ids": [
+        "winwatt.building.room.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/tool_evidence/room_create_20260930b/report.json",
+          "assertion": "A helyiség neve az újranyitás utáni gépi visszaolvasásban szerepel, a másolat változott, a forrás hash-e változatlan."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.structure.layered.create_roundtrip",
+      "status": "verified",
+      "claim": "Egy egyedi nevű rétegrendes szerkezet verzióazonos natív XML-ből tiszta WinWatt-projektbe importálható, majd bezárás és újranyitás után az exportált XML-ből a rétegnév és vastagság pontosan visszaolvasható.",
+      "tool_ids": [
+        "winwatt.building.structure.layered.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/tool_evidence/layered_structure_20260930b/report.json",
+          "assertion": "Az AUTO_MINERAL_WOOL réteg 0,1 m vastagsággal megmaradt a teljes WinWatt roundtrip és natív XML visszaexport után; a forrás hash-e változatlan."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.room.boundary.assign_roundtrip",
+      "status": "verified",
+      "claim": "Egy meglévő szerkezeti hivatkozás helyiséghatárhoz rendelhető, és a hivatkozás teljes mentés–bezárás–újranyitás után determinisztikus UI-feliratként visszaolvasható.",
+      "tool_ids": [
+        "winwatt.building.room.boundary.assign_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/tool_evidence/boundary_assign_20260930a/report.json",
+          "assertion": "A Külső fal szerkezeti hivatkozás mentés előtt és teljes újranyitás után is egyezett, a forrás hash-e változatlan."
+        }
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "workflow_id": "winwatt.heating_certification_fixture",
+      "purpose": "Teljes épületre vonatkozó fűtött zóna és minimális elektromos tesztfűtés létrehozása és bizonyítása.",
+      "tool_ids": [
+        "winwatt.building.zone.heated.roundtrip",
+        "winwatt.building.system.heating.create_roundtrip"
+      ],
+      "entrypoint": "Start-WinWattHeatingCertification.ps1",
+      "success_gate": [
+        "workflow_report.status == passed",
+        "mindkét részriport status == passed",
+        "a zóna- és rendszer-roundtrip igaz",
+        "a forrás hash-e változatlan",
+        "llm_used == false"
+      ]
+    },
+    {
+      "workflow_id": "winwatt.certification_mapping_campaign",
+      "purpose": "A tanúsításhoz szükséges, még hiányzó WinWatt-ágak újraindítható helyi feltérképezése.",
+      "tool_ids": [
+        "winwatt.mapping.campaign.summarize"
+      ],
+      "entrypoint": "Start-WinWattMapping.ps1 -ResumeLatest -Hours 6; unattended alternative: Start-WinWattMapping.ps1 -ResumeLatest -UntilComplete",
+      "success_gate": [
+        "campaign_state.llm_used == false",
+        "a forrás hash-e változatlan",
+        "a célzott jobok passed állapotúak",
+        "a crawler checkpointja és riportja olvasható",
+        "until_complete módban a deadline null és a futás a várólista végéig vagy biztonsági hibáig tart"
+      ]
+    },
+    {
+      "workflow_id": "winwatt.certificate_offline_preflight",
+      "purpose": "A reviewed forrásmodell kiadási készültségének ellenőrzése WinWatt GUI és AI nélkül.",
+      "tool_ids": [
+        "winwatt.certificate.preflight"
+      ],
+      "entrypoint": "python -m winwatt_automation.scripts.certification_tool_runner --tool-id winwatt.certificate.preflight ...",
+      "success_gate": [
+        "preflight_report.status == passed a választott scope-ban",
+        "minden kötelező check passed",
+        "az input SHA-256 hash-ek szerepelnek a riportban",
+        "llm_used == false"
+      ]
+    },
+    {
+      "workflow_id": "webwatt.certificate_intake.local",
+      "purpose": "PDF/XML tanúsítási forrás hálózatfüggetlen előfeldolgozása és auditálható átadása emberi review-ra.",
+      "tool_ids": [
+        "webwatt.certificate.intake.local"
+      ],
+      "entrypoint": "python -m winwatt_automation.scripts.certification_tool_runner --tool-id webwatt.certificate.intake.local ...",
+      "success_gate": [
+        "intake_manifest.status == review_required",
+        "minden artefaktnak van SHA-256 hash-e és mérete",
+        "review_required == true",
+        "winwatt_started == false",
+        "llm_used == false"
+      ]
+    },
+    {
+      "workflow_id": "winwatt.envelope_fixture",
+      "purpose": "Helyiség, rétegrendes szerkezet és a helyiséghatár szerkezeti hozzárendelésének külön, bizonyított épületburok-lépései.",
+      "tool_ids": [
+        "winwatt.building.room.create_roundtrip",
+        "winwatt.building.structure.layered.create_roundtrip",
+        "winwatt.building.room.boundary.assign_roundtrip"
+      ],
+      "entrypoint": "python -m winwatt_automation.scripts.certification_tool_runner --tool-id <tool-id> ...",
+      "success_gate": [
+        "mindhárom tool külön friss output könyvtárban status == passed",
+        "minden roundtrip_passed igaz",
+        "a forrás WWP hash-e minden lépésben változatlan",
+        "a helyiség, réteg és szerkezeti hivatkozás újranyitás után visszaolvasható",
+        "llm_used == false"
+      ]
+    }
+  ],
+  "open_gaps": [
+    "Összetettebb hőtermelő és HMV-rendszer roundtripje.",
+    "Számítás indítása, eredménymezők és hibajelzések bizonyítása.",
+    "Felújítási javaslatok és előtte/utána számítás.",
+    "WWP/XML/PDF/fotócsomag teljes export- és validációs lánca.",
+    "WebWatt kapcsolat és fogadóoldali visszaellenőrzés.",
+    "Tanúsítói szakmai felülvizsgálat és véglegesítés."
+  ]
+}

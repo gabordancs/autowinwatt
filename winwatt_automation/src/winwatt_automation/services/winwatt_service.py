@@ -179,9 +179,10 @@ class WinWattService:
             item for item in dialog.descendants()
             if item.class_name() == "Button" and item.is_visible() and item.control_id() == 1
         )
-        # Legacy common dialogs intermittently ignore click_input after an
-        # Edit value change; their native click is the observed reliable path.
-        open_button.click()
+        # The New Project common dialog requires real input on this version.
+        # A native BM_CLICK can leave the dialog open without creating the
+        # file even though the filename edit already contains the full path.
+        open_button.click_input()
         deadline = time.monotonic() + 8.0
         while time.monotonic() < deadline and not target.is_file():
             time.sleep(0.1)

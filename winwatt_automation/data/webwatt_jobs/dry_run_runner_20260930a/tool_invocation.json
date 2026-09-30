@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "tool_id": "webwatt.certificate.intake.local",
+  "tool_version": "1.0.0",
+  "handler": "winwatt_automation.scripts.webwatt_certificate_intake",
+  "profile_id": "winwatt_8c137b67c0a2214bb91aeae8",
+  "source": null,
+  "output": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\webwatt_jobs\\dry_run_runner_20260930a",
+  "parameters": {
+    "input_file": "tests/test.xml"
+  },
+  "started_at": "2026-09-30T08:17:15.765885+00:00",
+  "finished_at": "2026-09-30T08:17:16.217104+00:00",
+  "exit_code": 0,
+  "report": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\webwatt_jobs\\dry_run_runner_20260930a\\intake_manifest.json",
+  "report_status": "review_required",
+  "llm_used": false
+}

@@ -156,7 +156,13 @@ def _wall_x_edit(detail: Any) -> Any:
     Y and count occupy the next column.
     """
     edits = [item for item in detail.descendants(control_type="Edit") if item.class_name() == "TEdit"]
-    candidates = [edit for edit in edits if edit.rectangle().left < 160 and edit.rectangle().top < 160]
+    bounds = detail.rectangle()
+    upper_edits = [
+        edit for edit in edits
+        if edit.rectangle().top - bounds.top < 160
+    ]
+    leftmost = min((edit.rectangle().left for edit in upper_edits), default=None)
+    candidates = [edit for edit in upper_edits if edit.rectangle().left == leftmost]
     if len(candidates) != 1:
         observed = [(item.rectangle().left, item.rectangle().top) for item in edits]
         raise RuntimeError(f"Could not uniquely identify external-wall X edit; observed={observed}")

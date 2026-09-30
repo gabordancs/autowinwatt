@@ -18,7 +18,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-import xml.etree.ElementTree as ET
+import uuid
 from pathlib import Path
 from typing import Any
 
@@ -28,7 +28,8 @@ SOURCE_ROOT = Path(__file__).resolve().parents[1] / "src"
 if str(SOURCE_ROOT) not in sys.path:
     sys.path.insert(0, str(SOURCE_ROOT))
 
-from winwatt_automation.certificates import CertificateBuildInput, CertificateProjectBuilder
+from winwatt_automation.workflows.webwatt_certificate_intake import MANIFEST_NAME, process_local_intake, sha256
+from winwatt_automation.workflows.webwatt_publisher import publish_review_artifacts
 
 BUCKET = "project-documents"
 JOB_TYPE = "certificate_intake"
@@ -72,6 +73,51 @@ class SupabaseRest:
         with urllib.request.urlopen(request, timeout=120):
             pass
 
+    def storage_object_exists(self, storage_path: str) -> bool:
+        encoded = "/".join(urllib.parse.quote(part, safe="") for part in storage_path.split("/"))
+        request = urllib.request.Request(
+            f"{self.url}/storage/v1/object/{BUCKET}/{encoded}", method="HEAD", headers=self.headers,
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=60):
+                return True
+        except urllib.error.HTTPError as exc:
+            if exc.code == 404:
+                return False
+            raise
+
+    def upload_if_missing(self, storage_path: str, source: Path) -> bool:
+        if self.storage_object_exists(storage_path):
+            return False
+        try:
+            self.upload(storage_path, source)
+            return True
+        except urllib.error.HTTPError as exc:
+            if exc.code == 409:
+                return False
+            raise
+
+    def find_document_id(self, *, project_id: str, storage_path: str) -> str | None:
+        query = urllib.parse.urlencode({
+            "select": "id", "project_id": f"eq.{project_id}",
+            "file_url": f"eq.{storage_path}", "limit": "1",
+        })
+        result = self.request("GET", f"/rest/v1/project_documents?{query}")
+        return str(result[0]["id"]) if result else None
+
+    def ensure_document(
+        self, *, project_id: str, user_id: str, doc_type: str, storage_path: str,
+    ) -> tuple[str, bool]:
+        existing = self.find_document_id(project_id=project_id, storage_path=storage_path)
+        if existing is not None:
+            return existing, False
+        deterministic_id = str(uuid.uuid5(uuid.NAMESPACE_URL, f"webwatt:{project_id}:{storage_path}"))
+        result = self.request("POST", "/rest/v1/project_documents", [{
+            "id": deterministic_id, "project_id": project_id, "created_by": user_id,
+            "doc_type": doc_type, "status": "draft", "file_url": storage_path,
+        }], {"Prefer": "resolution=ignore-duplicates,return=representation"})
+        return deterministic_id, bool(result)
+
     def insert_document(self, *, project_id: str, user_id: str, doc_type: str, storage_path: str) -> str:
         result = self.request("POST", "/rest/v1/project_documents", [{
             "project_id": project_id, "created_by": user_id, "doc_type": doc_type,
@@ -82,18 +128,6 @@ class SupabaseRest:
 
 def safe_filename(name: str) -> str:
     return "".join(char if char.isalnum() or char in "._-" else "_" for char in name)
-
-
-def xml_summary(source: Path, destination: Path) -> None:
-    root = ET.parse(source).getroot()
-    counts: dict[str, int] = {}
-    for node in root.iter():
-        name = node.tag.rsplit("}", 1)[-1]
-        counts[name] = counts.get(name, 0) + 1
-    destination.write_text(json.dumps({
-        "source": source.name, "root": root.tag, "element_counts": dict(sorted(counts.items())),
-        "next_step": "XML structure was indexed locally. Import or WWP generation remains a separate human-approved action.",
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def process_job(api: SupabaseRest, job: dict[str, Any], workspace_root: Path, catalog_xml: Path | None) -> dict[str, Any]:
@@ -112,30 +146,18 @@ def process_job(api: SupabaseRest, job: dict[str, Any], workspace_root: Path, ca
     job_dir.mkdir(parents=True, exist_ok=True)
     source = job_dir / safe_filename(filename)
     api.download(source_path, source)
-    suffix = source.suffix.lower()
-    if suffix == ".pdf":
-        if catalog_xml is None or not catalog_xml.is_file():
-            raise ValueError("PDF intake needs WINWATT_CATALOG_XML pointing at a local material catalogue XML.")
-        result = CertificateProjectBuilder().build(CertificateBuildInput(
-            certificate_pdf=source, output_dir=output_dir, catalog_xml=catalog_xml, allow_llm=False,
-        ))
-        summary = {"kind": "pdf", "deterministic_values": len(result.deterministic_values), "material_decisions": len(result.material_decisions), "unresolved": len(result.unresolved), "llm_used": result.llm_used}
-    elif suffix == ".xml":
-        output_dir.mkdir(parents=True, exist_ok=True)
-        xml_summary(source, output_dir / "xml_intake_summary.json")
-        summary = {"kind": "xml", "llm_used": False}
-    else:
-        raise ValueError("Only .pdf and .xml source files are supported.")
+    intake = process_local_intake(source=source, output_dir=output_dir, catalog_xml=catalog_xml)
 
-    artifacts: list[dict[str, str]] = []
-    for artifact in output_dir.glob("*.json"):
-        storage_result = f"{project_id}/certification-result/{job['id']}/{artifact.name}"
-        api.upload(storage_result, artifact)
-        document_id = api.insert_document(project_id=project_id, user_id=user_id, doc_type=f"Gépi előfeldolgozás · {artifact.name}", storage_path=storage_result)
-        artifacts.append({"document_id": document_id, "storage_path": storage_result, "name": artifact.name})
-    if not artifacts:
-        raise RuntimeError("Processing ended without a review artifact.")
-    return {"operation": "certificate_intake", "review_required": True, "winwatt_started": False, "artifacts": artifacts, "summary": summary}
+    artifacts = publish_review_artifacts(
+        api=api, output_dir=output_dir, project_id=project_id,
+        user_id=user_id, job_id=str(job["id"]),
+    )
+    return {
+        "operation": "certificate_intake", "review_required": True,
+        "winwatt_started": False, "llm_used": False, "artifacts": artifacts,
+        "summary": intake["summary"], "source_sha256": intake["source"]["sha256"],
+        "local_manifest_sha256": sha256(output_dir / MANIFEST_NAME),
+    }
 
 
 def run_once(api: SupabaseRest, worker_id: str, workspace_root: Path, catalog_xml: Path | None) -> bool:
@@ -156,10 +178,20 @@ def run_once(api: SupabaseRest, worker_id: str, workspace_root: Path, catalog_xm
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Local WebWatt certificate intake worker (never starts WinWatt).")
-    parser.add_argument("command", choices=["once", "watch"], nargs="?", default="watch")
+    parser.add_argument("command", choices=["once", "watch", "dry-run"], nargs="?", default="watch")
     parser.add_argument("--poll-seconds", type=int, default=10)
     parser.add_argument("--workspace", type=Path, default=Path("data/webwatt_jobs"))
+    parser.add_argument("--source", type=Path, help="Local PDF or XML for dry-run")
+    parser.add_argument("--catalog", type=Path, help="Local material catalogue for PDF dry-run")
     args = parser.parse_args()
+    if args.command == "dry-run":
+        if args.source is None:
+            parser.error("dry-run requires --source")
+        manifest = process_local_intake(
+            source=args.source, output_dir=args.workspace.resolve(), catalog_xml=args.catalog,
+        )
+        print(json.dumps(manifest, ensure_ascii=False, indent=2))
+        return 0
     url, key = os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
     if not url or not key:
         parser.error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables are required.")

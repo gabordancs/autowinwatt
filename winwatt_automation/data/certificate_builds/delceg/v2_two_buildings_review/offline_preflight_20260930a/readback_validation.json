@@ -1,0 +1,475 @@
+{
+  "source_model": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\delceg_two_buildings_model.json",
+  "readback_xml": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\winwatt_automation\\data\\certificate_builds\\delceg\\v2_two_buildings_review\\Delceg_56_v4_reopen_readback.xml",
+  "counts": {
+    "buildings": 2,
+    "zones": 29,
+    "rooms": 29,
+    "structures": 12,
+    "boundaries": 78,
+    "layer_rows": 0,
+    "expected_layer_rows": 0
+  },
+  "totals": {
+    "heated_area_m2": {
+      "expected": 383.52,
+      "actual": 383.52,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "heated_volume_m3": {
+      "expected": 1052.42,
+      "actual": 1052.4294,
+      "absolute": 0.0094,
+      "relative_percent": 0.000893
+    },
+    "transmission_wk": {
+      "expected": 214.21777,
+      "actual": 212.87471,
+      "absolute": -1.34306,
+      "relative_percent": -0.62696
+    }
+  },
+  "surface_by_source_type_m2": {
+    "külső ablak": {
+      "expected": 10.0,
+      "actual": 10.0,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "külső fal": {
+      "expected": 317.2,
+      "actual": 308.33,
+      "absolute": -8.87,
+      "relative_percent": -2.796343
+    },
+    "külső tető": {
+      "expected": 415.98,
+      "actual": 415.98,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "lábazati fal": {
+      "expected": 79.7,
+      "actual": 79.7,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "talajon fekvő padló": {
+      "expected": 383.52,
+      "actual": 383.52,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    }
+  },
+  "surface_by_azimuth_deg_m2": {
+    "0": {
+      "expected": 834.58,
+      "actual": 968.4,
+      "absolute": 133.82,
+      "relative_percent": 16.034413
+    },
+    "126": {
+      "expected": 144.91,
+      "actual": 88.82,
+      "absolute": -56.09,
+      "relative_percent": -38.706784
+    },
+    "216": {
+      "expected": 22.0,
+      "actual": 22.0,
+      "absolute": 0.0,
+      "relative_percent": 0.0
+    },
+    "306": {
+      "expected": 189.76,
+      "actual": 108.61,
+      "absolute": -81.15,
+      "relative_percent": -42.764545
+    },
+    "36": {
+      "expected": 15.15,
+      "actual": 9.7,
+      "absolute": -5.45,
+      "relative_percent": -35.973597
+    }
+  },
+  "room_conditions": {
+    "A01 - Meglévő lakás (tanúsítványi aggregát)": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 0.0,
+        "absolute": -20.0,
+        "relative_percent": -100.0
+      },
+      "air_change_h": {
+        "expected": 0.6,
+        "actual": 0.0,
+        "absolute": -0.6,
+        "relative_percent": -100.0
+      }
+    },
+    "B01 - Pince": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B02 - Lépcsőház pince": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B03 - Nappali": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B04 - Konyha": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B05a - Földszinti fürdő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B05b - Földszinti WC": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B05c - Földszinti fürdő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B05d - Földszinti WC": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B05e - Földszinti WC": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B06 - Háztartási helyiség": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B07a - Földszinti közlekedő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B07b - Földszinti közlekedő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B07c - Előszoba": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B08 - Pihenő / télikert": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B09 - Földszinti szoba": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B10a - Földszinti gardrób": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B10b - Földszinti tároló": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B10c - Földszinti tároló": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B11a - Tetőtéri fürdő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B11b - Tetőtéri WC": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B11c - Tetőtéri WC": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B12 - Tetőtéri szoba 1": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B13 - Tetőtéri szoba 2": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B14 - Tetőtéri szoba 3": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B15 - Tetőtéri szoba 4": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B16 - Tetőtéri szoba 5": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B17 - Tetőtéri közlekedő": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    },
+    "B18 - Tetőtéri gardrób": {
+      "winter_temperature_c": {
+        "expected": 20.0,
+        "actual": 20.0,
+        "absolute": 0.0,
+        "relative_percent": 0.0
+      }
+    }
+  },
+  "opening_glass_ratio_percent": {},
+  "wall_xy_geometry": {
+    "A01 külső falak": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B01 - Pince külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B02 - Lépcsőház pince külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B03 - Nappali külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B04 - Konyha külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B06 - Háztartási helyiség külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B08 - Pihenő / télikert külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B09 - Földszinti szoba külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B11a - Tetőtéri fürdő külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B11b - Tetőtéri WC külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B11c - Tetőtéri WC külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B12 - Tetőtéri szoba 1 külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B13 - Tetőtéri szoba 2 külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B14 - Tetőtéri szoba 3 külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B15 - Tetőtéri szoba 4 külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B16 - Tetőtéri szoba 5 külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B17 - Tetőtéri közlekedő külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B18 - Tetőtéri gardrób külső határoló fal": {
+      "status": "unresolved",
+      "reason": "missing source X length and Y height"
+    },
+    "B10a - Földszinti gardrób felső tervi falszakasz": {
+      "status": "missing_after_import",
+      "x_m": {
+        "expected": 1.92,
+        "actual": 0.0,
+        "absolute": -1.92,
+        "relative_percent": -100.0
+      },
+      "y_m": {
+        "expected": 2.84,
+        "actual": 0.0,
+        "absolute": -2.84,
+        "relative_percent": -100.0
+      },
+      "area_m2": {
+        "expected": 5.45,
+        "actual": 0.0,
+        "absolute": -5.45,
+        "relative_percent": -100.0
+      }
+    },
+    "B10a - Földszinti gardrób jobb oldali tervi falszakasz": {
+      "status": "missing_after_import",
+      "x_m": {
+        "expected": 4.02,
+        "actual": 0.0,
+        "absolute": -4.02,
+        "relative_percent": -100.0
+      },
+      "y_m": {
+        "expected": 2.84,
+        "actual": 0.0,
+        "absolute": -2.84,
+        "relative_percent": -100.0
+      },
+      "area_m2": {
+        "expected": 11.42,
+        "actual": 0.0,
+        "absolute": -11.42,
+        "relative_percent": -100.0
+      }
+    }
+  },
+  "wall_xy_issues": [
+    "A01 külső falak: missing X length and Y height",
+    "B01 - Pince külső határoló fal: missing X length and Y height",
+    "B02 - Lépcsőház pince külső határoló fal: missing X length and Y height",
+    "B03 - Nappali külső határoló fal: missing X length and Y height",
+    "B04 - Konyha külső határoló fal: missing X length and Y height",
+    "B06 - Háztartási helyiség külső határoló fal: missing X length and Y height",
+    "B08 - Pihenő / télikert külső határoló fal: missing X length and Y height",
+    "B09 - Földszinti szoba külső határoló fal: missing X length and Y height",
+    "B11a - Tetőtéri fürdő külső határoló fal: missing X length and Y height",
+    "B11b - Tetőtéri WC külső határoló fal: missing X length and Y height",
+    "B11c - Tetőtéri WC külső határoló fal: missing X length and Y height",
+    "B12 - Tetőtéri szoba 1 külső határoló fal: missing X length and Y height",
+    "B13 - Tetőtéri szoba 2 külső határoló fal: missing X length and Y height",
+    "B14 - Tetőtéri szoba 3 külső határoló fal: missing X length and Y height",
+    "B15 - Tetőtéri szoba 4 külső határoló fal: missing X length and Y height",
+    "B16 - Tetőtéri szoba 5 külső határoló fal: missing X length and Y height",
+    "B17 - Tetőtéri közlekedő külső határoló fal: missing X length and Y height",
+    "B18 - Tetőtéri gardrób külső határoló fal: missing X length and Y height"
+  ],
+  "mechanics_included": false
+}
