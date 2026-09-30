@@ -1,6 +1,19 @@
 from collections import deque
 
-from winwatt_automation.runtime_mapping.room_deep_explorer import ControlAction, _prune_queue, action_identity, logical_state_hash, state_diff, state_hash
+from winwatt_automation.runtime_mapping.room_deep_explorer import ControlAction, _path_enters_focus_tab, _path_uses_excluded_action, _prune_queue, action_identity, canonical_states_by_signature, failure_diagnostics, logical_state_hash, resolve_edge_targets, state_diff, state_hash
+from winwatt_automation.runtime_mapping import room_deep_explorer
+
+
+def test_failure_diagnostics_preserves_empty_exception_details() -> None:
+    class EmptyFailure(Exception):
+        def __str__(self) -> str:
+            return ""
+
+    details = failure_diagnostics(EmptyFailure("hidden"))
+
+    assert details["error_type"] == "EmptyFailure"
+    assert "EmptyFailure" in details["error"]
+    assert details["error_repr"] == details["error"]
 from winwatt_automation.scripts.explore_rooms_deep import excluded_tabs_for_scope
 
 
@@ -40,6 +53,52 @@ def test_worker_scopes_do_not_overlap() -> None:
 def test_control_action_is_serializable_for_replay() -> None:
     action = ControlAction("Button", "Szerkezetek...", "id", (1, 2, 3, 4))
     assert action.operation == "activate"
+
+
+def test_focus_tab_keeps_root_and_requested_subtree_only() -> None:
+    general = ControlAction("TabItem", "Általános adatok", "", (1, 2, 3, 4))
+    heating = ControlAction("TabItem", "Fűtés", "", (1, 2, 3, 4))
+    button = ControlAction("Button", "Részletek", "", (1, 2, 3, 4))
+
+    assert _path_enters_focus_tab([], {"fűtés"})
+    assert _path_enters_focus_tab([heating, button], {"fűtés"})
+    assert not _path_enters_focus_tab([general, button], {"fűtés"})
+    assert not _path_enters_focus_tab([button], {"fűtés"})
+
+
+def test_excluded_action_matches_exact_names_and_protected_substrings() -> None:
+    close = ControlAction("Button", "Elvet", "", (1, 2, 3, 4))
+    submit = ControlAction("Button", "Feltöltés az OÉNY-be", "", (1, 2, 3, 4))
+    export = ControlAction("Button", "XML készítése", "", (1, 2, 3, 4))
+
+    assert _path_uses_excluded_action([close], {"elvet"}, set())
+    assert _path_uses_excluded_action([submit], set(), {"feltölt"})
+    assert not _path_uses_excluded_action([export], {"elvet"}, {"feltölt"})
+
+
+def test_buildings_root_reuses_verified_live_session(monkeypatch, tmp_path) -> None:
+    class Main:
+        def process_id(self) -> int:
+            return 42
+
+    sentinel = object()
+    fresh_calls: list[str] = []
+    monkeypatch.setattr(room_deep_explorer, "_project_session_is_ready", lambda _path: True)
+    monkeypatch.setattr(room_deep_explorer, "get_main_window", lambda: Main())
+    monkeypatch.setattr(room_deep_explorer, "_dismiss_secondary_windows", lambda _pid, attempts: None)
+    monkeypatch.setattr(room_deep_explorer, "_activate_buildings_catalog_fast", lambda _main: None)
+    monkeypatch.setattr(room_deep_explorer, "active_buildings_window", lambda _pid: sentinel)
+    monkeypatch.setattr(
+        room_deep_explorer, "prepare_fresh_winwatt_session",
+        lambda **kwargs: fresh_calls.append(kwargs["project_path"]),
+    )
+
+    result = room_deep_explorer.open_sandbox_buildings(
+        project_path=str(tmp_path / "sandbox.wwp"), reuse_session=True,
+    )
+
+    assert result is sentinel
+    assert fresh_calls == []
 
 
 def test_action_identity_ignores_recreated_automation_id() -> None:
@@ -95,3 +154,27 @@ def test_prune_queue_removes_repeated_tree_or_list_navigation_loop() -> None:
     )
     assert removed == 1
     assert list(queue) == [([category, type_item, useful], None)]
+
+
+def test_revisited_edge_keeps_canonical_target() -> None:
+    action = ControlAction("Button", "Tovább", "volatile", (1, 2, 3, 4))
+    states = [
+        {"state_id": "root", "signature_hash": "aaa", "path": []},
+        {"state_id": "canonical", "signature_hash": "bbb", "path": [action.__dict__]},
+    ]
+    edges = [{"from": "root", "action": action.__dict__, "to": "canonical", "status": "revisited"}]
+
+    assert canonical_states_by_signature(states)["bbb"] == "canonical"
+    resolve_edge_targets(states, edges)
+
+    assert edges[0]["to"] == "canonical"
+
+
+def test_unresolved_edge_is_still_marked_explicitly() -> None:
+    action = ControlAction("Button", "Ismeretlen", "", (1, 2, 3, 4))
+    states = [{"state_id": "root", "signature_hash": "aaa", "path": []}]
+    edges = [{"from": "root", "action": action.__dict__, "to": "pending", "status": "failed"}]
+
+    resolve_edge_targets(states, edges)
+
+    assert edges[0]["to"] == "revisited_or_blocked"

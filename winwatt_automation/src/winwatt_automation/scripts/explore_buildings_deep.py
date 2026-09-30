@@ -21,6 +21,10 @@ def main() -> int:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--retry-failures", action="store_true")
     parser.add_argument("--session-islands", action="store_true")
+    parser.add_argument(
+        "--focus-tab", action="append", default=[], metavar="TAB",
+        help="Explore only paths below this Building tab; repeat for multiple areas.",
+    )
     parser.add_argument("--status-popup", action="store_true")
     parser.add_argument("--version-profile", type=Path, help="Reject changed executable/resources before any UI action")
     args = parser.parse_args()
@@ -38,7 +42,10 @@ def main() -> int:
         result = explore_room_state_graph(
             project_path=args.project, output_dir=args.output_dir, resume=args.resume,
             retry_failures=args.retry_failures, session_islands=args.session_islands,
-            root_opener=lambda project: open_sandbox_building(project_path=project),
+            focus_tab_names=set(args.focus_tab),
+            root_opener=lambda project: open_sandbox_building(
+                project_path=project, reuse_session=args.session_islands,
+            ),
             active_resolver=active_buildings_window,
         )
     finally:

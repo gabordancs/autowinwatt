@@ -349,6 +349,17 @@ def _append_event(output_dir: Path, payload: dict[str, Any]) -> None:
         os.fsync(stream.fileno())
 
 
+def failure_diagnostics(exc: Exception) -> dict[str, str]:
+    """Keep useful evidence even for pywinauto exceptions with an empty str()."""
+    message = str(exc).strip()
+    rendered = repr(exc)
+    return {
+        "error": message or rendered,
+        "error_type": type(exc).__name__,
+        "error_repr": rendered,
+    }
+
+
 def _remove_queued_path(queue: deque[tuple[list[ControlAction], str | None]], path: list[ControlAction]) -> bool:
     target = path_identity(path)
     for index, (candidate, _) in enumerate(queue):
@@ -428,6 +439,39 @@ def _set_edge_status(edges: list[dict[str, Any]], parent_state: str | None, path
             if target is not None:
                 edge["to"] = target
             return
+
+
+def canonical_states_by_signature(states: list[dict[str, Any]]) -> dict[str, str]:
+    """Return the first durable state id for every structural signature."""
+    result: dict[str, str] = {}
+    for record in states:
+        signature = str(record.get("signature_hash") or "")
+        state_id = str(record.get("state_id") or "")
+        if signature and state_id:
+            result.setdefault(signature, state_id)
+    return result
+
+
+def resolve_edge_targets(states: list[dict[str, Any]], edges: list[dict[str, Any]]) -> None:
+    """Resolve path-derived targets without discarding canonical revisit links."""
+    state_ids = {str(record["state_id"]) for record in states}
+    path_to_state = {
+        json.dumps(record["path"], ensure_ascii=False, sort_keys=True): record["state_id"]
+        for record in states
+    }
+    by_id = {record["state_id"]: record for record in states}
+    for edge in edges:
+        if edge.get("to") in state_ids:
+            continue
+        parent = by_id.get(edge.get("from"))
+        if parent is None:
+            edge["to"] = "unresolved_parent"
+            continue
+        child_path = [*parent["path"], edge["action"]]
+        edge["to"] = path_to_state.get(
+            json.dumps(child_path, ensure_ascii=False, sort_keys=True),
+            "revisited_or_blocked",
+        )
 
 
 def _find_control(window: Any, action: ControlAction) -> Any:
@@ -593,6 +637,16 @@ def _activate_rooms_catalog_fast(main: Any) -> None:
     time.sleep(0.35)
 
 
+def _activate_buildings_catalog_fast(main: Any) -> None:
+    """Return to the known Buildings catalog without restarting WinWatt."""
+    native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
+    catalog_menu = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Jegyzékek")
+    catalog_menu.click()
+    time.sleep(0.1)
+    catalog_menu.sub_menu().items()[BUILDINGS_CATALOG_INDEX].click()
+    time.sleep(0.35)
+
+
 def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
     """Restart into the sandbox project and return a room detail form."""
     global _ACTIVE_SANDBOX_SESSION
@@ -650,34 +704,38 @@ def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
     return window
 
 
-def open_sandbox_buildings(*, project_path: str) -> Any:
-    """Restart into a sandbox and return only the Buildings MDI child.
+def open_sandbox_buildings(*, project_path: str, reuse_session: bool = False) -> Any:
+    """Return the sandbox Buildings MDI child, reusing a verified session when requested.
 
     The MDI child is intentionally the exploration root.  Its descendants do
     not include the unrelated main-window toolbar, while modal dialogs opened
     from it are still discovered by ``active_buildings_window``.
     """
     project = Path(project_path).resolve()
-    # Buildings are grouped by a tree selection.  To make a replay independent
-    # of whichever group a previous branch created, reset only this disposable
-    # Buildings-run project before each root replay.
+    # Building dialogs can be nested.  In accelerated mode first unwind them
+    # and return to the catalog in the same process.  Any mismatch falls back
+    # to the fully isolated restart used by the original mapper.
+    global _ACTIVE_SANDBOX_SESSION
+    if reuse_session and _project_session_is_ready(project_path):
+        try:
+            main = get_main_window()
+            process_id = int(main.process_id())
+            _dismiss_secondary_windows(process_id, attempts=10)
+            _activate_buildings_catalog_fast(main)
+            return active_buildings_window(process_id)
+        except Exception:
+            pass
+    # Buildings are grouped by a tree selection.  When live reuse is not
+    # possible, reset only this disposable Buildings-run project before the
+    # isolated restart.  Never overwrite a project that is being reused live.
     if "buildings_runs" in {part.casefold() for part in project.parts} and project.name.casefold() == "testwwp.wwp":
         source = PROJECT_ROOT / "tests" / "testwwp.wwp"
         if source.resolve() != project:
             shutil.copy2(source, project)
-    # Building creation/edit dialogs can be nested (and temporarily disable
-    # one another), so each replay deliberately starts a fresh application
-    # session after the sandbox reset.
-    global _ACTIVE_SANDBOX_SESSION
     prepare_fresh_winwatt_session(project_path=project_path)
     main = get_main_window()
     _ACTIVE_SANDBOX_SESSION = (int(main.process_id()), str(project.resolve()))
-    native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
-    catalog_menu = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Jegyzékek")
-    catalog_menu.click()
-    time.sleep(0.15)
-    catalog_menu.sub_menu().items()[BUILDINGS_CATALOG_INDEX].click()
-    time.sleep(0.45)
+    _activate_buildings_catalog_fast(main)
     return active_buildings_window(int(main.process_id()))
 
 
@@ -702,16 +760,17 @@ def active_buildings_window(process_id: int) -> Any:
     return candidates[0]
 
 
-def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SANDBOX_BUILDING) -> Any:
+def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SANDBOX_BUILDING,
+                          reuse_session: bool = False) -> Any:
     """Open the dedicated sandbox Building detail form, creating it once.
 
     This mirrors ``open_sandbox_room``: every graph path starts from a known
-    editable record, so a child dialog can safely be replayed after restart.
+    editable record, so a child dialog can safely be replayed from a verified root.
     """
     # First activate the Buildings catalog without relying on any prior MDI
     # history.  A fresh sandbox contains no records; its first list row is the
     # deliberately named explorer record once creation has completed.
-    open_sandbox_buildings(project_path=project_path)
+    open_sandbox_buildings(project_path=project_path, reuse_session=reuse_session)
     main = get_main_window()
     process_id = int(main.process_id())
     native_main = Application(backend="win32").connect(process=process_id).window(handle=int(main.handle))
@@ -858,12 +917,41 @@ def _path_uses_excluded_tab(path: list[ControlAction], excluded_tab_names: set[s
     )
 
 
-def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, exclude_tab_names: set[str] | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
+def _path_enters_focus_tab(path: list[ControlAction], focus_tab_names: set[str]) -> bool:
+    """Keep only paths rooted below one of the requested tab areas."""
+    if not path or not focus_tab_names:
+        return True
+    return any(
+        action.control_type == "TabItem" and action.name.casefold() in focus_tab_names
+        for action in path
+    )
+
+
+def _path_uses_excluded_action(
+    path: list[ControlAction], excluded_action_names: set[str],
+    excluded_action_substrings: set[str],
+) -> bool:
+    """Keep terminal or externally consequential controls out of a scoped graph."""
+    for action in path:
+        label = action.name.casefold().strip()
+        if label in excluded_action_names:
+            return True
+        if any(token in label for token in excluded_action_substrings):
+            return True
+    return False
+
+
+def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, exclude_tab_names: set[str] | None = None, focus_tab_names: set[str] | None = None, exclude_action_names: set[str] | None = None, exclude_action_substrings: set[str] | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
     """Explore until no action replay yields a new structural state."""
     project = Path(project_path).resolve()
     root_opener = root_opener or (lambda value: open_sandbox_room(project_path=value, room_name=room_name))
     active_resolver = active_resolver or _active_window
     excluded_tab_names = {name.casefold() for name in (exclude_tab_names or set())}
+    focus_tab_names = {name.casefold() for name in (focus_tab_names or set())}
+    excluded_action_names = {name.casefold().strip() for name in (exclude_action_names or set())}
+    excluded_action_substrings = {
+        name.casefold().strip() for name in (exclude_action_substrings or set()) if name.strip()
+    }
     project_parts = {part.casefold() for part in project.parts}
     is_authorized_sandbox = "full_authorized_sandbox" in project_parts or (
         project.name.casefold() == "testwwp.wwp" and "buildings_runs" in project_parts and "sandbox" in project_parts
@@ -914,11 +1002,24 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
             (path, parent_state) for path, parent_state in queue
             if not _path_uses_excluded_tab(path, excluded_tab_names)
         )
+    if focus_tab_names:
+        queue = deque(
+            (path, parent_state) for path, parent_state in queue
+            if _path_enters_focus_tab(path, focus_tab_names)
+        )
+    if excluded_action_names or excluded_action_substrings:
+        queue = deque(
+            (path, parent_state) for path, parent_state in queue
+            if not _path_uses_excluded_action(
+                path, excluded_action_names, excluded_action_substrings,
+            )
+        )
     queue, pruned_paths = _prune_queue(queue, states, edges, failures)
     _write_progress(output_dir, states, edges, failures, queue)
     scheduled_paths = {path_identity(path) for path, _ in queue}
     processed_since_compaction = 0
-    visited: set[str] = {str(record["signature_hash"]) for record in states}
+    canonical_by_signature = canonical_states_by_signature(states)
+    visited: set[str] = set(canonical_by_signature)
     # A verified modal return point.  It is deliberately only an optimisation:
     # if the dialog cannot be restored exactly, the next path falls back to
     # fresh root replay.
@@ -963,14 +1064,16 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
             signature = state_signature(window)
             digest = state_hash(signature)
             if digest in visited:
-                _set_edge_status(edges, parent_state, path, "revisited")
+                canonical_state_id = canonical_by_signature[digest]
+                _set_edge_status(edges, parent_state, path, "revisited", canonical_state_id)
                 _append_event(output_dir, {
                     "path": [asdict(item) for item in path], "parent_state": parent_state,
-                    "outcome": "revisited",
+                    "outcome": "revisited", "state_id": canonical_state_id,
                 })
             else:
                 visited.add(digest)
                 state_id = f"state_{len(states):04d}_{digest[:10]}"
+                canonical_by_signature[digest] = state_id
                 record, actions = _write_state(
                     output_dir=output_dir, state_id=state_id, window=window, parent_state=parent_state,
                     parent_signature=parent_record["signature"] if parent_record else None, path=path,
@@ -991,6 +1094,12 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 candidates.extend([*path, *suffix] for suffix in dependent_confirmation_paths(actions))
                 for candidate in candidates:
                     if _path_uses_excluded_tab(candidate, excluded_tab_names):
+                        continue
+                    if not _path_enters_focus_tab(candidate, focus_tab_names):
+                        continue
+                    if _path_uses_excluded_action(
+                        candidate, excluded_action_names, excluded_action_substrings,
+                    ):
                         continue
                     candidate_id = path_identity(candidate)
                     if candidate_id in scheduled_paths:
@@ -1035,7 +1144,11 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
             key = json.dumps(serialized_path, ensure_ascii=False, sort_keys=True)
             matching = [item for item in failures if json.dumps(item.get("path") or [], ensure_ascii=False, sort_keys=True) == key]
             if len(matching) < MAX_FAILURE_RETRIES:
-                failure = {"path": serialized_path, "error": str(exc), "attempt": len(matching) + 1}
+                failure = {
+                    "path": serialized_path,
+                    **failure_diagnostics(exc),
+                    "attempt": len(matching) + 1,
+                }
                 failures.append(failure)
                 _append_event(output_dir, {
                     "path": serialized_path, "parent_state": parent_state,
@@ -1050,20 +1163,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
         if processed_since_compaction >= CHECKPOINT_COMPACTION_INTERVAL:
             _write_checkpoint(output_dir, states, edges, failures, queue)
             processed_since_compaction = 0
-    path_to_state = {
-        json.dumps(record["path"], ensure_ascii=False, sort_keys=True): record["state_id"]
-        for record in states
-    }
-    for edge in edges:
-        parent = next((record for record in states if record["state_id"] == edge["from"]), None)
-        if parent is None:
-            edge["to"] = "unresolved_parent"
-            continue
-        child_path = [*parent["path"], edge["action"]]
-        edge["to"] = path_to_state.get(
-            json.dumps(child_path, ensure_ascii=False, sort_keys=True),
-            "revisited_or_blocked",
-        )
+    resolve_edge_targets(states, edges)
     _write_checkpoint(output_dir, states, edges, failures, deque())
     graph = {"states": states, "edges": edges, "failures": failures, "queue_size": 0, "complete": True}
     _atomic_json_write(output_dir / "graph.json", graph)

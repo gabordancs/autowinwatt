@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "policy": "Only version-bound operations with deterministic save/reopen evidence are executable.",
+  "tools": [
+    {
+      "tool_id": "winwatt.building.orientation.roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Write an integer building orientation on a disposable copy, save, reopen and verify it.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_building_energy_modes",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP path; never modified",
+        "output": "new empty evidence directory",
+        "angle": "integer degrees different from the source value"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "before/write/reopen JSON and PNG files"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "source project contains exactly one named sandbox building"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip.passed == true",
+        "report.source_unchanged == true",
+        "report.mode_after_reopen == report.original_mode"
+      ],
+      "retry_policy": "retry only active-desktop failures in a fresh output directory",
+      "idempotency": "repeatable because every run creates and restores a separate project copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/e20260929b/report.json",
+          "deterministic": true,
+          "assertion": "orientation 0 -> 42 degrees survived save/reopen and the source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.system.lighting.create_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Create a minimal 2023 lighting system on a disposable copy, save, reopen and verify its name.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_lighting_system_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP path; never modified",
+        "output": "new empty evidence directory",
+        "name": "unique lighting-system name"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "dialog/list screenshots and row snapshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "2023 calculation mode and systems tab are available"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.source_unchanged == true",
+        "report.copy_changed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a unique system name",
+      "idempotency": "repeatable on a fresh project copy; names must be unique inside one copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/lighting_roundtrip_20260929b/report.json",
+          "deterministic": true,
+          "assertion": "the created lighting-system name remained present after full project reopen"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.zone.heated.roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Set the whole-building heated-zone name on a disposable copy, save, reopen and verify it in the zone dialog.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_heated_zone_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP path; never modified",
+        "output": "new empty evidence directory",
+        "name": "heated-zone name"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "zone dialog and building-zone screenshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "source project has a non-zero whole-building area"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.reopened_zone_name == requested name",
+        "report.source_unchanged == true"
+      ],
+      "retry_policy": "retry only active-desktop failures in a fresh output directory",
+      "idempotency": "repeatable because every run modifies a separate project copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/heated_zone_roundtrip_20260930b/report.json",
+          "deterministic": true,
+          "assertion": "the whole-building heated-zone name remained present after full project reopen"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.system.heating.create_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Create a whole-building electric heating system on a copy and verify both the system and heated zone after reopen.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_heating_system_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "WWP containing a verified heated-zone name; never modified",
+        "output": "new empty evidence directory",
+        "name": "unique heating-system name",
+        "expected_zone": "heated-zone name that must survive the same reopen"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP containing zone and heating system",
+        "evidence": "area, generator, regulation, distribution and reopened-system screenshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "2023 calculation mode and systems tab are available",
+        "source contains the expected whole-building heated zone"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.system_roundtrip_passed == true",
+        "report.zone_roundtrip_passed == true",
+        "report.source_unchanged == true",
+        "report.copy_changed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh project copy",
+      "idempotency": "repeatable on a fresh project copy; system names must be unique inside one copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/heating_system_roundtrip_20260930b/report.json",
+          "deterministic": true,
+          "assertion": "the electric heating system and heated-zone name both remained after full project reopen"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.certificate.preflight",
+      "version": "1.1.0",
+      "status": "verified",
+      "description": "Run deterministic geometry, material, native-XML readback and full-certificate readiness gates without opening WinWatt.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.certificate_preflight",
+      "safety_scope": "local_files",
+      "mutates_project": false,
+      "input_contract": {
+        "profile": "recorded WinWatt version-profile JSON used for provenance",
+        "output": "new empty evidence directory",
+        "model": "reviewed certificate model JSON",
+        "readback_xml": "optional native XML exported after WinWatt reopen",
+        "catalog_xml": "optional local WinWatt material catalogue",
+        "scope": "envelope, g5_calculation or full_certificate",
+        "tolerance": "maximum accepted absolute numeric difference"
+      },
+      "output_contract": {
+        "report": "preflight_report.json",
+        "readback_validation": "readback_validation.json when readback XML is supplied",
+        "layer_audit": "layer_audit.json when a catalogue is supplied"
+      },
+      "preconditions": [
+        "input files are local and immutable during validation",
+        "model geometry has been reviewed or is explicitly marked for review",
+        "readback XML belongs to the same source model when supplied"
+      ],
+      "postconditions": [
+        "report.status is passed, review_required or failed",
+        "every release gate has a status and issue list",
+        "g5_calculation reports whether reviewed G1-G4 inputs are ready for calculation",
+        "report contains input SHA-256 hashes",
+        "report.llm_used == false",
+        "no WinWatt process is started"
+      ],
+      "retry_policy": "rerun only into a fresh output directory after an input changes",
+      "idempotency": "deterministic for identical local input bytes and tolerance apart from timestamps and output paths",
+      "evidence": [
+        {
+          "kind": "validation",
+          "path": "data/certificate_builds/delceg/v2_two_buildings_review/offline_preflight_20260930a/preflight_report.json",
+          "deterministic": true,
+          "assertion": "the gate detected the known boundary-count, azimuth and room-condition readback discrepancies without starting WinWatt"
+        },
+        {
+          "kind": "validation",
+          "path": "tests/test_certificate_preflight.py",
+          "deterministic": true,
+          "assertion": "the G5 calculation scope accepts reviewed systems without requiring calculation results and lists missing human review"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.mapping.campaign.summarize",
+      "version": "1.1.0",
+      "status": "verified",
+      "description": "Summarize a live or stopped mapping campaign, verify its source hash, and compact graph progress and repeated actions without opening WinWatt.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.summarize_mapping_campaign",
+      "safety_scope": "local_files",
+      "mutates_project": false,
+      "input_contract": {
+        "profile": "recorded WinWatt version-profile JSON used for provenance",
+        "output": "new empty summary directory",
+        "campaign": "mapping campaign directory containing campaign_state.json"
+      },
+      "output_contract": {
+        "report": "campaign_summary.json"
+      },
+      "preconditions": [
+        "campaign_state.json is atomically readable",
+        "the recorded source WWP still exists"
+      ],
+      "postconditions": [
+        "source hash is compared with the campaign baseline",
+        "job states and graph progress are compacted",
+        "canonical revisits, alternative routes, failure clusters and remaining frontier are reported",
+        "successful and failed actions remain observations only",
+        "report.llm_used reflects the campaign and no LLM is called"
+      ],
+      "retry_policy": "may be rerun into a fresh output directory while the campaign is active",
+      "idempotency": "a snapshot is deterministic for unchanged campaign files apart from timestamps and output paths",
+      "evidence": [
+        {
+          "kind": "validation",
+          "path": "data/runtime_maps/certification_mapping/mainroadmap_20260929T230344/summaries/summary_20260930c/campaign_summary.json",
+          "deterministic": true,
+          "assertion": "the live campaign snapshot verified the unchanged source and compacted current jobs, graph progress and action outcomes without using WinWatt UI"
+        },
+        {
+          "kind": "validation",
+          "path": "tests/test_summarize_mapping_campaign.py",
+          "deterministic": true,
+          "assertion": "graph analysis identifies multi-route targets, canonical revisits, unresolved revisits, failure clusters and frontier actions"
+        }
+      ]
+    },
+    {
+      "tool_id": "webwatt.certificate.intake.local",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Process a local certificate PDF or XML into hashed review artifacts without network, WinWatt, or AI; safely reuse a completed identical local intake.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.webwatt_certificate_intake",
+      "safety_scope": "local_files",
+      "mutates_project": false,
+      "input_contract": {
+        "profile": "recorded WinWatt version-profile JSON used for provenance",
+        "output": "new or identically completed local intake directory",
+        "input_file": "local PDF or XML certificate source",
+        "catalog_xml": "required local WinWatt material catalogue for PDF input"
+      },
+      "output_contract": {
+        "report": "intake_manifest.json",
+        "review_artifacts": "hashed JSON files listed by the manifest"
+      },
+      "preconditions": [
+        "input is a local PDF or XML file",
+        "PDF processing has a local material catalogue",
+        "an existing output manifest must match the exact source hash"
+      ],
+      "postconditions": [
+        "manifest.status == review_required",
+        "manifest.review_required == true",
+        "manifest.winwatt_started == false",
+        "manifest.llm_used == false",
+        "every review artifact has SHA-256 and byte size"
+      ],
+      "retry_policy": "reuse a complete manifest only for identical source bytes; reject changed input or incomplete cache",
+      "idempotency": "identical local source bytes return the existing complete manifest without rebuilding artifacts",
+      "evidence": [
+        {
+          "kind": "validation",
+          "path": "data/webwatt_jobs/dry_run_20260930a/intake_manifest.json",
+          "deterministic": true,
+          "assertion": "local XML intake produced hashed review artifacts with review_required true and both winwatt_started and llm_used false"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.room.create_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Create one named room on a disposable project copy, save, reopen and verify it.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_room_create_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "WWP containing exactly one sandbox building; never modified",
+        "output": "new empty evidence directory",
+        "name": "unique room name"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "sandbox/prepared.wwp",
+        "evidence": "RoomService operation evidence including reopened room readback"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "source project contains exactly one building"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.operation.verified == true",
+        "report.source_unchanged == true",
+        "report.copy_changed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh output directory and unique room name",
+      "idempotency": "repeatable because every run creates and modifies a separate project copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/tool_evidence/room_create_20260930b/report.json",
+          "deterministic": true,
+          "assertion": "the named room remained present after Save As, full WinWatt close/reopen and RoomService readback; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.structure.layered.create_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Compile one layered structure to native XML, import it into a clean WinWatt project, save, reopen, export and verify the layer fields.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_layered_structure_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP used to launch the profiled WinWatt; never modified",
+        "output": "new empty evidence directory",
+        "template_xml": "native XML export from the same WinWatt version",
+        "name": "unique structure name",
+        "layer_name": "optional layer name",
+        "thickness_cm": "optional positive layer thickness in centimetres"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "sandbox/layered.wwp",
+        "evidence": "compiled import XML and native XML exported after reopen"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "template XML contains panel, layer, room and building examples"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.readback.layered == Yes",
+        "readback layer name and thickness equal the requested values",
+        "report.source_unchanged == true",
+        "report.copy_changed == true"
+      ],
+      "retry_policy": "retry only in a fresh output directory; never reuse a partially created clean project",
+      "idempotency": "repeatable because every run creates a new clean project and uses a unique output directory",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/tool_evidence/layered_structure_20260930b/report.json",
+          "deterministic": true,
+          "assertion": "native XML import persisted the named layered structure and exact 0.1 m layer after full close/reopen/export; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.room.boundary.assign_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Create a named room, assign an existing structure reference to its boundary, save, reopen and verify the reference.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_room_boundary_assign_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "WWP containing exactly one building and the referenced structure; never modified",
+        "output": "new empty evidence directory",
+        "room_name": "unique room name",
+        "structure_reference": "existing WinWatt structure caption",
+        "area_m2": "optional positive boundary area"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "sandbox/prepared.wwp",
+        "evidence": "before-save and reopened boundary-reference captions"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "source contains exactly one building and the named structure reference"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.operation.verified == true",
+        "reopened boundary reference equals the requested structure caption",
+        "report.source_unchanged == true",
+        "report.copy_changed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures in a fresh output directory with a unique room name",
+      "idempotency": "repeatable because every run creates and modifies a separate project copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/tool_evidence/boundary_assign_20260930a/report.json",
+          "deterministic": true,
+          "assertion": "the existing Külső fal reference remained assigned after full save/close/reopen and deterministic UI-caption readback; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.system.dialogs.inventory",
+      "version": "0.1.0",
+      "status": "observed",
+      "description": "Open and cancel the six 2023 system creation dialogs for structural inventory.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "safety_scope": "read_only",
+      "mutates_project": false,
+      "preconditions": [
+        "active unlocked Windows desktop",
+        "2023 systems tab is available"
+      ],
+      "postconditions": [
+        "all opened dialogs were cancelled",
+        "source and copy hashes are unchanged"
+      ],
+      "evidence": [
+        {
+          "kind": "observation",
+          "path": "data/runtime_maps/systems_dialogs_20260929c/report.json",
+          "deterministic": true,
+          "assertion": "six dialog classes and captions were captured without changing the project"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.zone.dialogs.inventory",
+      "version": "0.1.0",
+      "status": "observed",
+      "description": "Open and cancel heated and cooled zone dialogs for structural inventory.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "safety_scope": "read_only",
+      "mutates_project": false,
+      "preconditions": [
+        "active unlocked Windows desktop",
+        "building energy tabs are available"
+      ],
+      "postconditions": [
+        "both dialogs were cancelled",
+        "source and copy hashes are unchanged"
+      ],
+      "evidence": [
+        {
+          "kind": "observation",
+          "path": "data/runtime_maps/zone_dialogs_20260929a/report.json",
+          "deterministic": true,
+          "assertion": "heated and cooled TThermicZoneForm dialogs were captured without changing the project"
+        }
+      ]
+    }
+  ]
+}

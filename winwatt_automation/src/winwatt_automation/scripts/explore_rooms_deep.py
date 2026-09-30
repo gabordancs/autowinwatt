@@ -47,6 +47,10 @@ def main() -> int:
         help="Do not traverse this Helyiségek tab; repeat for multiple tabs.",
     )
     parser.add_argument(
+        "--focus-tab", action="append", default=[], metavar="TAB",
+        help="Explore only paths below this room tab; repeat for multiple areas.",
+    )
+    parser.add_argument(
         "--session-islands", action="store_true",
         help="Reuse a verified parent dialog for its button-child branches; root replay remains the fallback.",
     )
@@ -82,6 +86,7 @@ def main() -> int:
             project_path=args.project, output_dir=output_dir, room_name=args.room_name,
             resume=args.resume, retry_failures=args.retry_failures,
             exclude_tab_names=excluded_tabs,
+            focus_tab_names=set(args.focus_tab),
             session_islands=args.session_islands,
         )
     finally:

@@ -13,6 +13,23 @@ Nem hív ChatGPT-t (`allow_llm=False`), nem indít WinWattot, nem importál nat�
 
 ## Telepítés és indítás Windows alatt
 
+Hálózat és Supabase-kulcs nélküli XML dry-run:
+
+```powershell
+python scripts\webwatt_certificate_worker.py dry-run `
+  --source tests\test.xml `
+  --workspace data\webwatt_jobs\manual_xml_test
+```
+
+PDF esetén a `--catalog C:\...\anyagkatalogus.xml` kapcsoló is kötelező. A
+dry-run `intake_manifest.json` fájlt készít a forrás hashével, az eredményfájlok
+hashével és méretével, valamint `review_required: true`, `winwatt_started:
+false` és `llm_used: false` kapukkal. Azonos forrás és teljes manifest esetén a
+helyi eredmény újrafelhasználható; megváltozott forrást ugyanabban a
+könyvtárban elutasít.
+
+Az élő queue-workerhez:
+
 A `winwatt_automation` virtuális környezetéből állítsd be a helyi változókat. A service role kulcsot ne tedd sem a böngészős `.env` fájlba, sem gitbe.
 
 ```powershell
@@ -34,3 +51,14 @@ Az adatbázisban előbb alkalmazni kell a WebWatt `20260915110000_add_certificat
 ## Működési hely
 
 A feldolgozás átmeneti, helyi munkamappája alapból `data\webwatt_jobs\<job-id>`. A forrás és az eredmény JSON a privát Supabase Storage-ban marad; a projektben azok piszkozat dokumentumként jelennek meg. A dolgozó gép kikapcsolt állapotában a feladat várakozó státuszban marad.
+
+Az élő Supabase-feltöltés hálózati idempotenciáját külön integrációs teszttel
+kell még bizonyítani; a helyi cache újraindíthatósága ezt önmagában nem igazolja.
+
+A worker újrapróbáláskor előbb ellenőrzi a cél Storage-objektumot. A
+`project_documents` sorhoz a projektazonosítóból és a teljes storage-útvonalból
+determinista UUID készül; a PostgREST beszúrás `ignore-duplicates` móddal fut.
+Így ugyanaz a job/artefakt pár soros retry és beszúrási verseny esetén is
+ugyanarra a Storage-kulcsra és elsődleges kulcsra mutat. Ezt helyi fake API-val
+teszteljük; a tényleges Supabase Storage HEAD/409 és PostgREST viselkedést az
+élő környezetben még külön integrációs próbával kell igazolni.
