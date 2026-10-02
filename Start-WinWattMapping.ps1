@@ -34,6 +34,7 @@ if ($ResumeLatest) { $arguments += "--resume-latest" }
 if ($SkipBackground) { $arguments += "--skip-background" }
 if ($RetryFailures) { $arguments += "--retry-background-failures" }
 $arguments += @("--background-scope", $Scope)
+if ($Scope -eq "certification") { $arguments += "--background-only" }
 
 Write-Host "WinWatt mapping indul. A Windows munkamenet maradjon feloldva."
 Write-Host "Leállítás: Ctrl+C. Folytatás: .\Start-WinWattMapping.ps1 -ResumeLatest"

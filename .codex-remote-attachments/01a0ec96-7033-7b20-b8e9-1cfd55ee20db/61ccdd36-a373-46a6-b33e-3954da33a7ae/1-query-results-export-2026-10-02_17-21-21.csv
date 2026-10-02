@@ -1,0 +1,15 @@
+check_type;object_name;passed
+function;approve_certification_gate(uuid,text);true
+function;certification_project_gate_issues(uuid,text);true
+job_type enum;certificate_intake;true
+survey_projects column;administrative_data;true
+survey_projects column;administrative_data_source;true
+survey_projects column;project_folder_name;true
+survey_projects column;source_client_form_id;true
+survey_projects column;workflow_work_number;true
+table;certification_case_events;true
+table;certification_cases;true
+table;certification_evidence_requests;true
+table;project_document_evidence;true
+table;project_review_candidates;true
+table;project_review_events;true

@@ -37,6 +37,13 @@ az ellenőrzési riportokat, a fotókat és a kiadási csomagot. Egy adatot csak
 egyszer kelljen megadni; a WinWatt projektadatai ebből a jóváhagyott
 adatlapból készüljenek.
 
+Ha a WinWatt ET-varázsló valamely adminisztratív mezője nem tölthető ki a
+projektadatokból, a folyamat `manual_input_required` állapotba kerül. A kezelő
+ugyanabban a jóváhagyó felületen kézzel megadhatja vagy felülbírálhatja az
+adatot; az érték mellé `manual` eredet, időpont és jóváhagyó kerül. A
+folytatás csak a kötelező hiányok megszűnése után engedélyezett, a kézi adat
+pedig a későbbi újragenerálásnál is megmarad.
+
 ### 2. Források és helyszíni felmérés
 
 A terveket, metszeteket, konszignációkat, számlákat, gépkönyveket és korábbi

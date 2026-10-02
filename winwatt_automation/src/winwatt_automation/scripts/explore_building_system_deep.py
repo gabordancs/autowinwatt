@@ -83,7 +83,7 @@ def main() -> int:
         active_resolver=_active_window,
     )
     print({"system": args.system, "states": len(graph["states"]), "edges": len(graph["edges"]), "complete": graph["complete"]})
-    return 0
+    return 0 if graph["complete"] and bool(graph["states"]) else 2
 
 
 if __name__ == "__main__":

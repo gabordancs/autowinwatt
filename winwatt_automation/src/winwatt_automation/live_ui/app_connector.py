@@ -134,7 +134,17 @@ def _candidate_from_window(window: "BaseWrapper", backend: str = "win32") -> dic
     else:
         control_type = None
     process_id = _safe_call(window, "process_id", None)
-    handle = _safe_call(window, "handle", None)
+    # pywinauto exposes ``handle`` as a property on wrappers. Some test
+    # doubles expose it as a method, so support both shapes. Losing the
+    # native handle is especially harmful while WinWatt's main window is
+    # temporarily hidden: process/class lookup may then fail although the
+    # exact window is already known.
+    handle = _safe_getattr(window, "handle", None)
+    if callable(handle):
+        try:
+            handle = handle()
+        except Exception:
+            handle = None
     rectangle = _safe_call(window, "rectangle", None)
 
     candidate = {
@@ -418,8 +428,20 @@ def _resolve_uia_main_window() -> Any:
         )
 
     top_level_windows = app_uia.windows(top_level_only=True)
-    candidates = [_candidate_from_window(window, backend="uia") for window in top_level_windows]
+    candidates = [
+        _candidate_from_window(window, backend="uia")
+        for window in top_level_windows
+    ]
     logger.info("DBG_WINWATT_RESOLVE_UIA_FALLBACK_CANDIDATES candidates={}", candidates)
+
+    # A Delphi startup splash (TLogoPictureForm) can be the only visible UIA
+    # top-level window for a few seconds. It has no menus and must never enter
+    # the main-window cache. Wait for the actual TMainForm instead.
+    main_candidates = [
+        candidate for candidate in candidates
+        if str(candidate.get("class_name") or "").casefold() == "tmainform"
+        and "winwatt" in str(candidate.get("title") or "").casefold()
+    ]
 
     def _uia_fallback_score(candidate: dict[str, Any]) -> tuple[int, int, int, int]:
         title = str(candidate.get("title") or "").lower()
@@ -433,9 +455,9 @@ def _resolve_uia_main_window() -> Any:
             area,
         )
 
-    ranked_candidates = sorted(candidates, key=_uia_fallback_score, reverse=True)
+    ranked_candidates = sorted(main_candidates, key=_uia_fallback_score, reverse=True)
     if not ranked_candidates:
-        raise WinWattNotRunningError("No UIA top-level windows available after process attach")
+        raise WinWattNotRunningError("No UIA TMainForm available after process attach")
 
     best_candidate = ranked_candidates[0]
     best_handle = best_candidate.get("handle")

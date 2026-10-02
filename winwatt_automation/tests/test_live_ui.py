@@ -134,6 +134,17 @@ class FakeWindow:
         self.keyboard_focus_calls += 1
 
 
+def test_candidate_reads_pywinauto_handle_property():
+    class PropertyHandleWindow(FakeWindow):
+        handle = 4321
+
+    window = PropertyHandleWindow(title="WinWatt gólya", class_name="TMainForm")
+
+    candidate = app_connector._candidate_from_window(window)
+
+    assert candidate["handle"] == 4321
+
+
 class FakeControl:
     def __init__(self, name=None, control_type=None, class_name=None, automation_id=None, children=None):
         self.element_info = FakeElementInfo(

@@ -161,3 +161,19 @@ Ez mapping- és adapter-bizonyítékot gyűjt, nem dönt energetikai szakkérdé
 és nem készít automatikusan hivatalos tanúsítványt. A létrejövő capability csak
 akkor válhat a tanúsítási pipeline részévé, ha golden projekten, rögzített
 WinWatt-verzióval és explicit utófeltétellel is igazolt.
+## ET XML és gépészeti rendszerek célzott kampánya
+
+Az ET tanúsítási varázsló és a hat épülettechnikai rendszer külön, folytatható
+gráfjának időkorlát nélküli futtatása:
+
+```powershell
+.\Start-WinWattMapping.ps1 -UntilComplete -Scope certification
+```
+
+Dupla kattintással ugyanez indítható a
+`start_winwatt_certification_mapping_unlimited.cmd` fájlból. Ez a mód kihagyja
+a már lezárt általános leltárakat, minden ág számára külön sandboxmásolatot
+készít, és egyszerre csak egy WinWatt UI-automatizálást futtat. Az ET induló
+állapotában kiválasztja az épületet, szükség esetén a tanúsítási zónát, majd a
+szerkezeti kört; külső feltöltési, beküldési és hitelesítési gombot nem aktivál.
+

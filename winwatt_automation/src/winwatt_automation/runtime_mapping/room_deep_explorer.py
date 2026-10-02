@@ -637,10 +637,49 @@ def _activate_rooms_catalog_fast(main: Any) -> None:
     time.sleep(0.35)
 
 
+def _wait_for_native_menu_item(native_main: Any, label: str, *, timeout: float = 6.0) -> Any:
+    """Resolve a Delphi main-menu item after the MDI frame has finished loading.
+
+    ``Application.window(...).menu()`` temporarily returns ``None`` while a
+    freshly opened project is constructing its MDI menu.  The old immediate
+    ``.items()`` lookup turned that normal startup interval into a failed graph
+    root.  Polling the already selected native window keeps the recovery local
+    and avoids another WinWatt restart.
+    """
+    deadline = time.monotonic() + timeout
+    last_error: Exception | None = None
+    while time.monotonic() < deadline:
+        try:
+            menu = native_main.menu()
+            if menu is not None:
+                for item in menu.items():
+                    if item.text().replace("&", "").strip() == label:
+                        return item
+        except Exception as exc:
+            last_error = exc
+        time.sleep(0.15)
+    detail = f": {last_error!r}" if last_error is not None else ""
+    raise RuntimeError(f"Native menu item {label!r} was not ready within {timeout:.1f}s{detail}")
+
+
+def _wait_for_native_descendant(native_window: Any, class_name: str, *, timeout: float = 6.0) -> Any:
+    """Wait for a Delphi child control and tolerate one extra panel level."""
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        try:
+            matches = [item for item in native_window.descendants() if item.class_name() == class_name]
+            if matches:
+                return matches[0]
+        except Exception:
+            pass
+        time.sleep(0.15)
+    raise RuntimeError(f"Native descendant {class_name!r} was not ready within {timeout:.1f}s")
+
+
 def _activate_buildings_catalog_fast(main: Any) -> None:
     """Return to the known Buildings catalog without restarting WinWatt."""
     native = Application(backend="win32").connect(process=int(main.process_id())).window(handle=int(main.handle))
-    catalog_menu = next(item for item in native.menu().items() if item.text().replace("&", "").strip() == "Jegyzékek")
+    catalog_menu = _wait_for_native_menu_item(native, "Jegyzékek")
     catalog_menu.click()
     time.sleep(0.1)
     catalog_menu.sub_menu().items()[BUILDINGS_CATALOG_INDEX].click()
@@ -734,6 +773,18 @@ def open_sandbox_buildings(*, project_path: str, reuse_session: bool = False) ->
             shutil.copy2(source, project)
     prepare_fresh_winwatt_session(project_path=project_path)
     main = get_main_window()
+    # WinWatt can finish loading the project while its TMainForm is still
+    # hidden.  The native menu then resolves to None even though the exact
+    # window handle is available.  Restore and focus the sandbox window before
+    # opening the Buildings catalog.
+    for method_name in ("restore", "set_focus", "set_keyboard_focus"):
+        method = getattr(main, method_name, None)
+        if callable(method):
+            try:
+                method()
+            except Exception:
+                pass
+    time.sleep(0.25)
     _ACTIVE_SANDBOX_SESSION = (int(main.process_id()), str(project.resolve()))
     _activate_buildings_catalog_fast(main)
     return active_buildings_window(int(main.process_id()))
@@ -760,6 +811,35 @@ def active_buildings_window(process_id: int) -> Any:
     return candidates[0]
 
 
+def _wait_for_buildings_list(process_id: int, *, timeout: float = 15.0) -> tuple[Any, Any]:
+    """Reacquire the Buildings MDI child until its native list is available.
+
+    Activating a Delphi MDI catalog can replace the child window after the UIA
+    wrapper has already been returned.  Polling descendants on that stale
+    handle can never succeed, even though the replacement list becomes visible
+    moments later.  Re-resolving both handles on every pass covers that swap.
+    """
+    deadline = time.monotonic() + timeout
+    last_error: Exception | None = None
+    while time.monotonic() < deadline:
+        try:
+            child = active_buildings_window(process_id)
+            native_child = Application(backend="win32").connect(
+                process=process_id,
+            ).window(handle=int(child.handle))
+            matches = [
+                item for item in native_child.descendants()
+                if item.class_name() == "TListViewWithHeader"
+            ]
+            if matches:
+                return child, matches[0]
+        except Exception as exc:
+            last_error = exc
+        time.sleep(0.15)
+    detail = f": {last_error!r}" if last_error is not None else ""
+    raise RuntimeError(f"Buildings list was not ready within {timeout:.1f}s{detail}")
+
+
 def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SANDBOX_BUILDING,
                           reuse_session: bool = False) -> Any:
     """Open the dedicated sandbox Building detail form, creating it once.
@@ -774,17 +854,24 @@ def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SAN
     main = get_main_window()
     process_id = int(main.process_id())
     native_main = Application(backend="win32").connect(process=process_id).window(handle=int(main.handle))
-    child = active_buildings_window(process_id)
-    native_child = Application(backend="win32").connect(process=process_id).window(handle=int(child.handle))
-    list_view = next(item for item in native_child.children() if item.class_name() == "TListViewWithHeader")
+    child, list_view = _wait_for_buildings_list(process_id)
     if ctypes.windll.user32.SendMessageW(int(list_view.handle), 0x1004, 0, 0) == 0:
-        element_menu = next(item for item in native_main.menu().items() if item.text().replace("&", "").strip() == "Elem")
+        element_menu = _wait_for_native_menu_item(native_main, "Elem")
         element_menu.click()
         time.sleep(0.15)
         element_menu.sub_menu().items()[0].click()
         time.sleep(0.35)
         creation = _active_window(process_id)
-        edit = next(item for item in creation.descendants(control_type="Edit") if item.is_visible())
+        edit_deadline = time.monotonic() + 6.0
+        edit = None
+        while time.monotonic() < edit_deadline:
+            edits = [item for item in creation.descendants(control_type="Edit") if item.is_visible()]
+            if edits:
+                edit = edits[0]
+                break
+            time.sleep(0.15)
+        if edit is None:
+            raise RuntimeError("Building creation name field was not ready")
         edit.set_edit_text(building_name)
         creation.set_focus()
         keyboard.send_keys("{ENTER}")
@@ -805,9 +892,7 @@ def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SAN
             raise RuntimeError("Building creation did not open TBuildingModifyForm")
         deadline = time.monotonic() + 8.0
         while time.monotonic() < deadline:
-            child = active_buildings_window(process_id)
-            native_child = Application(backend="win32").connect(process=process_id).window(handle=int(child.handle))
-            list_view = next(item for item in native_child.children() if item.class_name() == "TListViewWithHeader")
+            child, list_view = _wait_for_buildings_list(process_id)
             if ctypes.windll.user32.SendMessageW(int(list_view.handle), 0x1004, 0, 0) > 0:
                 break
             time.sleep(0.15)
@@ -894,7 +979,13 @@ def _atomic_json_write(path: Path, payload: Any) -> None:
 
 
 def _write_checkpoint(output_dir: Path, states: list[dict[str, Any]], edges: list[dict[str, Any]], failures: list[dict[str, Any]], queue: deque[tuple[list[ControlAction], str | None]]) -> None:
-    graph = {"states": states, "edges": edges, "failures": failures, "queue_size": len(queue), "complete": not queue}
+    graph = {
+        "states": states,
+        "edges": edges,
+        "failures": failures,
+        "queue_size": len(queue),
+        "complete": bool(states) and not queue,
+    }
     # Keep the replay queue outside the human-readable graph.  This makes an
     # interrupted run resumable without bloating each graph snapshot.
     queue_payload = [
@@ -991,7 +1082,10 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
             queue.extend(
                 ([ControlAction(**action) for action in item["path"]], None)
                 for item in failures
-                if item.get("path") and retry_count[json.dumps(item["path"], ensure_ascii=False, sort_keys=True)] < MAX_FAILURE_RETRIES
+                # The empty path is the root opener. It must be retryable
+                # after a startup/modal failure just like every child path.
+                if "path" in item
+                and retry_count[json.dumps(item["path"], ensure_ascii=False, sort_keys=True)] < MAX_FAILURE_RETRIES
             )
     recovered_events = _replay_event_log(output_dir, states, edges, failures, queue)
     # A resumed historical queue can already contain paths below tabs that are
@@ -1165,6 +1259,12 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
             processed_since_compaction = 0
     resolve_edge_targets(states, edges)
     _write_checkpoint(output_dir, states, edges, failures, deque())
-    graph = {"states": states, "edges": edges, "failures": failures, "queue_size": 0, "complete": True}
+    graph = {
+        "states": states,
+        "edges": edges,
+        "failures": failures,
+        "queue_size": 0,
+        "complete": bool(states),
+    }
     _atomic_json_write(output_dir / "graph.json", graph)
     return graph

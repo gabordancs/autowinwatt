@@ -193,6 +193,37 @@ def _safe_capture_snapshot(state_id: str) -> RuntimeStateSnapshot | None:
         return None
 
 
+def _dismiss_known_startup_prompts() -> bool:
+    """Dismiss WinWatt prompts that otherwise keep TMainForm hidden.
+
+    The legacy application can ask whether a failed online version check
+    should be repeated daily. Mapping must remain offline and deterministic,
+    so the safe answer is ``Nem``. No other dialog is touched here.
+    """
+    if os.name != "nt":
+        return False
+    try:
+        from pywinauto import Desktop
+
+        for dialog in Desktop(backend="win32").windows(top_level_only=True):
+            if dialog.class_name() != "#32770" or not dialog.is_visible():
+                continue
+            texts = " ".join(
+                str(control.window_text() or "")
+                for control in [dialog, *dialog.descendants()]
+            ).casefold()
+            if "verzió ellenőrzés sikertelen" not in texts:
+                continue
+            for button in dialog.descendants(class_name="Button"):
+                if button.window_text().replace("&", "").strip().casefold() == "nem":
+                    button.click()
+                    time.sleep(0.3)
+                    return True
+    except Exception as exc:
+        logger.warning("known_startup_prompt_dismiss_failed error={}", exc)
+    return False
+
+
 def _taskkill_process_image(image_name: str) -> dict[str, Any]:
     completed = subprocess.run(
         ["taskkill", "/F", "/IM", image_name, "/T"],
@@ -229,6 +260,7 @@ def _wait_for_startup_snapshot(
     normalized_expected = _normalize_project_path(expected_project_path)
     last_snapshot: RuntimeStateSnapshot | None = None
     while time.monotonic() < deadline:
+        _dismiss_known_startup_prompts()
         snapshot = _safe_capture_snapshot(state_id)
         if snapshot is not None:
             last_snapshot = snapshot
