@@ -215,13 +215,13 @@ def build_jobs(
                     "--profile", str(profile),
                     "--project", str(ensure_job_project(source, root)),
                     "--output-dir", str(root / "graph"),
-                    *(["--resume"] if attempt > 1 or (root / "graph" / "graph.checkpoint.json").is_file() else []),
+                    *(["--resume"] if (root / "graph" / "graph.checkpoint.json").is_file() else []),
                     *(["--retry-failures"] if retry_background_failures else []),
                 ],
                 bounded=False,
             ))
             for system in (
-                "heating", "water_heating", "lighting", "airing", "cooling", "gain_or_loss",
+                "heating", "water_heating", "airing", "cooling", "lighting", "gain_or_loss",
             ):
                 jobs.append(Job(
                     f"building_system_{system}_deep_mapping",
@@ -231,7 +231,7 @@ def build_jobs(
                         "--project", str(ensure_job_project(source, root)),
                         "--output-dir", str(root / "graph"),
                         "--system", system_name,
-                        *(["--resume"] if attempt > 1 or (root / "graph" / "graph.checkpoint.json").is_file() else []),
+                        *(["--resume"] if (root / "graph" / "graph.checkpoint.json").is_file() else []),
                         *(["--retry-failures"] if retry_background_failures else []),
                     ],
                     bounded=False,
@@ -244,7 +244,7 @@ def build_jobs(
                     "--project", str(ensure_job_project(source, root)),
                     "--output-dir", str(root / "graph"),
                     "--version-profile", str(profile), "--session-islands",
-                    *(["--resume"] if attempt > 1 or (root / "graph" / "graph.checkpoint.json").is_file() else []),
+                    *(["--resume"] if (root / "graph" / "graph.checkpoint.json").is_file() else []),
                     *(["--retry-failures"] if retry_background_failures else []),
                 ],
                 bounded=False,
@@ -282,8 +282,15 @@ def load_report(job: Job, job_root: Path, attempt: int) -> dict[str, Any] | None
         return None
     try:
         report = json.loads(path.read_text(encoding="utf-8"))
-        if path.name == "graph.json" and report.get("complete"):
-            report["status"] = "completed"
+        if path.name == "graph.json":
+            # An exhausted queue is only a completed mapping when the root
+            # itself was captured. Previously a root-opening exception
+            # yielded zero states and still allowed a false pass.
+            report["status"] = (
+                "completed"
+                if report.get("complete") and bool(report.get("states"))
+                else "failed"
+            )
         return report
     except Exception as exc:
         return {"status": "unreadable", "error": repr(exc), "path": str(path)}
@@ -410,6 +417,10 @@ def main() -> int:
     parser.add_argument("--skip-roundtrip", action="store_true")
     parser.add_argument("--skip-background", action="store_true")
     parser.add_argument(
+        "--background-only", action="store_true",
+        help="Run only the selected deep graph jobs; skip already-known focused probes.",
+    )
+    parser.add_argument(
         "--retry-background-failures", action="store_true",
         help="After the saved pending queue, explicitly retry failed building paths.",
     )
@@ -463,6 +474,8 @@ def main() -> int:
         background_scope=args.background_scope,
         retry_background_failures=args.retry_background_failures,
     )
+    if args.background_only:
+        jobs = [job for job in jobs if not job.bounded]
     deadline = None if args.until_complete else datetime.now(timezone.utc) + timedelta(hours=effective_hours)
     deadline_monotonic = None if args.until_complete else time.monotonic() + effective_hours * 3600
     campaign.mkdir(parents=True, exist_ok=True)

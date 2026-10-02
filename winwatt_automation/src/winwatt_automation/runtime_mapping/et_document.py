@@ -7,6 +7,8 @@ from pathlib import Path
 from typing import Any
 
 from pywinauto import Application
+from pywinauto import Desktop
+from pywinauto.controls.win32_controls import ComboBoxWrapper
 
 from winwatt_automation.live_ui.app_connector import get_main_window
 from winwatt_automation.runtime_mapping.program_mapper import prepare_fresh_winwatt_session
@@ -80,3 +82,67 @@ def open_et_document(*, project_path: str, reuse_session: bool = True) -> Any:
         f"ETAction did not open {ET_FORM_CLASS}; observed "
         f"{observed.class_name() if observed is not None else None!r}"
     )
+
+
+def configure_et_scope(
+    dialog: Any, *, building_name: str | None = None,
+    zone_name: str | None = None, structure_scope: str = "all",
+) -> dict[str, Any]:
+    """Select a valid certificate scope before the wizard's Next action."""
+    native = Desktop(backend="win32").window(handle=int(dialog.handle)).wrapper_object()
+    combos = sorted(
+        [item for item in native.descendants() if item.class_name() == "TComboBox" and item.is_visible()],
+        key=lambda item: item.rectangle().top,
+    )
+    if len(combos) < 2:
+        raise RuntimeError(f"Expected building and certification-zone selectors, found {len(combos)}")
+    building = ComboBoxWrapper(combos[0].handle)
+    building_values = [value for value in building.item_texts() if value.strip()]
+    if not building_values:
+        raise RuntimeError("The ET building selector is empty")
+    chosen_building = building_name or building_values[-1]
+    if chosen_building not in building_values:
+        raise RuntimeError(f"Building {chosen_building!r} is absent from ET selector: {building_values!r}")
+    building.select(chosen_building)
+    time.sleep(0.5)
+
+    # Selecting the building repopulates the dependent certification-zone
+    # selector. A zone is optional because WinWatt also supports whole-building
+    # certificates; when explicitly requested it becomes mandatory.
+    native = Desktop(backend="win32").window(handle=int(dialog.handle)).wrapper_object()
+    combos = sorted(
+        [item for item in native.descendants() if item.class_name() == "TComboBox" and item.is_visible()],
+        key=lambda item: item.rectangle().top,
+    )
+    zone = ComboBoxWrapper(combos[1].handle)
+    zone_values = [value for value in zone.item_texts() if value.strip()]
+    chosen_zone = None
+    if zone_name is not None:
+        if zone_name not in zone_values:
+            raise RuntimeError(f"Certification zone {zone_name!r} is absent: {zone_values!r}")
+        zone.select(zone_name)
+        chosen_zone = zone_name
+        time.sleep(0.25)
+
+    labels = {
+        "all": "Valamennyi",
+        "heated_boundary": "Csak a fűtött teret határolók",
+    }
+    if structure_scope not in labels:
+        raise ValueError(f"Unknown structure scope: {structure_scope!r}")
+    scope_buttons = [
+        item for item in native.descendants()
+        if item.class_name() == "TButton" and item.window_text() == labels[structure_scope]
+        and item.is_visible() and item.is_enabled()
+    ]
+    if len(scope_buttons) != 1:
+        raise RuntimeError(f"Expected one structure-scope button {labels[structure_scope]!r}")
+    scope_buttons[0].click()
+    time.sleep(0.35)
+    return {
+        "building": chosen_building,
+        "available_buildings": building_values,
+        "zone": chosen_zone,
+        "available_zones": zone_values,
+        "structure_scope": structure_scope,
+    }

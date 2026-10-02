@@ -96,3 +96,19 @@ A teljes feltárás folytatásához célszerű:
 
 A jelenlegi artefact bizonyítja a célablak elérését és az első részleges
 állapotgráfot, de nem bizonyítja az összes vezérlő teljes feltárását.
+
+## 2026-09-30-i folytatás
+
+A jelenlegi 9.60-as profilon a natív `ETAction` 18 közvetlen megnyitása ismét
+igazolt. A kezdőoldalon az épület vagy tanúsítási zóna és a dokumentumba
+kerülő szerkezeti kör kiválasztása előfeltétel. A célzott próba a `Családi
+ház` épületet, a rendelkezésre álló `100,95 m2 Családi ház` zónát és a
+`Valamennyi` szerkezeti kört felismerte, majd eljutott az `Ellenőrzések`
+oldalra. Ott a WinWatt a fűtési és melegvíz-termelő rendszer hőtermelő-
+energiahordozóját valószínűleg hibásnak jelezte. A bizonyíték:
+`winwatt_automation/data/runtime_maps/et_wizard_step_20260930a/report.json`.
+
+A folytatható mapper most érvényes ET-kezdőállapotot állít vissza minden
+útvonalhoz ugyanabban a WinWatt-munkamenetben. A feltöltési, beküldési,
+hitelesítési és aláírási műveletek ki vannak zárva; a cél a helyi
+`UploadRequest` XML előállításának bizonyítása.

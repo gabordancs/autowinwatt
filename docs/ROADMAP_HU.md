@@ -1,26 +1,27 @@
 # WinWatt → teljes tanúsítás: roadmap
 
-Frissítve: 2026-09-29. A tényleges helyi eredményeket mutatja, nem becsült készültségi százalékot.
+Frissítve: 2026-10-02. A tényleges helyi eredményeket mutatja, nem becsült készültségi százalékot.
 
 ## Hol tartunk?
 
-**Az alapinfrastruktúra, az épületablak első leltára és két 2023-as rendszer
-írási köre elkészült.** A teljes tanúsítási automatizmus még nincs kész. A
-kilenc számítási mód, a hat rendszer-létrehozó ablak, egy világítási rendszer,
-egy fűtött zóna és egy minimális elektromos fűtési rendszer teljes
-mentés–újranyitás köre ellenőrzött.
+**Az alapinfrastruktúra, az épület- és ET-belépési út, hét módosító roundtrip,
+a fűtési és HMV-rendszergráf, valamint a WebWatt tanúsítási adatbázis elkészült.**
+A teljes tanúsítási automatizmus még nincs kész. A légtechnika mély mappingje
+fut; utána a hűtés, világítás és nyereség/veszteség ág következik. A WebWatt
+adatbázis telepítését 17/17 csak olvasó ellenőrzés igazolja, az élő queue E2E
+még hátravan.
 
 | Szakasz | Állapot | Eredmény / továbblépési feltétel |
 | --- | --- | --- |
 | 1. Korábbi tudás összegyűjtése | Részben kész | 1922 fájlhivatkozás, 1564 külön tartalom közös jegyzékben; 38 történeti forrás hiányzik, 3 JSON hibás. A nyers források teljes helyreállítása nincs igazolva. |
 | 2. Helyi futtatókörnyezet és verzióazonosítás | Kész az alap | Külön 32 bites Python, EXE/verzió/erőforrás-lenyomat, elkülönített kampány és sandbox. Nem minden régi belépési pont kapott kötelező verzióvédelmet. |
 | 3. Épületablak alapfeltérképezése | Kész az első leltár | Javított, név szerinti épületmegnyitás; 11 elérhető fül, vezérlők, választóértékek és képek; natív mentés és újraindítás utáni megnyitás. |
-| 4. Feltételes energetikai ágak | Fűtési alapág igazolt | Mind a 9 számítási mód tesztelve: 8 régi mód → 8 fül, 2023-as mód → 11 fül. A hat rendszer-létrehozó ablak, a fűtött és hűtött zóna űrlapja, valamint 32 hőtermelő-katalóguslevél felvéve. A minimális elektromos fűtési rendszer és a 10 m²-es fűtött zóna együtt megmaradt újranyitás után. **Következő: további rendszerfajták és számítási eredmények.** |
-| 5. Mezőkezelés bizonyítása | Négy írási kör igazolt | Tájolás 0 → 42°, világítási rendszer, fűtött zóna és minimális elektromos fűtési rendszer megmarad teljes újraindítás után. 42,5° → 42° eltérés dokumentálva; további rendszermezők és energetikai eredmények hátravannak. |
+| 4. Feltételes energetikai ágak | Fűtés és HMV gráf kész; légtechnika fut | Mind a 9 számítási mód tesztelve: 8 régi mód → 8 fül, 2023-as mód → 11 fül. A hat rendszer-létrehozó ablak és 32 hőtermelő-katalóguslevél felvéve. Fűtés: 21 állapot/191 él; HMV: 37 állapot/276 él; légtechnika jelenleg 27 állapot/267 él. **Következő: kampány lezárása, majd rendszer-roundtripek.** |
+| 5. Mezőkezelés bizonyítása | Hét módosító roundtrip igazolt | Tájolás, világítási rendszer, fűtött zóna, minimális elektromos fűtés, helyiség, rétegrendes szerkezet és helyiséghatároló-hozzárendelés megmarad teljes újraindítás után. További HMV/légtechnika/hűtés rendszermezők és energetikai eredmények hátravannak. |
 | 6. Teljes helyi referencia-tanúsítás | Hátravan | Ellenőrzött épületadatok, rendszerek, számítás, felújítási javaslatok, WWP/XML/PDF/fotócsomag és validáció. |
-| 7. WebWatt összekötése | Helyi intake igazolt, élő kapcsolat hátravan | A hálózatfüggetlen PDF/XML intake hashes manifesttel, AI és WinWatt nélkül fut, azonos forrásnál helyben újraindítható. Az élő Supabase-feltöltés idempotenciáját és a bizonyított WinWatt-lépésekkel való queue-összekötést még igazolni kell. |
+| 7. WebWatt összekötése | Adatbázis és helyi intake igazolt; élő queue hátravan | A tanúsítási táblák, projektmezők, G0–G4 függvények, `certificate_intake` enum és táblajogosultságok 17/17 ellenőrzéssel telepítve. A hálózatfüggetlen PDF/XML intake hashes manifesttel fut. Az élő queue-feltöltés, worker-visszatöltés és idempotencia még bizonyítandó. |
 | 8. Fogadóoldali ellenőrzés és véglegesítés | Hátravan | Aktuális célformátum ellenőrzése, valós fogadóoldali visszajelzés, tanúsítói felülvizsgálat és végleges dokumentumcsomag. |
-| 9. Tool-, skill- és knowledge-réteg | Hét igazolt tool, három skill kész | Verzió- és evidence-kötött regiszter, szemantikus tool-runner és kurált tanúsítási knowledge készült. Végrehajtható négy WinWatt roundtrip, az offline teljes preflight, az élő kampány összesítése és a helyi WebWatt PDF/XML intake. A fűtési, mapping-kampány és teljes tanúsítási koordinátor skillek telepítve vannak; az egyparancsos helyi fűtési workflow sikeresen végigfutott. A puszta rendszer- és zónadialógus-leltár továbbra is `observed`. |
+| 9. Tool-, skill- és knowledge-réteg | Tíz igazolt tool, három skill kész | Hét módosító WinWatt-roundtrip, az offline teljes preflight, a kampányösszesítő és a helyi WebWatt PDF/XML intake végrehajtható. A fűtési, mapping-kampány és teljes tanúsítási koordinátor skillek telepítve vannak. A rendszer- és zónadialógus-leltár továbbra is `observed`. |
 
 ## Skillek és toolok helye a fő rendszerben
 

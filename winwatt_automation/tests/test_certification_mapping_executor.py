@@ -7,6 +7,7 @@ from winwatt_automation.scripts.certification_mapping_executor import (
     atomic_write_json,
     build_jobs,
     latest_resumable_campaign,
+    load_report,
     recover_existing_passed_attempt,
 )
 
@@ -43,6 +44,21 @@ def test_latest_resumable_campaign_ignores_completed(tmp_path: Path):
 def test_latest_resumable_campaign_requires_checkpoint(tmp_path: Path):
     with pytest.raises(FileNotFoundError):
         latest_resumable_campaign(tmp_path)
+
+
+def test_empty_graph_is_not_a_completed_mapping(tmp_path: Path):
+    job = type("JobStub", (), {"name": "building_system_heating_deep_mapping", "bounded": True})()
+    graph_dir = tmp_path / "graph"
+    graph_dir.mkdir()
+    (graph_dir / "graph.json").write_text(
+        json.dumps({"states": [], "failures": [{"error": "root failed"}], "complete": True}),
+        encoding="utf-8",
+    )
+
+    report = load_report(job, tmp_path, 1)
+
+    assert report is not None
+    assert report["status"] == "failed"
 
 
 def test_build_jobs_uses_isolated_attempts_and_resumable_background(tmp_path: Path):
