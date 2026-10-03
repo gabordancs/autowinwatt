@@ -20,6 +20,10 @@ def main() -> int:
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--retry-failures", action="store_true")
+    parser.add_argument(
+        "--failure-priority", action="append", default=[], metavar="TEXT",
+        help="Retry matching failed path captions first; repeat in priority order.",
+    )
     parser.add_argument("--session-islands", action="store_true")
     parser.add_argument(
         "--focus-tab", action="append", default=[], metavar="TAB",
@@ -42,6 +46,7 @@ def main() -> int:
         result = explore_room_state_graph(
             project_path=args.project, output_dir=args.output_dir, resume=args.resume,
             retry_failures=args.retry_failures, session_islands=args.session_islands,
+            failure_priority_tokens=args.failure_priority,
             focus_tab_names=set(args.focus_tab),
             root_opener=lambda project: open_sandbox_building(
                 project_path=project, reuse_session=args.session_islands,

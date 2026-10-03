@@ -15,6 +15,7 @@ import os
 import time
 import ctypes
 import shutil
+import unicodedata
 from collections import deque
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
@@ -1032,7 +1033,24 @@ def _path_uses_excluded_action(
     return False
 
 
-def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, exclude_tab_names: set[str] | None = None, focus_tab_names: set[str] | None = None, exclude_action_names: set[str] | None = None, exclude_action_substrings: set[str] | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
+def _priority_text(value: str) -> str:
+    """Normalize Hungarian captions, including occasional UTF-8 mojibake."""
+    try:
+        value = value.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        pass
+    return unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii").casefold()
+
+
+def _failure_priority(item: dict[str, Any], tokens: list[str]) -> int:
+    text = _priority_text(" ".join(str(action.get("name") or "") for action in item.get("path") or []))
+    for index, token in enumerate(tokens):
+        if _priority_text(token) in text:
+            return index
+    return len(tokens)
+
+
+def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, failure_priority_tokens: list[str] | None = None, exclude_tab_names: set[str] | None = None, focus_tab_names: set[str] | None = None, exclude_action_names: set[str] | None = None, exclude_action_substrings: set[str] | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
     """Explore until no action replay yields a new structural state."""
     project = Path(project_path).resolve()
     root_opener = root_opener or (lambda value: open_sandbox_room(project_path=value, room_name=room_name))
@@ -1043,6 +1061,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
     excluded_action_substrings = {
         name.casefold().strip() for name in (exclude_action_substrings or set()) if name.strip()
     }
+    failure_priority_tokens = list(failure_priority_tokens or [])
     project_parts = {part.casefold() for part in project.parts}
     is_authorized_sandbox = "full_authorized_sandbox" in project_parts or (
         project.name.casefold() == "testwwp.wwp" and "buildings_runs" in project_parts and "sandbox" in project_parts
@@ -1079,13 +1098,22 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
             for item in failures:
                 key = json.dumps(item.get("path") or [], ensure_ascii=False, sort_keys=True)
                 retry_count[key] = retry_count.get(key, 0) + 1
-            queue.extend(
-                ([ControlAction(**action) for action in item["path"]], None)
-                for item in failures
+            retry_items = [
+                item for item in failures
                 # The empty path is the root opener. It must be retryable
                 # after a startup/modal failure just like every child path.
                 if "path" in item
                 and retry_count[json.dumps(item["path"], ensure_ascii=False, sort_keys=True)] < MAX_FAILURE_RETRIES
+            ]
+            # The explorer consumes from the right: put lower-value paths
+            # first so requested certification priorities are popped first.
+            retry_items.sort(
+                key=lambda item: _failure_priority(item, failure_priority_tokens),
+                reverse=True,
+            )
+            queue.extend(
+                ([ControlAction(**action) for action in item["path"]], None)
+                for item in retry_items
             )
     recovered_events = _replay_event_log(output_dir, states, edges, failures, queue)
     # A resumed historical queue can already contain paths below tabs that are
@@ -1174,6 +1202,11 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 )
                 states.append(record)
                 _set_edge_status(edges, parent_state, path, "discovered", state_id)
+                # OK/Elvet/Bezárás on a room form returns to the WinWatt main
+                # frame.  That is a terminal outcome of this room branch, not
+                # a new root whose menus and MDI tree belong in the room graph.
+                if record["window"]["class_name"] == "TMainForm":
+                    actions = []
                 # A selected ComboBox value is a real, captured runtime state,
                 # but only newly exposed actions deserve further traversal.
                 if record["diff_from_parent"]["value_changes"] and parent_record is not None:
@@ -1185,7 +1218,12 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 # Queue hidden-state transitions after ordinary actions so the
                 # LIFO traversal takes them first and reaches real editors
                 # early, rather than exhausting visually inert selectors.
-                candidates.extend([*path, *suffix] for suffix in dependent_confirmation_paths(actions))
+                # The room editor's own checkboxes are calculation flags and
+                # its OK button saves/closes the room.  Pairing those controls
+                # created a synthetic path into the main frame.  Hidden-state
+                # confirmation probing is useful only in nested selectors.
+                if record["window"]["class_name"] != "TRoomModifyForm":
+                    candidates.extend([*path, *suffix] for suffix in dependent_confirmation_paths(actions))
                 for candidate in candidates:
                     if _path_uses_excluded_tab(candidate, excluded_tab_names):
                         continue

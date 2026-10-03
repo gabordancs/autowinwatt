@@ -100,6 +100,54 @@ def analyze_mapping_graph(
     }
 
 
+def summarize_graph_jobs(campaign: Path) -> dict[str, dict[str, Any]]:
+    """Summarize every deep graph job, including focused ET/system campaigns."""
+    summaries: dict[str, dict[str, Any]] = {}
+    jobs_root = campaign / "jobs"
+    if not jobs_root.is_dir():
+        return summaries
+    for job_root in sorted(path for path in jobs_root.iterdir() if path.is_dir()):
+        graph_root = job_root / "graph"
+        if not graph_root.is_dir():
+            continue
+        graph_path = graph_root / "graph.json"
+        checkpoint_path = graph_root / "graph.checkpoint.json"
+        progress_path = graph_root / "progress.json"
+        queue_path = graph_root / "queue.checkpoint.json"
+        payload: dict[str, Any] = {}
+        source = None
+        for candidate in (graph_path, checkpoint_path):
+            if candidate.is_file():
+                payload = json.loads(candidate.read_text(encoding="utf-8"))
+                source = candidate.name
+                break
+        progress = (
+            json.loads(progress_path.read_text(encoding="utf-8"))
+            if progress_path.is_file() else {}
+        )
+        queue = (
+            json.loads(queue_path.read_text(encoding="utf-8"))
+            if queue_path.is_file() else []
+        )
+        states = list(payload.get("states") or [])
+        edges = list(payload.get("edges") or [])
+        failures = list(payload.get("failures") or [])
+        summaries[job_root.name] = {
+            "source": source,
+            "states": len(states) if payload else progress.get("states"),
+            "edges": len(edges) if payload else progress.get("edges"),
+            "failures": len(failures) if payload else progress.get("failures"),
+            "queue": len(queue) if queue_path.is_file() else payload.get(
+                "queue_size", progress.get("queue")
+            ),
+            "complete": payload.get("complete", progress.get("complete")),
+            "analysis": analyze_mapping_graph(
+                states=states, edges=edges, failures=failures, queue=queue,
+            ) if payload else None,
+        }
+    return summaries
+
+
 def summarize_campaign(campaign: Path, output: Path) -> dict[str, Any]:
     campaign = campaign.resolve(strict=True)
     output = output.resolve()
@@ -148,7 +196,7 @@ def summarize_campaign(campaign: Path, output: Path) -> dict[str, Any]:
     summary = {
         "schema_version": 1,
         "tool": "winwatt.mapping.campaign.summarize",
-        "tool_version": "1.1.0",
+        "tool_version": "1.2.0",
         "status": "passed" if source_unchanged and state.get("llm_used") is False else "failed",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "campaign": str(campaign),
@@ -179,6 +227,7 @@ def summarize_campaign(campaign: Path, output: Path) -> dict[str, Any]:
         "graph_analysis": analyze_mapping_graph(
             states=states, edges=edges, failures=checkpoint_failures, queue=queue,
         ),
+        "graph_jobs": summarize_graph_jobs(campaign),
         "top_observed_actions": [
             {"action": label, "count": count} for label, count in observations.most_common(20)
         ],

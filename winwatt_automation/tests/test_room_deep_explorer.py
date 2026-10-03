@@ -2,6 +2,7 @@ from collections import deque
 
 from winwatt_automation.runtime_mapping.room_deep_explorer import ControlAction, _path_enters_focus_tab, _path_uses_excluded_action, _prune_queue, action_identity, canonical_states_by_signature, failure_diagnostics, logical_state_hash, resolve_edge_targets, state_diff, state_hash
 from winwatt_automation.runtime_mapping import room_deep_explorer
+from winwatt_automation.runtime_mapping.room_deep_explorer import _failure_priority
 
 
 def test_failure_diagnostics_preserves_empty_exception_details() -> None:
@@ -178,3 +179,12 @@ def test_unresolved_edge_is_still_marked_explicitly() -> None:
     resolve_edge_targets(states, edges)
 
     assert edges[0]["to"] == "revisited_or_blocked"
+
+def test_failure_priority_normalizes_hungarian_and_mojibake() -> None:
+    item = {"path": [{"name": "Felújítási útlevél"}]}
+    mojibake = {"path": [{"name": "FelÃºjÃ­tÃ¡si ÃºtlevÃ©l"}]}
+    tokens = ["bivalencia", "felujitasi utlevel", "pdf"]
+
+    assert _failure_priority(item, tokens) == 1
+    assert _failure_priority(mojibake, tokens) == 1
+    assert _failure_priority({"path": [{"name": "Súgó"}]}, tokens) == len(tokens)

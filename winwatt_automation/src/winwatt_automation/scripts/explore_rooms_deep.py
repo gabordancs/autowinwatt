@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -42,6 +43,7 @@ def main() -> int:
     parser.add_argument("--room-name", default="Room graph explorer")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--retry-failures", action="store_true")
+    parser.add_argument("--version-profile", type=Path, help="Reject changed executable/resources before any UI action")
     parser.add_argument(
         "--exclude-tab", action="append", default=[], metavar="TAB",
         help="Do not traverse this Helyiségek tab; repeat for multiple tabs.",
@@ -66,6 +68,12 @@ def main() -> int:
     parser.add_argument("--status-interval", type=int, default=300)
     parser.add_argument("--status-visible-seconds", type=int, default=10)
     args = parser.parse_args()
+    if len(args.room_name) > 32:
+        parser.error("--room-name must be at most 32 characters (WinWatt truncates longer names)")
+    if args.version_profile:
+        from winwatt_automation.version_profile import require_profile
+        profile = require_profile(args.version_profile)
+        os.environ["WWA_WINWATT_EXE_PATH"] = profile["exe_path"]
     output_dir = Path(args.output_dir)
     notifier: subprocess.Popen[str] | None = None
     if args.status_popup:
@@ -97,7 +105,7 @@ def main() -> int:
             except subprocess.TimeoutExpired:
                 notifier.kill()
     print(json.dumps({"complete": graph["complete"], "states": len(graph["states"]), "failures": len(graph["failures"])}, ensure_ascii=False))
-    return 0
+    return 0 if graph["complete"] and bool(graph["states"]) else 2
 
 if __name__ == "__main__":
     raise SystemExit(main())
