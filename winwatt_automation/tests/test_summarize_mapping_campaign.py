@@ -77,3 +77,33 @@ def test_graph_analysis_reports_alternative_routes_failures_and_frontier() -> No
     assert result["unresolved_revisited_edges"] == 1
     assert result["failure_clusters"][0]["error_type"] == "TimeoutError"
     assert result["remaining_frontier"][0]["action"].endswith("Gépészet")
+
+
+def test_campaign_summary_includes_each_focused_graph_job(tmp_path: Path) -> None:
+    source = tmp_path / "source.wwp"
+    source.write_bytes(b"source")
+    import hashlib
+    campaign = tmp_path / "campaign"
+    graph = campaign / "jobs" / "building_system_cooling_deep_mapping" / "graph"
+    graph.mkdir(parents=True)
+    (campaign / "campaign_state.json").write_text(json.dumps({
+        "campaign_id": "focused", "status": "completed", "llm_used": False,
+        "source_project": str(source),
+        "source_sha256": hashlib.sha256(b"source").hexdigest(),
+        "jobs": {"building_system_cooling_deep_mapping": {
+            "status": "passed", "attempts": [{}], "successful_attempt": 1,
+        }},
+    }), encoding="utf-8")
+    (graph / "graph.json").write_text(json.dumps({
+        "states": [{"state_id": "root"}],
+        "edges": [{"from": "root", "to": "root", "status": "revisited",
+                   "action": {"control_type": "Button", "name": "Hűtés"}}],
+        "failures": [], "queue_size": 0, "complete": True,
+    }), encoding="utf-8")
+
+    result = summarize_campaign(campaign, tmp_path / "summary")
+
+    focused = result["graph_jobs"]["building_system_cooling_deep_mapping"]
+    assert focused["states"] == 1
+    assert focused["edges"] == 1
+    assert focused["complete"] is True

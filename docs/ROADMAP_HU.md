@@ -1,13 +1,13 @@
 # WinWatt → teljes tanúsítás: roadmap
 
-Frissítve: 2026-10-02. A tényleges helyi eredményeket mutatja, nem becsült készültségi százalékot.
+Frissítve: 2026-10-03. A tényleges helyi eredményeket mutatja, nem becsült készültségi százalékot.
 
 ## Hol tartunk?
 
 **Az alapinfrastruktúra, az épület- és ET-belépési út, hét módosító roundtrip,
-a fűtési és HMV-rendszergráf, valamint a WebWatt tanúsítási adatbázis elkészült.**
-A teljes tanúsítási automatizmus még nincs kész. A légtechnika mély mappingje
-fut; utána a hűtés, világítás és nyereség/veszteség ág következik. A WebWatt
+az ET-varázsló és mind a hat 2023-as rendszergráf, valamint a WebWatt
+tanúsítási adatbázis elkészült.** A teljes tanúsítási automatizmus még nincs
+kész. A hét lezárt mély gráf 210 állapotot és 1521 átmenetet tartalmaz. A WebWatt
 adatbázis telepítését 17/17 csak olvasó ellenőrzés igazolja, az élő queue E2E
 még hátravan.
 
@@ -16,7 +16,7 @@ még hátravan.
 | 1. Korábbi tudás összegyűjtése | Részben kész | 1922 fájlhivatkozás, 1564 külön tartalom közös jegyzékben; 38 történeti forrás hiányzik, 3 JSON hibás. A nyers források teljes helyreállítása nincs igazolva. |
 | 2. Helyi futtatókörnyezet és verzióazonosítás | Kész az alap | Külön 32 bites Python, EXE/verzió/erőforrás-lenyomat, elkülönített kampány és sandbox. Nem minden régi belépési pont kapott kötelező verzióvédelmet. |
 | 3. Épületablak alapfeltérképezése | Kész az első leltár | Javított, név szerinti épületmegnyitás; 11 elérhető fül, vezérlők, választóértékek és képek; natív mentés és újraindítás utáni megnyitás. |
-| 4. Feltételes energetikai ágak | Fűtés és HMV gráf kész; légtechnika fut | Mind a 9 számítási mód tesztelve: 8 régi mód → 8 fül, 2023-as mód → 11 fül. A hat rendszer-létrehozó ablak és 32 hőtermelő-katalóguslevél felvéve. Fűtés: 21 állapot/191 él; HMV: 37 állapot/276 él; légtechnika jelenleg 27 állapot/267 él. **Következő: kampány lezárása, majd rendszer-roundtripek.** |
+| 4. Feltételes energetikai ágak | Mind a hat 2023-as rendszergráf és az ET-gráf kész | Mind a 9 számítási mód tesztelve: 8 régi mód → 8 fül, 2023-as mód → 11 fül. ET: 16/143; fűtés: 21/191; HMV: 37/276; légtechnika: 27/267; hűtés: 24/133; világítás: 47/260; nyereség/veszteség: 38/251 állapot/él. **Következő: rendszer-roundtripek és számítási eredmények.** |
 | 5. Mezőkezelés bizonyítása | Hét módosító roundtrip igazolt | Tájolás, világítási rendszer, fűtött zóna, minimális elektromos fűtés, helyiség, rétegrendes szerkezet és helyiséghatároló-hozzárendelés megmarad teljes újraindítás után. További HMV/légtechnika/hűtés rendszermezők és energetikai eredmények hátravannak. |
 | 6. Teljes helyi referencia-tanúsítás | Hátravan | Ellenőrzött épületadatok, rendszerek, számítás, felújítási javaslatok, WWP/XML/PDF/fotócsomag és validáció. |
 | 7. WebWatt összekötése | Adatbázis és helyi intake igazolt; élő queue hátravan | A tanúsítási táblák, projektmezők, G0–G4 függvények, `certificate_intake` enum és táblajogosultságok 17/17 ellenőrzéssel telepítve. A hálózatfüggetlen PDF/XML intake hashes manifesttel fut. Az élő queue-feltöltés, worker-visszatöltés és idempotencia még bizonyítandó. |
@@ -62,15 +62,16 @@ igazolt toolokat. Ezt külön automatizált tesztek ellenőrzik.
 
 ## A következő konkrét munkacsomag
 
-**Cél: a 2023-as mód további épülettechnikai rendszereinek és számítási eredményeinek bizonyítása.**
+**Cél: a lezárt rendszergráfokból HMV-, légtechnika- és hűtés-roundtripek,
+majd számítási eredmény bizonyítása; közben a teljes épületgráf folytatása.**
 
-A jelenlegi mappingfolyamat befejezése után elsőbbséget kap három korábbi
-képesség újraigazolása és bekötése a verziózott tool-regiszterbe:
+A három korábbi képesség újraigazolása és bekötése a verziózott
+tool-regiszterbe elkészült:
 `winwatt.building.room.create_roundtrip`,
 `winwatt.building.structure.layered.create_roundtrip` és
-`winwatt.building.room.boundary.assign_roundtrip`. Mindháromhoz külön
-sandboxmásolat, mentés–teljes újranyitás–visszaolvasás és változatlan
-forráshash szükséges.
+`winwatt.building.room.boundary.assign_roundtrip`. Mindhárom külön
+sandboxmásolattal, mentés–teljes újranyitás–visszaolvasással és változatlan
+forráshash-sel igazolt.
 
 1. A mentett sandboxot megnyitni a meglévő 32 bites Python-eszközökkel,
    a verzióprofil és a projektazonosság ellenőrzésével.

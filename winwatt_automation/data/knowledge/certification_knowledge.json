@@ -218,6 +218,17 @@
           "assertion": "A Külső fal szerkezeti hivatkozás mentés előtt és teljes újranyitás után is egyezett, a forrás hash-e változatlan."
         }
       ]
+    },
+    {
+      "fact_id": "building.systems.deep_graphs",
+      "status": "observed",
+      "claim": "Az ET tanúsítási varázsló és mind a hat 2023-as épülettechnikai rendszer mély, folytatható UI-gráfja elkészült: összesen 210 állapot és 1521 átmenet; minden job passed, a forrás változatlan, llm_used false.",
+      "evidence": [
+        {
+          "path": "data/runtime_maps/certification_mapping/et_systems_20260930T2218/summaries/summary_20261003a/campaign_summary.json",
+          "assertion": "A 1.2.0 kampányösszesítő mind a hét gráfjob állapot-, él-, hiba- és befejezettségi adatait, valamint a változatlan forráshash-t rögzíti."
+        }
+      ]
     }
   ],
   "workflows": [
@@ -306,5 +317,6 @@
     "WWP/XML/PDF/fotócsomag teljes export- és validációs lánca.",
     "WebWatt kapcsolat és fogadóoldali visszaellenőrzés.",
     "Tanúsítói szakmai felülvizsgálat és véglegesítés."
-  ]
+  ],
+  "updated_at": "2026-10-03T02:30:00+02:00"
 }
