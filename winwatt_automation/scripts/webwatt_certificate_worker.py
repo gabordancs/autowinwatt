@@ -9,6 +9,7 @@ geometry model.
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import os
 import platform
@@ -58,6 +59,9 @@ class SupabaseRest:
 
     def rpc(self, name: str, payload: dict[str, Any]) -> Any:
         return self.request("POST", f"/rest/v1/rpc/{name}", payload)
+
+    def bind_job(self, job_id: str, worker_id: str) -> None:
+        return None
 
     def download(self, storage_path: str, destination: Path) -> None:
         encoded = "/".join(urllib.parse.quote(part, safe="") for part in storage_path.split("/"))
@@ -127,6 +131,62 @@ class SupabaseRest:
         return result[0]["id"]
 
 
+class WebWattWorkerGateway:
+    """Narrow worker client; the Lovable edge function owns service-role access."""
+
+    def __init__(self, url: str, token: str) -> None:
+        self.url = url.rstrip("/")
+        self.headers = {"x-webwatt-worker-token": token, "Content-Type": "application/json"}
+        self.job_id: str | None = None
+        self.worker_id: str | None = None
+
+    def request(self, payload: dict[str, Any]) -> Any:
+        request = urllib.request.Request(
+            self.url, data=json.dumps(payload).encode("utf-8"), headers=self.headers, method="POST",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                raw = response.read()
+                return json.loads(raw.decode("utf-8")) if raw else None
+        except urllib.error.HTTPError as exc:
+            details = exc.read().decode("utf-8", errors="replace")
+            raise RuntimeError(f"WebWatt worker gateway: HTTP {exc.code}: {details[:500]}") from exc
+
+    def health(self) -> dict[str, Any]:
+        return self.request({"action": "health"})
+
+    def rpc(self, name: str, payload: dict[str, Any]) -> Any:
+        action = {
+            "claim_next_job": "claim", "start_job": "start",
+            "complete_job": "complete", "fail_job": "fail",
+        }.get(name)
+        if action is None:
+            raise ValueError(f"Unsupported gateway RPC: {name}")
+        translated = {"action": action, **payload}
+        return self.request(translated).get("job") if action == "claim" else self.request(translated).get("result")
+
+    def bind_job(self, job_id: str, worker_id: str) -> None:
+        self.job_id, self.worker_id = job_id, worker_id
+
+    def download(self, storage_path: str, destination: Path) -> None:
+        if not self.job_id or not self.worker_id:
+            raise RuntimeError("Gateway job context is missing.")
+        result = self.request({"action": "source_url", "job_id": self.job_id, "worker_id": self.worker_id})
+        with urllib.request.urlopen(result["signed_url"], timeout=120) as response:
+            destination.write_bytes(response.read())
+
+    def publish_artifact(
+        self, *, project_id: str, user_id: str, job_id: str,
+        doc_type: str, storage_path: str, source: Path,
+    ) -> dict[str, Any]:
+        if job_id != self.job_id:
+            raise RuntimeError("Gateway job context does not match artifact job.")
+        return self.request({
+            "action": "publish", "job_id": job_id, "worker_id": self.worker_id,
+            "name": source.name, "content_base64": base64.b64encode(source.read_bytes()).decode("ascii"),
+        })["artifact"]
+
+
 def safe_filename(name: str) -> str:
     return "".join(char if char.isalnum() or char in "._-" else "_" for char in name)
 
@@ -166,6 +226,7 @@ def run_once(api: SupabaseRest, worker_id: str, workspace_root: Path, catalog_xm
     if not job:
         return False
     job_id = str(job["id"])
+    api.bind_job(job_id, worker_id)
     api.rpc("start_job", {"_job_id": job_id, "_worker_id": worker_id})
     try:
         output = process_job(api, job, workspace_root, catalog_xml)
@@ -197,21 +258,31 @@ def main() -> int:
     if args.command == "preflight":
         report = assess_worker_environment(os.environ, require_catalog=args.require_catalog)
         if report["status"] == "ready":
-            api = SupabaseRest(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
             live_checks: dict[str, bool] = {}
-            for resource in ("job_queue", "certification_cases"):
-                api.request("GET", f"/rest/v1/{resource}?select=id&limit=0")
-                live_checks[f"{resource}_readable"] = True
+            if os.environ.get("WEBWATT_WORKER_TOKEN"):
+                gateway_url = os.environ.get("WEBWATT_WORKER_URL") or f"{os.environ['SUPABASE_URL'].rstrip('/')}/functions/v1/webwatt-worker"
+                api = WebWattWorkerGateway(gateway_url, os.environ["WEBWATT_WORKER_TOKEN"])
+                live_checks["worker_gateway_reachable"] = api.health().get("status") == "ok"
+            else:
+                api = SupabaseRest(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
+                for resource in ("job_queue", "certification_cases"):
+                    api.request("GET", f"/rest/v1/{resource}?select=id&limit=0")
+                    live_checks[f"{resource}_readable"] = True
             report["live_checks"] = live_checks
         print(json.dumps(report, ensure_ascii=False, indent=2))
         return 0 if report["status"] == "ready" else 2
     url, key = os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
-    if not url or not key:
-        parser.error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables are required.")
+    worker_token = os.environ.get("WEBWATT_WORKER_TOKEN")
+    if not url or not (key or worker_token):
+        parser.error("SUPABASE_URL plus SUPABASE_SERVICE_ROLE_KEY or WEBWATT_WORKER_TOKEN are required.")
     worker_id = os.environ.get("WEBWATT_WORKER_ID", f"{platform.node()}-certificate-worker")
     catalog_value = os.environ.get("WINWATT_CATALOG_XML")
     catalog_xml = Path(catalog_value).expanduser().resolve() if catalog_value else None
-    api = SupabaseRest(url, key)
+    if worker_token:
+        gateway_url = os.environ.get("WEBWATT_WORKER_URL") or f"{url.rstrip('/')}/functions/v1/webwatt-worker"
+        api = WebWattWorkerGateway(gateway_url, worker_token)
+    else:
+        api = SupabaseRest(url, key)
     workspace = args.workspace.resolve()
     if args.command == "once":
         run_once(api, worker_id, workspace, catalog_xml)
