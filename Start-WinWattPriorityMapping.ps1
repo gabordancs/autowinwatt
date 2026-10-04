@@ -1,6 +1,8 @@
 param(
     [string]$RunId = "",
-    [switch]$RoomOnly
+    [switch]$RoomOnly,
+    [switch]$Resume,
+    [switch]$CertificationCore
 )
 
 $ErrorActionPreference = "Stop"
@@ -38,6 +40,8 @@ try {
         "--room-reference-graph", (Join-Path $automation "data\runtime_maps\room_deep_runs\local_boundaries_20260827T220124\graph.json")
     )
     if ($RoomOnly) { $arguments += "--room-only" }
+    if ($Resume) { $arguments += "--resume" }
+    if ($CertificationCore) { $arguments += "--certification-core" }
     & $python @arguments
     exit $LASTEXITCODE
 }

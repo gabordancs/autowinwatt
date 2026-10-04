@@ -1,5 +1,44 @@
 # Helyiségek gyors, mégis visszaállítható bejárási stratégiája
 
+## Kötelező mapping-szabály: független választók nem szorzódhatnak össze
+
+Két, egymástól független választó értékeit összeadva kell vizsgálni, nem
+Descartes-szorzatként. Két ötértékű legördülő ezért legfeljebb `5 + 5 = 10`
+önálló értékvizsgálatot jelent, nem `5 × 5 = 25` kombinációt. A jelenlegi
+reprezentatív mintavétellel – első, középső és utolsó érték – ez tipikusan
+`3 + 3 = 6` választási próba.
+
+Kombináció csak akkor kerülhet a várólistára, ha az első választás után a
+vezérlőszerkezet ténylegesen megváltozik: új mező, új választó, új lap, új
+párbeszédablak vagy megváltozott második értékkészlet jelenik meg. Az
+önmagában megváltozó kiválasztott érték nem szerkezeti függőség.
+
+A megvalósítás ehhez a legördülő lista bezárása után nem az átmeneti popupot,
+hanem a ComboBox megnyitása előtti alapállapotot használja összehasonlítási
+alapként. Az alapállapotban már létező műveleteket nem ütemezi újra az új
+érték alatt. Folytatáskor a checkpoint korábban felépített várólistájából is
+kiszűri ezeket a független, kombinatorikus ágakat; a valóban újonnan megjelenő
+műveleteket megtartja.
+
+Tanúsítási célú futásban először az általános adatok, téli hőszükséglet,
+nyári hőterhelés és határoló szerkezetek készülnek el. A helyiségen belüli
+radiátor-, fan-coil- és felületfűtési katalógusok külön mélyítő körbe kerülnek,
+ha a teljes tanúsítás fő útvonala már működik vagy konkrét hiány igazolja őket.
+
+Az ismételten ugyanabba az állapotba vezető csoportlétrehozás, csoporttörlés,
+rádiógomb-, checkbox-, fa- és listaválasztás ciklusnak számít, ezért egy
+útvonalon nem ismételhető. A tanúsítási mag útvonal-mélységi kerete 16 lépés;
+az ennél mélyebb útvonalakat külön, hiányvezérelt vizsgálatba kell tenni. Ez
+megakadályozza, hogy az `Új csoport` és számításimód-választók korlátlanul
+egymásba ágyazott, funkcionálisan azonos állapotokat állítsanak elő.
+
+Ezt a szabályt a `room_deep_explorer.py` várólista-pruningja és
+értékváltozás-kezelése érvényesíti. A `Start-WinWattPriorityMapping.ps1`
+`-CertificationCore` kapcsolója alkalmazza a tanúsítási prioritást. A szabály
+2026-10-03-i valós futásban 259 mentett útvonalból 241 redundáns vagy nem
+tanúsításkritikus ágat távolított el úgy, hogy a 206 korábbi állapot és 2042 él
+megmaradt.
+
 ## Kiinduló mérés
 
 A korábbi futás 127 rögzített UI-állapotot, 3926 élet és 1272 hibabejegyzést tartalmaz. Az állapotok között 48 lépés mélységű utak is vannak. Ez nem a helyiségek valódi funkcionális mélységét jelenti: a vezérlőjelöltek összetétele a következő.

@@ -20,19 +20,27 @@ def audit_room_graph(run_dir: Path) -> dict[str, Any]:
         state_dir = run_dir / "states" / state_id
         saved_state = state_dir / "state.json"
         screenshot = state_dir / "ui.png"
+        window_class = str((state.get("window") or {}).get("class_name") or "")
+        # A native menu belongs to the WinWatt main form. Room mapping states are
+        # modal Delphi forms and legitimately have no native menu handle.
+        menu_snapshot_applicable = window_class == "TMainForm"
+        menu_snapshot_present = state.get("native_menu") is not None
+        ui_map_present = bool(state.get("controls") or (state.get("signature") or {}).get("controls"))
         state_evidence.append({
             "state_id": state_id,
             "state_json": str(saved_state),
             "screenshot": str(screenshot),
             "state_json_exists": saved_state.is_file(),
             "screenshot_exists": screenshot.is_file(),
-            "ui_map_present": bool(state.get("controls")),
-            "menu_snapshot_present": state.get("native_menu") is not None,
+            "ui_map_present": ui_map_present,
+            "menu_snapshot_applicable": menu_snapshot_applicable,
+            "menu_snapshot_present": menu_snapshot_present,
+            "menu_evidence_complete": menu_snapshot_present or not menu_snapshot_applicable,
             "diff_present": state.get("diff_from_parent") is not None,
         })
     incomplete = [
         item for item in state_evidence
-        if not all((item["state_json_exists"], item["screenshot_exists"], item["ui_map_present"], item["menu_snapshot_present"], item["diff_present"]))
+        if not all((item["state_json_exists"], item["screenshot_exists"], item["ui_map_present"], item["menu_evidence_complete"], item["diff_present"]))
     ]
     edges = list(graph.get("edges") or [])
     pending_edges = [edge for edge in edges if edge.get("to") == "pending"]

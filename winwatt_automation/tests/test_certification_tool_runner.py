@@ -39,6 +39,60 @@ def test_heating_adapter_requires_semantic_parameters(tmp_path: Path) -> None:
         )
 
 
+def test_water_heating_adapter_uses_unique_name(tmp_path: Path) -> None:
+    tool = CertificationToolRegistry.load().require_executable(
+        "winwatt.building.system.water_heating.create_roundtrip", profile_id=PROFILE
+    )
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={"name": "HMV"},
+    )
+    assert arguments[-2:] == ["--name", "HMV"]
+
+
+@pytest.mark.parametrize("kind", ["airing", "cooling"])
+def test_airing_and_cooling_adapters_bind_system_kind(tmp_path: Path, kind: str) -> None:
+    tool = CertificationToolRegistry.load().require_executable(
+        f"winwatt.building.system.{kind}.create_roundtrip", profile_id=PROFILE
+    )
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={"name": "Rendszer"},
+    )
+    assert arguments[-4:] == ["--system", kind, "--name", "Rendszer"]
+
+
+def test_calculation_result_adapter_needs_no_semantic_parameters(tmp_path: Path) -> None:
+    tool = CertificationToolRegistry.load().require_executable(
+        "winwatt.building.calculation.result_roundtrip", profile_id=PROFILE
+    )
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={},
+    )
+    assert arguments == [
+        "--profile", str(tmp_path / "profile.json"),
+        "--source", str(tmp_path / "source.wwp"),
+        "--output", str(tmp_path / "out"),
+    ]
+
+
+def test_et_xml_export_adapter_requires_building_name(tmp_path: Path) -> None:
+    tool = CertificationToolRegistry.load().require_executable(
+        "winwatt.certificate.et_xml.export", profile_id=PROFILE
+    )
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={"building_name": "Tesztépület"},
+    )
+    assert arguments[-2:] == ["--building-name", "Tesztépület"]
+    with pytest.raises(ValueError, match="missing parameters"):
+        build_handler_arguments(
+            tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+            output=tmp_path / "out", parameters={},
+        )
+
+
 def test_orientation_adapter_forces_focused_roundtrip(tmp_path: Path) -> None:
     tool = CertificationToolRegistry.load().require_executable(
         "winwatt.building.orientation.roundtrip", profile_id=PROFILE

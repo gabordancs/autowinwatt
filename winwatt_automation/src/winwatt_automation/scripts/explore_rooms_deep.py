@@ -67,6 +67,7 @@ def main() -> int:
     parser.add_argument("--status-popup", action="store_true", help="Show a non-activating progress card every five minutes.")
     parser.add_argument("--status-interval", type=int, default=300)
     parser.add_argument("--status-visible-seconds", type=int, default=10)
+    parser.add_argument("--max-path-depth", type=int, help="Do not schedule paths deeper than this certification budget")
     args = parser.parse_args()
     if len(args.room_name) > 32:
         parser.error("--room-name must be at most 32 characters (WinWatt truncates longer names)")
@@ -95,6 +96,7 @@ def main() -> int:
             resume=args.resume, retry_failures=args.retry_failures,
             exclude_tab_names=excluded_tabs,
             focus_tab_names=set(args.focus_tab),
+            max_path_depth=args.max_path_depth,
             session_islands=args.session_islands,
         )
     finally:

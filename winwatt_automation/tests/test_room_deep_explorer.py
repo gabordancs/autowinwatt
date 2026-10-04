@@ -157,6 +157,52 @@ def test_prune_queue_removes_repeated_tree_or_list_navigation_loop() -> None:
     assert list(queue) == [([category, type_item, useful], None)]
 
 
+def test_prune_queue_removes_repeated_group_and_radio_cycles() -> None:
+    new_group = ControlAction("Button", "Új csoport", "", (10, 10, 100, 30))
+    mode = ControlAction("RadioButton", "Ismert légmennyiség", "", (10, 40, 200, 60))
+    useful = ControlAction("Button", "Részletek", "", (10, 70, 100, 90))
+    queue, removed = _prune_queue(
+        deque([
+            ([new_group, mode, new_group], None),
+            ([mode, useful, mode], None),
+            ([new_group, mode, useful], None),
+        ]),
+        [], [], [],
+    )
+    assert removed == 2
+    assert list(queue) == [([new_group, mode, useful], None)]
+
+
+def test_prune_queue_honors_certification_depth_budget() -> None:
+    actions = [ControlAction("Button", f"Lépés {index}", "", (index, 0, index + 1, 1)) for index in range(5)]
+    queue, removed = _prune_queue(
+        deque([(actions[:3], None), (actions, None)]), [], [], [], max_path_depth=3,
+    )
+    assert removed == 1
+    assert list(queue) == [(actions[:3], None)]
+
+
+def test_prune_queue_removes_independent_dropdown_cartesian_branch() -> None:
+    first_combo = ControlAction("ComboBox", "", "first", (10, 10, 100, 30), "expand")
+    selected_value = ControlAction("ListItem", "B", "", (10, 40, 100, 60))
+    independent_combo = ControlAction("ComboBox", "", "second", (110, 10, 200, 30), "expand")
+    newly_exposed = ControlAction("Button", "Részletek", "", (210, 10, 300, 30))
+    states = [
+        {"state_id": "base", "parent_state": None, "path": [], "actions": [independent_combo.__dict__]},
+        {"state_id": "expanded", "parent_state": "base", "path": [first_combo.__dict__], "actions": [selected_value.__dict__]},
+        {"state_id": "selected", "parent_state": "expanded", "path": [first_combo.__dict__, selected_value.__dict__], "actions": [independent_combo.__dict__, newly_exposed.__dict__]},
+    ]
+    queue, removed = _prune_queue(
+        deque([
+            ([first_combo, selected_value, independent_combo], "selected"),
+            ([first_combo, selected_value, newly_exposed], "selected"),
+        ]),
+        states, [], [],
+    )
+    assert removed == 1
+    assert list(queue) == [([first_combo, selected_value, newly_exposed], "selected")]
+
+
 def test_revisited_edge_keeps_canonical_target() -> None:
     action = ControlAction("Button", "Tovább", "volatile", (1, 2, 3, 4))
     states = [

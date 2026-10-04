@@ -110,6 +110,48 @@
       ]
     },
     {
+      "fact_id": "building.electric_water_heating_roundtrip",
+      "status": "verified",
+      "claim": "A teljes épületre felvett, elektromos átfolyós/tárolós termelőjű, cirkulációs segédenergia és tárolási veszteség nélküli minimális HMV-tesztrendszer teljes WinWatt újranyitás után megmarad.",
+      "tool_ids": [
+        "winwatt.building.system.water_heating.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/water_heating_system_roundtrip_20261004b/report.json",
+          "assertion": "A HMV-rendszer neve mentés, teljes bezárás és újranyitás után gépi listavisszaolvasással egyezett; a forrás hash-e változatlan maradt."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.airing_roundtrip",
+      "status": "verified",
+      "claim": "Egy minimális 2023-as légtechnikai rendszer neve teljes WinWatt újranyitás után megmarad.",
+      "tool_ids": [
+        "winwatt.building.system.airing.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/airing_system_roundtrip_20261004a/report.json",
+          "assertion": "A rendszer neve mentés, teljes bezárás és újranyitás után gépi listavisszaolvasással egyezett; a forrás hash-e változatlan."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.cooling_roundtrip",
+      "status": "verified",
+      "claim": "A teljes épületre felvett, elektromos split hűtőgépes, direkt elpárologtatású minimális hűtési rendszer teljes WinWatt újranyitás után megmarad.",
+      "tool_ids": [
+        "winwatt.building.system.cooling.create_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/cooling_system_roundtrip_20261004c/report.json",
+          "assertion": "A hűtési rendszer neve mentés, teljes bezárás és újranyitás után gépi listavisszaolvasással egyezett; a forrás hash-e változatlan."
+        }
+      ]
+    },
+    {
       "fact_id": "heating.generator_catalog",
       "status": "observed",
       "claim": "A fűtési hőtermelő katalógus 32 levéleleme helyben, módosítás nélkül fel lett véve.",
@@ -229,6 +271,34 @@
           "assertion": "A 1.2.0 kampányösszesítő mind a hét gráfjob állapot-, él-, hiba- és befejezettségi adatait, valamint a változatlan forráshash-t rögzíti."
         }
       ]
+    },
+    {
+      "fact_id": "building.calculation.result_roundtrip",
+      "status": "verified",
+      "claim": "A minimális 2023-as épület újraszámítása elindítható, és ugyanaz a gépileg olvasott eredménysor mentés és teljes WinWatt-bezárás/újranyitás után is megmarad.",
+      "tool_ids": [
+        "winwatt.building.calculation.result_roundtrip"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/calculation_result_roundtrip_20261004a/report.json",
+          "assertion": "Az újraszámítás elindult, a 25 mezős helyiségeredmény mentés előtt és újranyitás után azonos volt, a forráshash változatlan maradt."
+        }
+      ]
+    },
+    {
+      "fact_id": "certificate.et_xml.export",
+      "status": "verified",
+      "claim": "A minimális számított épület az ET-varázslóban kiválasztható, a hiányzó kötelező adminisztratív mezők kézzel kitölthetők, és jól formált UploadRequest tanúsítási XML állítható elő változatlan forrás-WWP mellett.",
+      "tool_ids": [
+        "winwatt.certificate.et_xml.export"
+      ],
+      "evidence": [
+        {
+          "path": "data/runtime_maps/et_certificate_xml_20261004l/report.json",
+          "assertion": "A Building graph explorer épület és valamennyi szerkezet kiválasztása után 1 098 556 bájtos, 106 elemű UploadRequest XML készült; a WinWatt teljesen bezárult."
+        }
+      ]
     }
   ],
   "workflows": [
@@ -311,12 +381,12 @@
     }
   ],
   "open_gaps": [
-    "Összetettebb hőtermelő és HMV-rendszer roundtripje.",
-    "Számítás indítása, eredménymezők és hibajelzések bizonyítása.",
+    "Összetett, több termelős vagy napkollektoros HMV-rendszer roundtripje.",
+    "A számítást megakadályozó és figyelmeztető hibajelzések teljes katalógusa.",
     "Felújítási javaslatok és előtte/utána számítás.",
-    "WWP/XML/PDF/fotócsomag teljes export- és validációs lánca.",
+    "WWP/natív XML/PDF/fotócsomag teljes export- és validációs lánca.",
     "WebWatt kapcsolat és fogadóoldali visszaellenőrzés.",
     "Tanúsítói szakmai felülvizsgálat és véglegesítés."
   ],
-  "updated_at": "2026-10-03T02:30:00+02:00"
+  "updated_at": "2026-10-04T05:31:46.338069+00:00"
 }

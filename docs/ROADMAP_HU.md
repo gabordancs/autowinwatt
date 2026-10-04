@@ -17,7 +17,7 @@ még hátravan.
 | 2. Helyi futtatókörnyezet és verzióazonosítás | Kész az alap | Külön 32 bites Python, EXE/verzió/erőforrás-lenyomat, elkülönített kampány és sandbox. Nem minden régi belépési pont kapott kötelező verzióvédelmet. |
 | 3. Épületablak alapfeltérképezése | Kész az első leltár | Javított, név szerinti épületmegnyitás; 11 elérhető fül, vezérlők, választóértékek és képek; natív mentés és újraindítás utáni megnyitás. |
 | 4. Feltételes energetikai ágak | Mind a hat 2023-as rendszergráf és az ET-gráf kész | Mind a 9 számítási mód tesztelve: 8 régi mód → 8 fül, 2023-as mód → 11 fül. ET: 16/143; fűtés: 21/191; HMV: 37/276; légtechnika: 27/267; hűtés: 24/133; világítás: 47/260; nyereség/veszteség: 38/251 állapot/él. **Következő: rendszer-roundtripek és számítási eredmények.** |
-| 5. Mezőkezelés bizonyítása | Hét módosító roundtrip igazolt | Tájolás, világítási rendszer, fűtött zóna, minimális elektromos fűtés, helyiség, rétegrendes szerkezet és helyiséghatároló-hozzárendelés megmarad teljes újraindítás után. További HMV/légtechnika/hűtés rendszermezők és energetikai eredmények hátravannak. |
+| 5. Mezőkezelés bizonyítása | Tizenegy roundtrip igazolt | Tájolás, világítás, fűtött zóna, elektromos fűtés, elektromos HMV, légtechnika, direkt hűtés, helyiség, rétegrendes szerkezet, helyiséghatároló-hozzárendelés és a 25 mezős energetikai eredménysor megmarad teljes újraindítás után. |
 | 6. Teljes helyi referencia-tanúsítás | Hátravan | Ellenőrzött épületadatok, rendszerek, számítás, felújítási javaslatok, WWP/XML/PDF/fotócsomag és validáció. |
 | 7. WebWatt összekötése | Adatbázis és helyi intake igazolt; élő queue hátravan | A tanúsítási táblák, projektmezők, G0–G4 függvények, `certificate_intake` enum és táblajogosultságok 17/17 ellenőrzéssel telepítve. A hálózatfüggetlen PDF/XML intake hashes manifesttel fut. Az élő queue-feltöltés, worker-visszatöltés és idempotencia még bizonyítandó. |
 | 8. Fogadóoldali ellenőrzés és véglegesítés | Hátravan | Aktuális célformátum ellenőrzése, valós fogadóoldali visszajelzés, tanúsítói felülvizsgálat és végleges dokumentumcsomag. |
@@ -62,8 +62,11 @@ igazolt toolokat. Ezt külön automatizált tesztek ellenőrzik.
 
 ## A következő konkrét munkacsomag
 
-**Cél: a lezárt rendszergráfokból HMV-, légtechnika- és hűtés-roundtripek,
-majd számítási eredmény bizonyítása; közben a teljes épületgráf folytatása.**
+A végrehajtási sorrend géppel olvasható státuszokkal a
+[Tanúsítási munkasor](TANUSITASI_MUNKASOR_HU.md) dokumentumban található.
+
+**A Q1–Q6 elkészült. Következő cél: a teljes exportcsomag (WWP, natív XML,
+számítási PDF, tanúsítási XML és fotók) ellenőrzött összeállítása.**
 
 A három korábbi képesség újraigazolása és bekötése a verziózott
 tool-regiszterbe elkészült:
@@ -82,10 +85,10 @@ forráshash-sel igazolt.
    tartozó mezőállapotokat rögzítette változtatás nélkül.
 4. A minimális elektromos fűtési rendszer és a tesztzóna tartóssági köre
    elkészült; ugyanezt egy összetettebb hőtermelővel vagy HMV-rendszerrel megismételni.
-5. A számítás indítását, eredménymezőit és hibajelzéseit feltérképezni, majd
-   legalább egy eredményt teljes újranyitás után visszaolvasni.
-6. A futásból függőségi táblát és rövid hibajegyzéket készíteni; a sandbox
-   kiinduló állapotát megőrizni, minden próba eredményét külön naplózni.
+5. A számítás indítása és egy 25 mezős eredménysor teljes újranyitás utáni
+   visszaolvasása elkészült.
+6. Az ET-varázsló minimális épülettel végigfutott; a hiányzó kötelező
+   adminmezők helyben kitölthetők, a létrejött `UploadRequest` XML jól formált.
 
 **Az előző fűtési alap-munkacsomag elkészült:** a rendszerablak elérési útja
 reprodukálható, az elektromos tesztrendszer és a fűtött zóna neve teljes
@@ -100,9 +103,9 @@ bizonyítékot kap.
   újabb telepített kiadás nincs bizonyítva.
 - A 11 fül felvétele alapleltár: két önálló lapcsoport van, kombinációik és
   feltételes ágai még nincsenek teljesen bejárva.
-- A mentés és az épület újramegnyitása működik; egész fokértékű tájolás, egy
-  minimális világítási rendszer, a fűtött zóna neve és egy minimális elektromos
-  fűtési rendszer tartóssága igazolt. Teljes számítási eredmény még nincs igazolva.
+- A mentés és az épület újramegnyitása működik; a mező- és rendszer-roundtripek
+  mellett egy 25 mezős számítási eredménysor is igazolt. A minimális ET-folyamat
+  helyi, jól formált tanúsítási XML-ig eljutott.
 - Az első implementáció 20 célzott tesztje sikeres. Ez nem teljes tanúsítási E2E-teszt.
 - A korábbi tudás hivatkozásos egyesítése kész; nem lett minden régi gráfból
   egyetlen, az aktuális kiadásra ellenőrzött végrehajtási gráf.

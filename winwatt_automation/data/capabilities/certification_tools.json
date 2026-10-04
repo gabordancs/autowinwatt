@@ -186,6 +186,147 @@
       ]
     },
     {
+      "tool_id": "winwatt.building.system.water_heating.create_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Create a minimal whole-building 2023 electric HMV system on a disposable copy, save, fully reopen and verify its name.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_water_heating_system_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP; never modified",
+        "output": "new empty evidence directory",
+        "name": "unique HMV-system name"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "generator, distribution, saved-list and reopened-list screenshots and row snapshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "2023 calculation mode and systems tab are available",
+        "source project has a non-zero whole-building area"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.source_unchanged == true",
+        "report.copy_changed == true",
+        "report.session_closed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh output directory and unique system name",
+      "idempotency": "repeatable on a fresh project copy; system names must be unique inside one copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/water_heating_system_roundtrip_20261004b/report.json",
+          "deterministic": true,
+          "assertion": "the minimal electric HMV-system name remained present after save, full WinWatt close/reopen and machine list readback; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "status": "verified",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_airing_cooling_system_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP; never modified",
+        "output": "new empty evidence directory",
+        "name": "unique system name"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "configuration and reopened system-list screenshots plus row snapshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "2023 calculation mode and systems tab are available",
+        "source project has a non-zero whole-building area"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.source_unchanged == true",
+        "report.copy_changed == true",
+        "report.session_closed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh output directory and unique system name",
+      "idempotency": "repeatable on a fresh project copy; names must be unique inside one copy",
+      "tool_id": "winwatt.building.system.airing.create_roundtrip",
+      "description": "Create a minimal 2023 airing system on a disposable copy, save, fully reopen and verify its name.",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/airing_system_roundtrip_20261004a/report.json",
+          "deterministic": true,
+          "assertion": "the minimal airing-system name remained present after save, full close/reopen and list readback; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "status": "verified",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_airing_cooling_system_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP; never modified",
+        "output": "new empty evidence directory",
+        "name": "unique system name"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "configuration and reopened system-list screenshots plus row snapshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "2023 calculation mode and systems tab are available",
+        "source project has a non-zero whole-building area"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "report.source_unchanged == true",
+        "report.copy_changed == true",
+        "report.session_closed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh output directory and unique system name",
+      "idempotency": "repeatable on a fresh project copy; names must be unique inside one copy",
+      "tool_id": "winwatt.building.system.cooling.create_roundtrip",
+      "description": "Create a whole-building 2023 direct-expansion electric cooling system on a disposable copy, save, fully reopen and verify its name.",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/cooling_system_roundtrip_20261004c/report.json",
+          "deterministic": true,
+          "assertion": "the direct-expansion cooling-system name remained present after save, full close/reopen and list readback; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
       "tool_id": "winwatt.certificate.preflight",
       "version": "1.1.0",
       "status": "verified",
@@ -527,6 +668,104 @@
           "path": "data/runtime_maps/zone_dialogs_20260929a/report.json",
           "deterministic": true,
           "assertion": "heated and cooled TThermicZoneForm dialogs were captured without changing the project"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.building.calculation.result_roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Trigger whole-building recalculation on a disposable copy, save, fully reopen and verify an unchanged machine-readable result row.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_calculation_result_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing calculated WWP; never modified",
+        "output": "new empty evidence directory"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "copied WWP in output directory",
+        "evidence": "calculation result screenshots and machine-readable result tables before save and after reopen"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "2023 calculation mode and building result tabs are available",
+        "source project contains at least one room and a calculable heated zone/system"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.recalculation_triggered == true",
+        "report.roundtrip_passed == true",
+        "report.source_unchanged == true",
+        "report.first_session_closed == true",
+        "report.second_session_closed == true"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh output directory",
+      "idempotency": "repeatable because every run recalculates and saves a separate project copy",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/calculation_result_roundtrip_20261004a/report.json",
+          "deterministic": true,
+          "assertion": "a 25-field room calculation result row remained byte-for-byte equal after recalculation, save, full close/reopen and machine readback; source hash stayed unchanged"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.certificate.et_xml.export",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Select a building and all structures in the ET wizard, fill missing required administration defaults, export a local certificate XML and validate it as well-formed.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_et_certificate_xml_export",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": false,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing calculated WWP; never modified",
+        "output": "new empty evidence directory",
+        "building_name": "exact building name shown by the ET selector"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "certificate_xml": "certificate.xml",
+        "saved_project": "unchanged copied WWP",
+        "evidence": "scope, warning/final, administration and save-dialog screenshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "source contains a calculable building",
+        "project-level certifier/address data are present or can be filled in the administration form"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.scope.building equals the requested building",
+        "report.scope.structure_scope == all",
+        "report.xml.well_formed == true",
+        "report.xml.root_tag == UploadRequest",
+        "report.source_unchanged == true",
+        "report.copy_unchanged == true",
+        "report.session_closed == true"
+      ],
+      "retry_policy": "retry only in a fresh output directory; allow up to 90 seconds for printer-backed XML generation",
+      "idempotency": "repeatable because every run uses a new project copy and writes a new local XML output",
+      "evidence": [
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/et_certificate_xml_20261004l/report.json",
+          "deterministic": true,
+          "assertion": "the minimal Building graph explorer scope and all structures produced a well-formed 1,098,556-byte UploadRequest XML after mandatory administration defaults; source/copy hashes stayed unchanged and WinWatt closed"
         }
       ]
     }
