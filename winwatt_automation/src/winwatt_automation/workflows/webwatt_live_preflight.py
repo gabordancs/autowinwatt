@@ -12,12 +12,16 @@ def assess_worker_environment(
     """Return readiness without copying credential values into the report."""
     url_configured = bool(environ.get("SUPABASE_URL", "").strip())
     service_key_configured = bool(environ.get("SUPABASE_SERVICE_ROLE_KEY", "").strip())
+    worker_token_configured = bool(environ.get("WEBWATT_WORKER_TOKEN", "").strip())
+    gateway_configured = bool(environ.get("WEBWATT_WORKER_URL", "").strip()) or url_configured
     catalog_value = environ.get("WINWATT_CATALOG_XML", "").strip()
     catalog = Path(catalog_value).expanduser() if catalog_value else None
     catalog_exists = bool(catalog and catalog.is_file())
     checks = {
         "supabase_url_configured": url_configured,
         "service_role_key_configured": service_key_configured,
+        "worker_token_configured": worker_token_configured,
+        "worker_gateway_configured": gateway_configured,
         "catalog_configured": bool(catalog_value),
         "catalog_exists": catalog_exists,
         "catalog_required": require_catalog,
@@ -25,8 +29,10 @@ def assess_worker_environment(
     missing = []
     if not url_configured:
         missing.append("SUPABASE_URL")
-    if not service_key_configured:
-        missing.append("SUPABASE_SERVICE_ROLE_KEY")
+    if not service_key_configured and not worker_token_configured:
+        missing.append("SUPABASE_SERVICE_ROLE_KEY or WEBWATT_WORKER_TOKEN")
+    if worker_token_configured and not gateway_configured:
+        missing.append("WEBWATT_WORKER_URL or SUPABASE_URL")
     if require_catalog and not catalog_exists:
         missing.append("WINWATT_CATALOG_XML (existing file)")
     return {

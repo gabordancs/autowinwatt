@@ -11,6 +11,11 @@ class ReviewArtifactApi(Protocol):
         self, *, project_id: str, user_id: str, doc_type: str, storage_path: str,
     ) -> tuple[str, bool]: ...
 
+    def publish_artifact(
+        self, *, project_id: str, user_id: str, job_id: str,
+        doc_type: str, storage_path: str, source: Path,
+    ) -> dict[str, Any]: ...
+
 
 def publish_review_artifacts(
     *, api: ReviewArtifactApi, output_dir: Path, project_id: str,
@@ -19,11 +24,21 @@ def publish_review_artifacts(
     artifacts: list[dict[str, Any]] = []
     for artifact in sorted(output_dir.glob("*.json")):
         storage_path = f"{project_id}/certification-result/{job_id}/{artifact.name}"
-        uploaded = api.upload_if_missing(storage_path, artifact)
-        document_id, document_created = api.ensure_document(
-            project_id=project_id, user_id=user_id,
-            doc_type=f"Gépi előfeldolgozás · {artifact.name}", storage_path=storage_path,
-        )
+        doc_type = f"Gépi előfeldolgozás · {artifact.name}"
+        if hasattr(api, "publish_artifact"):
+            published = api.publish_artifact(
+                project_id=project_id, user_id=user_id, job_id=job_id,
+                doc_type=doc_type, storage_path=storage_path, source=artifact,
+            )
+            uploaded = bool(published["uploaded"])
+            document_id = str(published["document_id"])
+            document_created = bool(published["document_created"])
+        else:
+            uploaded = api.upload_if_missing(storage_path, artifact)
+            document_id, document_created = api.ensure_document(
+                project_id=project_id, user_id=user_id,
+                doc_type=doc_type, storage_path=storage_path,
+            )
         artifacts.append({
             "document_id": document_id,
             "storage_path": storage_path,
