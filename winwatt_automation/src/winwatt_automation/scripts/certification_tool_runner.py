@@ -48,6 +48,19 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
         "name": ("--name", str, True),
         "expected_zone": ("--expected-zone", str, True),
     },
+    "winwatt.building.system.water_heating.create_roundtrip": {
+        "name": ("--name", str, True),
+    },
+    "winwatt.building.system.airing.create_roundtrip": {
+        "name": ("--name", str, True),
+    },
+    "winwatt.building.system.cooling.create_roundtrip": {
+        "name": ("--name", str, True),
+    },
+    "winwatt.building.calculation.result_roundtrip": {},
+    "winwatt.certificate.et_xml.export": {
+        "building_name": ("--building-name", str, True),
+    },
     "winwatt.certificate.preflight": {
         "model": ("--model", Path, True),
         "readback_xml": ("--readback-xml", Path, False),
@@ -101,6 +114,10 @@ def build_handler_arguments(
         ]
     if tool.tool_id == "winwatt.building.orientation.roundtrip":
         arguments.append("--skip-mode-survey")
+    if tool.tool_id == "winwatt.building.system.airing.create_roundtrip":
+        arguments.extend(["--system", "airing"])
+    if tool.tool_id == "winwatt.building.system.cooling.create_roundtrip":
+        arguments.extend(["--system", "cooling"])
     for key, (flag, converter, _) in specification.items():
         if key not in parameters:
             continue

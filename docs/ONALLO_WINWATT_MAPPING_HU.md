@@ -4,6 +4,10 @@ A végrehajtó helyi, 32 bites Pythonból működik, és nem hív LLM-et vagy Co
 Arra szolgál, hogy a tanúsítási adapterhez szükséges WinWatt-bizonyítékokat
 felügyelet nélkül gyűjtse, miközben a Codex-keret nem elérhető.
 
+A helyiségbejárás kötelező deduplikációs és prioritási szabályai:
+[helyisegek_gyors_bejarasi_strategia_hu.md](helyisegek_gyors_bejarasi_strategia_hu.md).
+Független legördülők értékeit nem szabad kombinatorikusan összeszorozni.
+
 ## Igazolt fűtési workflow
 
 A fűtött zóna és a minimális elektromos fűtési rendszer teljes

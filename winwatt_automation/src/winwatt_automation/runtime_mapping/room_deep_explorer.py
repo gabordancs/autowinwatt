@@ -277,7 +277,7 @@ def action_identity(action: ControlAction | dict[str, Any]) -> tuple[str, str, t
     if isinstance(action, ControlAction):
         # Tree and dropdown list items move while their container scrolls.
         # Their screen position is presentation, not a distinct logical edge.
-        rect = (0, 0, 0, 0) if action.control_type in {"TreeItem", "ListItem"} else action.rect
+        rect = (0, 0, 0, 0) if action.control_type in {"TreeItem", "ListItem"} else tuple(action.rect)
         return action.control_type, action.name, rect, action.operation
     return (
         str(action["control_type"]), str(action["name"]),
@@ -315,7 +315,13 @@ def _contains_repeated_selector(path: list[ControlAction]) -> bool:
     """
     seen: set[tuple[str, str, tuple[int, int, int, int], str]] = set()
     for action in path:
-        if action.control_type not in {"TreeItem", "ListItem"}:
+        is_repeat_sensitive = action.control_type in {
+            "TreeItem", "ListItem", "RadioButton", "CheckBox",
+        } or (
+            action.control_type == "Button"
+            and action.name.casefold().strip() in {"új csoport", "csoport törlés"}
+        )
+        if not is_repeat_sensitive:
             continue
         identity = action_identity(action)
         if identity in seen:
@@ -404,7 +410,7 @@ def _replay_event_log(output_dir: Path, states: list[dict[str, Any]], edges: lis
     return applied
 
 
-def _prune_queue(queue: deque[tuple[list[ControlAction], str | None]], states: list[dict[str, Any]], edges: list[dict[str, Any]], failures: list[dict[str, Any]]) -> tuple[deque[tuple[list[ControlAction], str | None]], int]:
+def _prune_queue(queue: deque[tuple[list[ControlAction], str | None]], states: list[dict[str, Any]], edges: list[dict[str, Any]], failures: list[dict[str, Any]], max_path_depth: int | None = None) -> tuple[deque[tuple[list[ControlAction], str | None]], int]:
     """Drop duplicate and permanently exhausted paths before expensive replay."""
     attempt_count: dict[str, int] = {}
     for item in failures:
@@ -423,7 +429,29 @@ def _prune_queue(queue: deque[tuple[list[ControlAction], str | None]], states: l
     for path, parent_state in _deduplicate_queue(queue):
         serialized = json.dumps([asdict(item) for item in path], ensure_ascii=False, sort_keys=True)
         prefixes = {path_identity(path[:index]) for index in range(1, len(path) + 1)}
-        if serialized in exhausted or prefixes & terminal or _contains_repeated_selector(path):
+        # A dropdown selection can return to the same dialog with only its
+        # selected value changed.  Older runs then queued every control that
+        # had merely been hidden by the expanded popup, producing a Cartesian
+        # product across otherwise independent dropdowns.  If the candidate
+        # already existed in the dialog before the dropdown was expanded, its
+        # independent probe is already represented and this combination adds
+        # no structural coverage.
+        redundant_dropdown_combination = False
+        parent = by_id.get(parent_state)
+        if parent and parent.get("path"):
+            parent_path = parent["path"]
+            if parent_path[-1].get("control_type") == "ListItem":
+                expanded = by_id.get(parent.get("parent_state"))
+                base = by_id.get(expanded.get("parent_state")) if expanded else None
+                if base is not None and path:
+                    candidate_identity = action_identity(path[-1])
+                    redundant_dropdown_combination = any(
+                        action_identity(item) == candidate_identity
+                        for item in base.get("actions") or []
+                    )
+        if ((max_path_depth is not None and len(path) > max_path_depth)
+                or serialized in exhausted or prefixes & terminal or _contains_repeated_selector(path)
+                or redundant_dropdown_combination):
             removed += 1
             continue
         kept.append((path, parent_state))
@@ -1050,7 +1078,7 @@ def _failure_priority(item: dict[str, Any], tokens: list[str]) -> int:
     return len(tokens)
 
 
-def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, failure_priority_tokens: list[str] | None = None, exclude_tab_names: set[str] | None = None, focus_tab_names: set[str] | None = None, exclude_action_names: set[str] | None = None, exclude_action_substrings: set[str] | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
+def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: str = DEFAULT_SANDBOX_ROOM, resume: bool = False, retry_failures: bool = False, failure_priority_tokens: list[str] | None = None, exclude_tab_names: set[str] | None = None, focus_tab_names: set[str] | None = None, exclude_action_names: set[str] | None = None, exclude_action_substrings: set[str] | None = None, max_path_depth: int | None = None, session_islands: bool = False, root_opener: Callable[[str], Any] | None = None, active_resolver: Callable[[int], Any] | None = None) -> dict[str, Any]:
     """Explore until no action replay yields a new structural state."""
     project = Path(project_path).resolve()
     root_opener = root_opener or (lambda value: open_sandbox_room(project_path=value, room_name=room_name))
@@ -1136,7 +1164,7 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 path, excluded_action_names, excluded_action_substrings,
             )
         )
-    queue, pruned_paths = _prune_queue(queue, states, edges, failures)
+    queue, pruned_paths = _prune_queue(queue, states, edges, failures, max_path_depth=max_path_depth)
     _write_progress(output_dir, states, edges, failures, queue)
     scheduled_paths = {path_identity(path) for path, _ in queue}
     processed_since_compaction = 0
@@ -1210,7 +1238,17 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 # A selected ComboBox value is a real, captured runtime state,
                 # but only newly exposed actions deserve further traversal.
                 if record["diff_from_parent"]["value_changes"] and parent_record is not None:
-                    parent_action_ids = {action_identity(item) for item in parent_record["actions"]}
+                    comparison_record = parent_record
+                    # Selecting a ListItem closes the transient dropdown.  Use
+                    # the dialog from before ComboBox expansion as the action
+                    # baseline, so controls merely revealed again are not
+                    # mistaken for newly exposed dependent fields.
+                    if path and path[-1].control_type == "ListItem":
+                        by_state_id = {item["state_id"]: item for item in states}
+                        base_record = by_state_id.get(parent_record.get("parent_state"))
+                        if base_record is not None:
+                            comparison_record = base_record
+                    parent_action_ids = {action_identity(item) for item in comparison_record["actions"]}
                     actions = [item for item in actions if action_identity(item) not in parent_action_ids]
                 queued_actions: list[list[dict[str, Any]]] = []
                 new_edges: list[dict[str, Any]] = []
@@ -1225,6 +1263,8 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 if record["window"]["class_name"] != "TRoomModifyForm":
                     candidates.extend([*path, *suffix] for suffix in dependent_confirmation_paths(actions))
                 for candidate in candidates:
+                    if max_path_depth is not None and len(candidate) > max_path_depth:
+                        continue
                     if _path_uses_excluded_tab(candidate, excluded_tab_names):
                         continue
                     if not _path_enters_focus_tab(candidate, focus_tab_names):
