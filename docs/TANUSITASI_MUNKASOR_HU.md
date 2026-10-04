@@ -14,7 +14,7 @@ WinWatt-bezárást, újranyitást és gépi utófeltételt igényel.
 | 5 | Számítás indítása és eredmény-roundtrip | kész | a 25 mezős helyiségeredmény újraszámítás, mentés és teljes újranyitás után gépileg azonosan visszaolvasható |
 | 6 | ET-varázsló és tanúsítási XML | kész | a minimális tesztépület és valamennyi szerkezet kiválasztása, a kötelező adminmezők pótlása és a jól formált `UploadRequest` XML előállítása igazolt |
 | 7 | Teljes exportcsomag | kész | WWP, natív XML, számítási PDF, tanúsítási XML és valódi JPEG-ként ellenőrzött szintetikus tesztfotó hash-elt manifestben |
-| 8 | WebWatt élő összekötés | várakozik | queue-feltöltés, worker-visszatöltés, idempotencia és G0–G4 kapuk igazoltak |
+| 8 | WebWatt élő összekötés | folyamatban | helyi intake és újraindítási idempotencia igazolt; az élő queue-feltöltés, worker-visszatöltés és G0–G4 élő kapupróba hátravan |
 | 9 | Teljes referencia-tanúsítás | várakozik | teljes lánc lefut, majd emberi szakmai és grafikus jóváhagyást kap |
 
 A gépészeti és ET-gráfok megfigyelési bizonyítéka már rendelkezésre áll. Egy
@@ -32,3 +32,9 @@ A WinWatt közvetlen PDF-nyomtatási útja a telepített nyomtatót elutasított
 a számítási PDF a WinWatt RTF-exportjából, helyi Microsoft Word 16 konverzióval
 készült. A PDF-export útvonal emiatt még nem kerülhet `verified` toolként a
 regiszterbe.
+
+A Q8 helyi bizonyítéka:
+`winwatt_automation/data/runtime_maps/q8_webwatt_integration_20261004a/report.json`.
+Az élő worker indítása előtt a WebWatt-adatbázisban alkalmazni kell a worker RPC-ket
+`service_role` jogosultságra szűkítő migrációt, majd a kulcsot csak a helyi worker
+folyamat környezetében szabad megadni.

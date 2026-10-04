@@ -68,6 +68,12 @@ A végrehajtási sorrend géppel olvasható státuszokkal a
 **A Q1–Q7 elkészült. Következő cél: a WebWatt élő összekötés Q8 feladatai:
 queue-feltöltés, worker-visszatöltés, idempotencia és a G0–G4 kapuk igazolása.**
 
+A Q8 helyi része elindult: a tanúsítási XML intake-ja és az azonos forrásra
+vonatkozó cache-idempotencia sikeres. Az adatbázis korábbi 17 ellenőrzése mind
+átment. Az élő próba előtt a queue-életciklus négy `SECURITY DEFINER` RPC-jét
+service-role-only jogosultságra kell szűkíteni, majd a helyi workernek átmenetileg
+meg kell adni a `SUPABASE_SERVICE_ROLE_KEY` környezeti változót.
+
 A Q7 csomag WWP-t, natív WinWatt XML-t, számítási PDF-et, `UploadRequest`
 tanúsítási XML-t és JPEG-formátumú szintetikus tesztfotót tartalmaz. A manifest
 minden fájlt hash-el, ellenőrzi az XML-gyökereket, a PDF-aláírást és a valódi
