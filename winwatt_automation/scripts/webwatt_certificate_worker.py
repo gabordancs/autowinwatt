@@ -29,6 +29,7 @@ if str(SOURCE_ROOT) not in sys.path:
     sys.path.insert(0, str(SOURCE_ROOT))
 
 from winwatt_automation.workflows.webwatt_certificate_intake import MANIFEST_NAME, process_local_intake, sha256
+from winwatt_automation.workflows.webwatt_live_preflight import assess_worker_environment
 from winwatt_automation.workflows.webwatt_publisher import publish_review_artifacts
 
 BUCKET = "project-documents"
@@ -178,11 +179,12 @@ def run_once(api: SupabaseRest, worker_id: str, workspace_root: Path, catalog_xm
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Local WebWatt certificate intake worker (never starts WinWatt).")
-    parser.add_argument("command", choices=["once", "watch", "dry-run"], nargs="?", default="watch")
+    parser.add_argument("command", choices=["once", "watch", "dry-run", "preflight"], nargs="?", default="watch")
     parser.add_argument("--poll-seconds", type=int, default=10)
     parser.add_argument("--workspace", type=Path, default=Path("data/webwatt_jobs"))
     parser.add_argument("--source", type=Path, help="Local PDF or XML for dry-run")
     parser.add_argument("--catalog", type=Path, help="Local material catalogue for PDF dry-run")
+    parser.add_argument("--require-catalog", action="store_true", help="Require a configured catalogue during preflight")
     args = parser.parse_args()
     if args.command == "dry-run":
         if args.source is None:
@@ -192,6 +194,17 @@ def main() -> int:
         )
         print(json.dumps(manifest, ensure_ascii=False, indent=2))
         return 0
+    if args.command == "preflight":
+        report = assess_worker_environment(os.environ, require_catalog=args.require_catalog)
+        if report["status"] == "ready":
+            api = SupabaseRest(os.environ["SUPABASE_URL"], os.environ["SUPABASE_SERVICE_ROLE_KEY"])
+            live_checks: dict[str, bool] = {}
+            for resource in ("job_queue", "certification_cases"):
+                api.request("GET", f"/rest/v1/{resource}?select=id&limit=0")
+                live_checks[f"{resource}_readable"] = True
+            report["live_checks"] = live_checks
+        print(json.dumps(report, ensure_ascii=False, indent=2))
+        return 0 if report["status"] == "ready" else 2
     url, key = os.environ.get("SUPABASE_URL"), os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
     if not url or not key:
         parser.error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY environment variables are required.")

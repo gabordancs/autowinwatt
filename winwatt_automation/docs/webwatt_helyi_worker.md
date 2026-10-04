@@ -40,6 +40,17 @@ $env:WEBWATT_WORKER_ID = "$env:COMPUTERNAME-certificate-worker"
 python scripts\webwatt_certificate_worker.py watch
 ```
 
+Titkok kiírása nélküli kapcsolat-előellenőrzés:
+
+```powershell
+python scripts\webwatt_certificate_worker.py preflight
+```
+
+PDF-feladatokhoz a katalógus meglétét is kötelezően ellenőrizheted a
+`preflight --require-catalog` paranccsal. Sikeres előellenőrzéskor a worker
+service-role jogosultsággal, kizárólag olvasva ellenőrzi a `job_queue` és a
+`certification_cases` REST-végpontokat; nem foglal le feladatot.
+
 Egyszeri, ellenőrizhető futáshoz:
 
 ```powershell
