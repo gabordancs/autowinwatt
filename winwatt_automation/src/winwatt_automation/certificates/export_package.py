@@ -23,7 +23,7 @@ DEFAULT_SPECS = (
     ArtifactSpec("native_xml", (".xml",), xml=True),
     ArtifactSpec("calculation_pdf", (".pdf",)),
     ArtifactSpec("certificate_xml", (".xml",), xml=True),
-    ArtifactSpec("photos", (".jpg", ".jpeg", ".png", ".webp"), multiple=True),
+    ArtifactSpec("photos", (".jpg", ".jpeg"), multiple=True),
 )
 
 
@@ -107,6 +107,12 @@ def build_export_manifest(
                 raise ExportPackageError(f"Üres fájl ({key}): {path}")
             if path.suffix.casefold() not in spec.extensions:
                 raise ExportPackageError(f"Hibás kiterjesztés ({key}): {path.name}")
+            if key == "calculation_pdf" and not path.read_bytes().startswith(b"%PDF-"):
+                raise ExportPackageError(f"Hibás PDF-aláírás: {path.name}")
+            if key == "photos":
+                payload = path.read_bytes()
+                if not (payload.startswith(b"\xff\xd8") and payload.endswith(b"\xff\xd9")):
+                    raise ExportPackageError(f"A fotó nem érvényes JPEG: {path.name}")
             entries.append(_entry(path, root, xml=spec.xml))
         manifest_artifacts[key] = sorted(entries, key=lambda item: item["path"])
 

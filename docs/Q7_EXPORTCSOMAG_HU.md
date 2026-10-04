@@ -13,7 +13,7 @@ determinisztikus ellenőrzési réteget adja. Nem állítja elő a WinWatt-artef
 - `native_xml`: pontosan egy natív export `.xml`
 - `calculation_pdf`: pontosan egy `.pdf`
 - `certificate_xml`: pontosan egy tanúsítási `.xml`
-- `photos`: legalább egy `.jpg`, `.jpeg`, `.png` vagy `.webp`
+- `photos`: legalább egy valódi JPEG-kép `.jpg` vagy `.jpeg` kiterjesztéssel
 
 A két XML szerepét a hívónak explicit kell megadnia. Ez szándékos: a fájlnév vagy a
 kiterjesztés alapján nem találgatjuk, melyik XML milyen szemantikájú.
@@ -27,7 +27,9 @@ A manifest csak akkor készül el, ha:
 3. egyik fájl sem üres;
 4. a kiterjesztések megfelelnek a szerepüknek;
 5. mindkét XML jól formált;
-6. minden fájl SHA-256 lenyomatot kap.
+6. a számítási PDF `%PDF-` aláírással rendelkezik;
+7. minden fotó JPEG SOI/EOI jelölőkkel rendelkezik;
+8. minden fájl SHA-256 lenyomatot kap.
 
 A manifestben külön tárolható a kiinduló projekt SHA-256 lenyomata és tetszőleges
 verzió-/evidence-metaadat. A fájlok rendezve kerülnek a manifestbe, hogy a csomag
@@ -40,9 +42,10 @@ bizonyítja, hogy a WinWatt az XML minden adatát importálja, vagy hogy példá
 fotókapcsolatok működnek. Az ilyen állapotokra továbbra is WWP/UI roundtrip
 evidence szükséges.
 
-## Következő helyi lépés
+## Elkészült helyi bizonyíték
 
-Amikor a WinWatt-gép elérhető, a Q7 exportfolyamat az öt artefaktumot egy közös
-könyvtárba teszi. Ezután a validator manifestet készít; a WinWatt-specifikus
-szemantikai ellenőrzések (újranyitás, fotókapcsolatok, számítási eredmény,
-PDF-tartalom) külön evidence-ként kapcsolhatók hozzá.
+A teljes tesztcsomag és a manifest a
+`winwatt_automation/data/runtime_maps/complete_export_package_20261004a/package`
+könyvtárban található. A számítási PDF mind a hét oldalát Poppler rendereléssel
+ellenőriztük. A fotó szintetikus tesztadat, JPEG-formátumban; valós tanúsításhoz
+a megfelelő helyszíni képekre kell cserélni.

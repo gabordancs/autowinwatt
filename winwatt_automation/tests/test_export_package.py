@@ -17,8 +17,8 @@ def _complete_package(tmp_path: Path) -> dict:
         "calculation_pdf": _write(tmp_path / "calculation.pdf", b"%PDF-1.4\nfixture"),
         "certificate_xml": _write(tmp_path / "certificate.xml", b"<UploadRequest/>") ,
         "photos": [
-            _write(tmp_path / "photo-01.jpg", b"jpeg-fixture"),
-            _write(tmp_path / "photo-02.png", b"png-fixture"),
+            _write(tmp_path / "photo-01.jpg", b"\xff\xd8jpeg-fixture\xff\xd9"),
+            _write(tmp_path / "photo-02.jpeg", b"\xff\xd8jpeg-fixture-2\xff\xd9"),
         ],
     }
 
@@ -60,3 +60,11 @@ def test_artifact_outside_package_is_rejected(tmp_path: Path) -> None:
 
     with pytest.raises(ExportPackageError, match="kívül"):
         build_export_manifest(package, artifacts)
+
+
+def test_non_jpeg_photo_is_rejected(tmp_path: Path) -> None:
+    artifacts = _complete_package(tmp_path)
+    artifacts["photos"] = [_write(tmp_path / "photo.png", b"png-fixture")]
+
+    with pytest.raises(ExportPackageError, match="Hibás kiterjesztés"):
+        build_export_manifest(tmp_path, artifacts)
