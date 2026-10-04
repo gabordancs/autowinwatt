@@ -65,8 +65,14 @@ igazolt toolokat. Ezt külön automatizált tesztek ellenőrzik.
 A végrehajtási sorrend géppel olvasható státuszokkal a
 [Tanúsítási munkasor](TANUSITASI_MUNKASOR_HU.md) dokumentumban található.
 
-**A Q1–Q6 elkészült. Következő cél: a teljes exportcsomag (WWP, natív XML,
-számítási PDF, tanúsítási XML és fotók) ellenőrzött összeállítása.**
+**A Q1–Q7 elkészült. Következő cél: a WebWatt élő összekötés Q8 feladatai:
+queue-feltöltés, worker-visszatöltés, idempotencia és a G0–G4 kapuk igazolása.**
+
+A Q7 csomag WWP-t, natív WinWatt XML-t, számítási PDF-et, `UploadRequest`
+tanúsítási XML-t és JPEG-formátumú szintetikus tesztfotót tartalmaz. A manifest
+minden fájlt hash-el, ellenőrzi az XML-gyökereket, a PDF-aláírást és a valódi
+JPEG fájlszerkezetet. A közvetlen WinWatt PDF-nyomtatóút helyett a számítási
+dokumentum a WinWatt RTF-exportjából, helyi Word-konverzióval készült.
 
 A három korábbi képesség újraigazolása és bekötése a verziózott
 tool-regiszterbe elkészült:
