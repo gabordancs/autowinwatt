@@ -1,6 +1,12 @@
 from winwatt_automation.certificates.native_xml import _building_specs, _explicit_glass_ratio, _kind
 
 
+def test_panel_type_mapping_matches_winwatt_native_readback() -> None:
+    assert _kind("külső fal") == "OutsideWall"
+    assert _kind("talajon fekvő padló") == "FloorISO"
+    assert _kind("tető") == "Roof1"
+
+
 def test_explicit_glass_ratio_only_uses_structured_or_stated_source_value() -> None:
     assert _explicit_glass_ratio({"note": "90% üvegezési arány"}) == 90
     assert _explicit_glass_ratio({"glass_ratio_percent": 75}) == 75

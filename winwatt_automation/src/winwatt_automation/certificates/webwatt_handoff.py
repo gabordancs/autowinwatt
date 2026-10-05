@@ -36,6 +36,7 @@ class ApprovedLayer(BaseModel):
     candidate_id: str
     layer_reference: str
     structure_name: str = Field(min_length=1)
+    structure_type: Literal["külső fal", "lábazati fal", "talajon fekvő padló", "külső tető", "tető"]
     sequence: int = Field(ge=1)
     catalog_material_id: str = Field(min_length=1)
     catalog_material_name: str = Field(min_length=1)
@@ -56,6 +57,23 @@ class WebwattWinwattHandoff(BaseModel):
     layers: list[ApprovedLayer] = Field(min_length=1)
     blockers: list[Any] = Field(max_length=0)
 
+    @model_validator(mode="after")
+    def valid_structure_layer_order(self):
+        grouped: dict[str, list[ApprovedLayer]] = {}
+        for layer in self.layers:
+            grouped.setdefault(layer.structure_name, []).append(layer)
+        errors: list[str] = []
+        for name, layers in grouped.items():
+            structure_types = {layer.structure_type for layer in layers}
+            if len(structure_types) != 1:
+                errors.append(f"{name}: layers have inconsistent structure types")
+            sequences = sorted(layer.sequence for layer in layers)
+            if sequences != list(range(1, len(layers) + 1)):
+                errors.append(f"{name}: layer sequences must be unique and contiguous from 1")
+        if errors:
+            raise ValueError("Invalid reviewed layer stacks:\n" + "\n".join(errors))
+        return self
+
 
 def load_webwatt_handoff(path: Path, catalog_path: Path) -> tuple[WebwattWinwattHandoff, dict[str, Any]]:
     package = WebwattWinwattHandoff.model_validate_json(path.read_text(encoding="utf-8"))
@@ -71,7 +89,10 @@ def load_webwatt_handoff(path: Path, catalog_path: Path) -> tuple[WebwattWinwatt
         raise ValueError("Invalid reviewed catalog references:\n" + "\n".join(errors))
     model_fragment = {
         "project": {"id": package.project_id, "source": str(path)},
-        "structures": [{"name": name, "type": "külső fal"} for name in sorted({layer.structure_name for layer in package.layers})],
+        "structures": [
+            {"name": name, "type": next(layer.structure_type for layer in package.layers if layer.structure_name == name)}
+            for name in sorted({layer.structure_name for layer in package.layers})
+        ],
         "layers": [{
             "structure": layer.structure_name,
             "sequence": layer.sequence,

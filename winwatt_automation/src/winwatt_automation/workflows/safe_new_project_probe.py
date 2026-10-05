@@ -28,10 +28,19 @@ def _send_new_project_menu_sequence() -> list[str]:
 
 def _find_new_project_dialog(process_id: int, *, timeout: float) -> tuple[Any | None, dict[str, Any]]:
     from pywinauto import Desktop
+    from pywinauto.controls.hwndwrapper import InvalidWindowHandle
 
     deadline = time.monotonic() + max(0.1, timeout)
     while time.monotonic() < deadline:
-        for candidate in Desktop(backend="win32").windows():
+        try:
+            candidates = Desktop(backend="win32").windows()
+        except InvalidWindowHandle:
+            # A transient common dialog can disappear between EnumWindows and
+            # wrapper construction.  That says nothing about the New Project
+            # dialog we are waiting for, so retry the bounded enumeration.
+            time.sleep(0.02)
+            continue
+        for candidate in candidates:
             try:
                 if int(candidate.process_id()) != process_id:
                     continue
@@ -93,8 +102,13 @@ def _dialog_is_visible(handle: int | None) -> bool:
     if not isinstance(handle, int):
         return False
     from pywinauto import Desktop
+    from pywinauto.controls.hwndwrapper import InvalidWindowHandle
 
-    for candidate in Desktop(backend="win32").windows():
+    try:
+        candidates = Desktop(backend="win32").windows()
+    except InvalidWindowHandle:
+        return True
+    for candidate in candidates:
         try:
             if int(candidate.handle) == handle:
                 return bool(candidate.is_visible())
