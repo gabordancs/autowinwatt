@@ -768,6 +768,52 @@
           "assertion": "the minimal Building graph explorer scope and all structures produced a well-formed 1,098,556-byte UploadRequest XML after mandatory administration defaults; source/copy hashes stayed unchanged and WinWatt closed"
         }
       ]
+    },
+    {
+      "tool_id": "winwatt.building.structure.reviewed_handoff.roundtrip",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Validate human-approved WebWatt layer material decisions against the WinWatt catalog, import them on a disposable WWP, reopen and verify every layer.",
+      "profile_ids": ["winwatt_8c137b67c0a2214bb91aeae8"],
+      "handler": "winwatt_automation.scripts.probe_webwatt_handoff_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing source WWP; never modified",
+        "output": "new empty evidence directory",
+        "template_xml": "native XML export from the same WinWatt version",
+        "handoff": "webwatt-winwatt-handoff/v1 JSON with ready=true and no blockers",
+        "catalog_xml": "the WinWatt material catalog used during human review"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "sandbox/reviewed.wwp",
+        "reviewed_model": "reviewed_model.json",
+        "evidence": "native import XML and native XML exported after reopen"
+      },
+      "preconditions": [
+        "32-bit Python process and active unlocked desktop",
+        "profile fingerprint matches installed WinWatt",
+        "every layer has an evidence-backed human decision and a catalog id/name pair",
+        "source WWP and version-compatible native XML template exist"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "report.roundtrip_passed == true",
+        "every reviewed layer name and thickness match after full reopen",
+        "report.source_unchanged == true",
+        "report.copy_changed == true",
+        "report.llm_used == false"
+      ],
+      "retry_policy": "retry only active-desktop failures in a fresh output directory",
+      "idempotency": "repeatable because every run validates hashes and writes a new project copy",
+      "evidence": [{
+        "kind": "save_reopen",
+        "path": "data/runtime_maps/webwatt_handoff_roundtrip_20261005a/report.json",
+        "deterministic": true,
+        "assertion": "two reviewed Rockwool catalog layers retained names, physical properties and 0.15/0.05 m thicknesses after save, full close/reopen and native XML readback; source hash stayed unchanged"
+      }]
     }
   ]
 }

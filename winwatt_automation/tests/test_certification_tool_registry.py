@@ -16,6 +16,7 @@ def test_default_registry_exposes_only_roundtrip_verified_tools_to_agent() -> No
     assert {item["tool_id"] for item in exposed} == {
         "winwatt.building.room.create_roundtrip",
         "winwatt.building.structure.layered.create_roundtrip",
+        "winwatt.building.structure.reviewed_handoff.roundtrip",
         "winwatt.building.room.boundary.assign_roundtrip",
         "winwatt.building.orientation.roundtrip",
         "winwatt.building.system.lighting.create_roundtrip",
