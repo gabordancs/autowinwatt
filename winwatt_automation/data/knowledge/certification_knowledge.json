@@ -299,6 +299,16 @@
           "assertion": "A Building graph explorer épület és valamennyi szerkezet kiválasztása után 1 098 556 bájtos, 106 elemű UploadRequest XML készült; a WinWatt teljesen bezárult."
         }
       ]
+    },
+    {
+      "fact_id": "building.structure.reviewed_handoff.roundtrip",
+      "status": "verified",
+      "claim": "A WebWattban ember által jóváhagyott, evidence-hez és WinWatt-katalógusazonosítóhoz kötött többrétegű szerkezet külön WWP-másolatba importálható, és valamennyi rétegnév, vastagság és fizikai adat teljes újranyitás után visszaolvasható.",
+      "tool_ids": ["winwatt.building.structure.reviewed_handoff.roundtrip"],
+      "evidence": [{
+        "path": "data/runtime_maps/webwatt_handoff_roundtrip_20261005a/report.json",
+        "assertion": "Két jóváhagyott Rockwool katalógusréteg 0,15 és 0,05 m vastagsággal, változatlan fizikai adatokkal megmaradt; a forrás WWP hash-e változatlan maradt."
+      }]
     }
   ],
   "workflows": [
@@ -385,8 +395,8 @@
     "A számítást megakadályozó és figyelmeztető hibajelzések teljes katalógusa.",
     "Felújítási javaslatok és előtte/utána számítás.",
     "WWP/natív XML/PDF/fotócsomag teljes export- és validációs lánca.",
-    "WebWatt kapcsolat és fogadóoldali visszaellenőrzés.",
+    "WebWatt élő kapcsolat, projekt-specifikus teljes modellátadás és fogadóoldali felhasználói visszajelzés.",
     "Tanúsítói szakmai felülvizsgálat és véglegesítés."
   ],
-  "updated_at": "2026-10-04T05:31:46.338069+00:00"
+  "updated_at": "2026-10-05T18:26:42.400695+00:00"
 }

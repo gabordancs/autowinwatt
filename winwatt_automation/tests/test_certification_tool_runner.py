@@ -138,6 +138,23 @@ def test_envelope_tool_adapters_use_semantic_parameters(tmp_path: Path) -> None:
         "--layer-name", "Gyapot", "--thickness-cm", "10.0",
     ]
 
+    reviewed = registry.require_executable(
+        "winwatt.building.structure.reviewed_handoff.roundtrip", profile_id=PROFILE
+    )
+    reviewed_args = build_handler_arguments(
+        tool=reviewed,
+        parameters={
+            "template_xml": str(tmp_path / "template.xml"),
+            "handoff": str(tmp_path / "handoff.json"),
+            "catalog_xml": str(tmp_path / "materials.xml"),
+        }, **common,
+    )
+    assert reviewed_args[-6:] == [
+        "--template-xml", str(tmp_path / "template.xml"),
+        "--handoff", str(tmp_path / "handoff.json"),
+        "--catalog-xml", str(tmp_path / "materials.xml"),
+    ]
+
     boundary = registry.require_executable(
         "winwatt.building.room.boundary.assign_roundtrip", profile_id=PROFILE
     )

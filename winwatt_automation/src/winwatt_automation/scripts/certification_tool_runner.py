@@ -30,6 +30,11 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
         "layer_name": ("--layer-name", str, False),
         "thickness_cm": ("--thickness-cm", float, False),
     },
+    "winwatt.building.structure.reviewed_handoff.roundtrip": {
+        "template_xml": ("--template-xml", Path, True),
+        "handoff": ("--handoff", Path, True),
+        "catalog_xml": ("--catalog-xml", Path, True),
+    },
     "winwatt.building.room.boundary.assign_roundtrip": {
         "room_name": ("--room-name", str, True),
         "structure_reference": ("--structure-reference", str, True),
