@@ -14,7 +14,7 @@ from collections import defaultdict
 from pathlib import Path
 from .geometry import is_vertical_wall, wall_geometry_issues, xy_area
 
-PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("Roof1",3),"külső tető":("Roof3",5),"tető":("Roof3",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
+PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("FloorISO",3),"külső tető":("Roof1",5),"tető":("Roof1",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
 def _set(node:ET.Element,name:str,value:object)->None:
     """Set a direct XML field and collapse legacy duplicate field nodes.
 

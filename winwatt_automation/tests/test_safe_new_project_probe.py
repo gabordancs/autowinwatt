@@ -1,6 +1,33 @@
 from winwatt_automation.workflows import safe_new_project_probe
 
 
+def test_find_new_project_dialog_retries_transient_invalid_handle(monkeypatch):
+    import pywinauto
+    from pywinauto.controls.hwndwrapper import InvalidWindowHandle
+
+    class Candidate:
+        handle = 44
+        def process_id(self): return 12
+        def window_text(self): return "Projekt létrehozása"
+        def class_name(self): return "#32770"
+        def is_visible(self): return True
+
+    calls = {"count": 0}
+    class Desktop:
+        def __init__(self, backend): assert backend == "win32"
+        def windows(self):
+            calls["count"] += 1
+            if calls["count"] == 1:
+                raise InvalidWindowHandle(99)
+            return [Candidate()]
+
+    monkeypatch.setattr(pywinauto, "Desktop", Desktop)
+    dialog, evidence = safe_new_project_probe._find_new_project_dialog(12, timeout=0.2)
+    assert dialog is not None
+    assert evidence["selected_candidate"]["handle"] == 44
+    assert calls["count"] == 2
+
+
 def test_safe_new_project_probe_records_verified_non_mutating_round_trip(monkeypatch):
     class MainWindow:
         def set_focus(self):

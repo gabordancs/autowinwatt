@@ -9,6 +9,7 @@
       "candidate_id": "fixture-layer-1",
       "layer_reference": "wall-1:0#fixture-claim-1",
       "structure_name": "WEBWATT_REVIEWED_WALL_20261005A",
+      "structure_type": "külső fal",
       "sequence": 1,
       "catalog_material_id": "1026",
       "catalog_material_name": "Rockwool Airrock ND",
@@ -24,6 +25,7 @@
       "candidate_id": "fixture-layer-2",
       "layer_reference": "wall-1:1#fixture-claim-2",
       "structure_name": "WEBWATT_REVIEWED_WALL_20261005A",
+      "structure_type": "külső fal",
       "sequence": 2,
       "catalog_material_id": "1025",
       "catalog_material_name": "Rockwool Airrock LD",
@@ -34,6 +36,38 @@
       "heat_capacity": 0.84,
       "review": {"status": "edited", "reviewer_id": "fixture-reviewer", "reviewed_at": "2026-10-05T18:26:00Z"},
       "evidence": {"source_file": "fixture.pdf", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "page": 2, "bbox": [0.1, 0.31, 0.6, 0.4]}
+    },
+    {
+      "candidate_id": "fixture-layer-3",
+      "layer_reference": "floor-1:0#fixture-claim-3",
+      "structure_name": "WEBWATT_REVIEWED_FLOOR_20261005A",
+      "structure_type": "talajon fekvő padló",
+      "sequence": 1,
+      "catalog_material_id": "1026",
+      "catalog_material_name": "Rockwool Airrock ND",
+      "catalog_material_path": "Rockwool",
+      "thickness_mm": 100,
+      "thermal_conductivity": 0.035,
+      "density": 50,
+      "heat_capacity": 0.84,
+      "review": {"status": "edited", "reviewer_id": "fixture-reviewer", "reviewed_at": "2026-10-05T18:27:00Z"},
+      "evidence": {"source_file": "fixture.pdf", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "page": 3, "bbox": [0.1, 0.2, 0.6, 0.3]}
+    },
+    {
+      "candidate_id": "fixture-layer-4",
+      "layer_reference": "roof-1:0#fixture-claim-4",
+      "structure_name": "WEBWATT_REVIEWED_ROOF_20261005A",
+      "structure_type": "tető",
+      "sequence": 1,
+      "catalog_material_id": "1025",
+      "catalog_material_name": "Rockwool Airrock LD",
+      "catalog_material_path": "Rockwool",
+      "thickness_mm": 200,
+      "thermal_conductivity": 0.037,
+      "density": 40,
+      "heat_capacity": 0.84,
+      "review": {"status": "edited", "reviewer_id": "fixture-reviewer", "reviewed_at": "2026-10-05T18:28:00Z"},
+      "evidence": {"source_file": "fixture.pdf", "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "page": 4, "bbox": [0.1, 0.2, 0.6, 0.3]}
     }
   ]
 }

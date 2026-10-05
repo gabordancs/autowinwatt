@@ -66,3 +66,26 @@ A javítás utáni `webwatt_handoff_roundtrip_20261005f` futás sikeres lett:
 - `status`, `roundtrip_passed`, `copy_changed` és `source_unchanged`: sikeres;
 - a `Rockwool Airrock ND` 150 mm és `Rockwool Airrock LD` 50 mm rétegek
   mentés utáni visszaolvasása sikeres.
+
+## Több szerkezettípus ellenőrzése
+
+A `webwatt_handoff_multi_20261005c` futás három külön rétegrendet és négy
+réteget vitt végig a teljes roundtripen. A WinWatt által visszaolvasott natív
+típusleképezés:
+
+- külső fal → `OutsideWall`;
+- talajon fekvő padló → `FloorISO`, megjelenített típus: „padló (talajra
+  fektetett ISO 13370)”;
+- tető → `Roof1`.
+
+A `Roof1` nem talajon fekvő padló, a `Roof3` pedig nem tető: a WinWatt ezeket
+visszaolvasáskor rendre „tető”, illetve „pincefödém, alsó zárófödém” névre
+normalizálja. A helyes natív típus ezért nem következtethető a sablon sorából;
+a mentés utáni export a mérvadó.
+
+A többtípusos bizonyíték:
+
+- jelentés: `data/runtime_maps/webwatt_handoff_multi_20261005c/report.json`;
+- sandbox: `data/runtime_maps/webwatt_handoff_multi_20261005c/sandbox/reviewed.wwp`;
+- 3/3 rétegrend és 4/4 réteg sikeresen visszaolvasva;
+- `status`, `roundtrip_passed`, `copy_changed` és `source_unchanged`: sikeres.
