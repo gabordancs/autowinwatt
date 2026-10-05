@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>MULTIPOR Fix X702 raghabarcs</ItemName><ItemPath>Xella2024\MULTIPOR\Habarcs</ItemPath><ID>1903</ID>
+  </ItemHeader>
+      <Thickness>0.6</Thickness><Density>770</Density><ThermalCond>0.18</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>MULTIPOR hőszigetelő lap 18-30</ItemName><ItemPath>Xella2024\MULTIPOR\Hőszigetelő lap</ItemPath><ID>1906</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>115</Density><ThermalCond>0.043</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.85</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3</SteamDiffResNum>
+      <InitialHumidity>3.8</InitialHumidity><PermitHumidity>13</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">2.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">100</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>MULTIPOR hőszigetelő lap 6-15</ItemName><ItemPath>Xella2024\MULTIPOR\Hőszigetelő lap</ItemPath><ID>1905</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>115</Density><ThermalCond>0.045</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.85</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3</SteamDiffResNum>
+      <InitialHumidity>3.8</InitialHumidity><PermitHumidity>13</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">2.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">100</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG MULTIPOR habarcs</ItemName><ItemPath>Xella2024\régi\Multipor</ItemPath><ID>1885</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.18</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG MULTIPOR hőszigetelő lap</ItemName><ItemPath>Xella2024\régi\Multipor</ItemPath><ID>1886</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>115</Density><ThermalCond>0.042</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.85</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3.4</SteamDiffResNum>
+      <InitialHumidity>3.8</InitialHumidity><PermitHumidity>13</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">2.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">100</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA V-120</ItemName><ItemPath>Xella2024\régi\Silka\Burkoló téglák</ItemPath><ID>914</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA VB-30</ItemName><ItemPath>Xella2024\régi\Silka\Burkoló téglák</ItemPath><ID>915</ID>
+  </ItemHeader>
+      <Thickness>3</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA VB-60</ItemName><ItemPath>Xella2024\régi\Silka\Burkoló téglák</ItemPath><ID>916</ID>
+  </ItemHeader>
+      <Thickness>6</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA VF-120</ItemName><ItemPath>Xella2024\régi\Silka\Burkoló téglák</ItemPath><ID>917</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA HM-200 NF+GT</ItemName><ItemPath>Xella2024\régi\Silka\Falazóelemek</ItemPath><ID>919</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA HM-250 NF+GT</ItemName><ItemPath>Xella2024\régi\Silka\Falazóelemek</ItemPath><ID>920</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>2000</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA HML-300 NF+GT</ItemName><ItemPath>Xella2024\régi\Silka\Falazóelemek</ItemPath><ID>921</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1600</Density><ThermalCond>0.65</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA HML-100 NF</ItemName><ItemPath>Xella2024\régi\Silka\Válaszfalelemek</ItemPath><ID>923</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1400</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>SILKA HML-150 NF+GT</ItemName><ItemPath>Xella2024\régi\Silka\Válaszfalelemek</ItemPath><ID>924</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1400</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 20cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1872</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 25cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1873</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 30cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1874</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 37,5cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1875</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Forte 25cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1876</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Forte 30cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1877</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Forte 37,5cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1878</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 30cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1879</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>400</Density><ThermalCond>0.089</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 37,5cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1880</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>400</Density><ThermalCond>0.089</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 50cm falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>1881</ID>
+  </ItemHeader>
+      <Thickness>50</Thickness><Density>400</Density><ThermalCond>0.089</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-0,5 falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>867</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-0,5 NF+GT falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>868</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4-0,6 falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>869</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4-0,6 NF+GT falazóelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falazóelemek</ItemPath><ID>870</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2,2-0,5 falpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falpallók</ItemPath><ID>872</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.14</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P3,3-0,5 falpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falpallók</ItemPath><ID>873</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.14</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P3,3-0,6 falpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falpallók</ItemPath><ID>874</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4,4-0,6 falpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falpallók</ItemPath><ID>875</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4,4-0,7 falpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Falpallók</ItemPath><ID>876</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P3,3-0,5 tetőpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>878</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.14</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P3,3-0,6 tetőpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>879</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P4,4-0,6 tetőpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>880</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P4,4-0,7 tetőpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>881</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG DE P4,4-0,6 födémpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>882</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG DE P4,4-0,7 födémpalló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>883</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-15-60 béléstest</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>884</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-17,5-60 béléstest</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>885</ID>
+  </ItemHeader>
+      <Thickness>17.5</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pef előfalazólap</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>887</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Php (50+25) hőpáncél elem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>888</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Php (50+40) hőpáncél elem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>889</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Php (50+50) hőpáncél elem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>890</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (50+50) koszorúelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>1882</ID>
+  </ItemHeader>
+      <Thickness>5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (75+25) koszorúelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>891</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (75+40) koszorúelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>892</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (75+50) koszorúelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>1883</ID>
+  </ItemHeader>
+      <Thickness>7.5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pu-0,6 zsaluelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>893</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pmá P4,4-0,6 áthidaló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>1887</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Ptá P4,4-0,6 áthidaló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>895</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Ptá P4,4-0,7 áthidaló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>896</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pvá áthidaló</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>1888</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve 10cm válaszfalelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>1889</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve 12,5cm válaszfalelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>1890</ID>
+  </ItemHeader>
+      <Thickness>12.5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve 15cm válaszfalelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>1891</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve NF-0,5 válaszfalelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>898</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve-0,5 válaszfalelem</ItemName><ItemPath>Xella2024\régi\YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>899</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA  VF-120</ItemName><ItemPath>Xella2024\SILKA\Burkoló téglák</ItemPath><ID>1916</ID>
+  </ItemHeader>
+      <Thickness>12</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA Rapid V-120</ItemName><ItemPath>Xella2024\SILKA\Burkoló téglák</ItemPath><ID>1912</ID>
+  </ItemHeader>
+      <Thickness>12</Thickness><Density>1800</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HM-200 NF+GT</ItemName><ItemPath>Xella2024\SILKA\Falazóelemek</ItemPath><ID>1917</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HM-250 NF+GT</ItemName><ItemPath>Xella2024\SILKA\Falazóelemek</ItemPath><ID>1915</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>2000</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HML-300 NF-GT</ItemName><ItemPath>Xella2024\SILKA\Falazóelemek</ItemPath><ID>1918</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>1600</Density><ThermalCond>0.65</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HM-150 NF+GT</ItemName><ItemPath>Xella2024\SILKA\Válaszfalelemek</ItemPath><ID>1921</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>2000</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HML-100 NF</ItemName><ItemPath>Xella2024\SILKA\Válaszfalelemek</ItemPath><ID>1919</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1600</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HMLF-100 NF</ItemName><ItemPath>Xella2024\SILKA\Válaszfalelemek</ItemPath><ID>1920</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1600</Density><ThermalCond>0.67</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Classic 200</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1926</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Classic 250</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1927</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Classic 300</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1928</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Classic 375</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1929</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Forte 375</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1934</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>530</Density><ThermalCond>0.129</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 300</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1956</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>330</Density><ThermalCond>0.08</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 375</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1930</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>330</Density><ThermalCond>0.08</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 450</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1932</ID>
+  </ItemHeader>
+      <Thickness>45</Thickness><Density>330</Density><ThermalCond>0.08</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 500</ItemName><ItemPath>Xella2024\YTONG\Falazóelemek</ItemPath><ID>1933</ID>
+  </ItemHeader>
+      <Thickness>50</Thickness><Density>330</Density><ThermalCond>0.08</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG beltéri vakolat GP602 Hvb</ItemName><ItemPath>Xella2024\YTONG\Habarcs</ItemPath><ID>1957</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1340</Density><ThermalCond>0.45</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pef 50</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1949</ID>
+  </ItemHeader>
+      <Thickness>5</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pef 75</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1948</ID>
+  </ItemHeader>
+      <Thickness>7.5</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pfe 300</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1952</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pfe 375</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1953</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pu zsaluelem</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1950</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>530</Density><ThermalCond>0.129</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Start 250</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1935</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>540</Density><ThermalCond>0.132</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Start 300</ItemName><ItemPath>Xella2024\YTONG\Kiegészítő elemek</ItemPath><ID>1936</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>540</Density><ThermalCond>0.132</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pve 100</ItemName><ItemPath>Xella2024\YTONG\Válaszfalelemek</ItemPath><ID>1943</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pve 125</ItemName><ItemPath>Xella2024\YTONG\Válaszfalelemek</ItemPath><ID>1944</ID>
+  </ItemHeader>
+      <Thickness>12.5</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG Pve 150</ItemName><ItemPath>Xella2024\YTONG\Válaszfalelemek</ItemPath><ID>1945</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>440</Density><ThermalCond>0.106</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

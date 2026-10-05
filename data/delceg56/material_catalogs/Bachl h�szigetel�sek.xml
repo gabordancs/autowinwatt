@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project Type="NativeExport">
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Extrapor eps 100</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>950</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.029</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0044</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Extrapor eps 100 H</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>951</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.029</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0044</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Extrapor eps 80</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>952</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>17</Density><ThermalCond>0.031</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0051</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell eps 100</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>953</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0044</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell eps 150</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>954</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>25</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0036</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell eps 200</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>955</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0032</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell eps 30</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>956</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>10</Density><ThermalCond>0.048</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0052</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell eps 70</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>957</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>15</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.005</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell eps 80</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>958</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>17</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0051</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL Nikecell LH</ItemName><ItemPath>BACHL-NIKECELL\Bachl EPS</ItemPath><ID>959</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>10</Density><ThermalCond>0.045</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0022</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL PIR ALU</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>960</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.022</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>200</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL PIR LTL</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>961</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.026</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL PIR MV  2-8 cm vtg.</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>962</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.026</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL PIR MV 10-12 cm vtg.</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>963</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.025</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL PIR MV 14-24 cm vtg.</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>964</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.024</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR 022</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>965</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.022</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>200</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR DS 5cm</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>966</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.026</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR FSB</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>967</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.022</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>200</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR HD-p 10-12 cm</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>968</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.025</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR HD-p 14-24 cm</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>969</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.024</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR HD-p 8 cm</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>970</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.026</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL tecta-PUR Polymer</ItemName><ItemPath>BACHL-NIKECELL\Bachl PIR</ItemPath><ID>971</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.022</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>200</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL XPS 200</ItemName><ItemPath>BACHL-NIKECELL\Bachl XPS</ItemPath><ID>972</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>28</Density><ThermalCond>0.03</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.48</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>80</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.2</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL XPS 300 12 cm vtg.</ItemName><ItemPath>BACHL-NIKECELL\Bachl XPS</ItemPath><ID>975</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.48</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.2</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL XPS 300 3-6 cm vtg.</ItemName><ItemPath>BACHL-NIKECELL\Bachl XPS</ItemPath><ID>973</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.48</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.2</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>BACHL XPS 300 8-10 cm vtg.</ItemName><ItemPath>BACHL-NIKECELL\Bachl XPS</ItemPath><ID>974</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.48</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.2</PermitHumidity>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

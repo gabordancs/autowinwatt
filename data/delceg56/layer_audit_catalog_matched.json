@@ -1,0 +1,1212 @@
+{
+  "model": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\data\\delceg56\\delceg56_winwatt_model.json",
+  "catalog_directory": "C:\\Users\\Dancs\\Documents\\GitHub\\autowinwatt\\data\\delceg56\\material_catalogs",
+  "catalog_file_count": 43,
+  "catalog_material_records": 1405,
+  "summary": {
+    "review": 49,
+    "catalog": 1
+  },
+  "layers": [
+    {
+      "structure": "R1 Meglévő tető",
+      "sequence": 1,
+      "source_name": "Kerámia tetőcserép",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Kerámia tetőcserép",
+        "status": "review",
+        "candidate": {
+          "name": "Agyagcserép",
+          "material_id": "1360",
+          "path": "MSZ EN ISO 10456\\Cserepek, csempék",
+          "lambda_wmk": 1.0,
+          "density_kgm3": 2000.0,
+          "heat_capacity_kjkgk": 0.8
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=95%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.428,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1 Meglévő tető",
+      "sequence": 2,
+      "source_name": "Tetőléc",
+      "thickness_cm": 2.5,
+      "decision": {
+        "source_name": "Tetőléc",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1 Meglévő tető",
+      "sequence": 3,
+      "source_name": "Ellenléc",
+      "thickness_cm": 2.5,
+      "decision": {
+        "source_name": "Ellenléc",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1 Meglévő tető",
+      "sequence": 4,
+      "source_name": "Szarufa",
+      "thickness_cm": 15,
+      "decision": {
+        "source_name": "Szarufa",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R5 Tervezett homlokzati fal",
+      "sequence": 1,
+      "source_name": "Külső vakolat",
+      "thickness_cm": 1,
+      "decision": {
+        "source_name": "Külső vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "dryvit kaparthatású vakolat",
+          "material_id": "901",
+          "path": "Hőszigetelő anyagok\\NIKECELL",
+          "lambda_wmk": 0.99,
+          "density_kgm3": 1800.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=94%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.7,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Nikecell.xml"
+      ]
+    },
+    {
+      "structure": "R5 Tervezett homlokzati fal",
+      "sequence": 2,
+      "source_name": "AUSTROTHERM AT-H80 homlokzati hőszigetelés",
+      "thickness_cm": 20,
+      "decision": {
+        "source_name": "AUSTROTHERM AT-H80 homlokzati hőszigetelés",
+        "status": "catalog",
+        "candidate": {
+          "name": "AT-H80 expandált polisztirolhab",
+          "material_id": "364",
+          "path": "Hőszigetelő anyagok\\Austrotherm\\Expandált polisztirolhab",
+          "lambda_wmk": 0.04,
+          "density_kgm3": 15.0,
+          "heat_capacity_kjkgk": 1.46
+        },
+        "reason": "Helyi katalógus-egyezés: név=50%, fizika=99%.",
+        "confidence": 0.721,
+        "decision_mode": "catalog_match"
+      },
+      "catalog_files": [
+        "austrotherm.xml"
+      ]
+    },
+    {
+      "structure": "R5 Tervezett homlokzati fal",
+      "sequence": 3,
+      "source_name": "Légzáró vakolat",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Légzáró vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "Baumit Sanova Vakolat N (Nehéz)",
+          "material_id": "118",
+          "path": "BAUMIT\\Felújító vakolatok",
+          "lambda_wmk": 0.8,
+          "density_kgm3": 1630.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=94%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.7,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "baumit.xml"
+      ]
+    },
+    {
+      "structure": "R5 Tervezett homlokzati fal",
+      "sequence": 4,
+      "source_name": "Porotherm 38 vázkerámia falazat",
+      "thickness_cm": 30,
+      "decision": {
+        "source_name": "Porotherm 38 vázkerámia falazat",
+        "status": "review",
+        "candidate": {
+          "name": "POROTHERM födém 4 cm felbeton",
+          "material_id": "623",
+          "path": "POROTHERM termékek",
+          "lambda_wmk": null,
+          "density_kgm3": 1430.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=33%, fizika=93%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.6,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Porotherm.xml"
+      ]
+    },
+    {
+      "structure": "R5 Tervezett homlokzati fal",
+      "sequence": 5,
+      "source_name": "Belső vakolat",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "YTONG Hvb 8 belső vakolat",
+          "material_id": "785",
+          "path": "Vakolatok",
+          "lambda_wmk": 0.75,
+          "density_kgm3": 1430.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=100%, fizika=89%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.949,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "ytong.xml"
+      ]
+    },
+    {
+      "structure": "R6 Tetőterasz",
+      "sequence": 1,
+      "source_name": "WPC burkolat",
+      "thickness_cm": 2,
+      "decision": {
+        "source_name": "WPC burkolat",
+        "status": "review",
+        "candidate": {
+          "name": "Gumi",
+          "material_id": "1257",
+          "path": "MSZ EN ISO 10456\\Burkolatok",
+          "lambda_wmk": 0.17,
+          "density_kgm3": 1200.0,
+          "heat_capacity_kjkgk": 1.4
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=90%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.405,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R6 Tetőterasz",
+      "sequence": 2,
+      "source_name": "Bazaltzúzalék",
+      "thickness_cm": 3,
+      "decision": {
+        "source_name": "Bazaltzúzalék",
+        "status": "review",
+        "candidate": {
+          "name": "homokos, kavicsos talaj 1",
+          "material_id": "1344",
+          "path": "MSZ EN ISO 10456\\Talajok",
+          "lambda_wmk": 2.0,
+          "density_kgm3": 1700.0,
+          "heat_capacity_kjkgk": 0.91
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=91%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.408,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R6 Tetőterasz",
+      "sequence": 3,
+      "source_name": "Bitumenes vízszigetelés két réteg",
+      "thickness_cm": 0.8,
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": {
+          "name": "Alu. betétes párazáró lemez",
+          "material_id": "1008",
+          "path": "Fóliák",
+          "lambda_wmk": 0.17,
+          "density_kgm3": 1100.0,
+          "heat_capacity_kjkgk": null
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "egy�b.xml"
+      ]
+    },
+    {
+      "structure": "R6 Tetőterasz",
+      "sequence": 4,
+      "source_name": "PUR hőszigetelés",
+      "thickness_cm": 15,
+      "decision": {
+        "source_name": "PUR hőszigetelés",
+        "status": "review",
+        "candidate": {
+          "name": "BACHL tecta-PUR DS 5cm",
+          "material_id": "966",
+          "path": "BACHL-NIKECELL\\Bachl PIR",
+          "lambda_wmk": 0.026,
+          "density_kgm3": 30.0,
+          "heat_capacity_kjkgk": 1.4
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=95%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.704,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Bachl h�szigetel�sek.xml"
+      ]
+    },
+    {
+      "structure": "R6 Tetőterasz",
+      "sequence": 5,
+      "source_name": "Lejtést adó beton átlag",
+      "thickness_cm": 3.5,
+      "decision": {
+        "source_name": "Lejtést adó beton átlag",
+        "status": "review",
+        "candidate": {
+          "name": "Beton 3",
+          "material_id": "1252",
+          "path": "MSZ EN ISO 10456\\Betonok",
+          "lambda_wmk": 1.65,
+          "density_kgm3": 2200.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=25%, fizika=93%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.554,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R6 Tetőterasz",
+      "sequence": 6,
+      "source_name": "Meglévő födémszerkezet ismeretlen",
+      "thickness_cm": 1,
+      "decision": {
+        "source_name": "Meglévő födémszerkezet ismeretlen",
+        "status": "review",
+        "candidate": {
+          "name": "HDPE párafékező fólia",
+          "material_id": "1015",
+          "path": "Fóliák",
+          "lambda_wmk": 0.1,
+          "density_kgm3": 0.9,
+          "heat_capacity_kjkgk": null
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=45%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.203,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "egy�b.xml"
+      ]
+    },
+    {
+      "structure": "R7 Padlásfödém",
+      "sequence": 1,
+      "source_name": "Kőzetgyapot hőszigetelés",
+      "thickness_cm": 25,
+      "decision": {
+        "source_name": "Kőzetgyapot hőszigetelés",
+        "status": "review",
+        "candidate": {
+          "name": "Heralan DP-4",
+          "material_id": "440",
+          "path": "Hőszigetelő anyagok\\Heralan kőzetgyapot",
+          "lambda_wmk": 0.039,
+          "density_kgm3": 40.0,
+          "heat_capacity_kjkgk": 0.84
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=95%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.701,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "heraklith.xml"
+      ]
+    },
+    {
+      "structure": "R7 Padlásfödém",
+      "sequence": 2,
+      "source_name": "Tűzgátló gipszkarton két réteg",
+      "thickness_cm": 2.5,
+      "decision": {
+        "source_name": "Tűzgátló gipszkarton két réteg",
+        "status": "review",
+        "candidate": {
+          "name": "Gipszkarton 2",
+          "material_id": "1333",
+          "path": "MSZ EN ISO 10456\\Gipsz, gipsztermékek",
+          "lambda_wmk": 0.25,
+          "density_kgm3": 900.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=25%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.588,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R8 Közbenső födém 4 cm",
+      "sequence": 1,
+      "source_name": "Padlóburkolat és ragasztó",
+      "thickness_cm": 2,
+      "decision": {
+        "source_name": "Padlóburkolat és ragasztó",
+        "status": "review",
+        "candidate": {
+          "name": "dryvit poralakú ragasztó",
+          "material_id": "900",
+          "path": "Hőszigetelő anyagok\\NIKECELL",
+          "lambda_wmk": 0.93,
+          "density_kgm3": 1800.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=96%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.708,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Nikecell.xml"
+      ]
+    },
+    {
+      "structure": "R8 Közbenső födém 4 cm",
+      "sequence": 2,
+      "source_name": "Estrich aljzatbeton",
+      "thickness_cm": 6,
+      "decision": {
+        "source_name": "Estrich aljzatbeton",
+        "status": "review",
+        "candidate": {
+          "name": "Baumit Esztrich E225",
+          "material_id": "102",
+          "path": "BAUMIT\\Esztrichek",
+          "lambda_wmk": 1.4,
+          "density_kgm3": 2000.0,
+          "heat_capacity_kjkgk": 0.84
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "baumit.xml"
+      ]
+    },
+    {
+      "structure": "R8 Közbenső födém 4 cm",
+      "sequence": 3,
+      "source_name": "Lépésálló hőszigetelés",
+      "thickness_cm": 4,
+      "decision": {
+        "source_name": "Lépésálló hőszigetelés",
+        "status": "review",
+        "candidate": {
+          "name": "Isoland N150 - lépésálló eps",
+          "material_id": "1274",
+          "path": "Hőszigetelő anyagok\\CARBOLAND",
+          "lambda_wmk": 0.034,
+          "density_kgm3": 25.0,
+          "heat_capacity_kjkgk": 1.46
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=96%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.706,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "CARBOLAND.xml"
+      ]
+    },
+    {
+      "structure": "R8 Közbenső födém 4 cm",
+      "sequence": 4,
+      "source_name": "Monolit vasbeton födém",
+      "thickness_cm": 20,
+      "decision": {
+        "source_name": "Monolit vasbeton födém",
+        "status": "review",
+        "candidate": {
+          "name": "Vasbeton (1 % acél)",
+          "material_id": "1254",
+          "path": "MSZ EN ISO 10456\\Betonok",
+          "lambda_wmk": 2.3,
+          "density_kgm3": 2300.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=33%, fizika=82%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.554,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R9 Közbenső födém 12 cm",
+      "sequence": 1,
+      "source_name": "Padlóburkolat és ragasztó",
+      "thickness_cm": 2,
+      "decision": {
+        "source_name": "Padlóburkolat és ragasztó",
+        "status": "review",
+        "candidate": {
+          "name": "dryvit poralakú ragasztó",
+          "material_id": "900",
+          "path": "Hőszigetelő anyagok\\NIKECELL",
+          "lambda_wmk": 0.93,
+          "density_kgm3": 1800.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=96%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.708,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Nikecell.xml"
+      ]
+    },
+    {
+      "structure": "R9 Közbenső födém 12 cm",
+      "sequence": 2,
+      "source_name": "Estrich aljzatbeton",
+      "thickness_cm": 6,
+      "decision": {
+        "source_name": "Estrich aljzatbeton",
+        "status": "review",
+        "candidate": {
+          "name": "Baumit Esztrich E225",
+          "material_id": "102",
+          "path": "BAUMIT\\Esztrichek",
+          "lambda_wmk": 1.4,
+          "density_kgm3": 2000.0,
+          "heat_capacity_kjkgk": 0.84
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "baumit.xml"
+      ]
+    },
+    {
+      "structure": "R9 Közbenső födém 12 cm",
+      "sequence": 3,
+      "source_name": "Lépésálló hőszigetelés",
+      "thickness_cm": 12,
+      "decision": {
+        "source_name": "Lépésálló hőszigetelés",
+        "status": "review",
+        "candidate": {
+          "name": "Isoland N150 - lépésálló eps",
+          "material_id": "1274",
+          "path": "Hőszigetelő anyagok\\CARBOLAND",
+          "lambda_wmk": 0.034,
+          "density_kgm3": 25.0,
+          "heat_capacity_kjkgk": 1.46
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=96%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.706,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "CARBOLAND.xml"
+      ]
+    },
+    {
+      "structure": "R9 Közbenső födém 12 cm",
+      "sequence": 4,
+      "source_name": "Monolit vasbeton födém",
+      "thickness_cm": 20,
+      "decision": {
+        "source_name": "Monolit vasbeton födém",
+        "status": "review",
+        "candidate": {
+          "name": "Vasbeton (1 % acél)",
+          "material_id": "1254",
+          "path": "MSZ EN ISO 10456\\Betonok",
+          "lambda_wmk": 2.3,
+          "density_kgm3": 2300.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=33%, fizika=82%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.554,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R10 Közbenső fal",
+      "sequence": 1,
+      "source_name": "Belső vakolat",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "YTONG Hvb 8 belső vakolat",
+          "material_id": "785",
+          "path": "Vakolatok",
+          "lambda_wmk": 0.75,
+          "density_kgm3": 1430.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=100%, fizika=89%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.949,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "ytong.xml"
+      ]
+    },
+    {
+      "structure": "R10 Közbenső fal",
+      "sequence": 2,
+      "source_name": "Porotherm vázkerámia falazat",
+      "thickness_cm": 20,
+      "decision": {
+        "source_name": "Porotherm vázkerámia falazat",
+        "status": "review",
+        "candidate": {
+          "name": "POROTHERM födém 4 cm felbeton",
+          "material_id": "623",
+          "path": "POROTHERM termékek",
+          "lambda_wmk": null,
+          "density_kgm3": 1430.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=33%, fizika=93%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.6,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Porotherm.xml"
+      ]
+    },
+    {
+      "structure": "R13 Terasz",
+      "sequence": 1,
+      "source_name": "Fagyálló kerámia burkolat és ragasztó",
+      "thickness_cm": 2,
+      "decision": {
+        "source_name": "Fagyálló kerámia burkolat és ragasztó",
+        "status": "review",
+        "candidate": {
+          "name": "dryvit poralakú ragasztó",
+          "material_id": "900",
+          "path": "Hőszigetelő anyagok\\NIKECELL",
+          "lambda_wmk": 0.93,
+          "density_kgm3": 1800.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=25%, fizika=96%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.57,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Nikecell.xml"
+      ]
+    },
+    {
+      "structure": "R13 Terasz",
+      "sequence": 2,
+      "source_name": "Lejtést adó aljzatbeton átlag",
+      "thickness_cm": 5,
+      "decision": {
+        "source_name": "Lejtést adó aljzatbeton átlag",
+        "status": "review",
+        "candidate": {
+          "name": "Baumit Esztrich E225",
+          "material_id": "102",
+          "path": "BAUMIT\\Esztrichek",
+          "lambda_wmk": 1.4,
+          "density_kgm3": 2000.0,
+          "heat_capacity_kjkgk": 0.84
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=94%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.422,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "baumit.xml"
+      ]
+    },
+    {
+      "structure": "R13 Terasz",
+      "sequence": 3,
+      "source_name": "Kenhető vízszigetelés két réteg",
+      "thickness_cm": 0.4,
+      "decision": {
+        "source_name": "Kenhető vízszigetelés két réteg",
+        "status": "review",
+        "candidate": {
+          "name": "Masterfol CLASSIC ALU",
+          "material_id": "960",
+          "path": "Fóliák\\MASTERPLAST termékek\\Párazáró fóliák",
+          "lambda_wmk": 0.2,
+          "density_kgm3": null,
+          "heat_capacity_kjkgk": null
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Masterplast.xml"
+      ]
+    },
+    {
+      "structure": "R13 Terasz",
+      "sequence": 4,
+      "source_name": "Vasalt aljzatlemez",
+      "thickness_cm": 15,
+      "decision": {
+        "source_name": "Vasalt aljzatlemez",
+        "status": "review",
+        "candidate": {
+          "name": "Vasbeton (1 % acél)",
+          "material_id": "1254",
+          "path": "MSZ EN ISO 10456\\Betonok",
+          "lambda_wmk": 2.3,
+          "density_kgm3": 2300.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=82%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.371,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R13 Terasz",
+      "sequence": 5,
+      "source_name": "Tömörített kavicságyazat",
+      "thickness_cm": 20,
+      "decision": {
+        "source_name": "Tömörített kavicságyazat",
+        "status": "review",
+        "candidate": {
+          "name": "homokos, kavicsos talaj 1",
+          "material_id": "1344",
+          "path": "MSZ EN ISO 10456\\Talajok",
+          "lambda_wmk": 2.0,
+          "density_kgm3": 1700.0,
+          "heat_capacity_kjkgk": 0.91
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=74%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.333,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1B Új tetőszerkezet",
+      "sequence": 1,
+      "source_name": "Kerámia cserépfedés",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Kerámia cserépfedés",
+        "status": "review",
+        "candidate": {
+          "name": "Agyagcserép",
+          "material_id": "1360",
+          "path": "MSZ EN ISO 10456\\Cserepek, csempék",
+          "lambda_wmk": 1.0,
+          "density_kgm3": 2000.0,
+          "heat_capacity_kjkgk": 0.8
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=95%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.428,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1B Új tetőszerkezet",
+      "sequence": 2,
+      "source_name": "Tetőléc",
+      "thickness_cm": 3,
+      "decision": {
+        "source_name": "Tetőléc",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1B Új tetőszerkezet",
+      "sequence": 3,
+      "source_name": "Ellenléc",
+      "thickness_cm": 5,
+      "decision": {
+        "source_name": "Ellenléc",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1B Új tetőszerkezet",
+      "sequence": 4,
+      "source_name": "PIR hőszigetelés",
+      "thickness_cm": 25,
+      "decision": {
+        "source_name": "PIR hőszigetelés",
+        "status": "review",
+        "candidate": {
+          "name": "InnoPan PIR ALU/Therm",
+          "material_id": "2014",
+          "path": "InnoPan",
+          "lambda_wmk": 0.022,
+          "density_kgm3": 32.0,
+          "heat_capacity_kjkgk": 1.4
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=97%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.712,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "InnoPan PIR.xml"
+      ]
+    },
+    {
+      "structure": "R1B Új tetőszerkezet",
+      "sequence": 5,
+      "source_name": "Deszkaburkolat",
+      "thickness_cm": 2.5,
+      "decision": {
+        "source_name": "Deszkaburkolat",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R1B Új tetőszerkezet",
+      "sequence": 6,
+      "source_name": "Borovi fenyő szaruzat",
+      "thickness_cm": 15,
+      "decision": {
+        "source_name": "Borovi fenyő szaruzat",
+        "status": "review",
+        "candidate": {
+          "name": "Fa fűrészárú 2",
+          "material_id": "1366",
+          "path": "MSZ EN ISO 10456\\Faanyagok",
+          "lambda_wmk": 0.13,
+          "density_kgm3": 500.0,
+          "heat_capacity_kjkgk": 1.6
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R14 Talajon fekvő pincepadló",
+      "sequence": 1,
+      "source_name": "Szigetelést védő beton",
+      "thickness_cm": 5,
+      "decision": {
+        "source_name": "Szigetelést védő beton",
+        "status": "review",
+        "candidate": {
+          "name": "Beton 3",
+          "material_id": "1252",
+          "path": "MSZ EN ISO 10456\\Betonok",
+          "lambda_wmk": 1.65,
+          "density_kgm3": 2200.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=33%, fizika=93%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.6,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R14 Talajon fekvő pincepadló",
+      "sequence": 2,
+      "source_name": "Bitumenes vízszigetelés két réteg",
+      "thickness_cm": 0.85,
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": {
+          "name": "Alu. betétes párazáró lemez",
+          "material_id": "1008",
+          "path": "Fóliák",
+          "lambda_wmk": 0.17,
+          "density_kgm3": 1100.0,
+          "heat_capacity_kjkgk": null
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "egy�b.xml"
+      ]
+    },
+    {
+      "structure": "R14 Talajon fekvő pincepadló",
+      "sequence": 3,
+      "source_name": "Monolit vasbeton lemezalap",
+      "thickness_cm": 25,
+      "decision": {
+        "source_name": "Monolit vasbeton lemezalap",
+        "status": "review",
+        "candidate": {
+          "name": "Vasbeton (1 % acél)",
+          "material_id": "1254",
+          "path": "MSZ EN ISO 10456\\Betonok",
+          "lambda_wmk": 2.3,
+          "density_kgm3": 2300.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=33%, fizika=82%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.554,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R14 Talajon fekvő pincepadló",
+      "sequence": 4,
+      "source_name": "Kavicsfeltöltés",
+      "thickness_cm": 25,
+      "decision": {
+        "source_name": "Kavicsfeltöltés",
+        "status": "review",
+        "candidate": {
+          "name": "homokos, kavicsos talaj 1",
+          "material_id": "1344",
+          "path": "MSZ EN ISO 10456\\Talajok",
+          "lambda_wmk": 2.0,
+          "density_kgm3": 1700.0,
+          "heat_capacity_kjkgk": 0.91
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=74%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.333,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "MSZENISO10456.xml"
+      ]
+    },
+    {
+      "structure": "R15 Pincefal terasz mellett",
+      "sequence": 1,
+      "source_name": "XPS hőszigetelés",
+      "thickness_cm": 20,
+      "decision": {
+        "source_name": "XPS hőszigetelés",
+        "status": "review",
+        "candidate": {
+          "name": "Austrotherm XPS TOP 50 10-16 cm",
+          "material_id": "1257",
+          "path": "AUSTROTHERM 2016\\ XPS és Zenit",
+          "lambda_wmk": 0.036,
+          "density_kgm3": 35.0,
+          "heat_capacity_kjkgk": 1.4
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=99%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.719,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "Austrotherm 2016.xml"
+      ]
+    },
+    {
+      "structure": "R15 Pincefal terasz mellett",
+      "sequence": 2,
+      "source_name": "Bitumenes vízszigetelés két réteg",
+      "thickness_cm": 0.8,
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": {
+          "name": "Alu. betétes párazáró lemez",
+          "material_id": "1008",
+          "path": "Fóliák",
+          "lambda_wmk": 0.17,
+          "density_kgm3": 1100.0,
+          "heat_capacity_kjkgk": null
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "egy�b.xml"
+      ]
+    },
+    {
+      "structure": "R15 Pincefal terasz mellett",
+      "sequence": 3,
+      "source_name": "Légzáró vakolat",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Légzáró vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "Baumit Sanova Vakolat N (Nehéz)",
+          "material_id": "118",
+          "path": "BAUMIT\\Felújító vakolatok",
+          "lambda_wmk": 0.8,
+          "density_kgm3": 1630.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=50%, fizika=94%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.7,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "baumit.xml"
+      ]
+    },
+    {
+      "structure": "R15 Pincefal terasz mellett",
+      "sequence": 4,
+      "source_name": "Zsalukő falazat",
+      "thickness_cm": 30,
+      "decision": {
+        "source_name": "Zsalukő falazat",
+        "status": "review",
+        "candidate": {
+          "name": "PTH 45/17 bélést. 2 x ger. 7 cm",
+          "material_id": "1508",
+          "path": "POROTHERM termékek 2021\\POROTHERM födémek",
+          "lambda_wmk": null,
+          "density_kgm3": 1710.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=90%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.403,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "POROTHERM term�kek 2021.xml"
+      ]
+    },
+    {
+      "structure": "R15 Pincefal terasz mellett",
+      "sequence": 5,
+      "source_name": "Belső vakolat",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "YTONG Hvb 8 belső vakolat",
+          "material_id": "785",
+          "path": "Vakolatok",
+          "lambda_wmk": 0.75,
+          "density_kgm3": 1430.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=100%, fizika=89%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.949,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "ytong.xml"
+      ]
+    },
+    {
+      "structure": "R16 Pincefal meglévő épület mellett",
+      "sequence": 1,
+      "source_name": "Bitumenes vízszigetelés két réteg",
+      "thickness_cm": 0.8,
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": {
+          "name": "Alu. betétes párazáró lemez",
+          "material_id": "1008",
+          "path": "Fóliák",
+          "lambda_wmk": 0.17,
+          "density_kgm3": 1100.0,
+          "heat_capacity_kjkgk": null
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=100%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.45,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "egy�b.xml"
+      ]
+    },
+    {
+      "structure": "R16 Pincefal meglévő épület mellett",
+      "sequence": 2,
+      "source_name": "Zsalukő falazat",
+      "thickness_cm": 25,
+      "decision": {
+        "source_name": "Zsalukő falazat",
+        "status": "review",
+        "candidate": {
+          "name": "PTH 45/17 bélést. 2 x ger. 7 cm",
+          "material_id": "1508",
+          "path": "POROTHERM termékek 2021\\POROTHERM födémek",
+          "lambda_wmk": null,
+          "density_kgm3": 1710.0,
+          "heat_capacity_kjkgk": 1.0
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=0%, fizika=90%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.403,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "POROTHERM term�kek 2021.xml"
+      ]
+    },
+    {
+      "structure": "R16 Pincefal meglévő épület mellett",
+      "sequence": 3,
+      "source_name": "Belső vakolat",
+      "thickness_cm": 1.5,
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": {
+          "name": "YTONG Hvb 8 belső vakolat",
+          "material_id": "785",
+          "path": "Vakolatok",
+          "lambda_wmk": 0.75,
+          "density_kgm3": 1430.0,
+          "heat_capacity_kjkgk": 0.88
+        },
+        "reason": "Nem elég biztos katalógus-egyezés (név=100%, fizika=89%); ellenőrzés szükséges, új anyag nem készült.",
+        "confidence": 0.949,
+        "decision_mode": "manual_review"
+      },
+      "catalog_files": [
+        "ytong.xml"
+      ]
+    }
+  ]
+}

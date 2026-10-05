@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Ethafoam</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>652</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>34</Density><ThermalCond>0.045</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3500</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Hamnap HDPE lemez</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>653</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>900</Density><ThermalCond>0.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>4.5E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>NIKECELL technológiai szig.</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>654</ID>
+  </ItemHeader>
+      <Thickness>0.009</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Plantex</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>655</ID>
+  </ItemHeader>
+      <Thickness>0.035</Thickness><Density>194</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Trespa Meteon</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>656</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1400</Density><ThermalCond>0.3</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30000</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Typar Pro</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>657</ID>
+  </ItemHeader>
+      <Thickness>0.043</Thickness><Density>290</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Typar SF56</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>658</ID>
+  </ItemHeader>
+      <Thickness>0.054</Thickness><Density>352</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Tyvek Solid</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>659</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0.108</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Wedi építőlemez</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>660</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>XERO FLOR növényültető talajkev.</ItemName><ItemPath>R.W. Bautech</ItemPath><ID>661</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>800</Density><ThermalCond>0</ThermalCond><ThermalRes>0.2</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>26</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">20</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">44</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

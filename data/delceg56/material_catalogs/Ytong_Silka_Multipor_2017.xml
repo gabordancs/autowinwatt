@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 20cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>925</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 25cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>926</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 30cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>927</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Classic 37,5cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>928</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Forte 25cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>929</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Forte 30cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>930</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Forte 37,5cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>931</ID>
+  </ItemHeader>
+      <Thickness>37.5</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 30cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>932</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>400</Density><ThermalCond>0.089</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 37,5cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>933</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>400</Density><ThermalCond>0.089</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Lambda 50cm falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>934</ID>
+  </ItemHeader>
+      <Thickness>50</Thickness><Density>400</Density><ThermalCond>0.089</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-0,5 falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>867</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-0,5 NF+GT falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>868</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4-0,6 falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>869</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4-0,6 NF+GT falazóelem</ItemName><ItemPath>YTONG pórusbeton\Falazóelemek</ItemPath><ID>870</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2,2-0,5 falpalló</ItemName><ItemPath>YTONG pórusbeton\Falpallók</ItemPath><ID>872</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.14</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P3,3-0,5 falpalló</ItemName><ItemPath>YTONG pórusbeton\Falpallók</ItemPath><ID>873</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.14</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG P3,3-0,6 falpalló</ItemName><ItemPath>YTONG pórusbeton\Falpallók</ItemPath><ID>874</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4,4-0,6 falpalló</ItemName><ItemPath>YTONG pórusbeton\Falpallók</ItemPath><ID>875</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P4,4-0,7 falpalló</ItemName><ItemPath>YTONG pórusbeton\Falpallók</ItemPath><ID>876</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P3,3-0,5 tetőpalló</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>878</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.14</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P3,3-0,6 tetőpalló</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>879</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P4,4-0,6 tetőpalló</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>880</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG DA P4,4-0,7 tetőpalló</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>881</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG DE P4,4-0,6 födémpalló</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>882</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG DE P4,4-0,7 födémpalló</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>883</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-15-60 béléstest</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>884</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG P2-17,5-60 béléstest</ItemName><ItemPath>YTONG pórusbeton\Födém- és tetőpallók</ItemPath><ID>885</ID>
+  </ItemHeader>
+      <Thickness>17.5</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pef előfalazólap</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>887</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Php (50+25) hőpáncél elem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>888</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Php (50+40) hőpáncél elem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>889</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Php (50+50) hőpáncél elem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>890</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (50+50) koszorúelem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>935</ID>
+  </ItemHeader>
+      <Thickness>5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (75+25) koszorúelem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>891</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (75+40) koszorúelem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>892</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pke (75+50) koszorúelem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>936</ID>
+  </ItemHeader>
+      <Thickness>7.5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pu-0,6 zsaluelem</ItemName><ItemPath>YTONG pórusbeton\Kiegészítő elemek</ItemPath><ID>893</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG MULTIPOR habarcs</ItemName><ItemPath>YTONG pórusbeton\MULTIPOR</ItemPath><ID>938</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.18</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>YTONG MULTIPOR hőszigetelő lap</ItemName><ItemPath>YTONG pórusbeton\MULTIPOR</ItemPath><ID>939</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>115</Density><ThermalCond>0.042</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.85</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3.4</SteamDiffResNum>
+      <InitialHumidity>3.8</InitialHumidity><PermitHumidity>13</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">2.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">100</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pmá P4,4-0,6 áthidaló</ItemName><ItemPath>YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>940</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Ptá P4,4-0,6 áthidaló</ItemName><ItemPath>YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>895</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>600</Density><ThermalCond>0.16</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Ptá P4,4-0,7 áthidaló</ItemName><ItemPath>YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>896</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pvá áthidaló</ItemName><ItemPath>YTONG pórusbeton\Teherhordó áthidalók</ItemPath><ID>941</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>700</Density><ThermalCond>0.21</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.018</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve 10cm válaszfalelem</ItemName><ItemPath>YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>942</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve 12,5cm válaszfalelem</ItemName><ItemPath>YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>943</ID>
+  </ItemHeader>
+      <Thickness>12.5</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve 15cm válaszfalelem</ItemName><ItemPath>YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>944</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>500</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve NF-0,5 válaszfalelem</ItemName><ItemPath>YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>898</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>YTONG Pve-0,5 válaszfalelem</ItemName><ItemPath>YTONG pórusbeton\Válaszfalelemek</ItemPath><ID>899</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>500</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.027</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>28.8</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">11.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">28.8</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

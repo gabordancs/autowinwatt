@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>dryvit dörzsvakolat</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>457</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1800</Density><ThermalCond>0.99</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.02</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>dryvit kaparthatású vakolat</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>901</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1800</Density><ThermalCond>0.99</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.02</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>dryvit poralakú ragasztó</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>900</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1800</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.022</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>dryvit Primus ragasztó</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>456</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1800</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.022</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC (EPS) 100 hőszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>461</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0044</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.071</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.186</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.353</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.595</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.047</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.457</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.73</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.975</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.254</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC (EPS) 150 hőszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>462</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>25</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0036</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.064</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.179</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.321</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.571</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.089</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.786</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.357</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC (EPS) 200 hőszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>463</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0032</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.181</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.34</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.587</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.053</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.487</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.78</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.998</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.185</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.25</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC (EPS) 30 hőszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>459</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>10</Density><ThermalCond>0.045</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0052</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.1</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.378</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.031</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.447</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.601</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.889</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.005</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.107</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC (EPS) 70 hőszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>460</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>15</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.005</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.1</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.077</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.192</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.385</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.619</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.005</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.423</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.673</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.039</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.15</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC D (EPS 80) hőszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>455</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>15</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0051</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.061</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.351</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.597</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.042</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.451</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.719</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.97</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.109</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.245</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>NC LH(EPS T2)lépéshangszigetelő</ItemName><ItemPath>Hőszigetelő anyagok\NIKECELL</ItemPath><ID>458</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>10</Density><ThermalCond>0.045</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0.0052</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>2.1</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.07</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.378</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.031</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.447</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.601</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.889</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.005</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.107</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

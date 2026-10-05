@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 30 M100 habarcs.</ItemName><ItemPath>POROTHERM termékek</ItemPath><ID>621</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>800</Density><ThermalCond>0.242</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 30 TM höszig. hab.</ItemName><ItemPath>POROTHERM termékek</ItemPath><ID>622</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>800</Density><ThermalCond>0.216</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM födém 4 cm felbeton</ItemName><ItemPath>POROTHERM termékek</ItemPath><ID>623</ID>
+  </ItemHeader>
+      <Thickness>21</Thickness><Density>1430</Density><ThermalCond>0</ThermalCond><ThermalRes>0.293</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.0269</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM födém 6 cm felbeton</ItemName><ItemPath>POROTHERM termékek</ItemPath><ID>624</ID>
+  </ItemHeader>
+      <Thickness>23</Thickness><Density>1430</Density><ThermalCond>0</ThermalCond><ThermalRes>0.307</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.025</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 30 HS M30, M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM HS falazóelemek</ItemPath><ID>626</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>650</Density><ThermalCond>0.171</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.032</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 30 HS TM höszig. hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM HS falazóelemek</ItemPath><ID>627</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>650</Density><ThermalCond>0.141</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.032</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 38 HS M30, M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM HS falazóelemek</ItemPath><ID>628</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>650</Density><ThermalCond>0.179</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 38 HS TM höszig. hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM HS falazóelemek</ItemPath><ID>629</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>650</Density><ThermalCond>0.143</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 44 HS M30, M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM HS falazóelemek</ItemPath><ID>630</ID>
+  </ItemHeader>
+      <Thickness>44</Thickness><Density>650</Density><ThermalCond>0.166</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.052</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 44 HS TM höszig. hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM HS falazóelemek</ItemPath><ID>631</ID>
+  </ItemHeader>
+      <Thickness>44</Thickness><Density>650</Density><ThermalCond>0.141</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.052</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 10/33 N+F M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>633</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1000</Density><ThermalCond>0.33</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 10/50 N+F M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>634</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1000</Density><ThermalCond>0.33</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 12 N+F M100 habarcs</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>635</ID>
+  </ItemHeader>
+      <Thickness>12</Thickness><Density>1000</Density><ThermalCond>0.33</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 20 N+F M100 habarcs</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>636</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>1000</Density><ThermalCond>0.33</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 20 N+F TM höszig. hab</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>637</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>1000</Density><ThermalCond>0.305</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 25 N+F M100 habarcs</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>638</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>800</Density><ThermalCond>0.33</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 25 N+F TM höszig. hab</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>639</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>800</Density><ThermalCond>0.305</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 30 N+F M100 habarcs</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>640</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>800</Density><ThermalCond>0.197</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 30 N+F TM höszig. hab</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>641</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>800</Density><ThermalCond>0.165</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 38 N+F M100 habarcs</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>642</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>800</Density><ThermalCond>0.194</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 38 N+F TM höszig. hab</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>643</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>800</Density><ThermalCond>0.169</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 44 N+F M100 habarcs</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>644</ID>
+  </ItemHeader>
+      <Thickness>44</Thickness><Density>800</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 44 N+F TM höszig. hab</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>645</ID>
+  </ItemHeader>
+      <Thickness>44</Thickness><Density>800</Density><ThermalCond>0.157</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM 6/33 N+F M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>646</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1000</Density><ThermalCond>0.33</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM pincetégla M100 hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>647</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>900</Density><ThermalCond>0.28</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM pincetégla TM hab.</ItemName><ItemPath>POROTHERM termékek\POROTHERM N+F falazóelemek</ItemPath><ID>648</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>900</Density><ThermalCond>0.258</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.033</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM PTH 30 hanggátló tégl</ItemName><ItemPath>POROTHERM termékek</ItemPath><ID>649</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>1650</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>POROTHERM PTH30/24 hanggátló t.</ItemName><ItemPath>POROTHERM termékek</ItemPath><ID>650</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>1650</Density><ThermalCond>0.67</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.019</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

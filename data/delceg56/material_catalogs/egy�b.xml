@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Növényültető talajkeverék</ItemName><ItemPath>Feltöltések</ItemPath><ID>1007</ID>
+  </ItemHeader>
+      <Thickness>15</Thickness><Density>800</Density><ThermalCond>0</ThermalCond><ThermalRes>0.2</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>26</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">20</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">44</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Alu. betétes párazáró lemez</ItemName><ItemPath>Fóliák</ItemPath><ID>1008</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>7956</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Alufólia d = 0,05</ItemName><ItemPath>Fóliák</ItemPath><ID>1009</ID>
+  </ItemHeader>
+      <Thickness>0.005</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>124</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Alufólia d = 0,1</ItemName><ItemPath>Fóliák</ItemPath><ID>1010</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>360</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Alufólia d = 0,2</ItemName><ItemPath>Fóliák</ItemPath><ID>1011</ID>
+  </ItemHeader>
+      <Thickness>0.02</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>720</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>AUSTROTHERM technológiai szigete</ItemName><ItemPath>Fóliák</ItemPath><ID>1012</ID>
+  </ItemHeader>
+      <Thickness>0.009</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Geotextília 300 g/m2</ItemName><ItemPath>Fóliák</ItemPath><ID>1013</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>300</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Geotextília 500 g/m2</ItemName><ItemPath>Fóliák</ItemPath><ID>1014</ID>
+  </ItemHeader>
+      <Thickness>0.6</Thickness><Density>500</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>HDPE párafékező fólia</ItemName><ItemPath>Fóliák</ItemPath><ID>1015</ID>
+  </ItemHeader>
+      <Thickness>0.08</Thickness><Density>0.9</Density><ThermalCond>0.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>4.5E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Polietilén fólia</ItemName><ItemPath>Fóliák</ItemPath><ID>1016</ID>
+  </ItemHeader>
+      <Thickness>0.02</Thickness><Density>960</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>PVC fólia</ItemName><ItemPath>Fóliák</ItemPath><ID>1017</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>TYPAR</ItemName><ItemPath>Fóliák</ItemPath><ID>1018</ID>
+  </ItemHeader>
+      <Thickness>0.05</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>TYVEK HD-Soft</ItemName><ItemPath>Fóliák</ItemPath><ID>1019</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0.108</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Air">
+  <ItemHeader>
+    <ItemName>Gőznyomás kiegyenlítő réteg</ItemName><ItemPath>Légrétegek</ItemPath><ID>1020</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><AirLayer Ventilled="No"></AirLayer><ThermalRes>0.035</ThermalRes>
+      <ThermalResDiagramPoint x="0.1">0.035</ThermalResDiagramPoint>
+      <ThermalResDiagramPoint x="0.5">0.11</ThermalResDiagramPoint>
+      <ThermalResDiagramPoint x="1">0.13</ThermalResDiagramPoint>
+      <ThermalResDiagramPoint x="2">0.14</ThermalResDiagramPoint>
+      <ThermalResDiagramPoint x="5">0.14</ThermalResDiagramPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Acél trap.lemez bit. tömítéssel</ItemName><ItemPath>Trapéz lemezek</ItemPath><ID>1022</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>7850</Density><ThermalCond>58.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>1.1E5</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Acél trap.lemez tömítés nélkül</ItemName><ItemPath>Trapéz lemezek</ItemPath><ID>1023</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>7850</Density><ThermalCond>58.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>30</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

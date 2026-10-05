@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project Type="NativeExport">
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes" >
+  <ItemHeader>
+    <ItemName>Austrotherm XPS Plus P</ItemName><ItemPath>AUSTROTHERM 2016\ XPS és Zenit</ItemPath><ID>1251</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.032</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes" >
+  <ItemHeader>
+    <ItemName>Austrotherm XPS Premium P</ItemName><ItemPath>AUSTROTHERM 2016\ XPS és Zenit</ItemPath><ID>1250</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.027</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes" >
+  <ItemHeader>
+    <ItemName>Resolution Boden</ItemName><ItemPath>AUSTROTHERM 2016\Resolution</ItemPath><ID>1243</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>35</Density><ThermalCond>0.022</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.5</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes" HideDensity="yes">
+  <ItemHeader>
+    <ItemName>Resolution Fassade</ItemName><ItemPath>AUSTROTHERM 2016\Resolution</ItemPath><ID>1246</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>35</Density><ThermalCond>0.022</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.5</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project Type="NativeExport">
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Leier kéregfal LKF 18</ItemName><ItemPath>Leier\Kéregfalak</ItemPath><ID>1281</ID>
+  </ItemHeader>
+      <Thickness>18</Thickness><Density>2400</Density><ThermalCond>1.52</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Leier kéregfal LKF 20</ItemName><ItemPath>Leier\Kéregfalak</ItemPath><ID>1282</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>2400</Density><ThermalCond>1.52</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Leier kéregfal LKF 25</ItemName><ItemPath>Leier\Kéregfalak</ItemPath><ID>1283</ID>
+  </ItemHeader>
+      <Thickness>25</Thickness><Density>2400</Density><ThermalCond>1.52</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Leier kéregfal LKF 30</ItemName><ItemPath>Leier\Kéregfalak</ItemPath><ID>1284</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>2400</Density><ThermalCond>1.52</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Leier kéregfal LKF 35</ItemName><ItemPath>Leier\Kéregfalak</ItemPath><ID>1285</ID>
+  </ItemHeader>
+      <Thickness>35</Thickness><Density>2400</Density><ThermalCond>1.52</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Leier kéregfal LKF 40</ItemName><ItemPath>Leier\Kéregfalak</ItemPath><ID>1286</ID>
+  </ItemHeader>
+      <Thickness>40</Thickness><Density>2400</Density><ThermalCond>1.52</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20" >1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30" >1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

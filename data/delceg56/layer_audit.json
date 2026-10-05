@@ -1,0 +1,1560 @@
+{
+  "source_model": "..\\data\\delceg56\\delceg56_winwatt_model.json",
+  "catalog": "data\\raw\\Hungarian.xml",
+  "catalog_material_count": 0,
+  "summary": {
+    "review": 50
+  },
+  "layers": [
+    {
+      "source": {
+        "structure": "R1 Meglévő tető",
+        "name": "Kerámia tetőcserép",
+        "sequence": 1,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 1.0,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Kerámia tetőcserép",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1 Meglévő tető / 1",
+        "original_value": "Kerámia tetőcserép",
+        "normalized_value": "keramia tetocserep",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1 Meglévő tető",
+        "name": "Tetőléc",
+        "sequence": 2,
+        "thickness_cm": 2.5,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Tetőléc",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1 Meglévő tető / 2",
+        "original_value": "Tetőléc",
+        "normalized_value": "tetolec",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1 Meglévő tető",
+        "name": "Ellenléc",
+        "sequence": 3,
+        "thickness_cm": 2.5,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Ellenléc",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1 Meglévő tető / 3",
+        "original_value": "Ellenléc",
+        "normalized_value": "ellenlec",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1 Meglévő tető",
+        "name": "Szarufa",
+        "sequence": 4,
+        "thickness_cm": 15,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Szarufa",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1 Meglévő tető / 4",
+        "original_value": "Szarufa",
+        "normalized_value": "szarufa",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R5 Tervezett homlokzati fal",
+        "name": "Külső vakolat",
+        "sequence": 1,
+        "thickness_cm": 1,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Külső vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R5 Tervezett homlokzati fal / 1",
+        "original_value": "Külső vakolat",
+        "normalized_value": "kulso vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R5 Tervezett homlokzati fal",
+        "name": "AUSTROTHERM AT-H80 homlokzati hőszigetelés",
+        "sequence": 2,
+        "thickness_cm": 20,
+        "lambda_wmk": 0.039,
+        "density_kgm3": 15,
+        "heat_capacity_kjkgk": 1.46,
+        "r": null
+      },
+      "decision": {
+        "source_name": "AUSTROTHERM AT-H80 homlokzati hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R5 Tervezett homlokzati fal / 2",
+        "original_value": "AUSTROTHERM AT-H80 homlokzati hőszigetelés",
+        "normalized_value": "austrotherm at h80 homlokzati hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R5 Tervezett homlokzati fal",
+        "name": "Légzáró vakolat",
+        "sequence": 3,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1700,
+        "heat_capacity_kjkgk": 0.92,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Légzáró vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R5 Tervezett homlokzati fal / 3",
+        "original_value": "Légzáró vakolat",
+        "normalized_value": "legzaro vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R5 Tervezett homlokzati fal",
+        "name": "Porotherm 38 vázkerámia falazat",
+        "sequence": 4,
+        "thickness_cm": 30,
+        "lambda_wmk": 0.47,
+        "density_kgm3": 1220,
+        "heat_capacity_kjkgk": 0.88,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Porotherm 38 vázkerámia falazat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R5 Tervezett homlokzati fal / 4",
+        "original_value": "Porotherm 38 vázkerámia falazat",
+        "normalized_value": "porotherm 38 vazkeramia falazat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R5 Tervezett homlokzati fal",
+        "name": "Belső vakolat",
+        "sequence": 5,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1700,
+        "heat_capacity_kjkgk": 0.92,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R5 Tervezett homlokzati fal / 5",
+        "original_value": "Belső vakolat",
+        "normalized_value": "belso vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R6 Tetőterasz",
+        "name": "WPC burkolat",
+        "sequence": 1,
+        "thickness_cm": 2,
+        "lambda_wmk": 0.2,
+        "density_kgm3": 1100,
+        "heat_capacity_kjkgk": 1.5,
+        "r": null
+      },
+      "decision": {
+        "source_name": "WPC burkolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R6 Tetőterasz / 1",
+        "original_value": "WPC burkolat",
+        "normalized_value": "wpc burkolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R6 Tetőterasz",
+        "name": "Bazaltzúzalék",
+        "sequence": 2,
+        "thickness_cm": 3,
+        "lambda_wmk": 1.7,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Bazaltzúzalék",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R6 Tetőterasz / 2",
+        "original_value": "Bazaltzúzalék",
+        "normalized_value": "bazaltzuzalek",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R6 Tetőterasz",
+        "name": "Bitumenes vízszigetelés két réteg",
+        "sequence": 3,
+        "thickness_cm": 0.8,
+        "lambda_wmk": 0.17,
+        "density_kgm3": 1100,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R6 Tetőterasz / 3",
+        "original_value": "Bitumenes vízszigetelés két réteg",
+        "normalized_value": "bitumenes vizszigeteles ket reteg",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R6 Tetőterasz",
+        "name": "PUR hőszigetelés",
+        "sequence": 4,
+        "thickness_cm": 15,
+        "lambda_wmk": 0.026,
+        "density_kgm3": 35,
+        "heat_capacity_kjkgk": 1.4,
+        "r": null
+      },
+      "decision": {
+        "source_name": "PUR hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R6 Tetőterasz / 4",
+        "original_value": "PUR hőszigetelés",
+        "normalized_value": "pur hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R6 Tetőterasz",
+        "name": "Lejtést adó beton átlag",
+        "sequence": 5,
+        "thickness_cm": 3.5,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2200,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Lejtést adó beton átlag",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R6 Tetőterasz / 5",
+        "original_value": "Lejtést adó beton átlag",
+        "normalized_value": "lejtest ado beton atlag",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R6 Tetőterasz",
+        "name": "Meglévő födémszerkezet ismeretlen",
+        "sequence": 6,
+        "thickness_cm": 1,
+        "lambda_wmk": 9999,
+        "density_kgm3": 1,
+        "heat_capacity_kjkgk": 0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Meglévő födémszerkezet ismeretlen",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R6 Tetőterasz / 6",
+        "original_value": "Meglévő födémszerkezet ismeretlen",
+        "normalized_value": "meglevo fodemszerkezet ismeretlen",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R7 Padlásfödém",
+        "name": "Kőzetgyapot hőszigetelés",
+        "sequence": 1,
+        "thickness_cm": 25,
+        "lambda_wmk": 0.039,
+        "density_kgm3": 40,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Kőzetgyapot hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R7 Padlásfödém / 1",
+        "original_value": "Kőzetgyapot hőszigetelés",
+        "normalized_value": "kozetgyapot hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R7 Padlásfödém",
+        "name": "Tűzgátló gipszkarton két réteg",
+        "sequence": 2,
+        "thickness_cm": 2.5,
+        "lambda_wmk": 0.25,
+        "density_kgm3": 900,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Tűzgátló gipszkarton két réteg",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R7 Padlásfödém / 2",
+        "original_value": "Tűzgátló gipszkarton két réteg",
+        "normalized_value": "tuzgatlo gipszkarton ket reteg",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R8 Közbenső födém 4 cm",
+        "name": "Padlóburkolat és ragasztó",
+        "sequence": 1,
+        "thickness_cm": 2,
+        "lambda_wmk": 1.0,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Padlóburkolat és ragasztó",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R8 Közbenső födém 4 cm / 1",
+        "original_value": "Padlóburkolat és ragasztó",
+        "normalized_value": "padloburkolat es ragaszto",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R8 Közbenső födém 4 cm",
+        "name": "Estrich aljzatbeton",
+        "sequence": 2,
+        "thickness_cm": 6,
+        "lambda_wmk": 1.4,
+        "density_kgm3": 2000,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Estrich aljzatbeton",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R8 Közbenső födém 4 cm / 2",
+        "original_value": "Estrich aljzatbeton",
+        "normalized_value": "estrich aljzatbeton",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R8 Közbenső födém 4 cm",
+        "name": "Lépésálló hőszigetelés",
+        "sequence": 3,
+        "thickness_cm": 4,
+        "lambda_wmk": 0.039,
+        "density_kgm3": 25,
+        "heat_capacity_kjkgk": 1.46,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Lépésálló hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R8 Közbenső födém 4 cm / 3",
+        "original_value": "Lépésálló hőszigetelés",
+        "normalized_value": "lepesallo hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R8 Közbenső födém 4 cm",
+        "name": "Monolit vasbeton födém",
+        "sequence": 4,
+        "thickness_cm": 20,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2400,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Monolit vasbeton födém",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R8 Közbenső födém 4 cm / 4",
+        "original_value": "Monolit vasbeton födém",
+        "normalized_value": "monolit vasbeton fodem",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R9 Közbenső födém 12 cm",
+        "name": "Padlóburkolat és ragasztó",
+        "sequence": 1,
+        "thickness_cm": 2,
+        "lambda_wmk": 1.0,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Padlóburkolat és ragasztó",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R9 Közbenső födém 12 cm / 1",
+        "original_value": "Padlóburkolat és ragasztó",
+        "normalized_value": "padloburkolat es ragaszto",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R9 Közbenső födém 12 cm",
+        "name": "Estrich aljzatbeton",
+        "sequence": 2,
+        "thickness_cm": 6,
+        "lambda_wmk": 1.4,
+        "density_kgm3": 2000,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Estrich aljzatbeton",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R9 Közbenső födém 12 cm / 2",
+        "original_value": "Estrich aljzatbeton",
+        "normalized_value": "estrich aljzatbeton",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R9 Közbenső födém 12 cm",
+        "name": "Lépésálló hőszigetelés",
+        "sequence": 3,
+        "thickness_cm": 12,
+        "lambda_wmk": 0.039,
+        "density_kgm3": 25,
+        "heat_capacity_kjkgk": 1.46,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Lépésálló hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R9 Közbenső födém 12 cm / 3",
+        "original_value": "Lépésálló hőszigetelés",
+        "normalized_value": "lepesallo hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R9 Közbenső födém 12 cm",
+        "name": "Monolit vasbeton födém",
+        "sequence": 4,
+        "thickness_cm": 20,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2400,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Monolit vasbeton födém",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R9 Közbenső födém 12 cm / 4",
+        "original_value": "Monolit vasbeton födém",
+        "normalized_value": "monolit vasbeton fodem",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R10 Közbenső fal",
+        "name": "Belső vakolat",
+        "sequence": 1,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1700,
+        "heat_capacity_kjkgk": 0.92,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R10 Közbenső fal / 1",
+        "original_value": "Belső vakolat",
+        "normalized_value": "belso vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R10 Közbenső fal",
+        "name": "Porotherm vázkerámia falazat",
+        "sequence": 2,
+        "thickness_cm": 20,
+        "lambda_wmk": 0.47,
+        "density_kgm3": 1220,
+        "heat_capacity_kjkgk": 0.88,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Porotherm vázkerámia falazat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R10 Közbenső fal / 2",
+        "original_value": "Porotherm vázkerámia falazat",
+        "normalized_value": "porotherm vazkeramia falazat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R13 Terasz",
+        "name": "Fagyálló kerámia burkolat és ragasztó",
+        "sequence": 1,
+        "thickness_cm": 2,
+        "lambda_wmk": 1.0,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Fagyálló kerámia burkolat és ragasztó",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R13 Terasz / 1",
+        "original_value": "Fagyálló kerámia burkolat és ragasztó",
+        "normalized_value": "fagyallo keramia burkolat es ragaszto",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R13 Terasz",
+        "name": "Lejtést adó aljzatbeton átlag",
+        "sequence": 2,
+        "thickness_cm": 5,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2200,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Lejtést adó aljzatbeton átlag",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R13 Terasz / 2",
+        "original_value": "Lejtést adó aljzatbeton átlag",
+        "normalized_value": "lejtest ado aljzatbeton atlag",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R13 Terasz",
+        "name": "Kenhető vízszigetelés két réteg",
+        "sequence": 3,
+        "thickness_cm": 0.4,
+        "lambda_wmk": 0.2,
+        "density_kgm3": 1200,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Kenhető vízszigetelés két réteg",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R13 Terasz / 3",
+        "original_value": "Kenhető vízszigetelés két réteg",
+        "normalized_value": "kenheto vizszigeteles ket reteg",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R13 Terasz",
+        "name": "Vasalt aljzatlemez",
+        "sequence": 4,
+        "thickness_cm": 15,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2400,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Vasalt aljzatlemez",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R13 Terasz / 4",
+        "original_value": "Vasalt aljzatlemez",
+        "normalized_value": "vasalt aljzatlemez",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R13 Terasz",
+        "name": "Tömörített kavicságyazat",
+        "sequence": 5,
+        "thickness_cm": 20,
+        "lambda_wmk": 0.7,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Tömörített kavicságyazat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R13 Terasz / 5",
+        "original_value": "Tömörített kavicságyazat",
+        "normalized_value": "tomoritett kavicsagyazat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1B Új tetőszerkezet",
+        "name": "Kerámia cserépfedés",
+        "sequence": 1,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 1.0,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Kerámia cserépfedés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1B Új tetőszerkezet / 1",
+        "original_value": "Kerámia cserépfedés",
+        "normalized_value": "keramia cserepfedes",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1B Új tetőszerkezet",
+        "name": "Tetőléc",
+        "sequence": 2,
+        "thickness_cm": 3,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Tetőléc",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1B Új tetőszerkezet / 2",
+        "original_value": "Tetőléc",
+        "normalized_value": "tetolec",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1B Új tetőszerkezet",
+        "name": "Ellenléc",
+        "sequence": 3,
+        "thickness_cm": 5,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Ellenléc",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1B Új tetőszerkezet / 3",
+        "original_value": "Ellenléc",
+        "normalized_value": "ellenlec",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1B Új tetőszerkezet",
+        "name": "PIR hőszigetelés",
+        "sequence": 4,
+        "thickness_cm": 25,
+        "lambda_wmk": 0.022,
+        "density_kgm3": 35,
+        "heat_capacity_kjkgk": 1.4,
+        "r": null
+      },
+      "decision": {
+        "source_name": "PIR hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1B Új tetőszerkezet / 4",
+        "original_value": "PIR hőszigetelés",
+        "normalized_value": "pir hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1B Új tetőszerkezet",
+        "name": "Deszkaburkolat",
+        "sequence": 5,
+        "thickness_cm": 2.5,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Deszkaburkolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1B Új tetőszerkezet / 5",
+        "original_value": "Deszkaburkolat",
+        "normalized_value": "deszkaburkolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R1B Új tetőszerkezet",
+        "name": "Borovi fenyő szaruzat",
+        "sequence": 6,
+        "thickness_cm": 15,
+        "lambda_wmk": 0.13,
+        "density_kgm3": 500,
+        "heat_capacity_kjkgk": 1.6,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Borovi fenyő szaruzat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R1B Új tetőszerkezet / 6",
+        "original_value": "Borovi fenyő szaruzat",
+        "normalized_value": "borovi fenyo szaruzat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R14 Talajon fekvő pincepadló",
+        "name": "Szigetelést védő beton",
+        "sequence": 1,
+        "thickness_cm": 5,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2200,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Szigetelést védő beton",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R14 Talajon fekvő pincepadló / 1",
+        "original_value": "Szigetelést védő beton",
+        "normalized_value": "szigetelest vedo beton",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R14 Talajon fekvő pincepadló",
+        "name": "Bitumenes vízszigetelés két réteg",
+        "sequence": 2,
+        "thickness_cm": 0.85,
+        "lambda_wmk": 0.17,
+        "density_kgm3": 1100,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R14 Talajon fekvő pincepadló / 2",
+        "original_value": "Bitumenes vízszigetelés két réteg",
+        "normalized_value": "bitumenes vizszigeteles ket reteg",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R14 Talajon fekvő pincepadló",
+        "name": "Monolit vasbeton lemezalap",
+        "sequence": 3,
+        "thickness_cm": 25,
+        "lambda_wmk": 1.55,
+        "density_kgm3": 2400,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Monolit vasbeton lemezalap",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R14 Talajon fekvő pincepadló / 3",
+        "original_value": "Monolit vasbeton lemezalap",
+        "normalized_value": "monolit vasbeton lemezalap",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R14 Talajon fekvő pincepadló",
+        "name": "Kavicsfeltöltés",
+        "sequence": 4,
+        "thickness_cm": 25,
+        "lambda_wmk": 0.7,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Kavicsfeltöltés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R14 Talajon fekvő pincepadló / 4",
+        "original_value": "Kavicsfeltöltés",
+        "normalized_value": "kavicsfeltoltes",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R15 Pincefal terasz mellett",
+        "name": "XPS hőszigetelés",
+        "sequence": 1,
+        "thickness_cm": 20,
+        "lambda_wmk": 0.036,
+        "density_kgm3": 35,
+        "heat_capacity_kjkgk": 1.46,
+        "r": null
+      },
+      "decision": {
+        "source_name": "XPS hőszigetelés",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R15 Pincefal terasz mellett / 1",
+        "original_value": "XPS hőszigetelés",
+        "normalized_value": "xps hoszigeteles",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R15 Pincefal terasz mellett",
+        "name": "Bitumenes vízszigetelés két réteg",
+        "sequence": 2,
+        "thickness_cm": 0.8,
+        "lambda_wmk": 0.17,
+        "density_kgm3": 1100,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R15 Pincefal terasz mellett / 2",
+        "original_value": "Bitumenes vízszigetelés két réteg",
+        "normalized_value": "bitumenes vizszigeteles ket reteg",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R15 Pincefal terasz mellett",
+        "name": "Légzáró vakolat",
+        "sequence": 3,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1700,
+        "heat_capacity_kjkgk": 0.92,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Légzáró vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R15 Pincefal terasz mellett / 3",
+        "original_value": "Légzáró vakolat",
+        "normalized_value": "legzaro vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R15 Pincefal terasz mellett",
+        "name": "Zsalukő falazat",
+        "sequence": 4,
+        "thickness_cm": 30,
+        "lambda_wmk": 1.4,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Zsalukő falazat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R15 Pincefal terasz mellett / 4",
+        "original_value": "Zsalukő falazat",
+        "normalized_value": "zsaluko falazat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R15 Pincefal terasz mellett",
+        "name": "Belső vakolat",
+        "sequence": 5,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1700,
+        "heat_capacity_kjkgk": 0.92,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R15 Pincefal terasz mellett / 5",
+        "original_value": "Belső vakolat",
+        "normalized_value": "belso vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R16 Pincefal meglévő épület mellett",
+        "name": "Bitumenes vízszigetelés két réteg",
+        "sequence": 1,
+        "thickness_cm": 0.8,
+        "lambda_wmk": 0.17,
+        "density_kgm3": 1100,
+        "heat_capacity_kjkgk": 1.0,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Bitumenes vízszigetelés két réteg",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R16 Pincefal meglévő épület mellett / 1",
+        "original_value": "Bitumenes vízszigetelés két réteg",
+        "normalized_value": "bitumenes vizszigeteles ket reteg",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R16 Pincefal meglévő épület mellett",
+        "name": "Zsalukő falazat",
+        "sequence": 2,
+        "thickness_cm": 25,
+        "lambda_wmk": 1.4,
+        "density_kgm3": 1800,
+        "heat_capacity_kjkgk": 0.84,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Zsalukő falazat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R16 Pincefal meglévő épület mellett / 2",
+        "original_value": "Zsalukő falazat",
+        "normalized_value": "zsaluko falazat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    },
+    {
+      "source": {
+        "structure": "R16 Pincefal meglévő épület mellett",
+        "name": "Belső vakolat",
+        "sequence": 3,
+        "thickness_cm": 1.5,
+        "lambda_wmk": 0.87,
+        "density_kgm3": 1700,
+        "heat_capacity_kjkgk": 0.92,
+        "r": null
+      },
+      "decision": {
+        "source_name": "Belső vakolat",
+        "status": "review",
+        "candidate": null,
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.",
+        "confidence": 0.0,
+        "decision_mode": "manual_review"
+      },
+      "source_reference": "reviewed certificate geometry model",
+      "trace": {
+        "source_document": null,
+        "source_element": "R16 Pincefal meglévő épület mellett / 3",
+        "original_value": "Belső vakolat",
+        "normalized_value": "belso vakolat",
+        "selected_winwatt_object": null,
+        "confidence": 0.0,
+        "decision_mode": "manual_review",
+        "reason": "Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült."
+      }
+    }
+  ]
+}

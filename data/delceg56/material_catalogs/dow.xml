@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Agmate TG-A (100 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>397</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>32</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>140</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Agmate TG-A (30-80 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>398</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>140</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Floormate 200-A</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>399</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>140</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Floormate 500-A (30-60 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>400</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>38</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>175</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Floormate 500-A (80-120 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>401</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>38</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>175</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Floormate 700-A (40-60 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>402</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>45</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>175</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Floormate 700-A (80-120 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>403</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>45</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>175</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Perimate DI-A (100-120 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>404</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>150</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Perimate DI-A (50-80 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>405</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>150</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Roofmate LG-X</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>406</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.029</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>150</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Roofmate SL-A (100-120 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>407</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>140</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Roofmate SL-A (140-180 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>408</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>140</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Roofmate SL-A (20-80 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>409</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>140</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Roofmate SL-X (120 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>410</ID>
+  </ItemHeader>
+      <Thickness>12</Thickness><Density>33</Density><ThermalCond>0.029</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>120</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Roofmate SL-X (140-200 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>411</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.031</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>120</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Styrofoam IB-A (100-120 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>412</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Styrofoam IB-A (20-80 mm)</ItemName><ItemPath>Hőszigetelő anyagok\DOW-STYROFOAM</ItemPath><ID>413</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

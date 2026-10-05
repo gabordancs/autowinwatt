@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Mátratherm 30 N+F</ItemName><ItemPath>Leier\Falazóelemek</ItemPath><ID>927</ID>
+  </ItemHeader>
+      <Thickness>30</Thickness><Density>610</Density><ThermalCond>0.145</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.45</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.79</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Mátratherm 38 N+F</ItemName><ItemPath>Leier\Falazóelemek</ItemPath><ID>928</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>620</Density><ThermalCond>0.149</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.45</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.79</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Mátratherm 38 Plus</ItemName><ItemPath>Leier\Falazóelemek</ItemPath><ID>929</ID>
+  </ItemHeader>
+      <Thickness>38</Thickness><Density>570</Density><ThermalCond>0.177</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.45</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.79</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Mátratherm 44 Plus</ItemName><ItemPath>Leier\Falazóelemek</ItemPath><ID>930</ID>
+  </ItemHeader>
+      <Thickness>44</Thickness><Density>610</Density><ThermalCond>0.177</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.45</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.79</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Mátratherm 45 N+F</ItemName><ItemPath>Leier\Falazóelemek</ItemPath><ID>931</ID>
+  </ItemHeader>
+      <Thickness>45</Thickness><Density>670</Density><ThermalCond>0.144</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0.043</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.45</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.79</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Mesterpanel födém</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>933</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>2400</Density><ThermalCond>1.55</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Üreges födémpalló LÜF16</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>934</ID>
+  </ItemHeader>
+      <Thickness>16</Thickness><Density>1560</Density><ThermalCond>0</ThermalCond><ThermalRes>0.15</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Üreges födémpalló LÜF20</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>935</ID>
+  </ItemHeader>
+      <Thickness>20</Thickness><Density>1550</Density><ThermalCond>0</ThermalCond><ThermalRes>0.16</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Üreges födémpalló LÜF26,5</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>936</ID>
+  </ItemHeader>
+      <Thickness>26.5</Thickness><Density>1430</Density><ThermalCond>0</ThermalCond><ThermalRes>0.18</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Üreges födémpalló LÜF32</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>937</ID>
+  </ItemHeader>
+      <Thickness>32</Thickness><Density>1360</Density><ThermalCond>0</ThermalCond><ThermalRes>0.2</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Üreges födémpalló LÜF40</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>938</ID>
+  </ItemHeader>
+      <Thickness>40</Thickness><Density>1225</Density><ThermalCond>0</ThermalCond><ThermalRes>0.23</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Leier Üreges födémpalló LÜF45</ItemName><ItemPath>Leier\Födémek</ItemPath><ID>939</ID>
+  </ItemHeader>
+      <Thickness>45</Thickness><Density>1255</Density><ThermalCond>0</ThermalCond><ThermalRes>0.25</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.008</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>nádlemez</ItemName><ItemPath>Bio\természetes anyagok</ItemPath><ID>247</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>175</Density><ThermalCond>0.06</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.47</HeatCapacity>
+      <SteamDiffCond>0.13</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>préselt nád</ItemName><ItemPath>Bio\természetes anyagok</ItemPath><ID>248</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>320</Density><ThermalCond>0.09</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.47</HeatCapacity>
+      <SteamDiffCond>0.12</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>szalmatöltés</ItemName><ItemPath>Bio\természetes anyagok</ItemPath><ID>249</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>150</Density><ThermalCond>0.06</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.47</HeatCapacity>
+      <SteamDiffCond>0.13</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>agyagvakolat</ItemName><ItemPath>Bio\vakolat</ItemPath><ID>251</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1650</Density><ThermalCond>1.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0.024</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog - 0300</ItemName><ItemPath>Bio\vályog</ItemPath><ID>253</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>300</Density><ThermalCond>0.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.3</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog - 0400</ItemName><ItemPath>Bio\vályog</ItemPath><ID>254</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>400</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.2</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog - 0600</ItemName><ItemPath>Bio\vályog</ItemPath><ID>255</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>600</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog - 0800</ItemName><ItemPath>Bio\vályog</ItemPath><ID>256</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>800</Density><ThermalCond>0.25</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog - 1000</ItemName><ItemPath>Bio\vályog</ItemPath><ID>257</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1000</Density><ThermalCond>0.35</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog - 1200</ItemName><ItemPath>Bio\vályog</ItemPath><ID>258</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1200</Density><ThermalCond>0.47</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog (szalma) - 1400</ItemName><ItemPath>Bio\vályog</ItemPath><ID>259</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1400</Density><ThermalCond>0.59</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>könnyűvályog (szalma) - 1600</ItemName><ItemPath>Bio\vályog</ItemPath><ID>260</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1600</Density><ThermalCond>0.73</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>tömör vályog - 1800</ItemName><ItemPath>Bio\vályog</ItemPath><ID>261</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>1800</Density><ThermalCond>0.91</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.031</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>tömör vályog - 2000</ItemName><ItemPath>Bio\vályog</ItemPath><ID>262</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>2000</Density><ThermalCond>1.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0.031</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>vert fal</ItemName><ItemPath>Bio\vályog</ItemPath><ID>263</ID>
+  </ItemHeader>
+      <Thickness>50</Thickness><Density>0</Density><ThermalCond>0.81</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Naturbau</ItemName><ItemPath>Bio\vályogtégla</ItemPath><ID>265</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1300</Density><ThermalCond>0.65</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.3</HeatCapacity>
+      <SteamDiffCond>0.031</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

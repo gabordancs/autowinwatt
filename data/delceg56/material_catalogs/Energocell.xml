@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project Type="NativeExport">
+
+<WinWatt32Material Type="Thick" >
+  <ItemHeader>
+    <ItemName>ENERGOCELL GR üveghab granulátum</ItemName><ItemPath>Feltöltések</ItemPath><ID>1276</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>200</Density><ThermalCond>0.086</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

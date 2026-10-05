@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaform FUN</ItemName><ItemPath>Villas\Magastető alátétlemezek</ItemPath><ID>789</ID>
+  </ItemHeader>
+      <Thickness>0.04</Thickness><Density>500</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaform KB-S</ItemName><ItemPath>Villas\Magastető alátétlemezek</ItemPath><ID>790</ID>
+  </ItemHeader>
+      <Thickness>0.08</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>31250</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaform metallic</ItemName><ItemPath>Villas\Magastető alátétlemezek</ItemPath><ID>791</ID>
+  </ItemHeader>
+      <Thickness>0.04</Thickness><Density>500</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Betonkéreggel társított extrudál</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>794</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.032</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>150</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Extrudált PS hab</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>795</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.032</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>150</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Habcement nedves közegben</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>796</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>400</Density><ThermalCond>0.1</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0.024</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>8.5</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">8.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Habcement száraz közegben</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>797</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>400</Density><ThermalCond>0.08</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0.024</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>8.5</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">8.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Kőzetgyapot 165 kg/m3</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>798</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.4</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.9</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.34</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.91</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Kőzetgyapot 190 kg/m3</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>799</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>190</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.4</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.9</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.34</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.91</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Lejtésképzés N3</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>800</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>25</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>70</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Lejtésképzés N4</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>801</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>80</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>N2 expandált polisztirolhab</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>802</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>N3 expandált polisztirolhab</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>803</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>25</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>70</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>N4 expandált polisztirolhab</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>804</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>80</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>PS hab víztároló-szivárgó</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>805</ID>
+  </ItemHeader>
+      <Thickness>6</Thickness><Density>30</Density><ThermalCond>0</ThermalCond><ThermalRes>0.75</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.9</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>PS könnyűbeton 200</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>806</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>200</Density><ThermalCond>0.069</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>14</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3.7</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>PS könnyűbeton 300</ItemName><ItemPath>Villas\Vízszigetelések\Lapostető hőszigetelő anyagok</ItemPath><ID>807</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>300</Density><ThermalCond>0.081</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>14</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3.7</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3.7</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaplan LT</ItemName><ItemPath>Villas\Vízszigetelések\OCB lemezek</ItemPath><ID>809</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1000</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaplan MF 2,0</ItemName><ItemPath>Villas\Vízszigetelések\OCB lemezek</ItemPath><ID>810</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1000</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaplan MF 2,3</ItemName><ItemPath>Villas\Vízszigetelések\OCB lemezek</ItemPath><ID>811</ID>
+  </ItemHeader>
+      <Thickness>0.23</Thickness><Density>1000</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.13E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedatect Al+V 60 S 4</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>813</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>7956</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-Al+V 4 T/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>814</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>7960</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-G 4 T/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>815</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>458</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-PV 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>816</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>728</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-PV 4,5 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>817</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>728</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 1700 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>818</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>728</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 2,2 T/D</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>819</ID>
+  </ItemHeader>
+      <Thickness>0.22</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 2500 F/F</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>820</ID>
+  </ItemHeader>
+      <Thickness>0.22</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>567</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 3 F/F</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>821</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>436</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 3 T/D</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>822</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 3 T/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>823</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>727</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 3000 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>824</ID>
+  </ItemHeader>
+      <Thickness>0.26</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>728</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>825</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>728</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox O-V 4 T/K</ItemName><ItemPath>Villas\Vízszigetelések\Oxidbitumenes lemezek</ItemPath><ID>826</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>728</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>R 333 homokolt</ItemName><ItemPath>Villas\Vízszigetelések\Papírbetétes lemezek</ItemPath><ID>828</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1100</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>198.7</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>R 333 N</ItemName><ItemPath>Villas\Vízszigetelések\Papírbetétes lemezek</ItemPath><ID>829</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>1050</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>2.8</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-G 4 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>831</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-G 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>832</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-PV 4 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>833</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>792</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-PV 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>834</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>828</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-PV 5 S/F</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>835</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>774</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-PV 5,2 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>836</ID>
+  </ItemHeader>
+      <Thickness>0.52</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>828</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-PV 5,5 S/D</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>837</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>828</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-V 3 F/D</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>838</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-V 4 F/D</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>839</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-V 4 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>840</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Elastovill E-V 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>841</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>432</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Plastovill APP 4 Green</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>842</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>105</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Plastovill P-G 4 T/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>843</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>259</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Plastovill P-GG</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>844</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37500</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Plastovill P-PV 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>845</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>105</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Plastovill P-PV 4 T/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>846</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>105</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Turbo TO</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>847</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Turbo TU</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>848</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaflor WS-I</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>849</ID>
+  </ItemHeader>
+      <Thickness>0.42</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>680.38</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedaflor WS-X</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>850</ID>
+  </ItemHeader>
+      <Thickness>0.42</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>29800</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedagard SK</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>851</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1E6</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedagard SK-Plus</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>852</ID>
+  </ItemHeader>
+      <Thickness>0.24</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6.25E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedatop SU</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>853</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Vedatop TM</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>854</ID>
+  </ItemHeader>
+      <Thickness>0.22</Thickness><Density>1100</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>16000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villas Alpesi lemez</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>855</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villatop DUO</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>856</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>28000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villaverde E-CU</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>857</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1100</Density><ThermalCond>0.17</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3.3333E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villaverde E-PV</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>858</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox-duó EO-G 3 F/F</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>859</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>450</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox-duó EO-G 4 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>860</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>450</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox-duó EO-PV 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>861</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>761</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox-duó EO-V 3 F/F</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>862</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>436</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox-duó EO-V 4 F/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>863</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>660</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Villox-duó EO-V 4 S/K</ItemName><ItemPath>Villas\Vízszigetelések\Polimerbitumenes lemezek</ItemPath><ID>864</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1100</Density><ThermalCond>0.12</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>660</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

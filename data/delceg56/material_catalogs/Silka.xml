@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA V-120</ItemName><ItemPath>SILKA mészhomoktégla\Burkoló téglák</ItemPath><ID>1908.01.23.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA VB-30</ItemName><ItemPath>SILKA mészhomoktégla\Burkoló téglák</ItemPath><ID>1908.01.24.</ID>
+  </ItemHeader>
+      <Thickness>3</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA VB-60</ItemName><ItemPath>SILKA mészhomoktégla\Burkoló téglák</ItemPath><ID>1908.01.25.</ID>
+  </ItemHeader>
+      <Thickness>6</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA VF-120</ItemName><ItemPath>SILKA mészhomoktégla\Burkoló téglák</ItemPath><ID>1908.01.26.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HM-200 NF+GT</ItemName><ItemPath>SILKA mészhomoktégla\Falazóelemek</ItemPath><ID>1908.01.28.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HM-250 NF+GT</ItemName><ItemPath>SILKA mészhomoktégla\Falazóelemek</ItemPath><ID>1908.01.29.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>2000</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>25</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HML-300 NF+GT</ItemName><ItemPath>SILKA mészhomoktégla\Falazóelemek</ItemPath><ID>1908.01.30.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1600</Density><ThermalCond>0.65</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HML-100 NF</ItemName><ItemPath>SILKA mészhomoktégla\Válaszfalelemek</ItemPath><ID>1908.02.01.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1400</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>SILKA HML-150 NF+GT</ItemName><ItemPath>SILKA mészhomoktégla\Válaszfalelemek</ItemPath><ID>1908.02.02.</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>1400</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>13.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="50">0.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">13.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

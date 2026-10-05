@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<WinWatt32Project>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 10 N+F</ItemName>
+		</ItemHeader>
+		<Thickness>10</Thickness>
+		<Density>1010</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 10 N+F Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>10</Thickness>
+		<Density>870</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 10 N+F Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>10</Thickness>
+		<Density>820</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 20 N+F</ItemName>
+		</ItemHeader>
+		<Thickness>20</Thickness>
+		<Density>835</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 20 N+F Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>20</Thickness>
+		<Density>760</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 20 N+F Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>20</Thickness>
+		<Density>745</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 25 N+F</ItemName>
+		</ItemHeader>
+		<Thickness>25</Thickness>
+		<Density>840</Density>
+		<ThermalCond>0,33</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 25 N+F Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>25</Thickness>
+		<Density>760</Density>
+		<ThermalCond>0,3</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM belső falak</ItemPath>
+			<ItemName>POROTHERM 25 N+F Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>25</Thickness>
+		<Density>748</Density>
+		<ThermalCond>0,3</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 1 x ger. 4 cm</ItemName>
+		</ItemHeader>
+		<Thickness>21</Thickness>
+		<Density>1410</Density>
+		<ThermalRes>0.408</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.027</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 1 x ger. 5 cm</ItemName>
+		</ItemHeader>
+		<Thickness>22</Thickness>
+		<Density>1455</Density>
+		<ThermalRes>0.412</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.026</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 1 x ger. 6 cm</ItemName>
+		</ItemHeader>
+		<Thickness>23</Thickness>
+		<Density>1495</Density>
+		<ThermalRes>0.416</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.025</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 1 x ger. 7 cm</ItemName>
+		</ItemHeader>
+		<Thickness>24</Thickness>
+		<Density>1535</Density>
+		<ThermalRes>0.42</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.024</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 2 x ger. 4 cm</ItemName>
+		</ItemHeader>
+		<Thickness>21</Thickness>
+		<Density>1610</Density>
+		<ThermalRes>0.3</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.027</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 2 x ger. 5 cm</ItemName>
+		</ItemHeader>
+		<Thickness>22</Thickness>
+		<Density>1645</Density>
+		<ThermalRes>0.304</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.026</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 2 x ger. 6 cm</ItemName>
+		</ItemHeader>
+		<Thickness>23</Thickness>
+		<Density>1680</Density>
+		<ThermalRes>0.308</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.025</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 45/17 bélést. 2 x ger. 7 cm</ItemName>
+		</ItemHeader>
+		<Thickness>24</Thickness>
+		<Density>1710</Density>
+		<ThermalRes>0.312</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.024</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 1 x ger. 4 cm</ItemName>
+		</ItemHeader>
+		<Thickness>21</Thickness>
+		<Density>1300</Density>
+		<ThermalRes>0.459</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.027</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 1 x ger. 5 cm</ItemName>
+		</ItemHeader>
+		<Thickness>22</Thickness>
+		<Density>1350</Density>
+		<ThermalRes>0.463</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.026</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 1 x ger. 6 cm</ItemName>
+		</ItemHeader>
+		<Thickness>23</Thickness>
+		<Density>1395</Density>
+		<ThermalRes>0.467</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.025</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 1 x ger. 7 cm</ItemName>
+		</ItemHeader>
+		<Thickness>24</Thickness>
+		<Density>1435</Density>
+		<ThermalRes>0.471</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.024</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 2 x ger. 4 cm</ItemName>
+		</ItemHeader>
+		<Thickness>21</Thickness>
+		<Density>1475</Density>
+		<ThermalRes>0.35</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.027</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 2 x ger. 5 cm</ItemName>
+		</ItemHeader>
+		<Thickness>22</Thickness>
+		<Density>1515</Density>
+		<ThermalRes>0.354</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.026</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 2 x ger. 6 cm</ItemName>
+		</ItemHeader>
+		<Thickness>23</Thickness>
+		<Density>1555</Density>
+		<ThermalRes>0.358</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.025</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM födémek</ItemPath>
+			<ItemName>PTH 60/17 bélést. 2 x ger. 7 cm</ItemName>
+		</ItemHeader>
+		<Thickness>24</Thickness>
+		<Density>1590</Density>
+		<ThermalRes>0.362</ThermalRes>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffCond>0.024</SteamDiffCond>
+		<PermitHumidity>1.4</PermitHumidity>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM hanggátló falak</ItemPath>
+			<ItemName>POROTHERM 25 AKU Z</ItemName>
+		</ItemHeader>
+		<Thickness>25</Thickness>
+		<Density>1304</Density>
+		<ThermalCond>0.3</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM hanggátló falak</ItemPath>
+			<ItemName>POROTHERM 30 AKU Z</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>1093</Density>
+		<ThermalCond>0.36</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 N+F neo</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>753</Density>
+		<ThermalCond>0.184</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 N+F neo Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>680</Density>
+		<ThermalCond>0.149</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 N+F neo Rapid Dry</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>667</Density>
+		<ThermalCond>0.149</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 X-therm</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>753</Density>
+		<ThermalCond>0.091</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 X-therm Rap. Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>737</Density>
+		<ThermalCond>0.089</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 X-therm Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>747</Density>
+		<ThermalCond>0.09</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 Alfa Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>667</Density>
+		<ThermalCond>0,067</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 30 Alfa Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>30</Thickness>
+		<Density>653</Density>
+		<ThermalCond>0,067</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 32 Alfa Thermo Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>32</Thickness>
+		<Density>731</Density>
+		<ThermalCond>0.08</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,9</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 32 Alfa Thermo Rapid D</ItemName>
+		</ItemHeader>
+		<Thickness>32</Thickness>
+		<Density>718</Density>
+		<ThermalCond>0.08</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,9</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 N+F</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>837</Density>
+		<ThermalCond>0.17</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 Pincetégla</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>932</Density>
+		<ThermalCond>0.26</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 Thermo Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>632</Density>
+		<ThermalCond>0.07</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,9</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 Thermo Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>642</Density>
+		<ThermalCond>0.07</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,9</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 X-therm</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>755</Density>
+		<ThermalCond>0.101</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 X-therm Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>750</Density>
+		<ThermalCond>0.1</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 38 X-therm Rapid Dry</ItemName>
+		</ItemHeader>
+		<Thickness>38</Thickness>
+		<Density>737</Density>
+		<ThermalCond>0.099</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 44 Thermo Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>44</Thickness>
+		<Density>632</Density>
+		<ThermalCond>0.064</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,9</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 44 Thermo Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>44</Thickness>
+		<Density>641</Density>
+		<ThermalCond>0.064</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,9</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 44 X-therm</ItemName>
+		</ItemHeader>
+		<Thickness>44</Thickness>
+		<Density>716</Density>
+		<ThermalCond>0.1</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 44 X-therm Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>44</Thickness>
+		<Density>711</Density>
+		<ThermalCond>0.1</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 44 X-therm Rapid Dry</ItemName>
+		</ItemHeader>
+		<Thickness>44</Thickness>
+		<Density>698</Density>
+		<ThermalCond>0.1</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 50 Thermo Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>50</Thickness>
+		<Density>642</Density>
+		<ThermalCond>0.064</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,8</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 50 Thermo Rapid Dryfix</ItemName>
+		</ItemHeader>
+		<Thickness>50</Thickness>
+		<Density>642</Density>
+		<ThermalCond>0.064</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>3,8</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 50 X-therm Rapid</ItemName>
+		</ItemHeader>
+		<Thickness>50</Thickness>
+		<Density>730</Density>
+		<ThermalCond>0.087</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemPath>POROTHERM termékek 2023\POROTHERM külső falak</ItemPath>
+			<ItemName>POROTHERM 50 X-therm Rapid Dry</ItemName>
+		</ItemHeader>
+		<Thickness>50</Thickness>
+		<Density>716</Density>
+		<ThermalCond>0.087</ThermalCond>
+		<HeatCapacity>1</HeatCapacity>
+		<SteamDiffResNum>10</SteamDiffResNum>
+		<PermitHumidity>1.4</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.22</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.31</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.4</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.56</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.62</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.8</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.96</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">1.42</SorptionIsotermaPoint>
+	</WinWatt32Material>
+</WinWatt32Project>

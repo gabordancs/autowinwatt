@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>THERMOBETON P200</ItemName><ItemPath>Betonok</ItemPath><ID>940</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>200</Density><ThermalCond>0.05</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.92</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>14.8</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>THERMOBETON P250</ItemName><ItemPath>Betonok</ItemPath><ID>941</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>250</Density><ThermalCond>0.065</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.92</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>14.9</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>THERMOBETON P350</ItemName><ItemPath>Betonok</ItemPath><ID>942</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>350</Density><ThermalCond>0.082</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.92</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>15.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Terraplast PLUS GEO drainlemez</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Drainlemezek/HDPE</ItemPath><ID>945</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>95000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Terraplast PLUS L8 drainlemez</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Drainlemezek/HDPE</ItemPath><ID>946</ID>
+  </ItemHeader>
+      <Thickness>0.09</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>85000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Terraplast PLUS S20 drainlemez</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Drainlemezek/HDPE</ItemPath><ID>947</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>95000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Terraplast PLUS S8 drainlemez</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Drainlemezek/HDPE</ItemPath><ID>948</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>95000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax 3 CLASSIC</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>950</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax 3 ECO</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>951</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax 3 EXTRA</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>952</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax 3 TOP</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>953</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax METAL szellőzőszőnyeg</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>954</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax PRO</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>955</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Mastermax THERMO</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Páraáteresztő tetőfóliák</ItemPath><ID>956</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Isoflex ALU alutükrös PE fólia</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Párazáró fóliák</ItemPath><ID>958</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0.2</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1E5</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Isoflex ALU-PZ metalizált fólia</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Párazáró fóliák</ItemPath><ID>959</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0.5</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Masterfol CLASSIC ALU</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Párazáró fóliák</ItemPath><ID>960</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0.2</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>36000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Masterfol SOFT ALU</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Párazáró fóliák</ItemPath><ID>961</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0.2</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>76000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick">
+  <ItemHeader>
+    <ItemName>Masterfol-BLUE Sd20 PE fólia</ItemName><ItemPath>Fóliák\MASTERPLAST termékek\Párazáró fóliák</ItemPath><ID>962</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0.2</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20000</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster-EPS H80 homl.ps.hab</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Expandált polisztirol lemezek</ItemPath><ID>965</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.45</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.62</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.76</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.92</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster-EPS100 exp.ps.hab</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Expandált polisztirol lemezek</ItemPath><ID>966</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30">0.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.32</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.44</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.52</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster-EPS150 exp.ps.hab</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Expandált polisztirol lemezek</ItemPath><ID>967</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.034</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.69</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.97</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.32</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster-EPS200 exp.ps.hab</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Expandált polisztirol lemezek</ItemPath><ID>968</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.032</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>45</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.64</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.98</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.22</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster-EPS30 exp.ps.hab</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Expandált polisztirol lemezek</ItemPath><ID>969</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30">0.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.76</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.24</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster-EPS70 exp.ps.hab</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Expandált polisztirol lemezek</ItemPath><ID>970</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>0</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.46</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.92</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster XPS 2 cm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Extrudált polisztirol lemezek</ItemPath><ID>972</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.031</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>120</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.16</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.58</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.78</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.88</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.92</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.96</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster XPS 3-4 cm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Extrudált polisztirol lemezek</ItemPath><ID>973</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.034</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>120</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.16</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.58</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.78</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.88</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.92</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.96</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isomaster XPS 5-10 cm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Extrudált polisztirol lemezek</ItemPath><ID>974</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>120</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.16</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.58</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.78</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.88</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.92</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.96</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-C (25-75mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>976</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>350</Density><ThermalCond>0.074</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">4.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">7.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">8.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">19.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-EPS (100mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>977</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>95</Density><ThermalCond>0</ThermalCond><ThermalRes>2.43</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">4.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">6.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">7.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">8.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">18.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-EPS (25mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>978</ID>
+  </ItemHeader>
+      <Thickness>2.5</Thickness><Density>280</Density><ThermalCond>0</ThermalCond><ThermalRes>0.51</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">4.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">6.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">7.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">8.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">18.1</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-EPS (35mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>979</ID>
+  </ItemHeader>
+      <Thickness>3.5</Thickness><Density>200</Density><ThermalCond>0</ThermalCond><ThermalRes>0.77</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">4.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">6.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">7.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">8.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">18.1</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-EPS (50mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>980</ID>
+  </ItemHeader>
+      <Thickness>5</Thickness><Density>150</Density><ThermalCond>0</ThermalCond><ThermalRes>1.15</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">4.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">6.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">7.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">8.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">18.1</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-EPS (75mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>981</ID>
+  </ItemHeader>
+      <Thickness>7.5</Thickness><Density>100</Density><ThermalCond>0</ThermalCond><ThermalRes>1.79</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">2.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">4.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">6.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">7.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">7.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">8.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">18.1</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-ROCK (100mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>982</ID>
+  </ItemHeader>
+      <Thickness>10</Thickness><Density>165</Density><ThermalCond>0</ThermalCond><ThermalRes>2.17</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">2.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">4.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">12.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-ROCK (50mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>983</ID>
+  </ItemHeader>
+      <Thickness>5</Thickness><Density>220</Density><ThermalCond>0</ThermalCond><ThermalRes>1.3</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">2.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">4.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">12.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Woodwool-ROCK (75mm)</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Fagyapot lemezek</ItemPath><ID>984</ID>
+  </ItemHeader>
+      <Thickness>7.5</Thickness><Density>186</Density><ThermalCond>0</ThermalCond><ThermalRes>1.58</ThermalRes><HeatCapacity>1.8</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">2.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">3.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">4.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">4.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">5.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">12.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam IF10 habfólia 10mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>986</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>16</Density><ThermalCond>0.06</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>7600</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam IF2 habfólia 2mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>987</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>20</Density><ThermalCond>0.055</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1520</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam IF3 habfólia 3mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>988</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>20</Density><ThermalCond>0.055</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>2280</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam IF5 habfólia 5mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>989</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>16</Density><ThermalCond>0.06</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.42</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3800</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam LF-ALUPET habfólia 3mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>990</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>20</Density><ThermalCond>0.05</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>17000</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam LF-ALUPET habfólia 5mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>991</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>16</Density><ThermalCond>0.05</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>17000</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam XPS habfólia 2 mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>992</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>50</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.44</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam XPS habfólia 4 mm</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>993</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>38</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.44</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Isofoam XPS THERMO habfólia</ItemName><ItemPath>Hőszigetelő anyagok\MASTERPLAST termékek\Polietilén habfóliák</ItemPath><ID>994</ID>
+  </ItemHeader>
+      <Thickness>0.16</Thickness><Density>38</Density><ThermalCond>0.058</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.44</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

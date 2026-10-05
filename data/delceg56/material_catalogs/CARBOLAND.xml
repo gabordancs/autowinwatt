@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project Type="NativeExport">
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Carboland H80 - grafitos eps</ItemName><ItemPath>Hőszigetelő anyagok\CARBOLAND</ItemPath><ID>1275</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>18</Density><ThermalCond>0.031</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.84</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30" >0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.44</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.63</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >1.78</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Ecoland E70 - újrahaszn. eps</ItemName><ItemPath>Hőszigetelő anyagok\CARBOLAND</ItemPath><ID>1277</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>27</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.84</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Greenland L200 - lábazati eps</ItemName><ItemPath>Hőszigetelő anyagok\CARBOLAND</ItemPath><ID>1276</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.034</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.14</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30" >0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >0.98</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >1.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >1.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Isoland H80 - homlokzati eps</ItemName><ItemPath>Hőszigetelő anyagok\CARBOLAND</ItemPath><ID>1272</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>17</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.84</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30" >0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >1.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.44</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.63</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >1.78</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Isoland N100 - lépésálló eps</ItemName><ItemPath>Hőszigetelő anyagok\CARBOLAND</ItemPath><ID>1273</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>70</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.46</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30" >0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40" >0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >1.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >1.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >1.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" >
+  <ItemHeader>
+    <ItemName>Isoland N150 - lépésálló eps</ItemName><ItemPath>Hőszigetelő anyagok\CARBOLAND</ItemPath><ID>1274</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>25</Density><ThermalCond>0.034</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>70</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.25</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="30" >0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50" >0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60" >0.69</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70" >0.95</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80" >1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90" >1.21</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100" >1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

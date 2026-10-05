@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="ISO-8859-2"?>
+<WinWatt32Project>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock HD</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>70</Density>	<ThermalCond>0.035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock HD FB1</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>70</Density>	<ThermalCond>0.035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock LD</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>40</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock LD FB1</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>40</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock ND</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>50</Density>	<ThermalCond>0.035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock ND FB1</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>50</Density>	<ThermalCond>0.035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock XD</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>90</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Airrock XD FB1</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>90</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Magastető és beltéri szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Ceilingrock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>70</Density>	<ThermalCond>0.035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Dachrock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>152</Density>	<ThermalCond>0,04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Magastető és beltéri szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Deltarock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>35</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Durock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>150</Density>	<ThermalCond>0.04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Homlokzati szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Fixrock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>32</Density>	<ThermalCond>0.039</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Homlokzati szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Fixrock FB1</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>32</Density>	<ThermalCond>0.039</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Homlokzati szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Fixrock VS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>35</Density>	<ThermalCond>0.033</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Vakolható szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Frontrock S</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>110</Density>	<ThermalCond>0,037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Vakolható szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Frontrock Super</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>90</Density>	<ThermalCond>0.036</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Hardrock Max</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>162</Density>	<ThermalCond>0.04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Hardrock-II</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>165</Density>	<ThermalCond>0.036</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.4</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Larock 32 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>32</Density>	<ThermalCond>0,04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Larock 40 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>40</Density>	<ThermalCond>0,04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Monrock Max E</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>128</Density>	<ThermalCond>0.038</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Magastető és beltéri szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Multirock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>28</Density>	<ThermalCond>0.039</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021</ItemPath>
+		
+		<ItemName>Rockwool Multirock Plus</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>28</Density>	<ThermalCond>0.033</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021</ItemPath>
+		
+		<ItemName>Rockwool RAF</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>50</Density>	<ThermalCond>0,035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021</ItemPath>
+		
+		<ItemName>Rockwool RAF-SE</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>50</Density>	<ThermalCond>0,035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Rockfall lejtésképzés</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>152</Density>	<ThermalCond>0,04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Roofrock 40</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>115</Density>	<ThermalCond>0.038</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool Roofrock 60</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>135</Density>	<ThermalCond>0,039</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Födém szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Rollrock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>27</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Vakolható szigetelések</ItemPath>
+		
+		<ItemName>Rockwool RP-PL</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>88</Density>	<ThermalCond>0.042</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.2</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Homlokzati szigetelések</ItemPath>
+		
+		<ItemName>Rockwool RP-PT</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>155</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.4</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool RP-TF</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>180</Density>	<ThermalCond>0.038</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.4</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Magastető és beltéri szigetelések</ItemPath>
+		
+		<ItemName>Rockwool RP-V</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>40</Density>	<ThermalCond>0.033</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.2</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool RP-VII</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>60</Density>	<ThermalCond>0.033</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.2</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool RP-X</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>90</Density>	<ThermalCond>0.033</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.3</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Födém szigetelések</ItemPath>
+		
+		<ItemName>Rockwool RT-U</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>120</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.3</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Homlokzati szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Steelrock 035 Plus</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>50</Density>	<ThermalCond>0,035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Homlokzati szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Steelrock 040 Plus</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>40</Density>	<ThermalCond>0,04</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Steprock HD</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>140</Density>	<ThermalCond>0,037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.89</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Válaszfal és akusztikai szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Steprock ND</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>120</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Lapostető hőszigetelések</ItemPath>
+		
+		<ItemName>Rockwool SF 50</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>50</Density>	<ThermalCond>0,035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Vakolható szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Stroprock G</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>80</Density>	<ThermalCond>0.037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>0.97</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Techrock 100 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>100</Density>	<ThermalCond>0,034</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Techrock 120 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>120</Density>	<ThermalCond>0,035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Techrock 150 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>150</Density>	<ThermalCond>0,036</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Techrock 40 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>40</Density>	<ThermalCond>0,037</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Techrock 60 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>60</Density>	<ThermalCond>0,035</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Techrock 80 ALS</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>80</Density>	<ThermalCond>0,034</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Rockwool Termarock 30</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>33</Density>	<ThermalCond>0.033</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1.1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>RW CONLIT Steel protect Board</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>150</Density>	<ThermalCond>0.041</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>CONLIT Steel protect Board 150P</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>165</Density>	<ThermalCond>0.041</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>CONLIT Steel protect Board 150U</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>165</Density>	<ThermalCond>0.041</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>CONLIT Ductrock 90</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>165</Density>	<ThermalCond>0.041</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>CONLIT Plus 60 ALU</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>160</Density>	<ThermalCond>0,039</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>CONLIT Plus 120 ALU</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>160</Density>	<ThermalCond>0,046</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+<WinWatt32Material Type="Normal">
+	
+	<ItemHeader>
+		
+		<ItemPath>Rockwool 2021\Gépészeti és tűzvédelmi szigetelések</ItemPath>
+		
+		<ItemName>Firerock</ItemName>
+	
+	</ItemHeader>
+	
+	<Thickness>0</Thickness>	<Density>80</Density>	<ThermalCond>0,038</ThermalCond>	<ThermalRes>0</ThermalRes>	<HeatCapacity>0.84</HeatCapacity>	<SteamDiffCond>0</SteamDiffCond>	<SteamDiffRes>0</SteamDiffRes>	<SteamDiffResNum>1</SteamDiffResNum>	<InitialHumidity>0</InitialHumidity>	<PermitHumidity>1.29</PermitHumidity>
+	<SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+	<SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+</WinWatt32Project>

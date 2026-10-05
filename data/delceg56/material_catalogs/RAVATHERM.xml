@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WinWatt32Project Type="NativeExport">
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 250 PB (20mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1773</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>31</Density>
+		<ThermalCond>0.033</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 SL (100-120mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1775</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 SL (140-200mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1776</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.033</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 SL (220-260mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1777</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 SL (280-320mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1778</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.035</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 SL (30-80mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1774</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.033</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 ST (100-120mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1784</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 ST (40-80mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1783</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.033</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 WB (100-120mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1780</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 WB (140-200mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1781</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.033</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 WB (220mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1782</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 300 WB (30-80mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1779</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>32</Density>
+		<ThermalCond>0.033</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>50</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 500 SL (100-200mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1786</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>38</Density>
+		<ThermalCond>0.035</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>80</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 500 SL (40-80mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1785</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>38</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>80</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 700 SL (100-160mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1787</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>45</Density>
+		<ThermalCond>0.035</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>80</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Normal">
+		<ItemHeader>
+			<ItemName>RAVATHERM XPS 700 SL (40-80mm)</ItemName>
+			<ItemPath>Hőszigetelő anyagok\Lambda Systeme</ItemPath>
+			<ID>1788</ID>
+		</ItemHeader>
+		<Thickness>0</Thickness>
+		<Density>45</Density>
+		<ThermalCond>0.034</ThermalCond>
+		<ThermalRes>0</ThermalRes>
+		<HeatCapacity>1.4</HeatCapacity>
+		<SteamDiffCond>0</SteamDiffCond>
+		<SteamDiffRes>0</SteamDiffRes>
+		<SteamDiffResNum>80</SteamDiffResNum>
+		<SteamSDValue>0</SteamSDValue>
+		<InitialHumidity>0</InitialHumidity>
+		<PermitHumidity>0.95</PermitHumidity>
+		<SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+		<SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+	</WinWatt32Material>
+</WinWatt32Project>

@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Airrock HD</ItemName><ItemPath>Rockwool</ItemPath><ID>1024</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>70</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Airrock LD</ItemName><ItemPath>Rockwool</ItemPath><ID>1025</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>40</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Airrock ND</ItemName><ItemPath>Rockwool</ItemPath><ID>1026</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>50</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Airrock ND FB1</ItemName><ItemPath>Rockwool</ItemPath><ID>1027</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>50</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Airrock XD</ItemName><ItemPath>Rockwool</ItemPath><ID>1028</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>90</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.97</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool Dachrock</ItemName><ItemPath>Rockwool</ItemPath><ID>663</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.4</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Deltarock</ItemName><ItemPath>Rockwool</ItemPath><ID>664</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>35</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Durock</ItemName><ItemPath>Rockwool</ItemPath><ID>1029</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Fixrock</ItemName><ItemPath>Rockwool</ItemPath><ID>665</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.039</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Fixrock FB1</ItemName><ItemPath>Rockwool</ItemPath><ID>1030</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>32</Density><ThermalCond>0.039</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool Fixrock VS</ItemName><ItemPath>Rockwool</ItemPath><ID>666</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>35</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Frontrock (RP-PT)</ItemName><ItemPath>Rockwool</ItemPath><ID>1031</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>135</Density><ThermalCond>0.039</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Frontrock MAX E</ItemName><ItemPath>Rockwool</ItemPath><ID>1032</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>135</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Hardrock Max</ItemName><ItemPath>Rockwool</ItemPath><ID>1033</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool Hardrock-II</ItemName><ItemPath>Rockwool</ItemPath><ID>667</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.4</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Larock 40 ALS</ItemName><ItemPath>Rockwool</ItemPath><ID>1034</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>40</Density><ThermalCond>0.044</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Monrock Max E</ItemName><ItemPath>Rockwool</ItemPath><ID>1035</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Multirock</ItemName><ItemPath>Rockwool</ItemPath><ID>1036</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>28</Density><ThermalCond>0.039</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool Multirock Plus</ItemName><ItemPath>Rockwool</ItemPath><ID>668</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>28</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RAF</ItemName><ItemPath>Rockwool</ItemPath><ID>669</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>45</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RAF-SE</ItemName><ItemPath>Rockwool</ItemPath><ID>670</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>50</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Rockfall lejtésképzés</ItemName><ItemPath>Rockwool</ItemPath><ID>1037</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>165</Density><ThermalCond>0.041</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool Rollrock</ItemName><ItemPath>Rockwool</ItemPath><ID>671</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>27</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RP-PL</ItemName><ItemPath>Rockwool</ItemPath><ID>672</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>88</Density><ThermalCond>0.042</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.97</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RP-PT</ItemName><ItemPath>Rockwool</ItemPath><ID>673</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>155</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.4</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RP-TF</ItemName><ItemPath>Rockwool</ItemPath><ID>674</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>180</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.4</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RP-V</ItemName><ItemPath>Rockwool</ItemPath><ID>675</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>40</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RP-VII</ItemName><ItemPath>Rockwool</ItemPath><ID>676</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>60</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RP-X</ItemName><ItemPath>Rockwool</ItemPath><ID>677</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>90</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.3</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.97</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool RT-U</ItemName><ItemPath>Rockwool</ItemPath><ID>678</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>120</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.3</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.97</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Steprock HD</ItemName><ItemPath>Rockwool</ItemPath><ID>1038</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>140</Density><ThermalCond>0.039</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.89</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Steprock ND</ItemName><ItemPath>Rockwool</ItemPath><ID>1039</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>120</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.97</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.23</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.98</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Techrock 100</ItemName><ItemPath>Rockwool</ItemPath><ID>1040</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>100</Density><ThermalCond>0.037</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Techrock 120</ItemName><ItemPath>Rockwool</ItemPath><ID>1041</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>120</Density><ThermalCond>0.039</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Techrock 150</ItemName><ItemPath>Rockwool</ItemPath><ID>1042</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>150</Density><ThermalCond>0.041</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Techrock 40</ItemName><ItemPath>Rockwool</ItemPath><ID>1043</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>40</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Techrock 60</ItemName><ItemPath>Rockwool</ItemPath><ID>1044</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>60</Density><ThermalCond>0.036</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>Rockwool Techrock 80</ItemName><ItemPath>Rockwool</ItemPath><ID>1045</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>80</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Rockwool Termarock 30</ItemName><ItemPath>Rockwool</ItemPath><ID>679</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>33</Density><ThermalCond>0.033</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal">
+  <ItemHeader>
+    <ItemName>RW CONLIT Steel protect Board</ItemName><ItemPath>Rockwool</ItemPath><ID>1046</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>150</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.29</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.33</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.39</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.47</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.71</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.94</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

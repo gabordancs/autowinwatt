@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WinWatt32Project Type="NativeExport">
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fa (100 mm)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1465</ID>
+		</ItemHeader>
+		<Uf>1.6</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fa (150 mm)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1466</ID>
+		</ItemHeader>
+		<Uf>1.2</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fa (50 mm)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1462</ID>
+		</ItemHeader>
+		<Uf>2.2</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fa (70 mm)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1463</ID>
+		</ItemHeader>
+		<Uf>2</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fa (80 mm)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1464</ID>
+		</ItemHeader>
+		<Uf>1.8</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fém, erős termikus elválasztás</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1470</ID>
+		</ItemHeader>
+		<Uf>2</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fém, gyenge termikus elválasztás</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1468</ID>
+		</ItemHeader>
+		<Uf>3.3</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fém, közepes term. elválasztás</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1469</ID>
+		</ItemHeader>
+		<Uf>2.6</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>fém, termikus elválasztás nélkül</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1467</ID>
+		</ItemHeader>
+		<Uf>5.8</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>műanyag (2 kamrás)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1457</ID>
+		</ItemHeader>
+		<Uf>2.2</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>műanyag (3 kamrás)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1458</ID>
+		</ItemHeader>
+		<Uf>2</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>műanyag (4 kamrás)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1459</ID>
+		</ItemHeader>
+		<Uf>1.6</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>műanyag (5 kamrás)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1460</ID>
+		</ItemHeader>
+		<Uf>1.3</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Frame">
+		<ItemHeader>
+			<ItemName>műanyag (többkamrás)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\keret típusok</ItemPath>
+			<ID>1461</ID>
+		</ItemHeader>
+		<Uf>1</Uf>
+		<FrameWidth>0</FrameWidth>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\2 rétegű üvegezés</ItemPath>
+			<ID>1492</ID>
+		</ItemHeader>
+		<PsziDevider>0.03</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\2 rétegű üvegezés</ItemPath>
+			<ID>1493</ID>
+		</ItemHeader>
+		<PsziDevider>0</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\2 rétegű üvegezés, Low-e</ItemPath>
+			<ID>1489</ID>
+		</ItemHeader>
+		<PsziDevider>0.07</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\2 rétegű üvegezés, Low-e</ItemPath>
+			<ID>1490</ID>
+		</ItemHeader>
+		<PsziDevider>0.04</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\3 rétegű, Low-e, 1 gázrétegben</ItemPath>
+			<ID>1495</ID>
+		</ItemHeader>
+		<PsziDevider>0.03</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\3 rétegű, Low-e, 1 gázrétegben</ItemPath>
+			<ID>1496</ID>
+		</ItemHeader>
+		<PsziDevider>0.02</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\3 rétegű, Low-e, 2 gázrétegben</ItemPath>
+			<ID>1498</ID>
+		</ItemHeader>
+		<PsziDevider>0.05</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 2 mm\3 rétegű, Low-e, 2 gázrétegben</ItemPath>
+			<ID>1499</ID>
+		</ItemHeader>
+		<PsziDevider>0.03</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\2 rétegű üvegezés</ItemPath>
+			<ID>1502</ID>
+		</ItemHeader>
+		<PsziDevider>0.01</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\2 rétegű üvegezés</ItemPath>
+			<ID>1503</ID>
+		</ItemHeader>
+		<PsziDevider>0</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\2 rétegű üvegezés, Low-e</ItemPath>
+			<ID>1505</ID>
+		</ItemHeader>
+		<PsziDevider>0.04</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\2 rétegű üvegezés, Low-e</ItemPath>
+			<ID>1506</ID>
+		</ItemHeader>
+		<PsziDevider>0.02</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\3 rétegű, Low-e, 1 gázrétegben</ItemPath>
+			<ID>1508</ID>
+		</ItemHeader>
+		<PsziDevider>0.01</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\3 rétegű, Low-e, 1 gázrétegben</ItemPath>
+			<ID>1509</ID>
+		</ItemHeader>
+		<PsziDevider>0.01</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\3 rétegű, Low-e, 2 gázrétegben</ItemPath>
+			<ID>1511</ID>
+		</ItemHeader>
+		<PsziDevider>0.02</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>műanyag belső merevítőprofil</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\merevítő, az üvegtől d &gt; 4 mm\3 rétegű, Low-e, 2 gázrétegben</ItemPath>
+			<ID>1512</ID>
+		</ItemHeader>
+		<PsziDevider>0.02</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém távtartó, Ug &lt; 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fa és műanyag nyílászárók</ItemPath>
+			<ID>1473</ID>
+		</ItemHeader>
+		<PsziDevider>0.08</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém távtartó, Ug &gt;= 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fa és műanyag nyílászárók</ItemPath>
+			<ID>1474</ID>
+		</ItemHeader>
+		<PsziDevider>0.06</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>meleg távtartó, Ug &lt; 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fa és műanyag nyílászárók</ItemPath>
+			<ID>1475</ID>
+		</ItemHeader>
+		<PsziDevider>0.06</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>meleg távtartó, Ug &gt;= 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fa és műanyag nyílászárók</ItemPath>
+			<ID>1476</ID>
+		</ItemHeader>
+		<PsziDevider>0.05</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém távtartó, Ug &lt; 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv.</ItemPath>
+			<ID>1483</ID>
+		</ItemHeader>
+		<PsziDevider>0.11</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém távtartó, Ug &gt;= 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv.</ItemPath>
+			<ID>1484</ID>
+		</ItemHeader>
+		<PsziDevider>0.08</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>meleg távtartó, Ug &lt; 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv.</ItemPath>
+			<ID>1485</ID>
+		</ItemHeader>
+		<PsziDevider>0.08</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>meleg távtartó, Ug &gt;= 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv.</ItemPath>
+			<ID>1486</ID>
+		</ItemHeader>
+		<PsziDevider>0.06</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém távtartó, Ug &lt; 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv. nélk.</ItemPath>
+			<ID>1478</ID>
+		</ItemHeader>
+		<PsziDevider>0.05</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>fém távtartó, Ug &gt;= 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv. nélk.</ItemPath>
+			<ID>1479</ID>
+		</ItemHeader>
+		<PsziDevider>0.02</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>meleg távtartó, Ug &lt; 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv. nélk.</ItemPath>
+			<ID>1480</ID>
+		</ItemHeader>
+		<PsziDevider>0.04</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Devider">
+		<ItemHeader>
+			<ItemName>meleg távtartó, Ug &gt;= 2</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\távtartók\fém nyílászáró, term. elv. nélk.</ItemPath>
+			<ID>1481</ID>
+		</ItemHeader>
+		<PsziDevider>0.01</PsziDevider>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Glass">
+		<ItemHeader>
+			<ItemName>4:-12-4-12-:4 argongázas</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\üvegezések</ItemPath>
+			<ID>1455</ID>
+		</ItemHeader>
+		<Ug>0.8</Ug>
+		<g>0.55</g>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Glass">
+		<ItemHeader>
+			<ItemName>4:-16-4 argongázas, reflektív</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\üvegezések</ItemPath>
+			<ID>1454</ID>
+		</ItemHeader>
+		<Ug>1.1</Ug>
+		<g>0.32</g>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Glass">
+		<ItemHeader>
+			<ItemName>4-12-:4</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\üvegezések</ItemPath>
+			<ID>1452</ID>
+		</ItemHeader>
+		<Ug>1.6</Ug>
+		<g>0.7</g>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Glass">
+		<ItemHeader>
+			<ItemName>4-12-4</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\üvegezések</ItemPath>
+			<ID>1451</ID>
+		</ItemHeader>
+		<Ug>2.9</Ug>
+		<g>0.75</g>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Glass">
+		<ItemHeader>
+			<ItemName>4-16-:4 argongázas</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\üvegezések</ItemPath>
+			<ID>1453</ID>
+		</ItemHeader>
+		<Ug>1.2</Ug>
+		<g>0.59</g>
+	</WinWatt32Material>
+	<WinWatt32Material Type="Glass">
+		<ItemHeader>
+			<ItemName>egyrétegű üvegezés (4 mm float)</ItemName>
+			<ItemPath>Nyílászárók anyagai\TNM adatok\üvegezések</ItemPath>
+			<ID>1450</ID>
+		</ItemHeader>
+		<Ug>5.8</Ug>
+		<g>0.85</g>
+	</WinWatt32Material>
+</WinWatt32Project>

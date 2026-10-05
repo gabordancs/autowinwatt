@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project Type="NativeExport">
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Alumínium 55 mm-es 2 kamrás</ItemName><ItemPath>Nyílászárók anyagai\Alumínium profilok</ItemPath><ID>1121</ID>
+  </ItemHeader>
+      <Uf>3.8</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Alumínium 62 mm-es 3 kamrás</ItemName><ItemPath>Nyílászárók anyagai\Alumínium profilok</ItemPath><ID>1122</ID>
+  </ItemHeader>
+      <Uf>3</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Alumínium 72 mm-es 3 kamrás</ItemName><ItemPath>Nyílászárók anyagai\Alumínium profilok</ItemPath><ID>1123</ID>
+  </ItemHeader>
+      <Uf>2.2</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Fa 56 mm-es</ItemName><ItemPath>Nyílászárók anyagai\Fa anyagú tok és keretszerk.</ItemPath><ID>1112</ID>
+  </ItemHeader>
+      <Uf>1.8</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Fa 62 mm-es</ItemName><ItemPath>Nyílászárók anyagai\Fa anyagú tok és keretszerk.</ItemPath><ID>1113</ID>
+  </ItemHeader>
+      <Uf>1.5</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Fa 68 mm-es</ItemName><ItemPath>Nyílászárók anyagai\Fa anyagú tok és keretszerk.</ItemPath><ID>1114</ID>
+  </ItemHeader>
+      <Uf>1.3</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>Fa 80 mm-es</ItemName><ItemPath>Nyílászárók anyagai\Fa anyagú tok és keretszerk.</ItemPath><ID>1115</ID>
+  </ItemHeader>
+      <Uf>1.1</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-12-4-12-:4 argongázas</ItemName><ItemPath>Nyílászárók anyagai\háromrétegű üvegezés\argongáz töltésű LOW-E bevonat</ItemPath><ID>1099</ID>
+  </ItemHeader>
+      <Ug>0.7</Ug><g>0.52</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-14-4-14-:4 argongázas</ItemName><ItemPath>Nyílászárók anyagai\háromrétegű üvegezés\argongáz töltésű LOW-E bevonat</ItemPath><ID>1098</ID>
+  </ItemHeader>
+      <Ug>0.7</Ug><g>0.52</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-16-4-16-:4 argongázas</ItemName><ItemPath>Nyílászárók anyagai\háromrétegű üvegezés\argongáz töltésű LOW-E bevonat</ItemPath><ID>1097</ID>
+  </ItemHeader>
+      <Ug>0.6</Ug><g>0.52</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-10-4-10-:4 kriptongázas</ItemName><ItemPath>Nyílászárók anyagai\háromrétegű üvegezés\kriptongáz töltésű LOW-E bev.</ItemPath><ID>1101</ID>
+  </ItemHeader>
+      <Ug>0.6</Ug><g>0.52</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-12-4-12-:4 kriptongázas</ItemName><ItemPath>Nyílászárók anyagai\háromrétegű üvegezés\kriptongáz töltésű LOW-E bev.</ItemPath><ID>1100</ID>
+  </ItemHeader>
+      <Ug>0.5</Ug><g>0.52</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-8-4-8-:4 kriptongázas</ItemName><ItemPath>Nyílászárók anyagai\háromrétegű üvegezés\kriptongáz töltésű LOW-E bev.</ItemPath><ID>1102</ID>
+  </ItemHeader>
+      <Ug>0.7</Ug><g>0.52</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-12-:4 argongázas</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\argongáz töltésű LOW-E bevonat</ItemPath><ID>1096</ID>
+  </ItemHeader>
+      <Ug>1.3</Ug><g>0.58</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-14-:4 argongázas</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\argongáz töltésű LOW-E bevonat</ItemPath><ID>1093</ID>
+  </ItemHeader>
+      <Ug>1.2</Ug><g>0.58</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-16-:4 argongázas</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\argongáz töltésű LOW-E bevonat</ItemPath><ID>1090</ID>
+  </ItemHeader>
+      <Ug>1.1</Ug><g>0.58</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4-12-4</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\levegő töltésű</ItemPath><ID>1094</ID>
+  </ItemHeader>
+      <Ug>3.2</Ug><g>0.78</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4-14-4</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\levegő töltésű</ItemPath><ID>1091</ID>
+  </ItemHeader>
+      <Ug>3</Ug><g>0.78</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4-16-4</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\levegő töltésű</ItemPath><ID>1088</ID>
+  </ItemHeader>
+      <Ug>2.8</Ug><g>0.78</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-12-:4</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\levegő töltésű LOW-E bevonat</ItemPath><ID>1095</ID>
+  </ItemHeader>
+      <Ug>1.6</Ug><g>0.58</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-14-:4</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\levegő töltésű LOW-E bevonat</ItemPath><ID>1092</ID>
+  </ItemHeader>
+      <Ug>1.6</Ug><g>0.58</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Glass">
+  <ItemHeader>
+    <ItemName>4:-16-:4</ItemName><ItemPath>Nyílászárók anyagai\kétrétegű üvegezés\levegő töltésű LOW-E bevonat</ItemPath><ID>1089</ID>
+  </ItemHeader>
+      <Ug>1.4</Ug><g>0.58</g>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>PVC 50 mm-es 2 kamrás</ItemName><ItemPath>Nyílászárók anyagai\PVC profilok</ItemPath><ID>1117</ID>
+  </ItemHeader>
+      <Uf>2</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>PVC 60 mm-es 3 kamrás</ItemName><ItemPath>Nyílászárók anyagai\PVC profilok</ItemPath><ID>1118</ID>
+  </ItemHeader>
+      <Uf>1.8</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Frame">
+  <ItemHeader>
+    <ItemName>PVC 75 mm-es 4-5 kamrás</ItemName><ItemPath>Nyílászárók anyagai\PVC profilok</ItemPath><ID>1119</ID>
+  </ItemHeader>
+      <Uf>1.4</Uf><FrameWidth>0</FrameWidth>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Devider">
+  <ItemHeader>
+    <ItemName>Alumínium távtartó</ItemName><ItemPath>Nyílászárók anyagai\Távtartók</ItemPath><ID>1125</ID>
+  </ItemHeader>
+      <PsziDevider>0.08</PsziDevider>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Devider">
+  <ItemHeader>
+    <ItemName>Meleg távtartó</ItemName><ItemPath>Nyílászárók anyagai\Távtartók</ItemPath><ID>1126</ID>
+  </ItemHeader>
+      <PsziDevider>0.04</PsziDevider>
+</WinWatt32Material>
+
+
+</WinWatt32Project>

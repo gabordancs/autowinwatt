@@ -1,0 +1,1540 @@
+<?xml version="1.0" encoding="ISO-8859-2" ?>
+<WinWatt32Project>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Beton Kontakt</ItemName><ItemPath>BAUMIT\Alapelőkészítés</ItemPath><ID>97</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1500</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1300</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Előfröcskölő 2 mm</ItemName><ItemPath>BAUMIT\Alapelőkészítés</ItemPath><ID>98</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1650</Density><ThermalCond>0.88</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>22</SteamDiffResNum>
+      <InitialHumidity>0.5</InitialHumidity><PermitHumidity>0.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.85</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Előfröcskölő 4 mm</ItemName><ItemPath>BAUMIT\Alapelőkészítés</ItemPath><ID>99</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1850</Density><ThermalCond>0.88</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>22</SteamDiffResNum>
+      <InitialHumidity>0.5</InitialHumidity><PermitHumidity>0.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.85</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nedvszíváskiegyenlítő</ItemName><ItemPath>BAUMIT\Alapelőkészítés</ItemPath><ID>100</ID>
+  </ItemHeader>
+      <Thickness>0.005</Thickness><Density>1000</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1732</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Esztrich E225</ItemName><ItemPath>BAUMIT\Esztrichek</ItemPath><ID>102</ID>
+  </ItemHeader>
+      <Thickness>3.5</Thickness><Density>2000</Density><ThermalCond>1.4</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Önterülő Esztrich</ItemName><ItemPath>BAUMIT\Esztrichek</ItemPath><ID>103</ID>
+  </ItemHeader>
+      <Thickness>2.5</Thickness><Density>1950</Density><ThermalCond>1.4</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>20</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Burkoló Habarcs</ItemName><ItemPath>BAUMIT\Falazóhabarcsok</ItemPath><ID>105</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1650</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Falazó Habarcs 100</ItemName><ItemPath>BAUMIT\Falazóhabarcsok</ItemPath><ID>106</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1800</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>15.95</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Falazó Habarcs 30</ItemName><ItemPath>BAUMIT\Falazóhabarcsok</ItemPath><ID>107</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1800</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10.2</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Falazó Habarcs 50</ItemName><ItemPath>BAUMIT\Falazóhabarcsok</ItemPath><ID>108</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1800</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>13.62</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>3</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">1.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">1.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.8</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">2.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">2.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">3</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Klinker Habarcs</ItemName><ItemPath>BAUMIT\Falazóhabarcsok</ItemPath><ID>109</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1600</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Thermo Habarcs</ItemName><ItemPath>BAUMIT\Falazóhabarcsok</ItemPath><ID>110</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>650</Density><ThermalCond>0.172</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.13</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>12.77</SteamDiffResNum>
+      <InitialHumidity>1.3</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.29</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.85</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.32</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Egyrétegű Trassz</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>112</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1200</Density><ThermalCond>0.35</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>12</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Előfröcskölő</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>113</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1950</Density><ThermalCond>0.88</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>22</SteamDiffResNum>
+      <InitialHumidity>0.5</InitialHumidity><PermitHumidity>0.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.85</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Puffer Vakolat</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>114</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>920</Density><ThermalCond>0.5</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.9</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>18</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Trasszit Vakolat</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>115</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1600</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>15</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Vakolat F (Finom)</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>116</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1450</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>9.1</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.71</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.056</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.113</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.151</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.172</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.347</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.363</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.378</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.544</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.709</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Vakolat K (Könnyű)</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>117</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>450</Density><ThermalCond>0.15</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.13</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>9</SteamDiffResNum>
+      <InitialHumidity>1.3</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.29</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.85</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.32</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Vakolat N (Nehéz)</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>118</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1630</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6.3</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.71</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.056</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.113</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.151</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.172</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.347</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.363</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.378</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.544</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.709</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Sanova Vakolat W</ItemName><ItemPath>BAUMIT\Felújító vakolatok</ItemPath><ID>119</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1150</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>12</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.71</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.056</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.113</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.151</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.172</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.347</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.363</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.378</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.544</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.709</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit ArtLine Festék</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>121</ID>
+  </ItemHeader>
+      <Thickness>0.03</Thickness><Density>0.0016</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>200</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Elasto Roll</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>122</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1440</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>250</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Festék</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>123</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1550</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>200</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikát Festék</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>124</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1550</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>31</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikon Festék</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>125</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1550</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>35</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Beltéri Diszperziós Festék Forte</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>126</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1550</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>400</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Beltéri Diszperziós Festék Opus</ItemName><ItemPath>BAUMIT\Festékek</ItemPath><ID>127</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1550</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>400</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Diszperziós Glett</ItemName><ItemPath>BAUMIT\Finom vakolatok, glettanyagok</ItemPath><ID>129</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>1700</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Finom Vakolat</ItemName><ItemPath>BAUMIT\Finom vakolatok, glettanyagok</ItemPath><ID>130</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1450</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>8</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.71</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.54</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.71</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Gipszes Glett Fehér</ItemName><ItemPath>BAUMIT\Finom vakolatok, glettanyagok</ItemPath><ID>131</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>0</Density><ThermalCond>0.6</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>3.79</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Meszes Glett</ItemName><ItemPath>BAUMIT\Finom vakolatok, glettanyagok</ItemPath><ID>132</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>1200</Density><ThermalCond>0.5</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Simító Vakolat</ItemName><ItemPath>BAUMIT\Finom vakolatok, glettanyagok</ItemPath><ID>133</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1500</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>15</SteamDiffResNum>
+      <InitialHumidity>1</InitialHumidity><PermitHumidity>1.37</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.51</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.69</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.84</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.37</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Gipszes Vakolat</ItemName><ItemPath>BAUMIT\Gipszes vakolatok</ItemPath><ID>135</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1100</Density><ThermalCond>0.5</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit GV 20</ItemName><ItemPath>BAUMIT\Gipszes vakolatok</ItemPath><ID>136</ID>
+  </ItemHeader>
+      <Thickness>1</Thickness><Density>1100</Density><ThermalCond>0.5</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Ásványi Hőszigetelő Leme</ItemName><ItemPath>BAUMIT\Hőszigetelő rendszerek</ItemPath><ID>138</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>155</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.84</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1.1</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.9</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.14</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.34</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.41</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.67</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.91</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit EPS Homlokzati Lemezek</ItemName><ItemPath>BAUMIT\Hőszigetelő rendszerek</ItemPath><ID>139</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>20</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>35</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Lábazati Lemez Expert</ItemName><ItemPath>BAUMIT\Hőszigetelő rendszerek</ItemPath><ID>140</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.035</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.9</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Lábazati Lemez XPS-R</ItemName><ItemPath>BAUMIT\Hőszigetelő rendszerek</ItemPath><ID>141</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>30</Density><ThermalCond>0.038</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.4</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>100</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0.95</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.09</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.37</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.55</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.7</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.83</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.91</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.95</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open Homlokzati Lemezek</ItemName><ItemPath>BAUMIT\Hőszigetelő rendszerek</ItemPath><ID>142</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>19</Density><ThermalCond>0.04</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open Plus Hőszigetelő Le</ItemName><ItemPath>BAUMIT\Hőszigetelő rendszerek</ItemPath><ID>143</ID>
+  </ItemHeader>
+      <Thickness>0</Thickness><Density>19</Density><ThermalCond>0.034</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.46</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>1.85</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.5</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.4</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.66</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.82</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.9</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Thermo Vakolat</ItemName><ItemPath>BAUMIT\Hőszigetelő vakolat</ItemPath><ID>145</ID>
+  </ItemHeader>
+      <Thickness>3</Thickness><Density>450</Density><ThermalCond>0.13</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.13</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>7.07</SteamDiffResNum>
+      <InitialHumidity>1.3</InitialHumidity><PermitHumidity>2.5</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.29</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.6</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.75</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.85</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">1.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.32</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.49</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.9</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Durva Vakolat</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>147</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1600</Density><ThermalCond>0.79</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>11</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.71</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.11</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.54</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.71</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit GV 25</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>148</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1250</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6.39</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit GV 25 Könnyített</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>149</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1050</Density><ThermalCond>0.35</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6</SteamDiffResNum>
+      <InitialHumidity>1.1</InitialHumidity><PermitHumidity>2.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.16</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.86</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit GV 35</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>150</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1600</Density><ThermalCond>0.79</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Hobby Vakolat</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>151</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1400</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Könnyű Alapvakolat</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>152</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1200</Density><ThermalCond>0.4</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>15</SteamDiffResNum>
+      <InitialHumidity>1.1</InitialHumidity><PermitHumidity>2.2</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.16</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.42</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.86</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.56</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">2.2</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Lábazati Alapvakolat</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>153</ID>
+  </ItemHeader>
+      <Thickness>2</Thickness><Density>1650</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Speci Gépi Vakolat Fehér</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>154</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1250</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>8</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Uni Vakolat</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>155</ID>
+  </ItemHeader>
+      <Thickness>1.5</Thickness><Density>1250</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Uni Vakolat Fehér</ItemName><ItemPath>BAUMIT\Mész-cement vakolatok</ItemPath><ID>156</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>1250</Density><ThermalCond>0.75</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>6</SteamDiffResNum>
+      <InitialHumidity>0.35</InitialHumidity><PermitHumidity>0.65</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.06</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.36</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.38</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.52</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.65</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit ArtLine Vakolat</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>158</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>110</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit DuoTpo</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>159</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Vakolat 1,5K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>160</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Vakolat 2D</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>161</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Vakolat 2K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>162</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Vakolat 3D</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>163</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Vakolat 3K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>164</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Granopor Vakolat Finom</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>165</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>121</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Mozaik Vakolat</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>166</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>52</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Mozaik Vakolat Finom</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>167</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>52</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Mozaik Vakolat Mono</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>168</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>52</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nanopor Vakolat</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>169</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>30</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="100">0.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nemes Vakolat dörzsölt 2</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>170</ID>
+  </ItemHeader>
+      <Thickness>0.5</Thickness><Density>1500</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>9</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nemes Vakolat Extra</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>171</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1500</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>12</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nemes Vakolat kapart 2 mm</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>172</ID>
+  </ItemHeader>
+      <Thickness>0.8</Thickness><Density>1500</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>9</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nemes Vakolat Special</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>173</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1500</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>12</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Nemes Vakolat Szórt</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>174</ID>
+  </ItemHeader>
+      <Thickness>0.4</Thickness><Density>1500</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>12</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open Alapozó</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>175</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1000</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>8</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open Struktúra Vakolat 2K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>176</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open Struktúra Vakolat 3K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>177</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1600</Density><ThermalCond>0.76</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>10</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikát Vakolat 1,5K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>178</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1440</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikát Vakolat 2D</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>179</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1440</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikát Vakolat 2K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>180</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1440</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikát Vakolat 3D</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>181</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1440</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikát Vakolat 3K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>182</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1440</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>37</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikon Vakolat 1,5K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>183</ID>
+  </ItemHeader>
+      <Thickness>0.15</Thickness><Density>1600</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>68</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikon Vakolat 2K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>184</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>68</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikon Vakolat 3D</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>185</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>68</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szilikon Vakolat 3K</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>186</ID>
+  </ItemHeader>
+      <Thickness>0.45</Thickness><Density>1600</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.08</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>68</SteamDiffResNum>
+      <InitialHumidity>0.17</InitialHumidity><PermitHumidity>0.35</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.028</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.055</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.075</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.085</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.13</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.17</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.18</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.19</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.27</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.35</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Univerzális Alapozó</ItemName><ItemPath>BAUMIT\Nemesvakolatok</ItemPath><ID>187</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1500</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Cementmentes Tapasz</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>189</ID>
+  </ItemHeader>
+      <Thickness>0.2</Thickness><Density>1800</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>108</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Diszperziós Ragasztó</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>190</ID>
+  </ItemHeader>
+      <Thickness>0.1</Thickness><Density>1500</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit DuoContact</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>191</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1500</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open Ragasztó Tapasz Fehé</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>192</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1500</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>18</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit open S Felújító Ragasztó</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>193</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1350</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>18</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Ragasztó Tapasz</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>194</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1400</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>50</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Ragasztó Tapasz Durva</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>195</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1500</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Rögzítő Tapasz</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>196</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1300</Density><ThermalCond>0.8</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>18</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Simító Tapasz</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>197</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0.84</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>15</SteamDiffResNum>
+      <InitialHumidity>1</InitialHumidity><PermitHumidity>1.37</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.26</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.51</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.65</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.69</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.84</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">1.1</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">1.22</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">1.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">1.37</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szigetelő Tapasz</ItemName><ItemPath>BAUMIT\Ragasztók és tapaszok</ItemPath><ID>198</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1400</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="100">0.5</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Anitszulfát Tapasz</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>200</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1600</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0</InitialHumidity><PermitHumidity>0</PermitHumidity>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Antiszulfát</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>201</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>0.00104</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Felújító Oldat</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>202</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1000</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Impregnáló</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>203</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1000</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.26</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Mélyalapozó</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>204</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1000</Density><ThermalCond>0.7</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>1.26</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>0</SteamDiffResNum>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Normal" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Szigetelő Tapasz</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>205</ID>
+  </ItemHeader>
+      <Thickness>0.3</Thickness><Density>1400</Density><ThermalCond>0.93</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0.88</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>40</SteamDiffResNum>
+      <InitialHumidity>0.25</InitialHumidity><PermitHumidity>0.4</PermitHumidity>
+      <SorptionIsotermaPoint RelHumidity="10">0.05</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="20">0.08</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="30">0.12</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="40">0.15</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="50">0.2</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="60">0.25</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="70">0.28</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="80">0.3</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="90">0.35</SorptionIsotermaPoint>
+      <SorptionIsotermaPoint RelHumidity="100">0.4</SorptionIsotermaPoint>
+</WinWatt32Material>
+
+<WinWatt32Material Type="Thick" LockData="yes">
+  <ItemHeader>
+    <ItemName>Baumit Vakolatszilárdító</ItemName><ItemPath>BAUMIT\Speciális termékek</ItemPath><ID>206</ID>
+  </ItemHeader>
+      <Thickness>0.01</Thickness><Density>1070</Density><ThermalCond>0</ThermalCond><ThermalRes>0</ThermalRes><HeatCapacity>0</HeatCapacity>
+      <SteamDiffCond>0</SteamDiffCond><SteamDiffRes>0</SteamDiffRes><SteamDiffResNum>1</SteamDiffResNum>
+</WinWatt32Material>
+
+
+</WinWatt32Project>
