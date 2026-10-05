@@ -120,6 +120,10 @@ class NativeXmlService:
         self._confirm_button(dialog).click_input()
         if not self._wait_for_dialog_to_close(process_id, "Megnyitás"):
             raise RuntimeError("WinWatt XML Import dialog did not close after confirmation")
+        # The import may replace TMainForm without replacing the process.  A
+        # cached wrapper can therefore point at a destroyed HWND even though
+        # the import itself completed successfully.
+        reset_winwatt_connection_cache()
         deadline = time.monotonic() + 8.0
         project_data_accepted = False
         while time.monotonic() < deadline:
@@ -142,6 +146,7 @@ class NativeXmlService:
                         )
                         ok.click_input()
                         project_data_accepted = True
+                        reset_winwatt_connection_cache()
                         break
                 except Exception:
                     continue

@@ -8,7 +8,7 @@ from pathlib import Path
 from pywinauto import Application, keyboard
 from pywinauto import Desktop
 
-from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.app_connector import get_main_window, reset_winwatt_connection_cache
 from winwatt_automation.runtime_mapping.program_mapper import prepare_fresh_winwatt_session
 
 
@@ -140,6 +140,10 @@ class WinWattService:
         if target.exists():
             raise FileExistsError(f"Refusing to reuse a non-empty project seed: {target}")
         target.parent.mkdir(parents=True, exist_ok=True)
+        # Opening/creating a project can recreate the legacy TMainForm while
+        # keeping the WinWatt process alive.  Never carry a cached UIA wrapper
+        # across that transition: its HWND may already have been destroyed.
+        reset_winwatt_connection_cache()
         main = get_main_window()
         main.set_focus()
         process_id = int(main.process_id())
@@ -188,6 +192,7 @@ class WinWattService:
             time.sleep(0.1)
         if not target.is_file():
             raise RuntimeError(f"WinWatt did not create clean project seed: {target}")
+        reset_winwatt_connection_cache()
         # New Project itself opens Project Data. Accepting untouched defaults
         # is required before an XML import can be issued; this is the same
         # verified modal form the importer handles after some legacy imports.
@@ -200,6 +205,7 @@ class WinWattService:
                             and candidate.class_name() == "TProjektDataForm" and candidate.is_visible()):
                         ok = next(item for item in candidate.descendants() if item.window_text().strip().casefold() == "ok" and item.is_visible() and item.is_enabled())
                         ok.click_input(); accepted = True
+                        reset_winwatt_connection_cache()
                         break
                 except Exception:
                     continue
