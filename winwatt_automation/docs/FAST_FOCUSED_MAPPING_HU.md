@@ -12,7 +12,7 @@ be. Új, külön output könyvtárat kell használni, hogy a célzott futás ne 
 Példa csak a Fűtés terület feltérképezésére:
 
 ```powershell
-Set-Location C:\Users\Dancs\Documents\GitHub\autowinwatt\winwatt_automation
+Set-Location M:\Repositories\autowinwatt\winwatt_automation
 $env:PYTHONPATH = "src"
 ..\.venv-winwatt32\Scripts\python.exe -m winwatt_automation.scripts.explore_buildings_deep `
   --project C:\utvonal\sandbox\testwwp.wwp `

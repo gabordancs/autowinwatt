@@ -2,6 +2,28 @@
 
 Frissítve: 2026-09-30.
 
+## M0 – Repository áthelyezése (2026-10-05)
+
+- [x] Az aktív AutoWinWatt Git-repó új helye:
+  `M:\Repositories\autowinwatt`.
+- [x] Az új célhely működő `main` checkout, a lokális módosításokkal és a
+  gitignore alatti runtime bizonyítékokkal együtt.
+- [x] A gyökérből induló PowerShell futtatók saját helyükből számítják a repo
+  útvonalát, ezért nem igényelnek fix `C:` meghajtós beállítást.
+- [x] A három helyi Codex WinWatt-skill repoútvonala az `M:` meghajtóra
+  frissítve.
+- [x] A gyors fókuszált mapping dokumentált indítási útvonala frissítve.
+- [ ] Az IDE-kben és GitHub Desktopban az új repoútvonalat kell megnyitni.
+- [ ] Az áthelyezéskor futó program bezárása után az üres régi
+  `C:\Users\Dancs\Documents\GitHub\autowinwatt` mappa eltávolítható.
+
+A korábbi riportokban és checkpointokban szereplő `C:` meghajtós abszolút
+útvonalak történeti provenance-adatok, ezért nem írjuk át őket. Új futás csak
+új output könyvtárba készülhet, és már az `M:` útvonalat rögzíti. Lezárt
+checkpoint csak akkor folytatható költözés után, ha a futtató kifejezetten
+támogatja a régi repo-prefix új helyre történő feloldását; a completed
+kampányok nem igényelnek folytatást.
+
 ## Cél
 
 A WinWatt mapping olyan elkülönített környezetbe kerüljön, ahol a hosszú helyi

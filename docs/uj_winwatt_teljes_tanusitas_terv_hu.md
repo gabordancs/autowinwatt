@@ -1,5 +1,8 @@
 # Új WinWatt-verzió feltérképezése és teljes tanúsítás
 
+Az első, nem kézzel rajzolt dokumentumokra épülő vak WWP-rekonstrukció részletes
+terve: [CASE02_CODEX_WWP_REKONSTRUKCIO_TERV_HU.md](CASE02_CODEX_WWP_REKONSTRUKCIO_TERV_HU.md).
+
 Dátum: 2026-09-29. Állapot: helyi forrásokra alapozott végrehajtási terv.
 Az új kiadás pontos verziója és képernyői még nem ismertek; a felhasználó
 jelzése szerint az épület megnyitásakor más és több energetikai beállítás jelenik meg.

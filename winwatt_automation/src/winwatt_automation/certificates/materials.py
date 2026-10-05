@@ -61,10 +61,19 @@ def _relative_agreement(source: float | None, candidate: float | None) -> float 
 def material_family(name: str) -> str | None:
     text = _normal(name)
     rules = (("air_gap", ("legreteg",)), ("metal", ("femlemez", "trapezlemez", "acellemez")),
+             ("wood", ("faanyag", "fenyo", "szarufa", "tetolec", "ellenlec", "deszka")),
+             ("mineral_wool", ("kozetgyapot", "asvanygyapot", "rockwool", "heralan", "airrock")),
+             ("pir_pur", ("pir", "pur", "poliuretan")),
+             ("gypsum", ("gipszkarton", "gipszlemez")),
              ("eps", ("polisztirol", "expandalt ps", "eps")), ("xps", ("xps",)),
-             ("bitumen", ("vizszigeteles", "bitumen", "parazaro")), ("pe", ("polietilen", "elvalaszto reteg", "pe folia")),
-             ("concrete", ("beton", "vasbeton", "szerelobeton", "aljzatbeton")), ("brick", ("tegla",)),
-             ("plaster", ("vakolat", "ragaszto")), ("gravel", ("kavics",)), ("ceramic", ("keramia", "burkolat")), ("slag", ("salak",)))
+             ("bitumen", ("vizszigeteles", "bitumen", "parazaro", "vastaglemez")),
+             ("pe", ("polietilen", "elvalaszto reteg", "pe folia", "geotextilia")),
+             ("reinforced_concrete", ("vasbeton", "vasalt aljzatlemez", "lemezalap")),
+             ("masonry", ("porotherm", "vazkeramia", "falazoelem", "falazat", "tegla")),
+             ("concrete_block", ("zsaluko",)),
+             ("concrete", ("beton", "szerelobeton", "aljzatbeton", "esztrich", "estrich")),
+             ("plaster", ("vakolat", "ragaszto", "glett")), ("gravel", ("kavics", "bazaltzuzalek")),
+             ("ceramic", ("keramia", "cserep", "burkolat")), ("slag", ("salak",)))
     return next((family for family, terms in rules if any(term in text for term in terms)), None)
 
 
@@ -88,7 +97,8 @@ def match_material(
     tokens = {token for token in query.split() if len(token) > 2}
     ranked: list[tuple[float, MaterialCandidate, str, float | None, float]] = []
     for candidate in catalog:
-        if source_family and material_family(f"{candidate.name} {candidate.path or ''}") != source_family:
+        candidate_family = material_family(candidate.name) or material_family(candidate.path or "")
+        if source_family and candidate_family != source_family:
             continue
         candidate_tokens = set(_normal(f"{candidate.name} {candidate.path or ''}").split())
         name_score = len(tokens & candidate_tokens) / len(tokens) if tokens else 0.0
@@ -107,7 +117,15 @@ def match_material(
         return MaterialDecision(source_name=source_name, status="review", reason="Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.")
     # With no supplied physics an exact catalogue name is still a safe local
     # match; partial prose matches require the combined threshold above.
-    if (score >= 0.72 or name_score >= 0.95) and not (lambda_agreement is not None and lambda_agreement < 0.65):
+    generic_queries = {
+        "belso vakolat", "kulso vakolat", "vakolat", "ragaszto", "padloburkolat es ragaszto",
+        "lepesallo hoszigeteles", "bitumenes vizszigeteles ket reteg",
+    }
+    # Generic construction roles do not identify a product.  Even close
+    # physical values cannot prove that, for example, an unspecified internal
+    # plaster is the Ytong system plaster returned by a token match.
+    generic_name_only = query in generic_queries
+    if (score >= 0.72 or name_score >= 0.95) and not generic_name_only and not (lambda_agreement is not None and lambda_agreement < 0.65):
         return MaterialDecision(source_name=source_name, status="catalog", candidate=candidate, confidence=round(score, 3), decision_mode="catalog_match", reason=f"Helyi katalógus-egyezés: {details}.")
     return MaterialDecision(source_name=source_name, status="review", candidate=candidate, confidence=round(score, 3), reason=f"Nem elég biztos katalógus-egyezés ({details}); ellenőrzés szükséges, új anyag nem készült.")
 
