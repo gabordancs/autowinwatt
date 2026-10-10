@@ -746,7 +746,7 @@ def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
     list_view = next(control for control in main.descendants() if control.class_name() == "TListViewWithHeader")
     room_rows = [
         control for control in list_view.children()
-        if control.window_text().strip() and control.window_text().strip() != "Vízszintes"
+        if control.element_info.control_type == "ListItem" and control.window_text().strip()
     ]
     selected_index = next(
         index for index, control in enumerate(room_rows)

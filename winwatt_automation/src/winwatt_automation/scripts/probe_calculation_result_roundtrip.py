@@ -1,4 +1,4 @@
-"""Recalculate a minimal building and verify one result after save/reopen."""
+"""Recalculate a selected building and verify one result after save/reopen."""
 from __future__ import annotations
 
 import argparse
@@ -16,6 +16,7 @@ def main() -> int:
     parser.add_argument("--profile", required=True, type=Path)
     parser.add_argument("--source", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--building-name", default="Building graph explorer")
     args = parser.parse_args()
 
     profile = require_profile(args.profile)
@@ -41,6 +42,7 @@ def main() -> int:
         "source": str(source),
         "source_sha256": sha256(source),
         "project": str(project),
+        "building_name": args.building_name,
         "status": "running",
     }
     process_id: int | None = None
@@ -108,7 +110,7 @@ def main() -> int:
 
     checkpoint()
     try:
-        editor = open_sandbox_building(project_path=str(project))
+        editor = open_sandbox_building(project_path=str(project), building_name=args.building_name)
         process_id = int(editor.process_id())
         select_tab(editor, "Zónák")
         click_button(editor, "Mindet újraszámol")
@@ -140,7 +142,7 @@ def main() -> int:
         report["first_session_closed"] = True
 
         open_sandbox_buildings(project_path=str(project))
-        editor = open_sandbox_building(project_path=str(project))
+        editor = open_sandbox_building(project_path=str(project), building_name=args.building_name)
         process_id = int(editor.process_id())
         select_tab(editor, "Hőszükséglet, fajlagos hőveszteségtényező")
         report["after_reopen"] = result_tables(editor)

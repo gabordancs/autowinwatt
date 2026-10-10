@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import ctypes
 import hashlib
 import json
 import shutil
@@ -19,6 +21,8 @@ def main() -> int:
     parser.add_argument("--source", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--building-name", required=True)
+    parser.add_argument("--zone-name")
+    parser.add_argument("--printer", default="Adobe PDF")
     args = parser.parse_args()
     profile = require_profile(args.profile)
     source = args.source.resolve(strict=True)
@@ -40,7 +44,9 @@ def main() -> int:
         "schema_version": 1, "profile_id": profile["profile_id"],
         "source": str(source), "source_sha256": sha256(source),
         "project": str(project), "target_xml": str(target_xml), "status": "running",
+        "building_name": args.building_name, "zone_name": args.zone_name,
     }
+    original_printer: str | None = None
 
     def checkpoint() -> None:
         (output / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -53,6 +59,121 @@ def main() -> int:
         if len(matches) != 1:
             raise RuntimeError(f"Expected one enabled {caption!r} button, found {len(matches)}")
         matches[0].click()
+
+    def configure_certificate_printer(window: Any, printer_name: str) -> dict[str, Any]:
+        """Select the ET renderer through its printer-setup modal.
+
+        The printer name on the ET final page is owner-drawn, so it is not a
+        real combobox.  The adjacent setup button opens a native dialog whose
+        controls can be driven and verified.
+        """
+        before_handles = {
+            int(item.handle) for item in Desktop(backend="win32").windows(top_level_only=True)
+        }
+        setup_buttons = [
+            item for item in native(window).descendants()
+            if item.class_name() == "TButton" and item.window_text() == "Beállít..."
+            and item.is_visible() and item.is_enabled()
+        ]
+        if len(setup_buttons) != 1:
+            raise RuntimeError(f"Expected one enabled printer setup button, found {len(setup_buttons)}")
+        # This does not print a PDF.  WinWatt nevertheless requires a valid
+        # local printer renderer before it can build the e-certificate XML.
+        # POST is essential: SEND blocks until the modal closes, preventing
+        # this process from selecting a printer in that modal.
+        if not ctypes.windll.user32.PostMessageW(int(setup_buttons[0].handle), 0x00F5, 0, 0):
+            raise ctypes.WinError()
+        deadline = time.monotonic() + 30.0
+        setup = None
+        while time.monotonic() < deadline:
+            popup_handle = int(ctypes.windll.user32.GetLastActivePopup(int(window.handle)))
+            if (popup_handle and popup_handle != int(window.handle)
+                    and ctypes.windll.user32.IsWindowVisible(popup_handle)):
+                try:
+                    candidate = Desktop(backend="win32").window(handle=popup_handle).wrapper_object()
+                    if candidate.is_enabled():
+                        setup = candidate
+                        break
+                except Exception:
+                    pass
+            candidates = [
+                item for item in Desktop(backend="win32").windows(top_level_only=True)
+                if int(item.handle) not in before_handles and item.is_visible() and item.is_enabled()
+            ]
+            if candidates:
+                setup = candidates[0]
+                break
+            time.sleep(0.1)
+        if setup is None:
+            # Some printer drivers do not show a setup modal when they are
+            # already the process/default renderer.  The caller has verified
+            # and broadcast the Windows default before opening WinWatt; let
+            # the subsequent XML creation be the authoritative check.
+            recovery = "not_needed"
+            if not window.is_enabled():
+                keyboard.send_keys("{ESC}")
+                recovery = "escape_hidden_setup_modal"
+                recovery_deadline = time.monotonic() + 5.0
+                while time.monotonic() < recovery_deadline and not window.is_enabled():
+                    time.sleep(0.1)
+            if not window.is_enabled():
+                raise RuntimeError("Printer setup left the ET final page disabled")
+            # The renderer is an internal prerequisite for creating the PDF
+            # payload embedded in the XML, not a standalone output.  Some
+            # drivers accept the verified Windows default without showing a
+            # modal.  The decoded CalculationsPdfFileContent below is the
+            # authoritative result check.
+            return {
+                "dialog_class": None, "selected": printer_name,
+                "method": "verified_windows_default_no_modal", "recovery": recovery,
+            }
+        setup.capture_as_image().save(str(output / "printer_setup.png"))
+        controls = native(setup).descendants()
+        combo_matches = []
+        for item in controls:
+            if item.class_name() != "ComboBox" or not item.is_visible() or not item.is_enabled():
+                continue
+            combo = ComboBoxWrapper(item.handle)
+            try:
+                values = combo.item_texts()
+            except Exception:
+                continue
+            if printer_name in values:
+                combo_matches.append((combo, values))
+        if len(combo_matches) != 1:
+            report["printer_setup_controls"] = [
+                {
+                    "class": item.class_name(), "text": item.window_text(),
+                    "control_id": int(item.control_id()),
+                    "rectangle": [int(item.rectangle().left), int(item.rectangle().top),
+                                  int(item.rectangle().right), int(item.rectangle().bottom)],
+                }
+                for item in controls if item.is_visible()
+            ]
+            raise RuntimeError(
+                f"Printer setup selector is ambiguous for {printer_name!r}: "
+                f"found {len(combo_matches)}"
+            )
+        combo, values = combo_matches[0]
+        combo.select(values.index(printer_name))
+        time.sleep(0.4)
+        selected = combo.selected_text()
+        if selected != printer_name:
+            raise RuntimeError(f"Printer setup selection did not commit: {selected!r}")
+        ok_buttons = [
+            item for item in controls
+            if item.class_name() == "Button" and int(item.control_id()) == 1
+            and item.is_visible() and item.is_enabled()
+        ]
+        if len(ok_buttons) != 1:
+            raise RuntimeError(f"Printer setup OK button is ambiguous: {len(ok_buttons)}")
+        ok_buttons[0].click()
+        deadline = time.monotonic() + 8.0
+        while time.monotonic() < deadline:
+            if window.is_visible() and window.is_enabled():
+                return {"dialog_class": setup.class_name(), "selected": selected}
+            time.sleep(0.1)
+        raise RuntimeError("Printer setup dialog did not close")
 
     def process_is_alive(pid: int) -> bool:
         import ctypes
@@ -138,18 +259,56 @@ def main() -> int:
     checkpoint()
     process_id: int | None = None
     try:
+        import win32print
+
+        original_printer = win32print.GetDefaultPrinter()
+        win32print.SetDefaultPrinter(args.printer)
+        # WinWatt is a legacy application and reads the win.ini-compatible
+        # printer setting while opening the certificate document.  It needs a
+        # valid printer even when the requested output is XML.
+        ctypes.windll.user32.SendMessageTimeoutW(
+            0xFFFF, 0x001A, 0, "windows", 0x0002, 5000, None
+        )
+        time.sleep(1.0)
+        report["printer"] = {"original": original_printer, "render": args.printer}
         dialog = open_et_document(project_path=str(project), reuse_session=False)
         process_id = int(dialog.process_id())
-        report["scope"] = configure_et_scope(dialog, building_name=args.building_name, structure_scope="all")
+        report["scope"] = configure_et_scope(
+            dialog, building_name=args.building_name, zone_name=args.zone_name,
+            structure_scope="all",
+        )
         dialog.capture_as_image().save(str(output / "step_00_scope.png"))
-        for step in (1, 2):
+        # Depending on calculation state, WinWatt can omit the intermediate
+        # warning page. Advance until the document-production page is reached
+        # instead of assuming a fixed number of Tovább clicks.
+        final_page = None
+        for step in range(1, 4):
             active = _active_window(process_id)
+            export_buttons = [
+                item for item in native(active).descendants()
+                if item.class_name() == "TButton" and item.is_visible() and item.is_enabled()
+                and item.window_text().strip().casefold() == "e-tanúsítás xml export..."
+            ]
+            if len(export_buttons) == 1:
+                final_page = active
+                break
             click_unique(active, "Tovább")
             time.sleep(0.9)
             active = _active_window(process_id)
             active.capture_as_image().save(str(output / f"step_{step:02d}.png"))
-
-        final_page = _active_window(process_id)
+        if final_page is None:
+            active = _active_window(process_id)
+            export_buttons = [
+                item for item in native(active).descendants()
+                if item.class_name() == "TButton" and item.is_visible() and item.is_enabled()
+                and item.window_text().strip().casefold() == "e-tanúsítás xml export..."
+            ]
+            if len(export_buttons) != 1:
+                raise RuntimeError("ET document-production page was not reached within three steps")
+            final_page = active
+        report["printer"]["certificate_setup"] = configure_certificate_printer(
+            final_page, args.printer
+        )
         click_unique(final_page, "e-tanúsítás xml export...")
         time.sleep(0.8)
         admin = _active_window(process_id)
@@ -228,6 +387,11 @@ def main() -> int:
         save_dialog.capture_as_image().save(str(output / "xml_save_dialog.png"))
         filename = next(item for item in save_dialog.descendants() if item.class_name() == "Edit" and int(item.control_id()) == 1001)
         filename.set_edit_text(str(target_xml))
+        report["save_dialog_filename"] = filename.window_text()
+        if Path(report["save_dialog_filename"]).resolve() != target_xml.resolve():
+            raise RuntimeError(
+                f"Save dialog did not retain target path: {report['save_dialog_filename']!r}"
+            )
         save_button = next(item for item in save_dialog.descendants() if item.class_name() == "Button" and int(item.control_id()) == 1)
         save_button.click_input()
         # This legacy build can spend roughly 40 seconds in its printer-backed
@@ -236,6 +400,20 @@ def main() -> int:
         while time.monotonic() < deadline and not target_xml.is_file():
             time.sleep(0.1)
         if not target_xml.is_file():
+            report["windows_after_export_timeout"] = [
+                {
+                    "class": item.class_name(), "title": item.window_text(),
+                    "texts": [child.window_text() for child in item.descendants() if child.window_text()][:40],
+                }
+                for item in Desktop(backend="win32").windows(top_level_only=True)
+                if int(item.process_id()) == process_id and item.is_visible()
+            ]
+            for index, item in enumerate(Desktop(backend="win32").windows(top_level_only=True)):
+                if int(item.process_id()) == process_id and item.is_visible():
+                    try:
+                        item.capture_as_image().save(str(output / f"export_timeout_{index}.png"))
+                    except Exception:
+                        pass
             raise RuntimeError("ET XML export did not create the requested file")
 
         # Creation precedes the final close of the export stream. Wait until
@@ -257,10 +435,34 @@ def main() -> int:
             "sha256": hashlib.sha256(raw).hexdigest(), "root_tag": root.tag,
             "element_count": sum(1 for _ in root.iter()), "well_formed": True,
         }
+        embedded_nodes = [item for item in root.iter()
+                          if item.tag.rsplit("}", 1)[-1] == "CalculationsPdfFileContent"]
+        if len(embedded_nodes) != 1 or not (embedded_nodes[0].text or "").strip():
+            raise RuntimeError(
+                f"Expected one non-empty CalculationsPdfFileContent, found {len(embedded_nodes)}"
+            )
+        try:
+            embedded_pdf = base64.b64decode("".join((embedded_nodes[0].text or "").split()), validate=True)
+        except Exception as decode_exc:
+            raise RuntimeError("Embedded certificate PDF is not valid Base64") from decode_exc
+        embedded_pdf_valid = (
+            len(embedded_pdf) > 1000
+            and embedded_pdf.startswith(b"%PDF-")
+            and b"%%EOF" in embedded_pdf[-4096:]
+        )
+        report["xml"]["embedded_pdf"] = {
+            "field": "CalculationsPdfFileContent", "base64_chars": len((embedded_nodes[0].text or "").strip()),
+            "decoded_bytes": len(embedded_pdf), "sha256": hashlib.sha256(embedded_pdf).hexdigest(),
+            "pdf_header": embedded_pdf[:8].decode("ascii", errors="replace"),
+            "has_eof_marker": b"%%EOF" in embedded_pdf[-4096:], "valid": embedded_pdf_valid,
+        }
+        if not embedded_pdf_valid:
+            raise RuntimeError("Decoded CalculationsPdfFileContent is not a complete PDF")
         report["source_unchanged"] = sha256(source) == report["source_sha256"]
         report["copy_unchanged"] = sha256(project) == report["source_sha256"]
         report["status"] = "passed" if all((
             report["xml"]["well_formed"], report["xml"]["size"] > 0,
+            report["xml"]["embedded_pdf"]["valid"],
             report["source_unchanged"], report["copy_unchanged"],
         )) else "failed"
 
@@ -284,6 +486,19 @@ def main() -> int:
         except Exception as cleanup_exc:
             report["cleanup_error"] = repr(cleanup_exc)
     finally:
+        if original_printer is not None:
+            try:
+                import win32print
+
+                win32print.SetDefaultPrinter(original_printer)
+                ctypes.windll.user32.SendMessageTimeoutW(
+                    0xFFFF, 0x001A, 0, "windows", 0x0002, 5000, None
+                )
+                report.setdefault("printer", {})["restored"] = (
+                    win32print.GetDefaultPrinter() == original_printer
+                )
+            except Exception as printer_exc:
+                report.setdefault("printer", {})["restore_error"] = repr(printer_exc)
         report["source_unchanged"] = sha256(source) == report["source_sha256"]
         checkpoint()
     return 0 if report["status"] == "passed" else 1

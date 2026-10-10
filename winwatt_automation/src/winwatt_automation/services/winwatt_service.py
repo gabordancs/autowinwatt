@@ -12,6 +12,21 @@ from winwatt_automation.live_ui.app_connector import get_main_window, reset_winw
 from winwatt_automation.runtime_mapping.program_mapper import prepare_fresh_winwatt_session
 
 
+def _desktop_windows_safely() -> list[object]:
+    """Return the current native windows despite transient destroyed handles.
+
+    Legacy WinWatt creates and destroys modal windows while a project is being
+    created.  pywinauto enumerates handles first and wraps them second, so a
+    dialog that disappears between those operations can otherwise abort the
+    entire project creation with ``InvalidWindowHandle``.  The surrounding
+    polling loops are the correct retry boundary for that race.
+    """
+    try:
+        return list(Desktop(backend="win32").windows())
+    except Exception:
+        return []
+
+
 class WinWattService:
     """Small semantic boundary around project/session operations."""
 
@@ -157,7 +172,7 @@ class WinWattService:
             dialog, _ = _find_new_project_dialog(process_id, timeout=0.05)
             if dialog is not None:
                 break
-            for candidate in Desktop(backend="win32").windows():
+            for candidate in _desktop_windows_safely():
                 try:
                     if int(candidate.process_id()) != process_id or candidate.class_name() != "#32770":
                         continue
@@ -199,7 +214,7 @@ class WinWattService:
         deadline = time.monotonic() + 8.0
         accepted = False
         while time.monotonic() < deadline:
-            for candidate in Desktop(backend="win32").windows():
+            for candidate in _desktop_windows_safely():
                 try:
                     if (int(candidate.process_id()) == process_id and candidate.window_text() == "Projekt adatok"
                             and candidate.class_name() == "TProjektDataForm" and candidate.is_visible()):
