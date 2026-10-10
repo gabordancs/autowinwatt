@@ -14,7 +14,7 @@ from collections import defaultdict
 from pathlib import Path
 from .geometry import is_vertical_wall, wall_geometry_issues, xy_area
 
-PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("Roof1",3),"külső tető":("Roof3",5),"tető":("Roof3",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
+PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("FloorISO",3),"külső tető":("Roof1",5),"tető":("Roof1",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
 def _set(node:ET.Element,name:str,value:object)->None:
     """Set a direct XML field and collapse legacy duplicate field nodes.
 
@@ -32,6 +32,89 @@ def _header(node:ET.Element,name:str,path:str,id_:int)->None:
     _set(head,"ItemName",name);_set(head,"ItemPath",path);_set(head,"ID",id_)
 def _kind(value:str)->str:
     return PANEL_TYPES.get(value,("OutsideWall",0))[0]
+
+
+def _local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def _direct_text(element: ET.Element, name: str) -> str | None:
+    return next(
+        ((child.text or "").strip() for child in element if _local_name(child.tag) == name),
+        None,
+    )
+
+
+def _room_identity_map(root: ET.Element) -> tuple[dict[str, tuple[str, str]], dict[tuple[str, str], str]]:
+    """Index rooms by export ID and by their stable WinWatt path/name identity."""
+    by_id: dict[str, tuple[str, str]] = {}
+    by_identity: dict[tuple[str, str], str] = {}
+    for room in (node for node in root if _local_name(node.tag) == "WinWatt32Room"):
+        header = next((child for child in room if _local_name(child.tag) == "ItemHeader"), None)
+        if header is None:
+            raise ValueError("WinWatt32Room has no ItemHeader")
+        room_id = _direct_text(header, "ID")
+        identity = (_direct_text(header, "ItemPath") or "", _direct_text(header, "ItemName") or "")
+        if not room_id or not identity[1]:
+            raise ValueError(f"Room has incomplete identity: id={room_id!r}, identity={identity!r}")
+        if room_id in by_id:
+            raise ValueError(f"Duplicate room ID: {room_id}")
+        if identity in by_identity:
+            raise ValueError(f"Duplicate room path/name identity: {identity!r}")
+        by_id[room_id] = identity
+        by_identity[identity] = room_id
+    return by_id, by_identity
+
+
+def rebase_room_area_ids(source_path: Path, readback_path: Path, target_path: Path) -> dict:
+    """Rewrite ETZone room references to IDs assigned by a WinWatt import.
+
+    WinWatt assigns fresh ItemHeader/ID values during complete-project import,
+    but this version leaves ETZone/RoomAreaItem references at their exported
+    values.  A discovery import provides the deterministic assigned IDs.  The
+    stable ItemPath + ItemName pair bridges the two exports without guessing.
+    """
+    source_tree = ET.parse(source_path)
+    source_root = source_tree.getroot()
+    readback_root = ET.parse(readback_path).getroot()
+    source_by_id, source_by_identity = _room_identity_map(source_root)
+    _, readback_by_identity = _room_identity_map(readback_root)
+    if source_by_identity.keys() != readback_by_identity.keys():
+        missing = sorted(source_by_identity.keys() - readback_by_identity.keys())
+        extra = sorted(readback_by_identity.keys() - source_by_identity.keys())
+        raise ValueError(f"Room identity sets differ; missing={missing[:5]!r}, extra={extra[:5]!r}")
+    old_to_new = {
+        old_id: readback_by_identity[identity]
+        for old_id, identity in source_by_id.items()
+    }
+    references = 0
+    changed = 0
+    unresolved: set[str] = set()
+    for node in source_root.iter():
+        if _local_name(node.tag) != "RoomAreaItem":
+            continue
+        references += 1
+        old_id = node.attrib.get("ID")
+        new_id = old_to_new.get(old_id or "")
+        if new_id is None:
+            unresolved.add(old_id or "")
+            continue
+        if new_id != old_id:
+            node.set("ID", new_id)
+            changed += 1
+    if unresolved:
+        raise ValueError(f"Unresolved RoomAreaItem IDs: {sorted(unresolved)!r}")
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    ET.indent(source_tree, space="  ")
+    source_tree.write(target_path, encoding="utf-8", xml_declaration=True)
+    return {
+        "source": str(source_path),
+        "readback": str(readback_path),
+        "target": str(target_path),
+        "rooms": len(source_by_id),
+        "references": references,
+        "changed_references": changed,
+    }
 
 
 def _explicit_glass_ratio(structure: dict) -> float | None:

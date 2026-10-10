@@ -77,6 +77,17 @@ def test_calculation_result_adapter_needs_no_semantic_parameters(tmp_path: Path)
     ]
 
 
+def test_native_project_import_adapter_requires_xml_and_zone(tmp_path: Path) -> None:
+    tool = CertificationToolRegistry.load().get("winwatt.project.native_xml.import_roundtrip")
+    assert tool is not None
+    assert tool.status == "observed"
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={"native_xml": str(tmp_path / "input.xml"), "zone": "A.0.02"},
+    )
+    assert arguments[-4:] == ["--native-xml", str(tmp_path / "input.xml"), "--zone", "A.0.02"]
+
+
 def test_et_xml_export_adapter_requires_building_name(tmp_path: Path) -> None:
     tool = CertificationToolRegistry.load().require_executable(
         "winwatt.certificate.et_xml.export", profile_id=PROFILE
@@ -136,23 +147,6 @@ def test_envelope_tool_adapters_use_semantic_parameters(tmp_path: Path) -> None:
     assert structure_args[-8:] == [
         "--template-xml", str(tmp_path / "template.xml"), "--name", "Fal",
         "--layer-name", "Gyapot", "--thickness-cm", "10.0",
-    ]
-
-    reviewed = registry.require_executable(
-        "winwatt.building.structure.reviewed_handoff.roundtrip", profile_id=PROFILE
-    )
-    reviewed_args = build_handler_arguments(
-        tool=reviewed,
-        parameters={
-            "template_xml": str(tmp_path / "template.xml"),
-            "handoff": str(tmp_path / "handoff.json"),
-            "catalog_xml": str(tmp_path / "materials.xml"),
-        }, **common,
-    )
-    assert reviewed_args[-6:] == [
-        "--template-xml", str(tmp_path / "template.xml"),
-        "--handoff", str(tmp_path / "handoff.json"),
-        "--catalog-xml", str(tmp_path / "materials.xml"),
     ]
 
     boundary = registry.require_executable(

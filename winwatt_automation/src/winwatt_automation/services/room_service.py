@@ -37,9 +37,9 @@ class RoomService:
         self._winwatt.open_project(project_path)
         _activate_rooms_catalog_fast(get_main_window())
 
-    def _ensure_building(self, project_path: Path) -> None:
+    def _ensure_building(self, project_path: Path, building_name: str = DEFAULT_SANDBOX_BUILDING) -> None:
         """Rooms belong to a building; create the verified sandbox parent first."""
-        building = open_sandbox_building(project_path=str(project_path))
+        building = open_sandbox_building(project_path=str(project_path), building_name=building_name)
         building.set_focus()
         from pywinauto import keyboard
         keyboard.send_keys("{ENTER}")
@@ -57,7 +57,13 @@ class RoomService:
     @staticmethod
     def _edit_near(room: object, *, left: int, top: int) -> object:
         candidates = [item for item in room.descendants(control_type="Edit") if item.class_name() == "TEdit"]
-        return min(candidates, key=lambda item: abs(item.rectangle().left - left) + abs(item.rectangle().top - top))
+        bounds = room.rectangle()
+        target_left = bounds.left + left
+        target_top = bounds.top + top
+        return min(
+            candidates,
+            key=lambda item: abs(item.rectangle().left - target_left) + abs(item.rectangle().top - target_top),
+        )
 
     @staticmethod
     def _set_edit_text(room: object, edit: object, value: float) -> None:
@@ -73,11 +79,32 @@ class RoomService:
         native_edit = Application(backend="win32").connect(process=int(room.process_id())).window(handle=int(edit.handle))
         return native_edit.window_text()
 
+    @staticmethod
+    def _top_tabs(room: object, *, minimum: int = 3, timeout: float = 6.0) -> list[object]:
+        """Wait for the legacy room editor's top tab strip to become observable."""
+        deadline = time.monotonic() + timeout
+        expected = ["Általános adatok", "Téli hőszükséglet", "Nyári hőterhelés"]
+        tabs: list[object] = []
+        while time.monotonic() < deadline:
+            visible = [
+                item
+                for item in room.descendants(control_type="TabItem")
+                if item.is_visible()
+            ]
+            by_name = {item.window_text().strip(): item for item in visible}
+            tabs = [by_name[name] for name in expected if name in by_name]
+            if len(tabs) >= minimum:
+                return tabs[:minimum]
+            time.sleep(0.15)
+        raise RuntimeError(
+            f"Room editor tabs were not ready: expected at least {minimum}, found {len(tabs)}"
+        )
+
     def _apply_proven_fields(self, room: RoomInput, project_path: Path) -> None:
         if room.area_m2 is None and room.height_m is None and room.temperature_c is None and room.summer_design_temperature_c is None:
             return
         detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
-        tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
+        tabs = self._top_tabs(detail)
         # WinWatt remembers the last selected tab across room editors. Always
         # reset the tab before using coordinate-based field identities.
         tabs[0].click_input()
@@ -151,11 +178,17 @@ class RoomService:
             fields.append("external_wall_x_m")
         return EvidenceItem(kind="room_created", message=f"Room {room.name!r} is present and project was saved", data={"name": room.name, "applied_fields": fields})
 
-    def create_rooms(self, rooms: list[RoomInput], project_path: Path) -> list[EvidenceItem]:
+    def create_rooms(
+        self,
+        rooms: list[RoomInput],
+        project_path: Path,
+        *,
+        building_name: str = DEFAULT_SANDBOX_BUILDING,
+    ) -> list[EvidenceItem]:
         # Keep one WinWatt session for a batch. Restarting between records can
         # race the legacy application's asynchronous project save and lose an
         # otherwise correctly created row before the next room is added.
-        self._ensure_building(project_path)
+        self._ensure_building(project_path, building_name)
         # Stay in the session that just created/opened the building. Restarting
         # here races WinWatt's project-load handoff and can leave a blank main
         # form. A process restart is reserved for post-save verification.
@@ -163,11 +196,14 @@ class RoomService:
         main = get_main_window()
         result: list[EvidenceItem] = []
         for room in rooms:
-            main = get_main_window()
-            if _room_list_item(main, room.name) is None:
-                _create_sandbox_room(main, room.name)
-            self._apply_proven_fields(room, project_path)
-            self._apply_external_wall(room, project_path)
+            try:
+                main = get_main_window()
+                if _room_list_item(main, room.name) is None:
+                    _create_sandbox_room(main, room.name)
+                self._apply_proven_fields(room, project_path)
+                self._apply_external_wall(room, project_path)
+            except Exception as exc:
+                raise RuntimeError(f"Failed while creating room {room.name!r}: {exc}") from exc
             applied = [field for field, value in (("area_m2", room.area_m2), ("height_m", room.height_m), ("temperature_c", room.temperature_c), ("summer_design_temperature_c", room.summer_design_temperature_c)) if value is not None]
             if room.external_wall or room.external_wall_x_m is not None:
                 applied.append("external_wall")
@@ -270,7 +306,7 @@ class RoomService:
                 continue
             detail = open_sandbox_room(project_path=str(project_path), room_name=room.name)
             actual: dict[str, float] = {}
-            tabs = sorted([item for item in detail.descendants(control_type="TabItem") if item.rectangle().top < 60], key=lambda item: item.rectangle().left)
+            tabs = self._top_tabs(detail)
             tabs[0].click_input()
             if room.area_m2 is not None:
                 actual["area_m2"] = float(self._read_edit_text(detail, self._edit_near(detail, left=125, top=99)).replace(",", "."))
@@ -313,12 +349,18 @@ class RoomService:
                     ))
         return names_ok and values_ok, evidence
 
-    def prepare_rooms(self, rooms: list[RoomInput], project_path: Path) -> OperationResult:
+    def prepare_rooms(
+        self,
+        rooms: list[RoomInput],
+        project_path: Path,
+        *,
+        building_name: str = DEFAULT_SANDBOX_BUILDING,
+    ) -> OperationResult:
         evidence: list[EvidenceItem] = []
         warnings: list[str] = []
         completed = 0
         try:
-            evidence.extend(self.create_rooms(rooms, project_path))
+            evidence.extend(self.create_rooms(rooms, project_path, building_name=building_name))
             completed = len(rooms)
             for room in rooms:
                 requested = [key for key, value in room.model_dump().items() if key != "name" and value not in (None, False)]
@@ -326,7 +368,7 @@ class RoomService:
                     warnings.append(f"{room.name}: numeric values will be checked by post-save UI readback")
             persisted_project = self._winwatt.save_project_as(project_path.with_name("prepared.wwp"))
             self._winwatt.close_project_gracefully()
-            building_evidence = self.verify_building(persisted_project)
+            building_evidence = self.verify_building(persisted_project, name=building_name)
             verified, verification_evidence = self.verify_rooms(rooms, persisted_project)
             verified = verified and building_evidence.data.get("matched") is not None
             digest = hashlib.sha256(persisted_project.read_bytes()).hexdigest()
