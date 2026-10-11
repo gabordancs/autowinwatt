@@ -475,7 +475,18 @@ def main() -> int:
                 cancels[0].send_message(0x00F5)  # BM_CLICK
                 time.sleep(0.5)
 
-        report["session_closed"], report["sandbox_save_discarded"] = close_session(process_id)
+        try:
+            report["session_closed"], report["sandbox_save_discarded"] = close_session(process_id)
+        except Exception as cleanup_exc:
+            # The UI can destroy its last window between enumeration and a
+            # descendant lookup.  If the owned process is already gone and a
+            # fully validated XML/PDF artifact exists, this is successful
+            # cleanup, not an export failure.
+            if process_is_alive(process_id):
+                raise
+            report["session_closed"] = True
+            report["sandbox_save_discarded"] = False
+            report["cleanup_warning"] = repr(cleanup_exc)
         if not report["session_closed"]:
             raise RuntimeError("WinWatt process remained alive after normal ET and application close")
     except Exception as exc:

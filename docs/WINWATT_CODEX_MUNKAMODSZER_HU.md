@@ -131,6 +131,33 @@ A státusz jelentése:
 - hiányzó vagy bizonytalan adat: az `open_gaps` része, nem szabad kész
   képességként kezelni.
 
+### Szakmai tanúsítási tudás
+
+A WinWatt UI-képességektől külön, verziózott szakmai tudáscsomag található itt:
+
+- `winwatt_automation/data/knowledge/certification_source_manifest.json`:
+  a kanonikus helyi források SHA-256 lenyomata és szerkezeti metaadata;
+- `winwatt_automation/data/knowledge/certification_domain_knowledge.json`:
+  forráshivatkozásos szakmai állítások, tanúsítási workflow, AI/kód/ember
+  felelősségi határok és ellenőrző kérdések;
+- `docs/codex_certification_knowledge/ROUTER_HU.md`:
+  a Codex progresszív tudásbetöltési és visszakeresési útvonala.
+
+Audit és célzott visszakeresés a `winwatt_automation` könyvtárból:
+
+```powershell
+.\Query-CertificationKnowledge.ps1 --audit
+.\Query-CertificationKnowledge.ps1 --topic certificate_xml
+.\Query-CertificationKnowledge.ps1 --workflow G1-G3
+.\Query-CertificationKnowledge.ps1 --check-id check.calculation_pdf
+```
+
+A szakmai tudáscsomag nem végrehajtási engedély. Magyarázati, tervezési vagy
+tudásintegrációs feladatban a Codex nem indít WinWattot, nem módosít projektet,
+nem futtat számítást és nem állít elő végleges tanúsítási XML-t. A helyi
+jogszabálymásolat nem bizonyítja önmagában a beadás időpontjában alkalmazandó
+hivatalos állapotot.
+
 ## Codex skillek
 
 - `winwatt-heating-certification`: a bizonyított fűtöttzóna + elektromosfűtés
