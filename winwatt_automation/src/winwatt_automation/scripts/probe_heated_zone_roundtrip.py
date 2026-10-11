@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import time
 from pathlib import Path
@@ -17,6 +18,8 @@ def main() -> int:
     parser.add_argument("--source", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--name", default="AUTO_HEATED_ZONE_ROUNDTRIP")
+    parser.add_argument("--expected-area", type=float, help="Expected whole-building heated area in m2")
+    parser.add_argument("--zone-kind", choices=("heated", "cooled"), default="heated")
     args = parser.parse_args()
 
     profile = require_profile(args.profile)
@@ -43,6 +46,7 @@ def main() -> int:
         "source_sha256": sha256(source),
         "project": str(project),
         "zone_name": args.name,
+        "zone_kind": args.zone_kind,
         "status": "running",
     }
 
@@ -84,9 +88,18 @@ def main() -> int:
             })
         return rows
 
-    def open_heated_zone_dialog(editor: Any) -> Any:
+    def positive_areas(rows: list[dict[str, Any]]) -> list[float]:
+        values = []
+        for block in rows:
+            for row in block["rows"]:
+                match = re.match(r"\s*([0-9]+(?:[,.][0-9]+)?)\s*m2", row)
+                if match:
+                    values.append(float(match.group(1).replace(",", ".")))
+        return values
+
+    def open_zone_dialog(editor: Any) -> Any:
         native_editor = Desktop(backend="win32").window(handle=int(editor.handle)).wrapper_object()
-        click_unique(native_editor, "A fűtött zóna")
+        click_unique(native_editor, "A fűtött zóna" if args.zone_kind == "heated" else "A hűtött zóna")
         process_id = int(editor.process_id())
         deadline = time.monotonic() + 10
         while time.monotonic() < deadline:
@@ -107,7 +120,7 @@ def main() -> int:
         process_id = int(editor.process_id())
         select_zones_tab(editor)
         report["before"] = visible_rows(editor)
-        dialog = open_heated_zone_dialog(editor)
+        dialog = open_zone_dialog(editor)
         native = Desktop(backend="win32").window(handle=int(dialog.handle)).wrapper_object()
         edits = [
             item for item in native.descendants()
@@ -146,8 +159,16 @@ def main() -> int:
         editor = open_sandbox_building(project_path=str(project))
         select_zones_tab(editor)
         report["after_reopen"] = visible_rows(editor)
+        reopened_areas = positive_areas(report["after_reopen"])
+        report["reopened_positive_areas_m2"] = reopened_areas
+        report["area_roundtrip_passed"] = bool(reopened_areas) and max(reopened_areas) > 0
+        if args.expected_area is not None:
+            report["expected_area_m2"] = args.expected_area
+            report["area_roundtrip_passed"] = report["area_roundtrip_passed"] and any(
+                abs(value - args.expected_area) <= 0.01 for value in reopened_areas
+            )
         editor.capture_as_image().save(str(output / "zones_after_reopen.png"))
-        dialog = open_heated_zone_dialog(editor)
+        dialog = open_zone_dialog(editor)
         native = Desktop(backend="win32").window(handle=int(dialog.handle)).wrapper_object()
         reopened_edits = [
             item for item in native.descendants()
@@ -163,7 +184,8 @@ def main() -> int:
         report["source_unchanged"] = sha256(source) == report["source_sha256"]
         report["copy_changed"] = sha256(project) != report["source_sha256"]
         report["status"] = "passed" if (
-            report["roundtrip_passed"] and report["source_unchanged"] and report["copy_changed"]
+            report["roundtrip_passed"] and report["area_roundtrip_passed"]
+            and report["source_unchanged"] and report["copy_changed"]
         ) else "failed"
         native_editor = Desktop(backend="win32").window(handle=int(editor.handle)).wrapper_object()
         click_unique(native_editor, "Elvet")

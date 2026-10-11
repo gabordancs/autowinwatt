@@ -94,9 +94,9 @@
     },
     {
       "tool_id": "winwatt.building.zone.heated.roundtrip",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "verified",
-      "description": "Set the whole-building heated-zone name on a disposable copy, save, reopen and verify it in the zone dialog.",
+      "description": "Set a positive-area whole-building heated zone on a disposable copy, save, reopen and verify both its name and area in the zone dialog.",
       "profile_ids": [
         "winwatt_8c137b67c0a2214bb91aeae8"
       ],
@@ -107,7 +107,8 @@
         "profile": "existing WinWatt version-profile JSON path",
         "source": "existing source WWP path; never modified",
         "output": "new empty evidence directory",
-        "name": "heated-zone name"
+        "name": "heated-zone name",
+        "expected_area": "optional expected whole-building area in m2; comparison tolerance is 0.01 m2"
       },
       "output_contract": {
         "report": "report.json",
@@ -123,6 +124,7 @@
       "postconditions": [
         "report.status == passed",
         "report.roundtrip_passed == true",
+        "report.area_roundtrip_passed == true and the reopened area is positive",
         "report.reopened_zone_name == requested name",
         "report.source_unchanged == true"
       ],
@@ -134,6 +136,12 @@
           "path": "data/runtime_maps/heated_zone_roundtrip_20260930b/report.json",
           "deterministic": true,
           "assertion": "the whole-building heated-zone name remained present after full project reopen"
+        },
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/delceg_native_zone_383_52_20261011a/report.json",
+          "deterministic": true,
+          "assertion": "29 native WinWatt rooms produced a 383.52 m2 whole-building zone that remained 383.52 m2 after full reopen"
         }
       ]
     },

@@ -84,7 +84,7 @@
     {
       "fact_id": "building.heated_zone_roundtrip",
       "status": "verified",
-      "claim": "A teljes 10 m²-es épület fűtött zónaneve a zónadialógusból visszaolvasva megmarad újranyitás után.",
+      "claim": "A WinWatt felületén natívan létrehozott helyiségek teljes épületes fűtött zónájának neve és pozitív területe megmarad újranyitás után; a Délceg 29 helyisége 383,52 m²-rel igazolt.",
       "tool_ids": [
         "winwatt.building.zone.heated.roundtrip"
       ],
@@ -92,6 +92,25 @@
         {
           "path": "data/runtime_maps/heated_zone_roundtrip_20260930b/report.json",
           "assertion": "A fűtött zóna mentés–újranyitás ellenőrzése sikeres."
+        },
+        {
+          "path": "data/runtime_maps/delceg_native_zone_383_52_20261011a/report.json",
+          "assertion": "A 29 natív helyiségből képzett DELCEG56_KOZOS_FUTOTT_ZONA teljes bezárás és újranyitás után is 383,52 m²."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.native_xml_zone_membership_gap",
+      "status": "observed",
+      "claim": "A teljes natív XML-import visszaexportálhat helyiségeket és BuildingRefID-ket, miközben a WinWatt zónadialógus helyiségfája üres és a teljes épület területe 0,00 m²; a zónakészültséget ezért nem szabad pusztán XML-elemszámból vagy zónanévből elfogadni.",
+      "evidence": [
+        {
+          "path": "data/runtime_maps/delceg_single_import_20261011a/report.json",
+          "assertion": "Az importált projektben 29 helyiség és egy épület maradt meg, de az ET-zónatagság nem roundtripelt."
+        },
+        {
+          "path": "data/runtime_maps/delceg_single_zone_20261011a/report.json",
+          "assertion": "A zónanév megmaradt, miközben a zónalista újranyitás után 0,00 m²-t mutatott."
         }
       ]
     },
@@ -106,6 +125,21 @@
         {
           "path": "data/runtime_maps/heating_system_roundtrip_20260930b/report.json",
           "assertion": "A fűtési rendszer és zóna közös roundtripje sikeres."
+        }
+      ]
+    },
+    {
+      "fact_id": "building.delceg_native_zone_is_intermediate",
+      "status": "observed",
+      "claim": "A Délceg 29 natív helyiséges, 383,52 m²-es zónapróbája csak köztes állapot: nem tartalmazza automatikusan a korábbi modell 79 határolóját, 12 szerkezettípusát, nyílászáróit és a projekt-specifikus megosztott fűtési rendszereket, ezért nem adható át tanúsítási kész WWP-ként.",
+      "evidence": [
+        {
+          "path": "data/runtime_maps/delceg_one_building_native_rooms_20261011a/report.json",
+          "assertion": "A futás célja a 29 helyiség natív létrehozása volt, nem a teljes szerkezet- és rendszerállomány migrálása."
+        },
+        {
+          "path": "data/certificate_builds/delceg/v2_two_buildings_review/delceg_two_buildings_model.json",
+          "assertion": "A felülvizsgálati forrásmodell 29 helyiséget, 79 határolót és 12 szerkezettípust tart nyilván."
         }
       ]
     },
@@ -398,5 +432,5 @@
     "WebWatt élő kapcsolat, projekt-specifikus teljes modellátadás és fogadóoldali felhasználói visszajelzés.",
     "Tanúsítói szakmai felülvizsgálat és véglegesítés."
   ],
-  "updated_at": "2026-10-05T18:26:42.400695+00:00"
+  "updated_at": "2026-10-11T18:05:00+00:00"
 }
