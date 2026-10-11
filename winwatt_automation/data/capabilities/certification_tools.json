@@ -94,9 +94,9 @@
     },
     {
       "tool_id": "winwatt.building.zone.heated.roundtrip",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "verified",
-      "description": "Set the whole-building heated-zone name on a disposable copy, save, reopen and verify it in the zone dialog.",
+      "description": "Set a positive-area whole-building heated zone on a disposable copy, save, reopen and verify both its name and area in the zone dialog.",
       "profile_ids": [
         "winwatt_8c137b67c0a2214bb91aeae8"
       ],
@@ -107,7 +107,8 @@
         "profile": "existing WinWatt version-profile JSON path",
         "source": "existing source WWP path; never modified",
         "output": "new empty evidence directory",
-        "name": "heated-zone name"
+        "name": "heated-zone name",
+        "expected_area": "optional expected whole-building area in m2; comparison tolerance is 0.01 m2"
       },
       "output_contract": {
         "report": "report.json",
@@ -123,6 +124,7 @@
       "postconditions": [
         "report.status == passed",
         "report.roundtrip_passed == true",
+        "report.area_roundtrip_passed == true and the reopened area is positive",
         "report.reopened_zone_name == requested name",
         "report.source_unchanged == true"
       ],
@@ -134,6 +136,12 @@
           "path": "data/runtime_maps/heated_zone_roundtrip_20260930b/report.json",
           "deterministic": true,
           "assertion": "the whole-building heated-zone name remained present after full project reopen"
+        },
+        {
+          "kind": "save_reopen",
+          "path": "data/runtime_maps/delceg_native_zone_383_52_20261011a/report.json",
+          "deterministic": true,
+          "assertion": "29 native WinWatt rooms produced a 383.52 m2 whole-building zone that remained 383.52 m2 after full reopen"
         }
       ]
     },
@@ -368,7 +376,7 @@
       "idempotency": "deterministic for identical local input bytes and tolerance apart from timestamps and output paths",
       "evidence": [
         {
-          "kind": "validation",
+          "kind": "save_reopen",
           "path": "data/certificate_builds/delceg/v2_two_buildings_review/offline_preflight_20260930a/preflight_report.json",
           "deterministic": true,
           "assertion": "the gate detected the known boundary-count, azimuth and room-condition readback discrepancies without starting WinWatt"
@@ -668,6 +676,52 @@
           "path": "data/runtime_maps/zone_dialogs_20260929a/report.json",
           "deterministic": true,
           "assertion": "heated and cooled TThermicZoneForm dialogs were captured without changing the project"
+        }
+      ]
+    },
+    {
+      "tool_id": "winwatt.project.native_xml.import_roundtrip",
+      "version": "1.0.0",
+      "status": "observed",
+      "description": "Import a complete native WinWatt XML into a disposable project, save, reopen, export and verify the selected ET zone field-for-field.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_native_project_import_roundtrip",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": true,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing seed WWP; never modified",
+        "output": "new empty evidence directory",
+        "native_xml": "complete version-compatible native XML",
+        "zone": "ETZone name whose rooms and boundaries must roundtrip exactly"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "saved_project": "sandbox/imported.wwp",
+        "readback_xml": "reopen_readback.xml"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "native XML is well formed and contains exactly one requested ETZone"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "requested zone rooms and boundaries equal the import after full close/reopen",
+        "source WWP and input native XML hashes are unchanged",
+        "WinWatt session is closed"
+      ],
+      "retry_policy": "retry only active-desktop failures with a fresh output directory",
+      "idempotency": "repeatable because every run creates a separate WWP and records input hashes",
+      "evidence": [
+        {
+          "kind": "observation",
+          "path": "data/runtime_maps/sr8_native_control_import_20261009a/report.json",
+          "deterministic": true,
+          "assertion": "the original SR8 NativeExport is not roundtrip-importable: WinWatt reports OleStr-to-Integer conversion and the source remains unchanged"
         }
       ]
     },

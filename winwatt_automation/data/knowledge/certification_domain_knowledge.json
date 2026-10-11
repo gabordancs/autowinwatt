@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "knowledge_id": "hungarian_energy_certification_domain_20261011",
+  "source_manifest_id": "hungarian_energy_certification_sources_af95b8eb2ef206c5",
+  "source_priority": [
+    "Az alkalmazandó, aktuális hivatalos jogszabály és mellékletei.",
+    "Az alkalmazandó tanúsítási adatcsere-verzió hivatalos szótára, validációs szabályai és mintái.",
+    "Azonos verziójú, WinWattból visszaolvasott és roundtrippel bizonyított adat.",
+    "Ellenőrzött projekt- vagy tanúsítványreferencia.",
+    "Szakirodalmi magyarázat és helyi segédadat.",
+    "AI-következtetés, amely soha nem írhatja felül a magasabb prioritású forrást."
+  ],
+  "claims": [
+    {
+      "claim_id": "requirement.new_residential_primary_energy",
+      "topic": "new_building_requirements",
+      "status": "authoritative",
+      "claim": "Lakó és szállás jellegű új épületnél, nem dinamikus szimuláció esetén a referenciaépület összesített energetikai jellemzője 95 kWh/m²év; a megengedett követelményérték ennek 80%-a, 76 kWh/m²év.",
+      "citations": [
+        {
+          "source_id": "legal.energy_performance_decree_9_2023",
+          "locator": "2. melléklet 2.1. pont és 5. melléklet 1.2. pont; PDF 13. és 20. oldal",
+          "assertion": "A rendelet rögzíti a lakó és szállás jellegű épületek referenciaindikátorát és az abból képzett 80%-os újépület-követelményt."
+        }
+      ]
+    },
+    {
+      "claim_id": "scope.local_sources_not_current_law_proof",
+      "topic": "source_governance",
+      "status": "needs_review",
+      "claim": "A helyi jogszabály- és dokumentációmásolat feldolgozható tudásforrás, de önmagában nem bizonyítja a beadás időpontjában alkalmazandó hivatalos állapotot.",
+      "citations": [
+        {
+          "source_id": "legal.certification_decree",
+          "locator": "első oldal, dokumentumfejléc és hatályállapot",
+          "assertion": "A helyi példány saját hatályállapotot tüntet fel, ezért verzióhoz kötötten kezelendő."
+        },
+        {
+          "source_id": "certificate.v3_0_12035.readme",
+          "locator": "teljes README",
+          "assertion": "A csomag tesztoldalra, helyi szótárra, validációs szabályokra és mintákra hivatkozik."
+        }
+      ]
+    },
+    {
+      "claim_id": "method.primary_calculation_source",
+      "topic": "calculation_method",
+      "status": "authoritative",
+      "claim": "A számítási módszer elsődleges helyi forrása az ÉKM rendelet 1. függeléke; a referenciaértékek és éghajlati adatok elsődleges helyi forrása a 2. függelék.",
+      "citations": [
+        {
+          "source_id": "method.ekm_appendix_1",
+          "locator": "tartalomjegyzék és 3. fejezet",
+          "assertion": "A dokumentum a számítási módszert, követelményellenőrzést és energiatanúsítást tárgyalja."
+        },
+        {
+          "source_id": "reference.ekm_appendix_2",
+          "locator": "1. fejezet és további referenciaérték-fejezetek",
+          "assertion": "A dokumentum a számítási módszer referenciaértékeit és éghajlati adatokat tartalmazza."
+        }
+      ]
+    },
+    {
+      "claim_id": "certificate.upload_request_blocks",
+      "topic": "certificate_xml",
+      "status": "authoritative",
+      "claim": "A 3.0.12035 tanúsítási minta UploadRequest gyökerű, és külön blokkokban kezeli többek között a fejlécet, épületadatokat, hatékonysági kategóriákat, tanúsítói adatokat, határoló és nyílászáró szerkezeteket, gépészetet, energiafelhasználást, korszerűsítési javaslatokat, fényképeket és a számítási PDF-et.",
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.sample_xml",
+          "locator": "UploadRequest közvetlen gyermekelemei",
+          "assertion": "A minta rögzíti az XML gyökerét, fő blokkjait és sorrendjét."
+        },
+        {
+          "source_id": "certificate.v3_0_12035.dictionary",
+          "locator": "teljes mezőszótár",
+          "assertion": "A szótár a tanúsítvány angol mezőneveit magyar szakmai fogalmakhoz rendeli."
+        }
+      ]
+    },
+    {
+      "claim_id": "certificate.validation.required_fields",
+      "topic": "certificate_validation",
+      "status": "authoritative",
+      "claim": "A 3.0.12035 szabályok kötelező mezőket, enumokat, szöveghosszokat, számtartományokat és mezőspecifikus feltételeket írnak elő; a kiadási készültség csak ezek gépi ellenőrzése után állítható.",
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.validation_rules",
+          "locator": "Validációs szabályok gyűjteménye, 1-13. fejezet",
+          "assertion": "A dokumentum mezőnként rögzíti a kötelezőséget és az elfogadott értékeket."
+        }
+      ]
+    },
+    {
+      "claim_id": "certificate.calculations_pdf_embedded",
+      "topic": "certificate_xml",
+      "status": "authoritative",
+      "claim": "A számítási dokumentáció a tanúsítási adatcsere-fájl CalculationsPdfFileContent mezőjében szerepel; jelenlétét és dekódolhatóságát külön kell ellenőrizni.",
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.validation_rules",
+          "locator": "13. calculationsPdfFileContent",
+          "assertion": "A validációs dokumentum külön fejezetben kezeli a számítási PDF mezőjét."
+        },
+        {
+          "source_id": "certificate.v3_0_12035.sample_xml",
+          "locator": "CalculationsPdfFileContent elem",
+          "assertion": "A minta XML-ben a számítási PDF külön elemként szerepel."
+        }
+      ]
+    },
+    {
+      "claim_id": "certificate.full_json_is_test_only",
+      "topic": "test_data",
+      "status": "authoritative",
+      "claim": "A teljesen kitöltött functional_unit_full_data.json mezőlefedettségi tesztadat, nem életszerű tanúsítványreferencia.",
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.readme",
+          "locator": "A teljesen kitöltött JSON példára vonatkozó megjegyzés",
+          "assertion": "A README kifejezetten csak tesztelésre alkalmasnak és nem életszerűnek jelöli a fájlt."
+        },
+        {
+          "source_id": "certificate.v3_0_12035.full_test_json",
+          "locator": "teljes dokumentum",
+          "assertion": "A fájl széles mezőlefedettséget biztosít validátor- és szerializálási tesztekhez."
+        }
+      ]
+    },
+    {
+      "claim_id": "catalog.materials_are_lookup_data",
+      "topic": "materials",
+      "status": "verified",
+      "claim": "Az anyagok.xml WinWatt anyagkatalógus keresési és adatellenőrzési forrás; a katalógusérték kiválasztása nem helyettesíti a projektbeli szerkezet szakmai jóváhagyását.",
+      "citations": [
+        {
+          "source_id": "catalog.winwatt_materials",
+          "locator": "WinWatt32Project/WinWatt32Material elemek",
+          "assertion": "A katalógus anyagnevet és fizikai jellemzőket tartalmazó WinWatt anyagelemekből áll."
+        }
+      ]
+    },
+    {
+      "claim_id": "catalog.heat_generators_are_reference_data",
+      "topic": "building_services",
+      "status": "verified",
+      "claim": "A hőtermelő-tábla energiahordozó- és tényezőadatok determinisztikus visszakeresésére használható; a konkrét rendszer kiválasztása szakmai vagy jóváhagyott projektadat.",
+      "citations": [
+        {
+          "source_id": "catalog.heat_generators",
+          "locator": "Hőtermelők munkalap A:M oszlopok",
+          "assertion": "A munkalap hőtermelő-megnevezést, energiahordozót és számítási tényezőket tárol."
+        }
+      ]
+    }
+  ],
+  "workflow": [
+    {
+      "stage_id": "G0",
+      "title": "Tanúsítás tárgya és adminisztratív adatok",
+      "purpose": "Az épület vagy önálló rendeltetési egység scope-jának, címének, rendeltetésének, tanúsítási okának és forráscsomagjának rögzítése.",
+      "required_inputs": ["tanúsítás tárgya", "épületazonosító és cím", "tanúsítás oka", "forrásverziók"],
+      "completion_evidence": ["kötelező adminisztratív mezők teljesek", "forrásmanifest rögzített", "scope ember által jóváhagyott"],
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.validation_rules",
+          "locator": "1. header és 2. buildingData",
+          "assertion": "A fejléc és épületadatok kötelező mezőit és értéktartományait rögzíti."
+        }
+      ]
+    },
+    {
+      "stage_id": "G1-G3",
+      "title": "Geometria, helyiségek és határoló szerkezetek",
+      "purpose": "A kondicionált tér, helyiségek, külső vagy fűtetlen térrel határos szerkezetek, nyílászárók és energetikai minőségek ellenőrzött modelljének kialakítása.",
+      "required_inputs": ["helyiséglista", "alapterület és belmagasság", "határolótípusok", "felületek", "U-értékek"],
+      "completion_evidence": ["minden számításba kerülő szerkezetnek ismert forrása van", "a nettó felületek és nyílászárók konzisztenciája ellenőrzött"],
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.validation_rules",
+          "locator": "6. boundaryAndOpeningStructures",
+          "assertion": "A tanúsítványban megjelenő határoló- és nyílászáró-szerkezettípusokat és energetikai minőségeket szabályozza."
+        },
+        {
+          "source_id": "method.ekm_appendix_1",
+          "locator": "hőátbocsátási és épületburok-számítási fejezetek",
+          "assertion": "A számítási módszer a határoló szerkezetek és geometriai adatok energetikai felhasználását írja le."
+        }
+      ]
+    },
+    {
+      "stage_id": "G4",
+      "title": "Épülettechnikai rendszerek",
+      "purpose": "A fűtés, HMV, hűtés, szellőzés és alkalmazható további rendszerek jóváhagyott adatainak összegyűjtése.",
+      "required_inputs": ["rendszertípusok", "energiahordozók", "hatásfokok és segédenergia", "ellátott zónák"],
+      "completion_evidence": ["kötelező rendszerek teljesek", "katalógusadat és szakmai kiválasztás megkülönböztetett"],
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.validation_rules",
+          "locator": "7. buildingServicesSystemEnergeticQuality",
+          "assertion": "A tanúsítvány épülettechnikai minőségi blokkjának szabályait tartalmazza."
+        },
+        {
+          "source_id": "catalog.heat_generators",
+          "locator": "Hőtermelők munkalap",
+          "assertion": "A hőtermelőkhöz kapcsolódó referenciaadatokat adja."
+        }
+      ]
+    },
+    {
+      "stage_id": "G5-G6",
+      "title": "Számítás, eredményellenőrzés és tanúsítványcsomag",
+      "purpose": "A jóváhagyott bemenetekből származó eredmények, besorolások, mellékletek és adatcsere-struktúra teljességének megtervezése és ellenőrzése.",
+      "required_inputs": ["számítási eredmények", "követelményszintek", "számítási PDF", "fényképek és javaslatok, ha alkalmazandók"],
+      "completion_evidence": ["minden eredmény forrása ismert", "az XML ruleset szerinti validáció tervezett", "emberi kiadási jóváhagyás szükséges"],
+      "citations": [
+        {
+          "source_id": "certificate.v3_0_12035.validation_rules",
+          "locator": "3-13. fejezet",
+          "assertion": "A hatékonysági kategóriáktól a számítási PDF-ig a kimeneti blokkok validációs szabályait tartalmazza."
+        },
+        {
+          "source_id": "certificate.v3_0_12035.sample_xml",
+          "locator": "teljes UploadRequest minta",
+          "assertion": "A kimeneti csomag szerkezeti példája."
+        }
+      ]
+    }
+  ],
+  "responsibility_boundaries": [
+    {
+      "boundary_id": "ai.interpret_and_route",
+      "owner": "ai",
+      "responsibility": "A kérdés osztályozása, a releváns források és szabályok visszakeresése, bizonytalanságok felismerése, valamint ellenőrzési terv és emberi kérdések megfogalmazása.",
+      "must_not_claim": ["jogszabály aktuális voltának bizonyítása kizárólag helyi másolatból", "számítási eredmény előállítása vagy igazolása futás nélkül", "szakmai jóváhagyás helyettesítése"]
+    },
+    {
+      "boundary_id": "code.calculate_and_validate",
+      "owner": "deterministic_code",
+      "responsibility": "Forráshash, katalóguslekérdezés, képlet, mértékegység, XML-szerkezet, kötelező mező, enum, tartomány és regressziós eltérés reprodukálható ellenőrzése.",
+      "must_not_claim": ["bizonytalan tervjel szakmai értelmezése", "nem kódolt szabály kitalálása", "tanúsítói felelősség átvétele"]
+    },
+    {
+      "boundary_id": "human.approve_professional_decisions",
+      "owner": "human_professional",
+      "responsibility": "A tanúsítás tárgyának, bizonytalan geometriai vagy szerkezeti értelmezésnek, gépészeti kiválasztásnak, jogszabályi alkalmazhatóságnak és végleges kiadásnak a jóváhagyása.",
+      "must_not_claim": []
+    }
+  ],
+  "knowledge_checks": [
+    {
+      "check_id": "check.new_residential_reference_value",
+      "question": "Mi a nem dinamikus módszerrel számított új lakóépület referenciaértéke és követelményértéke?",
+      "expected_points": ["referenciaérték: 95 kWh/m²év", "követelményérték: 76 kWh/m²év", "a követelmény a referencia 80%-a", "dinamikus szimulációnál eltérő referenciaeljárás alkalmazandó"],
+      "required_source_ids": ["legal.energy_performance_decree_9_2023"]
+    },
+    {
+      "check_id": "check.source_precedence",
+      "question": "Mit tegyen a Codex, ha a szakirodalom és a helyi rendeleti melléklet eltérő módszert sugall?",
+      "expected_points": ["a rendeleti melléklet elsőbbsége", "verzió és alkalmazhatóság ellenőrzése", "az eltérés explicit jelzése", "nincs AI-alapú önkényes felülírás"],
+      "required_source_ids": ["method.ekm_appendix_1", "guide.applied_building_energy"]
+    },
+    {
+      "check_id": "check.full_json_role",
+      "question": "Használható-e a teljesen kitöltött JSON valós tanúsítvány szakmai etalonjaként?",
+      "expected_points": ["nem", "mezőlefedettségi és validációs teszthez használható", "a README nem életszerűnek jelöli"],
+      "required_source_ids": ["certificate.v3_0_12035.readme", "certificate.v3_0_12035.full_test_json"]
+    },
+    {
+      "check_id": "check.calculation_pdf",
+      "question": "Mi a számítási PDF szerepe a tanúsítási XML-ben?",
+      "expected_points": ["külön CalculationsPdfFileContent mező", "jelenlét és dekódolhatóság ellenőrzése", "nem azonos az XML kinyomtatásával"],
+      "required_source_ids": ["certificate.v3_0_12035.validation_rules", "certificate.v3_0_12035.sample_xml"]
+    },
+    {
+      "check_id": "check.material_catalog_boundary",
+      "question": "Az anyagkatalógus találata elegendő-e egy rétegrend automatikus szakmai elfogadásához?",
+      "expected_points": ["nem", "a katalógus determinisztikus fizikai adatforrás", "a projektbeli megfeleltetés és szerkezet szakmai döntés vagy jóváhagyott adat"],
+      "required_source_ids": ["catalog.winwatt_materials"]
+    },
+    {
+      "check_id": "check.knowledge_only_scope",
+      "question": "Egy tanúsítási munkafolyamat megtervezése feljogosítja-e a Codexet WinWatt futtatására vagy végleges XML kiadására?",
+      "expected_points": ["nem", "a tervezés és tudás-visszakeresés elkülönül a végrehajtástól", "végrehajtáshoz külön felhasználói kérés és verified tool szükséges"],
+      "required_source_ids": ["certificate.v3_0_12035.readme"]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "operation": "webwatt.review_handoff.prepare",
+  "handoff": "M:\\Repositories\\autowinwatt\\winwatt_automation\\data\\webwatt_jobs\\handoff_fixture_20261005a.json",
+  "handoff_sha256": "54a39138781613bbcef0634409c2d821fed00d842f567f1ece307c4f31e55567",
+  "catalog": "M:\\Repositories\\magyar-mentor\\external\\energetika\\anyagok.xml",
+  "catalog_sha256": "a4ec5f1bb49f461f5761e8e75dc946d9c7c717feb75d59ac2cb2616cfe8af768",
+  "llm_used": false,
+  "winwatt_started": false,
+  "started_at": "2026-10-05T20:20:09.693684+00:00",
+  "status": "passed",
+  "result": {
+    "schema_version": "webwatt-winwatt-handoff/v1",
+    "project_id": "fixture-20261005a",
+    "layer_count": 4,
+    "target": "M:\\Repositories\\autowinwatt\\winwatt_automation\\data\\webwatt_jobs\\handoff_prepare_multi_20261005a\\reviewed_model_fragment.json"
+  },
+  "target_sha256": "c47965435d7cadee75933ed1e31eb73fa808746bed47d7332c4fee795b1515d3",
+  "finished_at": "2026-10-05T20:20:09.744705+00:00"
+}

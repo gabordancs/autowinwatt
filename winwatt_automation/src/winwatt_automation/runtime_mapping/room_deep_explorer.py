@@ -34,7 +34,9 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_SANDBOX_ROOM = "Room graph explorer"
 BUILDINGS_CATALOG_INDEX = 4
 BUILDINGS_TITLE = "Épületek"
-DEFAULT_SANDBOX_BUILDING = "Building graph explorer"
+DEFAULT_SANDBOX_BUILDING = os.environ.get(
+    "WWA_TARGET_BUILDING", "Building graph explorer"
+)
 ACTION_TYPES = {"Button", "TabItem", "ComboBox", "TreeItem", "ListItem", "CheckBox", "RadioButton"}
 MAX_FAILURE_RETRIES = 3
 CHECKPOINT_COMPACTION_INTERVAL = 50
@@ -746,7 +748,7 @@ def open_sandbox_room(*, project_path: str, room_name: str) -> Any:
     list_view = next(control for control in main.descendants() if control.class_name() == "TListViewWithHeader")
     room_rows = [
         control for control in list_view.children()
-        if control.window_text().strip() and control.window_text().strip() != "Vízszintes"
+        if control.element_info.control_type == "ListItem" and control.window_text().strip()
     ]
     selected_index = next(
         index for index, control in enumerate(room_rows)
@@ -932,10 +934,20 @@ def open_sandbox_building(*, project_path: str, building_name: str = DEFAULT_SAN
     # the dedicated record by its native text and double-click that item.
     from pywinauto.controls.common_controls import ListViewWrapper
     native_list = ListViewWrapper(int(list_view.handle))
-    matching_rows = [index for index in range(native_list.item_count())
-                     if native_list.get_item(index).text() == building_name]
+    row_texts = [native_list.get_item(index).text() for index in range(native_list.item_count())]
+    matching_rows = [index for index, text in enumerate(row_texts) if text == building_name]
+    # Imported professional projects can contain names longer than WinWatt's
+    # native list field.  Allow an explicit environment-selected prefix, but
+    # only when it resolves to exactly one building; the default sandbox name
+    # remains an exact match.
+    if not matching_rows and os.environ.get("WWA_TARGET_BUILDING") == building_name:
+        matching_rows = [index for index, text in enumerate(row_texts)
+                         if text.startswith(building_name)]
     if len(matching_rows) != 1:
-        raise RuntimeError(f"Expected one sandbox building {building_name!r}, found {len(matching_rows)}")
+        raise RuntimeError(
+            f"Expected one sandbox building {building_name!r}, found {len(matching_rows)}; "
+            f"catalog rows={row_texts!r}"
+        )
     native_list.get_item(matching_rows[0]).click_input(double=True)
     deadline = time.monotonic() + 8.0
     while time.monotonic() < deadline:

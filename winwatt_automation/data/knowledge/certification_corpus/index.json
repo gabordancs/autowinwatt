@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "source_root": "energetika",
+  "file_count": 41,
+  "total_size_bytes": 46751597,
+  "entries": [
+    {
+      "relative_path": "176_2008. (VI. 30.) Korm. rendelet.pdf",
+      "sha256": "1032eb493e39585696b69ba6d1260ae936c301c96807d774bfba971223a77f74",
+      "size_bytes": 4276867,
+      "suffix": ".pdf",
+      "page_count": 36,
+      "text_extract": "34a3066b8e2ded8a.pages.jsonl"
+    },
+    {
+      "relative_path": "9_2023. (V. 25.) ÉKM rendelet.pdf",
+      "sha256": "924997e89d89a099d2d2053421e0da7a19d5130889b0e2e539dac33f538c7b2c",
+      "size_bytes": 2135569,
+      "suffix": ".pdf",
+      "page_count": 35,
+      "text_extract": "0e99adec7eac08b6.pages.jsonl"
+    },
+    {
+      "relative_path": "Alkalmazott_Epuletenergetika.pdf",
+      "sha256": "9df087e67ec9710bdf9a2d33703d51c429e2931a8d8ef34ca22b060c4d78fa47",
+      "size_bytes": 19432771,
+      "suffix": ".pdf",
+      "page_count": 549,
+      "text_extract": "b5f3690b5451cec0.pages.jsonl"
+    },
+    {
+      "relative_path": "Meteo.pdf",
+      "sha256": "dfb4cbe5fc97c87b9b8291e915272776d98fae5f5404802400d5c4097a064494",
+      "size_bytes": 4794287,
+      "suffix": ".pdf",
+      "page_count": 630,
+      "text_extract": "015f714cdc9f3d98.pages.jsonl"
+    },
+    {
+      "relative_path": "anyagok.xml",
+      "sha256": "a4ec5f1bb49f461f5761e8e75dc946d9c7c717feb75d59ac2cb2616cfe8af768",
+      "size_bytes": 1202766,
+      "suffix": ".xml",
+      "line_count": 2,
+      "character_count": 1197973,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/contact_sheet.png",
+      "sha256": "6cf778307e86d83c46181db3b1fb637ec2b54e4dce2df86c156caf85710d9af2",
+      "size_bytes": 249933,
+      "suffix": ".png",
+      "pixel_size": [
+        780,
+        1224
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image1.png",
+      "sha256": "54e81de15ccf85cd5ae272b13168296d788e201f3facb9195b79efd35a23455a",
+      "size_bytes": 202695,
+      "suffix": ".png",
+      "pixel_size": [
+        943,
+        813
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image10.png",
+      "sha256": "3fb12a4caa414fc4d920eb96b6ef95e73809792fa26b487f56fc3f3df7ec218f",
+      "size_bytes": 45582,
+      "suffix": ".png",
+      "pixel_size": [
+        502,
+        173
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image11.png",
+      "sha256": "158bdf5d48dda520409897071f33488c55312c045d2c4f1a7fe399e98d6f73ca",
+      "size_bytes": 106516,
+      "suffix": ".png",
+      "pixel_size": [
+        748,
+        217
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image12.png",
+      "sha256": "8f7a425803939d1110387638145bfbed4729b49f24ec8eceaf51533c423258a1",
+      "size_bytes": 58644,
+      "suffix": ".png",
+      "pixel_size": [
+        847,
+        247
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image13.png",
+      "sha256": "8c75f68f29912a59de8e49f4bbb31115de885887c970cb0356bce52506019cd6",
+      "size_bytes": 63511,
+      "suffix": ".png",
+      "pixel_size": [
+        651,
+        201
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image14.png",
+      "sha256": "495173955d58356e006d9664d248307f8918a70680d49fcb0ac9cd91e86e2343",
+      "size_bytes": 81936,
+      "suffix": ".png",
+      "pixel_size": [
+        710,
+        247
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image15.png",
+      "sha256": "a6e21e9e3b8500944b1a6521314d193f91709a805714d6ba3ad01c93989cfc81",
+      "size_bytes": 156077,
+      "suffix": ".png",
+      "pixel_size": [
+        813,
+        417
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image16.png",
+      "sha256": "2b774b9fdbe9614dc8ef262ae54de943a819a24c5d3a7749f2ea4f1584fae690",
+      "size_bytes": 104449,
+      "suffix": ".png",
+      "pixel_size": [
+        890,
+        390
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image17.png",
+      "sha256": "2ec78324f86f62adc5488753f39b4601e2fd201dcaff3cd54b3fbbf0eed17c2c",
+      "size_bytes": 95271,
+      "suffix": ".png",
+      "pixel_size": [
+        870,
+        317
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image18.png",
+      "sha256": "b7b315983ce060d9e5e77a8785a028b879b2a713019e9bb2bf8f26c280179d79",
+      "size_bytes": 28755,
+      "suffix": ".png",
+      "pixel_size": [
+        517,
+        282
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image2.png",
+      "sha256": "91a9989a8803638f61c2ebbd38d9ca0f9e1fa55c425d8ac1d3e32e4aed8cc103",
+      "size_bytes": 39777,
+      "suffix": ".png",
+      "pixel_size": [
+        470,
+        188
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image3.png",
+      "sha256": "3a4f73e68469f802b76581e1e66fb2b394756f4781c29fc9013920757117c4f3",
+      "size_bytes": 109230,
+      "suffix": ".png",
+      "pixel_size": [
+        1418,
+        322
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image4.png",
+      "sha256": "bedde4eb68074c7066adfd249ab6342146bc4ae06c6a6d6b06edc0cf60d851d7",
+      "size_bytes": 66532,
+      "suffix": ".png",
+      "pixel_size": [
+        467,
+        775
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image5.png",
+      "sha256": "521b70e4d08096f94038cacdef39b8e36a5c5c08fc6c277ddb5b80a29245ff72",
+      "size_bytes": 6714,
+      "suffix": ".png",
+      "pixel_size": [
+        377,
+        81
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image6.png",
+      "sha256": "776b773590c0e551d4bee054e63a03df2c25b1cacb137733f8fb8c5cac53c9bf",
+      "size_bytes": 65137,
+      "suffix": ".png",
+      "pixel_size": [
+        478,
+        312
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image7.png",
+      "sha256": "fbe1edfd5da2568e30b7ea7dee6f055eb06e66cf7817f8044dd4a7b6823ca99d",
+      "size_bytes": 54756,
+      "suffix": ".png",
+      "pixel_size": [
+        826,
+        262
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image8.png",
+      "sha256": "cc17bdf0b688753a6693db45e3cb9698e9356a7afa9ce87001655f6fbb1851d3",
+      "size_bytes": 60394,
+      "suffix": ".png",
+      "pixel_size": [
+        600,
+        227
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hotermelok_extracted_images/image9.png",
+      "sha256": "4a3ceb00903e415d5370bc1d1719aa29ebf598c9eb0081c7e843f51f3a9a1fb0",
+      "size_bytes": 109385,
+      "suffix": ".png",
+      "pixel_size": [
+        1028,
+        343
+      ],
+      "visual_source": true
+    },
+    {
+      "relative_path": "hőtermelők.xlsx",
+      "sha256": "de16fbbcb0243667b41d5cff1130e24f9e0a8e7146605d2ffab427858722c64b",
+      "size_bytes": 1472711,
+      "suffix": ".xlsx",
+      "zip_member_count": 31,
+      "embedded_media": [
+        "xl/media/image1.png",
+        "xl/media/image2.png",
+        "xl/media/image3.png",
+        "xl/media/image4.png",
+        "xl/media/image5.png",
+        "xl/media/image6.png",
+        "xl/media/image7.png",
+        "xl/media/image8.png",
+        "xl/media/image9.png",
+        "xl/media/image10.png",
+        "xl/media/image11.png",
+        "xl/media/image12.png",
+        "xl/media/image13.png",
+        "xl/media/image14.png",
+        "xl/media/image15.png",
+        "xl/media/image16.png",
+        "xl/media/image17.png",
+        "xl/media/image18.png"
+      ]
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/.gitlab-ci.yml",
+      "sha256": "b031e8e829d874d66de4a4fdd8a29a34f4e81f09f214845db1a37b5ee25fd9df",
+      "size_bytes": 1400,
+      "suffix": ".yml",
+      "line_count": 31,
+      "character_count": 1397,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/README.md",
+      "sha256": "a36d78d55635843c252784476d3376be0e1e61cc75a4c14d94440bd5b92b2446",
+      "size_bytes": 625,
+      "suffix": ".md",
+      "line_count": 16,
+      "character_count": 598,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/Felhasznaloi_utmutato_E-tanusitas_Teszt_alkalmazashoz.pdf",
+      "sha256": "b55335de21e778abefb151ecc15d55d2282335dc0e334166fd5c6f4aa0150ade",
+      "size_bytes": 2526035,
+      "suffix": ".pdf",
+      "page_count": 12,
+      "text_extract": "ed71599893d029f7.pages.jsonl"
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/Felhasználói_útmutató_E-tanúsítás_Teszt_alkalmazáshoz.pdf",
+      "sha256": "3029fbe6785cddd39a9a11787882f9a3209ee939dc9057b2d5e514b2eb2cdb00",
+      "size_bytes": 2187139,
+      "suffix": ".pdf",
+      "page_count": 11,
+      "text_extract": "4abf99360885a4ec.pages.jsonl"
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/development.md",
+      "sha256": "b8ba5201afc4b7e421db6ea058175ab333336fe766640d653f978b84d51b50e6",
+      "size_bytes": 588,
+      "suffix": ".md",
+      "line_count": 13,
+      "character_count": 559,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/dictionary.md",
+      "sha256": "b95fa656b13eaac4228a2d5d7388fcfc6d7f1e483bf656a85551fb9a7b326457",
+      "size_bytes": 17011,
+      "suffix": ".md",
+      "line_count": 314,
+      "character_count": 15892,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/differentByVersions.md",
+      "sha256": "91f388eaad7c76422f8867409ce60a7f999cc8f3c2f282ba658d335a9fb21b55",
+      "size_bytes": 41312,
+      "suffix": ".md",
+      "line_count": 293,
+      "character_count": 41312,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/validationRules.md",
+      "sha256": "c729c53a8c223f9460d3f379669e566c9560a4ce14fc6cfd68959db7ccc0f374",
+      "size_bytes": 18955,
+      "suffix": ".md",
+      "line_count": 341,
+      "character_count": 18138,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/docs/validtationRules.md",
+      "sha256": "d109391386c2e3a6aa1c1ec39af9116bbd66a4b1a691b1a9648a2ce6e8022360",
+      "size_bytes": 15613,
+      "suffix": ".md",
+      "line_count": 183,
+      "character_count": 14875,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/renovate.json",
+      "sha256": "c216edd289059c34fff394fcb8d99432cdf73f9fa164c23dd4de79f0c9d5fb9f",
+      "size_bytes": 26,
+      "suffix": ".json",
+      "line_count": 3,
+      "character_count": 23,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/test/system/data/json/functional_unit_full_data.json",
+      "sha256": "f717b7b502abb79fa9827f38e3916e67c8b27e6c4391f3bdb22c94fc5ec159f5",
+      "size_bytes": 1086676,
+      "suffix": ".json",
+      "line_count": 2242,
+      "character_count": 1086028,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/test/system/data/json/general_cert.json",
+      "sha256": "e13f7c4bcb5348caedddaf2d2b8a4b3aae9849c6b8a98667c942fb32147d39a4",
+      "size_bytes": 357916,
+      "suffix": ".json",
+      "line_count": 968,
+      "character_count": 357756,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "tanúsítvány/dokumentacio-v3.0.12035/test/system/data/xml/general_cert.xml",
+      "sha256": "48e812e372acb633018c3e63a750bc0161cbc588005bf4598c24eecb3cdaee74",
+      "size_bytes": 377575,
+      "suffix": ".xml",
+      "line_count": 980,
+      "character_count": 377415,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "ww_global_solar_gsi-export-2026-04-01_21-48-51.csv",
+      "sha256": "ce7cd158f333ac22665e1c55b30475368f5c2d1d759a277631f2bdf317937429",
+      "size_bytes": 596,
+      "suffix": ".csv",
+      "line_count": 37,
+      "character_count": 572,
+      "searchable_source": true
+    },
+    {
+      "relative_path": "ÉKM rendelet 1. függelék.pdf",
+      "sha256": "22e0e6ade5907e4c722b392584e80b1b056c0a73ea5b9be34ffde693621b0e50",
+      "size_bytes": 3036778,
+      "suffix": ".pdf",
+      "page_count": 91,
+      "text_extract": "ba91d8667018384a.pages.jsonl"
+    },
+    {
+      "relative_path": "ÉKM rendelet 2. függelék.pdf",
+      "sha256": "a665c01b1562646b1ad347af2132a434606376daf99e644e96e59d787f8ed976",
+      "size_bytes": 2063087,
+      "suffix": ".pdf",
+      "page_count": 30,
+      "text_extract": "7b12d1b3935242e2.pages.jsonl"
+    }
+  ],
+  "corpus_id": "certification_corpus_4fa91f0fa010e27d"
+}

@@ -118,10 +118,14 @@ def configure_et_scope(
     zone_values = [value for value in zone.item_texts() if value.strip()]
     chosen_zone = None
     if zone_name is not None:
-        if zone_name not in zone_values:
+        matching_zones = [
+            value for value in zone_values
+            if value == zone_name or value.endswith(f" {zone_name}")
+        ]
+        if len(matching_zones) != 1:
             raise RuntimeError(f"Certification zone {zone_name!r} is absent: {zone_values!r}")
-        zone.select(zone_name)
-        chosen_zone = zone_name
+        zone.select(matching_zones[0])
+        chosen_zone = matching_zones[0]
         time.sleep(0.25)
 
     labels = {

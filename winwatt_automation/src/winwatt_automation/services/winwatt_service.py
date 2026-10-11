@@ -8,8 +8,23 @@ from pathlib import Path
 from pywinauto import Application, keyboard
 from pywinauto import Desktop
 
-from winwatt_automation.live_ui.app_connector import get_main_window
+from winwatt_automation.live_ui.app_connector import get_main_window, reset_winwatt_connection_cache
 from winwatt_automation.runtime_mapping.program_mapper import prepare_fresh_winwatt_session
+
+
+def _desktop_windows_safely() -> list[object]:
+    """Return the current native windows despite transient destroyed handles.
+
+    Legacy WinWatt creates and destroys modal windows while a project is being
+    created.  pywinauto enumerates handles first and wraps them second, so a
+    dialog that disappears between those operations can otherwise abort the
+    entire project creation with ``InvalidWindowHandle``.  The surrounding
+    polling loops are the correct retry boundary for that race.
+    """
+    try:
+        return list(Desktop(backend="win32").windows())
+    except Exception:
+        return []
 
 
 class WinWattService:
@@ -140,6 +155,10 @@ class WinWattService:
         if target.exists():
             raise FileExistsError(f"Refusing to reuse a non-empty project seed: {target}")
         target.parent.mkdir(parents=True, exist_ok=True)
+        # Opening/creating a project can recreate the legacy TMainForm while
+        # keeping the WinWatt process alive.  Never carry a cached UIA wrapper
+        # across that transition: its HWND may already have been destroyed.
+        reset_winwatt_connection_cache()
         main = get_main_window()
         main.set_focus()
         process_id = int(main.process_id())
@@ -153,7 +172,7 @@ class WinWattService:
             dialog, _ = _find_new_project_dialog(process_id, timeout=0.05)
             if dialog is not None:
                 break
-            for candidate in Desktop(backend="win32").windows():
+            for candidate in _desktop_windows_safely():
                 try:
                     if int(candidate.process_id()) != process_id or candidate.class_name() != "#32770":
                         continue
@@ -188,18 +207,20 @@ class WinWattService:
             time.sleep(0.1)
         if not target.is_file():
             raise RuntimeError(f"WinWatt did not create clean project seed: {target}")
+        reset_winwatt_connection_cache()
         # New Project itself opens Project Data. Accepting untouched defaults
         # is required before an XML import can be issued; this is the same
         # verified modal form the importer handles after some legacy imports.
         deadline = time.monotonic() + 8.0
         accepted = False
         while time.monotonic() < deadline:
-            for candidate in Desktop(backend="win32").windows():
+            for candidate in _desktop_windows_safely():
                 try:
                     if (int(candidate.process_id()) == process_id and candidate.window_text() == "Projekt adatok"
                             and candidate.class_name() == "TProjektDataForm" and candidate.is_visible()):
                         ok = next(item for item in candidate.descendants() if item.window_text().strip().casefold() == "ok" and item.is_visible() and item.is_enabled())
                         ok.click_input(); accepted = True
+                        reset_winwatt_connection_cache()
                         break
                 except Exception:
                     continue

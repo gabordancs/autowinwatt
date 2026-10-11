@@ -48,6 +48,7 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
     },
     "winwatt.building.zone.heated.roundtrip": {
         "name": ("--name", str, True),
+        "expected_area": ("--expected-area", float, False),
     },
     "winwatt.building.system.heating.create_roundtrip": {
         "name": ("--name", str, True),
@@ -63,6 +64,10 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
         "name": ("--name", str, True),
     },
     "winwatt.building.calculation.result_roundtrip": {},
+    "winwatt.project.native_xml.import_roundtrip": {
+        "native_xml": ("--native-xml", Path, True),
+        "zone": ("--zone", str, True),
+    },
     "winwatt.certificate.et_xml.export": {
         "building_name": ("--building-name", str, True),
     },

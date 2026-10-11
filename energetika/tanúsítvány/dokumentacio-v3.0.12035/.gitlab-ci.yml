@@ -1,0 +1,31 @@
+doc:generate:
+  tags:
+    - master-deploy
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+  variables:
+    GIT_STRATEGY: clone
+    CURRENT_VERSION: v$MAJOR_VER.$MINOR_VER.$HOTFIX_VER
+  before_script:
+    - apk add git
+  script:
+    - echo $CURRENT_VERSION
+    - git remote set-url origin https://oauth2:${REPO_ACCESS_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}.git
+    - git config user.name "GitlabBot"
+    - git config user.email "CiContributor@example.com"
+    - git switch main --merge
+    - BEFORE_VERSION=`git describe --tags --abbrev=0` || echo "There isn't any before version!"
+    - '[ ! -z "$BEFORE_VERSION" ] && echo -e "[$BEFORE_VERSION..$CURRENT_VERSION](https://git.lechnerkozpont.hu/entan/dokumentacio/-/compare/$BEFORE_VERSION...$CURRENT_VERSION?from_project_id=846&straight=false)\\" | cat - ./docs/differentByVersions.md > temp && mv temp ./docs/differentByVersions.md'
+    - git add -A
+    - git commit -a --allow-empty -m "Add file automatically"
+    - git push
+  needs:
+    - project: $UPSTREAM_PROJECT_PATH
+      job: $UPSTREAM_JOB_NAME
+      ref: $UPSTREAM_REF
+      artifacts: true
+  release: # See https://docs.gitlab.com/ee/ci/yaml/#release for available properties
+    tag_name: $CURRENT_VERSION
+    description: 'New E-tanúsítás release: $CURRENT_VERSION'
+    ref: '$CI_COMMIT_SHA'
