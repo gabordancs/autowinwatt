@@ -7,6 +7,13 @@ from .certification import (
     load_certification_knowledge,
     missing_evidence_paths,
 )
+from .certification_domain import (
+    CertificationDomainKnowledge,
+    CertificationSourceManifest,
+    audit_domain_knowledge,
+    load_domain_knowledge,
+    load_source_manifest,
+)
 from .models import (
     EvidenceRef,
     ExperimentChange,
@@ -33,5 +40,10 @@ __all__ = [
     "SemanticCapability",
     "SemanticConcept",
     "load_certification_knowledge",
+    "CertificationDomainKnowledge",
+    "CertificationSourceManifest",
+    "audit_domain_knowledge",
+    "load_domain_knowledge",
+    "load_source_manifest",
     "missing_evidence_paths",
 ]
