@@ -48,6 +48,7 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
     },
     "winwatt.building.zone.heated.roundtrip": {
         "name": ("--name", str, True),
+        "expected_area": ("--expected-area", float, False),
     },
     "winwatt.building.system.heating.create_roundtrip": {
         "name": ("--name", str, True),
