@@ -14,6 +14,13 @@ from pathlib import Path
 from .models import MaterialCandidate, MaterialDecision
 
 
+PHYSICAL_PROPERTY_FIELDS = (
+    "lambda_wmk",
+    "density_kgm3",
+    "heat_capacity_kjkgk",
+)
+
+
 def normalize_material_name(value: str) -> str:
     """Produce a deterministic accent- and punctuation-insensitive key."""
     text = unicodedata.normalize("NFD", value.casefold())
@@ -58,6 +65,46 @@ def _relative_agreement(source: float | None, candidate: float | None) -> float 
     return max(0.0, 1.0 - abs(source - candidate) / max(abs(source), abs(candidate), 1e-9))
 
 
+def find_materials_by_properties(
+    catalog: list[MaterialCandidate],
+    *,
+    lambda_wmk: float | None = None,
+    density_kgm3: float | None = None,
+    heat_capacity_kjkgk: float | None = None,
+    relative_tolerance: float = 0.001,
+) -> list[MaterialCandidate]:
+    """Return every catalogue row matching all supplied physical properties.
+
+    A missing catalogue value is never treated as agreement.  The result only
+    proves calculation-property equivalence; it does not prove that the source
+    construction used the catalogue product with that name.
+    """
+    if relative_tolerance < 0:
+        raise ValueError("relative_tolerance must be non-negative")
+    requested = {
+        "lambda_wmk": lambda_wmk,
+        "density_kgm3": density_kgm3,
+        "heat_capacity_kjkgk": heat_capacity_kjkgk,
+    }
+    known = {key: value for key, value in requested.items() if value is not None}
+    if not known:
+        return []
+
+    matches: list[MaterialCandidate] = []
+    for candidate in catalog:
+        if all(
+            (candidate_value := getattr(candidate, key)) is not None
+            and abs(value - candidate_value) / max(abs(value), abs(candidate_value), 1e-9)
+            <= relative_tolerance
+            for key, value in known.items()
+        ):
+            matches.append(candidate)
+    return sorted(
+        matches,
+        key=lambda item: (item.material_id or "", normalize_material_name(item.name)),
+    )
+
+
 def material_family(name: str) -> str | None:
     text = _normal(name)
     rules = (("air_gap", ("legreteg",)), ("metal", ("femlemez", "trapezlemez", "acellemez")),
@@ -95,13 +142,27 @@ def match_material(
     if source_family == "air_gap":
         return MaterialDecision(source_name=source_name, status="special", confidence=1, decision_mode="special", reason="Zárt légrés: WinWatt rétegellenállásként kezelendő, nem normál katalogizált anyag.")
     tokens = {token for token in query.split() if len(token) > 2}
-    ranked: list[tuple[float, MaterialCandidate, str, float | None, float]] = []
+    supplied_physics = any(
+        value is not None for value in (lambda_wmk, density_kgm3, heat_capacity_kjkgk)
+    )
+    strict_property_matches = find_materials_by_properties(
+        catalog,
+        lambda_wmk=lambda_wmk,
+        density_kgm3=density_kgm3,
+        heat_capacity_kjkgk=heat_capacity_kjkgk,
+    )
+    strict_property_ids = {
+        (item.material_id, normalize_material_name(item.name))
+        for item in strict_property_matches
+    }
+    ranked: list[tuple[bool, float, MaterialCandidate, str, float | None, float]] = []
     for candidate in catalog:
         candidate_family = material_family(candidate.name) or material_family(candidate.path or "")
         if source_family and candidate_family != source_family:
             continue
         candidate_tokens = set(_normal(f"{candidate.name} {candidate.path or ''}").split())
         name_score = len(tokens & candidate_tokens) / len(tokens) if tokens else 0.0
+        exact_name = query == _normal(candidate.name)
         values = [
             _relative_agreement(lambda_wmk, candidate.lambda_wmk),
             _relative_agreement(density_kgm3, candidate.density_kgm3),
@@ -111,8 +172,12 @@ def match_material(
         physical = sum(known) / len(known) if known else None
         score = 0.55 * name_score + (0.45 * physical if physical is not None else 0.0)
         details = f"név={name_score:.0%}" + (f", fizika={physical:.0%}" if physical is not None else ", fizika=hiányos")
-        ranked.append((score, candidate, details, values[0], name_score))
-    score, candidate, details, lambda_agreement, name_score = max(ranked, default=(0.0, None, "nincs katalógus", None, 0.0), key=lambda item: item[0])
+        ranked.append((exact_name, score, candidate, details, values[0], name_score))
+    exact_name, score, candidate, details, lambda_agreement, name_score = max(
+        ranked,
+        default=(False, 0.0, None, "nincs katalógus", None, 0.0),
+        key=lambda item: (item[0], item[1]),
+    )
     if candidate is None:
         return MaterialDecision(source_name=source_name, status="review", reason="Nincs azonos anyagcsalád a helyi katalógusban; új anyag nem készült.")
     # With no supplied physics an exact catalogue name is still a safe local
@@ -125,8 +190,19 @@ def match_material(
     # physical values cannot prove that, for example, an unspecified internal
     # plaster is the Ytong system plaster returned by a token match.
     generic_name_only = query in generic_queries
-    if (score >= 0.72 or name_score >= 0.95) and not generic_name_only and not (lambda_agreement is not None and lambda_agreement < 0.65):
+    selected_has_strict_physics = (
+        not supplied_physics
+        or (candidate.material_id, normalize_material_name(candidate.name)) in strict_property_ids
+    )
+    if (
+        (score >= 0.72 or name_score >= 0.95)
+        and not generic_name_only
+        and selected_has_strict_physics
+        and not (lambda_agreement is not None and lambda_agreement < 0.65)
+    ):
         return MaterialDecision(source_name=source_name, status="catalog", candidate=candidate, confidence=round(score, 3), decision_mode="catalog_match", reason=f"Helyi katalógus-egyezés: {details}.")
+    if supplied_physics and not selected_has_strict_physics:
+        details += ", a kiválasztott sor nem egyezik minden megadott fizikai tulajdonságban"
     return MaterialDecision(source_name=source_name, status="review", candidate=candidate, confidence=round(score, 3), reason=f"Nem elég biztos katalógus-egyezés ({details}); ellenőrzés szükséges, új anyag nem készült.")
 
 

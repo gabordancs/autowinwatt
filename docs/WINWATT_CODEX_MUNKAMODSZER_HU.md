@@ -29,6 +29,11 @@ flowchart TD
 
 ## Kötelező futási invariánsok
 
+0. Mérnöki számításban hiányzó geometriai, anyag-, rendszer- vagy üzemeltetési
+   adatot nem szabad feltételezni. Kizárólag forrásból igazolt, determinisztikusan
+   levezethető vagy a mérnök által kifejezetten jóváhagyott adat használható.
+   A hiányzó adat nyitott tétel marad; egy számítás-egyenértékű helyettesítés
+   sem tüntethető fel mért vagy terv szerinti adatként.
 1. A WinWatt UI-művelet a repository `.venv-winwatt32` környezetében fut.
 2. A profilazonosító `winwatt_8c137b67c0a2214bb91aeae8`; az EXE vagy a
    rögzített erőforrások eltérése leállítja a végrehajtást.

@@ -14,7 +14,26 @@ from collections import defaultdict
 from pathlib import Path
 from .geometry import is_vertical_wall, wall_geometry_issues, xy_area
 
-PANEL_TYPES={"külső fal":("OutsideWall",0),"lábazati fal":("OutsideWall",0),"talajon fekvő padló":("FloorISO",3),"külső tető":("Roof1",5),"tető":("Roof1",5),"tetőablak":("OutsideWindow",10),"felülvilágító":("OutsideWindow",10),"külső ablak":("OutsideWindow",10),"külső ajtó/kapu":("OutsideDoor",12)}
+PANEL_TYPES={
+    "külső fal":("OutsideWall",0),
+    "lábazati fal":("OutsideWall",0),
+    "talajjal érintkező fal (ISO 13370)":("OutsideWall",0),
+    # Verified WinWatt 9.60 native readbacks store ground floors with the
+    # Roof1 panel record schema while room boundaries identify their actual
+    # thermal role with Type=3.  ``FloorISO`` was never observed in a native
+    # readback on this profile and changing only the XML class attribute of an
+    # OutsideWall record makes WinWatt parse incompatible child fields.
+    "talajon fekvő padló":("Roof1",3),
+    "padló (talajra fektetett ISO 13370)":("Roof1",3),
+    "külső tető":("Roof1",5),
+    "tető":("Roof1",5),
+    "tetőablak":("OutsideWindow",10),
+    "felülvilágító":("OutsideWindow",10),
+    "külső ablak":("OutsideWindow",10),
+    "ablak (külső, fa vagy PVC)":("OutsideWindow",10),
+    "külső ajtó/kapu":("OutsideDoor",12),
+    "ajtó (külső)":("OutsideDoor",12),
+}
 def _set(node:ET.Element,name:str,value:object)->None:
     """Set a direct XML field and collapse legacy duplicate field nodes.
 
@@ -135,6 +154,40 @@ def _building_specs(model: dict) -> list[dict]:
     return [{"name": project["name"], "address": project.get("address", "")}]
 
 
+def _boundary_gradient(boundary: dict) -> float:
+    if boundary.get("inclination_deg") is not None:
+        return float(boundary["inclination_deg"])
+    if str(boundary.get("inclination") or "").casefold() == "vertical":
+        return 90.0
+    return 90.0 if boundary.get("slope") == "függőleges" else (
+        45.0 if boundary.get("slope") == "45°" else 0.0
+    )
+
+
+def _boundary_u(boundary: dict) -> float:
+    direct = boundary.get("u_effective")
+    if direct is None:
+        direct = boundary.get("u")
+    if direct is None:
+        direct = boundary.get("u_layer")
+    if direct is not None:
+        return float(direct)
+    psi = boundary.get("linear_transmittance_w_mk")
+    if psi is None:
+        psi = boundary.get("psi")
+    if psi is not None and boundary.get("length_m") is not None and boundary.get("area_m2"):
+        return float(psi) * float(boundary["length_m"]) / float(boundary["area_m2"])
+    return 0.0
+
+
+def _native_integer(value: object, field: str) -> int:
+    """Serialize a native integer field without engineering-value rounding."""
+    number = float(value)
+    if not math.isfinite(number) or not number.is_integer():
+        raise ValueError(f"WinWatt native {field} must be an exact integer, got {value!r}")
+    return int(number)
+
+
 def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     model=json.loads(model_path.read_text(encoding="utf-8")); tree=ET.parse(template_path); root=tree.getroot()
     if model.get("project", {}).get("require_wall_xy"):
@@ -154,7 +207,15 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     for boundary in model.get("boundaries",[]): by_room[boundary["room"]].append(boundary)
     next_id=1
     for structure in model["structures"]:
-        kind=_kind(structure.get("type","külső fal")); base=next((item for item in panels if item.attrib.get("Type")==kind),panels[0]); panel=copy.deepcopy(base)
+        kind=_kind(structure.get("type","külső fal"))
+        base=next((item for item in panels if item.attrib.get("Type")==kind),None)
+        if base is None:
+            raise ValueError(
+                f"Template has no native {kind!r} panel record required by "
+                f"structure {structure['name']!r}; refusing to mutate an "
+                "incompatible panel schema"
+            )
+        panel=copy.deepcopy(base)
         panel.attrib["Type"]=kind; layered=bool(by_layer[structure["name"]]); panel.attrib["Layered"]="Yes" if layered else "No";_header(panel,structure["name"],"Certificate\\Structures\\",next_id)
         _set(panel,"Type",structure.get("winwatt_use",structure.get("type",""))); _set(panel,"k",structure.get("u_effective") or structure.get("u_layer") or 0)
         glass_ratio = _explicit_glass_ratio(structure)
@@ -169,6 +230,7 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     building_template=buildings[0]
     zone_template=copy.deepcopy(next(iter(building_template.findall("ETZone")), None))
     building_by_name: dict[str, tuple[ET.Element, int]] = {}
+    building_aliases: dict[str, str] = {}
     for building_spec in _building_specs(model):
         building_name = str(building_spec["name"])
         if building_name in building_by_name:
@@ -178,10 +240,18 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
         _header(building,building_name,"Certificate\\",next_id)
         _set(building,"Description",building_spec.get("address", model["project"].get("address", "")))
         building_by_name[building_name]=(building,next_id)
+        for reference in (building_name, str(building_spec.get("id") or "")):
+            if not reference:
+                continue
+            previous = building_aliases.get(reference)
+            if previous is not None and previous != building_name:
+                raise ValueError(f"Duplicate building reference: {reference}")
+            building_aliases[reference] = building_name
         root.append(building);next_id+=1
     room_ids=[]
     for room_spec in model["rooms"]:
-        building_name = str(room_spec.get("building") or next(iter(building_by_name)))
+        building_reference = str(room_spec.get("building") or next(iter(building_by_name)))
+        building_name = building_aliases.get(building_reference, building_reference)
         if building_name not in building_by_name:
             raise ValueError(f"Room {room_spec['name']!r} refers to unknown building {building_name!r}")
         _, building_id = building_by_name[building_name]
@@ -210,10 +280,24 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
             # Ground-contact source tables frequently supply psi [W/mK] and
             # perimeter rather than U. Preserve the certified transmission
             # loss in WinWatt's area*U field without inventing material data.
-            u=boundary.get("u_effective") or boundary.get("u")
-            if u is None and boundary.get("psi") is not None and boundary.get("length_m") is not None and area:
-                u=float(boundary["psi"])*float(boundary["length_m"])/area
-            _set(out,"U",u or 0);_set(out,"Compass",boundary.get("azimuth_deg",0));_set(out,"Gradient",90 if boundary.get("slope")=="függőleges" else 45 if boundary.get("slope")=="45°" else 0);room.append(out)
+            u=_boundary_u(boundary)
+            _set(out,"U",u)
+            _set(out,"Compass",_native_integer(boundary.get("azimuth_deg",0), "Compass"))
+            _set(out,"Gradient",_native_integer(_boundary_gradient(boundary), "Gradient"))
+            # Native room-boundary readbacks contain a second geometry block
+            # at the end of every record. Its Name is the catalogue structure
+            # reference, while the leading Name is the room-boundary label.
+            # WinWatt drops the reference (and, for roofs, its orientation)
+            # when the trailing block is absent.
+            for field, value in (
+                ("Name", boundary["structure"]), ("Type", code), ("x", x),
+                ("y", y), ("A", area), ("U", u),
+                ("Compass", _native_integer(boundary.get("azimuth_deg", 0), "Compass")),
+                ("Gradient", _native_integer(_boundary_gradient(boundary), "Gradient")),
+            ):
+                child = ET.SubElement(out, field)
+                child.text = str(value)
+            room.append(out)
         root.append(room);room_ids.append((room_spec, next_id, building_name));next_id+=1
     if zone_template is not None:
         for room_spec, room_id, building_name in room_ids:

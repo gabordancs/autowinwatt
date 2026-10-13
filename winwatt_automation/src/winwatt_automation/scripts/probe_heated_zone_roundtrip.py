@@ -17,6 +17,11 @@ def main() -> int:
     parser.add_argument("--profile", required=True, type=Path)
     parser.add_argument("--source", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument(
+        "--building-name",
+        default="Building graph explorer",
+        help="Exact building caption to open; defaults to the legacy sandbox fixture",
+    )
     parser.add_argument("--name", default="AUTO_HEATED_ZONE_ROUNDTRIP")
     parser.add_argument("--expected-area", type=float, help="Expected whole-building heated area in m2")
     parser.add_argument("--zone-kind", choices=("heated", "cooled"), default="heated")
@@ -45,6 +50,7 @@ def main() -> int:
         "source": str(source),
         "source_sha256": sha256(source),
         "project": str(project),
+        "building_name": args.building_name,
         "zone_name": args.name,
         "zone_kind": args.zone_kind,
         "status": "running",
@@ -116,7 +122,9 @@ def main() -> int:
 
     checkpoint()
     try:
-        editor = open_sandbox_building(project_path=str(project))
+        editor = open_sandbox_building(
+            project_path=str(project), building_name=args.building_name
+        )
         process_id = int(editor.process_id())
         select_zones_tab(editor)
         report["before"] = visible_rows(editor)
@@ -156,7 +164,9 @@ def main() -> int:
 
         from winwatt_automation.runtime_mapping.room_deep_explorer import open_sandbox_buildings
         open_sandbox_buildings(project_path=str(project))
-        editor = open_sandbox_building(project_path=str(project))
+        editor = open_sandbox_building(
+            project_path=str(project), building_name=args.building_name
+        )
         select_zones_tab(editor)
         report["after_reopen"] = visible_rows(editor)
         reopened_areas = positive_areas(report["after_reopen"])

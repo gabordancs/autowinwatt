@@ -62,7 +62,7 @@ def test_airing_and_cooling_adapters_bind_system_kind(tmp_path: Path, kind: str)
     assert arguments[-4:] == ["--system", kind, "--name", "Rendszer"]
 
 
-def test_calculation_result_adapter_needs_no_semantic_parameters(tmp_path: Path) -> None:
+def test_calculation_result_adapter_accepts_optional_building_name(tmp_path: Path) -> None:
     tool = CertificationToolRegistry.load().require_executable(
         "winwatt.building.calculation.result_roundtrip", profile_id=PROFILE
     )
@@ -75,6 +75,11 @@ def test_calculation_result_adapter_needs_no_semantic_parameters(tmp_path: Path)
         "--source", str(tmp_path / "source.wwp"),
         "--output", str(tmp_path / "out"),
     ]
+    named_arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={"building_name": "Üdülő sor 26."},
+    )
+    assert named_arguments[-2:] == ["--building-name", "Üdülő sor 26."]
 
 
 def test_native_project_import_adapter_requires_xml_and_zone(tmp_path: Path) -> None:
@@ -157,6 +162,23 @@ def test_envelope_tool_adapters_use_semantic_parameters(tmp_path: Path) -> None:
         parameters={"room_name": "Szoba", "structure_reference": "Külső fal"}, **common,
     )[-4:] == [
         "--room-name", "Szoba", "--structure-reference", "Külső fal",
+    ]
+
+    zone = registry.require_executable(
+        "winwatt.building.zone.heated.roundtrip", profile_id=PROFILE
+    )
+    assert build_handler_arguments(
+        tool=zone,
+        parameters={
+            "building_name": "Üdülő sor 26.",
+            "name": "F1",
+            "expected_area": "32.8",
+        },
+        **common,
+    )[-6:] == [
+        "--building-name", "Üdülő sor 26.",
+        "--name", "F1",
+        "--expected-area", "32.8",
     ]
 
 

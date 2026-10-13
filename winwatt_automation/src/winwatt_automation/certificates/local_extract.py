@@ -23,9 +23,14 @@ def source_digest(pdf_path: Path) -> str:
 def extract_known_values(pages: list[str]) -> list[ExtractedValue]:
     patterns={
         "heated_area_m2":r"fűtött\s+(?:nettó\s+)?alapterület\s*[:=]?\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[²2]",
+        "useful_floor_area_m2":r"hasznos\s+alapterület\s*[:=]?\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[²2]",
         "heated_volume_m3":r"V\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[³3]\s*\(Fűtött\s+épület",
         "a_v":r"A\s*/\s*V\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[²2]/m[³3]",
+        "area_volume_ratio_m2_m3":r"felület-térfogat\s+aránya\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*m[²2]/m[³3]",
         "transmission_wk":r"ΣAU\s*\+\s*ΣlΨ\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*W/K",
+        "summaries_energy_rating_kwh_m2a":r"összesített\s+energetikai\s+jellemző\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*kWh/m[²2]a",
+        "co2_kg_m2a":r"fajlagos\s+sz[ée]n(?:-)?dioxid\s+kibocsátás\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*kg/m[²2]a",
+        "heat_loss_factor_w_m3k":r"fajlagos\s+hőveszteségtényező\s*:\s*([0-9][0-9 .]*[,.][0-9]+)\s*W/m[³3]K",
     }
     found=[]
     for index,page in enumerate(pages,1):
@@ -50,7 +55,13 @@ def candidate_material_lines(pages: list[str]) -> list[str]:
                 continue
             # A leading number or an assignment label indicates a measured
             # geometric dimension rather than a catalogue/material caption.
-            if re.match(r"^[0-9]", line) or "=" in line:
+            if (
+                re.match(r"^[0-9]", line)
+                or "=" in line
+                or re.match(r"^[xy]\s+méret\s*:", line, re.I)
+                or line.startswith("[")
+                or re.search(r"\bkWh/m|\bkg/m|\bW/m", line, re.I)
+            ):
                 continue
             lines.append(line)
     return list(dict.fromkeys(lines))

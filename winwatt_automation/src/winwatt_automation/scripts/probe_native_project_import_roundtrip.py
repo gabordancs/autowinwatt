@@ -80,6 +80,16 @@ def semantic_zone_equal(expected: dict, actual: dict, *, numeric_tolerance: floa
     return equal(semantic_zone_snapshot(expected), semantic_zone_snapshot(actual))
 
 
+def zone_references_resolved(expected: dict, actual: dict) -> bool:
+    """Require every expected zone member to resolve; zero-to-zero is not proof."""
+    expected_count = len(expected["room_ids"])
+    return (
+        expected_count > 0
+        and len(actual["room_ids"]) == expected_count
+        and len(actual["rooms"]) == expected_count
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--profile", required=True, type=Path)
@@ -172,7 +182,7 @@ def main() -> int:
             "import_evidence": import_evidence.model_dump(mode="json"),
             "export_evidence": export_evidence.model_dump(mode="json"),
             "expected_native_xml": str(expected_native_xml),
-            "zone_references_resolved": len(actual["rooms"]) == len(actual["room_ids"]),
+            "zone_references_resolved": zone_references_resolved(expected, actual),
             "zone_roundtrip_equal": semantic_equal,
             "expected_zone": expected, "actual_zone": actual,
         })
