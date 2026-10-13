@@ -76,10 +76,22 @@ def test_active_mapper_is_never_scheduled_beside(tmp_path: Path) -> None:
         }, current_job="et_document_deep_mapping", current_pid=1234,
     )
 
-    plan = build_plan(campaigns_root=tmp_path, profile_id=PROFILE)
+    plan = build_plan(campaigns_root=tmp_path, profile_id=PROFILE, pid_exists=lambda _: True)
 
     assert plan["recommendation"]["action"] == "observe_active"
     assert plan["recommendation"]["jobs"] == ["et_document_deep_mapping"]
+
+
+def test_stale_running_pid_is_not_treated_as_active(tmp_path: Path) -> None:
+    _campaign(
+        tmp_path, "stale", status="running", jobs={
+            "et_document_deep_mapping": (3, 65, 3, False),
+        }, current_job="et_document_deep_mapping", current_pid=1234,
+    )
+
+    plan = build_plan(campaigns_root=tmp_path, profile_id=PROFILE, pid_exists=lambda _: False)
+
+    assert plan["recommendation"]["action"] == "resume_missing"
 
 
 def test_partial_campaign_is_resumable_for_missing_jobs(tmp_path: Path) -> None:

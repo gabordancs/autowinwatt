@@ -9,6 +9,8 @@ from winwatt_automation.scripts.certification_mapping_executor import (
     latest_resumable_campaign,
     load_report,
     recover_existing_passed_attempt,
+    resolve_recorded_path,
+    ensure_job_project,
 )
 
 
@@ -22,6 +24,47 @@ def test_atomic_write_json_replaces_complete_document(tmp_path: Path):
         "number": 2,
     }
     assert not target.with_suffix(".json.tmp").exists()
+
+
+def test_resolve_recorded_path_rebases_old_checkout(monkeypatch, tmp_path: Path):
+    import winwatt_automation.scripts.certification_mapping_executor as executor
+
+    repo = tmp_path / "autowinwatt"
+    project_root = repo / "winwatt_automation"
+    source = project_root / "data" / "prepared.wwp"
+    source.parent.mkdir(parents=True)
+    source.write_bytes(b"same-source")
+    monkeypatch.setattr(executor, "PROJECT_ROOT", project_root)
+
+    resolved, old = resolve_recorded_path(
+        r"C:\old\checkout\autowinwatt\winwatt_automation\data\prepared.wwp",
+        expected_sha256=executor.sha256(source),
+    )
+
+    assert resolved == source.resolve()
+    assert old is not None
+
+
+def test_existing_sandbox_accepts_same_hash_after_source_rebase(tmp_path: Path):
+    old_source = tmp_path / "old" / "prepared.wwp"
+    new_source = tmp_path / "new" / "prepared.wwp"
+    old_source.parent.mkdir()
+    new_source.parent.mkdir()
+    old_source.write_bytes(b"same-source")
+    new_source.write_bytes(b"same-source")
+    job_root = tmp_path / "campaign" / "jobs" / "mapping"
+    sandbox = job_root / "full_authorized_sandbox" / "prepared.wwp"
+    sandbox.parent.mkdir(parents=True)
+    sandbox.write_bytes(b"sandbox")
+    (job_root / "sandbox_manifest.json").write_text(json.dumps({
+        "source": str(old_source), "source_sha256": __import__("hashlib").sha256(b"same-source").hexdigest(),
+        "sandbox": str(sandbox),
+    }), encoding="utf-8")
+
+    assert ensure_job_project(new_source, job_root) == sandbox
+    manifest = json.loads((job_root / "sandbox_manifest.json").read_text(encoding="utf-8"))
+    assert manifest["source"] == str(new_source)
+    assert manifest["source_rebased_from"] == str(old_source)
 
 
 def test_latest_resumable_campaign_ignores_completed(tmp_path: Path):
@@ -130,6 +173,9 @@ def test_building_background_uses_durable_campaign_copy(tmp_path: Path):
     assert sandbox.read_bytes() == b"source"
     assert str(sandbox) in first
     assert "--resume" not in first
+    graph = root / "graph"
+    graph.mkdir()
+    (graph / "graph.checkpoint.json").write_text("{}", encoding="utf-8")
     second = background.arguments(root, 2, 300)
     assert "--resume" in second
     assert "--retry-failures" not in second
@@ -149,7 +195,11 @@ def test_building_failure_retry_is_explicit(tmp_path: Path):
         retry_background_failures=True,
     )
 
-    arguments = jobs[-1].arguments(tmp_path / "campaign" / "jobs" / "recursive_building_mapping", 2, 300)
+    root = tmp_path / "campaign" / "jobs" / "recursive_building_mapping"
+    graph = root / "graph"
+    graph.mkdir(parents=True)
+    (graph / "graph.checkpoint.json").write_text("{}", encoding="utf-8")
+    arguments = jobs[-1].arguments(root, 2, 300)
 
     assert "--resume" in arguments
     assert "--retry-failures" in arguments

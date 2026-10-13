@@ -59,6 +59,24 @@ def atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
     os.replace(temporary, path)
 
 
+def resolve_recorded_path(raw_path: str, *, expected_sha256: str | None = None) -> tuple[Path, str | None]:
+    """Resolve a campaign path, rebasing an older checkout by repository suffix."""
+    recorded = Path(raw_path)
+    if recorded.is_file():
+        return recorded.resolve(), None
+    parts = recorded.parts
+    indexes = [index for index, part in enumerate(parts) if part.casefold() == "autowinwatt"]
+    for index in reversed(indexes):
+        candidate = PROJECT_ROOT.parent.joinpath(*parts[index + 1 :])
+        if not candidate.is_file():
+            continue
+        candidate = candidate.resolve()
+        if expected_sha256 is not None and sha256(candidate) != expected_sha256:
+            continue
+        return candidate, str(recorded)
+    raise FileNotFoundError(f"Recorded campaign path is unavailable: {recorded}")
+
+
 def discover_default_project() -> Path:
     roots = PROJECT_ROOT / "data" / "runtime_maps" / "full_authorized_sandbox"
     prepared = sorted(roots.glob("**/prepared.wwp"), key=lambda item: item.stat().st_mtime, reverse=True)
@@ -123,8 +141,13 @@ def ensure_job_project(source: Path, job_root: Path) -> Path:
         if not manifest_path.is_file():
             raise RuntimeError(f"Existing deep-mapping sandbox has no manifest: {target}")
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        if manifest.get("source") != str(source) or manifest.get("source_sha256") != sha256(source):
+        if manifest.get("source_sha256") != sha256(source):
             raise RuntimeError("Deep-mapping sandbox belongs to a different source revision")
+        if manifest.get("source") != str(source):
+            manifest["source_rebased_from"] = manifest.get("source")
+            manifest["source"] = str(source)
+            manifest["source_rebased_at"] = utc_now()
+            atomic_write_json(manifest_path, manifest)
         return target
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(source, target)
@@ -465,8 +488,16 @@ def main() -> int:
         if not state_path.is_file():
             parser.error(f"Resume state does not exist: {state_path}")
         state = json.loads(state_path.read_text(encoding="utf-8"))
-        source = Path(state["source_project"]).resolve(strict=True)
-        profile_path = Path(state["profile_path"]).resolve(strict=True)
+        source, source_rebased_from = resolve_recorded_path(
+            state["source_project"], expected_sha256=state.get("source_sha256")
+        )
+        profile_path, profile_rebased_from = resolve_recorded_path(state["profile_path"])
+        if source_rebased_from:
+            state["source_project"] = str(source)
+            state["source_path_rebased_from"] = source_rebased_from
+        if profile_rebased_from:
+            state["profile_path"] = str(profile_path)
+            state["profile_path_rebased_from"] = profile_rebased_from
     else:
         source = (args.project.resolve(strict=True) if args.project else discover_default_project())
         profile_path = args.profile.resolve(strict=True)

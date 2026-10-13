@@ -4,9 +4,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -41,6 +42,27 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValueError(f"JSON object expected: {path}")
     return value
+
+
+def _pid_exists(pid: int) -> bool:
+    if pid <= 0:
+        return False
+    if os.name == "nt":
+        import ctypes
+
+        process_query_limited_information = 0x1000
+        handle = ctypes.windll.kernel32.OpenProcess(
+            process_query_limited_information, False, pid
+        )
+        if not handle:
+            return False
+        ctypes.windll.kernel32.CloseHandle(handle)
+        return True
+    try:
+        os.kill(pid, 0)
+    except (OSError, ValueError):
+        return False
+    return True
 
 
 def _graph_progress(campaign: Path, job: str) -> dict[str, Any]:
@@ -109,7 +131,10 @@ def _campaign_rows(root: Path, profile_id: str) -> tuple[list[dict[str, Any]], l
     return rows, warnings
 
 
-def build_plan(*, campaigns_root: Path, profile_id: str) -> dict[str, Any]:
+def build_plan(
+    *, campaigns_root: Path, profile_id: str,
+    pid_exists: Callable[[int], bool] = _pid_exists,
+) -> dict[str, Any]:
     campaigns_root = campaigns_root.resolve()
     campaigns, warnings = _campaign_rows(campaigns_root, profile_id)
     coverage: dict[str, Any] = {}
@@ -145,7 +170,9 @@ def build_plan(*, campaigns_root: Path, profile_id: str) -> dict[str, Any]:
 
     active = [
         campaign for campaign in campaigns
-        if campaign["status"] in ACTIVE_STATUSES and campaign.get("current_pid")
+        if campaign["status"] in ACTIVE_STATUSES
+        and campaign.get("current_pid")
+        and pid_exists(int(campaign["current_pid"]))
     ]
     active.sort(key=lambda item: str(item.get("heartbeat_at") or ""), reverse=True)
     missing = [job for job in CERTIFICATION_JOBS if coverage[job]["coverage"] == "missing"]
