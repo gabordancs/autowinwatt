@@ -212,6 +212,24 @@ def test_campaign_summary_adapter_is_local_file_tool(tmp_path: Path) -> None:
     ]
 
 
+def test_autonomous_mapping_plan_adapter_is_local_file_tool(tmp_path: Path) -> None:
+    tool = CertificationToolRegistry.load().require_executable(
+        "winwatt.mapping.autonomous.plan", profile_id=PROFILE
+    )
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=None,
+        output=tmp_path / "out", parameters={
+            "campaigns_root": str(tmp_path / "campaigns"),
+            "profile_id": PROFILE,
+        },
+    )
+    assert arguments == [
+        "--output", str(tmp_path / "out"),
+        "--campaigns-root", str(tmp_path / "campaigns"),
+        "--profile-id", PROFILE,
+    ]
+
+
 def test_webwatt_intake_adapter_uses_local_input(tmp_path: Path) -> None:
     tool = CertificationToolRegistry.load().require_executable(
         "webwatt.certificate.intake.local", profile_id=PROFILE

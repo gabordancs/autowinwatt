@@ -406,6 +406,14 @@ def main() -> int:
     parser.add_argument("--campaigns-root", type=Path, default=DEFAULT_CAMPAIGNS)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--resume-latest", action="store_true")
+    parser.add_argument(
+        "--job", action="append", dest="selected_jobs", default=[],
+        help="Run only the named mapping job; repeat for multiple jobs.",
+    )
+    parser.add_argument(
+        "--force-selected-jobs", action="store_true",
+        help="When resuming, reopen selected passed jobs for explicit gap retries.",
+    )
     parser.add_argument("--hours", type=float)
     parser.add_argument(
         "--until-complete", action="store_true",
@@ -476,6 +484,15 @@ def main() -> int:
     )
     if args.background_only:
         jobs = [job for job in jobs if not job.bounded]
+    if args.selected_jobs:
+        available = {job.name for job in jobs}
+        unknown = sorted(set(args.selected_jobs).difference(available))
+        if unknown:
+            parser.error(f"unknown or out-of-scope --job values: {unknown}")
+        selected = set(args.selected_jobs)
+        jobs = [job for job in jobs if job.name in selected]
+    if not jobs:
+        parser.error("no mapping jobs selected")
     deadline = None if args.until_complete else datetime.now(timezone.utc) + timedelta(hours=effective_hours)
     deadline_monotonic = None if args.until_complete else time.monotonic() + effective_hours * 3600
     campaign.mkdir(parents=True, exist_ok=True)
@@ -494,6 +511,9 @@ def main() -> int:
             recover_existing_passed_attempt(
                 job=job, job_root=campaign / "jobs" / job.name, record=record
             )
+            if args.force_selected_jobs and job.name in set(args.selected_jobs):
+                record["status"] = "pending"
+                record["forced_gap_retry_at"] = utc_now()
     atomic_write_json(state_path, state)
     compact_event(
         "campaign_started", campaign=str(campaign), source=str(source),
@@ -597,11 +617,16 @@ def main() -> int:
             state["status"] = "blocked_desktop"
         elif state.get("status") not in {"interrupted", "source_changed"}:
             passed = all(state["jobs"].get(job.name, {}).get("status") == "passed" for job in jobs)
-            state["status"] = "completed" if passed else (
+            remaining_unselected = any(
+                name not in {job.name for job in jobs}
+                and record.get("status") not in {"passed", "skipped", "reused"}
+                for name, record in state.get("jobs", {}).items()
+            )
+            state["status"] = "partial" if passed and remaining_unselected else ("completed" if passed else (
                 "deadline_reached"
                 if deadline_monotonic is not None and time.monotonic() >= deadline_monotonic
                 else "completed_with_errors"
-            )
+            ))
         atomic_write_json(state_path, state)
         compact_event("campaign_finished", campaign=str(campaign), status=state["status"])
     return exit_code

@@ -445,6 +445,48 @@
       ]
     },
     {
+      "tool_id": "winwatt.mapping.autonomous.plan",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Build an AI-free, cross-campaign WinWatt mapping coverage index and choose the next missing or failed certification mapping work without opening WinWatt.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.plan_autonomous_mapping",
+      "safety_scope": "local_files",
+      "mutates_project": false,
+      "input_contract": {
+        "profile": "recorded WinWatt version-profile JSON used for provenance",
+        "output": "new empty plan directory",
+        "campaigns_root": "optional mapping campaign root; defaults to the repository certification_mapping store",
+        "profile_id": "optional exact WinWatt profile identity"
+      },
+      "output_contract": {
+        "report": "autonomous_mapping_plan.json"
+      },
+      "preconditions": [
+        "campaign states and graph progress files are locally readable",
+        "the planner does not start or control WinWatt"
+      ],
+      "postconditions": [
+        "all matching campaigns are indexed by job and profile",
+        "complete graphs are reused instead of blindly scheduled again",
+        "missing jobs and recorded failed paths are ranked separately",
+        "an active mapper results in observe_active and never a second UI worker",
+        "report.llm_used == false"
+      ],
+      "retry_policy": "rerun into a fresh output directory whenever campaign state changes",
+      "idempotency": "the coverage and recommendation are deterministic for unchanged campaign files apart from timestamps and output paths",
+      "evidence": [
+        {
+          "kind": "validation",
+          "path": "tests/test_autonomous_mapping_planner.py",
+          "deterministic": true,
+          "assertion": "the planner reuses completed fűtés/HMV graphs, ranks missing work, selects failed-path retries, and refuses to schedule beside an active mapper"
+        }
+      ]
+    },
+    {
       "tool_id": "webwatt.certificate.intake.local",
       "version": "1.0.0",
       "status": "verified",

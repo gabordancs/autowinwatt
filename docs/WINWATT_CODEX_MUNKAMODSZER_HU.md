@@ -66,7 +66,7 @@ flowchart TD
 A kanonikus regiszter:
 `winwatt_automation/data/capabilities/certification_tools.json`.
 
-Jelenleg tíz tool `verified`:
+A regiszter fontosabb `verified` tooljai:
 
 | Tool ID | Feladat | Kötelező saját paraméter |
 | --- | --- | --- |
@@ -79,6 +79,7 @@ Jelenleg tíz tool `verified`:
 | `winwatt.building.system.heating.create_roundtrip` | Minimális elektromos fűtés | `name`, `expected_zone` |
 | `winwatt.certificate.preflight` | Offline kiadási kapu | `model`; opcionálisan `readback_xml`, `catalog_xml`, `scope`, `tolerance` |
 | `winwatt.mapping.campaign.summarize` | Kampány- és gráfösszesítő | `campaign` |
+| `winwatt.mapping.autonomous.plan` | Kampányközi coverage- és gap-terv | opcionálisan `campaigns_root`, `profile_id` |
 | `webwatt.certificate.intake.local` | Helyi PDF/XML előfeldolgozás | `input_file`; PDF-nél `catalog_xml` |
 
 A stabil végrehajtó:
@@ -190,6 +191,18 @@ Az állapot elsődleges forrása a kampány `campaign_state.json` fájlja. A
 `llm_used` mezőkből kell megállapítani, hogy fut, vár, határidőhöz ért vagy
 befejeződött. `deadline_reached` után a checkpoint folytatható; ez önmagában
 nem hiba. A már sikeres jobokat a végrehajtó kihagyja.
+
+Új éjszakai futásnál előnyben részesítendő a hiányvezérelt wrapper:
+
+```powershell
+.\Start-WinWattAutonomousMapping.ps1 -Hours 8
+```
+
+Az offline `winwatt.mapping.autonomous.plan` tool az összes azonos
+verzióprofilú kampányt együtt értékeli. Azonos job teljes gráfját nem tanulja
+újra vakon másik kampányban; a hiányzó jobokat, majd a rögzített hibautakat
+ütemezi. Ettől a mapping-evidence státusza nem lesz `verified`: ehhez továbbra
+is külön save/reopen/readback kísérlet kell.
 
 A `winwatt.mapping.campaign.summarize` tool élő kampányon is biztonságosan
 futtatható. Ellenőrzi a forrás hashét, összesíti a jobokat és a gráfprogresszt,

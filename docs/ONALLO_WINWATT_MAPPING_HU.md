@@ -31,6 +31,32 @@ A repository gyökerében dupla kattintással indítható:
 start_winwatt_mapping.cmd
 ```
 
+## Autonóm, hiányvezérelt indítás
+
+A kampányközi coverage-indexet használó belépési pont:
+
+```powershell
+.\Start-WinWattAutonomousMapping.ps1 -Hours 8
+```
+
+Ez előbb AI és WinWatt nélkül beolvassa az összes azonos verzióprofilú
+`campaign_state.json` és `progress.json` fájlt. A teljes, üres várólistájú
+gráfokat újrahasznosítható megfigyelésként kezeli, a hiányzó jobokat a
+tanúsítási sorrendben ütemezi, teljes lefedettségnél pedig csak a korábban
+hibás útvonalakat nyitja újra. Ha már fut mapper, `observe_active` tervet ír és
+nem indít második WinWatt UI-workert.
+
+Csak a gépi terv elkészítése:
+
+```powershell
+.\Start-WinWattAutonomousMapping.ps1 -PlanOnly
+```
+
+A terv az
+`winwatt_automation/data/runtime_maps/autonomous_mapping/plans/` könyvtárba
+kerül. A `complete` mapping-gráf továbbra is csak `observed` bizonyíték; nem
+helyettesíti a mentés–újranyitásos capability-ellenőrzést.
+
 Alapértelmezésben hat órán át dolgozik. A legutóbbi helyiséges `prepared.wwp`
 projektet választja, ellenőrzi a rögzített WinWatt-verzióprofilt, majd sorban:
 
@@ -90,6 +116,11 @@ A korábbi hibák célzott újrapróbálása külön kérhető:
 Ezt a normál várólista elfogyása után érdemes használni. Az új hibabejegyzések
 az exception típusát és `repr` értékét is tárolják, ezért az üres pywinauto
 hibaüzenetek is diagnosztizálhatók.
+
+Az autonóm indító ehhez job-szintű szűrést használ. A belső végrehajtó
+`--job` kapcsolója többször megadható; a `--force-selected-jobs` egy már
+lezárt jobot kizárólag explicit gap-retry céljából nyit újra. Ezeket kézzel
+általában nem kell megadni, mert a tervből a PowerShell wrapper állítja össze.
 
 Az új gráfverzió az alternatív útvonalon újra elért állapotot a korábban
 rögzített kanonikus állapotazonosítóhoz köti. A kampányösszesítő megmutatja a

@@ -84,6 +84,10 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
     "winwatt.mapping.campaign.summarize": {
         "campaign": ("--campaign", Path, True),
     },
+    "winwatt.mapping.autonomous.plan": {
+        "campaigns_root": ("--campaigns-root", Path, False),
+        "profile_id": ("--profile-id", str, False),
+    },
     "webwatt.certificate.intake.local": {
         "input_file": ("--input-file", Path, True),
         "catalog_xml": ("--catalog-xml", Path, False),

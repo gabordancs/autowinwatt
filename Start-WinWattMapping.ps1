@@ -1,6 +1,9 @@
 param(
     [double]$Hours = 6,
     [string]$Project = "",
+    [string]$CampaignDir = "",
+    [string[]]$OnlyJob = @(),
+    [switch]$ForceSelectedJobs,
     [switch]$ResumeLatest,
     [switch]$UntilComplete,
     [switch]$SkipBackground,
@@ -10,6 +13,9 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+if ($CampaignDir -and $ResumeLatest) {
+    throw "A -CampaignDir és a -ResumeLatest együtt nem használható."
+}
 $repoRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $automationRoot = Join-Path $repoRoot "winwatt_automation"
 $python = Join-Path $repoRoot ".venv-winwatt32\Scripts\python.exe"
@@ -30,7 +36,10 @@ else {
     $arguments += @("--hours", $Hours.ToString([Globalization.CultureInfo]::InvariantCulture))
 }
 if ($Project) { $arguments += @("--project", $Project) }
+if ($CampaignDir) { $arguments += @("--campaign-dir", $CampaignDir, "--resume") }
 if ($ResumeLatest) { $arguments += "--resume-latest" }
+foreach ($job in $OnlyJob) { $arguments += @("--job", $job) }
+if ($ForceSelectedJobs) { $arguments += "--force-selected-jobs" }
 if ($SkipBackground) { $arguments += "--skip-background" }
 if ($RetryFailures) { $arguments += "--retry-background-failures" }
 $arguments += @("--background-scope", $Scope)
