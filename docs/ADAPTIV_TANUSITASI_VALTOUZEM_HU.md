@@ -105,18 +105,19 @@ megállt:
 - a `pause.request` megmaradt, ezért a régi általános kampány véletlenül sem
   folytatódik automatikusan.
 
-A 10479210 pilot első aktív célzott gapje a számítási dokumentum RTF/PDF
-mentése. A korábbi próbán a save dialog megnyílt és megkapta a célútvonalat,
-de nem jött létre fájl. A javított worker közvetlenül a `Mentés` gombot
-aktiválja, ellenőrzi a visszaolvasott útvonalat, és sikertelenségnél minden
-WinWatt felsőablakot és képet rögzít a következő célzott mappinghez.
+A 10479210 pilot első célzott gapje, a számítási dokumentum PDF-mentése
+2026-10-14-én lezárult. A hiba oka a Windows automatikus
+alapértelmezett-nyomtató kezelése volt: a
+`LegacyDefaultPrinterMode=0` beállítás WinWatt indulásakor visszaváltotta az
+alkalmazást a legutóbb használt Xerox WSD nyomtatóra. A worker most a futás
+idejére `LegacyDefaultPrinterMode=1` értéket állít, az Adobe PDF-et teszi
+alapértelmezetté, közvetlenül a `PDF fájlba...` műveletet hajtja végre, majd
+mindkét Windows-beállítást visszaállítja.
 
-Az első adaptív kör bizonyította, hogy a mentési párbeszéd után a WinWatt
-`Printer selected is not valid.` hibát ad, majd a nyomtatókapcsolatra vár. A
-Windows alapértelmezett nyomtatójának ideiglenes Adobe PDF-re állítása nem
-írja felül a dokumentumoldalon megmaradó `Xerox(R) B225 MFP` választást. A
-`Beállít...` gomb ezen a gépen nem adott automatizálható nyomtatóválasztó
-modalt. Emiatt a gap bizonyítékszintje `observed`, állapota
-`verification_required`; a PDF-export még nem verified capability. A következő
-célzott mapping kizárólag a WinWatt belső nyomtató-hozzárendelésének forrását
-és módosítását vizsgálhatja.
+Két egymást követő, üres kimeneti könyvtárban végzett futás `passed` lett. A
+két 9 oldalas PDF bájtszinten azonos, SHA-256 lenyomatuk
+`eaed66fb8cc255ea946b422dad0019212e212d18d151772304120fdeb4474a04`.
+Mindkét riport igazolja a változatlan forrás- és projektmásolatot, a bezárt
+WinWatt-munkamenetet, az eredeti Xerox alapértelmezés és a
+`LegacyDefaultPrinterMode=0` visszaállítását. A gap eredménye `verified`, az
+adaptív ciklus ismét `reconstructing` állapotban van.

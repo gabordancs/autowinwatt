@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import time
 import traceback
+import winreg
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -100,6 +101,9 @@ def main() -> int:
     checkpoint()
     process: subprocess.Popen[bytes] | None = None
     original_printer: str | None = None
+    original_legacy_default_mode: int | None = None
+    legacy_default_mode_existed = False
+    legacy_default_mode_touched = False
     try:
         from pywinauto import Desktop, keyboard
         from pywinauto.application import Application
@@ -118,6 +122,23 @@ def main() -> int:
         available_printers = {item[2] for item in win32print.EnumPrinters(2)}
         if render_printer not in available_printers:
             raise RuntimeError(f"Requested render printer is not installed: {render_printer!r}")
+        windows_key_path = r"Software\Microsoft\Windows NT\CurrentVersion\Windows"
+        with winreg.CreateKeyEx(
+            winreg.HKEY_CURRENT_USER, windows_key_path, 0, winreg.KEY_READ | winreg.KEY_WRITE
+        ) as windows_key:
+            try:
+                original_legacy_default_mode = int(
+                    winreg.QueryValueEx(windows_key, "LegacyDefaultPrinterMode")[0]
+                )
+                legacy_default_mode_existed = True
+            except FileNotFoundError:
+                original_legacy_default_mode = None
+            # Prevent Windows' "manage my default printer" feature from
+            # switching back to the last-used WSD device when WinWatt opens.
+            winreg.SetValueEx(
+                windows_key, "LegacyDefaultPrinterMode", 0, winreg.REG_DWORD, 1
+            )
+            legacy_default_mode_touched = True
         original_printer = win32print.GetDefaultPrinter()
         win32print.SetDefaultPrinter(render_printer)
         # Notify legacy applications that still read the win.ini-compatible
@@ -126,7 +147,12 @@ def main() -> int:
             0xFFFF, 0x001A, 0, "windows", 0x0002, 5000, None
         )
         time.sleep(1.0)
-        report["printer"] = {"original": original_printer, "render": render_printer}
+        report["printer"] = {
+            "original": original_printer,
+            "render": render_printer,
+            "legacy_default_mode_original": original_legacy_default_mode,
+            "legacy_default_mode_during_run": 1,
+        }
         process = subprocess.Popen([profile["exe_path"], str(project)])
         deadline = time.monotonic() + 75.0
         main = None
@@ -224,10 +250,10 @@ def main() -> int:
             ]
             if len(setup_buttons) != 1:
                 raise RuntimeError(f"Expected one enabled printer setup button, found {len(setup_buttons)}")
-            if not ctypes.windll.user32.PostMessageW(
-                int(setup_buttons[0].handle), 0x00F5, 0, 0
-            ):
-                raise ctypes.WinError()
+            # This control ignores BM_CLICK in the ET document form on the
+            # profiled build.  A real input click is required to dispatch the
+            # printer-driver setup window.
+            setup_buttons[0].click_input()
             deadline = time.monotonic() + 30.0
             setup = None
             while time.monotonic() < deadline:
@@ -444,6 +470,28 @@ def main() -> int:
                 report.setdefault("printer", {})["restored"] = win32print.GetDefaultPrinter() == original_printer
             except Exception as printer_exc:
                 report.setdefault("printer", {})["restore_error"] = repr(printer_exc)
+        if legacy_default_mode_touched:
+            try:
+                windows_key_path = r"Software\Microsoft\Windows NT\CurrentVersion\Windows"
+                with winreg.CreateKeyEx(
+                    winreg.HKEY_CURRENT_USER, windows_key_path, 0,
+                    winreg.KEY_READ | winreg.KEY_WRITE,
+                ) as windows_key:
+                    if legacy_default_mode_existed:
+                        winreg.SetValueEx(
+                            windows_key, "LegacyDefaultPrinterMode", 0,
+                            winreg.REG_DWORD, int(original_legacy_default_mode),
+                        )
+                    else:
+                        try:
+                            winreg.DeleteValue(windows_key, "LegacyDefaultPrinterMode")
+                        except FileNotFoundError:
+                            pass
+                report.setdefault("printer", {})["legacy_default_mode_restored"] = True
+            except Exception as legacy_mode_exc:
+                report.setdefault("printer", {})["legacy_default_mode_restore_error"] = repr(
+                    legacy_mode_exc
+                )
         report["source_unchanged"] = sha256(source) == source_hash
         report["finished_at"] = datetime.now(timezone.utc).isoformat()
         checkpoint()

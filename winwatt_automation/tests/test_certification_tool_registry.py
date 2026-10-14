@@ -26,6 +26,7 @@ def test_default_registry_exposes_only_roundtrip_verified_tools_to_agent() -> No
         "winwatt.building.system.airing.create_roundtrip",
         "winwatt.building.system.cooling.create_roundtrip",
         "winwatt.building.calculation.result_roundtrip",
+        "winwatt.certificate.calculation_pdf.export",
         "winwatt.certificate.et_xml.export",
         "winwatt.certificate.preflight",
         "winwatt.mapping.campaign.summarize",

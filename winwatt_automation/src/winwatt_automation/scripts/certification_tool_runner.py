@@ -67,6 +67,10 @@ PARAMETER_FLAGS: dict[str, dict[str, tuple[str, type, bool]]] = {
     "winwatt.building.calculation.result_roundtrip": {
         "building_name": ("--building-name", str, False),
     },
+    "winwatt.certificate.calculation_pdf.export": {
+        "building_name": ("--building-name", str, True),
+        "printer": ("--printer", str, False),
+    },
     "winwatt.project.native_xml.import_roundtrip": {
         "native_xml": ("--native-xml", Path, True),
         "zone": ("--zone", str, True),

@@ -10,10 +10,10 @@ forrásban megnevezett gázkonvektoros fűtés és a villanybojler helyi WinWatt
 projektbe került. A projekt újraszámítása, mentése, teljes bezárása és
 újranyitása sikeres.
 
-Ez még nem kiadási csomag. A WinWatt számítási PDF külön exportja az első
-próbán nem hozott létre RTF fájlt, a tanúsítási XML exportját pedig addig nem
-szabad véglegesnek tekinteni, amíg a tényleges adminisztratív adatok és a
-`full_certificate` kapu nincsenek igazolva.
+Ez még nem kiadási csomag. A WinWatt számítási PDF közvetlen exportja már
+igazolt; a tanúsítási XML exportját azonban addig nem szabad véglegesnek
+tekinteni, amíg a tényleges adminisztratív adatok és a `full_certificate`
+kapu nincsenek igazolva.
 
 ## Forrás és rekonstrukciós mód
 
@@ -92,13 +92,19 @@ teljes újranyitás után változatlan maradt. Fő értékek:
 A számítási másolat SHA-256 lenyomata:
 `5a2616143d4c1da002a831b4cb92be79edb606657c3838c88e95709c4dcc5242`.
 
-## Sikertelen, de biztonságos próba
+## Számítási PDF export
 
-A `probe_et_calculation_pdf_export.py` worker az ET scope-ot helyesen az
-`Üdülő sor 26.` épületre, az `F1` zónára és minden szerkezetre állította. Az
-RTF mentési párbeszédig eljutott, de 120 másodpercen belül nem keletkezett
-nem üres RTF. A futás `failed` állapotú, a forrás hash-e változatlan, a WinWatt
-munkamenet bezárt. Ezért nincs még új, WinWattból előállított `calculation.pdf`.
+A `probe_et_calculation_pdf_export.py` worker az ET scope-ot az `Üdülő sor
+26.` épületre, az `F1` zónára és minden szerkezetre állította, majd a WinWatt
+`PDF fájlba...` műveletével közvetlenül előállította a számítási dokumentumot.
+A korábbi `Printer selected is not valid.` hibát a Windows automatikus
+alapértelmezett-nyomtató módjának futásidejű kikapcsolása oldotta meg.
+
+Két tiszta futás ugyanazt a 9 oldalas, 935 761 bájtos PDF-et adta. SHA-256:
+`eaed66fb8cc255ea946b422dad0019212e212d18d151772304120fdeb4474a04`.
+A forrás és a munkapéldány változatlan maradt, a WinWatt bezárult, az eredeti
+nyomtató- és Windows-beállítások visszaálltak. A végleges ellenőrzött példány:
+`output/pdf/10479210_alatamaszto_munkaresz.pdf`.
 
 ## Hol használtunk AI-t
 
@@ -129,7 +135,7 @@ egyetlen `F1` számítási zónáján alapul.
 | forrásazonos rendszerek létrehozása | `build_oeny_actual_systems.py` | piloton passed |
 | tetszőleges épület számítása | runner `building_name` paraméter | elkészült és piloton passed |
 | PDF/XML tartalmi összehasonlítás | általános diff worker | még hiányzik |
-| WinWatt számítási PDF export | RTF/PDF worker | javítandó, még nem verified |
+| WinWatt számítási PDF export | közvetlen PDF worker | kész, két futással verified |
 | valós adminadatú ET XML export | paraméterezett admin worker | még hiányzik |
 
 ## Következő kapuk
@@ -138,23 +144,16 @@ egyetlen `F1` számítási zónáján alapul.
 [`ADAPTIV_TANUSITASI_VALTOUZEM_HU.md`](ADAPTIV_TANUSITASI_VALTOUZEM_HU.md)
 szerinti gapvezérelt módban halad. Az általános ET-crawler leállt; mapping csak
 az aktív rekonstrukciós elakadásra, korlátozott kerettel futhat. Az első ilyen
-gap a számítási dokumentum RTF/PDF mentése.
-
-Az első célzott futás a mentési hibát a WinWattban megmaradó érvénytelen
-`Xerox(R) B225 MFP` nyomtatóválasztásra szűkítette. Az explicit Adobe PDF
-Windows-alapértelmezés mellett is `Printer selected is not valid.` hiba
-keletkezett. Ez megfigyelt mapping-bizonyíték, nem sikeres export; a pilot az
-ellenőrzési kapunál vár.
+gap, a számítási dokumentum mentése lezárult; a pilot ismét a rekonstrukciós
+szakaszban van.
 
 1. A rendszerek mezőszintű újranyitási readbackjének bővítése, nem csak a
    rendszernevek visszaolvasása.
 2. Determinisztikus PDF/XML eredmény-diff worker készítése a kézi összevetés
    kiváltására.
-3. Az RTF mentési párbeszéd javítása és új, üres output könyvtárban ismételt
-   PDF-export.
-4. A forrás XML tényleges adminisztratív adatainak paraméterezett beírása.
-5. `g5_calculation`, majd `full_certificate` preflight.
-6. ET XML export, a beágyazott PDF dekódolása és hash-egyezés.
+3. A forrás XML tényleges adminisztratív adatainak paraméterezett beírása.
+4. `g5_calculation`, majd `full_certificate` preflight.
+5. ET XML export, a beágyazott PDF dekódolása és hash-egyezés.
 
 OÉNY-feltöltés, tanúsítói aláírás vagy végleges kiadás ebben a pilotban nem
 történt.
@@ -165,4 +164,6 @@ történt.
 - `winwatt_automation/data/oeny_reconstruction/actual_system_build_10479210_20261013a/report.json`
 - `winwatt_automation/data/oeny_reconstruction/calculation_roundtrip_10479210_20261013b/report.json`
 - `winwatt_automation/data/oeny_reconstruction/calculation_pdf_10479210_20261013a/report.json`
+- `winwatt_automation/data/oeny_reconstruction/adaptive_10479210_20261014a/direct_pdf_attempt_003/report.json`
+- `winwatt_automation/data/oeny_reconstruction/adaptive_10479210_20261014a/direct_pdf_attempt_004/report.json`
 - `winwatt_automation/data/oeny_reconstruction/calculation_roundtrip_10479210_20261013b/testwwp.wwp`

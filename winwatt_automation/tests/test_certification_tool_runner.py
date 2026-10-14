@@ -82,6 +82,23 @@ def test_calculation_result_adapter_accepts_optional_building_name(tmp_path: Pat
     assert named_arguments[-2:] == ["--building-name", "Üdülő sor 26."]
 
 
+def test_calculation_pdf_export_adapter_requires_building_name(tmp_path: Path) -> None:
+    tool = CertificationToolRegistry.load().require_executable(
+        "winwatt.certificate.calculation_pdf.export", profile_id=PROFILE
+    )
+    arguments = build_handler_arguments(
+        tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+        output=tmp_path / "out", parameters={"building_name": "Üdülő sor 26."},
+    )
+    assert arguments[-2:] == ["--building-name", "Üdülő sor 26."]
+
+    with pytest.raises(ValueError, match="missing parameters"):
+        build_handler_arguments(
+            tool=tool, profile=tmp_path / "profile.json", source=tmp_path / "source.wwp",
+            output=tmp_path / "out", parameters={},
+        )
+
+
 def test_native_project_import_adapter_requires_xml_and_zone(tmp_path: Path) -> None:
     tool = CertificationToolRegistry.load().get("winwatt.project.native_xml.import_roundtrip")
     assert tool is not None

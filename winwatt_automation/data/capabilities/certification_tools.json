@@ -825,6 +825,61 @@
       ]
     },
     {
+      "tool_id": "winwatt.certificate.calculation_pdf.export",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Export the WinWatt ET calculation document directly to PDF on a disposable project copy while restoring the user's printer settings.",
+      "profile_ids": [
+        "winwatt_8c137b67c0a2214bb91aeae8"
+      ],
+      "handler": "winwatt_automation.scripts.probe_et_calculation_pdf_export",
+      "safety_scope": "sandbox_copy",
+      "mutates_project": false,
+      "input_contract": {
+        "profile": "existing WinWatt version-profile JSON path",
+        "source": "existing calculated WWP; never modified",
+        "output": "new empty evidence directory",
+        "building_name": "required exact building caption",
+        "printer": "optional installed PDF printer; defaults to Adobe PDF"
+      },
+      "output_contract": {
+        "report": "report.json",
+        "calculation_pdf": "calculation.pdf",
+        "saved_project": "unchanged copied WWP in output directory",
+        "evidence": "scope, save-dialog and final-page screenshots"
+      },
+      "preconditions": [
+        "32-bit Python process",
+        "active unlocked Windows desktop",
+        "profile fingerprint matches installed WinWatt",
+        "requested PDF printer is installed",
+        "source project contains the requested calculated building"
+      ],
+      "postconditions": [
+        "report.status == passed",
+        "calculation.pdf starts with a PDF signature and is non-empty",
+        "source WWP and copied project hashes are unchanged",
+        "WinWatt session is closed",
+        "original default printer and LegacyDefaultPrinterMode are restored"
+      ],
+      "retry_policy": "retry only active-desktop or printer-driver failures with a fresh output directory",
+      "idempotency": "repeatable because every run uses a separate project copy and restores both Windows printer settings",
+      "evidence": [
+        {
+          "kind": "observation",
+          "path": "data/oeny_reconstruction/adaptive_10479210_20261014a/direct_pdf_attempt_003/report.json",
+          "deterministic": true,
+          "assertion": "direct WinWatt PDF export passed while source and project copy stayed unchanged and printer settings were restored"
+        },
+        {
+          "kind": "save_reopen",
+          "path": "data/oeny_reconstruction/adaptive_10479210_20261014a/direct_pdf_attempt_004/report.json",
+          "deterministic": true,
+          "assertion": "a clean second run produced the same 935761-byte PDF with SHA-256 eaed66fb8cc255ea946b422dad0019212e212d18d151772304120fdeb4474a04"
+        }
+      ]
+    },
+    {
       "tool_id": "winwatt.certificate.et_xml.export",
       "version": "1.0.0",
       "status": "verified",
