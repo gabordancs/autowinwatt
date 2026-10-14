@@ -51,12 +51,22 @@ def utc_now() -> str:
 
 def atomic_write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary = path.with_name(f".{path.name}.{os.getpid()}.tmp")
     temporary.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2, default=str) + "\n",
         encoding="utf-8",
     )
-    os.replace(temporary, path)
+    last_error: OSError | None = None
+    for _ in range(8):
+        try:
+            os.replace(temporary, path)
+            return
+        except OSError as exc:
+            last_error = exc
+            time.sleep(0.25)
+    temporary.unlink(missing_ok=True)
+    assert last_error is not None
+    raise last_error
 
 
 def resolve_recorded_path(raw_path: str, *, expected_sha256: str | None = None) -> tuple[Path, str | None]:

@@ -26,6 +26,29 @@ def test_atomic_write_json_replaces_complete_document(tmp_path: Path):
     assert not target.with_suffix(".json.tmp").exists()
 
 
+def test_atomic_write_json_retries_transient_windows_replace_lock(monkeypatch, tmp_path: Path):
+    import winwatt_automation.scripts.certification_mapping_executor as executor
+
+    target = tmp_path / "state.json"
+    real_replace = executor.os.replace
+    calls = 0
+
+    def temporarily_locked(source, destination):
+        nonlocal calls
+        calls += 1
+        if calls < 3:
+            raise PermissionError("transient lock")
+        real_replace(source, destination)
+
+    monkeypatch.setattr(executor.os, "replace", temporarily_locked)
+    monkeypatch.setattr(executor.time, "sleep", lambda _seconds: None)
+
+    atomic_write_json(target, {"status": "running"})
+
+    assert calls == 3
+    assert json.loads(target.read_text(encoding="utf-8")) == {"status": "running"}
+
+
 def test_resolve_recorded_path_rebases_old_checkout(monkeypatch, tmp_path: Path):
     import winwatt_automation.scripts.certification_mapping_executor as executor
 
