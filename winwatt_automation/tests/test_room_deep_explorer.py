@@ -1,6 +1,6 @@
 from collections import deque
 
-from winwatt_automation.runtime_mapping.room_deep_explorer import ControlAction, _path_enters_focus_tab, _path_uses_excluded_action, _prune_queue, action_identity, canonical_states_by_signature, failure_diagnostics, logical_state_hash, resolve_edge_targets, state_diff, state_hash
+from winwatt_automation.runtime_mapping.room_deep_explorer import ControlAction, _path_enters_focus_tab, _path_uses_excluded_action, _prune_queue, action_identity, build_list_value_catalog, canonical_states_by_signature, failure_diagnostics, has_structural_list_dependency, logical_state_hash, representative_values, resolve_edge_targets, state_diff, state_hash
 from winwatt_automation.runtime_mapping import room_deep_explorer
 from winwatt_automation.runtime_mapping.room_deep_explorer import _failure_priority
 
@@ -201,6 +201,61 @@ def test_prune_queue_removes_independent_dropdown_cartesian_branch() -> None:
     )
     assert removed == 1
     assert list(queue) == [([first_combo, selected_value, newly_exposed], "selected")]
+
+
+def test_representative_values_keeps_catalog_boundaries_and_centre() -> None:
+    values = [f"Utca {index}" for index in range(10)]
+
+    assert representative_values(values) == ["Utca 0", "Utca 5", "Utca 9"]
+
+
+def test_list_value_catalog_keeps_all_values_but_only_three_representatives() -> None:
+    values = [ControlAction("ListItem", f"Utca {index}", "", (0, index, 10, index + 1)) for index in range(8)]
+    catalog = build_list_value_catalog([], deque([(values, None)]))
+
+    assert len(catalog["catalogs"]) == 1
+    assert catalog["catalogs"][0]["values"] == [f"Utca {index}" for index in range(8)]
+    assert catalog["catalogs"][0]["representatives"] == ["Utca 0", "Utca 4", "Utca 7"]
+
+
+def test_prune_queue_removes_legacy_consecutive_list_cartesian_path() -> None:
+    prefix = ControlAction("Button", "Cím kiválasztása", "", (0, 0, 10, 10))
+    streets = [ControlAction("ListItem", name, "", (0, 0, 0, 0)) for name in ("A utca", "B utca", "C utca")]
+
+    queue, removed = _prune_queue(
+        deque([([prefix, streets[0]], None), ([prefix, *streets], None)]), [], [], [],
+    )
+
+    assert removed == 1
+    assert list(queue) == [([prefix, streets[0]], None)]
+
+
+def test_list_selection_only_branches_on_durable_schema_or_domain_change() -> None:
+    base = {
+        "title": "Cím",
+        "class_name": "TForm",
+        "controls": [
+            {"control_type": "ComboBox", "class_name": "TComboBox", "name": "Utca", "value": "A", "items": ["A", "B"]},
+            {"control_type": "ListItem", "class_name": "", "name": "A", "rect": (1, 1, 2, 2)},
+        ],
+    }
+    value_only = {
+        "title": "Cím",
+        "class_name": "TForm",
+        "controls": [
+            {"control_type": "ComboBox", "class_name": "TComboBox", "name": "Utca", "value": "B", "items": ["A", "B"]},
+            {"control_type": "ListItem", "class_name": "", "name": "B", "rect": (9, 9, 10, 10)},
+        ],
+    }
+    dependent_domain = {
+        **value_only,
+        "controls": [
+            {"control_type": "ComboBox", "class_name": "TComboBox", "name": "Utca", "value": "B", "items": ["A", "B", "C"]},
+        ],
+    }
+
+    assert not has_structural_list_dependency(value_only, base)
+    assert has_structural_list_dependency(dependent_domain, base)
 
 
 def test_revisited_edge_keeps_canonical_target() -> None:

@@ -20,6 +20,22 @@ alapként. Az alapállapotban már létező műveleteket nem ütemezi újra az �
 kiszűri ezeket a független, kombinatorikus ágakat; a valóban újonnan megjelenő
 műveleteket megtartja.
 
+Ugyanez a szabály 2026-10-14-től az ET-tanúsítvány szerkesztő olyan Delphi
+listáira és automatikus kiegészítőire is vonatkozik, amelyekhez a UIA nem ad
+látható ComboBox-szülőt. A teljes felismert értékkészlet a futás
+`list_value_catalog.json` fájljába kerül; végrehajtható próbaként legfeljebb az
+első, középső és utolsó érték marad. Egy kiválasztás alól újabb listaág csak
+akkor indulhat, ha megváltozik az ablak vagy a tartós vezérlők szerkezete,
+illetve a UI-szolgáltató által közölt függő ComboBox-értékkészlet. A puszta
+kijelölt érték, lista-görgetés, koordináta vagy újranyitott vezérlőazonosító nem
+ilyen változás.
+
+A korábbi checkpointok egymást közvetlenül követő `ListItem`-láncait a mapper
+folytatáskor automatikusan migrálja. Előbb katalógusba menti minden megfigyelt
+értéküket, utána metszi a várólistát, majd azonnal új checkpointot ír. Így az
+értékismeret megmarad, miközben a cím A → cím B → cím C jellegű ál-útvonalak
+nem indulnak újra.
+
 Tanúsítási célú futásban először az általános adatok, téli hőszükséglet,
 nyári hőterhelés és határoló szerkezetek készülnek el. A helyiségen belüli
 radiátor-, fan-coil- és felületfűtési katalógusok külön mélyítő körbe kerülnek,

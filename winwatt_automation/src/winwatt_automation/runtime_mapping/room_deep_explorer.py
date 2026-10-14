@@ -44,6 +44,7 @@ EVENT_LOG_NAME = "exploration.events.jsonl"
 PROGRESS_NAME = "progress.json"
 PAUSE_REQUEST_NAME = "pause.request"
 MAX_DROPDOWN_REPRESENTATIVES = 3
+LIST_VALUE_CATALOG_NAME = "list_value_catalog.json"
 # WinWatt truncates long project captions before the filename.  Keep the
 # process identity of the fresh session we started as a second, authoritative
 # session marker for batched creation operations.
@@ -76,10 +77,14 @@ def _control_payload(control: Any) -> dict[str, Any]:
         visible = False
     control_type = str(getattr(info, "control_type", "") or "")
     value: Any = None
+    items: list[str] = []
     try:
         if control_type == "ComboBox":
             selected_text = getattr(control, "selected_text", None)
             value = selected_text() if callable(selected_text) else control.window_text()
+            item_texts = getattr(control, "item_texts", None)
+            if callable(item_texts):
+                items = [str(item) for item in item_texts() if str(item)]
         elif control_type == "Edit":
             get_value = getattr(control, "get_value", None)
             value = get_value() if callable(get_value) else control.window_text()
@@ -100,7 +105,7 @@ def _control_payload(control: Any) -> dict[str, Any]:
                         break
     except Exception:
         value = None
-    return {
+    payload = {
         "control_type": control_type,
         "class_name": str(getattr(info, "class_name", "") or ""),
         "name": str(getattr(info, "name", "") or ""),
@@ -110,6 +115,9 @@ def _control_payload(control: Any) -> dict[str, Any]:
         "rect": _rect(control),
         "value": value,
     }
+    if items:
+        payload["items"] = items
+    return payload
 
 
 def state_signature(window: Any) -> dict[str, Any]:
@@ -216,16 +224,72 @@ def actionable_controls(window: Any) -> list[ControlAction]:
             automation_id=payload["automation_id"], rect=payload["rect"], operation=operation,
         ))
     list_items = [item for item in actions if item.control_type == "ListItem"]
-    # A dense ListItem set accompanied by a visible combobox is an expanded
-    # value list, not a catalog/tree level.  Keep first/middle/last choices:
-    # this detects schema changes at the two boundaries and in the centre
-    # without generating a Cartesian product of material/fluid values.
-    has_combo = any(item.control_type == "ComboBox" for item in actions)
-    if has_combo and len(list_items) > MAX_DROPDOWN_REPRESENTATIVES:
+    # A dense ListItem set is a value domain, regardless of whether Delphi
+    # exposes its owner as a ComboBox, ListBox or an autocomplete popup.  The
+    # full domain is kept in the state snapshot/value catalog; only
+    # first/middle/last are executable probes.  Treating every visible row as
+    # a navigation edge is what creates the otherwise unbounded Cartesian
+    # product (notably in the ET address selector).
+    if len(list_items) > MAX_DROPDOWN_REPRESENTATIVES:
         keep_indices = {0, len(list_items) // 2, len(list_items) - 1}
         keep = {id(list_items[index]) for index in keep_indices}
         actions = [item for item in actions if item.control_type != "ListItem" or id(item) in keep]
     return actions
+
+
+def representative_values(values: list[str]) -> list[str]:
+    """Return deterministic boundary/centre probes without losing the domain."""
+    unique = list(dict.fromkeys(value for value in values if value))
+    if len(unique) <= MAX_DROPDOWN_REPRESENTATIVES:
+        return unique
+    return [unique[0], unique[len(unique) // 2], unique[-1]]
+
+
+def _structural_control_key(control: dict[str, Any]) -> tuple[Any, ...]:
+    """Identity of a durable control, excluding scalar value and presentation."""
+    return (
+        str(control.get("control_type") or ""),
+        str(control.get("class_name") or ""),
+        str(control.get("name") or ""),
+        bool(control.get("enabled", True)),
+        bool(control.get("visible", True)),
+        tuple(str(item) for item in (control.get("items") or [])),
+    )
+
+
+def has_structural_list_dependency(current: dict[str, Any], base: dict[str, Any]) -> bool:
+    """Whether selecting a list value changed more than the selected value/list.
+
+    Transient ``ListItem`` children, coordinates, handles and current scalar
+    values are deliberately ignored.  A changed ComboBox ``items`` domain is
+    retained when the UI provider exposes it, so genuinely dependent selectors
+    can still create a branch.
+    """
+    current_signature = current.get("signature") or current
+    base_signature = base.get("signature") or base
+    if (
+        current_signature.get("title") != base_signature.get("title")
+        or current_signature.get("class_name") != base_signature.get("class_name")
+    ):
+        return True
+    current_controls = {
+        _structural_control_key(item)
+        for item in current_signature.get("controls") or []
+        if item.get("control_type") != "ListItem"
+    }
+    base_controls = {
+        _structural_control_key(item)
+        for item in base_signature.get("controls") or []
+        if item.get("control_type") != "ListItem"
+    }
+    return current_controls != base_controls
+
+
+def _has_consecutive_list_items(path: list[ControlAction]) -> bool:
+    return any(
+        first.control_type == "ListItem" and second.control_type == "ListItem"
+        for first, second in zip(path, path[1:])
+    )
 
 
 def action_priority(action: ControlAction) -> tuple[int, str, str]:
@@ -451,9 +515,29 @@ def _prune_queue(queue: deque[tuple[list[ControlAction], str | None]], states: l
                         action_identity(item) == candidate_identity
                         for item in base.get("actions") or []
                     )
+        # Legacy checkpoints may contain a different ListItem after every
+        # ListItem selection (for example street A -> street B -> street C).
+        # That is repeated selection in one value domain, not navigation.
+        # Keep such a continuation only when the preceding selection actually
+        # changed the durable control schema or a dependent ComboBox domain.
+        redundant_list_continuation = False
+        if path and path[-1].control_type == "ListItem":
+            if parent is not None and parent.get("path"):
+                if parent["path"][-1].get("control_type") == "ListItem":
+                    expanded = by_id.get(parent.get("parent_state"))
+                    base = by_id.get(expanded.get("parent_state")) if expanded else None
+                    redundant_list_continuation = (
+                        base is not None and not has_structural_list_dependency(parent, base)
+                    )
+            elif _has_consecutive_list_items(path):
+                # Retry paths do not retain parent_state.  Consecutive list
+                # actions are still safely identifiable as legacy same-list
+                # chains; a real dialog transition would have supplied an
+                # intervening button/tree/tab action.
+                redundant_list_continuation = True
         if ((max_path_depth is not None and len(path) > max_path_depth)
                 or serialized in exhausted or prefixes & terminal or _contains_repeated_selector(path)
-                or redundant_dropdown_combination):
+                or redundant_dropdown_combination or redundant_list_continuation):
             removed += 1
             continue
         kept.append((path, parent_state))
@@ -1019,6 +1103,91 @@ def _atomic_json_write(path: Path, payload: Any) -> None:
     raise last_error
 
 
+def build_list_value_catalog(
+    states: list[dict[str, Any]],
+    queue: deque[tuple[list[ControlAction], str | None]],
+    existing: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Separate observed list domains from executable graph transitions."""
+    catalogs: dict[str, dict[str, Any]] = {}
+    for item in (existing or {}).get("catalogs") or []:
+        copied = dict(item)
+        copied["values"] = list(dict.fromkeys(str(value) for value in item.get("values") or [] if str(value)))
+        copied["state_ids"] = list(dict.fromkeys(str(value) for value in item.get("state_ids") or [] if str(value)))
+        catalogs[str(item["context_id"])] = copied
+
+    def add(context: dict[str, Any], values: list[str], source: str, state_id: str | None = None) -> None:
+        values = list(dict.fromkeys(value for value in values if value))
+        if not values:
+            return
+        encoded = json.dumps(context, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+        context_id = hashlib.sha256(encoded.encode("utf-8")).hexdigest()[:16]
+        entry = catalogs.setdefault(context_id, {
+            "context_id": context_id,
+            "context": context,
+            "sources": [],
+            "state_ids": [],
+            "values": [],
+        })
+        if source not in entry["sources"]:
+            entry["sources"].append(source)
+        if state_id and state_id not in entry["state_ids"]:
+            entry["state_ids"].append(state_id)
+        entry["values"] = list(dict.fromkeys([*entry["values"], *values]))
+
+    for record in states:
+        signature = record.get("signature") or {}
+        values = [
+            str(control.get("name") or "")
+            for control in signature.get("controls") or []
+            if control.get("control_type") == "ListItem"
+        ]
+        durable_controls = sorted(
+            _structural_control_key(control)
+            for control in signature.get("controls") or []
+            if control.get("control_type") != "ListItem"
+        )
+        add({
+            "kind": "visible_list_domain",
+            "window_title": signature.get("title"),
+            "window_class": signature.get("class_name"),
+            "durable_controls": durable_controls,
+        }, values, "observed_state", str(record.get("state_id") or "") or None)
+
+    for path, _parent_state in queue:
+        index = 0
+        while index < len(path):
+            if path[index].control_type != "ListItem":
+                index += 1
+                continue
+            start = index
+            values: list[str] = []
+            while index < len(path) and path[index].control_type == "ListItem":
+                values.append(path[index].name)
+                index += 1
+            anchor = [action_identity(action) for action in path[:start]]
+            add({"kind": "legacy_queue_list_domain", "anchor": anchor}, values, "legacy_queue")
+
+    for entry in catalogs.values():
+        entry["representatives"] = representative_values(entry["values"])
+    return {
+        "schema_version": 1,
+        "policy": "catalog_all_values_probe_first_middle_last_no_cartesian_product",
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "catalogs": sorted(catalogs.values(), key=lambda item: item["context_id"]),
+    }
+
+
+def _write_list_value_catalog(
+    output_dir: Path,
+    states: list[dict[str, Any]],
+    queue: deque[tuple[list[ControlAction], str | None]],
+) -> None:
+    path = output_dir / LIST_VALUE_CATALOG_NAME
+    existing = json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+    _atomic_json_write(path, build_list_value_catalog(states, queue, existing))
+
+
 def _write_checkpoint(output_dir: Path, states: list[dict[str, Any]], edges: list[dict[str, Any]], failures: list[dict[str, Any]], queue: deque[tuple[list[ControlAction], str | None]]) -> None:
     graph = {
         "states": states,
@@ -1035,6 +1204,7 @@ def _write_checkpoint(output_dir: Path, states: list[dict[str, Any]], edges: lis
     ]
     _atomic_json_write(output_dir / "graph.checkpoint.json", graph)
     _atomic_json_write(output_dir / "queue.checkpoint.json", queue_payload)
+    _write_list_value_catalog(output_dir, states, queue)
     _write_progress(output_dir, states, edges, failures, queue)
     # The checkpoint and queue now contain every earlier event.  Removing the
     # journal only after both atomic writes preserves exact resumability.
@@ -1176,7 +1346,13 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 path, excluded_action_names, excluded_action_substrings,
             )
         )
+    # Preserve every observed value before legacy Cartesian paths are removed.
+    _write_list_value_catalog(output_dir, states, queue)
     queue, pruned_paths = _prune_queue(queue, states, edges, failures, max_path_depth=max_path_depth)
+    if pruned_paths:
+        # Persist the migration immediately; a restart must not reload the old
+        # inflated queue before the normal 50-transition compaction point.
+        _write_checkpoint(output_dir, states, edges, failures, queue)
     _write_progress(output_dir, states, edges, failures, queue)
     scheduled_paths = {path_identity(path) for path, _ in queue}
     processed_since_compaction = 0
@@ -1247,21 +1423,29 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                 # a new root whose menus and MDI tree belong in the room graph.
                 if record["window"]["class_name"] == "TMainForm":
                     actions = []
-                # A selected ComboBox value is a real, captured runtime state,
-                # but only newly exposed actions deserve further traversal.
-                if record["diff_from_parent"]["value_changes"] and parent_record is not None:
+                # A selected value is captured as evidence, but it is not a
+                # new navigation root by itself.  Continue below it only when
+                # a durable control, dialog, tab or dependent value domain was
+                # actually added/changed.
+                selected_list_value = bool(path and path[-1].control_type == "ListItem")
+                if parent_record is not None and (
+                    record["diff_from_parent"]["value_changes"] or selected_list_value
+                ):
                     comparison_record = parent_record
                     # Selecting a ListItem closes the transient dropdown.  Use
                     # the dialog from before ComboBox expansion as the action
                     # baseline, so controls merely revealed again are not
                     # mistaken for newly exposed dependent fields.
-                    if path and path[-1].control_type == "ListItem":
+                    if selected_list_value:
                         by_state_id = {item["state_id"]: item for item in states}
                         base_record = by_state_id.get(parent_record.get("parent_state"))
                         if base_record is not None:
                             comparison_record = base_record
-                    parent_action_ids = {action_identity(item) for item in comparison_record["actions"]}
-                    actions = [item for item in actions if action_identity(item) not in parent_action_ids]
+                    if selected_list_value and not has_structural_list_dependency(record, comparison_record):
+                        actions = []
+                    else:
+                        parent_action_ids = {action_identity(item) for item in comparison_record["actions"]}
+                        actions = [item for item in actions if action_identity(item) not in parent_action_ids]
                 queued_actions: list[list[dict[str, Any]]] = []
                 new_edges: list[dict[str, Any]] = []
                 candidates = [[*path, action] for action in sorted(actions, key=action_priority)]
