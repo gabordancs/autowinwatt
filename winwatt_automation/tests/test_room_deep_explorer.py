@@ -230,6 +230,28 @@ def test_prune_queue_removes_legacy_consecutive_list_cartesian_path() -> None:
     assert list(queue) == [([prefix, streets[0]], None)]
 
 
+def test_prune_queue_never_keeps_list_under_another_list_value() -> None:
+    first = ControlAction("ListItem", "Csatárka köz", "", (0, 0, 0, 0))
+    second = ControlAction("ListItem", "Csalán út", "", (0, 0, 0, 0))
+    states = [{
+        "state_id": "selected",
+        "parent_state": "expanded",
+        "path": [first.__dict__],
+        "signature": {
+            "title": "Címválasztó",
+            "class_name": "TForm",
+            "controls": [{"control_type": "Button", "name": "Új mező", "class_name": "TButton"}],
+        },
+    }]
+
+    queue, removed = _prune_queue(
+        deque([([first, second], "selected")]), states, [], [],
+    )
+
+    assert removed == 1
+    assert not queue
+
+
 def test_list_selection_only_branches_on_durable_schema_or_domain_change() -> None:
     base = {
         "title": "Cím",

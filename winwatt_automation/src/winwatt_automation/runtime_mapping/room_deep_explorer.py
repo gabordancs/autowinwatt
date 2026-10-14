@@ -520,21 +520,12 @@ def _prune_queue(queue: deque[tuple[list[ControlAction], str | None]], states: l
         # That is repeated selection in one value domain, not navigation.
         # Keep such a continuation only when the preceding selection actually
         # changed the durable control schema or a dependent ComboBox domain.
-        redundant_list_continuation = False
-        if path and path[-1].control_type == "ListItem":
-            if parent is not None and parent.get("path"):
-                if parent["path"][-1].get("control_type") == "ListItem":
-                    expanded = by_id.get(parent.get("parent_state"))
-                    base = by_id.get(expanded.get("parent_state")) if expanded else None
-                    redundant_list_continuation = (
-                        base is not None and not has_structural_list_dependency(parent, base)
-                    )
-            elif _has_consecutive_list_items(path):
-                # Retry paths do not retain parent_state.  Consecutive list
-                # actions are still safely identifiable as legacy same-list
-                # chains; a real dialog transition would have supplied an
-                # intervening button/tree/tab action.
-                redundant_list_continuation = True
+        # List rows are values, not a hierarchy.  Even if selecting a value
+        # changes other fields, another ListItem is not executed beneath it:
+        # the new domain is catalogued and can be sampled independently.  A
+        # real workflow transition must have an intervening semantic action
+        # (button, tab, tree node, combobox, ...).
+        redundant_list_continuation = _has_consecutive_list_items(path)
         if ((max_path_depth is not None and len(path) > max_path_depth)
                 or serialized in exhausted or prefixes & terminal or _contains_repeated_selector(path)
                 or redundant_dropdown_combination or redundant_list_continuation):
@@ -1468,6 +1459,8 @@ def explore_room_state_graph(*, project_path: str, output_dir: Path, room_name: 
                     if _path_uses_excluded_action(
                         candidate, excluded_action_names, excluded_action_substrings,
                     ):
+                        continue
+                    if _has_consecutive_list_items(candidate):
                         continue
                     candidate_id = path_identity(candidate)
                     if candidate_id in scheduled_paths:
