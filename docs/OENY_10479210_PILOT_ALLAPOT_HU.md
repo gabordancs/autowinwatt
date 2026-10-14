@@ -1,6 +1,6 @@
 # OÉNY 10479210 rekonstrukciós pilot – állapot és bizonyíték
 
-Utolsó frissítés: 2026-10-13
+Utolsó frissítés: 2026-10-14
 
 ## Rövid állapot
 
@@ -133,6 +133,18 @@ egyetlen `F1` számítási zónáján alapul.
 | valós adminadatú ET XML export | paraméterezett admin worker | még hiányzik |
 
 ## Következő kapuk
+
+2026-10-14-től a pilot az
+[`ADAPTIV_TANUSITASI_VALTOUZEM_HU.md`](ADAPTIV_TANUSITASI_VALTOUZEM_HU.md)
+szerinti gapvezérelt módban halad. Az általános ET-crawler leállt; mapping csak
+az aktív rekonstrukciós elakadásra, korlátozott kerettel futhat. Az első ilyen
+gap a számítási dokumentum RTF/PDF mentése.
+
+Az első célzott futás a mentési hibát a WinWattban megmaradó érvénytelen
+`Xerox(R) B225 MFP` nyomtatóválasztásra szűkítette. Az explicit Adobe PDF
+Windows-alapértelmezés mellett is `Printer selected is not valid.` hiba
+keletkezett. Ez megfigyelt mapping-bizonyíték, nem sikeres export; a pilot az
+ellenőrzési kapunál vár.
 
 1. A rendszerek mezőszintű újranyitási readbackjének bővítése, nem csak a
    rendszernevek visszaolvasása.

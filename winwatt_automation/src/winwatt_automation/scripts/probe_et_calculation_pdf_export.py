@@ -103,22 +103,30 @@ def main() -> int:
     try:
         from pywinauto import Desktop, keyboard
         from pywinauto.application import Application
+        from pywinauto.controls.win32_controls import ComboBoxWrapper
         import win32print
         from winwatt_automation.runtime_mapping.et_document import configure_et_scope
         from winwatt_automation.runtime_mapping.room_deep_explorer import _active_window
 
         os.environ["WWA_WINWATT_EXE_PATH"] = profile["exe_path"]
         render_printer = args.printer
-        if args.export_mode == "pdf":
-            original_printer = win32print.GetDefaultPrinter()
-            win32print.SetDefaultPrinter(render_printer)
-            # Notify legacy applications that still read the win.ini-compatible
-            # default printer setting during startup.
-            ctypes.windll.user32.SendMessageTimeoutW(
-                0xFFFF, 0x001A, 0, "windows", 0x0002, 5000, None
-            )
-            time.sleep(1.0)
-            report["printer"] = {"original": original_printer, "render": render_printer}
+        # WinWatt uses the selected printer for page metrics even when the
+        # requested output is RTF.  A disconnected WSD default printer makes
+        # the RTF export wait forever with "Printer selected is not valid".
+        # Bind both PDF and RTF runs to an explicit local render printer and
+        # restore the user's original default in finally.
+        available_printers = {item[2] for item in win32print.EnumPrinters(2)}
+        if render_printer not in available_printers:
+            raise RuntimeError(f"Requested render printer is not installed: {render_printer!r}")
+        original_printer = win32print.GetDefaultPrinter()
+        win32print.SetDefaultPrinter(render_printer)
+        # Notify legacy applications that still read the win.ini-compatible
+        # default printer setting during startup.
+        ctypes.windll.user32.SendMessageTimeoutW(
+            0xFFFF, 0x001A, 0, "windows", 0x0002, 5000, None
+        )
+        time.sleep(1.0)
+        report["printer"] = {"original": original_printer, "render": render_printer}
         process = subprocess.Popen([profile["exe_path"], str(project)])
         deadline = time.monotonic() + 75.0
         main = None
@@ -199,11 +207,113 @@ def main() -> int:
         final_page = _active_window(process.pid)
         final_page.capture_as_image().save(str(output / "final_page.png"))
 
-        if args.export_mode == "pdf" and args.configure_printer:
-            # Optional diagnostic path for drivers with a usable setup dialog.
-            click_unique(final_page, "Beállít...")
-            time.sleep(0.8)
-            final_page = _active_window(process.pid)
+        if args.configure_printer:
+            # WinWatt persists its own selected printer; changing the Windows
+            # default is insufficient.  Select the requested local renderer
+            # in the application's printer-setup dialog and read it back.
+            before_handles = {
+                int(item.handle) for item in Desktop(backend="win32").windows(top_level_only=True)
+            }
+            native_final = Desktop(backend="win32").window(
+                handle=int(final_page.handle)
+            ).wrapper_object()
+            setup_buttons = [
+                item for item in native_final.descendants()
+                if item.class_name() == "TButton" and item.window_text() == "Beállít..."
+                and item.is_visible() and item.is_enabled()
+            ]
+            if len(setup_buttons) != 1:
+                raise RuntimeError(f"Expected one enabled printer setup button, found {len(setup_buttons)}")
+            if not ctypes.windll.user32.PostMessageW(
+                int(setup_buttons[0].handle), 0x00F5, 0, 0
+            ):
+                raise ctypes.WinError()
+            deadline = time.monotonic() + 30.0
+            setup = None
+            while time.monotonic() < deadline:
+                popup_handle = int(ctypes.windll.user32.GetLastActivePopup(int(final_page.handle)))
+                if (popup_handle and popup_handle != int(final_page.handle)
+                        and ctypes.windll.user32.IsWindowVisible(popup_handle)):
+                    try:
+                        candidate = Desktop(backend="win32").window(
+                            handle=popup_handle
+                        ).wrapper_object()
+                        if candidate.is_enabled():
+                            setup = candidate
+                            break
+                    except Exception:
+                        pass
+                candidates = [
+                    item for item in Desktop(backend="win32").windows(top_level_only=True)
+                    if int(item.handle) not in before_handles
+                    and item.is_visible() and item.is_enabled()
+                ]
+                if candidates:
+                    setup = candidates[0]
+                    break
+                time.sleep(0.1)
+            if setup is None:
+                if not final_page.is_enabled():
+                    keyboard.send_keys("{ESC}")
+                    time.sleep(0.5)
+                if not final_page.is_enabled():
+                    raise RuntimeError("Printer setup left the ET final page disabled")
+                report["printer_setup"] = {
+                    "dialog_class": None, "selected": render_printer,
+                    "method": "verified_windows_default_no_modal",
+                }
+                final_page = _active_window(process.pid)
+            else:
+                setup.capture_as_image().save(str(output / "printer_setup.png"))
+                controls = Desktop(backend="win32").window(
+                    handle=int(setup.handle)
+                ).wrapper_object().descendants()
+                combo_matches = []
+                for item in controls:
+                    if (item.class_name() != "ComboBox" or not item.is_visible()
+                            or not item.is_enabled()):
+                        continue
+                    combo = ComboBoxWrapper(item.handle)
+                    try:
+                        values = combo.item_texts()
+                    except Exception:
+                        continue
+                    if render_printer in values:
+                        combo_matches.append((combo, values))
+                if len(combo_matches) != 1:
+                    report["printer_setup_controls"] = [
+                        {"class": item.class_name(), "text": item.window_text(),
+                         "control_id": int(item.control_id())}
+                        for item in controls if item.is_visible()
+                    ]
+                    raise RuntimeError(
+                        f"Printer combo is ambiguous for {render_printer!r}: {len(combo_matches)}"
+                    )
+                printer_combo, values = combo_matches[0]
+                printer_combo.select(values.index(render_printer))
+                time.sleep(0.4)
+                selected = printer_combo.selected_text()
+                report["printer_setup"] = {
+                    "dialog_class": setup.class_name(), "selected": selected,
+                }
+                if selected != render_printer:
+                    raise RuntimeError(
+                        f"WinWatt printer selection did not commit: {selected!r}"
+                    )
+                ok_buttons = [item for item in controls
+                              if item.class_name() == "Button" and int(item.control_id()) == 1
+                              and item.is_visible() and item.is_enabled()]
+                if len(ok_buttons) != 1:
+                    raise RuntimeError(f"Printer setup OK button is ambiguous: {len(ok_buttons)}")
+                ok_buttons[0].click()
+                deadline = time.monotonic() + 8.0
+                while time.monotonic() < deadline:
+                    if final_page.is_visible() and final_page.is_enabled():
+                        break
+                    time.sleep(0.1)
+                else:
+                    raise RuntimeError("Printer setup did not return to ET final page")
+                final_page = _active_window(process.pid)
         export_target = target_pdf if args.export_mode == "pdf" else target_rtf
         export_caption = "PDF fájlba..." if args.export_mode == "pdf" else "Export fájlba..."
         click_unique(final_page, export_caption)
@@ -233,9 +343,14 @@ def main() -> int:
         filename = next(c for c in save_dialog.descendants()
                         if c.class_name() == "Edit" and int(c.control_id()) == 1001)
         filename.set_edit_text(str(export_target))
+        retained_path = filename.window_text()
+        report["save_dialog_filename"] = retained_path
+        if Path(retained_path).resolve() != export_target.resolve():
+            raise RuntimeError(f"Save dialog did not retain target path: {retained_path!r}")
         save_dialog.capture_as_image().save(str(output / "save_dialog_filled.png"))
-        filename.set_focus()
-        keyboard.send_keys("{ENTER}")
+        save_button = next(c for c in save_dialog.descendants()
+                           if c.class_name() == "Button" and int(c.control_id()) == 1)
+        save_button.click_input()
 
         deadline = time.monotonic() + 120.0
         stable_size = None
@@ -249,6 +364,21 @@ def main() -> int:
                     break
             time.sleep(0.25)
         if not export_target.is_file() or export_target.stat().st_size == 0:
+            report["windows_after_export_timeout"] = [
+                {
+                    "class": item.class_name(), "title": item.window_text(),
+                    "texts": [child.window_text() for child in item.descendants()
+                              if child.window_text()][:40],
+                }
+                for item in Desktop(backend="win32").windows(top_level_only=True)
+                if int(item.process_id()) == process.pid and item.is_visible()
+            ]
+            for index, item in enumerate(Desktop(backend="win32").windows(top_level_only=True)):
+                if int(item.process_id()) == process.pid and item.is_visible():
+                    try:
+                        item.capture_as_image().save(str(output / f"export_timeout_{index}.png"))
+                    except Exception:
+                        pass
             raise RuntimeError(f"{args.export_mode.upper()} export did not create a non-empty file")
         if args.export_mode == "rtf":
             exported = export_target.read_bytes()

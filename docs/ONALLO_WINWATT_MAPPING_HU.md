@@ -1,5 +1,10 @@
 # Önálló WinWatt mapping-végrehajtó
 
+> A PDF/XML → WinWatt rekonstrukcióhoz 2026-10-14-től az általános crawler
+> helyett az [adaptív, gapvezérelt váltóüzem](ADAPTIV_TANUSITASI_VALTOUZEM_HU.md)
+> az alapértelmezett. Hosszú általános mapping csak külön, kifejezett coverage-
+> célra indítható.
+
 A végrehajtó helyi, 32 bites Pythonból működik, és nem hív LLM-et vagy Codexet.
 Arra szolgál, hogy a tanúsítási adapterhez szükséges WinWatt-bizonyítékokat
 felügyelet nélkül gyűjtse, miközben a Codex-keret nem elérhető.
