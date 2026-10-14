@@ -111,7 +111,9 @@ def _extract_embedded_pdf(root: ET.Element) -> bytes:
     return raw
 
 
-def _find_pdf_value(pages: list[str], pattern: str) -> dict[str, Any] | None:
+def _find_pdf_value(
+    pages: list[str], pattern: str, *, source_kind: str = "embedded_pdf"
+) -> dict[str, Any] | None:
     expression = re.compile(pattern, re.I)
     for page_number, page in enumerate(pages, 1):
         compact = " ".join(page.split())
@@ -121,7 +123,7 @@ def _find_pdf_value(pages: list[str], pattern: str) -> dict[str, Any] | None:
         return {
             "value": _number(match.group(1)),
             "source": {
-                "kind": "embedded_pdf",
+                "kind": source_kind,
                 "page": page_number,
                 "excerpt": match.group(0),
             },
@@ -131,7 +133,44 @@ def _find_pdf_value(pages: list[str], pattern: str) -> dict[str, Any] | None:
     return None
 
 
-def _pdf_summary(raw: bytes) -> tuple[dict[str, Any], list[str]]:
+def _find_calculation_zone_totals(
+    pages: list[str], *, source_kind: str
+) -> dict[str, dict[str, Any]] | None:
+    """Read the first printed calculation-zone row without using certificate XML."""
+    number = r"([+-]?\d+(?:[,.]\d+)?)"
+    expression = re.compile(
+        r"(F\d+)\s+(\S+)\s+" + number + r"\s*m[²2]\s+" + number
+        + r"\s+" + number + r"\s+" + number,
+        re.I,
+    )
+    for page_number, page in enumerate(pages, 1):
+        compact = " ".join(page.split())
+        heading = compact.find("Számítási zónák:")
+        if heading < 0:
+            continue
+        match = expression.search(compact, heading)
+        if not match:
+            continue
+        source = {
+            "kind": source_kind,
+            "page": page_number,
+            "excerpt": match.group(0),
+        }
+        return {
+            "zone_name": {"value": match.group(1), "source": source, "status": "exact", "confidence": 0.99},
+            "useful_floor_area_m2": {
+                "value": _number(match.group(5)), "source": source, "status": "exact", "confidence": 0.99,
+            },
+            "conditioned_volume_m3": {
+                "value": _number(match.group(6)), "source": source, "status": "exact", "confidence": 0.99,
+            },
+        }
+    return None
+
+
+def _pdf_summary(
+    raw: bytes, *, source_kind: str = "embedded_pdf"
+) -> tuple[dict[str, Any], list[str]]:
     reader = PdfReader(io.BytesIO(raw))
     pages = [(page.extract_text() or "").replace("\x00", " ") for page in reader.pages]
     joined = "\n".join(pages)
@@ -160,6 +199,32 @@ def _pdf_summary(raw: bytes) -> tuple[dict[str, Any], list[str]]:
     structure_types = re.findall(r"(?m)^Típusa:\s*([^\r\n]+)", joined)
     layer_blocks = len(re.findall(r"Rétegek\s+kívülről\s+befelé", joined, re.I))
     metadata = {str(key): str(value) for key, value in (reader.metadata or {}).items()}
+    zone_totals = _find_calculation_zone_totals(pages, source_kind=source_kind)
+    values = {
+        "useful_floor_area_m2": _find_pdf_value(
+            pages, rf"Hasznos\s+alapterület\s*:\s*{NUMBER_RE}\s*m[²2]",
+            source_kind=source_kind,
+        ),
+        "conditioned_volume_m3": zone_totals["conditioned_volume_m3"] if zone_totals else None,
+        "summaries_energy_rating_kwh_m2a": _find_pdf_value(
+            pages, rf"Összesített\s+energetikai\s+jellemző\s*:\s*{NUMBER_RE}\s*kWh/m[²2]a",
+            source_kind=source_kind,
+        ),
+        "co2_kg_m2a": _find_pdf_value(
+            pages, rf"Fajlagos\s+sz[ée]n(?:-)?dioxid\s+kibocsátás\s*:\s*{NUMBER_RE}\s*kg/m[²2]a",
+            source_kind=source_kind,
+        ),
+        "area_volume_ratio_m2_m3": _find_pdf_value(
+            pages, rf"felület-térfogat\s+aránya\s*:\s*{NUMBER_RE}\s*m[²2]/m[³3]",
+            source_kind=source_kind,
+        ),
+        "heat_loss_factor_w_m3k": _find_pdf_value(
+            pages, rf"Fajlagos\s+hőveszteségtényező\s*:\s*{NUMBER_RE}\s*W/m[³3]K",
+            source_kind=source_kind,
+        ),
+    }
+    if values["useful_floor_area_m2"] is None and zone_totals:
+        values["useful_floor_area_m2"] = zone_totals["useful_floor_area_m2"]
     summary = {
         "sha256": _sha256_bytes(raw),
         "size_bytes": len(raw),
@@ -171,23 +236,8 @@ def _pdf_summary(raw: bytes) -> tuple[dict[str, Any], list[str]]:
         "headings": headings,
         "structure_type_mentions": structure_types,
         "layer_blocks": layer_blocks,
-        "values": {
-            "useful_floor_area_m2": _find_pdf_value(
-                pages, rf"Hasznos\s+alapterület\s*:\s*{NUMBER_RE}\s*m[²2]"
-            ),
-            "summaries_energy_rating_kwh_m2a": _find_pdf_value(
-                pages, rf"Összesített\s+energetikai\s+jellemző\s*:\s*{NUMBER_RE}\s*kWh/m[²2]a"
-            ),
-            "co2_kg_m2a": _find_pdf_value(
-                pages, rf"Fajlagos\s+sz[ée]n(?:-)?dioxid\s+kibocsátás\s*:\s*{NUMBER_RE}\s*kg/m[²2]a"
-            ),
-            "area_volume_ratio_m2_m3": _find_pdf_value(
-                pages, rf"felület-térfogat\s+aránya\s*:\s*{NUMBER_RE}\s*m[²2]/m[³3]"
-            ),
-            "heat_loss_factor_w_m3k": _find_pdf_value(
-                pages, rf"Fajlagos\s+hőveszteségtényező\s*:\s*{NUMBER_RE}\s*W/m[³3]K"
-            ),
-        },
+        "values": values,
+        "calculation_zone": zone_totals,
     }
     return summary, pages
 
@@ -197,7 +247,9 @@ def _line_number(block: str, label: str) -> float | None:
     return _number(match.group(1)) if match else None
 
 
-def extract_structure_records(pages: list[str]) -> list[dict[str, Any]]:
+def extract_structure_records(
+    pages: list[str], *, source_kind: str = "embedded_pdf"
+) -> list[dict[str, Any]]:
     """Extract printed structure definitions without inventing room allocation."""
     rows: list[dict[str, Any]] = []
     pattern = re.compile(r"(?m)^([^\r\n:]{1,120})\r?\nTípusa:\s*([^\r\n]+)")
@@ -223,7 +275,7 @@ def extract_structure_records(pages: list[str]) -> list[dict[str, Any]]:
                 "glazing_ratio_percent": _line_number(block, "Üvegezési arány"),
                 "glazing_g": _line_number(block, "Üvegezés g értéke"),
                 "source": {
-                    "kind": "embedded_pdf",
+                    "kind": source_kind,
                     "page": page_number,
                     "excerpt": block[:1200],
                 },
@@ -236,7 +288,9 @@ def extract_structure_records(pages: list[str]) -> list[dict[str, Any]]:
     return list(unique.values())
 
 
-def extract_system_records(pages: list[str]) -> list[dict[str, Any]]:
+def extract_system_records(
+    pages: list[str], *, source_kind: str = "embedded_pdf"
+) -> list[dict[str, Any]]:
     labels = {
         "Fűtési rendszer": "heating",
         "Melegvíz-termelő rendszer": "hot_water",
@@ -257,10 +311,81 @@ def extract_system_records(pages: list[str]) -> list[dict[str, Any]]:
                 "name": label,
                 "type": system_type,
                 "reviewed": False,
-                "source": {"kind": "embedded_pdf", "page": pages_found[0], "heading": label},
+                "source": {"kind": source_kind, "page": pages_found[0], "heading": label},
                 "status": "detected_requires_parameter_review",
             })
     return rows
+
+
+def build_pdf_reconstruction_spec(
+    pdf_path: Path, *, certificate_id: str | None = None
+) -> dict[str, Any]:
+    """Build a construction specification whose only source is a PDF file.
+
+    A source certificate XML is intentionally not accepted here.  It belongs
+    only to the later validation/diff stage after WinWatt has produced a new
+    certificate XML.
+    """
+    pdf_path = pdf_path.resolve(strict=True)
+    raw_pdf = pdf_path.read_bytes()
+    if not raw_pdf.startswith(b"%PDF-") or b"%%EOF" not in raw_pdf[-4096:]:
+        raise ValueError("source PDF is not a complete PDF")
+    pdf, pages = _pdf_summary(raw_pdf, source_kind="pdf")
+    structure_records = extract_structure_records(pages, source_kind="pdf")
+    system_records = extract_system_records(pages, source_kind="pdf")
+    resolved_certificate_id = certificate_id or (pdf_path.stem if pdf_path.stem.isdigit() else None)
+    required = ("useful_floor_area_m2", "conditioned_volume_m3")
+    missing = [key for key in required if not pdf["values"].get(key)]
+    exact_version = pdf["software_version"] == SUPPORTED_PROFILE_VERSION
+    blockers: list[dict[str, Any]] = []
+    if missing:
+        blockers.append({"code": "missing_pdf_construction_values", "fields": missing})
+    if not exact_version:
+        blockers.append({
+            "code": "source_version_not_installed_profile",
+            "source_version": pdf["software_version"],
+            "installed_profile_version": SUPPORTED_PROFILE_VERSION,
+            "effect": "byte-identical PDF and calculation identity are not assumed",
+        })
+    return {
+        "schema": "autowinwatt-pdf-reconstruction/v1",
+        "parser_version": PARSER_VERSION,
+        "status": "review_required",
+        "certificate_id": resolved_certificate_id,
+        "input_policy": {
+            "construction_input": "pdf_only",
+            "reference_xml_role": "post_export_validation_only",
+            "xml_values_allowed_during_build": False,
+        },
+        "source": {
+            "pdf": {
+                "path": str(pdf_path), "sha256": pdf["sha256"],
+                "size_bytes": pdf["size_bytes"], "pages": pdf["pages"],
+            }
+        },
+        "engine": {
+            "source_version": pdf["software_version"],
+            "installed_profile_version": SUPPORTED_PROFILE_VERSION,
+            "mode": "version_exact_reconstruction" if exact_version else "current_engine_reconstruction",
+        },
+        "fields": pdf["values"],
+        "pdf_values": pdf["values"],
+        "calculation_zone": pdf["calculation_zone"],
+        "structure_records": structure_records,
+        "system_records": system_records,
+        "inventory": {
+            "pdf_headings": pdf["headings"],
+            "pdf_structure_type_mentions": pdf["structure_type_mentions"],
+            "pdf_layer_blocks": pdf["layer_blocks"],
+        },
+        "blockers": blockers,
+        "release": {
+            "review_required": True,
+            "winwatt_ready": False,
+            "reason": "PDF-only intake; every construction field must retain PDF provenance",
+        },
+        "execution": {"llm_used": False, "winwatt_started": False},
+    }
 
 
 def _model_draft(spec: dict[str, Any], structures: list[dict[str, Any]], systems: list[dict[str, Any]]) -> dict[str, Any]:
@@ -312,12 +437,20 @@ def build_one_zone_candidate(
     """
     if decisions.get("schema") != "autowinwatt-oeny-reconstruction-decisions/v1":
         raise ValueError("unsupported reconstruction decisions schema")
+    if spec.get("input_policy", {}).get("construction_input") != "pdf_only":
+        raise ValueError("construction spec must declare pdf_only input policy")
     if str(decisions.get("certificate_id")) != str(spec.get("certificate_id")):
         raise ValueError("decision certificate_id does not match reconstruction spec")
     if decisions.get("room_count_decision", {}).get("accepted") is not True:
         raise ValueError("one-zone room-count decision is not accepted")
 
     fields = spec["fields"]
+    for key in ("useful_floor_area_m2", "conditioned_volume_m3"):
+        field = fields.get(key) or {}
+        if field.get("source", {}).get("kind") != "pdf":
+            raise ValueError(f"construction field {key} must have direct PDF provenance")
+        if field.get("value") is None:
+            raise ValueError(f"construction field {key} is missing from the PDF")
     area = float(fields["useful_floor_area_m2"]["value"])
     volume = float(fields["conditioned_volume_m3"]["value"])
     room_name = str(decisions.get("room_name") or "F1").strip()
@@ -412,7 +545,7 @@ def build_one_zone_candidate(
         "project": {
             "name": f"OENY_{spec['certificate_id']}",
             "address": decisions.get("address"),
-            "source": spec["source"]["xml"]["path"],
+            "source": spec["source"]["pdf"]["path"],
             "heated_area_m2": area,
             "heated_volume_m3": volume,
             "require_wall_xy": derive_wall_xy,
@@ -433,8 +566,8 @@ def build_one_zone_candidate(
         "boundaries": boundaries,
         "systems": systems,
         "reconstruction": {
-            "source_xml_sha256": spec["source"]["xml"]["sha256"],
-            "source_pdf_sha256": spec["source"]["embedded_pdf"]["sha256"],
+            "source_pdf_sha256": spec["source"]["pdf"]["sha256"],
+            "reference_xml_role": "post_export_validation_only",
             "parser_version": spec["parser_version"],
             "status": "review_required",
             "mode": spec["engine"]["mode"],

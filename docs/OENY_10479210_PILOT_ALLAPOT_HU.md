@@ -4,11 +4,11 @@ Utolsó frissítés: 2026-10-14
 
 ## Rövid állapot
 
-A 10479210 számú OÉNY-tanúsítványból egy számítás-egyenértékű WinWatt
-projekt készült. Az épületburok, az egyetlen nyomtatott számítási zóna, a
-forrásban megnevezett gázkonvektoros fűtés és a villanybojler helyi WinWatt
-projektbe került. A projekt újraszámítása, mentése, teljes bezárása és
-újranyitása sikeres.
+A 10479210 számú pilotban technikailag működő WinWatt-projekt készült, de ezt
+nem tekintjük még igazolt PDF → WinWatt rekonstrukciónak. A korábbi intake a
+PDF mellett az eredeti XML-ből származó mezőket is bevont, ami az új kötelező
+forrásszétválasztási szabály szerint tiltott. Az épületburkot, zónát és
+gépészetet ezért PDF-only specifikációból újra kell építeni és ellenőrizni.
 
 Ez még nem kiadási csomag. A WinWatt számítási PDF közvetlen exportja már
 igazolt; a tanúsítási XML exportját azonban addig nem szabad véglegesnek
@@ -34,10 +34,11 @@ reprodukciója.
 
 ### Forrásfeldolgozás
 
-A helyi intake worker szigorúan dekódolta az XML
-`CalculationsPdfFileContent` Base64 mezőjét, ellenőrizte a PDF aláírását,
-hash-elte a forrásokat, és strukturált rekonstrukciós specifikációt készített.
-Az intake és a parser nem használ LLM-et.
+Az új kötelező láncban kizárólag az önálló PDF lehet építési bemenet. A
+`build_pdf_reconstruction_spec` közvetlen PDF-provenienciát ír elő; a
+`build_one_zone_candidate` elutasítja az XML-ből származó területet,
+térfogatot vagy más építési mezőt. Az eredeti XML csak az új WinWatt XML
+elkészülése után, végellenőrzésre használható.
 
 ### Épületburok és zóna
 
@@ -156,7 +157,9 @@ szakaszban van.
 5. ET XML export, a beágyazott PDF dekódolása és hash-egyezés.
 
 OÉNY-feltöltés, tanúsítói aláírás vagy végleges kiadás ebben a pilotban nem
-történt.
+történt. A jelenlegi WWP és a belőle nyomtatott PDF technikai bizonyíték a
+helyi WinWatt-workerekre, de a PDF-only rekonstrukció újrafuttatásáig nem
+kiadási jelölt.
 
 ## Fő bizonyítékfájlok
 

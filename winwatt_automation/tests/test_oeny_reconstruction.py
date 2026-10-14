@@ -6,7 +6,9 @@ from pypdf import PdfWriter
 
 from winwatt_automation.certificates.oeny_reconstruction import (
     PARSER_VERSION,
+    _find_calculation_zone_totals,
     build_one_zone_candidate,
+    build_pdf_reconstruction_spec,
     build_reconstruction_spec,
     extract_structure_records,
     write_reconstruction_intake,
@@ -127,14 +129,14 @@ def test_one_zone_candidate_uses_exact_totals_and_explicit_decisions() -> None:
     spec = {
         "certificate_id": "12345678",
         "parser_version": PARSER_VERSION,
+        "input_policy": {"construction_input": "pdf_only"},
         "source": {
-            "xml": {"path": "source.xml", "sha256": "a" * 64},
-            "embedded_pdf": {"sha256": "b" * 64},
+            "pdf": {"path": "source.pdf", "sha256": "b" * 64},
         },
         "engine": {"mode": "current_engine_reconstruction"},
         "fields": {
-            "useful_floor_area_m2": {"value": 32.8},
-            "conditioned_volume_m3": {"value": 88.56},
+            "useful_floor_area_m2": {"value": 32.8, "source": {"kind": "pdf"}},
+            "conditioned_volume_m3": {"value": 88.56, "source": {"kind": "pdf"}},
         },
         "structure_records": [{
             "name": "Fal", "type": "külső fal", "u_layer": 0.5,
@@ -183,7 +185,7 @@ def test_one_zone_candidate_uses_exact_totals_and_explicit_decisions() -> None:
 
 
 def test_one_zone_candidate_rejects_unaccepted_room_decision() -> None:
-    spec = {"certificate_id": "1"}
+    spec = {"certificate_id": "1", "input_policy": {"construction_input": "pdf_only"}}
     decisions = {
         "schema": "autowinwatt-oeny-reconstruction-decisions/v1",
         "certificate_id": "1",
@@ -200,9 +202,13 @@ def test_one_zone_candidate_rejects_unaccepted_room_decision() -> None:
 def test_one_zone_candidate_keeps_wall_xy_open_without_explicit_decision() -> None:
     spec = {
         "certificate_id": "1", "parser_version": PARSER_VERSION,
-        "source": {"xml": {"path": "x", "sha256": "a"}, "embedded_pdf": {"sha256": "b"}},
+        "input_policy": {"construction_input": "pdf_only"},
+        "source": {"pdf": {"path": "x.pdf", "sha256": "b"}},
         "engine": {"mode": "current_engine_reconstruction"},
-        "fields": {"useful_floor_area_m2": {"value": 10}, "conditioned_volume_m3": {"value": 27}},
+        "fields": {
+            "useful_floor_area_m2": {"value": 10, "source": {"kind": "pdf"}},
+            "conditioned_volume_m3": {"value": 27, "source": {"kind": "pdf"}},
+        },
         "structure_records": [{"name": "Fal", "type": "külső fal", "source": {}}],
     }
     decisions = {
@@ -214,3 +220,50 @@ def test_one_zone_candidate_keeps_wall_xy_open_without_explicit_decision() -> No
     assert "x_m" not in model["boundaries"][0]
     assert "y_m" not in model["boundaries"][0]
     assert model["project"]["require_wall_xy"] is False
+
+
+def test_candidate_rejects_xml_derived_construction_spec() -> None:
+    spec = {
+        "certificate_id": "1",
+        "input_policy": {"construction_input": "pdf_only"},
+        "fields": {
+            "useful_floor_area_m2": {"value": 10, "source": {"kind": "xml"}},
+            "conditioned_volume_m3": {"value": 27, "source": {"kind": "pdf"}},
+        },
+    }
+    decisions = {
+        "schema": "autowinwatt-oeny-reconstruction-decisions/v1",
+        "certificate_id": "1",
+        "room_count_decision": {"accepted": True},
+    }
+    try:
+        build_one_zone_candidate(spec, decisions)
+    except ValueError as exc:
+        assert "direct PDF provenance" in str(exc)
+    else:
+        raise AssertionError("XML-derived construction field must be rejected")
+
+
+def test_pdf_zone_row_supplies_area_and_volume_with_pdf_provenance() -> None:
+    rows = _find_calculation_zone_totals([
+        "Számítási zónák: Zóna jele Típusa A V "
+        "F1 fűtés 32,80 m2 20,0 32,8 88,6 325 8,154 248,6"
+    ], source_kind="pdf")
+    assert rows is not None
+    assert rows["zone_name"]["value"] == "F1"
+    assert rows["useful_floor_area_m2"]["value"] == 32.8
+    assert rows["conditioned_volume_m3"]["value"] == 88.6
+    assert rows["conditioned_volume_m3"]["source"]["kind"] == "pdf"
+
+
+def test_pdf_intake_declares_xml_as_validation_only(tmp_path: Path) -> None:
+    source = tmp_path / "12345678.pdf"
+    source.write_bytes(_pdf_bytes())
+    spec = build_pdf_reconstruction_spec(source)
+    assert spec["input_policy"] == {
+        "construction_input": "pdf_only",
+        "reference_xml_role": "post_export_validation_only",
+        "xml_values_allowed_during_build": False,
+    }
+    assert spec["source"]["pdf"]["path"] == str(source)
+    assert "xml" not in spec["source"]

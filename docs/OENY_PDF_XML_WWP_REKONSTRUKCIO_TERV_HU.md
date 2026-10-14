@@ -1,13 +1,15 @@
-# OÉNY PDF+XML → WinWatt WWP rekonstrukciós terv
+# PDF → WinWatt WWP rekonstrukciós terv
 
 Az első konkrét pilot végrehajtási állapota és az AI → helyi worker átvezetés:
 `docs/OENY_10479210_PILOT_ALLAPOT_HU.md`.
 
 ## 1. Cél és pontos kimenet
 
-Az OÉNY-ből letöltött `UploadRequest` XML és annak
-`CalculationsPdfFileContent` mezőjében lévő WinWatt számítási PDF alapján
-ellenőrizhető, új WinWatt projektet kell készíteni.
+A WinWatt számítási PDF az egyetlen rekonstrukciós bemenet. Az eredeti OÉNY
+`UploadRequest` XML sem mezőforrásként, sem hiánypótlásként, sem iterációs
+hangolási célként nem használható. Az XML csak azután nyitható meg, hogy a
+PDF-ből épített WinWatt projektből önállóan elkészült az új tanúsítási XML;
+ekkor kizárólag vak végellenőrzési referenciaként szolgálhat.
 
 Egy sikeres job kimenete:
 
@@ -32,9 +34,8 @@ Két külön célt kell nyilvántartani:
 2. **Eredeti projekt rekonstrukciója:** a belső helyiség-, objektum-, katalógus-
    és azonosítóstruktúra is azonos az elveszett eredeti WWP-vel.
 
-PDF+tanúsítási XML alapján általánosan csak az első cél bizonyítható. A PDF
-sok részletes szerkezeti, felületi, zóna-, havi és rendszeradatot tartalmaz, az
-XML pedig aggregált tanúsítási és adminisztratív adatokat. Ezek nem tartalmazzák
+PDF alapján általánosan csak az első cél bizonyítható. A PDF sok részletes
+szerkezeti, felületi, zóna-, havi és rendszeradatot tartalmaz. Nem tartalmazza
 garantáltan az eredeti WWP minden belső objektumát, katalógusazonosítóját,
 helyiségfelosztását, alaprajzi kapcsolatát és rejtett alapértékét. Egyetlen
 eredményhez ezért több különböző WWP is vezethet.
@@ -82,21 +83,20 @@ Az AI csak fejlesztési és bizonytalanság-feloldási szerepet kap. A tömeges
 feldolgozást determinisztikus helyi Python workerek végzik.
 
 ```text
-forráspár
+forrás PDF
   │
   ├─ W0 leltár/hash
-  ├─ W1 XML parser ─────────┐
-  ├─ W2 PDF parser/OCR ─────┼─ W3 normalizált reconstruction_spec.json
-  └─ W4 katalógusfeloldó ───┘
+  ├─ W1 PDF parser/OCR ─────┐
+  └─ W2 katalógusfeloldó ───┴─ W3 normalizált reconstruction_spec.json
                                 │
                          W5 offline preflight
                                 │
                     egyetlen WinWatt UI worker
                   W6 build → save → reopen → calculate
                                 │
-                    ET XML export + PDF dekódolás
+                    ET XML export + új PDF dekódolás
                                 │
-                 W7 diff/constraint/új iteráció
+                 W7 vak referencia-XML/PDF diff
                                 │
                          W8 csomag és review
 ```
@@ -114,26 +114,13 @@ forráspár
 
 ### P0 – Forrásleltár
 
-1. XML/PDF pár azonosítása tanúsítványazonosítóval.
-2. XML jólformáltság, gyökérelem és Base64 szigorú dekódolása.
-3. A dekódolt tartalom `%PDF-` és `%%EOF` ellenőrzése.
-4. Források SHA-256 lenyomata és változatlansági kapu.
-5. WinWatt-verzió, oldalszám, fő blokkok és fotók leltára.
+1. A PDF azonosítása és SHA-256 lenyomatának rögzítése.
+2. `%PDF-`, `%%EOF`, oldalszám és minden oldal renderelhetőségének ellenőrzése.
+3. WinWatt-verzió és a nyomtatott fő blokkok leltára.
+4. Az esetleg rendelkezésre álló referencia-XML elkülönítése úgy, hogy a build
+   végéig a parser és a WinWatt-worker ne férhessen hozzá.
 
-### P1 – XML worker
-
-Az XML worker strukturáltan kinyeri legalább:
-
-- épület- és adminisztratív adatokat;
-- hasznos alapterületet, kondicionált térfogatot, A/V arányt;
-- kategóriákat és számított főértékeket;
-- határoló- és nyílászáró-típusok aggregált U-értékét és méretét;
-- rendszer-minősítéseket;
-- energiahordozó és felhasználási cél szerinti értékeket;
-- fotókat;
-- a beágyazott számítási PDF-et.
-
-### P2 – PDF worker
+### P1 – PDF worker
 
 Elsődleges út: szöveg- és táblázatkivonás. OCR csak képoldal vagy hibás font
 esetén. Minden értékhez oldalszám, szövegrész/bbox és confidence tartozik.
@@ -153,21 +140,21 @@ Kinyerendő blokkok:
 
 ### P3 – Normalizált rekonstrukciós modell
 
-A két parser eredménye `reconstruction_spec.json` fájlba kerül. Minden mező:
+A PDF-parser eredménye `reconstruction_spec.json` fájlba kerül. Minden mező:
 
 ```json
 {
   "value": 32.8,
   "unit": "m2",
-  "source": {"file": "10479210.xml", "path": "BuildingData/UsefulFloorArea"},
+  "source": {"file": "10479210.pdf", "page": 1, "excerpt": "Hasznos alapterület: 32,80 m²"},
   "status": "exact",
   "confidence": 1.0
 }
 ```
 
-Az XML és PDF eltérése blokkoló konfliktus, nem átlagolandó. A worker külön
-kezeli a megjelenített kerekített értéket és a számításhoz szükséges lehetséges
-értéktartományt.
+A build kapu minden olyan mezőt elutasít, amelynek provenienciája nem közvetlen
+PDF-oldal és szövegrész. A worker külön kezeli a megjelenített kerekített
+értéket és a számításhoz szükséges lehetséges értéktartományt.
 
 ### P4 – Modellváltozat kiválasztása
 
@@ -183,7 +170,7 @@ automatikus szakmai feltételezés tilos.
 
 1. Dimenzió- és mértékegység-ellenőrzés.
 2. Összegazonosságok: felületek, terület, térfogat, energiahordozók.
-3. PDF–XML főérték-egyezés.
+3. Minden építési mező közvetlen PDF-provenienciájának ellenőrzése.
 4. Anyag- és katalógusfeloldás.
 5. `winwatt.certificate.preflight --scope envelope`, majd a rendszerek után
    `g5_calculation`.
@@ -223,7 +210,8 @@ verified tool-regiszterben, nem ez az elsődleges termelési út.
 
 A diff worker három szinten hasonlít:
 
-1. **XML:** kanonizált mezőút, típus, enum és számérték;
+1. **XML:** a WinWattból újonnan exportált XML és a csak ekkor feloldott
+   referencia-XML kanonizált mezőút-, típus-, enum- és számérték-diffje;
 2. **PDF:** táblázati/címkeértékek, oldalak, kategóriák és számítási sorok;
 3. **WWP readback:** objektumszám, terület, térfogat, szerkezet, zóna és rendszer.
 
