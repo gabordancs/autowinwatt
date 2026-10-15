@@ -11,6 +11,14 @@ from .native_xml import _explicit_glass_ratio
 from .geometry import is_vertical_wall, wall_geometry_issues, xy_area
 
 _CODE_TO_SOURCE_TYPE = {"0": "külső fal", "3": "talajon fekvő padló", "5": "külső tető", "10": "tetőablak", "12": "külső ajtó/kapu"}
+_SYSTEM_TAGS = {
+    "heating": "WinWatt32HeatingSystemItem",
+    "hot_water": "WinWatt32WaterHeatingSystemItem",
+    "water_heating": "WinWatt32WaterHeatingSystemItem",
+    "cooling": "WinWatt32CoolingSystemItem",
+    "airing": "WinWatt32AiringSystemItem",
+    "lighting": "WinWatt32LightingSystemItem",
+}
 
 
 def _number(value: str | None) -> float:
@@ -26,6 +34,112 @@ def _diff(expected: float, actual: float) -> dict[str, float]:
             "relative_percent": round(100 * absolute / expected, 6) if expected else 0.0}
 
 
+def _text_comparison(expected: Any, actual: Any) -> dict[str, Any]:
+    expected_text = str(expected or "").strip()
+    actual_text = str(actual or "").strip()
+    return {
+        "expected": expected_text,
+        "actual": actual_text,
+        "equal": expected_text.casefold() == actual_text.casefold(),
+    }
+
+
+def _printed_number_diff(expected: int | float, actual: float) -> dict[str, float]:
+    """Compare with the precision retained by the source-model number.
+
+    PDF values parsed as integers are printed to whole units.  Preserve the
+    raw native value for audit, but compare its rounded display value so a
+    native 926.6 kWh/a correctly agrees with a printed 927 kWh/a.
+    """
+    compared_actual = float(round(actual)) if isinstance(expected, int) else actual
+    result = _diff(float(expected), compared_actual)
+    result["raw_actual"] = round(actual, 6)
+    return result
+
+
+def _system_readback(model: dict[str, Any], buildings: list[ET.Element]) -> dict[str, Any]:
+    """Expose source-to-native system fields without inventing mappings.
+
+    WinWatt stores system records below each building's EPBD node.  The
+    comparison deliberately keeps catalogue labels and numeric calculation
+    results separate: a name roundtrip is not evidence that annual energy
+    results also agree with the source PDF.
+    """
+    expected_systems = [item for item in model.get("systems", []) if isinstance(item, dict)]
+    native_by_type: dict[str, list[ET.Element]] = {
+        system_type: [
+            item
+            for building in buildings
+            for item in building.findall(f"EPBD/{tag}")
+        ]
+        for system_type, tag in _SYSTEM_TAGS.items()
+    }
+    # Synonyms point to the same native tag; retain one canonical count.
+    counts = {
+        key: len(native_by_type[key])
+        for key in ("heating", "hot_water", "cooling", "airing", "lighting")
+    }
+    items: list[dict[str, Any]] = []
+    for source in expected_systems:
+        system_type = str(source.get("type") or "").strip()
+        candidates = native_by_type.get(system_type, [])
+        expected_name = str(source.get("name") or "").strip()
+        native = next(
+            (item for item in candidates if (item.findtext("Name") or "").strip() == expected_name),
+            candidates[0] if len(candidates) == 1 else None,
+        )
+        comparison: dict[str, Any] = {
+            "type": system_type,
+            "name": _text_comparison(expected_name, native.findtext("Name") if native is not None else ""),
+            "present": native is not None,
+        }
+        if native is not None:
+            comparison["served_area_m2"] = _diff(
+                float(source.get("served_area_m2") or 0.0), _number(native.findtext("SystemArea"))
+            )
+            comparison["carrier"] = _text_comparison(
+                source.get("carrier"), native.findtext("StokerItem/EnergySourceTypeDescription")
+            )
+            if source.get("generator_performance_factor") is not None:
+                comparison["generator_performance_factor"] = _diff(
+                    float(source["generator_performance_factor"]), _number(native.findtext("StokerItem/Ck"))
+                )
+            comparison["native_generator"] = (native.findtext("StokerItem/CkDescription") or "").strip()
+            consumption = native.find("EnergyConsumptions/ConsumptionTableItem")
+            if source.get("final_energy_kwh_a") is not None:
+                comparison["final_energy_kwh_a"] = _printed_number_diff(
+                    source["final_energy_kwh_a"],
+                    _number(consumption.get("Consumption") if consumption is not None else None),
+                )
+            if system_type == "heating" and source.get("net_heat_kwh_a") is not None:
+                # ElementTree has no parent axis; all matching items are below
+                # one of the supplied EPBD elements, so read the building value.
+                actual = next(
+                    (_number(building.findtext("EPBD/HeatingEnergy")) for building in buildings
+                     if native in building.findall("EPBD/WinWatt32HeatingSystemItem")),
+                    0.0,
+                )
+                comparison["net_heat_kwh_a"] = _printed_number_diff(source["net_heat_kwh_a"], actual)
+            if system_type in {"hot_water", "water_heating"}:
+                if source.get("net_demand_kwh_m2a") is not None:
+                    comparison["net_demand_kwh_m2a"] = _diff(
+                        float(source["net_demand_kwh_m2a"]), _number(native.findtext("qHMV"))
+                    )
+                if source.get("storage_loss_percent") is not None:
+                    comparison["storage_loss_percent"] = _diff(
+                        float(source["storage_loss_percent"]), _number(native.findtext("qft"))
+                    )
+                comparison["native_storage"] = (native.findtext("qftDescription") or "").strip()
+                comparison["native_distribution"] = (native.findtext("qfvDescription") or "").strip()
+                comparison["native_auxiliary"] = (native.findtext("EcDescription") or "").strip()
+        items.append(comparison)
+    return {
+        "expected_count": len(expected_systems),
+        "native_counts": counts,
+        "items": items,
+    }
+
+
 def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, Any]:
     """Compare reviewed source geometry with a native XML export after reopen."""
     model = json.loads(model_path.read_text(encoding="utf-8"))
@@ -35,17 +149,14 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
     buildings = root.findall("WinWatt32Building")
     expected_layers = len(model.get("layers", []))
     actual_layers = sum(len(panel.findall("PanelLayer")) for panel in panels)
-    # WinWatt's native ``Type`` code is not sufficiently expressive for a
-    # source comparison: in this WinWatt version code 10 is used for both
-    # some ordinary windows and rooflights.  The generated Boundary/Name is
-    # preserved on export, so use it as the authoritative source mapping and
-    # only fall back to the native type code for unknown/imported elements.
-    source_types_by_name: dict[str, set[str]] = defaultdict(set)
-    for boundary in model.get("boundaries", []):
-        name = str(boundary.get("name") or "").strip()
-        source_type = str(boundary.get("winwatt_type") or "unknown")
-        if name:
-            source_types_by_name[name].add(source_type)
+    # WinWatt normalizes Boundary/Name to the referenced construction name on
+    # native import (for example ``Külső fal ÉK`` becomes ``Külső fal``).  Keep
+    # per-room source rows and pair them by the explicit construction
+    # reference plus area.  This survives the normalization without inferring
+    # a source type from a lossy numeric native code.
+    source_boundaries_by_room: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for source_boundary in model.get("boundaries", []):
+        source_boundaries_by_room[str(source_boundary.get("room") or "")].append(source_boundary)
 
     actual_by_type: dict[str, float] = defaultdict(float)
     actual_by_azimuth: dict[str, float] = defaultdict(float)
@@ -59,6 +170,7 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
     }
     for room in rooms:
         room_name = (room.findtext("ItemHeader/ItemName") or "").strip()
+        unmatched = list(source_boundaries_by_room.get(room_name, []))
         actual_room_conditions[room_name] = {
             "winter_temperature_c": _number(room.findtext("Heating/Temp")),
             "summer_temperature_c": _number(room.findtext("Cooling/Temp")),
@@ -67,12 +179,26 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
         for boundary in room.findall("Boundary"):
             boundary_count += 1
             area = _number(boundary.findtext("A"))
-            name = (boundary.findtext("Name") or "").strip()
-            actual_xy[name] = {"x_m": _number(boundary.findtext("x")), "y_m": _number(boundary.findtext("y")), "area_m2": area}
-            mapped = source_types_by_name.get(name, set())
-            kind = next(iter(mapped)) if len(mapped) == 1 else _CODE_TO_SOURCE_TYPE.get(
-                boundary.findtext("Type") or "", boundary.findtext("Type") or "unknown"
-            )
+            construction_name = (boundary.findtext("Name") or "").strip()
+            candidates = [
+                item for item in unmatched
+                if construction_name in {
+                    str(item.get("structure") or "").strip(),
+                    str(item.get("name") or "").strip(),
+                }
+                and abs(float(item.get("area_m2") or 0.0) - area) <= 5e-4
+            ]
+            source_boundary = candidates[0] if candidates else None
+            if source_boundary is not None:
+                unmatched.remove(source_boundary)
+                source_name = str(source_boundary.get("name") or construction_name)
+                kind = str(source_boundary.get("winwatt_type") or "unknown")
+            else:
+                source_name = construction_name
+                kind = _CODE_TO_SOURCE_TYPE.get(
+                    boundary.findtext("Type") or "", boundary.findtext("Type") or "unknown"
+                )
+            actual_xy[source_name] = {"x_m": _number(boundary.findtext("x")), "y_m": _number(boundary.findtext("y")), "area_m2": area}
             # Do not infer orientation from the source name here: the report
             # must expose legacy WinWatt fields which were not persisted after
             # import/reopen (notably Compass on this version's roof type).
@@ -139,7 +265,15 @@ def validate_native_readback(model_path: Path, readback_xml: Path) -> dict[str, 
         "opening_glass_ratio_percent": opening_glass_ratios,
         "wall_xy_geometry": wall_xy,
         "wall_xy_issues": wall_geometry_issues(model),
-        "mechanics_included": False,
+        "system_readback": _system_readback(model, buildings),
+        "mechanics_included": bool(model.get("systems")) or any(
+            building.find("EPBD/WinWatt32HeatingSystemItem") is not None
+            or building.find("EPBD/WinWatt32WaterHeatingSystemItem") is not None
+            or building.find("EPBD/WinWatt32CoolingSystemItem") is not None
+            or building.find("EPBD/WinWatt32AiringSystemItem") is not None
+            or building.find("EPBD/WinWatt32LightingSystemItem") is not None
+            for building in buildings
+        ),
     }
     return report
 

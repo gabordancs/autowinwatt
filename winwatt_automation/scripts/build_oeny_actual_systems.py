@@ -330,8 +330,14 @@ def main() -> int:
         except WinWattNotRunningError:
             report["session_closed"] = True
         except Exception as cleanup_exc:
-            report["session_closed"] = False
-            report["cleanup_error"] = repr(cleanup_exc)
+            # The connector and service can load the same local exception
+            # class through different module identities in the 32-bit worker.
+            # A no-window result means the session is already closed.
+            if cleanup_exc.__class__.__name__ == "WinWattNotRunningError":
+                report["session_closed"] = True
+            else:
+                report["session_closed"] = False
+                report["cleanup_error"] = repr(cleanup_exc)
         checkpoint()
 
     print(json.dumps(report, ensure_ascii=False, indent=2))

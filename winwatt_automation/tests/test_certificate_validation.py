@@ -37,3 +37,55 @@ def test_readback_validates_explicit_rooflight_glazing_ratio(tmp_path: Path) -> 
     xml = tmp_path / "readback.xml"; xml.write_text("""<WinWatt32Project><WinWatt32Panel><ItemHeader><ItemName>Felülvilágító</ItemName></ItemHeader><GlassRatio>90</GlassRatio></WinWatt32Panel></WinWatt32Project>""", encoding="utf-8")
     report = validate_native_readback(model_path, xml)
     assert report["opening_glass_ratio_percent"]["Felülvilágító"]["absolute"] == 0
+
+
+def test_readback_compares_native_heating_and_hot_water_fields(tmp_path: Path) -> None:
+    model = {
+        "project": {"heated_area_m2": 32.8, "heated_volume_m3": 88.6},
+        "systems": [
+            {
+                "name": "Gázkonvektor", "type": "heating", "served_area_m2": 32.8,
+                "carrier": "földgáz", "generator_performance_factor": 1.4,
+                "net_heat_kwh_a": 8154, "final_energy_kwh_a": 13698,
+            },
+            {
+                "name": "Bojler", "type": "hot_water", "served_area_m2": 32.8,
+                "carrier": "elektromos áram", "generator_performance_factor": 1,
+                "net_demand_kwh_m2a": 25, "final_energy_kwh_a": 927,
+                "storage_loss_percent": 13,
+            },
+        ],
+    }
+    model_path = tmp_path / "model.json"
+    model_path.write_text(json.dumps(model), encoding="utf-8")
+    xml = tmp_path / "readback.xml"
+    xml.write_text("""<WinWatt32Project><WinWatt32Building><EPBD>
+      <HeatingEnergy>6486.1</HeatingEnergy>
+      <WinWatt32HeatingSystemItem><Name>Gázkonvektor</Name><SystemArea>32.8</SystemArea>
+        <EnergyConsumptions><ConsumptionTableItem Consumption="10897"/></EnergyConsumptions>
+        <StokerItem><EnergySourceTypeDescription>földgáz</EnergySourceTypeDescription><Ck>1.4</Ck><CkDescription>Gázkonvektor</CkDescription></StokerItem>
+      </WinWatt32HeatingSystemItem>
+      <WinWatt32WaterHeatingSystemItem><Name>Bojler</Name><SystemArea>32.8</SystemArea>
+        <EnergyConsumptions><ConsumptionTableItem Consumption="926.6"/></EnergyConsumptions>
+        <StokerItem><EnergySourceTypeDescription>elektromos áram</EnergySourceTypeDescription><Ck>1</Ck><CkDescription>Elektromos</CkDescription></StokerItem>
+        <qHMV>25</qHMV><qft>13</qft><qftDescription>fűtött térben</qftDescription>
+        <qfvDescription>Nincs</qfvDescription><EcDescription>nincs segédenergia igény</EcDescription>
+      </WinWatt32WaterHeatingSystemItem>
+    </EPBD></WinWatt32Building></WinWatt32Project>""", encoding="utf-8")
+
+    report = validate_native_readback(model_path, xml)
+
+    assert report["mechanics_included"] is True
+    assert report["system_readback"]["native_counts"]["heating"] == 1
+    assert report["system_readback"]["native_counts"]["hot_water"] == 1
+    assert report["system_readback"]["native_counts"]["cooling"] == 0
+    heating, hot_water = report["system_readback"]["items"]
+    assert heating["carrier"]["equal"] is True
+    assert heating["net_heat_kwh_a"]["actual"] == 6486
+    assert heating["net_heat_kwh_a"]["raw_actual"] == 6486.1
+    assert heating["final_energy_kwh_a"]["absolute"] == -2801
+    assert heating["final_energy_kwh_a"]["raw_actual"] == 10897
+    assert hot_water["net_demand_kwh_m2a"]["absolute"] == 0
+    assert hot_water["storage_loss_percent"]["absolute"] == 0
+    assert hot_water["final_energy_kwh_a"]["absolute"] == 0
+    assert hot_water["final_energy_kwh_a"]["raw_actual"] == 926.6

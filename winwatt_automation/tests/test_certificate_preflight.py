@@ -18,9 +18,15 @@ def model() -> dict:
     }
 
 
-def readback(path: Path, *, compass: int = 90) -> None:
+def readback(path: Path, *, compass: int = 90, heating_name: str | None = None) -> None:
+    epbd = ""
+    if heating_name is not None:
+        epbd = (
+            f"<EPBD><WinWatt32HeatingSystemItem><Name>{heating_name}</Name>"
+            "<SystemArea>0</SystemArea><StokerItem/></WinWatt32HeatingSystemItem></EPBD>"
+        )
     path.write_text(f"""<WinWatt32Project>
-<WinWatt32Building/><WinWatt32Panel><ItemHeader><ItemName>Fal</ItemName></ItemHeader><k>0.5</k></WinWatt32Panel>
+<WinWatt32Building>{epbd}</WinWatt32Building><WinWatt32Panel><ItemHeader><ItemName>Fal</ItemName></ItemHeader><k>0.5</k></WinWatt32Panel>
 <WinWatt32Room><ItemHeader><ItemName>Szoba</ItemName></ItemHeader><Area>10</Area><CalculatedVolume>30</CalculatedVolume>
 <Heating><Temp>20</Temp></Heating><Boundary><Name>Fal 1</Name><A>4</A><x>2</x><y>2</y><Type>0</Type><Compass>{compass}</Compass><U>0.5</U></Boundary>
 </WinWatt32Room></WinWatt32Project>""", encoding="utf-8")
@@ -68,7 +74,7 @@ def test_g5_calculation_scope_passes_reviewed_system_without_results(tmp_path: P
     model_path = tmp_path / "model.json"
     model_path.write_text(json.dumps(payload), encoding="utf-8")
     readback_path = tmp_path / "readback.xml"
-    readback(readback_path)
+    readback(readback_path, heating_name="Fűtés")
 
     report = run_preflight(
         model_path=model_path, readback_xml=readback_path,
@@ -87,7 +93,7 @@ def test_g5_calculation_scope_lists_missing_human_system_review(tmp_path: Path) 
     model_path = tmp_path / "model.json"
     model_path.write_text(json.dumps(payload), encoding="utf-8")
     readback_path = tmp_path / "readback.xml"
-    readback(readback_path)
+    readback(readback_path, heating_name="Fűtés")
 
     report = run_preflight(
         model_path=model_path, readback_xml=readback_path,

@@ -136,10 +136,14 @@ def _difference_issues(report: dict[str, Any], tolerance: float) -> list[str]:
             for key, child in value.items():
                 if key not in {"wall_xy_issues"}:
                     inspect(f"{prefix}.{key}" if prefix else key, child)
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                inspect(f"{prefix}[{index}]", child)
 
     for key in (
         "totals", "surface_by_source_type_m2", "surface_by_azimuth_deg_m2",
         "room_conditions", "opening_glass_ratio_percent", "wall_xy_geometry",
+        "system_readback",
     ):
         inspect(key, report.get(key, {}))
     issues.extend(str(item) for item in report.get("wall_xy_issues", []))
@@ -161,6 +165,35 @@ def validate_readback_gate(
         for key, expected in expected_counts.items()
         if report.get("counts", {}).get(key) != expected
     ]
+    system_readback = report.get("system_readback") or {}
+    native_system_counts = system_readback.get("native_counts") or {}
+    expected_system_counts: dict[str, int] = {}
+    for item in model.get("systems") or []:
+        if not isinstance(item, dict):
+            continue
+        system_type = str(item.get("type") or "").strip()
+        if system_type == "water_heating":
+            system_type = "hot_water"
+        expected_system_counts[system_type] = expected_system_counts.get(system_type, 0) + 1
+    for system_type in ("heating", "hot_water", "cooling", "airing", "lighting"):
+        expected = expected_system_counts.get(system_type, 0)
+        actual = native_system_counts.get(system_type, 0)
+        if actual != expected:
+            issues.append(f"systems.{system_type}: expected {expected}, actual {actual}")
+    for index, item in enumerate(system_readback.get("items") or []):
+        if not item.get("present"):
+            issues.append(f"system_readback.items[{index}]: expected system is missing")
+        for field in ("name", "carrier"):
+            comparison = item.get(field)
+            if (
+                isinstance(comparison, dict)
+                and comparison.get("expected")
+                and comparison.get("equal") is False
+            ):
+                issues.append(
+                    f"system_readback.items[{index}].{field}: expected "
+                    f"{comparison.get('expected')!r}, actual {comparison.get('actual')!r}"
+                )
     issues.extend(_difference_issues(report, tolerance))
     return _check(
         "winwatt.readback", "failed" if issues else "passed",

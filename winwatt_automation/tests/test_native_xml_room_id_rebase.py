@@ -3,7 +3,10 @@ from pathlib import Path
 
 import pytest
 
-from winwatt_automation.certificates.native_xml import rebase_room_area_ids
+from winwatt_automation.certificates.native_xml import (
+    _remove_template_system_items,
+    rebase_room_area_ids,
+)
 
 
 def _project(room_ids: tuple[str, ...], refs: tuple[str, ...]) -> ET.ElementTree:
@@ -44,3 +47,24 @@ def test_rebase_room_area_ids_rejects_unknown_reference(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="Unresolved RoomAreaItem IDs"):
         rebase_room_area_ids(source, readback, target)
     assert not target.exists()
+
+
+def test_remove_template_system_items_keeps_epbd_calculation_fields() -> None:
+    building = ET.fromstring(
+        """
+        <WinWatt32Building>
+          <EPBD>
+            <CalcMode>2023</CalcMode>
+            <WinWatt32HeatingSystemItem><SystemArea>32.8</SystemArea></WinWatt32HeatingSystemItem>
+            <WinWatt32WaterHeatingSystemItem />
+            <WinWatt32CoolingSystemItem />
+          </EPBD>
+        </WinWatt32Building>
+        """
+    )
+
+    assert _remove_template_system_items(building) == 3
+    assert building.findtext("EPBD/CalcMode") == "2023"
+    assert building.findall("EPBD/WinWatt32HeatingSystemItem") == []
+    assert building.findall("EPBD/WinWatt32WaterHeatingSystemItem") == []
+    assert building.findall("EPBD/WinWatt32CoolingSystemItem") == []
