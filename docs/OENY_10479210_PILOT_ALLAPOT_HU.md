@@ -141,6 +141,56 @@ egyetlen `F1` számítási zónáján alapul.
 
 ## Következő kapuk
 
+## 2026-10-15-i PDF-only összevetési állapot
+
+A legutóbbi teljes, helyi worker-lánc kizárólag a számítási PDF-ből építette
+fel a modellt. Az eredeti OÉNY XML csak az elkészült WinWatt-visszaolvasás
+utólagos ellenőrzésére szolgált.
+
+Bizonyított egyezések:
+
+- hasznos alapterület: `32,8 / 32,8 m²`;
+- fűtött térfogat: `88,6 / 88,6 m³`;
+- mind a hat szerkezettípus összes felülete pontos;
+- a tájolásonkénti felületek pontosak (`0°`, `45°`, `135°`, `225°`);
+- a tető natív határfeltétele `Type=3`, tájolása `45°`, hővesztesége `434 W`;
+- a talajjal érintkező fal és padló natív típusa `25`, illetve `26`;
+- fűtési/HMV-rendszernév, energiahordozó és teljesítménytényező pontos;
+- HMV végenergia: `927 / 927 kWh/a`.
+
+Fennmaradó számítási eltérés:
+
+| Mező | PDF / eredeti XML | Új WinWatt | Eltérés |
+|---|---:|---:|---:|
+| fűtés nettó hőenergia | 8154 kWh/a | 4718 kWh/a | -42,14% |
+| fűtés végenergia | 13698 kWh/a | 7926 kWh/a | -42,14% |
+| összes primerenergia-jellemző | 478,43 kWh/m²a | 304,21 kWh/m²a | -36,41% |
+
+A korábbi `-52%` fűtési eredmény egy azonosított hibás köztes állapot volt:
+a tető pincefödém-kódot (`Type=5`) kapott, ezért nem vett részt megfelelően a
+hőveszteségben. A `Type=3` javítás ezt megszüntette és a hibát `-42,14%`-ra
+csökkentette.
+
+A jelenlegi fő gap nem geometriai. A PDF szerinti összes hőtároló tömeg
+`12,26 t`, illetve az effektív fajlagos hőkapacitás `325,37 kJ/m²K`. A natív
+visszaolvasásban `61,984 t`, illetve `1587 kJ/m²K` marad, vagyis az utóbbi
+mintegy `+388%`. A PDF-parser már strukturáltan átadja a szerkezetenként
+nyomtatott fajlagos tömeg-, hőtároló tömeg- és hőkapacitás-adatokat, de a
+WinWatt natív XML-importja ezeket származtatott mezőként felülírja a kiinduló
+projekt értékeivel. Az épület `Mindet újraszámol` művelete sem frissíti őket.
+A következő célzott mapping-feladat ezért a hat szerkezet szerkesztőjének
+determinisztikus megnyitás–OK roundtripje és az ezt követő tömeg-readback.
+
+A PDF-ben nyomtatott légcsereadatok is rögzítve vannak: `n_szüks=0,50 1/h`,
+`n_filt=0,06 1/h`, `H_szell=17,4 W/K`. Ezeket nem kell feltételezni. A jelenlegi
+projektben a használati zóna `0,50` értéke megvan, de az éves EPBD
+visszaolvasás `AirVolumeInf=0`, ezért a `0,06` infiltráció zónakapcsolatát a
+hőtároló tömeg javítása után külön kell ellenőrizni.
+
+Az ET tanúsítási XML export külön UI-azonossági hibán állt meg
+(`No enabled WinWatt top-level window is active`); ez nem projekt- vagy
+számítási sérülés. Tanúsításra kész állapot továbbra sincs kimondva.
+
 2026-10-14-től a pilot az
 [`ADAPTIV_TANUSITASI_VALTOUZEM_HU.md`](ADAPTIV_TANUSITASI_VALTOUZEM_HU.md)
 szerinti gapvezérelt módban halad. Az általános ET-crawler leállt; mapping csak

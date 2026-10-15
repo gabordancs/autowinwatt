@@ -17,16 +17,16 @@ from .geometry import is_vertical_wall, wall_geometry_issues, xy_area
 PANEL_TYPES={
     "külső fal":("OutsideWall",0),
     "lábazati fal":("OutsideWall",0),
-    "talajjal érintkező fal (ISO 13370)":("OutsideWall",0),
-    # Verified WinWatt 9.60 native readbacks store ground floors with the
-    # Roof1 panel record schema while room boundaries identify their actual
-    # thermal role with Type=3.  ``FloorISO`` was never observed in a native
-    # readback on this profile and changing only the XML class attribute of an
-    # OutsideWall record makes WinWatt parse incompatible child fields.
-    "talajon fekvő padló":("Roof1",3),
-    "padló (talajra fektetett ISO 13370)":("Roof1",3),
-    "külső tető":("Roof1",5),
-    "tető":("Roof1",5),
+    # WinWatt 9.60 native exports use the FloorISO record for the ISO 13370
+    # floor editor.  That schema contains both ISOFloor and ISOWall fields;
+    # using Roof1 is normalized back to an ordinary roof and loses the ground
+    # heat-loss calculation.  Ground-wall use is verified by a dedicated
+    # sandbox import/readback before promotion to a real reconstruction.
+    "talajjal érintkező fal (ISO 13370)":("FloorISO",25),
+    "talajon fekvő padló":("FloorISO",26),
+    "padló (talajra fektetett ISO 13370)":("FloorISO",26),
+    "külső tető":("Roof1",3),
+    "tető":("Roof1",3),
     "tetőablak":("OutsideWindow",10),
     "felülvilágító":("OutsideWindow",10),
     "külső ablak":("OutsideWindow",10),
@@ -51,6 +51,74 @@ def _header(node:ET.Element,name:str,path:str,id_:int)->None:
     _set(head,"ItemName",name);_set(head,"ItemPath",path);_set(head,"ID",id_)
 def _kind(value:str)->str:
     return PANEL_TYPES.get(value,("OutsideWall",0))[0]
+
+
+def _required_number(source: dict, name: str, structure_name: str) -> float:
+    value = source.get(name)
+    if value is None:
+        raise ValueError(
+            f"Ground-contact structure {structure_name!r} requires explicit PDF-backed {name}"
+        )
+    number = float(value)
+    if not math.isfinite(number):
+        raise ValueError(f"Ground-contact structure {structure_name!r} has invalid {name}: {value!r}")
+    return number
+
+
+def _apply_ground_iso_fields(panel: ET.Element, structure: dict) -> None:
+    """Populate ISO 13370 inputs explicitly; never retain template operands."""
+    structure_type = str(structure.get("type") or "")
+    if structure_type not in {
+        "talajon fekvő padló",
+        "padló (talajra fektetett ISO 13370)",
+        "talajjal érintkező fal (ISO 13370)",
+    }:
+        return
+    name = str(structure.get("name") or structure_type)
+    u_value = _required_number(structure, "u_layer", name)
+    earth_lambda = _required_number(structure, "earth_lambda_w_mk", name)
+    floor_level = _required_number(structure, "floor_level_m", name)
+    _set(panel, "k", u_value)
+    _set(panel, "EarthLambda", earth_lambda)
+    _set(panel, "FloorLevel", floor_level)
+    _set(panel, "Rse", _required_number(structure, "rse_m2k_w", name))
+    _set(panel, "Rsi", _required_number(structure, "rsi_m2k_w", name))
+    modifier = structure.get("u_modifier_percent")
+    if modifier is not None:
+        modifier_node = panel.find("kModifier")
+        if modifier_node is None:
+            modifier_node = ET.SubElement(panel, "kModifier", {"ModifierMode": "Percent"})
+        modifier_node.set("ModifierMode", "Percent")
+        modifier_node.text = str(float(modifier))
+    if structure_type == "talajjal érintkező fal (ISO 13370)":
+        _set(panel, "WallU", u_value)
+        _set(panel, "FloorWidth", 0)
+        _set(panel, "WallHeight", abs(floor_level))
+        _set(panel, "ISOCorrectionMode", 0)
+        wall = panel.find("ISOWall")
+        if wall is None:
+            wall = ET.SubElement(panel, "ISOWall")
+        wall.set("WallU", str(u_value))
+        wall.set("FloorU", str(_required_number(structure, "floor_u_value", name)))
+        wall.set("EarthLambda", str(earth_lambda))
+        wall.set("FloorLevel", str(floor_level))
+        return
+    area = _required_number(structure, "iso_area_m2", name)
+    perimeter = _required_number(structure, "iso_perimeter_m", name)
+    wall_floor_psi = _required_number(structure, "wall_floor_psi_w_mk", name)
+    _set(panel, "BaseWidth", _required_number(structure, "base_width_m", name))
+    _set(panel, "ISOCorrectionMode", 0)
+    iso_floor = panel.find("ISOFloor")
+    if iso_floor is None:
+        iso_floor = ET.SubElement(panel, "ISOFloor")
+    for field, value in (
+        ("Area", area),
+        ("Perimeter", perimeter),
+        ("AverageU", u_value),
+        ("PlinthWallU", 0),
+        ("WallFloorPszi", wall_floor_psi),
+    ):
+        iso_floor.set(field, str(value))
 
 
 def _local_name(tag: str) -> str:
@@ -188,6 +256,25 @@ def _native_integer(value: object, field: str) -> int:
     return int(number)
 
 
+def _remove_template_system_items(building: ET.Element) -> int:
+    """Remove semantic system instances inherited from a schema template.
+
+    Native project XML stores building-system rows below ``EPBD``.  They are
+    project data, not schema defaults, so copying them into a PDF-derived model
+    would silently create systems that the source model did not request.
+    Actual systems are added later by a dedicated, evidence-backed worker.
+    """
+    epbd = building.find("EPBD")
+    if epbd is None:
+        return 0
+    removed = 0
+    for child in list(epbd):
+        if child.tag.startswith("WinWatt32") and child.tag.endswith("SystemItem"):
+            epbd.remove(child)
+            removed += 1
+    return removed
+
+
 def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     model=json.loads(model_path.read_text(encoding="utf-8")); tree=ET.parse(template_path); root=tree.getroot()
     if model.get("project", {}).get("require_wall_xy"):
@@ -218,12 +305,33 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
         panel=copy.deepcopy(base)
         panel.attrib["Type"]=kind; layered=bool(by_layer[structure["name"]]); panel.attrib["Layered"]="Yes" if layered else "No";_header(panel,structure["name"],"Certificate\\Structures\\",next_id)
         _set(panel,"Type",structure.get("winwatt_use",structure.get("type",""))); _set(panel,"k",structure.get("u_effective") or structure.get("u_layer") or 0)
+        # These three values are printed explicitly in the source calculation
+        # PDF and materially affect the monthly gain-utilisation calculation.
+        # Never retain unrelated template values when the PDF supplies them.
+        for native_tag, model_key in (
+            ("Mass", "specific_mass_kg_m2"),
+            ("HeatMass", "specific_heat_mass_kg_m2"),
+            ("HeatCapacity", "specific_heat_capacity_kj_m2k"),
+        ):
+            if structure.get(model_key) is not None:
+                _set(panel, native_tag, _native_integer(structure[model_key], native_tag))
+        _apply_ground_iso_fields(panel, structure)
         glass_ratio = _explicit_glass_ratio(structure)
         if glass_ratio is not None:
             _set(panel, "GlassRatio", glass_ratio)
-        for old in list(panel.findall("PanelLayer")):panel.remove(old)
-        for layer in sorted(by_layer[structure["name"]],key=lambda item:item.get("sequence",0)):
-            row=copy.deepcopy(layer_template);_set(row,"LayerName",layer["name"]);_set(row,"Thickness",float(layer.get("thickness_cm") or 0)/100);_set(row,"Density",layer.get("density_kgm3") or 1);_set(row,"ThermalCond",layer.get("lambda_wmk") or 9999);_set(row,"ThermalRes",layer.get("r") or 0);_set(row,"HeatCapacity",layer.get("heat_capacity_kjkgk") or 0);panel.append(row)
+        # Preserve the native template's child ordering.  The WinWatt importer
+        # is order-sensitive in several project sections, so replacement
+        # layers stay at the position occupied by the template layers.
+        panel_children = list(panel)
+        old_layers = list(panel.findall("PanelLayer"))
+        layer_insert_index = min(
+            (panel_children.index(old) for old in old_layers),
+            default=panel_children.index(panel.find("LayeredPanel")) + 1,
+        )
+        for old in old_layers:
+            panel.remove(old)
+        for layer_offset, layer in enumerate(sorted(by_layer[structure["name"]],key=lambda item:item.get("sequence",0))):
+            row=copy.deepcopy(layer_template);_set(row,"LayerName",layer["name"]);_set(row,"Thickness",float(layer.get("thickness_cm") or 0)/100);_set(row,"Density",layer.get("density_kgm3") or 1);_set(row,"ThermalCond",layer.get("lambda_wmk") or 9999);_set(row,"ThermalRes",layer.get("r") or 0);_set(row,"HeatCapacity",layer.get("heat_capacity_kjkgk") or 0);panel.insert(layer_insert_index + layer_offset, row)
         root.append(panel);next_id+=1
     # A certificate template can contain dozens of unrelated ETZones.  Retain
     # only its minimal zone shape, then rebuild source-specific zones below.
@@ -231,13 +339,18 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
     zone_template=copy.deepcopy(next(iter(building_template.findall("ETZone")), None))
     building_by_name: dict[str, tuple[ET.Element, int]] = {}
     building_aliases: dict[str, str] = {}
+    template_system_items_removed = 0
     for building_spec in _building_specs(model):
         building_name = str(building_spec["name"])
         if building_name in building_by_name:
             raise ValueError(f"Duplicate building name: {building_name}")
         building=copy.deepcopy(building_template)
         for old_zone in list(building.findall("ETZone")): building.remove(old_zone)
-        _header(building,building_name,"Certificate\\",next_id)
+        template_system_items_removed += _remove_template_system_items(building)
+        # UI-created WinWatt buildings live at the project root.  An invented
+        # ``Certificate\\`` folder survives XML import textually but makes the
+        # building editor's whole-building zone ignore otherwise valid rooms.
+        _header(building,building_name,"",next_id)
         _set(building,"Description",building_spec.get("address", model["project"].get("address", "")))
         building_by_name[building_name]=(building,next_id)
         for reference in (building_name, str(building_spec.get("id") or "")):
@@ -255,7 +368,9 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
         if building_name not in building_by_name:
             raise ValueError(f"Room {room_spec['name']!r} refers to unknown building {building_name!r}")
         _, building_id = building_by_name[building_name]
-        room=copy.deepcopy(rooms[0]);_header(room,room_spec["name"],"Certificate\\",next_id);_set(room,"Area",room_spec["area_m2"]);_set(room,"Height",room_spec["height_m"]);_set(room,"CalculatedVolume",room_spec.get("volume_m3",room_spec["area_m2"]*room_spec["height_m"]));_set(room,"GivedVolume",room_spec.get("volume_m3",room_spec["area_m2"]*room_spec["height_m"]));_set(room,"BuildingRefID",building_id)
+        # Rooms created by WinWatt's own UI are also root items; membership is
+        # carried by BuildingRefID, not by a synthetic ItemPath folder.
+        room=copy.deepcopy(rooms[0]);_header(room,room_spec["name"],"",next_id);_set(room,"Area",room_spec["area_m2"]);_set(room,"Height",room_spec["height_m"]);_set(room,"CalculatedVolume",room_spec.get("volume_m3",room_spec["area_m2"]*room_spec["height_m"]));_set(room,"GivedVolume",room_spec.get("volume_m3",room_spec["area_m2"]*room_spec["height_m"]));_set(room,"BuildingRefID",building_id)
         # Room conditions are source-model inputs, not incidental template
         # defaults.  Cooling is retained from the version-specific template
         # unless an explicit source value is supplied.
@@ -310,4 +425,4 @@ def compile_native_xml(model_path:Path,template_path:Path,target:Path)->dict:
                 doc.set("NettoArea", str(room_spec["area_m2"]));doc.set("Volume", str(room_spec.get("volume_m3", room_spec["area_m2"]*room_spec["height_m"])))
             building_by_name[building_name][0].append(zone)
     target.parent.mkdir(parents=True,exist_ok=True);ET.indent(tree,space="  ");tree.write(target,encoding="utf-8",xml_declaration=True)
-    return {"xml":str(target),"buildings":len(building_by_name),"rooms":len(model["rooms"]),"structures":len(model["structures"]),"boundaries":len(model.get("boundaries",[]))}
+    return {"xml":str(target),"buildings":len(building_by_name),"rooms":len(model["rooms"]),"structures":len(model["structures"]),"boundaries":len(model.get("boundaries",[])),"template_system_items_removed":template_system_items_removed}

@@ -18,7 +18,7 @@ from .geometry import is_vertical_wall
 
 
 SCHEMA = "autowinwatt-oeny-reconstruction/v1"
-PARSER_VERSION = "2026.10.13.5"
+PARSER_VERSION = "2026.10.15.1"
 SUPPORTED_PROFILE_VERSION = "9.60"
 VERSION_RE = re.compile(r"WinWatt(?:\s+gólya)?\s+([0-9]+\.[0-9]+)(?:\s+\(([^)]+)\))?", re.I)
 NUMBER_RE = r"([+-]?[0-9][0-9 .]*(?:[,.][0-9]+)?)"
@@ -247,6 +247,18 @@ def _line_number(block: str, label: str) -> float | None:
     return _number(match.group(1)) if match else None
 
 
+def _average_area_perimeter(block: str) -> tuple[float | None, float | None]:
+    """Read the two ISO 13370 operands printed on one WinWatt report line."""
+    match = re.search(
+        rf"Átlaghoz\s+alkalmazott\s+terület\s+{NUMBER_RE}\s*m2,\s*kerület\s+{NUMBER_RE}\s*m",
+        block,
+        re.I,
+    )
+    if not match:
+        return None, None
+    return _number(match.group(1)), _number(match.group(2))
+
+
 def extract_structure_records(
     pages: list[str], *, source_kind: str = "embedded_pdf"
 ) -> list[dict[str, Any]]:
@@ -262,9 +274,12 @@ def extract_structure_records(
             structure_type = match.group(2).strip()
             is_opening = any(token in structure_type.casefold() for token in ("ablak", "ajtó", "nyílászáró"))
             u_layer = _line_number(block, "Rétegtervi hőátbocsátási tényező")
+            if u_layer is None:
+                u_layer = _line_number(block, "Átlagos rétegtervi hőátb. tényező")
             u_effective = _line_number(block, "Eredő hőátbocsátási tényező")
             if u_effective is None:
                 u_effective = _line_number(block, "Hőátbocsátási tényező")
+            iso_area, iso_perimeter = _average_area_perimeter(block)
             rows.append({
                 "name": name,
                 "type": structure_type,
@@ -272,6 +287,20 @@ def extract_structure_records(
                 "y_m": _line_number(block, "y méret") if is_opening else None,
                 "u_layer": u_layer,
                 "u_effective": u_effective,
+                "iso_area_m2": iso_area,
+                "iso_perimeter_m": iso_perimeter,
+                "wall_floor_psi_w_mk": _line_number(block, "Fal-padló csatlakozási hőhíd"),
+                "linear_transmittance_w_mk": _line_number(block, "Vonalmenti hőátbocsátási tényező"),
+                "floor_level_m": _line_number(block, "Padlószint magassága"),
+                "earth_lambda_w_mk": _line_number(block, "Talaj hővezetési tény."),
+                "base_width_m": _line_number(block, "Alap szélesség"),
+                "floor_u_value": _line_number(block, "Padló rétegtervi hőátb. tény."),
+                "rse_m2k_w": _line_number(block, "Hőátadási ellenállás kívül"),
+                "rsi_m2k_w": _line_number(block, "Hőátadási ellenállás belül"),
+                "u_modifier_percent": _line_number(block, "Hőátbocsátási tényezőt módosító tag"),
+                "specific_mass_kg_m2": _line_number(block, "Fajlagos tömeg"),
+                "specific_heat_mass_kg_m2": _line_number(block, "Fajlagos hőtároló tömeg"),
+                "specific_heat_capacity_kj_m2k": _line_number(block, "Fajlagos hőkapacitás"),
                 "glazing_ratio_percent": _line_number(block, "Üvegezési arány"),
                 "glazing_g": _line_number(block, "Üvegezés g értéke"),
                 "source": {
@@ -439,6 +468,23 @@ def build_one_zone_candidate(
         raise ValueError("unsupported reconstruction decisions schema")
     if spec.get("input_policy", {}).get("construction_input") != "pdf_only":
         raise ValueError("construction spec must declare pdf_only input policy")
+    if decisions.get("input_policy", {}).get("construction_input") != "pdf_only":
+        raise ValueError("construction decisions must declare pdf_only input policy")
+
+    def reject_non_pdf_sources(value: Any, path: str = "decisions") -> None:
+        if isinstance(value, dict):
+            source = value.get("source")
+            if isinstance(source, dict) and source.get("kind") not in (None, "pdf"):
+                raise ValueError(
+                    f"{path}.source must have direct PDF provenance, got {source.get('kind')!r}"
+                )
+            for key, child in value.items():
+                reject_non_pdf_sources(child, f"{path}.{key}")
+        elif isinstance(value, list):
+            for index, child in enumerate(value):
+                reject_non_pdf_sources(child, f"{path}[{index}]")
+
+    reject_non_pdf_sources(decisions)
     if str(decisions.get("certificate_id")) != str(spec.get("certificate_id")):
         raise ValueError("decision certificate_id does not match reconstruction spec")
     if decisions.get("room_count_decision", {}).get("accepted") is not True:
@@ -466,6 +512,20 @@ def build_one_zone_candidate(
             "type": row["type"],
             "u_layer": row.get("u_layer"),
             "u_effective": row.get("u_effective"),
+            "iso_area_m2": row.get("iso_area_m2"),
+            "iso_perimeter_m": row.get("iso_perimeter_m"),
+            "wall_floor_psi_w_mk": row.get("wall_floor_psi_w_mk"),
+            "linear_transmittance_w_mk": row.get("linear_transmittance_w_mk"),
+            "floor_level_m": row.get("floor_level_m"),
+            "earth_lambda_w_mk": row.get("earth_lambda_w_mk"),
+            "base_width_m": row.get("base_width_m"),
+            "floor_u_value": row.get("floor_u_value"),
+            "rse_m2k_w": row.get("rse_m2k_w"),
+            "rsi_m2k_w": row.get("rsi_m2k_w"),
+            "u_modifier_percent": row.get("u_modifier_percent"),
+            "specific_mass_kg_m2": row.get("specific_mass_kg_m2"),
+            "specific_heat_mass_kg_m2": row.get("specific_heat_mass_kg_m2"),
+            "specific_heat_capacity_kj_m2k": row.get("specific_heat_capacity_kj_m2k"),
             "source": row["source"],
             "reviewed": False,
         }

@@ -104,6 +104,9 @@ def test_structure_parser_keeps_printed_values_and_marks_allocation_unresolved()
         "Szerkezet típusok:\nFal A\nTípusa: külső fal\n"
         "Rétegtervi hőátbocsátási tényező: 0.169 W/m2K\n"
         "Eredő hőátbocsátási tényező: 0.219 W/m2K\n"
+        "Fajlagos tömeg: 459 kg/m2\n"
+        "Fajlagos hőtároló tömeg: 132 kg/m2\n"
+        "Fajlagos hőkapacitás: 116 kJ/m2K\n"
         "Ablak A\nTípusa: ablak (külső, fa vagy PVC)\n"
         "x méret: 1,2 m\ny méret: 1,5 m\n"
         "Hőátbocsátási tényező: 1.100 W/m2K\n"
@@ -112,6 +115,9 @@ def test_structure_parser_keeps_printed_values_and_marks_allocation_unresolved()
     assert records[0]["name"] == "Fal A"
     assert records[0]["u_layer"] == 0.169
     assert records[0]["u_effective"] == 0.219
+    assert records[0]["specific_mass_kg_m2"] == 459.0
+    assert records[0]["specific_heat_mass_kg_m2"] == 132.0
+    assert records[0]["specific_heat_capacity_kj_m2k"] == 116.0
     assert records[1]["x_m"] == 1.2
     assert records[1]["y_m"] == 1.5
     assert records[1]["glazing_ratio_percent"] == 70.0
@@ -146,6 +152,7 @@ def test_one_zone_candidate_uses_exact_totals_and_explicit_decisions() -> None:
     }
     decisions = {
         "schema": "autowinwatt-oeny-reconstruction-decisions/v1",
+        "input_policy": {"construction_input": "pdf_only"},
         "certificate_id": "12345678",
         "room_name": "F1",
         "room_count_decision": {"accepted": True, "basis": "PDF has one calculation zone"},
@@ -188,6 +195,7 @@ def test_one_zone_candidate_rejects_unaccepted_room_decision() -> None:
     spec = {"certificate_id": "1", "input_policy": {"construction_input": "pdf_only"}}
     decisions = {
         "schema": "autowinwatt-oeny-reconstruction-decisions/v1",
+        "input_policy": {"construction_input": "pdf_only"},
         "certificate_id": "1",
         "room_count_decision": {"accepted": False},
     }
@@ -213,6 +221,7 @@ def test_one_zone_candidate_keeps_wall_xy_open_without_explicit_decision() -> No
     }
     decisions = {
         "schema": "autowinwatt-oeny-reconstruction-decisions/v1",
+        "input_policy": {"construction_input": "pdf_only"},
         "certificate_id": "1", "room_count_decision": {"accepted": True},
         "boundaries": [{"name": "Fal", "structure": "Fal", "winwatt_type": "külső fal", "area_m2": 12}],
     }
@@ -233,6 +242,7 @@ def test_candidate_rejects_xml_derived_construction_spec() -> None:
     }
     decisions = {
         "schema": "autowinwatt-oeny-reconstruction-decisions/v1",
+        "input_policy": {"construction_input": "pdf_only"},
         "certificate_id": "1",
         "room_count_decision": {"accepted": True},
     }

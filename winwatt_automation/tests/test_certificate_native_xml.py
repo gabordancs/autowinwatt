@@ -1,4 +1,5 @@
 from winwatt_automation.certificates.native_xml import (
+    PANEL_TYPES,
     _boundary_gradient,
     _boundary_u,
     _building_specs,
@@ -10,12 +11,15 @@ from winwatt_automation.certificates.native_xml import (
 
 def test_panel_type_mapping_matches_winwatt_native_readback() -> None:
     assert _kind("külső fal") == "OutsideWall"
-    assert _kind("talajon fekvő padló") == "Roof1"
+    assert _kind("talajon fekvő padló") == "FloorISO"
     assert _kind("tető") == "Roof1"
-    assert _kind("padló (talajra fektetett ISO 13370)") == "Roof1"
-    assert _kind("talajjal érintkező fal (ISO 13370)") == "OutsideWall"
+    assert _kind("padló (talajra fektetett ISO 13370)") == "FloorISO"
+    assert _kind("talajjal érintkező fal (ISO 13370)") == "FloorISO"
     assert _kind("ablak (külső, fa vagy PVC)") == "OutsideWindow"
     assert _kind("ajtó (külső)") == "OutsideDoor"
+    assert PANEL_TYPES["tető"] == ("Roof1", 3)
+    assert PANEL_TYPES["talajjal érintkező fal (ISO 13370)"] == ("FloorISO", 25)
+    assert PANEL_TYPES["padló (talajra fektetett ISO 13370)"] == ("FloorISO", 26)
 
 
 def test_explicit_glass_ratio_only_uses_structured_or_stated_source_value() -> None:
