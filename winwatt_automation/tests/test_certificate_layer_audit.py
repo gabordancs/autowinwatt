@@ -46,3 +46,27 @@ def test_layer_audit_accepts_traceable_human_approved_property_equivalence(tmp_p
     assert row["decision"]["status"] == "catalog"
     assert row["decision"]["decision_mode"] == "human_approved_property_equivalence"
     assert row["trace"]["human_approval"]["owner"] == "human_user"
+
+
+def test_layer_audit_accepts_unique_exact_name_without_inventing_missing_physics(tmp_path: Path) -> None:
+    model = {"project": {"source": "source.pdf"}, "layers": [{
+        "structure": "Tető", "name": "Mastermax 3 CLASSIC", "sequence": 1,
+        "thickness_cm": 0.1, "reviewed": True,
+        "material_approval": {
+            "approved": True, "catalog_material_id": "950",
+            "catalog_material_name": "Mastermax 3 CLASSIC", "owner": "human_user",
+        },
+    }]}
+    model_path = tmp_path / "model.json"
+    model_path.write_text(json.dumps(model), encoding="utf-8")
+    catalog_path = tmp_path / "catalog.xml"
+    catalog_path.write_text(
+        """<WinWatt32Project><WinWatt32Material><ItemHeader><ItemName>Mastermax 3 CLASSIC</ItemName><ID>950</ID></ItemHeader><Density>0</Density><ThermalCond>0</ThermalCond><HeatCapacity>0</HeatCapacity></WinWatt32Material></WinWatt32Project>""",
+        encoding="utf-8",
+    )
+    result = audit_layers(model_path, catalog_path, tmp_path / "audit.json")
+    row = result["layers"][0]
+    assert row["decision"]["status"] == "catalog"
+    assert row["decision"]["decision_mode"] == "human_approved_exact_name_and_supplied_physics"
+    assert row["property_search"]["match_count"] == 0
+    assert row["exact_name_search"]["unique"] is True

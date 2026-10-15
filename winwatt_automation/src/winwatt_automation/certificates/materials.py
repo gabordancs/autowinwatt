@@ -105,6 +105,42 @@ def find_materials_by_properties(
     )
 
 
+def find_materials_by_exact_name(
+    catalog: list[MaterialCandidate], source_name: str
+) -> list[MaterialCandidate]:
+    """Return catalogue rows with the same normalized material name."""
+    key = normalize_material_name(source_name)
+    return [item for item in catalog if normalize_material_name(item.name) == key]
+
+
+def material_agrees_with_supplied_properties(
+    candidate: MaterialCandidate,
+    *,
+    lambda_wmk: float | None = None,
+    density_kgm3: float | None = None,
+    heat_capacity_kjkgk: float | None = None,
+    relative_tolerance: float = 0.001,
+) -> bool:
+    """Check every supplied property without treating absent values as evidence."""
+    if relative_tolerance < 0:
+        raise ValueError("relative_tolerance must be non-negative")
+    supplied = {
+        "lambda_wmk": lambda_wmk,
+        "density_kgm3": density_kgm3,
+        "heat_capacity_kjkgk": heat_capacity_kjkgk,
+    }
+    return all(
+        value is None
+        or (
+            (candidate_value := getattr(candidate, key)) is not None
+            and abs(value - candidate_value)
+            / max(abs(value), abs(candidate_value), 1e-9)
+            <= relative_tolerance
+        )
+        for key, value in supplied.items()
+    )
+
+
 def material_family(name: str) -> str | None:
     text = _normal(name)
     rules = (("air_gap", ("legreteg",)), ("metal", ("femlemez", "trapezlemez", "acellemez")),

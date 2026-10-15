@@ -181,6 +181,47 @@ projekt értékeivel. Az épület `Mindet újraszámol` művelete sem frissíti 
 A következő célzott mapping-feladat ezért a hat szerkezet szerkesztőjének
 determinisztikus megnyitás–OK roundtripje és az ezt követő tömeg-readback.
 
+### Teljes anyagkatalógus-egyeztetés (2026-10-15)
+
+A `prepare_oeny_material_approvals.py` helyi, AI-mentes worker mind a 14
+PDF-ből származó réteget összevetette a verziózott WinWatt
+`energetika/anyagok.xml` katalógussal. A szabály fail-closed:
+
+- egyedi, normalizált névazonosság mellett a PDF-ben ténylegesen megadott
+  minden fizikai tulajdonságnak egyeznie kell; vagy
+- a PDF-ben megadott teljes `lambda–sűrűség–hőkapacitás` hármasnak egyetlen
+  katalógussorral kell egyeznie;
+- a PDF-ből hiányzó fizikai tulajdonságot a worker nem pótolja.
+
+Eredmény: `14/14` elfogadott, `0` feloldatlan réteg. Tíz réteg egyedi
+névazonossággal, négy réteg egyedi teljes fizikai tulajdonság-egyezéssel
+kapott katalógusazonosítót. Utóbbiak: `Burkolat → Csempe (267)`,
+`Cserép → Csempe (267)`, `üveggyapot filc → Therwoolin üveggyapot filc NF10`,
+`gipszkarton → tiszta gipszlapok 1 (354)`. A `Mastermax 3 CLASSIC` és a
+`Masterfol-BLUE Sd20 PE fólia` az egyedi terméknév alapján azonosítható; a
+hiányzó sűrűség/hőkapacitás továbbra sincs feltételezve.
+
+A teljes katalógus-jóváhagyással új jelölt modell és új natív WWP készült,
+majd mentés, bezárás, újranyitás és natív XML-export történt. A readback
+`1` épületet, `1` zónát, `1` helyiséget, `6` szerkezetet, `11` határolót és
+`14/14` réteget igazolt. A felülettípus- és tájolási összegek változatlanul
+pontosak.
+
+Ez a lépés ugyanakkor bizonyította, hogy a katalógusazonosítás önmagában nem
+oldja meg a hőtároló tömeg eltérését: a natív readback továbbra is
+`CalculatedHeatMass=61984 kg`, miközben a PDF `12,26 t`-t nyomtat. A WinWatt
+natív réteg XML-je a látható fizikai értékeket tárolja, nem a katalógussor
+azonosítóját; a szerkezet belső, származtatott állapotának frissítéséhez ezért
+továbbra is a hat szerkezet célzott szerkesztő-OK roundtripje szükséges.
+
+Bizonyítékok:
+
+- `winwatt_automation/data/oeny_reconstruction/pdf_only_10479210_20261014a/material_approval_report_001.json`
+- `winwatt_automation/data/oeny_reconstruction/pdf_only_10479210_20261014a/decisions.catalog_physical_001.json`
+- `winwatt_automation/data/oeny_reconstruction/pdf_only_10479210_20261014a/candidate_catalog_physical_002/layer_audit.json`
+- `winwatt_automation/data/oeny_reconstruction/pdf_only_10479210_20261014a/native_catalog_physical_003/testwwp.wwp`
+- `winwatt_automation/data/oeny_reconstruction/pdf_only_10479210_20261014a/catalog_physical_readback_001/validation_report.json`
+
 A PDF-ben nyomtatott légcsereadatok is rögzítve vannak: `n_szüks=0,50 1/h`,
 `n_filt=0,06 1/h`, `H_szell=17,4 W/K`. Ezeket nem kell feltételezni. A jelenlegi
 projektben a használati zóna `0,50` értéke megvan, de az éves EPBD
