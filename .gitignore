@@ -1,6 +1,40 @@
 scripts/__pycache__/
 .venv-winwatt32/
 __pycache__/
-# Generated UI snapshots, screenshots, checkpoints and sandbox projects are
-# local evidence, not source code to deploy to the remote mapper machine.
+
+# Generated runtime evidence and resumable worker state. These files are kept
+# in the external artifact archive, not in Git.
+*.log
+*.checkpoint.json
+*.wwp
+*.wwp.*
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.bak
+*.tmp
+*.tmp[0-9]*
+
+tmp/
+output/
+outputs/
+.codex-remote-attachments/
+data/webwatt_jobs/
+data/delceg56/
+
+# WinWatt runtime products, screenshots, sandbox projects and customer data.
 winwatt_automation/data/runtime_maps/
+winwatt_automation/data/run_logs/
+winwatt_automation/data/snapshots/
+winwatt_automation/data/certificate_builds/
+winwatt_automation/data/oeny_reconstruction/
+winwatt_automation/x/
+
+# Generated mapping/corpus stores. Curated certification knowledge and the
+# compact tool registry remain tracked beside the source code.
+winwatt_automation/data/knowledge/global_mapping/
+winwatt_automation/data/knowledge/certification_corpus/
+winwatt_automation/data/knowledge/navigation_knowledge.json
+winwatt_automation/data/knowledge/knowledge_store.json
+winwatt_automation/tests/test.xml

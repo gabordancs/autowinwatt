@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-10-16",
+  "source_branch": "codex/webwatt-review-handoff",
+  "source_commit": "9c128f10cb8110531902f1e88b48c45c22333caf",
+  "archived_file_count": 4355,
+  "archived_bytes": 979811222,
+  "local_archive_hint": "M:\\AWA\\20261016",
+  "manifest_sha256": "16d5c876388828851aee9fd73586783eeacf0ccf0ca112bd138c12fdf15ebcae",
+  "git_bundle_sha256": "cb18eed265c0129bd05836f66a1fc6da39030eee1fc4fb57d94235a13f805be8",
+  "notes": "The local archive is outside Git. manifest.json contains the path, size and SHA-256 digest of every archived file. The Git bundle contains all refs before cleanup."
+}
