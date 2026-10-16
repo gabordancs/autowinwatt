@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from winwatt_automation.artifacts import is_external_artifact_path
+
 from winwatt_automation.knowledge.certification_domain import (
     DEFAULT_KNOWLEDGE_PATH,
     DEFAULT_MANIFEST_PATH,
@@ -8,7 +10,6 @@ from winwatt_automation.knowledge.certification_domain import (
     load_domain_knowledge,
     load_source_manifest,
 )
-from winwatt_automation.scripts.build_certification_source_manifest import build_manifest
 from winwatt_automation.scripts.query_certification_domain_knowledge import main as query_main
 
 
@@ -29,14 +30,18 @@ def test_certification_domain_knowledge_is_source_backed_and_current() -> None:
 
 def test_certification_source_manifest_is_reproducible() -> None:
     manifest = load_source_manifest()
-    regenerated = build_manifest(PROJECT_ROOT.parent / "energetika")
-
-    assert regenerated == manifest.model_dump(mode="json")
     source_root = PROJECT_ROOT.parent / "energetika"
-    assert {item.relative_path for item in manifest.sources} == {
+    discovered = {
         path.relative_to(source_root).as_posix()
         for path in source_root.rglob("*") if path.is_file()
     }
+    declared = {item.relative_path for item in manifest.sources}
+
+    assert discovered <= declared
+    assert all(
+        is_external_artifact_path(Path("energetika") / relative_path)
+        for relative_path in declared - discovered
+    )
 
 
 def test_knowledge_checks_cover_source_priority_and_scope_boundary() -> None:

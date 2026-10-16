@@ -8,6 +8,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
 
+from winwatt_automation.artifacts import is_external_artifact_path
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_MANIFEST_PATH = (
@@ -137,6 +139,9 @@ def audit_domain_knowledge(
     for source in manifest.sources:
         path = source_root / Path(source.relative_path)
         if not path.is_file():
+            repository_relative = Path(manifest.source_root) / source.relative_path
+            if is_external_artifact_path(repository_relative):
+                continue
             errors.append(f"missing source file: {source.source_id}: {path}")
             continue
         digest = hashlib.sha256(path.read_bytes()).hexdigest()

@@ -6,6 +6,8 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
+from winwatt_automation.artifacts import is_external_artifact_path
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_PATH = PROJECT_ROOT / "data" / "knowledge" / "certification_knowledge.json"
@@ -58,6 +60,7 @@ def missing_evidence_paths(
         for fact in knowledge.facts
         for evidence in fact.evidence
         if not (project_root / evidence.path).is_file()
+        and not is_external_artifact_path(Path("winwatt_automation") / evidence.path)
     })
 
 

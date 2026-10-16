@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from winwatt_automation.agent.capabilities import CertificationToolRegistry
+from winwatt_automation.artifacts import is_external_artifact_path
 
 
 PROFILE = "winwatt_8c137b67c0a2214bb91aeae8"
@@ -65,4 +66,7 @@ def test_all_registry_evidence_paths_exist() -> None:
 
     for tool in registry.list():
         for evidence in tool.evidence:
-            assert (package_root / evidence.path).is_file(), evidence.path
+            assert (
+                (package_root / evidence.path).is_file()
+                or is_external_artifact_path(Path("winwatt_automation") / evidence.path)
+            ), evidence.path

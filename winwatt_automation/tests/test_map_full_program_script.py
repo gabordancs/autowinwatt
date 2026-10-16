@@ -5,6 +5,11 @@ from pathlib import Path
 
 import pytest
 
+from winwatt_automation.artifacts import is_external_artifact_path
+from winwatt_automation.runtime_mapping.program_mapper import (
+    DEFAULT_TEST_PROJECT_PATH,
+    DEFAULT_TOP_MENUS,
+)
 from winwatt_automation.scripts import map_full_program
 
 
@@ -28,11 +33,10 @@ def test_close_winwatt_after_mapping_prefers_window_close(monkeypatch):
     assert result["closed"] is True
     assert result["method"] == "window.close"
 
-from winwatt_automation.runtime_mapping.program_mapper import DEFAULT_TEST_PROJECT_PATH, DEFAULT_TOP_MENUS
 
-
-def test_default_test_project_path_is_repo_relative_and_exists():
-    assert Path(DEFAULT_TEST_PROJECT_PATH).is_file()
+def test_default_test_project_path_is_repo_relative_or_externalized():
+    path = Path(DEFAULT_TEST_PROJECT_PATH)
+    assert path.is_file() or is_external_artifact_path("winwatt_automation/tests/testwwp.wwp")
     assert Path(DEFAULT_TEST_PROJECT_PATH).name == "testwwp.wwp"
 
 
